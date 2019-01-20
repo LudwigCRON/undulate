@@ -22,7 +22,7 @@
   { name: "Pclk", wave: 'P.......' },
   { name: "nclk", wave: 'n.......' },
   { name: "Nclk", wave: 'N.......' },
-  { name: "Nclk", slewing: 0, wave: 'N.......' },
+  { name: "Nclk", slewing: 16, wave: 'N.......' },
   { name: "Pclk", slewing: 4, wave: 'P.......' },
   {},
   { name: 'clk0', wave: 'phnlPHNL' },
@@ -177,8 +177,9 @@ foot: {text:
     'e~>f', 'f->g', 'g-~>h', 'h~>i some text', 'h~->j'
   ],
   style: [
-    {edge: 3, dx: -5, dy: -10, hide_markers: true}
-  ]
+    {edge: 2, dx: 8, dy: -15, color:"#ffa500"}
+  ],
+  hide_edge_markers: true
 }
 </script>
 
