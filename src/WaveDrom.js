@@ -1082,7 +1082,7 @@ function renderWaveForm (index, source, output) {
     var ret,
     root, groups, svgcontent, content, width, height,
     glengths, xmax = 0, i;
-
+    
     if (source.signal) {
         insertSVGTemplate(index, document.getElementById(output + index), source);
         parseConfig(source);

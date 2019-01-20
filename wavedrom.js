@@ -256,7 +256,6 @@ module.exports = findLaneMarkers;
 
 function genBrick (texts, extra, times) {
     var i, j, R = [];
-
     if (texts.length === 4) {
         for (j = 0; j < times; j += 1) {
             R.push(texts[0]);
@@ -324,7 +323,6 @@ var genBrick = require('./gen-brick');
 
 function genWaveBrick (text, extra, times) {
     var x1, x2, x3, y1, y2, x4, x5, x6, xclude, atext, tmp0, tmp1, tmp2, tmp3, tmp4;
-
     x1 = {p:'pclk', n:'nclk', P:'Pclk', N:'Nclk', h:'pclk', l:'nclk', H:'Pclk', L:'Nclk'};
 
     x2 = {
@@ -1001,14 +999,15 @@ var genFirstWaveBrick = require('./gen-first-wave-brick'),
 // text is the wave member of the signal object
 // extra = hscale-1 ( padding )
 // lane is an object containing all properties for this waveform
-function parseWaveLane (text, extra, lane) {
+function parseWaveLane (sig, text, extra, lane) {
     var Repeats, Top, Next, Stack = [], R = [], i, subCycle;
     var unseen_bricks = [], num_unseen_markers;
+    var properties = {};
+    if(sig.hasOwnProperty("slewing")) properties["slewing"] = sig.slewing;
 
     Stack = text.split('');
     Next  = Stack.shift();
     subCycle = false;
-
     Repeats = 1;
     while (Stack[0] === '.' || Stack[0] === '|') { // repeaters parser
         Stack.shift();
@@ -1033,9 +1032,9 @@ function parseWaveLane (text, extra, lane) {
             Repeats += 1;
         }
         if (subCycle) {
-            R = R.concat(genWaveBrick((Top + Next), 0, Repeats - lane.period));
+            R = R.concat(genWaveBrick((Top + Next), 0, Repeats - lane.period, properties));
         } else {
-            R = R.concat(genWaveBrick((Top + Next), extra, Repeats));
+            R = R.concat(genWaveBrick((Top + Next), extra, Repeats, properties));
         }
     }
     // shift out unseen bricks due to phase shift, and save them in
@@ -1057,7 +1056,7 @@ function parseWaveLane (text, extra, lane) {
 
     // R is array of half brick types, each is item is string
     // num_unseen_markers is how many markers are now unseen due to phase
-    return [R, num_unseen_markers];
+    return [R, num_unseen_markers, properties];
 }
 
 module.exports = parseWaveLane;
@@ -1086,7 +1085,6 @@ function parseWaveLanes (sig, lane) {
         parsed_wave_lane,
         num_unseen_markers,
         tmp0 = [];
-
     for (x in sig) {
         // sigx is each signal in the array of signals being iterated over
         sigx = sig[x];
@@ -1098,7 +1096,7 @@ function parseWaveLanes (sig, lane) {
         // xmin_cfg is min. brick of hbounds, add 1/2 to sigx.phase of all sigs
         tmp0[1] = (sigx.phase || 0) + lane.xmin_cfg/2;
         if ( sigx.wave ) {
-            parsed_wave_lane = parseWaveLane(sigx.wave, lane.period * lane.hscale - 1, lane);
+            parsed_wave_lane = parseWaveLane(sigx, sigx.wave, lane.period * lane.hscale - 1, lane);
             content_wave = parsed_wave_lane[0] ;
             num_unseen_markers = parsed_wave_lane[1];
         } else {
@@ -1107,6 +1105,7 @@ function parseWaveLanes (sig, lane) {
         content[content.length - 1][0] = tmp0.slice(0);
         content[content.length - 1][1] = content_wave;
         content[content.length - 1][2] = data_extract(sigx, num_unseen_markers);
+        content[content.length - 1][3] = parsed_wave_lane[2];
     }
     // content is an array of arrays, representing the list of signals using
     //  the same order:
@@ -1985,7 +1984,6 @@ function renderWaveLane (root, content, index, lane) {
         xmax     = 0,
         xgmax    = 0,
         glengths = [];
-
     for (j = 0; j < content.length; j += 1) {
         name = content[j][0][0];
         if (name) { // check name
@@ -2027,12 +2025,34 @@ function renderWaveLane (root, content, index, lane) {
 
             if (content[j][1]) {
                 for (i = 0; i < content[j][1].length; i += 1) {
-                    b = document.createElementNS(w3.svg, 'use');
-                    // b.id = 'use_' + i + '_' + j + '_' + index;
-                    b.setAttributeNS(w3.xlink, 'xlink:href', '#' + content[j][1][i]);
-                    // b.setAttribute('transform', 'translate(' + (i * lane.xs) + ')');
+                    b = document.getElementById(content[j][1][i]).cloneNode(true);
+                    //b = document.createElementNS(w3.svg, 'use');
+                    //b.setAttributeNS(w3.xlink, 'xlink:href', '#' + content[j][1][i]);
                     b.setAttribute('transform', 'translate(' + (i * lane.xs) + ')');
-                    gg.insertBefore(b, null);
+                    if(content[j][3].hasOwnProperty('slewing')) {
+                        let slew = (content[j][3].slewing == true) ? 16 : content[j][3].slewing;
+                        let path  = b.querySelector(".s1");
+                        switch (content[j][1][i]) {
+                            case 'Nclk': path.setAttribute('d', 'm0,0 '+slew+',20 '+(20-slew)+',0'); break;
+                            case 'Pclk': path.setAttribute('d', 'M0,20 '+slew+',0 20,0'); break;
+                            case 'nclk': path.setAttribute('d', 'm0,0 '+slew+',20 '+(20-slew)+',0'); break;
+                            case 'pclk': path.setAttribute('d', 'M0,20 '+slew+',0 20,0'); break;
+                            default: break;
+                        }
+                        gg.insertBefore(b, null);
+                        let arrow = b.querySelector(".s9");
+                        if(arrow != null) {
+                            let angleDeg = 180/Math.PI*Math.atan2(slew,20);
+                            switch (content[j][1][i]) {
+                                case 'Nclk': arrow.setAttribute('transform', 'rotate(-'+angleDeg+')'); break;
+                                case 'Pclk': arrow.setAttribute('transform', 'translate('+(slew)+', 0) rotate('+angleDeg+')'); break;
+                                default: break;
+                            }
+                        }
+                    } else {
+                        gg.insertBefore(b, null);
+                    }
+                    
                 }
                 if (content[j][2] && content[j][2].length) {
                     labels = findLaneMarkers(content[j][1]);
