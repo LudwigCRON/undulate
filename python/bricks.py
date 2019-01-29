@@ -78,12 +78,13 @@ class Brick:
   define the brick as a composition of paths, arrows, and generic polygons
   to fill an area
   """
-  __slots__ = ["paths", "arrows", "polygons", "splines"]
+  __slots__ = ["paths", "arrows", "polygons", "splines", "text"]
   def __init__(self):
     self.paths     = []
     self.arrows    = []
     self.polygons  = []
-    self.splines   = []  
+    self.splines   = []
+    self.text      = (10, 10, "") 
 
 def generate_brick(symbol:str, **kwargs) -> dict:
   # get option supported
@@ -140,23 +141,11 @@ def generate_brick(symbol:str, **kwargs) -> dict:
     if symbol == BRICKS.High:
       b.arrows.append((0, height/2, -arrow_angle))
   elif symbol == BRICKS.zero:
-    dt = min(slewing, width*0.15)
-    dy = min(height*dt/slewing if slewing > 0 else height, height)
-    last_y = 0 if last_y is None else last_y
-    dt2 = (height-max(last_y-dy, 0))*slewing/height
-    b.paths.append([
-      (0, last_y), (dt, max(last_y-dy, 0)), (width*0.15, max(last_y-dy, 0)),
-      (width*0.15+dt2, height), (width, height)
-    ])
-  elif symbol == BRICKS.one:
-    dt = min(slewing, width*0.15)
-    dy = min(height*dt/slewing if slewing > 0 else height, height)
     last_y = height if last_y is None else last_y
-    dt2 = min(last_y+dy, height)*slewing/height
-    b.paths.append([
-      (0, last_y), (dt, min(last_y+dy, height)), (width*0.15, min(last_y+dy, height)),
-      (width*0.15+dt2, 0), (width, 0)
-    ])
+    b.paths.append([(0, last_y), (3, last_y), (3+slewing, height), (width, height)])
+  elif symbol == BRICKS.one:
+    last_y = 0 if last_y is None else last_y
+    b.paths.append([(0, last_y), (3, last_y), (3+slewing, 0), (width, 0)])
   elif symbol == BRICKS.highz:
     last_y = height/2 if last_y is None else last_y
     dt = abs(height/2-last_y)*slewing/height
@@ -169,6 +158,8 @@ def generate_brick(symbol:str, **kwargs) -> dict:
       (0, height/2), (5, 0), (width-5, 0), (width, height/2),
       (width-5, height), (5, height), (0, height/2)
     ])
+    if symbol == BRICKS.data:
+      b.text = (width/2, height/2, kwargs.get("data", ""))
   elif symbol == BRICKS.gap:
     pass
   elif symbol == BRICKS.up:

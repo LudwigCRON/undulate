@@ -42,6 +42,9 @@ def svg_spline(vertices:list, extra:str = "") -> str:
 def svg_vertical_line(x, size:int = 20, extra:str = ""):
   return f"<path d=\"M {x} 0 L {x} {size}\" {extra} />"
 
+def svg_text(x, y, text=""):
+  return f"<text x=\"{x}\" y=\"{y}\" text-anchor=\"middle\" alignment-baseline=\"central\">{text}</text>"
+
 def svg_brick(symbol:str, b:dict, extra:str = "", height:int = 20):
   ans = f"<g data-symbol=\"{symbol}\" {extra}>\n"
   if symbol == bricks.BRICKS.gap or symbol == '|':
@@ -49,14 +52,16 @@ def svg_brick(symbol:str, b:dict, extra:str = "", height:int = 20):
     ans += f"<path d=\"M-7,{height+2} C -2,{height+2} -2,-2 3,-2\" class=\"path\"></path>\n"
     ans += f"<path d=\"M-3,{height+2} C 2,{height+2} 2,-2 7,-2\" class=\"path\"></path>\n"
   else:
+    for _, poly in enumerate(b.polygons):
+      ans += svg_polygon(poly, "fill=\"url(#diagonalHatch)\"" if symbol == bricks.BRICKS.x else "fill=\"none\"")
     for _, path in enumerate(b.paths):
       ans += vertices_to_svgpath(path, "class=\"path\"")
     for _, arrow in enumerate(b.arrows):
       ans += svg_arrow(*arrow, "class=\"arrow\"")
-    for _, poly in enumerate(b.polygons):
-      ans += svg_polygon(poly, "fill=\"url(#diagonalHatch)\"" if symbol == bricks.BRICKS.x else "fill=\"none\"")
     for _, spline in enumerate(b.splines):
       ans += svg_spline(spline, "class=\"path\"")
+    if len(b.text) > 0:
+      ans += svg_text(*b.text)
   ans += "</g>"
   return ans
 
@@ -66,8 +71,13 @@ def svg_wavelane_title(name:str):
 @incr_wavelane
 def svg_wavelane(name:str, wavelane:str, extra:str = "", **kwargs):
   no_glitch  = kwargs.get("no_glitch", False)
-  width      = kwargs.get("width", 20)
+  period     = kwargs.get("period", 1)
+  phase      = kwargs.get("phase", 0)
+  width      = period * kwargs.get("width", 20)
   gap_offset = kwargs.get("gap_offset", width*0.75)
+  data       = kwargs.get("data", "")
+  if isinstance(data, str):
+    data = data.strip().split()
   # generate the waveform
   _wavelane, wave, pos, previous_brick, last_y = [], [], 0, None, None
   # look for repetition '.'
@@ -88,49 +98,41 @@ def svg_wavelane(name:str, wavelane:str, extra:str = "", **kwargs):
       previous_brick = b
   # generate bricks
   previous_brick = bricks.BRICKS.zero
+  data_counter, i = 0, 0
   for b, k in _wavelane:
     if b != '|':
       symbol = bricks.BRICKS.from_str(b)
       ignore = bricks.BRICKS.ignore_transition(previous_brick, symbol)
       # get the final height of the last brick
       if wave:
-        s, br, _ = wave[-1] if not previous_brick == bricks.BRICKS.gap else wave[-2]
+        s, br, _ = wave[-1]
+        if s == bricks.BRICKS.gap:
+          s, br, _ = wave[-2]
         if br.paths:
           _, last_y = br.paths[0][-1]
         elif br.splines:
           _, _, last_y = br.splines[0][-1]
       # create the new brick
-      kwargs.update({"ignore_transition":ignore, "last_y":last_y, "is_repeated": k})
+      kwargs.update({
+        "width":width*(1-phase/k) if i==0 else width*(1+2*phase) if i==len(_wavelane)-1 else width,
+        "ignore_transition":ignore,
+        "last_y":last_y,
+        "is_repeated": k,
+        "data": data[data_counter] if len(data) > data_counter else ""
+      })
       wave.append((
         symbol,
         bricks.generate_brick(symbol, **kwargs),
-        f"transform=\"translate({pos}, 0)\""))
+        f"transform=\"translate({pos-width*phase*(i>0)}, 0)\"" + (f" class=\"s{b}\"" if b.isdigit() and int(b) > 1 else "")))
       previous_brick = symbol
+      if symbol == bricks.BRICKS.data:
+        data_counter += 1
     else:
       # create the gap
       pos -= width
-      wave.append((bricks.BRICKS.gap, bricks.Brick(), f"transform=\"translate({pos+gap_offset}, 0)\""))
+      wave.append((bricks.BRICKS.gap, bricks.Brick(), f"transform=\"translate({pos-width*phase+gap_offset}, 0)\""))
     pos += width*k
-  # filter for no_glitch
-  if no_glitch:
-    for i in range(0, len(wave)-1):
-      symb2, b2, e2 = wave[i+1]
-      symb1, b1, e1 = wave[i]
-      for j in range(min(len(b1.paths), len(b2.paths))):
-        dy_dx2 = bricks.start_derivative(b2.paths[j])
-        dy_dx1 = bricks.end_derivative(b1.paths[j])
-        # spike detected
-        if (dy_dx2 > 0 and dy_dx1 < 0) or (dy_dx1 > 0 and dy_dx2 < 0):
-          # remove it
-          _, y = b2.paths[j][1]
-          _, x = b1.paths[j][-2]
-          y += x
-          x1, y1 = b1.paths[j][-1]
-          x2, y2 = b2.paths[j][0]
-          b1.paths[j] = b1.paths[j][:-1]+[(x1, y*0.5)]
-          b2.paths[j] = [(x2, y*0.5)]+b2.paths[j][1:]
-          b2.arrows = b2.arrows[1:]
-          wave[i] = (symb1, b1, e1)
+    i += 1
   # waveform name
   ans = ""
   if len(name) > 0:

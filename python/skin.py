@@ -38,6 +38,9 @@ text{font-size:11pt;
     stroke-dasharray:none}
 .arrow{fill:#000000;fill-opacity:1;stroke:none}
 .hide{fill:#ffffff;fill-opacity:1;stroke:2}
+.s3 > polygon {fill:#ffffb4;fill-opacity:1,stroke:none}
+.s4 > polygon {fill:#ffe0b9;fill-opacity:1,stroke:none}
+.s5 > polygon {fill:#b9e0ff;fill-opacity:1,stroke:none}
 """
 
 PATTERN = """

@@ -83,6 +83,20 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step5.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
+  
+  def test_wavedrom_step6(self):
+    """
+    phase and period
+    """
+    wavelanes = {
+      "CK"  : {"wave": "P.......",                                                "period": 2  },
+      "CMD" : {"wave": "x.3x=x4x=x=x=x=x", "data": "RAS NOP CAS NOP NOP NOP NOP", "phase": 0.5 },
+      "ADDR": {"wave": "x.=x..=x........", "data": "ROW COL",                     "phase": 0.5 },
+      "DQS" : {"wave": "z.......0.1010z." },
+      "DQ"  : {"wave": "z.........5555z.", "data": "D0 D1 D2 D3" }
+    }
+    with open("./test/wavedrom_step6.svg", "w+") as fp:
+      fp.write(svg.draw(wavelanes))
 
 if __name__ == "__main__":
   unittest.main()
