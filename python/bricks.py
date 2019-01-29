@@ -42,7 +42,6 @@ class BRICKS(Enum):
       (BRICKS.low, BRICKS.one),
       (BRICKS.x, BRICKS.x),
       (BRICKS.x, '.'),
-      (BRICKS.data, BRICKS.data),
       (BRICKS.down, '.'),
       (BRICKS.up, '.')
     ]:
@@ -63,7 +62,6 @@ def slope(x1, y1, x2, y2):
   if (x2-x1) == 0:
     return (y2-y1)
   return (y2-y1)/(x2-x1)
-
 
 def limit_derivative(path, l):
   ans = []
@@ -89,15 +87,16 @@ class Brick:
 
 def generate_brick(symbol:str, **kwargs) -> dict:
   # get option supported
-  width              = kwargs.get("width", 40)
+  width_brick        = kwargs.get("width", 40)
   height             = kwargs.get("height", 20)
   slewing            = kwargs.get("slewing", 0)
   duty_cycle         = kwargs.get("duty_cycle", 0.5)
   ignore_transition  = kwargs.get("ignore_transition", False)
+  is_repeated        = kwargs.get("is_repeated", 1)
   last_y             = kwargs.get("last_y", None)
   # calculate the angle of the arrow
   arrow_angle = atan2(height, slewing) * 180 / pi
-  s = 0
+  s, width = 0, width_brick * is_repeated
   # create the brick
   b = Brick()
   if symbol == BRICKS.nclk:
@@ -170,7 +169,6 @@ def generate_brick(symbol:str, **kwargs) -> dict:
       (0, height/2), (5, 0), (width-5, 0), (width, height/2),
       (width-5, height), (5, height), (0, height/2)
     ])
-    s = -1
   elif symbol == BRICKS.gap:
     pass
   elif symbol == BRICKS.up:
@@ -187,4 +185,11 @@ def generate_brick(symbol:str, **kwargs) -> dict:
     for i, p in enumerate(b.splines):
       c, x, y = p[-1]
       b.splines[i] = [('M', 0, last_y), ('', x, y)]
+    for i, p in enumerate(b.polygons):
+      x0, y0 = p[0]
+      x1, y1 = p[1]
+      x2, y2 = p[-2]
+      x3, y3 = p[-1]
+      b.polygons[i] = [(x0, y1)] + p[2:-2] + [(x3, y2)]
+      
   return b

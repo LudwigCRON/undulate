@@ -69,35 +69,48 @@ def svg_wavelane(name:str, wavelane:str, extra:str = "", **kwargs):
   width      = kwargs.get("width", 20)
   gap_offset = kwargs.get("gap_offset", width*0.75)
   # generate the waveform
-  wave, pos, previous_brick, last_y = [], 0, None, None
-  for b in wavelane:
+  _wavelane, wave, pos, previous_brick, last_y = [], [], 0, None, None
+  # look for repetition '.'
+  for i, b in enumerate(wavelane):
+    if b == '.' and previous_brick in [None, '|'] and i == 0:
+      raise f"error in {name}: cannot repeat none or '|', add a valid brick first"
+    if b in '.|' and not previous_brick in ['p', 'n', 'N', 'P']:
+      br, num = _wavelane[-1]
+      _wavelane[-1] = (br, num + 1)
+      if b == '|':
+        _wavelane.append((b, 1))
+    elif b in '.|':
+      _wavelane.append((previous_brick, 1))
+      if b == '|':
+        _wavelane.append((b, 1))
+    else:
+      _wavelane.append((b, 1))
+      previous_brick = b
+  # generate bricks
+  previous_brick = bricks.BRICKS.zero
+  for b, k in _wavelane:
     if b != '|':
-      symbol = previous_brick if b == '.' and not previous_brick == bricks.BRICKS.data else bricks.BRICKS.from_str(b)
-      ignore = bricks.BRICKS.ignore_transition(previous_brick, '.' if b == '.' else symbol)
-      if b == '.' and previous_brick is None:
-        raise f"error in {name}: cannot repeat none, add a valid brick first"
-      elif b != '.':
-        previous_brick = bricks.BRICKS.from_str(b)
+      symbol = bricks.BRICKS.from_str(b)
+      ignore = bricks.BRICKS.ignore_transition(previous_brick, symbol)
+      # get the final height of the last brick
       if wave:
-        s, br, _ = wave[-1]
-        if s == bricks.BRICKS.gap:
-          s, br, _ = wave[-2]
+        s, br, _ = wave[-1] if not previous_brick == bricks.BRICKS.gap else wave[-2]
         if br.paths:
           _, last_y = br.paths[0][-1]
         elif br.splines:
           _, _, last_y = br.splines[0][-1]
-      kwargs.update({"ignore_transition":ignore, "last_y":last_y})
-      wave.append(
-        (symbol if not b == '.' or symbol == bricks.BRICKS.x else '.',
-        bricks.generate_brick(
-          previous_brick,
-          **kwargs,
-        ), f"transform=\"translate({pos*width}, 0)\"")
-      )
+      # create the new brick
+      kwargs.update({"ignore_transition":ignore, "last_y":last_y, "is_repeated": k})
+      wave.append((
+        symbol,
+        bricks.generate_brick(symbol, **kwargs),
+        f"transform=\"translate({pos}, 0)\""))
+      previous_brick = symbol
     else:
-      pos -= 1
-      wave.append((bricks.BRICKS.gap, bricks.Brick(), f"transform=\"translate({pos*width+gap_offset}, 0)\""))
-    pos += 1
+      # create the gap
+      pos -= width
+      wave.append((bricks.BRICKS.gap, bricks.Brick(), f"transform=\"translate({pos+gap_offset}, 0)\""))
+    pos += width*k
   # filter for no_glitch
   if no_glitch:
     for i in range(0, len(wave)-1):
@@ -143,36 +156,56 @@ def svg_wavegroup(name:str, wavelanes, extra:str = "", **kwargs):
   # otherwise
   elif isinstance(wavelanes, dict):
     # room for displaying names
-    offsetx = max(map(len, wavelanes.keys()))*11
+    offsetx = kwargs.get("offsetx", max(map(len, wavelanes.keys()))*11)
+    offsety = 0
     for i, wavetitle in enumerate(wavelanes.keys()):
-      wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]
-      args.update(**kwargs)
-      ans += svg_wavelane(wavetitle, wave, f"transform=\"translate({offsetx}, {i*height*1.5})\"", **args)
+      # signal or group
+      if "wave" in wavelanes[wavetitle]:
+        wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]
+        args.update(**kwargs)
+        ans += svg_wavelane(wavetitle, wave, f"transform=\"translate({offsetx}, {offsety})\"", **args)
+        offsety += height * 1.5
+      else:
+        args = kwargs
+        args.update({"offsetx": offsetx})
+        j, tmp = svg_wavegroup(wavetitle, wavelanes[wavetitle], f"transform=\"translate(0, {offsety})\"", **args)
+        ans += tmp
+        offsety += j
   else:
     raise "Unkown wavelane type"
   ans += "</g>"
-  return ans
+  return (offsety, ans)
 
 def svg_size(wavelanes, width:int = 20, height:int = 28):
   if isinstance(wavelanes, dict):
-    y = len(wavelanes.keys())
-    x = max(map(lambda w: len(w["wave"]), wavelanes.values()))*width
-    x += max(map(len, wavelanes.keys()))*11
-    return (x, y*height*1.5)
+    y = 0
+    x = []
+    keys = []
+    for i, wavetitle in enumerate(wavelanes.keys()):
+      if "wave" in wavelanes[wavetitle]:
+        x.append(len(wavelanes[wavetitle]["wave"]) * width)
+        y += height * 1.5
+        keys.append(len(wavetitle))
+      else:
+        lkeys, _x, _y = svg_size(wavelanes[wavetitle], width, height)
+        x.append(_x)
+        y += _y
+        keys.append(lkeys)
+    return (max(keys), max(x), y)
   else:
     y = len(wavelanes)
     x = max(map(len, wavelanes))
-    return (x*width, y*height*1.5)
+    return (0, x*width, y*height*1.5)
 
 def draw(wavelanes, **kwargs) -> str:
   tile_width  = kwargs.get("tile_width", 40)
   tile_height = kwargs.get("tile_height", 20)
-  width, height = svg_size(wavelanes, tile_width, tile_height)
+  lkeys, width, height = svg_size(wavelanes, tile_width, tile_height)
   return (
-    f"<svg xmlns=\"http://www.w3.org/2000/svg\" \n width=\"{width}\" height=\"{height}\" viewBox=\"-1 -1 {width+2} {height+2}\">\n"
+    f"<svg xmlns=\"http://www.w3.org/2000/svg\" \n width=\"{width+lkeys*11}\" height=\"{height}\" viewBox=\"-1 -1 {width+lkeys*11+2} {height+2}\">\n"
     f"<style>{skin.DEFAULT}</style>\n"
     f"{skin.PATTERN}"
-    ""+svg_wavegroup("a", wavelanes, width=tile_width, height=tile_height)+""
+    ""+svg_wavegroup("a", wavelanes, width=tile_width, height=tile_height)[1]+""
     "\n</svg>"
   )
 
