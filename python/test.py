@@ -108,9 +108,11 @@ class TestSvgMethods(unittest.TestCase):
       "C": {"wave": "0..1....0...1..", "node": "...c....h.." },
       "D": {"wave": "0...1..0.....1.", "node": "....d..g..." },
       "E": {"wave": "0....10.......1", "node": ".....ef...." },
+      "F": {"wave": "0....10.......1", "node": ".....#..... ms_adc.isd.eoc" },
+      "F": {"wave": "0......10.....1", "node": ".......#... interface.new_sample" },
       "edge": [
         'a~b t1', 'c-~a t2', 'c-~>d time 3', 'd~-e',
-        'e~>f', 'f->g', 'g-~>h', 'h~>i some text', 'h~->j'
+        'e~>f', 'f->g', 'g-~>h', 'h~>i some text', 'h~->j', 'ms_adc.isd.eoc~>interface.new_sample'
       ]
     }
     with open("./test/wavedrom_step7.svg", "w+") as fp:

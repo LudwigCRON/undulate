@@ -4,7 +4,7 @@
 svg.py is a composition of functions to generate
 an svg diagram from the WaveDrom-like format
 """
-
+import re
 import skin
 from bricks import BRICKS, Brick, generate_brick
 
@@ -258,6 +258,25 @@ def svg_ticks(width: int, height: int, step: int, **kwargs) -> str:
   ans += "</g>"
   return ans
 
+def svg_edges(wavelanes, **kwargs) -> str:
+  legacy = kwargs.get("legacy", True)
+  if legacy:
+    nodes = []
+    for name in wavelanes.keys():
+      wavelane = wavelanes[name]
+      if isinstance(wavelane, dict):
+        if "wave" in wavelane and "node" in wavelane:
+          n = wavelane["node"].replace('.', '')
+          i = list(map(lambda c: wavelane["node"].find(c), n[::]))
+          nodes.extend(list(zip(i, n[::])))
+      elif name == "edge":
+        print(nodes)
+        for s in wavelane:
+          ans = re.match(r"([A-z0-9\.\_]+)([~|\\/\->]+)([A-z0-9\.\_]+)", s)
+          if ans:
+            print(ans.groups())
+  return ""
+
 @incr_wavegroup
 def svg_wavegroup(name: str, wavelanes, extra: str = "", **kwargs):
   """
@@ -318,6 +337,7 @@ def svg_wavegroup(name: str, wavelanes, extra: str = "", **kwargs):
       ans = header + svg_ticks(width, height, brick_width, offsetx=offsetx) + "\n" + ans
     # finish the group
     ans += "</g>"
+    ans += svg_edges(wavelanes, **kwargs)
     return (offsety, ans)
   # otherwise this is an option
   elif name == "edge":
