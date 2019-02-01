@@ -41,6 +41,7 @@ text{font-size:11pt;
 .s3 > polygon {fill:#ffffb4;fill-opacity:1,stroke:none}
 .s4 > polygon {fill:#ffe0b9;fill-opacity:1,stroke:none}
 .s5 > polygon {fill:#b9e0ff;fill-opacity:1,stroke:none}
+.ticks {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
 """
 
 PATTERN = """

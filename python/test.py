@@ -97,6 +97,25 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step6.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
+  
+  def test_wavedrom_step7(self):
+    """
+    Arrows
+    """
+    wavelanes = {
+      "A": {"wave": "01........0....", "node": ".a........j" },
+      "B": {"wave": "0.1.......0.1..", "node": "..b.......i" },
+      "C": {"wave": "0..1....0...1..", "node": "...c....h.." },
+      "D": {"wave": "0...1..0.....1.", "node": "....d..g..." },
+      "E": {"wave": "0....10.......1", "node": ".....ef...." },
+      "edge": [
+        'a~b t1', 'c-~a t2', 'c-~>d time 3', 'd~-e',
+        'e~>f', 'f->g', 'g-~>h', 'h~>i some text', 'h~->j'
+      ]
+    }
+    with open("./test/wavedrom_step7.svg", "w+") as fp:
+      fp.write(svg.draw(wavelanes))
+  
 
 if __name__ == "__main__":
   unittest.main()
