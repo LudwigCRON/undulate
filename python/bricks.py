@@ -172,7 +172,8 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     if symbol == BRICKS.data:
       b.text = (width/2, height/2, kwargs.get("data", ""))
   elif symbol == BRICKS.gap:
-    pass
+    b.splines.append([('M', -7, height+2), ('C', -2, height+2), ('', -2, -2), ('', 3, -2)])
+    b.splines.append([('M', -3, height+2), ('C',  2, height+2), ('',  2, -2), ('', 7, -2)])
   elif symbol == BRICKS.up:
     b.splines.append([('m', 0, last_y), ('', 3, 0), ('C', 3+slewing, last_y), ('', 3+slewing, 0), ('', min(width, 20), 0), ('L', width, 0)])
   elif symbol == BRICKS.down:

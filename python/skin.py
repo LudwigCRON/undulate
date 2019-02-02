@@ -42,6 +42,9 @@ text{font-size:11pt;
 .s4 > polygon {fill:#ffe0b9;fill-opacity:1,stroke:none}
 .s5 > polygon {fill:#b9e0ff;fill-opacity:1,stroke:none}
 .ticks {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
+.edges {fill:none;stroke:#00F;stroke-width:1}
+.edges.arrowhead {marker-start:url(#arrow); overflow:visible;}
+.edges.arrowtail {marker-end:url(#arrow); overflow:visible;}
 """
 
 PATTERN = """
@@ -49,5 +52,10 @@ PATTERN = """
     <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
         <line x1="0" y1="0" x2="0" y2="5" style="stroke:black; stroke-width:1" />
     </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5"
+        markerWidth="8" markerHeight="8"
+        orient="auto-start-reverse" style="fill:#00F;">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
 </defs>
 """

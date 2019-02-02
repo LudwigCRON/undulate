@@ -6,6 +6,7 @@ an svg diagram from the WaveDrom-like format
 """
 import re
 import skin
+from itertools import count
 from bricks import BRICKS, Brick, generate_brick
 
 # Counter for unique id generation
@@ -34,8 +35,16 @@ def incr_wavegroup(f):
     return f(*args, **kwargs)
   return wrapper
 
-# SVG Drawing
+_EDGE_REGEXP = r"([\w\.\_]+)([~\|\/\-\>\<]+)([\w\.\_]+)"
 
+def is_spacer(name: str) -> bool:
+  if name.strip() == "":
+    return True
+  if "spacer" in name.lower():
+    return True
+  return False
+
+# SVG Drawing
 # basic function for drawing
 def svg_path(vertices: list, extra: str = "") -> str:
   """
@@ -102,24 +111,19 @@ def svg_brick(symbol: str, b: Brick, extra: str = "", height: int = 20) -> str:
   text    : text to display
   """
   ans = f"<g data-symbol=\"{symbol}\" {extra}>\n"
-  # generate a gap symbol (time compression)
-  if symbol == BRICKS.gap or symbol == '|':
+  if symbol == BRICKS.gap:
     ans += f"<path d=\"m7,-2 -4,0 c -5,0 -5,{height+4} -10,{height+4} l 4,0 C 2,{height+4} 2,-2 7,-2 z\" class=\"hide\"></path>\n"
-    ans += f"<path d=\"M-7,{height+2} C -2,{height+2} -2,-2 3,-2\" class=\"path\"></path>\n"
-    ans += f"<path d=\"M-3,{height+2} C 2,{height+2} 2,-2 7,-2\" class=\"path\"></path>\n"
-  # generate other bricks
-  else:
-    for _, poly in enumerate(b.polygons):
-      filling = "url(#diagonalHatch)" if symbol == BRICKS.x else "none"
-      ans += svg_polygon(poly, f"fill=\"{filling}\"")
-    for _, path in enumerate(b.paths):
-      ans += svg_path(path, "class=\"path\"")
-    for _, arrow in enumerate(b.arrows):
-      ans += svg_arrow(*arrow, "class=\"arrow\"")
-    for _, spline in enumerate(b.splines):
-      ans += svg_spline(spline, "class=\"path\"")
-    if b.text:
-      ans += svg_text(*b.text)
+  for _, poly in enumerate(b.polygons):
+    filling = "url(#diagonalHatch)" if symbol == BRICKS.x else "none"
+    ans += svg_polygon(poly, f"fill=\"{filling}\"")
+  for _, path in enumerate(b.paths):
+    ans += svg_path(path, "class=\"path\"")
+  for _, arrow in enumerate(b.arrows):
+    ans += svg_arrow(*arrow, "class=\"arrow\"")
+  for _, spline in enumerate(b.splines):
+    ans += svg_spline(spline, "class=\"path\"")
+  if len(b.text[2]) > 0:
+    ans += svg_text(*b.text)
   ans += "</g>"
   return ans
 
@@ -128,6 +132,8 @@ def svg_wavelane_title(name: str):
   svg_wavelane_title generate the title in front of a waveform
   name: name of the waveform print alongside
   """
+  if "spacer" in name or not name.strip():
+    return ""
   return (f"<text x=\"-10\" y=\"15\" class=\"info\" text-anchor=\"end\" "
           f"xml:space=\"preserve\"><tspan>{name}</tspan></text>\n")
 
@@ -222,7 +228,7 @@ def svg_wavelane(name: str, wavelane: str, extra: str = "", **kwargs):
       pos -= brick_width
       wave.append((
           BRICKS.gap,
-          Brick(),
+          generate_brick(BRICKS.gap, **kwargs),
           f"transform=\"translate({pos-brick_width*phase+gap_offset}, 0)\""
       ))
     pos += brick_width*k
@@ -258,24 +264,76 @@ def svg_ticks(width: int, height: int, step: int, **kwargs) -> str:
   ans += "</g>"
   return ans
 
-def svg_edges(wavelanes, **kwargs) -> str:
-  legacy = kwargs.get("legacy", True)
-  if legacy:
-    nodes = []
-    for name in wavelanes.keys():
-      wavelane = wavelanes[name]
-      if isinstance(wavelane, dict):
-        if "wave" in wavelane and "node" in wavelane:
-          n = wavelane["node"].replace('.', '')
-          i = list(map(lambda c: wavelane["node"].find(c), n[::]))
-          nodes.extend(list(zip(i, n[::])))
-      elif name == "edge":
-        print(nodes)
-        for s in wavelane:
-          ans = re.match(r"([A-z0-9\.\_]+)([~|\\/\->]+)([A-z0-9\.\_]+)", s)
-          if ans:
-            print(ans.groups())
-  return ""
+def svg_edges(wavelanes, extra: str = "", **kwargs) -> str:
+  """
+  svg_edges generate the connectors between edges
+  wavelanes      : string which describes the waveform
+  [extra]        : optional attributes for the svg (eg class)
+  [period]       : time dilatation factor, default is 1
+  [phase]        : time shift of the waveform, default is 0
+  [slewing]      : current limitation which limit the transition speed of a signal
+                   default is 4
+  [brick_width]  : width of a brick
+  [brick_height] : height of a brick
+  """
+  brick_width  = kwargs.get("brick_width", 20)
+  brick_height = kwargs.get("brick_height", 20)
+  slewing      = kwargs.get("slewing", 4)
+  nodes = []
+  ans = f"<g id=\"edges\" {extra} >\n"
+  _y = 0
+  for name, wavelane in wavelanes.items():
+    # read nodes declaration
+    if isinstance(wavelane, dict):
+      if "node" in wavelane:
+        chain = wavelane["node"].split(' ')
+        n = chain[0].replace('.', '')
+        i = [chain[0].find(c) for c in n[::]]
+        j = count(0)
+        # brick width of the wavelane
+        width = brick_width * wavelane["period"] if "period" in wavelane \
+                else brick_width
+        phase = brick_width * wavelane["phase"] if "phase" in wavelane \
+                else 0
+        # get identifier
+        nodes.extend(
+          [ (s[0] * width - phase, _y, chain[1+next(j)]) if not s[1].isalpha() 
+            else (s[0] * width - phase, _y, s[1]) for s in list(zip(i, n[::]))]
+        )
+        _y += brick_height * 1.5
+    # list edgeds to perform
+    elif name == "edge":
+      # parse edges declaration
+      matches = [(r[0].groups(), r[1]) for r in [(re.match(_EDGE_REGEXP, s.split(' ', 1)[0]), s.split(' ', 1)[-1]) for s in wavelane] if not r is None]
+      # replace by x position
+      edges = list(zip([m[0][1] for m in matches],
+                       [b for m in matches for b in nodes if m[0][0] in b],
+                       [b for m in matches for b in nodes if m[0][2] in b],
+                       [m[1] for m in matches]))
+      for edge in edges:
+        _shape, s, e, text = edge
+        s = s[0] + 3 + slewing * 0.5, s[1] + brick_height * 0.5
+        e = e[0] + 3 + slewing * 0.5, e[1] + brick_height * 0.5
+        style = "edges "
+        style += "arrowtail " if _shape[-1] == '>' else ''
+        style += "arrowhead " if _shape[0] == '<' else ''
+        if _shape in ['<~', '~', '~>', '<~>']:
+          mx = (s[0] + e[0]) * 0.5
+          ans += f"<path d=\"M{s[0]},{s[1]} C {mx},{s[1]} {mx},{e[1]} {e[0]},{e[1]}\" class=\"{style}\"/>\n"
+        elif _shape in ['<-~', '-~', '-~>', '<-~>']:
+          ans += f"<path d=\"M{s[0]},{s[1]} C {e[0]},{s[1]} {e[0]},{e[1]} {e[0]},{e[1]}\" class=\"{style}\"/>\n"
+        elif _shape in ['<~-', '~-', '~->', '<~->']:
+          ans += f"<path d=\"M{s[0]},{s[1]} C {s[0]},{s[1]} {s[0]},{e[1]} {e[0]},{e[1]}\" class=\"{style}\"/>\n"
+        elif _shape in ['<-', '-', '->', '<->']:
+          ans += f"<path d=\"M{s[0]},{s[1]} L {e[0]},{e[1]}\" class=\"{style}\"/>\n"
+        elif _shape in ['<-|', '-|', '-|>', '<-|>']:
+          ans += f"<path d=\"M{s[0]},{s[1]} L {e[0]},{s[1]} {e[0]},{e[1]}\" class=\"{style}\"/>\n"
+        elif _shape in ['<|-', '|-', '|->', '<|->']:
+          ans += f"<path d=\"M{s[0]},{s[1]} L {s[0]},{e[1]} {e[0]},{e[1]}\" class=\"{style}\"/>\n"
+        elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
+          mx = (s[0] + e[0]) * 0.5
+          ans += f"<path d=\"M{s[0]},{s[1]} L {mx},{s[1]} {mx},{e[1]} {e[0]},{e[1]}\" class=\"{style}\"/>\n"
+  return ans+"</g>\n"
 
 @incr_wavegroup
 def svg_wavegroup(name: str, wavelanes, extra: str = "", **kwargs):
@@ -302,7 +360,7 @@ def svg_wavegroup(name: str, wavelanes, extra: str = "", **kwargs):
   # a use full signal is in a dict
   if isinstance(wavelanes, dict):
     # room for displaying names
-    offsetx = kwargs.get("offsetx", max(map(len, wavelanes.keys()))*11)
+    offsetx = kwargs.get("offsetx", max(map(lambda s: len(s) if not is_spacer(s) else 0, wavelanes.keys()))*11)
     offsety = 0
     for _, wavetitle in enumerate(wavelanes.keys()):
       # signal
@@ -317,6 +375,9 @@ def svg_wavegroup(name: str, wavelanes, extra: str = "", **kwargs):
           f"transform=\"translate({offsetx}, {offsety})\"",
           **args
         )
+        offsety += brick_height * 1.5
+      # spacer
+      elif is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
         offsety += brick_height * 1.5
       # group of signals
       else:
@@ -337,7 +398,7 @@ def svg_wavegroup(name: str, wavelanes, extra: str = "", **kwargs):
       ans = header + svg_ticks(width, height, brick_width, offsetx=offsetx) + "\n" + ans
     # finish the group
     ans += "</g>"
-    ans += svg_edges(wavelanes, **kwargs)
+    ans += svg_edges(wavelanes, extra=f"transform=\"translate({offsetx}, 0)\"", **kwargs)
     return (offsety, ans)
   # otherwise this is an option
   elif name == "edge":
@@ -361,6 +422,8 @@ def svg_size(wavelanes, brick_width: int = 20, brick_height: int = 28):
         x.append(len(wavelanes[wavetitle]["wave"]) * brick_width)
         y += brick_height * 1.5
         keys.append(len(wavetitle))
+      elif is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
+        y += brick_height * 1.5
       elif isinstance(wavelanes[wavetitle], dict):
         lkeys, _x, _y = svg_size(wavelanes[wavetitle], brick_width, brick_height)
         x.append(_x)

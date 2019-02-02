@@ -53,7 +53,7 @@ class TestSvgMethods(unittest.TestCase):
       "clk":{"wave": "p.....|..." },
       "Data":{"wave": "x.345x|=.x", "data": ["head", "body", "tail", "data"] },
       "Request":{"wave": "0.1..0|1.0" },
-      " ":{"wave":""},
+      "spacer_0":{},
       "Acknowledge":{"wave": "1.....|01." }
     }
     with open("./test/wavedrom_step4.svg", "w+") as fp:
@@ -73,7 +73,7 @@ class TestSvgMethods(unittest.TestCase):
         "addr":{"wave": "x3.x4..x", "data": "A1 A2"},
         "wdata":{"wave": "x3.x....", "data": "D1"}
       },
-      " ":{"wave":""},
+      "spacer_1":{},
       "Slave": {
         "ctrl": {
           "ack": {"wave": "x01x0.1x"}
@@ -109,7 +109,7 @@ class TestSvgMethods(unittest.TestCase):
       "D": {"wave": "0...1..0.....1.", "node": "....d..g..." },
       "E": {"wave": "0....10.......1", "node": ".....ef...." },
       "F": {"wave": "0....10.......1", "node": ".....#..... ms_adc.isd.eoc" },
-      "F": {"wave": "0......10.....1", "node": ".......#... interface.new_sample" },
+      "G": {"wave": "0......10.....1", "node": ".......#... interface.new_sample" },
       "edge": [
         'a~b t1', 'c-~a t2', 'c-~>d time 3', 'd~-e',
         'e~>f', 'f->g', 'g-~>h', 'h~>i some text', 'h~->j', 'ms_adc.isd.eoc~>interface.new_sample'
@@ -118,6 +118,22 @@ class TestSvgMethods(unittest.TestCase):
     with open("./test/wavedrom_step7.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
   
+  def test_wavedrom_step8(self):
+    """
+    Sharp edge lines
+    """
+    wavelanes = {
+      "A": {"wave": "01..0..", "node": ".a..e.." },
+      "B": {"wave": "0.1..0.", "node": "..b..d.", "phase":0.5 },
+      "C": {"wave": "0..1..0", "node": "...c..f" },
+      " ": {                   "node": '...g..h' },
+      "edge": [
+        'b-|a t1', 'a-|c t2', 'b-|-c t3', 'c-|->e t4', 'e-|>f more text',
+        'e|->d t6', 'c-g', 'f-h', 'g<->h 3 ms'
+      ]
+    }
+    with open("./test/wavedrom_step8.svg", "w+") as fp:
+      fp.write(svg.draw(wavelanes))
 
 if __name__ == "__main__":
   unittest.main()
