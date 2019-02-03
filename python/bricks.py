@@ -48,48 +48,50 @@ class BRICKS(Enum):
     glitch by default
     """
     if (f, t) in [
-      
+      (BRICKS.x, BRICKS.low),
+      (BRICKS.x, BRICKS.zero),
+      (BRICKS.x, BRICKS.high),
+      (BRICKS.x, BRICKS.one),
+      (BRICKS.data, BRICKS.zero),
+      (BRICKS.data, BRICKS.one)
     ]:
       return True
     return False
-
-def start_derivative(path: list) -> float:
-  x21, y21 = path[0]
-  x22, y22 = path[1]
-  return slope(x21, y21, x22, y22)
-
-def end_derivative(path: list) -> float:
-  x21, y21 = path[-2]
-  x22, y22 = path[-1]
-  return slope(x21, y21, x22, y22)
-
-def slope(x1: float, y1: float, x2: float, y2: float) -> float:
-  if (x2-x1) == 0:
-    return (y2-y1)
-  return (y2-y1)/(x2-x1)
-
-def limit_derivative(path: list, l: float) -> list:
-  ans = []
-  pX, pY = 0, 0
-  for _, p in enumerate(path):
-    x, y = p
-    s = slope(pX, pY, x, y)
-    ans.append((x, pY + s * (x-pX)) if abs(s) > l else (x, y))
-    pX, pY = ans[-1]
-  return ans
 
 class Brick:
   """
   define the brick as a composition of paths, arrows, and generic polygons
   to fill an area
   """
-  __slots__ = ["paths", "arrows", "polygons", "splines", "text"]
+  __slots__ = ["symbol", "paths", "arrows", "polygons", "splines", "text"]
   def __init__(self):
+    self.symbol    = None
     self.paths     = []
     self.arrows    = []
     self.polygons  = []
     self.splines   = []
     self.text      = (10, 10, "") 
+  
+  def get_last_y(self):
+    last_y = 0
+    if self.paths:
+      _, last_y = self.paths[0][-1]
+    elif self.splines:
+      _, _, last_y = self.splines[0][-1]
+    return last_y
+  
+  def alter_end(self, shift: float = 0, next_y: float = -1):
+    if self.symbol == BRICKS.data or self.symbol == BRICKS.x:
+      for i, path in enumerate(self.paths):
+        x1, y1 = path[-1]
+        x2, y2 = path[-2]
+        self.paths[i] = path[:-1] + [(x2+shift, y2), (x1+shift, next_y if next_y > -1 else y1)]
+      for i, poly in enumerate(self.polygons):
+        l = int(len(poly)/2)
+        x1, y1 = poly[l-1]
+        x2, y2 = poly[l]
+        x3, y3 = poly[l+1]
+        self.polygons[i] = poly[:l-1] + [(x1+shift, y1), (x2+shift, next_y if next_y > -1 else y2), (x3+shift, y3)] + poly[l+1:]
 
 def generate_brick(symbol: str, **kwargs) -> dict:
   # get option supported
@@ -100,11 +102,13 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   ignore_transition  = kwargs.get("ignore_transition", False)
   is_repeated        = kwargs.get("is_repeated", 1)
   last_y             = kwargs.get("last_y", None)
+  next_y             = kwargs.get("next_y", None)
   # calculate the angle of the arrow
   arrow_angle = atan2(height, slewing) * 180 / pi
   s, width = 0, brick_width * is_repeated
   # create the brick
   b = Brick()
+  b.symbol = symbol
   if symbol == BRICKS.nclk:
     last_y = height/2 if last_y is None else last_y
     dt = (height-last_y) * slewing / height
@@ -154,20 +158,22 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   elif symbol == BRICKS.zero:
     last_y = height if last_y is None else last_y
     b.paths.append([(0, last_y), (3, last_y), (3+slewing, height), (width, height)])
+    s = 1
   elif symbol == BRICKS.one:
     last_y = 0 if last_y is None else last_y
     b.paths.append([(0, last_y), (3, last_y), (3+slewing, 0), (width, 0)])
+    s = 1
   elif symbol == BRICKS.highz:
     last_y = height/2 if last_y is None else last_y
     dt = abs(height/2-last_y)*slewing/height
     b.splines.append([('M', 0, last_y), ('C', dt, height/2), ('', dt, height/2), ('', min(width, 20), height/2), ('L', width, height/2)])
   elif symbol == BRICKS.data or symbol == BRICKS.x:
     last_y = height if last_y is None else last_y
-    b.paths.append([(0, last_y), (5, 0), (width-5, 0), (width, height/2)])
-    b.paths.append([(0, last_y), (5, height), (width-5, height), (width, height/2)])
+    b.paths.append([(0, last_y), (slewing, 0), (width-slewing, 0), (width, height/2)])
+    b.paths.append([(0, last_y), (slewing, height), (width-slewing, height), (width, height/2)])
     b.polygons.append([
-      (0, height/2), (5, 0), (width-5, 0), (width, height/2),
-      (width-5, height), (5, height), (0, height/2)
+      (0, height/2), (slewing, 0), (width-slewing, 0), (width, height/2),
+      (width-slewing, height), (slewing, height), (0, height/2)
     ])
     if symbol == BRICKS.data:
       b.text = (width/2, height/2, kwargs.get("data", ""))
@@ -184,7 +190,7 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   if ignore_transition:
     for i, p in enumerate(b.paths):
       x, y = p[1+s]
-      b.paths[i] = [(0, y)] + p[1+s:]
+      b.paths[i] = [(0, last_y)] + p[1+s:]
     for i, p in enumerate(b.splines):
       c, x, y = p[-1]
       b.splines[i] = [('M', 0, last_y), ('', x, y)]
@@ -194,5 +200,4 @@ def generate_brick(symbol: str, **kwargs) -> dict:
       x2, y2 = p[-2]
       x3, y3 = p[-1]
       b.polygons[i] = [(x0, y1)] + p[2:-2] + [(x3, y2)]
-      
   return b

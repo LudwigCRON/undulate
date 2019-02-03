@@ -22,7 +22,7 @@ text{font-size:11pt;
 .h6{font-size:8pt;font-weight:bold}
 .path{fill:none;
     stroke:#000;
-    stroke-width:1.5;
+    stroke-width:1;
     stroke-linecap:round;
     stroke-linejoin:miter;
     stroke-miterlimit:4;

@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
-import svg
+#import svg
+from renderer import SvgRenderer
 import unittest
+
+svg = SvgRenderer()
 
 class TestSvgMethods(unittest.TestCase):
   def test_wavedrom_step1(self):

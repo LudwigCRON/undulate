@@ -21,7 +21,7 @@ text{font-size:11pt;
 .h6{font-size:8pt;font-weight:bold}
 .path{fill:none;
     stroke:#000;
-    stroke-width:1.5;
+    stroke-width:1;
     stroke-linecap:round;
     stroke-linejoin:miter;
     stroke-miterlimit:4;
@@ -56,101 +56,118 @@ text{font-size:11pt;
       <path d="M 0 0 L 10 5 L 0 10 z" />
     </marker>
 </defs>
-<g id="a"  ><g id="ticks_4" transform="translate(121, 0)">
-<path d="m 0,0 0,150.0" class="ticks"/><path d="m 40,0 0,150.0" class="ticks"/><path d="m 80,0 0,150.0" class="ticks"/><path d="m 120,0 0,150.0" class="ticks"/><path d="m 160,0 0,150.0" class="ticks"/><path d="m 200,0 0,150.0" class="ticks"/><path d="m 240,0 0,150.0" class="ticks"/><path d="m 280,0 0,150.0" class="ticks"/><path d="m 320,0 0,150.0" class="ticks"/><path d="m 360,0 0,150.0" class="ticks"/></g>
+<g id="a"  >
+<g id="ticks_4" transform="translate(121, 0)" >
+<path d="m0,0 0,150.0" class="ticks" />
+<path d="m40,0 0,150.0" class="ticks" />
+<path d="m80,0 0,150.0" class="ticks" />
+<path d="m120,0 0,150.0" class="ticks" />
+<path d="m160,0 0,150.0" class="ticks" />
+<path d="m200,0 0,150.0" class="ticks" />
+<path d="m240,0 0,150.0" class="ticks" />
+<path d="m280,0 0,150.0" class="ticks" />
+<path d="m320,0 0,150.0" class="ticks" />
+<path d="m360,0 0,150.0" class="ticks" />
+</g>
+
 <g id="clk" transform="translate(121, 0)" >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve"><tspan>clk</tspan></text>
+<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >clk</text>
 <g data-symbol="BRICKS.pclk" transform="translate(0, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40.0,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40.0,10.0" class="path" />
 </g><g data-symbol="BRICKS.pclk" transform="translate(40, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g><g data-symbol="BRICKS.pclk" transform="translate(80, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g><g data-symbol="BRICKS.pclk" transform="translate(120, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g><g data-symbol="BRICKS.pclk" transform="translate(160, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g><g data-symbol="BRICKS.pclk" transform="translate(200, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g><g data-symbol="BRICKS.pclk" transform="translate(240, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g><g data-symbol="BRICKS.gap" transform="translate(270.0, 0)">
 <path d="m7,-2 -4,0 c -5,0 -5,24 -10,24 l 4,0 C 2,24 2,-2 7,-2 z" class="hide"></path>
 <path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g><g data-symbol="BRICKS.pclk" transform="translate(280, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g><g data-symbol="BRICKS.pclk" transform="translate(320, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g><g data-symbol="BRICKS.pclk" transform="translate(360, 0)" class="s">
-<path d="M0,10.0 L2.0,0 L18.0,0 L22.0,20 L38.0,20 L40,10.0" class="path" />
-</g></g><g id="Data" transform="translate(121, 30.0)" >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve"><tspan>Data</tspan></text>
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
+</g></g>
+<g id="Data" transform="translate(121, 30.0)" >
+<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Data</text>
 <g data-symbol="BRICKS.x" transform="translate(0, 0)" class="s">
-<polygon points="0,10.0 5,0 75.0,0 80.0,10.0 75.0,20 5,20 0,10.0 " fill="url(#diagonalHatch)" />
-<path d="M0,20 L5,0 L75.0,0 L80.0,10.0" class="path" />
-<path d="M0,20 L5,20 L75.0,20 L80.0,10.0" class="path" />
+<polygon points="0,10.0 3,0 77.0,0 80.0,10.0 77.0,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
+<path d="M0,20 L3,0 L77.0,0 L80.0,10.0" class="path" />
+<path d="M0,20 L3,20 L77.0,20 L80.0,10.0" class="path" />
 </g><g data-symbol="BRICKS.data" transform="translate(80, 0)" class="s3">
-<polygon points="0,10.0 5,0 35,0 40,10.0 35,20 5,20 0,10.0 " fill="none" />
-<path d="M0,10.0 L5,0 L35,0 L40,10.0" class="path" />
-<path d="M0,10.0 L5,20 L35,20 L40,10.0" class="path" />
-<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central">head</text>
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
+<path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
+<path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
+<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central" >head</text>
 </g><g data-symbol="BRICKS.data" transform="translate(120, 0)" class="s4">
-<polygon points="0,10.0 5,0 35,0 40,10.0 35,20 5,20 0,10.0 " fill="none" />
-<path d="M0,10.0 L5,0 L35,0 L40,10.0" class="path" />
-<path d="M0,10.0 L5,20 L35,20 L40,10.0" class="path" />
-<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central">body</text>
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
+<path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
+<path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
+<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central" >body</text>
 </g><g data-symbol="BRICKS.data" transform="translate(160, 0)" class="s5">
-<polygon points="0,10.0 5,0 35,0 40,10.0 35,20 5,20 0,10.0 " fill="none" />
-<path d="M0,10.0 L5,0 L35,0 L40,10.0" class="path" />
-<path d="M0,10.0 L5,20 L35,20 L40,10.0" class="path" />
-<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central">tail</text>
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
+<path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
+<path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
+<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central" >tail</text>
 </g><g data-symbol="BRICKS.x" transform="translate(200, 0)" class="s">
-<polygon points="0,10.0 5,0 75,0 80,10.0 75,20 5,20 0,10.0 " fill="url(#diagonalHatch)" />
-<path d="M0,10.0 L5,0 L75,0 L80,10.0" class="path" />
-<path d="M0,10.0 L5,20 L75,20 L80,10.0" class="path" />
+<polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
+<path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" />
+<path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" />
 </g><g data-symbol="BRICKS.gap" transform="translate(270.0, 0)">
 <path d="m7,-2 -4,0 c -5,0 -5,24 -10,24 l 4,0 C 2,24 2,-2 7,-2 z" class="hide"></path>
 <path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g><g data-symbol="BRICKS.data" transform="translate(280, 0)" class="s">
-<polygon points="0,10.0 5,0 75,0 80,10.0 75,20 5,20 0,10.0 " fill="none" />
-<path d="M0,10.0 L5,0 L75,0 L80,10.0" class="path" />
-<path d="M0,10.0 L5,20 L75,20 L80,10.0" class="path" />
-<text x="40.0" y="10.0" text-anchor="middle" alignment-baseline="central">data</text>
+<polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " fill="none" />
+<path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" />
+<path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" />
+<text x="40.0" y="10.0" text-anchor="middle" alignment-baseline="central" >data</text>
 </g><g data-symbol="BRICKS.x" transform="translate(360, 0)" class="s">
-<polygon points="0,10.0 5,0 35,0 40,10.0 35,20 5,20 0,10.0 " fill="url(#diagonalHatch)" />
-<path d="M0,10.0 L5,0 L35,0 L40,10.0" class="path" />
-<path d="M0,10.0 L5,20 L35,20 L40,10.0" class="path" />
-</g></g><g id="Request" transform="translate(121, 60.0)" >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve"><tspan>Request</tspan></text>
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
+<path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
+<path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
+</g></g>
+<g id="Request" transform="translate(121, 60.0)" >
+<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Request</text>
 <g data-symbol="BRICKS.zero" transform="translate(0, 0)" class="s">
-<path d="M0,20 L3,20 L7,20 L80.0,20" class="path" />
+<path d="M0,20 L3,20 L6,20 L80.0,20" class="path" />
 </g><g data-symbol="BRICKS.one" transform="translate(80, 0)" class="s">
-<path d="M0,20 L3,20 L7,0 L120,0" class="path" />
+<path d="M0,20 L3,20 L6,0 L120,0" class="path" />
 </g><g data-symbol="BRICKS.zero" transform="translate(200, 0)" class="s">
-<path d="M0,0 L3,0 L7,20 L80,20" class="path" />
+<path d="M0,0 L3,0 L6,20 L80,20" class="path" />
 </g><g data-symbol="BRICKS.gap" transform="translate(270.0, 0)">
 <path d="m7,-2 -4,0 c -5,0 -5,24 -10,24 l 4,0 C 2,24 2,-2 7,-2 z" class="hide"></path>
 <path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g><g data-symbol="BRICKS.one" transform="translate(280, 0)" class="s">
-<path d="M0,20 L3,20 L7,0 L80,0" class="path" />
+<path d="M0,20 L3,20 L6,0 L80,0" class="path" />
 </g><g data-symbol="BRICKS.zero" transform="translate(360, 0)" class="s">
-<path d="M0,0 L3,0 L7,20 L40,20" class="path" />
-</g></g><g id="Acknowledge" transform="translate(121, 120.0)" >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve"><tspan>Acknowledge</tspan></text>
+<path d="M0,0 L3,0 L6,20 L40,20" class="path" />
+</g></g>
+<g id="Acknowledge" transform="translate(121, 120.0)" >
+<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Acknowledge</text>
 <g data-symbol="BRICKS.one" transform="translate(0, 0)" class="s">
-<path d="M0,0 L3,0 L7,0 L280.0,0" class="path" />
+<path d="M0,0 L3,0 L6,0 L280.0,0" class="path" />
 </g><g data-symbol="BRICKS.gap" transform="translate(270.0, 0)">
 <path d="m7,-2 -4,0 c -5,0 -5,24 -10,24 l 4,0 C 2,24 2,-2 7,-2 z" class="hide"></path>
 <path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g><g data-symbol="BRICKS.zero" transform="translate(280, 0)" class="s">
-<path d="M0,0 L3,0 L7,20 L40,20" class="path" />
+<path d="M0,0 L3,0 L6,20 L40,20" class="path" />
 </g><g data-symbol="BRICKS.one" transform="translate(320, 0)" class="s">
-<path d="M0,20 L3,20 L7,0 L80,0" class="path" />
-</g></g></g><g id="edges" transform="translate(121, 0)" >
+<path d="M0,20 L3,20 L6,0 L80,0" class="path" />
+</g></g>
+</g>
+<g id="edges" transform="translate(121, 0)" >
 </g>
 
 </svg>
