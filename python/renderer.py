@@ -15,6 +15,8 @@ from bricks import BRICKS, Brick, generate_brick
 _WAVEGROUP_COUNT = 0
 # counter of wave
 _WAVE_COUNT = 0
+# counter of edge
+_EDGE_COUNT = 0
 
 def incr_wavelane(f):
   """
@@ -33,6 +35,16 @@ def incr_wavegroup(f):
   def wrapper(*args, **kwargs):
     global _WAVEGROUP_COUNT
     _WAVEGROUP_COUNT += 1
+    return f(*args, **kwargs)
+  return wrapper
+
+def incr_edge(f):
+  """
+  incr_wavegroup is a decorator that increment _WAVEGROUP_COUNT in auto.
+  """
+  def wrapper(*args, **kwargs):
+    global _EDGE_COUNT
+    _EDGE_COUNT += 1
     return f(*args, **kwargs)
   return wrapper
 
@@ -144,11 +156,13 @@ class Renderer:
     return self.text(-10, 15, name, self._WAVE_TITLE)
   
   def _reduce_wavelane(self, wavelane: str, **kwargs):
+    repeat       = kwargs.get("repeat", 1)
     _wavelane, previous_brick = [], None
     # look for repetition '.'
-    for i, b in enumerate(wavelane):
+    for i, b in enumerate(wavelane * repeat):
       if b == '.' and previous_brick in [None, '|'] and i == 0:
         raise f"error in {name}: cannot repeat none or '|', add a valid brick first"
+      # do not simplify for clock signal
       if b in '.|' and not previous_brick in ['p', 'n', 'N', 'P']:
         br, num = _wavelane[-1]
         _wavelane[-1] = (br, num + 1)
@@ -158,6 +172,9 @@ class Renderer:
         _wavelane.append((previous_brick, 1))
         if b == '|':
           _wavelane.append((b, 1))
+      elif b == 'x' and previous_brick == 'x':
+        br, num = _wavelane[-1]
+        _wavelane[-1] = (br, num + 1)
       else:
         _wavelane.append((b, 1))
         previous_brick = b
@@ -207,9 +224,9 @@ class Renderer:
           # adjust transition from data or x
           symbol = BRICKS.from_str(b)
           ignore = BRICKS.ignore_transition(wave[last] if wave else None, symbol)
-          if s in [BRICKS.data, BRICKS.x] and symbol in [BRICKS.zero, BRICKS.one]:
+          if s in [BRICKS.data, BRICKS.x] and symbol in [BRICKS.zero, BRICKS.one, BRICKS.low, BRICKS.high]:
             ny, sh = 0, 3
-            if symbol == BRICKS.zero:
+            if symbol in [BRICKS.zero, BRICKS.low]:
               ny = brick_height
             br.alter_end(sh, ny)
             last_y = br.get_last_y()
@@ -328,35 +345,47 @@ class Renderer:
         # list edgeds to perform
         elif name == "edge":
           # parse edges declaration
-          matches = [(r[0].groups(), r[1]) for r in [(re.match(Renderer._EDGE_REGEXP, s.split(' ', 1)[0]), s.split(' ', 1)[-1]) for s in wavelane] if not r is None]
+          matches = [(r[0].groups(), r[1]) for r in [(re.match(Renderer._EDGE_REGEXP, s.split(' ', 1)[0]), s.split(' ', 1)[1] if len(s.split(' ', 1)) > 1 else '') for s in wavelane] if not r is None]
           # replace by x position
           edges = list(zip([m[0][1] for m in matches],
                           [b for m in matches for b in nodes if m[0][0] in b],
                           [b for m in matches for b in nodes if m[0][2] in b],
                           [m[1] for m in matches]))
-          for edge in edges:
-            _shape, s, e, text = edge
-            s = s[0] + 3 + slewing * 0.5, s[1] + brick_height * 0.5
-            e = e[0] + 3 + slewing * 0.5, e[1] + brick_height * 0.5
-            style = "edges "
-            style += "arrowtail " if _shape[-1] == '>' else ''
-            style += "arrowhead " if _shape[0] == '<' else ''
-            if _shape in ['<~', '~', '~>', '<~>']:
-              mx = (s[0] + e[0]) * 0.5
-              ans += self.spline([('M', s[0], s[1]), ('C', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
-            elif _shape in ['<-~', '-~', '-~>', '<-~>']:
-              ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
-            elif _shape in ['<~-', '~-', '~->', '<~->']:
-              ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
-            elif _shape in ['<-', '-', '->', '<->']:
-              ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], f"class=\"{style}\"")
-            elif _shape in ['<-|', '-|', '-|>', '<-|>']:
-              ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], f"class=\"{style}\"")
-            elif _shape in ['<|-', '|-', '|->', '<|->']:
-              ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
-            elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
-              mx = (s[0] + e[0]) * 0.5
-              ans += self.spline([('M', s[0], s[1]), ('C', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+          for i, edge in enumerate(edges):
+            adj = {}
+            if "adjustment" in wavelanes:
+              adj = [a for a in wavelanes["adjustment"] if "edge" in a and a["edge"]==i+1]
+              adj = adj[0] if adj else {}
+            @incr_edge
+            def _gen(**kwargs):
+              dx = kwargs.get("dx", 0)
+              dy = kwargs.get("dy", 0)
+              ans = ""
+              _shape, s, e, text = edge
+              s = s[0] + 3 + slewing * 0.5, s[1] + brick_height * 0.5
+              e = e[0] + 3 + slewing * 0.5, e[1] + brick_height * 0.5
+              style = "edges "
+              style += "arrowtail " if _shape[-1] == '>' else ''
+              style += "arrowhead " if _shape[0] == '<' else ''
+              mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
+              if _shape in ['<~', '~', '~>', '<~>']:
+                ans += self.spline([('M', s[0], s[1]), ('C', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+              elif _shape in ['<-~', '-~', '-~>', '<-~>']:
+                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+              elif _shape in ['<~-', '~-', '~->', '<~->']:
+                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+              elif _shape in ['<-', '-', '->', '<->']:
+                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], f"class=\"{style}\"")
+              elif _shape in ['<-|', '-|', '-|>', '<-|>']:
+                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+              elif _shape in ['<|-', '|-', '|->', '<|->']:
+                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+              elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
+                ans += self.spline([('M', s[0], s[1]), ('C', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+              ans += self.text(mx+dx, my+dy, text, "text-anchor=\"middle\"")
+              return ans
+            global _EDGE_COUNT
+            ans += self.group(lambda : _gen(**adj), f"edge_{_EDGE_COUNT}")
       return ans
     return self.group(
       _gen,
@@ -380,7 +409,9 @@ class Renderer:
     if not isinstance(wavelanes, dict):
       return (0, "")
     # prepare the return group
-    offsetx = kwargs.get("offsetx", max(map(lambda s: len(s) if not Renderer.is_spacer(s) else 0, wavelanes.keys()))*11)
+    _default_offset_x = [len(s)+1 for s in wavelanes.keys() if not (Renderer.is_spacer(s) or s in ["edge", "adjustment"])]
+    offsetx = kwargs.get("offsetx", max(_default_offset_x)*9)
+    #print(_default_offset_x, max(_default_offset_x), max(_default_offset_x)*9)
     offsety = 0
     def _gen(offset):
       # options
@@ -435,9 +466,6 @@ class Renderer:
       # finish the group
       ans += self.edges(wavelanes, extra=f"transform=\"translate({offsetx}, 0)\"", **kwargs)
       return (offsety, ans)
-    # otherwise this is an option
-    elif name == "edge":
-      pass
     # unknown options
     else:
       raise "Unkown wavelane type or option"
@@ -557,9 +585,9 @@ class SvgRenderer(Renderer):
     lkeys, width, height = self.size(wavelanes, brick_width, brick_height)
     return (
       f"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width+lkeys*11}\" height=\"{height}\" "
-      f"viewBox=\"-1 -1 {width+lkeys*11+2} {height+2}\">\n"
+      f"viewBox=\"-1 -1 {width+lkeys*11+2} {height+2}\" overflow=\"hidden\">\n"
       f"<style>{skin.DEFAULT}</style>\n"
-      f"{skin.PATTERN}"
+      f"{skin.DEFINITION}"
       ""+self.wavegroup(_id, wavelanes, brick_width=brick_width, brick_height=brick_height, width=width, height=height)[1]+""
       "\n</svg>"
     )

@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="291" height="120.0" viewBox="-1 -1 293 122.0">
+<svg xmlns="http://www.w3.org/2000/svg" width="291" height="120.0" viewBox="-1 -1 293 122.0" overflow="hidden">
 <style>
-text{font-size:11pt;
+text{font-size:15px;
     font-style:normal;
     font-variant:normal;
     font-weight:normal;
     font-stretch:normal;
     text-align:center;
     fill-opacity:1;
-    font-family:Helvetica}
+    font-family:helvetica}
 .muted{fill:#aaa}
 .warning{fill:#f6b900}
 .error{fill:#f60000}
@@ -44,6 +44,7 @@ text{font-size:11pt;
 .edges {fill:none;stroke:#00F;stroke-width:1}
 .edges.arrowhead {marker-start:url(#arrow); overflow:visible;}
 .edges.arrowtail {marker-end:url(#arrow); overflow:visible;}
+.edges + text {font-size:10px; filter: url(#solid); transform: translate(0, 2.5px);}
 </style>
 
 <defs>
@@ -55,9 +56,13 @@ text{font-size:11pt;
         orient="auto-start-reverse" style="fill:#00F;">
       <path d="M 0 0 L 10 5 L 0 10 z" />
     </marker>
+    <filter x="0" y="0" width="1" height="1" id="solid">
+      <feFlood flood-color="white"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_14" transform="translate(44, 0)" >
+<g id="ticks_15" transform="translate(18, 0)" >
 <path d="m0,0 0,120.0" class="ticks" />
 <path d="m40,0 0,120.0" class="ticks" />
 <path d="m80,0 0,120.0" class="ticks" />
@@ -67,7 +72,7 @@ text{font-size:11pt;
 <path d="m240,0 0,120.0" class="ticks" />
 </g>
 
-<g id="A" transform="translate(44, 0)" >
+<g id="A" transform="translate(18, 0)" >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >A</text>
 <g data-symbol="BRICKS.zero" transform="translate(0, 0)" class="s">
 <path d="M0,20 L3,20 L6,20 L40.0,20" class="path" />
@@ -76,7 +81,7 @@ text{font-size:11pt;
 </g><g data-symbol="BRICKS.zero" transform="translate(160, 0)" class="s">
 <path d="M0,0 L3,0 L6,20 L120,20" class="path" />
 </g></g>
-<g id="B" transform="translate(44, 30.0)" >
+<g id="B" transform="translate(18, 30.0)" >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >B</text>
 <g data-symbol="BRICKS.zero" transform="translate(0.0, 0)" class="s">
 <path d="M0,20 L3,20 L6,20 L60.0,20" class="path" />
@@ -85,7 +90,7 @@ text{font-size:11pt;
 </g><g data-symbol="BRICKS.zero" transform="translate(180.0, 0)" class="s">
 <path d="M0,0 L3,0 L6,20 L160.0,20" class="path" />
 </g></g>
-<g id="C" transform="translate(44, 60.0)" >
+<g id="C" transform="translate(18, 60.0)" >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >C</text>
 <g data-symbol="BRICKS.zero" transform="translate(0, 0)" class="s">
 <path d="M0,20 L3,20 L6,20 L120.0,20" class="path" />
@@ -95,16 +100,43 @@ text{font-size:11pt;
 <path d="M0,0 L3,0 L6,20 L40,20" class="path" />
 </g></g>
 </g>
-<g id="edges" transform="translate(44, 0)" >
+<g id="edges" transform="translate(18, 0)" >
+<g id="edge_10"  >
 <path d="M65.0,40.0 L45.0,40.0 45.0,10.0" class="edges " />
+<text x="55.0" y="25.0" text-anchor="middle" >t1</text>
+</g>
+<g id="edge_11"  >
 <path d="M45.0,10.0 L125.0,10.0 125.0,70.0" class="edges " />
+<text x="85.0" y="40.0" text-anchor="middle" >t2</text>
+</g>
+<g id="edge_12"  >
 <path d="M65.0,40.0 C95.0,40.0 95.0,70.0 125.0,70.0" class="edges " />
+<text x="95.0" y="55.0" text-anchor="middle" >t3</text>
+</g>
+<g id="edge_13"  >
 <path d="M125.0,70.0 C145.0,70.0 145.0,10.0 165.0,10.0" class="edges arrowtail " />
+<text x="145.0" y="40.0" text-anchor="middle" >t4</text>
+</g>
+<g id="edge_14"  >
 <path d="M165.0,10.0 L245.0,10.0 245.0,70.0" class="edges arrowtail " />
+<text x="205.0" y="40.0" text-anchor="middle" >more text</text>
+</g>
+<g id="edge_15"  >
 <path d="M165.0,10.0 L165.0,40.0 185.0,40.0" class="edges arrowtail " />
+<text x="175.0" y="25.0" text-anchor="middle" >t6</text>
+</g>
+<g id="edge_16"  >
 <path d="M125.0,70.0 L125.0,100.0" class="edges " />
+<text x="125.0" y="85.0" text-anchor="middle" ></text>
+</g>
+<g id="edge_17"  >
 <path d="M245.0,70.0 L245.0,100.0" class="edges " />
+<text x="245.0" y="85.0" text-anchor="middle" ></text>
+</g>
+<g id="edge_18"  >
 <path d="M125.0,100.0 L245.0,100.0" class="edges arrowtail arrowhead " />
+<text x="185.0" y="100.0" text-anchor="middle" >3 ms</text>
+</g>
 </g>
 
 </svg>

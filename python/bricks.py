@@ -6,7 +6,7 @@ to generate a waveform
 """
 
 from enum import Enum, unique
-from math import atan2, pi
+from math import atan2, pi, exp
 
 @unique
 class BRICKS(Enum):
@@ -30,6 +30,7 @@ class BRICKS(Enum):
   data  = '='
   up    = 'u'
   down  = 'd'
+  meta  = 'm'
 
   @staticmethod
   def from_str(s: str):
@@ -184,6 +185,17 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     b.splines.append([('m', 0, last_y), ('', 3, 0), ('C', 3+slewing, last_y), ('', 3+slewing, 0), ('', min(width, 20), 0), ('L', width, 0)])
   elif symbol == BRICKS.down:
     b.splines.append([('m', 0, last_y), ('', 3, 0), ('C', slewing, last_y), ('', 3+slewing, height-last_y), ('', min(width, 20), height), ('L', width, height)])
+  elif symbol == BRICKS.meta:
+    last_y = height/2 if last_y is None else last_y
+    dt = abs(last_y-height/2) * slewing / height
+    n = int(32*(width*0.75-dt)/width)
+    step = (width*0.75-dt)/n
+    _tmp = [('M', 0, last_y)]
+    for i in range(n):
+      dy = 0 if i%4 in [0, 2] else height if i%4==3 else -height
+      _tmp.append(('S' if i==0 else '', dt+i*step, (height+exp(-4*i/n)*dy)*0.5))
+    _tmp.extend([('', width*0.75, height/2), ('', width, height/2)])
+    b.splines.append(_tmp)
   else:
     raise NotImplementedError()
   # filter paths according to options

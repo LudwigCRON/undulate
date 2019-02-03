@@ -115,7 +115,10 @@ class TestSvgMethods(unittest.TestCase):
       "G": {"wave": "0......10.....1", "node": ".......#... interface.new_sample" },
       "edge": [
         'a~b t1', 'c-~a t2', 'c-~>d time 3', 'd~-e',
-        'e~>f', 'f->g', 'g-~>h', 'h~>i some text', 'h~->j', 'ms_adc.isd.eoc~>interface.new_sample'
+        'e~>f', 'f->g', 'g-~>h', 'h~>i some text', 'h~->j', 'ms_adc.isd.eoc~>interface.new_sample youpi'
+      ],
+      "adjustment": [
+        {"edge": 10, "dx": -10, "dy": 0}
       ]
     }
     with open("./test/wavedrom_step7.svg", "w+") as fp:
@@ -136,6 +139,23 @@ class TestSvgMethods(unittest.TestCase):
       ]
     }
     with open("./test/wavedrom_step8.svg", "w+") as fp:
+      fp.write(svg.draw(wavelanes))
+  
+  def test_wavedrom_step9(self):
+    """
+    phase and period
+    """
+    wavelanes = {
+      "CK"  : {"wave": "P.......",                                                "period": 2  },
+      "CMD" : {"wave": "x.3x=x4x", "repeat":2, "data": "RAS NOP CAS NOP NOP NOP NOP", "phase": 0.5 },
+      "ADDR": {"wave": "x.=x..=x", "repeat":2, "data": "ROW COL",                     "phase": 0.5 },
+      "DQS" : {"wave": "z......m0.1010z." },
+      "DQS_1" : {"wave": "z.....m.0.1010z." },
+      "DQS_2" : {"wave": "z....m..0.1010z." },
+      "DQS_3" : {"wave": "z...m...0.1010z." },
+      "DQ"  : {"wave": "z.........5555z.", "data": "D0 D1 D2 D3" }
+    }
+    with open("./test/wavedrom_step9.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
 
 if __name__ == "__main__":

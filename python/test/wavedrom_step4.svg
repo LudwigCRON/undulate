@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="521" height="150.0" viewBox="-1 -1 523 152.0">
+<svg xmlns="http://www.w3.org/2000/svg" width="521" height="150.0" viewBox="-1 -1 523 152.0" overflow="hidden">
 <style>
-text{font-size:11pt;
+text{font-size:15px;
     font-style:normal;
     font-variant:normal;
     font-weight:normal;
     font-stretch:normal;
     text-align:center;
     fill-opacity:1;
-    font-family:Helvetica}
+    font-family:helvetica}
 .muted{fill:#aaa}
 .warning{fill:#f6b900}
 .error{fill:#f60000}
@@ -44,6 +44,7 @@ text{font-size:11pt;
 .edges {fill:none;stroke:#00F;stroke-width:1}
 .edges.arrowhead {marker-start:url(#arrow); overflow:visible;}
 .edges.arrowtail {marker-end:url(#arrow); overflow:visible;}
+.edges + text {font-size:10px; filter: url(#solid); transform: translate(0, 2.5px);}
 </style>
 
 <defs>
@@ -55,9 +56,13 @@ text{font-size:11pt;
         orient="auto-start-reverse" style="fill:#00F;">
       <path d="M 0 0 L 10 5 L 0 10 z" />
     </marker>
+    <filter x="0" y="0" width="1" height="1" id="solid">
+      <feFlood flood-color="white"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_4" transform="translate(121, 0)" >
+<g id="ticks_4" transform="translate(108, 0)" >
 <path d="m0,0 0,150.0" class="ticks" />
 <path d="m40,0 0,150.0" class="ticks" />
 <path d="m80,0 0,150.0" class="ticks" />
@@ -70,7 +75,7 @@ text{font-size:11pt;
 <path d="m360,0 0,150.0" class="ticks" />
 </g>
 
-<g id="clk" transform="translate(121, 0)" >
+<g id="clk" transform="translate(108, 0)" >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >clk</text>
 <g data-symbol="BRICKS.pclk" transform="translate(0, 0)" class="s">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40.0,10.0" class="path" />
@@ -97,7 +102,7 @@ text{font-size:11pt;
 </g><g data-symbol="BRICKS.pclk" transform="translate(360, 0)" class="s">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g></g>
-<g id="Data" transform="translate(121, 30.0)" >
+<g id="Data" transform="translate(108, 30.0)" >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Data</text>
 <g data-symbol="BRICKS.x" transform="translate(0, 0)" class="s">
 <polygon points="0,10.0 3,0 77.0,0 80.0,10.0 77.0,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
@@ -136,7 +141,7 @@ text{font-size:11pt;
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
 </g></g>
-<g id="Request" transform="translate(121, 60.0)" >
+<g id="Request" transform="translate(108, 60.0)" >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Request</text>
 <g data-symbol="BRICKS.zero" transform="translate(0, 0)" class="s">
 <path d="M0,20 L3,20 L6,20 L80.0,20" class="path" />
@@ -153,7 +158,7 @@ text{font-size:11pt;
 </g><g data-symbol="BRICKS.zero" transform="translate(360, 0)" class="s">
 <path d="M0,0 L3,0 L6,20 L40,20" class="path" />
 </g></g>
-<g id="Acknowledge" transform="translate(121, 120.0)" >
+<g id="Acknowledge" transform="translate(108, 120.0)" >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Acknowledge</text>
 <g data-symbol="BRICKS.one" transform="translate(0, 0)" class="s">
 <path d="M0,0 L3,0 L6,0 L280.0,0" class="path" />
@@ -167,7 +172,7 @@ text{font-size:11pt;
 <path d="M0,20 L3,20 L6,0 L80,0" class="path" />
 </g></g>
 </g>
-<g id="edges" transform="translate(121, 0)" >
+<g id="edges" transform="translate(108, 0)" >
 </g>
 
 </svg>

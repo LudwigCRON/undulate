@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 DEFAULT = """
-text{font-size:11pt;
+text{font-size:15px;
     font-style:normal;
     font-variant:normal;
     font-weight:normal;
     font-stretch:normal;
     text-align:center;
     fill-opacity:1;
-    font-family:Helvetica}
+    font-family:helvetica}
 .muted{fill:#aaa}
 .warning{fill:#f6b900}
 .error{fill:#f60000}
@@ -45,9 +45,10 @@ text{font-size:11pt;
 .edges {fill:none;stroke:#00F;stroke-width:1}
 .edges.arrowhead {marker-start:url(#arrow); overflow:visible;}
 .edges.arrowtail {marker-end:url(#arrow); overflow:visible;}
+.edges + text {font-size:10px; filter: url(#solid); transform: translate(0, 2.5px);}
 """
 
-PATTERN = """
+DEFINITION = """
 <defs>
     <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
         <line x1="0" y1="0" x2="0" y2="5" style="stroke:black; stroke-width:1" />
@@ -57,5 +58,9 @@ PATTERN = """
         orient="auto-start-reverse" style="fill:#00F;">
       <path d="M 0 0 L 10 5 L 0 10 z" />
     </marker>
+    <filter x="0" y="0" width="1" height="1" id="solid">
+      <feFlood flood-color="white"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
 </defs>
 """
