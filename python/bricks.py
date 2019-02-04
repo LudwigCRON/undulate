@@ -199,13 +199,11 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     _tmp.extend([('', width*0.75, height/2), ('', width, height/2)])
     b.splines.append(_tmp)
   elif symbol == BRICKS.ana:
-    print("welcome analog")
     try:
       if equation:
-        b.paths = exec(equation, globals(), locals())
-      print(b.paths)
+        b.paths.append(eval(equation, locals(), None))
     except Exception as e:
-      print(str(e))
+      print(getattr(e, 'message', repr(e)))
   else:
     raise NotImplementedError()
   # filter paths according to options

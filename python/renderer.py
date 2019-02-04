@@ -241,8 +241,6 @@ class Renderer:
           width_with_phase = brick_width*(1+2*phase)
         else:
           width_with_phase = brick_width
-        if symbol == BRICKS.ana:
-          print(analogue)
         # update the arguments to be passed for the generation
         kwargs.update({
             "brick_width": width_with_phase,
@@ -489,7 +487,10 @@ class Renderer:
       x, y, keys = [], 0, []
       for _, wavetitle in enumerate(wavelanes.keys()):
         if "wave" in wavelanes[wavetitle]:
-          x.append(len(wavelanes[wavetitle]["wave"]) * brick_width)
+          if "repeat" in wavelanes[wavetitle]:
+            x.append(len(wavelanes[wavetitle]["wave"]) * brick_width * wavelanes[wavetitle]["repeat"])
+          else:
+            x.append(len(wavelanes[wavetitle]["wave"]) * brick_width)
           y += brick_height * 1.5
           keys.append(len(wavetitle))
         elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:

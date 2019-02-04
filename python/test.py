@@ -163,9 +163,12 @@ class TestSvgMethods(unittest.TestCase):
     phase and period
     """
     wavelanes = {
-      "CK"  : {"wave": "P.......",                                                "period": 2  },
-      "ramp": {"wave": "a...", "repeat": 2, "analogue": [
-        "[(i*width/100, i*width/height/100) for i in range(100)]"
+      "CK"  : {"wave": "P.......", "repeat": 2 },
+      "ramp": {"wave": "a...", "repeat": 4, "analogue": [
+        "[(i*width/100, height-i*height/100) for i in range(100)]",
+        "[(i*width/100, height-i*height/100) for i in range(100)]",
+        "[(i*width/100, height-i*height/100) for i in range(100)]",
+        "[(i*width/100, height-i*height/100) for i in range(100)]"
       ]}
     }
     with open("./test/wavedrom_step10.svg", "w+") as fp:
