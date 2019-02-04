@@ -48,7 +48,9 @@ def incr_edge(f):
     return f(*args, **kwargs)
   return wrapper
 
-# TODO create an abstract parameter for transformation and style
+# TODO create an abstract parameter for style
+# TODO autoscale or scaling for analogue
+# TODO step (s) and cap (c) rendering of value list
 
 class Renderer:
   """
@@ -118,6 +120,12 @@ class Renderer:
     x       : x coordinate of the text
     y       : y coordinate of the text
     text    : text to display
+    """
+    raise NotImplementedError()
+
+  def translate(self, x: float, y: float) -> str:
+    """
+    translation function that is inherited for svg and eps
     """
     raise NotImplementedError()
 
@@ -258,7 +266,7 @@ class Renderer:
         wave.append((
             symbol,
             generate_brick(symbol, **kwargs),
-            (f"transform=\"translate({pos-brick_width*phase*(i>0)}, 0)\" "
+            (self.translate(pos-brick_width*phase*(i>0), 0) +
             f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else ''}\"")
         ))
         if symbol == BRICKS.data:
@@ -270,7 +278,7 @@ class Renderer:
         wave.append((
             symbol,
             generate_brick(symbol, **kwargs),
-            f"transform=\"translate({pos-brick_width*phase+gap_offset}, 0)\""
+            self.translate(pos-brick_width*phase+gap_offset, 0)
         ))
       pos += brick_width*k
       i += 1
@@ -438,7 +446,7 @@ class Renderer:
           ans += self.wavelane(
             wavetitle,
             wave,
-            f"transform=\"translate({offsetx}, {offsety})\"",
+            self.translate(offsetx, offsety),
             **args
           )
           offsety += brick_height * 1.5
@@ -452,7 +460,7 @@ class Renderer:
           j, tmp = self.wavegroup(
             wavetitle,
             wavelanes[wavetitle],
-            f"transform=\"translate(0, {offsety})\"",
+            self.translate(0, offsety),
             **args
           )
           ans += tmp
@@ -469,7 +477,7 @@ class Renderer:
       ans = self.group(lambda : _gen(offset), name, extra)
       offsetx, offsety = offset[0], offset[1]
       # finish the group
-      ans += self.edges(wavelanes, extra=f"transform=\"translate({offsetx}, 0)\"", **kwargs)
+      ans += self.edges(wavelanes, extra=self.translate(offsetx, 0), **kwargs)
       return (offsety, ans)
     # unknown options
     else:
@@ -585,6 +593,9 @@ class SvgRenderer(Renderer):
     text    : text to display
     """
     return (f"<text x=\"{x}\" y=\"{y}\" {extra} >{text}</text>\n")
+  
+  def translate(self, x: float, y: float) -> str:
+    return f" transform=\"translate({x}, {y})\" "
 
   def draw(self, wavelanes, **kwargs) -> str:
     _id          = kwargs.get("id", "a")

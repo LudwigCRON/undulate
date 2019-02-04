@@ -164,11 +164,11 @@ class TestSvgMethods(unittest.TestCase):
     """
     wavelanes = {
       "CK"  : {"wave": "P.......", "repeat": 2 },
-      "ramp": {"wave": "a...", "repeat": 4, "analogue": [
-        "[(i*width/100, height-i*height/100) for i in range(100)]",
-        "[(i*width/100, height-i*height/100) for i in range(100)]",
-        "[(i*width/100, height-i*height/100) for i in range(100)]",
-        "[(i*width/100, height-i*height/100) for i in range(100)]"
+      "GBF": {"wave": "a...", "repeat": 4, "analogue": [
+        "[(t, t*VDDA/Tmax) for t in time]",
+        "[(t, VDDA/2*sin(32*pi*t/Tmax)+VDDA/2) for t in time]",
+        "[(t, exp(-t/Tmax)*VDDA/2*sin(32*pi*t/Tmax)+VDDA/2) for t in time]",
+        "[(t, cos(4*pi*t/Tmax)*sin(16*pi*t/Tmax)*VDDA/2+VDDA/2) for t in time]"
       ]}
     }
     with open("./test/wavedrom_step10.svg", "w+") as fp:

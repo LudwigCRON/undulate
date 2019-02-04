@@ -6,7 +6,24 @@ to generate a waveform
 """
 
 from enum import Enum, unique
-from math import atan2, pi, exp
+import math
+import random
+
+ANALOG_CONTEXT = {
+  "time": [],
+  "Tmax": 20,
+  "VSSA": 0,
+  "VDDA": 20,
+  "atan2": math.atan2,
+  "pi": math.pi,
+  "exp": math.exp,
+  "sin": math.sin,
+  "cos": math.cos,
+  "tan": math.tan,
+  "tanh": math.tanh,
+  "sqrt": math.sqrt,
+  "rnd": random.random
+}
 
 @unique
 class BRICKS(Enum):
@@ -107,7 +124,7 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   next_y             = kwargs.get("next_y", None)
   equation           = kwargs.get("equation", None)
   # calculate the angle of the arrow
-  arrow_angle = atan2(height, slewing) * 180 / pi
+  arrow_angle = math.atan2(height, slewing) * 180 / math.pi
   s, width = 0, brick_width * is_repeated
   # create the brick
   b = Brick()
@@ -195,13 +212,18 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     _tmp = [('M', 0, last_y)]
     for i in range(n):
       dy = 0 if i%4 in [0, 2] else height if i%4==3 else -height
-      _tmp.append(('S' if i==0 else '', dt+i*step, (height+exp(-4*i/n)*dy)*0.5))
+      _tmp.append(('S' if i==0 else '', dt+i*step, (height+math.exp(-4*i/n)*dy)*0.5))
     _tmp.extend([('', width*0.75, height/2), ('', width, height/2)])
     b.splines.append(_tmp)
   elif symbol == BRICKS.ana:
     try:
       if equation:
-        b.paths.append(eval(equation, locals(), None))
+        last_y = height if last_y is None else last_y
+        # update analogue context
+        ANALOG_CONTEXT["Tmax"] = width
+        ANALOG_CONTEXT["VDDA"] = height
+        ANALOG_CONTEXT["time"] = range(0, int(width+1))
+        b.paths.append([(0, last_y)] + [(p[0], height-p[1]) for p in eval(equation, ANALOG_CONTEXT)])
     except Exception as e:
       print(getattr(e, 'message', repr(e)))
   else:

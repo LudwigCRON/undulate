@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 DEFAULT = """
-text{font-size:15px;
+text{font-size:0.9em;
     font-style:normal;
     font-variant:normal;
-    font-weight:normal;
+    font-weight:500;
     font-stretch:normal;
     text-align:center;
     fill-opacity:1;
-    font-family:helvetica}
+    font-family:fira mono, droid sans mono, monospace;}
 .muted{fill:#aaa}
 .warning{fill:#f6b900}
 .error{fill:#f60000}
@@ -45,7 +45,7 @@ text{font-size:15px;
 .edges {fill:none;stroke:#00F;stroke-width:1}
 .edges.arrowhead {marker-start:url(#arrow); overflow:visible;}
 .edges.arrowtail {marker-end:url(#arrow); overflow:visible;}
-.edges + text {font-size:10px; filter: url(#solid); transform: translate(0, 2.5px);}
+.edges + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
 """
 
 DEFINITION = """
