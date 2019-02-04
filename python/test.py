@@ -17,7 +17,7 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step1.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
-  
+
   def test_wavedrom_step2(self):
     """
     test clock generation
@@ -35,7 +35,7 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step2.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
-  
+
   def test_wavedrom_step3(self):
     """
     small bus example
@@ -47,7 +47,7 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step3.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
-  
+
   def test_wavedrom_step4(self):
     """
     spacer and gaps
@@ -61,7 +61,7 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step4.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
-  
+
   def test_wavedrom_step5(self):
     """
     groups support
@@ -86,7 +86,7 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step5.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
-  
+
   def test_wavedrom_step6(self):
     """
     phase and period
@@ -100,7 +100,7 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step6.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
-  
+
   def test_wavedrom_step7(self):
     """
     Arrows
@@ -123,7 +123,7 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step7.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
-  
+
   def test_wavedrom_step8(self):
     """
     Sharp edge lines
@@ -140,7 +140,7 @@ class TestSvgMethods(unittest.TestCase):
     }
     with open("./test/wavedrom_step8.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
-  
+
   def test_wavedrom_step9(self):
     """
     phase and period
@@ -156,6 +156,19 @@ class TestSvgMethods(unittest.TestCase):
       "DQ"  : {"wave": "z.........5555z.", "data": "D0 D1 D2 D3" }
     }
     with open("./test/wavedrom_step9.svg", "w+") as fp:
+      fp.write(svg.draw(wavelanes))
+
+  def test_wavedrom_step10(self):
+    """
+    phase and period
+    """
+    wavelanes = {
+      "CK"  : {"wave": "P.......",                                                "period": 2  },
+      "ramp": {"wave": "a...", "repeat": 2, "analogue": [
+        "[(i*width/100, i*width/height/100) for i in range(100)]"
+      ]}
+    }
+    with open("./test/wavedrom_step10.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
 
 if __name__ == "__main__":

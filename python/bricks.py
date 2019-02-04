@@ -31,6 +31,7 @@ class BRICKS(Enum):
   up    = 'u'
   down  = 'd'
   meta  = 'm'
+  ana   = 'a'
 
   @staticmethod
   def from_str(s: str):
@@ -71,8 +72,8 @@ class Brick:
     self.arrows    = []
     self.polygons  = []
     self.splines   = []
-    self.text      = (10, 10, "") 
-  
+    self.text      = (10, 10, "")
+
   def get_last_y(self):
     last_y = 0
     if self.paths:
@@ -80,7 +81,7 @@ class Brick:
     elif self.splines:
       _, _, last_y = self.splines[0][-1]
     return last_y
-  
+
   def alter_end(self, shift: float = 0, next_y: float = -1):
     if self.symbol == BRICKS.data or self.symbol == BRICKS.x:
       for i, path in enumerate(self.paths):
@@ -104,6 +105,7 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   is_repeated        = kwargs.get("is_repeated", 1)
   last_y             = kwargs.get("last_y", None)
   next_y             = kwargs.get("next_y", None)
+  equation           = kwargs.get("equation", None)
   # calculate the angle of the arrow
   arrow_angle = atan2(height, slewing) * 180 / pi
   s, width = 0, brick_width * is_repeated
@@ -122,7 +124,7 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     last_y = height/2 if last_y is None else last_y
     dt = last_y * slewing / height
     b.paths.append([
-      (0, last_y), (dt, 0), (width*duty_cycle-slewing/2, 0), 
+      (0, last_y), (dt, 0), (width*duty_cycle-slewing/2, 0),
       (width*duty_cycle+slewing/2, height), (width-slewing/2, height), (width, height/2)
     ])
     s = 1
@@ -130,7 +132,7 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     last_y = height/2 if last_y is None else last_y
     dt = (height-last_y) * slewing / height
     b.paths.append([
-      (0, last_y), (dt, height), (width*duty_cycle-slewing/2, height), 
+      (0, last_y), (dt, height), (width*duty_cycle-slewing/2, height),
       (width*duty_cycle+slewing/2, 0), (width-slewing/2, 0), (width, height/2)
     ])
     b.arrows.append((dt * (height/2 - last_y)/height, height/2, arrow_angle))
@@ -196,6 +198,14 @@ def generate_brick(symbol: str, **kwargs) -> dict:
       _tmp.append(('S' if i==0 else '', dt+i*step, (height+exp(-4*i/n)*dy)*0.5))
     _tmp.extend([('', width*0.75, height/2), ('', width, height/2)])
     b.splines.append(_tmp)
+  elif symbol == BRICKS.ana:
+    print("welcome analog")
+    try:
+      if equation:
+        b.paths = exec(equation, globals(), locals())
+      print(b.paths)
+    except Exception as e:
+      print(str(e))
   else:
     raise NotImplementedError()
   # filter paths according to options

@@ -204,6 +204,7 @@ class Renderer:
     brick_height = kwargs.get("brick_height", 20)
     gap_offset   = kwargs.get("gap_offset", brick_width*0.75)
     slewing      = kwargs.get("slewing", 3)
+    analogue     = kwargs.get("analogue", [])
     # in case a string is given reformat it as a list
     if isinstance(data, str):
       data = data.strip().split()
@@ -213,7 +214,7 @@ class Renderer:
     _wavelane = self._reduce_wavelane(wavelane, **kwargs)
     # generate bricks
     #previous_brick = BRICKS.zero
-    data_counter, i = 0, 0
+    data_counter, i, Nana = 0, 0, 0
     for b, k in _wavelane:
       if b != '|':
         # get the final height of the last brick
@@ -240,6 +241,8 @@ class Renderer:
           width_with_phase = brick_width*(1+2*phase)
         else:
           width_with_phase = brick_width
+        if symbol == BRICKS.ana:
+          print(analogue)
         # update the arguments to be passed for the generation
         kwargs.update({
             "brick_width": width_with_phase,
@@ -247,8 +250,12 @@ class Renderer:
             "last_y": last_y,
             "is_repeated": k,
             "slewing": slewing,
+            "equation": analogue[Nana] if Nana < len(analogue) else "",
             "data": data[data_counter] if len(data) > data_counter else ""
         })
+        # get next equation if analogue
+        if symbol == BRICKS.ana:
+          Nana += 1
         # create the new brick
         wave.append((
             symbol,
