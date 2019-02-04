@@ -112,17 +112,17 @@ text{font-size:15px;
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
-<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central" >head</text>
+<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >head</text>
 </g><g data-symbol="BRICKS.data" transform="translate(120, 0)" class="s4">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
-<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central" >body</text>
+<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >body</text>
 </g><g data-symbol="BRICKS.data" transform="translate(160, 0)" class="s5">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
-<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central" >tail</text>
+<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >tail</text>
 </g><g data-symbol="BRICKS.x" transform="translate(200, 0)" class="s">
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" />
@@ -135,7 +135,7 @@ text{font-size:15px;
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " fill="none" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" />
-<text x="40.0" y="10.0" text-anchor="middle" alignment-baseline="central" >data</text>
+<text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >data</text>
 </g><g data-symbol="BRICKS.x" transform="translate(360, 0)" class="s">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />

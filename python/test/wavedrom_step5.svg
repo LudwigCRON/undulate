@@ -127,7 +127,7 @@ text{font-size:15px;
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " fill="none" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" />
-<text x="40.0" y="10.0" text-anchor="middle" alignment-baseline="central" >A1</text>
+<text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >A1</text>
 </g><g data-symbol="BRICKS.x" transform="translate(120, 0)" class="s">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
@@ -136,7 +136,7 @@ text{font-size:15px;
 <polygon points="0,10.0 3,0 117,0 120,10.0 117,20 3,20 0,10.0 " fill="none" />
 <path d="M0,10.0 L3,0 L117,0 L120,10.0" class="path" />
 <path d="M0,10.0 L3,20 L117,20 L120,10.0" class="path" />
-<text x="60.0" y="10.0" text-anchor="middle" alignment-baseline="central" >A2</text>
+<text x="60.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >A2</text>
 </g><g data-symbol="BRICKS.x" transform="translate(280, 0)" class="s">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
@@ -152,7 +152,7 @@ text{font-size:15px;
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " fill="none" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" />
-<text x="40.0" y="10.0" text-anchor="middle" alignment-baseline="central" >D1</text>
+<text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >D1</text>
 </g><g data-symbol="BRICKS.x" transform="translate(120, 0)" class="s">
 <polygon points="0,10.0 3,0 197,0 200,10.0 197,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
 <path d="M0,10.0 L3,0 L197,0 L200,10.0" class="path" />
@@ -199,7 +199,7 @@ text{font-size:15px;
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
-<text x="20.0" y="10.0" text-anchor="middle" alignment-baseline="central" >Q2</text>
+<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >Q2</text>
 </g><g data-symbol="BRICKS.x" transform="translate(280, 0)" class="s">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />

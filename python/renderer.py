@@ -69,13 +69,13 @@ class Renderer:
     if "spacer" in name.lower():
       return True
     return False
-  
+
   def group(self, callback, id: str = "", extra: str = "") -> str:
     """
     group define a group
     """
     raise NotImplementedError()
-  
+
   def path(self, vertices: list, extra: str = "") -> str:
     """
     path draw a path to represent common signals
@@ -145,7 +145,7 @@ class Renderer:
       ans += self.text(*b.text, self._DATA_TEXT)
     ans += "</g>"
     return ans
-  
+
   def wavelane_title(self, name: str, extra: str = ""):
     """
     wavelane_title generate the title in front of a waveform
@@ -154,7 +154,7 @@ class Renderer:
     if "spacer" in name or not name.strip():
       return ""
     return self.text(-10, 15, name, self._WAVE_TITLE)
-  
+
   def _reduce_wavelane(self, wavelane: str, **kwargs):
     repeat       = kwargs.get("repeat", 1)
     _wavelane, previous_brick = [], None
@@ -279,7 +279,7 @@ class Renderer:
         ans += self.brick(symb, b, extra=e)
       return ans
     return self.group(
-      _gen, 
+      _gen,
       name if name else f"wavelane_{_WAVEGROUP_COUNT}_{_WAVE_COUNT}",
       extra
     )
@@ -338,7 +338,7 @@ class Renderer:
                     else 0
             # get identifier
             nodes.extend(
-              [ (s[0] * width - phase, _y, chain[1+next(j)]) if not s[1].isalpha() 
+              [ (s[0] * width - phase, _y, chain[1+next(j)]) if not s[1].isalpha()
                 else (s[0] * width - phase, _y, s[1]) for s in list(zip(i, n[::]))]
             )
             _y += brick_height * 1.5
@@ -392,7 +392,7 @@ class Renderer:
       "edges",
       extra
     )
-  
+
   @incr_wavegroup
   def wavegroup(self, name: str, wavelanes, extra: str = "", **kwargs):
     """
@@ -510,11 +510,11 @@ class SvgRenderer(Renderer):
   Render the wavelanes as an svg
   """
   _WAVE_TITLE  = "class=\"info\" text-anchor=\"end\" xml:space=\"preserve\""
-  _DATA_TEXT   = "text-anchor=\"middle\" alignment-baseline=\"central\""
+  _DATA_TEXT   = "text-anchor=\"middle\" dominant-baseline=\"middle\" alignment-baseline=\"central\""
 
   def __init__(self):
     super(Renderer, self).__init__()
-  
+
   def group(self, callback, id: str = "", extra: str = "") -> str:
     """
     group define a group
@@ -577,7 +577,7 @@ class SvgRenderer(Renderer):
     text    : text to display
     """
     return (f"<text x=\"{x}\" y=\"{y}\" {extra} >{text}</text>\n")
-  
+
   def draw(self, wavelanes, **kwargs) -> str:
     _id          = kwargs.get("id", "a")
     brick_width  = kwargs.get("brick_width", 40)
