@@ -138,8 +138,6 @@ class Renderer:
     text    : text to display
     """
     ans = f"<g data-symbol=\"{symbol}\" {extra}>\n"
-    if symbol == BRICKS.gap:
-      ans += f"<path d=\"m7,-2 -4,0 c -5,0 -5,{height+4} -10,{height+4} l 4,0 C 2,{height+4} 2,-2 7,-2 z\" class=\"hide\"></path>\n"
     for _, poly in enumerate(b.polygons):
       filling = "url(#diagonalHatch)" if symbol == BRICKS.x else "none"
       ans += self.polygon(poly, f"fill=\"{filling}\"")
@@ -147,8 +145,11 @@ class Renderer:
       ans += self.path(path, "class=\"path\"")
     for _, arrow in enumerate(b.arrows):
       ans += self.arrow(*arrow, "class=\"arrow\"")
-    for _, spline in enumerate(b.splines):
-      ans += self.spline(spline, "class=\"path\"")
+    for i, spline in enumerate(b.splines):
+      if i == 0 and symbol == BRICKS.gap:
+        ans += self.spline(spline, "class=\"hide\"")
+      else:
+        ans += self.spline(spline, "class=\"path\"")
     if len(b.text[2]) > 0:
       ans += self.text(*b.text, self._DATA_TEXT)
     ans += "</g>"
@@ -593,7 +594,7 @@ class SvgRenderer(Renderer):
     text    : text to display
     """
     return (f"<text x=\"{x}\" y=\"{y}\" {extra} >{text}</text>\n")
-  
+
   def translate(self, x: float, y: float) -> str:
     return f" transform=\"translate({x}, {y})\" "
 

@@ -63,7 +63,7 @@ class BRICKS(Enum):
   @staticmethod
   def ignore_transition(f, t):
     """
-    define special case when transistion are skip to prevent
+    define special case when transition are skip to prevent
     glitch by default
     """
     if (f, t) in [
@@ -129,52 +129,50 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   # create the brick
   b = Brick()
   b.symbol = symbol
-  if symbol == BRICKS.nclk:
+  # clock signals description (pPnNlLhH)
+  # (N|n)clk: falling edge (with|without) arrow for repeated pattern
+  if symbol in [BRICKS.nclk, BRICKS.Nclk]:
     last_y = height/2 if last_y is None else last_y
     dt = (height-last_y) * slewing / height
     b.paths.append([
       (0, last_y), (dt, height), (width*duty_cycle-slewing/2, height),
       (width*duty_cycle+slewing/2, 0), (width-slewing/2, 0), (width, height/2)
     ])
+    if symbol == BRICKS.Nclk:
+      b.arrows.append((dt * (height/2 - last_y)/height, height/2, arrow_angle))
     s = 1
-  elif symbol == BRICKS.pclk:
+  # (P|p)clk: rising edge (with|without) arrow for repeated pattern
+  elif symbol in [BRICKS.pclk, BRICKS.Pclk]:
     last_y = height/2 if last_y is None else last_y
     dt = last_y * slewing / height
     b.paths.append([
       (0, last_y), (dt, 0), (width*duty_cycle-slewing/2, 0),
       (width*duty_cycle+slewing/2, height), (width-slewing/2, height), (width, height/2)
     ])
+    if symbol == BRICKS.Pclk:
+      b.arrows.append((-dt * (height/2 - last_y)/height, height/2, -arrow_angle))
     s = 1
-  elif symbol == BRICKS.Nclk:
-    last_y = height/2 if last_y is None else last_y
-    dt = (height-last_y) * slewing / height
-    b.paths.append([
-      (0, last_y), (dt, height), (width*duty_cycle-slewing/2, height),
-      (width*duty_cycle+slewing/2, 0), (width-slewing/2, 0), (width, height/2)
-    ])
-    b.arrows.append((dt * (height/2 - last_y)/height, height/2, arrow_angle))
-    s = 1
-  elif symbol == BRICKS.Pclk:
-    last_y = height/2 if last_y is None else last_y
-    dt = last_y * slewing / height
-    b.paths.append([
-      (0, last_y), (dt, 0), (width*duty_cycle-slewing/2, 0),
-      (width*duty_cycle+slewing/2, height), (width-slewing/2, height), (width, height/2)
-    ])
-    b.arrows.append((-dt * (height/2 - last_y)/height, height/2, -arrow_angle))
-    s = 1
+  # (L|l)ow: falling edge (with|without) arrow and stuck
   elif symbol == BRICKS.low or symbol == BRICKS.Low:
     last_y = height if last_y is None else last_y
     dt = (height-last_y) * slewing / height
     b.paths.append([(0, last_y), (dt, height), (width, height)])
     if symbol == BRICKS.Low:
-      b.arrows.append((dt * (height/2 - last_y)/height, height/2, arrow_angle))
+      b.arrows.append((dt * (height / 2 - last_y) / height, height / 2, arrow_angle))
+  # (H|h)igh: rising edge (with|without) arrow and stuck
   elif symbol == BRICKS.high or symbol == BRICKS.High:
     last_y = 0 if last_y is None else last_y
     dt = last_y * slewing / height
     b.paths.append([(0, last_y), (dt, 0), (width, 0)])
     if symbol == BRICKS.High:
-      b.arrows.append((-dt * (height/2 - last_y)/height, height/2, -arrow_angle))
+      b.arrows.append((-dt * (height / 2 - last_y) / height, height / 2, -arrow_angle))
+  # description for data (z01x=)
+  elif symbol == BRICKS.highz:
+    last_y = height/2 if last_y is None else last_y
+    dt = abs(height/2-last_y)*slewing/height
+    b.splines.append([
+      ('M', 0, last_y), ('C', dt, height / 2), ('', dt, height / 2),
+      ('', min(width, 20), height/2), ('L', width, height/2)])
   elif symbol == BRICKS.zero:
     last_y = height if last_y is None else last_y
     b.paths.append([(0, last_y), (3, last_y), (3+slewing, height), (width, height)])
@@ -183,10 +181,6 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     last_y = 0 if last_y is None else last_y
     b.paths.append([(0, last_y), (3, last_y), (3+slewing, 0), (width, 0)])
     s = 1
-  elif symbol == BRICKS.highz:
-    last_y = height/2 if last_y is None else last_y
-    dt = abs(height/2-last_y)*slewing/height
-    b.splines.append([('M', 0, last_y), ('C', dt, height/2), ('', dt, height/2), ('', min(width, 20), height/2), ('L', width, height/2)])
   elif symbol == BRICKS.data or symbol == BRICKS.x:
     last_y = height if last_y is None else last_y
     b.paths.append([(0, last_y), (slewing, 0), (width-slewing, 0), (width, height/2)])
@@ -196,14 +190,26 @@ def generate_brick(symbol: str, **kwargs) -> dict:
       (width-slewing, height), (slewing, height), (0, height/2)
     ])
     if symbol == BRICKS.data:
-      b.text = (width/2, height/2, kwargs.get("data", ""))
+      b.text = (width / 2, height / 2, kwargs.get("data", ""))
+  # time compression symbol
   elif symbol == BRICKS.gap:
+    b.splines.append([
+      ('m', 7, -2), ('', -4, 0), ('c', -5, 0), ('', -5, height + 4),
+      ('', -10, height + 4), ('l', 4, 0), ('C', 2, height + 4), ('', 2, -2),
+      ('', 7, -2), ('z', '', '')])
     b.splines.append([('M', -7, height+2), ('C', -2, height+2), ('', -2, -2), ('', 3, -2)])
-    b.splines.append([('M', -3, height+2), ('C',  2, height+2), ('',  2, -2), ('', 7, -2)])
+    b.splines.append([('M', -3, height + 2), ('C', 2, height + 2), ('', 2, -2), ('', 7, -2)])
+  # capacitive charge to 1
   elif symbol == BRICKS.up:
-    b.splines.append([('m', 0, last_y), ('', 3, 0), ('C', 3+slewing, last_y), ('', 3+slewing, 0), ('', min(width, 20), 0), ('L', width, 0)])
+    b.splines.append([
+      ('m', 0, last_y), ('', 3, 0), ('C', 3 + slewing, last_y),
+      ('', 3 + slewing, 0), ('', min(width, 20), 0), ('L', width, 0)])
+  # capacitive discharge to 0
   elif symbol == BRICKS.down:
-    b.splines.append([('m', 0, last_y), ('', 3, 0), ('C', slewing, last_y), ('', 3+slewing, height-last_y), ('', min(width, 20), height), ('L', width, height)])
+    b.splines.append([
+      ('m', 0, last_y), ('', 3, 0), ('C', slewing, last_y),
+      ('', 3+slewing, height-last_y), ('', min(width, 20), height), ('L', width, height)])
+  # metastability
   elif symbol == BRICKS.meta:
     last_y = height/2 if last_y is None else last_y
     dt = abs(last_y-height/2) * slewing / height
@@ -212,9 +218,10 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     _tmp = [('M', 0, last_y)]
     for i in range(n):
       dy = 0 if i%4 in [0, 2] else height if i%4==3 else -height
-      _tmp.append(('S' if i==0 else '', dt+i*step, (height+math.exp(-4*i/n)*dy)*0.5))
+      _tmp.append(('S' if i==0 else '', dt+i*step, (height+math.exp(4*(n-i)/n)*dy)*0.5))
     _tmp.extend([('', width*0.75, height/2), ('', width, height/2)])
     b.splines.append(_tmp)
+  # full custom analogue bloc
   elif symbol == BRICKS.ana:
     try:
       if equation:
