@@ -262,11 +262,11 @@ class Renderer:
             "last_y": last_y,
             "is_repeated": k,
             "slewing": slewing,
-            "equation": analogue[Nana] if Nana < len(analogue) else "",
+            "equation": analogue[Nana] if Nana < len(analogue) else "0",
             "data": data[data_counter] if len(data) > data_counter else ""
         })
         # get next equation if analogue
-        if symbol == BRICKS.ana:
+        if symbol in [BRICKS.ana, BRICKS.step, BRICKS.cap]:
           Nana += 1
         # create the new brick
         wave.append((

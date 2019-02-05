@@ -14,7 +14,7 @@ ANALOG_CONTEXT = {
   "time": [],
   "Tmax": 20,
   "VSSA": 0,
-  "VDDA": 20,
+  "VDDA": 1.8,
   "atan2": math.atan2,
   "pi": math.pi,
   "exp": math.exp,
@@ -51,6 +51,12 @@ class BRICKS(Enum):
   meta  = 'm'
   Meta  = 'M'
   ana   = 'a'
+  step  = 's'
+  cap   = 'c'
+
+  @staticmethod
+  def transform_y(y: float, height: float = 20):
+    return height-height*(y-ANALOG_CONTEXT["VSSA"])/(ANALOG_CONTEXT["VDDA"]-ANALOG_CONTEXT["VSSA"])
 
   @staticmethod
   def from_str(s: str):
@@ -124,9 +130,14 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   is_repeated        = kwargs.get("is_repeated", 1)
   last_y             = kwargs.get("last_y", None)
   equation           = kwargs.get("equation", None)
+  # rendering block size
+  s, width = 0, brick_width * is_repeated
   # calculate the angle of the arrow
   arrow_angle = math.atan2(height, slewing) * 180 / math.pi
-  s, width = 0, brick_width * is_repeated
+  # update analogue context
+  ANALOG_CONTEXT["Tmax"] = width
+  ANALOG_CONTEXT["Ymax"] = height
+  ANALOG_CONTEXT["time"] = range(0, int(width+1))
   # create the brick
   b = Brick()
   b.symbol = symbol
@@ -235,17 +246,23 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     _tmp.extend([('S', width*0.75, 0), ('', width, 0)])
     b.splines.append(_tmp)
   # full custom analogue bloc
-  elif symbol == BRICKS.ana:
-    try:
-      if equation:
-        last_y = height if last_y is None else last_y
-        # update analogue context
-        ANALOG_CONTEXT["Tmax"] = width
-        ANALOG_CONTEXT["VDDA"] = height
-        ANALOG_CONTEXT["time"] = range(0, int(width+1))
-        b.paths.append([(0, last_y)] + [(p[0], height-p[1]) for p in eval(equation, ANALOG_CONTEXT)])
-    except Exception as e:
-      print(getattr(e, 'message', repr(e)))
+  elif symbol in [BRICKS.step, BRICKS.cap, BRICKS.ana]:
+    last_y = height if last_y is None else last_y
+    if symbol in [BRICKS.step, BRICKS.cap]:
+      y = BRICKS.transform_y(float(equation), height)
+      dt = abs(last_y-y) * slewing / height
+      print(equation, y, dt)
+      if symbol == BRICKS.step:
+        b.paths.append([(0, last_y), (dt, y), (width, y)])
+      else:
+        b.splines.append([
+          ('M', 0, last_y), ('C', dt, y), ('', dt, y),
+          ('', width, y), ('L', width, y)])
+    else:
+      try:
+        b.paths.append([(0, last_y)] + [(p[0], BRICKS.transform_y(p[1], height)) for p in eval(equation, ANALOG_CONTEXT)])
+      except Exception as e:
+        print(getattr(e, 'message', repr(e)))
   else:
     raise NotImplementedError()
   # filter paths according to options
