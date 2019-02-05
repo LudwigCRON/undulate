@@ -242,12 +242,17 @@ class Renderer:
             last_y = br.get_last_y()
             ignore = True
         else:
+          last_y = brick_height
           symbol = BRICKS.from_str(b)
         # adjust the width of a brick depending on the phase
         if i == 0:
-          width_with_phase = brick_width*(1-phase/k)
-        elif i == len(_wavelane) - 1:
-          width_with_phase = brick_width*(1+2*phase)
+          width_with_phase = brick_width
+          wave.append((
+            BRICKS.zero,
+            generate_brick(BRICKS.zero, **{"brick_width": brick_width*phase-3}),
+            (self.translate(pos-brick_width*phase-3, 0) +
+            f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else ''}\"")
+          ))
         else:
           width_with_phase = brick_width
         # update the arguments to be passed for the generation
@@ -267,7 +272,7 @@ class Renderer:
         wave.append((
             symbol,
             generate_brick(symbol, **kwargs),
-            (self.translate(pos-brick_width*phase*(i>0), 0) +
+            (self.translate(pos-brick_width*phase, 0) +
             f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else ''}\"")
         ))
         if symbol == BRICKS.data:
