@@ -155,9 +155,9 @@ class TestSvgMethods(unittest.TestCase):
       "CMD" : {"wave": "x.3x=x4x", "repeat":2, "data": "RAS NOP CAS NOP NOP NOP NOP", "phase": 0.5 },
       "ADDR": {"wave": "x.=x..=x", "repeat":2, "data": "ROW COL",                     "phase": 0.5 },
       "DQS" : {"wave": "z......m0.1010z." },
-      "DQS_1" : {"wave": "z.....m.0.1010z." },
+      "DQS_1" : {"wave": "z.....M.0.1010z." },
       "DQS_2" : {"wave": "z....m..0.1010z." },
-      "DQS_3" : {"wave": "z...m...0.1010z." },
+      "DQS_3" : {"wave": "z...M...0.1010z." },
       "DQ"  : {"wave": "z.........5555z.", "data": "D0 D1 D2 D3" }
     }
     with open("./output/wavedrom_step9.svg", "w+") as fp:

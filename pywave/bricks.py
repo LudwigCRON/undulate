@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# spell-checker: disable
 
 """
 bricks.py declare the basic building block
@@ -48,6 +49,7 @@ class BRICKS(Enum):
   up    = 'u'
   down  = 'd'
   meta  = 'm'
+  Meta  = 'M'
   ana   = 'a'
 
   @staticmethod
@@ -121,7 +123,6 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   ignore_transition  = kwargs.get("ignore_transition", False)
   is_repeated        = kwargs.get("is_repeated", 1)
   last_y             = kwargs.get("last_y", None)
-  next_y             = kwargs.get("next_y", None)
   equation           = kwargs.get("equation", None)
   # calculate the angle of the arrow
   arrow_angle = math.atan2(height, slewing) * 180 / math.pi
@@ -209,7 +210,7 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     b.splines.append([
       ('m', 0, last_y), ('', 3, 0), ('C', slewing, last_y),
       ('', 3+slewing, height-last_y), ('', min(width, 20), height), ('L', width, height)])
-  # metastability
+  # metastability to zero
   elif symbol == BRICKS.meta:
     last_y = height/2 if last_y is None else last_y
     dt = abs(last_y-height/2) * slewing / height
@@ -218,8 +219,20 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     _tmp = [('M', 0, last_y)]
     for i in range(n):
       dy = 0 if i%4 in [0, 2] else height if i%4==3 else -height
-      _tmp.append(('S' if i==0 else '', dt+i*step, (height+math.exp(4*(n-i)/n)*dy)*0.5))
-    _tmp.extend([('', width*0.75, height/2), ('', width, height/2)])
+      _tmp.append(('S' if i==0 else '', dt+i*step, (height+math.exp(-4*(n-i)/n)*dy)*0.5))
+    _tmp.extend([('', width*0.75, height), ('', width, height)])
+    b.splines.append(_tmp)
+  # metastability to one
+  elif symbol == BRICKS.Meta:
+    last_y = height/2 if last_y is None else last_y
+    dt = abs(last_y-height/2) * slewing / height
+    n = int(32*(width*0.75-dt)/width)+2
+    step = (width*0.75-dt)/n
+    _tmp = [('M', 0, last_y)]
+    for i in range(n):
+      dy = 0 if i%4 in [0, 2] else height if i%4==3 else -height
+      _tmp.append(('S' if i==0 else '', dt+i*step, (height+math.exp(-4*(n-i)/n)*dy)*0.5))
+    _tmp.extend([('', width*0.75, 0), ('', width, 0)])
     b.splines.append(_tmp)
   # full custom analogue bloc
   elif symbol == BRICKS.ana:
@@ -242,11 +255,11 @@ def generate_brick(symbol: str, **kwargs) -> dict:
       b.paths[i] = [(0, last_y)] + p[1+s:]
     for i, p in enumerate(b.splines):
       c, x, y = p[-1]
-      b.splines[i] = [('M', 0, last_y), ('', x, y)]
+      b.splines[i] = [('M', 0, last_y), (c, x, y)]
     for i, p in enumerate(b.polygons):
-      x0, y0 = p[0]
-      x1, y1 = p[1]
-      x2, y2 = p[-2]
-      x3, y3 = p[-1]
+      x0, _ = p[0]
+      _, y1 = p[1]
+      _, y2 = p[-2]
+      x3, _ = p[-1]
       b.polygons[i] = [(x0, y1)] + p[2:-2] + [(x3, y2)]
   return b

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# spell-checker: disable
 
 """
 renderer.py declare the logic to render waveforms
@@ -164,7 +165,7 @@ class Renderer:
       return ""
     return self.text(-10, 15, name, self._WAVE_TITLE)
 
-  def _reduce_wavelane(self, wavelane: str, **kwargs):
+  def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
     repeat       = kwargs.get("repeat", 1)
     _wavelane, previous_brick = [], None
     # look for repetition '.'
@@ -220,10 +221,9 @@ class Renderer:
     # generate the waveform
     wave, pos, ignore, last_y = [], 0, False, None
     # look for repetition '.'
-    _wavelane = self._reduce_wavelane(wavelane, **kwargs)
+    _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
     # generate bricks
-    #previous_brick = BRICKS.zero
-    data_counter, i, Nana = 0, 0, 0
+    symbol, data_counter, i, Nana = None, 0, 0, 0
     for b, k in _wavelane:
       if b != '|':
         # get the final height of the last brick
@@ -283,8 +283,6 @@ class Renderer:
         ))
       pos += brick_width*k
       i += 1
-    # look for transition
-    pw = None
     # generate waveform
     def _gen():
       ans = self.wavelane_title(name) if name else ""
@@ -530,7 +528,7 @@ class SvgRenderer(Renderer):
   _DATA_TEXT   = "text-anchor=\"middle\" dominant-baseline=\"middle\" alignment-baseline=\"central\""
 
   def __init__(self):
-    super(Renderer, self).__init__()
+    Renderer.__init__(self)
 
   def group(self, callback, id: str = "", extra: str = "") -> str:
     """
