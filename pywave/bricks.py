@@ -215,6 +215,8 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     last_y = height/2 if last_y is None else last_y
     dt = abs(last_y-height/2) * slewing / height
     time = range(int(dt), int(width*0.75+1))
+    if (int(0.75*width+1)-int(dt)) % 2 == 1:
+      time = range(int(dt), int(width*0.75+2))
     _tmp = [('M', 0, last_y)]
     for t in time:
       _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-width)/width)*math.sin(8*math.pi*t/width))*0.5*height))
@@ -225,6 +227,8 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     last_y = height/2 if last_y is None else last_y
     dt = abs(last_y-height/2) * slewing / height
     time = range(int(dt), int(width*0.75+1))
+    if (int(0.75*width+1)-int(dt)) % 2 == 1:
+      time = range(int(dt), int(width*0.75+2))
     _tmp = [('M', 0, last_y)]
     for t in time:
       _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-width)/width)*math.cos(8*math.pi*t/width))*0.5*height))
