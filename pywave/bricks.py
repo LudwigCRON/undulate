@@ -214,25 +214,21 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   elif symbol == BRICKS.meta:
     last_y = height/2 if last_y is None else last_y
     dt = abs(last_y-height/2) * slewing / height
-    n = int(32*(width*0.75-dt)/width)
-    step = (width*0.75-dt)/n
+    time = range(int(dt), int(width*0.75+1))
     _tmp = [('M', 0, last_y)]
-    for i in range(n):
-      dy = 0 if i%4 in [0, 2] else height if i%4==3 else -height
-      _tmp.append(('S' if i==0 else '', dt+i*step, (height+math.exp(-4*(n-i)/n)*dy)*0.5))
-    _tmp.extend([('', width*0.75, height), ('', width, height)])
+    for t in time:
+      _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-width)/width)*math.sin(8*math.pi*t/width))*0.5*height))
+    _tmp.extend([('S', width*0.75, height), ('', width, height)])
     b.splines.append(_tmp)
   # metastability to one
   elif symbol == BRICKS.Meta:
     last_y = height/2 if last_y is None else last_y
     dt = abs(last_y-height/2) * slewing / height
-    n = int(32*(width*0.75-dt)/width)+2
-    step = (width*0.75-dt)/n
+    time = range(int(dt), int(width*0.75+1))
     _tmp = [('M', 0, last_y)]
-    for i in range(n):
-      dy = 0 if i%4 in [0, 2] else height if i%4==3 else -height
-      _tmp.append(('S' if i==0 else '', dt+i*step, (height+math.exp(-4*(n-i)/n)*dy)*0.5))
-    _tmp.extend([('', width*0.75, 0), ('', width, 0)])
+    for t in time:
+      _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-width)/width)*math.cos(8*math.pi*t/width))*0.5*height))
+    _tmp.extend([('S', width*0.75, 0), ('', width, 0)])
     b.splines.append(_tmp)
   # full custom analogue bloc
   elif symbol == BRICKS.ana:

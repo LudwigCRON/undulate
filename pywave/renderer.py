@@ -386,7 +386,7 @@ class Renderer:
               style += "arrowhead " if _shape[0] == '<' else ''
               mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
               if _shape in ['<~', '~', '~>', '<~>']:
-                ans += self.spline([('M', s[0], s[1]), ('C', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
               elif _shape in ['<-~', '-~', '-~>', '<-~>']:
                 ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
               elif _shape in ['<~-', '~-', '~->', '<~->']:
