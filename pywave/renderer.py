@@ -227,20 +227,29 @@ class Renderer:
     for b, k in _wavelane:
       if b != '|':
         # get the final height of the last brick
-        last = -2 if wave and symbol == BRICKS.gap else -1
+        last = -2 if symbol == BRICKS.gap else -1
         if wave:
-          s, br, _ = wave[last]
+          s, br, c = wave[last]
           last_y = br.get_last_y()
           # adjust transition from data or x
           symbol = BRICKS.from_str(b)
           ignore = BRICKS.ignore_transition(wave[last] if wave else None, symbol)
           if s in [BRICKS.data, BRICKS.x] and symbol in [BRICKS.zero, BRICKS.one, BRICKS.low, BRICKS.high]:
-            ny, sh = 0, 3
             if symbol in [BRICKS.zero, BRICKS.low]:
-              ny = brick_height
-            br.alter_end(sh, ny)
-            last_y = br.get_last_y()
+              br.alter_end(3, brick_height)
+            else:
+              br.alter_end(3, 0)
+            wave[last] = (s, br, c)
             ignore = True
+          if symbol in [BRICKS.low, BRICKS.Low] and s in [BRICKS.Pclk, BRICKS.pclk]:
+            print("before", br.paths)
+            br.alter_end(0, brick_height)
+            print("after", br.paths)
+            wave[last] = (s, br, c)
+          if symbol in [BRICKS.high, BRICKS.High] and s in [BRICKS.Nclk, BRICKS.nclk]:
+            br.alter_end(0, 0)
+            wave[last] = (s, br, c)
+          last_y = br.get_last_y()
         else:
           last_y = brick_height
           symbol = BRICKS.from_str(b)

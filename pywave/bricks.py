@@ -108,17 +108,16 @@ class Brick:
     return last_y
 
   def alter_end(self, shift: float = 0, next_y: float = -1):
-    if self.symbol == BRICKS.data or self.symbol == BRICKS.x:
-      for i, path in enumerate(self.paths):
-        x1, y1 = path[-1]
-        x2, y2 = path[-2]
-        self.paths[i] = path[:-1] + [(x2+shift, y2), (x1+shift, next_y if next_y > -1 else y1)]
-      for i, poly in enumerate(self.polygons):
-        l = int(len(poly)/2)
-        x1, y1 = poly[l-1]
-        x2, y2 = poly[l]
-        x3, y3 = poly[l+1]
-        self.polygons[i] = poly[:l-1] + [(x1+shift, y1), (x2+shift, next_y if next_y > -1 else y2), (x3+shift, y3)] + poly[l+1:]
+    for i, path in enumerate(self.paths):
+      x1, y1 = path[-1]
+      x2, y2 = path[-2]
+      self.paths[i] = path[:-1] + [(x2+shift, y2), (x1+shift, next_y if next_y > -1 else y1)]
+    for i, poly in enumerate(self.polygons):
+      l = int(len(poly)/2)
+      x1, y1 = poly[l-1]
+      x2, y2 = poly[l]
+      x3, y3 = poly[l+1]
+      self.polygons[i] = poly[:l-1] + [(x1+shift, y1), (x2+shift, next_y if next_y > -1 else y2), (x3+shift, y3)] + poly[l+1:]
 
 def generate_brick(symbol: str, **kwargs) -> dict:
   # get option supported
