@@ -343,7 +343,6 @@ class Renderer:
     """
     brick_width  = kwargs.get("brick_width", 20)
     brick_height = kwargs.get("brick_height", 20)
-    slewing      = kwargs.get("slewing", 4)
     nodes = []
     def _gen():
       ans, _y = "", 0
@@ -356,15 +355,15 @@ class Renderer:
             i = [chain[0].find(c) for c in n[::]]
             j = count(0)
             # brick width of the wavelane
-            width = brick_width * wavelane["period"] if "period" in wavelane \
-                    else brick_width
-            phase = brick_width * wavelane["phase"] if "phase" in wavelane \
-                    else 0
+            width   = brick_width * wavelane.get("period", 1)
+            phase   = width * wavelane.get("phase", 0)
+            slewing = wavelane.get("slewing", 0)
             # get identifier
             nodes.extend(
               [ (s[0] * width - phase, _y, chain[1+next(j)]) if not s[1].isalpha()
                 else (s[0] * width - phase, _y, s[1]) for s in list(zip(i, n[::]))]
             )
+            print(nodes, phase)
           _y += brick_height * 1.5
         # list edgeds to perform
         elif name == "edge":
@@ -386,8 +385,8 @@ class Renderer:
               dy = kwargs.get("dy", 0)
               ans = ""
               _shape, s, e, text = edge
-              s = s[0] + 3 + slewing * 0.5, s[1] + brick_height * 0.5
-              e = e[0] + 3 + slewing * 0.5, e[1] + brick_height * 0.5
+              s = s[0] , s[1] + brick_height * 0.5
+              e = e[0] , e[1] + brick_height * 0.5
               style = "edges "
               style += "arrowtail " if _shape[-1] == '>' else ''
               style += "arrowhead " if _shape[0] == '<' else ''
