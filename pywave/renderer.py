@@ -358,7 +358,7 @@ class Renderer:
               [ (s[0] * width - phase, _y, chain[1+next(j)]) if not s[1].isalpha()
                 else (s[0] * width - phase, _y, s[1]) for s in list(zip(i, n[::]))]
             )
-            _y += brick_height * 1.5
+          _y += brick_height * 1.5
         # list edgeds to perform
         elif name == "edge":
           # parse edges declaration
