@@ -127,6 +127,7 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   duty_cycle         = kwargs.get("duty_cycle", 0.5)
   ignore_transition  = kwargs.get("ignore_transition", False)
   is_repeated        = kwargs.get("is_repeated", 1)
+  is_first           = kwargs.get("is_first", False)
   last_y             = kwargs.get("last_y", None)
   equation           = kwargs.get("equation", None)
   # rendering block size
@@ -149,7 +150,7 @@ def generate_brick(symbol: str, **kwargs) -> dict:
       (0, last_y), (dt, height), (width*duty_cycle-slewing/2, height),
       (width*duty_cycle+slewing/2, 0), (width-slewing/2, 0), (width, height/2)
     ])
-    if symbol == BRICKS.Nclk:
+    if symbol == BRICKS.Nclk and not is_first:
       b.arrows.append((dt * (height/2 - last_y)/height, height/2, arrow_angle))
     s = 1
   # (P|p)clk: rising edge (with|without) arrow for repeated pattern

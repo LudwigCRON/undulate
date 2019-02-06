@@ -253,19 +253,22 @@ class Renderer:
           symbol = BRICKS.from_str(b)
         # adjust the width of a brick depending on the phase
         if i == 0:
-          width_with_phase = brick_width
+          width_with_phase = brick_width*(1-phase/2)
           wave.append((
             BRICKS.zero,
             generate_brick(BRICKS.zero, **{"brick_width": brick_width*phase-3}),
-            (self.translate(pos-brick_width*phase-3, 0) +
+            (self.translate(pos-3, 0) +
             f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else ''}\"")
           ))
+        elif i == len(_wavelane) - 1:
+          width_with_phase = brick_width*(1+phase)
         else:
           width_with_phase = brick_width
         # update the arguments to be passed for the generation
         kwargs.update({
             "brick_width": width_with_phase,
             "ignore_transition": ignore,
+            "is_first": i == 0,
             "last_y": last_y,
             "is_repeated": k,
             "slewing": slewing,
@@ -279,7 +282,7 @@ class Renderer:
         wave.append((
             symbol,
             generate_brick(symbol, **kwargs),
-            (self.translate(pos-brick_width*phase, 0) +
+            (self.translate(pos-brick_width*phase if i > 0 else pos, 0) +
             f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else ''}\"")
         ))
         if symbol == BRICKS.data:
