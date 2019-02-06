@@ -405,7 +405,7 @@ class Renderer:
               elif _shape in ['<|-', '|-', '|->', '<|->']:
                 ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
               elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
-                ans += self.spline([('M', s[0], s[1]), ('C', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
               ans += self.text(mx+dx, my+dy, text, "text-anchor=\"middle\"")
               return ans
             global _EDGE_COUNT

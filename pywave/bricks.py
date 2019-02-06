@@ -250,7 +250,6 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     if symbol in [BRICKS.step, BRICKS.cap]:
       y = BRICKS.transform_y(float(equation), height)
       dt = abs(last_y-y) * slewing / height
-      print(equation, y, dt)
       if symbol == BRICKS.step:
         b.paths.append([(0, last_y), (dt, y), (width, y)])
       else:
