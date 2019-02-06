@@ -242,9 +242,7 @@ class Renderer:
             wave[last] = (s, br, c)
             ignore = True
           if symbol in [BRICKS.low, BRICKS.Low] and s in [BRICKS.Pclk, BRICKS.pclk]:
-            print("before", br.paths)
             br.alter_end(0, brick_height)
-            print("after", br.paths)
             wave[last] = (s, br, c)
           if symbol in [BRICKS.high, BRICKS.High] and s in [BRICKS.Nclk, BRICKS.nclk]:
             br.alter_end(0, 0)
@@ -503,15 +501,18 @@ class Renderer:
     wavelanes : data to be parse
     [brick_width]   : width of a brick, default is 20
     [brick_height]  : height of a row, default is 20
+    [period]        : time dilatation factor, default is 1
     """
     if isinstance(wavelanes, dict):
       x, y, keys = [], 0, []
       for _, wavetitle in enumerate(wavelanes.keys()):
         if "wave" in wavelanes[wavetitle]:
+          _l = len(wavelanes[wavetitle]["wave"]) * brick_width
           if "repeat" in wavelanes[wavetitle]:
-            x.append(len(wavelanes[wavetitle]["wave"]) * brick_width * wavelanes[wavetitle]["repeat"])
-          else:
-            x.append(len(wavelanes[wavetitle]["wave"]) * brick_width)
+            _l *= wavelanes[wavetitle]["repeat"]
+          if "period" in wavelanes[wavetitle]:
+            _l *= wavelanes[wavetitle]["period"]
+          x.append(_l)
           y += brick_height * 1.5
           keys.append(len(wavetitle))
         elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
