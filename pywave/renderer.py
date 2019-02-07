@@ -241,12 +241,11 @@ class Renderer:
               br.alter_end(3, 0)
             wave[last] = (s, br, c)
             ignore = True
-          if symbol in [BRICKS.low, BRICKS.Low] and s in [BRICKS.Pclk, BRICKS.pclk]:
+          if symbol in [BRICKS.low, BRICKS.Low] and \
+             s in [BRICKS.Pclk, BRICKS.pclk, BRICKS.Nclk, BRICKS.nclk]:
             br.alter_end(0, brick_height)
             wave[last] = (s, br, c)
-          if symbol in [BRICKS.high, BRICKS.High] and s in [BRICKS.Nclk, BRICKS.nclk]:
-            br.alter_end(0, 0)
-            wave[last] = (s, br, c)
+            ignore = True
           last_y = br.get_last_y()
         else:
           last_y = brick_height
@@ -254,12 +253,6 @@ class Renderer:
         # adjust the width of a brick depending on the phase
         if i == 0:
           width_with_phase = brick_width*(1-phase/2)
-          wave.append((
-            BRICKS.zero,
-            generate_brick(BRICKS.zero, **{"brick_width": brick_width*phase-3}),
-            (self.translate(pos-3, 0) +
-            f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else ''}\"")
-          ))
         elif i == len(_wavelane) - 1:
           width_with_phase = brick_width*(1+phase)
         else:

@@ -80,7 +80,11 @@ class BRICKS(Enum):
       (BRICKS.x, BRICKS.high),
       (BRICKS.x, BRICKS.one),
       (BRICKS.data, BRICKS.zero),
-      (BRICKS.data, BRICKS.one)
+      (BRICKS.data, BRICKS.one),
+      (BRICKS.Nclk, BRICKS.Low),
+      (BRICKS.nclk, BRICKS.Low),
+      (BRICKS.Pclk, BRICKS.Low),
+      (BRICKS.pclk, BRICKS.Low),
     ]:
       return True
     return False
@@ -90,8 +94,27 @@ class Brick:
   define the brick as a composition of paths, arrows, and generic polygons
   to fill an area
   """
-  __slots__ = ["symbol", "paths", "arrows", "polygons", "splines", "text"]
-  def __init__(self):
+  __slots__ = [
+    "symbol", "paths", "arrows", "polygons", "splines", "text",
+    "width", "height",
+    "slewing", "duty_cycle", "ignore_transition",
+    "is_first", "last_y",
+    "equation"]
+  def __init__(self, **kwargs):
+    # get options supported
+    # sizing
+    self.width  = kwargs.get("brick_width" , 40) * kwargs.get("is_repeated" , 1)
+    self.height = kwargs.get("brick_height", 20)
+    # physical variants
+    self.slewing           = kwargs.get("slewing"          , 0)
+    self.duty_cycle        = kwargs.get("duty_cycle"       , 0.5)
+    self.ignore_transition = kwargs.get("ignore_transition", False)
+    # chaining instance
+    self.is_first = kwargs.get("is_first", False)
+    self.last_y   = kwargs.get("last_y"  , None)
+    # is analogue
+    self.equation = kwargs.get("equation", None)
+    # items to keep for drawing
     self.symbol    = None
     self.paths     = []
     self.arrows    = []
@@ -119,163 +142,307 @@ class Brick:
       x3, y3 = poly[l+1]
       self.polygons[i] = poly[:l-1] + [(x1+shift, y1), (x2+shift, next_y if next_y > -1 else y2), (x3+shift, y3)] + poly[l+1:]
 
+class Nclk(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = 0
+    else:
+      self.last_y = self.height/2 if self.last_y is None else self.last_y
+    dt = self.last_y * self.slewing / self.height
+    # add shape
+    self.paths.append([
+      (0, self.last_y), (dt, 0), (self.width*self.duty_cycle-self.slewing/2, 0),
+      (self.width*self.duty_cycle+self.slewing/2, self.height), (self.width-self.slewing/2, self.height), (self.width, self.height/2)
+    ])
+    if self.ignore_transition:
+      self.paths[0] = self.paths[0][0] + self.paths[0][2:]
+    # add arrow
+    if kwargs.get("add_arrow", False):
+      arrow_angle = - math.atan2(-self.height, self.slewing) * 180 / math.pi
+      self.arrows.append((dt * (self.height/2 - self.last_y)/self.height + self.width*self.duty_cycle, self.height/2, arrow_angle))
+
+class Pclk(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = self.height
+    else:
+      self.last_y = self.height/2 if self.last_y is None else self.last_y
+    dt = self.last_y * self.slewing / self.height
+    # add shape
+    self.paths.append([
+      (0, self.last_y), (dt, 0), (self.width*self.duty_cycle-self.slewing/2, 0),
+      (self.width*self.duty_cycle+self.slewing/2, self.height), (self.width-self.slewing/2, self.height), (self.width, self.height/2)
+    ])
+    if self.ignore_transition:
+      self.paths[0] = self.paths[0][0] + self.paths[0][2:]
+    # add arrow
+    if kwargs.get("add_arrow", False):
+      arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
+      self.arrows.append((dt/2, self.height/2, arrow_angle))
+
+class Low(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = self.height
+    else:
+      self.last_y = self.height if self.last_y is None else self.last_y
+    dt = abs(self.height - self.last_y) * self.slewing / self.height
+    # add shape
+    self.paths.append([(0, self.last_y), (dt, self.height), (self.width, self.height)])
+    # add arrow
+    if kwargs.get("add_arrow", False) and not self.is_first:
+      arrow_angle = - math.atan2(-self.height, self.slewing) * 180 / math.pi
+      self.arrows.append((dt * (self.height/2 - self.last_y)/self.height, self.height/2, arrow_angle))
+
+class High(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = self.height
+    else:
+      self.last_y = self.height if self.last_y is None else self.last_y
+    dt = self.last_y * self.slewing / self.height
+    # add shape
+    self.paths.append([(0, self.last_y), (dt, 0), (self.width, 0)])
+    # add arrow
+    if kwargs.get("add_arrow", False):
+      arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
+      self.arrows.append((dt/2, self.height/2, arrow_angle))
+
+class HighZ(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = self.height/2
+    else:
+      self.last_y = self.height/2 if self.last_y is None else self.last_y
+    dt = abs(self.height - self.last_y) * self.slewing / self.height
+    # add shape
+    self.splines.append([
+      ('M', 0, self.last_y), ('C', dt, self.height / 2), ('', dt, self.height / 2),
+      ('', min(self.width, 20), self.height/2), ('L', self.width, self.height/2)])
+
+class Zero(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = self.height
+    else:
+      self.last_y = self.height if self.last_y is None else self.last_y
+    dt = (self.height - self.last_y) * self.slewing / self.height
+    # add shape
+    self.paths.append([
+      (0, self.last_y), (3, self.last_y),
+      (3+self.slewing, self.height), (self.width, self.height)])
+
+class One(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = 0
+    else:
+      self.last_y = self.height if self.last_y is None else self.last_y
+    dt = (self.height - self.last_y) * self.slewing / self.height
+    # add shape
+    self.paths.append([
+      (0, self.last_y), (3, self.last_y),
+      (3+self.slewing, 0), (self.width, 0)])
+
+class Data(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    self.last_y = self.height/2 if self.last_y is None else self.last_y
+    # add shape
+    if self.is_first:
+      self.paths.append([
+        (0, 0), (self.slewing, 0),
+        (self.width-self.slewing, 0), (self.width, self.height/2)])
+      self.paths.append([
+        (0, self.height), (self.slewing, self.height),
+        (self.width-self.slewing, self.height), (self.width, self.height/2)])
+    else:
+      self.paths.append([
+        (0, self.last_y), (self.slewing, 0),
+        (self.width-self.slewing, 0), (self.width, self.height/2)])
+      self.paths.append([
+        (0, self.last_y), (self.slewing, self.height),
+        (self.width-self.slewing, self.height), (self.width, self.height/2)])
+    # add background
+    if self.is_first:
+      self.polygons.append([
+        (0, 0), (self.slewing, 0), (self.width-self.slewing, 0), (self.width, self.height/2),
+        (self.width-self.slewing, self.height), (self.slewing, self.height), (0, self.height)
+      ])
+    else:
+      self.polygons.append([
+        (0, self.height/2), (self.slewing, 0), (self.width-self.slewing, 0), (self.width, self.height/2),
+        (self.width-self.slewing, self.height), (self.slewing, self.height), (0, self.height/2)
+      ])
+    # add text
+    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
+
+class Gap(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    #if self.is_first:
+    #raise "a gap cannot be first in a wavelane"
+    self.splines.append([
+      ('m', 7, -2), ('', -4, 0), ('c', -5, 0), ('', -5, self.height + 4),
+      ('', -10, self.height + 4), ('l', 4, 0), ('C', 2, self.height + 4), ('', 2, -2),
+      ('', 7, -2), ('z', '', '')])
+    self.splines.append([('M', -7, self.height+2), ('C', -2, self.height+2), ('', -2, -2), ('', 3, -2)])
+    self.splines.append([('M', -3, self.height + 2), ('C', 2, self.height + 2), ('', 2, -2), ('', 7, -2)])
+
+class Up(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    self.last_y = self.height if self.last_y is None else self.last_y
+    self.splines.append([
+      ('m', 0, self.last_y), ('', 3, 0), ('C', 3 + self.slewing, self.last_y),
+      ('', 3 + self.slewing, 0), ('', min(self.width, 20), 0), ('L', self.width, 0)])
+
+class Down(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    self.last_y = self.height if self.last_y is None else self.last_y
+    self.splines.append([
+      ('m', 0, self.last_y), ('', 3, 0), ('C', self.slewing, self.last_y),
+      ('', 3 + self.slewing, self.height - self.last_y), ('', min(self.width, 20), self.height),
+      ('L', self.width, self.height)])
+
+class Meta(Brick):
+  def __init__(self, **kwargs):
+    Brick.__init__(self, **kwargs)
+    self.last_y = self.height / 2 if self.last_y is None else self.last_y
+    dt = abs(self.last_y-self.height/2) * self.slewing / self.height
+    time = range(int(dt), int(self.width*0.75+1))
+    if (int(0.75*self.width+1)-int(dt)) % 2 == 1:
+      time = range(int(dt), int(self.width*0.75+2))
+    _tmp = [('M', 0, self.last_y)]
+    if kwargs.get("then_one", False):
+      for t in time:
+        _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-self.width)/self.width)*math.cos(8*math.pi*t/self.width))*0.5*self.height))
+      _tmp.extend([('S', self.width * 0.75, 0), ('', self.width, 0)])
+    else:
+      for t in time:
+        _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-self.width)/self.width)*math.sin(8*math.pi*t/self.width))*0.5*self.height))
+      _tmp.extend([('S', self.width * 0.75, self.height), ('', self.width, self.height)])
+    self.splines.append(_tmp)
+
+class Cap(Brick):
+  def __init__(self, y, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = self.height
+    else:
+      self.last_y = self.height if self.last_y is None else self.last_y
+    dt = abs(self.height - self.last_y) * self.slewing / self.height
+    # add shape
+    self.splines.append([
+          ('M', 0, self.last_y), ('C', dt, y), ('', dt, y),
+          ('', self.width, y), ('L', self.width, y)])
+
+class Step(Brick):
+  def __init__(self, y, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = self.height
+    else:
+      self.last_y = self.height if self.last_y is None else self.last_y
+    dt = abs(self.height - self.last_y) * self.slewing / self.height
+    # add shape
+    self.paths.append([(0, self.last_y), (dt, y), (self.width, y)])
+
 def generate_brick(symbol: str, **kwargs) -> dict:
   # get option supported
-  brick_width        = kwargs.get("brick_width", 40)
+  # sizing
+  width              = kwargs.get("brick_width", 40) * kwargs.get("is_repeated" , 1)
   height             = kwargs.get("brick_height", 20)
-  slewing            = kwargs.get("slewing", 0)
-  duty_cycle         = kwargs.get("duty_cycle", 0.5)
-  ignore_transition  = kwargs.get("ignore_transition", False)
-  is_repeated        = kwargs.get("is_repeated", 1)
-  is_first           = kwargs.get("is_first", False)
   last_y             = kwargs.get("last_y", None)
   equation           = kwargs.get("equation", None)
+  ignore_transition  = kwargs.get("ignore_transition", False)
   # rendering block size
-  s, width = 0, brick_width * is_repeated
-  # calculate the angle of the arrow
-  arrow_angle = math.atan2(height, slewing) * 180 / math.pi
+  s = 0
   # update analogue context
   ANALOG_CONTEXT["Tmax"] = width
   ANALOG_CONTEXT["Ymax"] = height
   ANALOG_CONTEXT["time"] = range(0, int(width+1))
   # create the brick
   b = Brick()
-  b.symbol = symbol
+  # add arrow
+  if symbol in [BRICKS.Nclk, BRICKS.Pclk, BRICKS.Low, BRICKS.High] and not ignore_transition:
+    kwargs.update({"add_arrow": True})
   # clock signals description (pPnNlLhH)
   # (N|n)clk: falling edge (with|without) arrow for repeated pattern
   if symbol in [BRICKS.nclk, BRICKS.Nclk]:
-    last_y = height/2 if last_y is None else last_y
-    dt = (height-last_y) * slewing / height
-    b.paths.append([
-      (0, last_y), (dt, height), (width*duty_cycle-slewing/2, height),
-      (width*duty_cycle+slewing/2, 0), (width-slewing/2, 0), (width, height/2)
-    ])
-    if symbol == BRICKS.Nclk and not is_first:
-      b.arrows.append((dt * (height/2 - last_y)/height, height/2, arrow_angle))
-    s = 1
+    b = Nclk(**kwargs)
   # (P|p)clk: rising edge (with|without) arrow for repeated pattern
   elif symbol in [BRICKS.pclk, BRICKS.Pclk]:
-    last_y = height/2 if last_y is None else last_y
-    dt = last_y * slewing / height
-    b.paths.append([
-      (0, last_y), (dt, 0), (width*duty_cycle-slewing/2, 0),
-      (width*duty_cycle+slewing/2, height), (width-slewing/2, height), (width, height/2)
-    ])
-    if symbol == BRICKS.Pclk:
-      b.arrows.append((-dt * (height/2 - last_y)/height, height/2, -arrow_angle))
-    s = 1
+    b = Pclk(**kwargs)
   # (L|l)ow: falling edge (with|without) arrow and stuck
   elif symbol == BRICKS.low or symbol == BRICKS.Low:
-    last_y = height if last_y is None else last_y
-    dt = (height-last_y) * slewing / height
-    b.paths.append([(0, last_y), (dt, height), (width, height)])
-    if symbol == BRICKS.Low:
-      b.arrows.append((dt * (height / 2 - last_y) / height, height / 2, arrow_angle))
+    b = Low(**kwargs)
   # (H|h)igh: rising edge (with|without) arrow and stuck
   elif symbol == BRICKS.high or symbol == BRICKS.High:
-    last_y = 0 if last_y is None else last_y
-    dt = last_y * slewing / height
-    b.paths.append([(0, last_y), (dt, 0), (width, 0)])
-    if symbol == BRICKS.High:
-      b.arrows.append((-dt * (height / 2 - last_y) / height, height / 2, -arrow_angle))
-  # description for data (z01x=)
+    b = High(**kwargs)
+  # description for data (z01=x)
   elif symbol == BRICKS.highz:
-    last_y = height/2 if last_y is None else last_y
-    dt = abs(height/2-last_y)*slewing/height
-    b.splines.append([
-      ('M', 0, last_y), ('C', dt, height / 2), ('', dt, height / 2),
-      ('', min(width, 20), height/2), ('L', width, height/2)])
+    b = HighZ(**kwargs)
   elif symbol == BRICKS.zero:
-    last_y = height if last_y is None else last_y
-    b.paths.append([(0, last_y), (3, last_y), (3+slewing, height), (width, height)])
-    s = 1
+    b = Zero(**kwargs)
   elif symbol == BRICKS.one:
-    last_y = 0 if last_y is None else last_y
-    b.paths.append([(0, last_y), (3, last_y), (3+slewing, 0), (width, 0)])
-    s = 1
-  elif symbol == BRICKS.data or symbol == BRICKS.x:
-    last_y = height if last_y is None else last_y
-    b.paths.append([(0, last_y), (slewing, 0), (width-slewing, 0), (width, height/2)])
-    b.paths.append([(0, last_y), (slewing, height), (width-slewing, height), (width, height/2)])
-    b.polygons.append([
-      (0, height/2), (slewing, 0), (width-slewing, 0), (width, height/2),
-      (width-slewing, height), (slewing, height), (0, height/2)
-    ])
-    if symbol == BRICKS.data:
-      b.text = (width / 2, height / 2, kwargs.get("data", ""))
+    b = One(**kwargs)
+  elif symbol == BRICKS.data:
+    b = Data(**kwargs)
+  elif symbol == BRICKS.x:
+    if "data" in kwargs:
+      kwargs["data"] = ''
+    b = Data(**kwargs)
   # time compression symbol
   elif symbol == BRICKS.gap:
-    b.splines.append([
-      ('m', 7, -2), ('', -4, 0), ('c', -5, 0), ('', -5, height + 4),
-      ('', -10, height + 4), ('l', 4, 0), ('C', 2, height + 4), ('', 2, -2),
-      ('', 7, -2), ('z', '', '')])
-    b.splines.append([('M', -7, height+2), ('C', -2, height+2), ('', -2, -2), ('', 3, -2)])
-    b.splines.append([('M', -3, height + 2), ('C', 2, height + 2), ('', 2, -2), ('', 7, -2)])
+    b = Gap(**kwargs)
   # capacitive charge to 1
   elif symbol == BRICKS.up:
-    b.splines.append([
-      ('m', 0, last_y), ('', 3, 0), ('C', 3 + slewing, last_y),
-      ('', 3 + slewing, 0), ('', min(width, 20), 0), ('L', width, 0)])
+    b = Up(**kwargs)
   # capacitive discharge to 0
   elif symbol == BRICKS.down:
-    b.splines.append([
-      ('m', 0, last_y), ('', 3, 0), ('C', slewing, last_y),
-      ('', 3+slewing, height-last_y), ('', min(width, 20), height), ('L', width, height)])
+    b = Down(**kwargs)
   # metastability to zero
   elif symbol == BRICKS.meta:
-    last_y = height/2 if last_y is None else last_y
-    dt = abs(last_y-height/2) * slewing / height
-    time = range(int(dt), int(width*0.75+1))
-    if (int(0.75*width+1)-int(dt)) % 2 == 1:
-      time = range(int(dt), int(width*0.75+2))
-    _tmp = [('M', 0, last_y)]
-    for t in time:
-      _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-width)/width)*math.sin(8*math.pi*t/width))*0.5*height))
-    _tmp.extend([('S', width*0.75, height), ('', width, height)])
-    b.splines.append(_tmp)
+    b = Meta(**kwargs)
   # metastability to one
   elif symbol == BRICKS.Meta:
-    last_y = height/2 if last_y is None else last_y
-    dt = abs(last_y-height/2) * slewing / height
-    time = range(int(dt), int(width*0.75+1))
-    if (int(0.75*width+1)-int(dt)) % 2 == 1:
-      time = range(int(dt), int(width*0.75+2))
-    _tmp = [('M', 0, last_y)]
-    for t in time:
-      _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-width)/width)*math.cos(8*math.pi*t/width))*0.5*height))
-    _tmp.extend([('S', width*0.75, 0), ('', width, 0)])
-    b.splines.append(_tmp)
+    kwargs.update({"then_one": True})
+    b = Meta(**kwargs)
   # full custom analogue bloc
-  elif symbol in [BRICKS.step, BRICKS.cap, BRICKS.ana]:
+  elif symbol == BRICKS.step:
+    b = Step(BRICKS.transform_y(float(equation), height), **kwargs)
+  elif symbol == BRICKS.cap:
+    b = Cap(BRICKS.transform_y(float(equation), height), **kwargs)
+  elif symbol == BRICKS.ana:
     last_y = height if last_y is None else last_y
-    if symbol in [BRICKS.step, BRICKS.cap]:
-      y = BRICKS.transform_y(float(equation), height)
-      dt = abs(last_y-y) * slewing / height
-      if symbol == BRICKS.step:
-        b.paths.append([(0, last_y), (dt, y), (width, y)])
-      else:
-        b.splines.append([
-          ('M', 0, last_y), ('C', dt, y), ('', dt, y),
-          ('', width, y), ('L', width, y)])
-    else:
-      try:
-        b.paths.append([(0, last_y)] + [(p[0], BRICKS.transform_y(p[1], height)) for p in eval(equation, ANALOG_CONTEXT)])
-      except Exception as e:
-        print(getattr(e, 'message', repr(e)))
+    try:
+      b.paths.append([(0, last_y)] + [(p[0], BRICKS.transform_y(p[1], height)) for p in eval(equation, ANALOG_CONTEXT)])
+    except Exception as e:
+      print(getattr(e, 'message', repr(e)))
   else:
     raise NotImplementedError()
+  b.symbol = symbol
   # filter paths according to options
-  if ignore_transition:
-    for i, p in enumerate(b.paths):
-      x, y = p[1+s]
-      b.paths[i] = [(0, last_y)] + p[1+s:]
-    for i, p in enumerate(b.splines):
-      c, x, y = p[-1]
-      b.splines[i] = [('M', 0, last_y), (c, x, y)]
-    for i, p in enumerate(b.polygons):
-      x0, _ = p[0]
-      _, y1 = p[1]
-      _, y2 = p[-2]
-      x3, _ = p[-1]
-      b.polygons[i] = [(x0, y1)] + p[2:-2] + [(x3, y2)]
+  #if ignore_transition:
+  #  for i, p in enumerate(b.paths):
+  #    x, y = p[1+s]
+  #    b.paths[i] = [(0, last_y)] + p[1+s:]
+  #  for i, p in enumerate(b.splines):
+  #    c, x, y = p[-1]
+  #    b.splines[i] = [('M', 0, last_y), (c, x, y)]
+  #  for i, p in enumerate(b.polygons):
+  #    x0, _ = p[0]
+  #    _, y1 = p[1]
+  #    _, y2 = p[-2]
+  #    x3, _ = p[-1]
+  #    b.polygons[i] = [(x0, y1)] + p[2:-2] + [(x3, y2)]
   return b
