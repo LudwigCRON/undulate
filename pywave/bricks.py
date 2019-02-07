@@ -359,7 +359,7 @@ class Step(Brick):
 def generate_brick(symbol: str, **kwargs) -> dict:
   # get option supported
   # sizing
-  width              = kwargs.get("brick_width", 40) * kwargs.get("is_repeated" , 1)
+  width              = kwargs.get("brick_width", 40)
   height             = kwargs.get("brick_height", 20)
   last_y             = kwargs.get("last_y", None)
   equation           = kwargs.get("equation", None)

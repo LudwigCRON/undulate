@@ -181,5 +181,19 @@ class TestSvgMethods(unittest.TestCase):
     with open("./output/wavedrom_step10.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))
 
+  def test_extra_mux_recirc(self):
+    wavelanes = {
+      "F1"       : {"wave": "P...........", "node": ".........", },
+      "F2"       : {"wave": "P...", "node": ".........", "period": 3, "phase": -0.1},
+      "BUS"      : {"wave": "x.=.......x.", "data": "COFFEE"},
+      "ENABLE"   : {"wave": "0111........", "node": ".a......."},
+      "ENABLE_1" : {"wave": "0..1........", "node": "...b.....", "phase": -0.3},
+      "ENABLE_2" : {"wave": "0.....1.....", "node": "......c..", "phase": -0.3},
+      "BUS_2"    : {"wave": "0..=", "data": "COFFEE", "period": 3, "phase": -0.3},
+      "edge": []
+    }
+    with open("./output/recirc_bus.svg", "w+") as fp:
+      fp.write(svg.draw(wavelanes))
+
 if __name__ == "__main__":
   unittest.main()

@@ -252,18 +252,18 @@ class Renderer:
           symbol = BRICKS.from_str(b)
         # adjust the width of a brick depending on the phase
         if i == 0:
-          width_with_phase = brick_width*(1-phase/2)
+          width_with_phase = brick_width*(k-phase)
         elif i == len(_wavelane) - 1:
-          width_with_phase = brick_width*(1+phase)
+          width_with_phase = brick_width*(k+phase)
         else:
-          width_with_phase = brick_width
+          width_with_phase = k*brick_width
+        print(name, symbol, pos, width_with_phase)
         # update the arguments to be passed for the generation
         kwargs.update({
             "brick_width": width_with_phase,
             "ignore_transition": ignore,
             "is_first": i == 0,
             "last_y": last_y,
-            "is_repeated": k,
             "slewing": slewing,
             "equation": analogue[Nana] if Nana < len(analogue) else "0",
             "data": data[data_counter] if len(data) > data_counter else ""
@@ -275,7 +275,7 @@ class Renderer:
         wave.append((
             symbol,
             generate_brick(symbol, **kwargs),
-            (self.translate(pos-brick_width*phase if i > 0 else pos, 0) +
+            (self.translate(pos if i > 0 else pos, 0) +
             f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else ''}\"")
         ))
         if symbol == BRICKS.data:
@@ -287,9 +287,9 @@ class Renderer:
         wave.append((
             symbol,
             generate_brick(symbol, **kwargs),
-            self.translate(pos-brick_width*phase+gap_offset, 0)
+            self.translate(pos+gap_offset, 0)
         ))
-      pos += brick_width*k
+      pos += width_with_phase
       i += 1
     # generate waveform
     def _gen():
