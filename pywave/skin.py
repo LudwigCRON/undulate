@@ -14,12 +14,13 @@ text{font-size:0.9em;
 .error{fill:#f60000}
 .info{fill:#0041c4}
 .success{fill:#00ab00}
-.h1{font-size:33pt;font-weight:bold}
-.h2{font-size:27pt;font-weight:bold}
-.h3{font-size:20pt;font-weight:bold}
-.h4{font-size:14pt;font-weight:bold}
-.h5{font-size:11pt;font-weight:bold}
-.h6{font-size:8pt;font-weight:bold}
+.h1{font-size:18.31px;font-weight:bold}
+.border{stroke-width: 1.25px; stroke: #000}
+.h2{font-size:14.65px;font-weight:bold}
+.h3{font-size:11.72px;font-weight:bold}
+.h4{font-size:9.38px;font-weight:bold}
+.h5{font-size:7.50px;font-weight:bold}
+.h6{font-size:6px;font-weight:bold}
 .path{fill:none;
     stroke:#000;
     stroke-width:1;

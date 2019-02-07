@@ -51,7 +51,6 @@ def incr_edge(f):
 
 # TODO create an abstract parameter for style
 # TODO autoscale or scaling for analogue
-# TODO step (s) and cap (c) rendering of value list
 
 class Renderer:
   """
@@ -231,9 +230,9 @@ class Renderer:
         if wave:
           s, br, c = wave[last]
           last_y = br.get_last_y()
-          # adjust transition from data or x
           symbol = BRICKS.from_str(b)
           ignore = BRICKS.ignore_transition(wave[last] if wave else None, symbol)
+          # adjust transition from data or x
           if s in [BRICKS.data, BRICKS.x] and symbol in [BRICKS.zero, BRICKS.one, BRICKS.low, BRICKS.high]:
             if symbol in [BRICKS.zero, BRICKS.low]:
               br.alter_end(3, brick_height)
@@ -241,6 +240,7 @@ class Renderer:
               br.alter_end(3, 0)
             wave[last] = (s, br, c)
             ignore = True
+          # adjust clock symbols
           if symbol in [BRICKS.low, BRICKS.Low] and \
              s in [BRICKS.Pclk, BRICKS.pclk, BRICKS.Nclk, BRICKS.nclk]:
             br.alter_end(0, brick_height)
@@ -257,7 +257,6 @@ class Renderer:
           width_with_phase = brick_width*(k+phase)
         else:
           width_with_phase = k*brick_width
-        print(name, symbol, pos, width_with_phase)
         # update the arguments to be passed for the generation
         kwargs.update({
             "brick_width": width_with_phase,
@@ -412,7 +411,7 @@ class Renderer:
     )
 
   @incr_wavegroup
-  def wavegroup(self, name: str, wavelanes, extra: str = "", **kwargs):
+  def wavegroup(self, name: str, wavelanes, extra: str = "", depth: int = 1, **kwargs):
     """
     wavegroup generate a collection of waveforms
     name           : name of the wavegroup
@@ -429,7 +428,6 @@ class Renderer:
     # prepare the return group
     _default_offset_x = [len(s)+1 for s in wavelanes.keys() if not (Renderer.is_spacer(s) or s in ["edge", "adjustment"])]
     offsetx = kwargs.get("offsetx", max(_default_offset_x)*9)
-    #print(_default_offset_x, max(_default_offset_x), max(_default_offset_x)*9)
     offsety = 0
     def _gen(offset):
       # options
@@ -440,7 +438,13 @@ class Renderer:
       no_ticks     = kwargs.get("no_ticks", False)
       offsetx, offsety = offset[0], offset[1]
       # return value
-      ans = ""
+      if depth > 1:
+        ans = self.text(0, offsety+10, name, f"class=\"h{depth}\"")
+        if depth == 2:
+          ans += self.path([(0, offsety+14), (width+offsetx, offsety+14)], "class=\"border\"")
+        offsety += 20
+      else:
+        ans = ""
       for _, wavetitle in enumerate(wavelanes.keys()):
         # signal
         if "wave" in wavelanes[wavetitle]:
@@ -466,6 +470,7 @@ class Renderer:
             wavetitle,
             wavelanes[wavetitle],
             self.translate(0, offsety),
+            depth+1,
             **args
           )
           ans += tmp
@@ -489,7 +494,7 @@ class Renderer:
       raise "Unkown wavelane type or option"
     return (0, "")
 
-  def size(self, wavelanes, brick_width: int = 20, brick_height: int = 28):
+  def size(self, wavelanes, brick_width: int = 20, brick_height: int = 28, depth: int = 1):
     """
     svg_size pre-estimate the size of the image
     wavelanes : data to be parse
@@ -512,7 +517,8 @@ class Renderer:
         elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
           y += brick_height * 1.5
         elif isinstance(wavelanes[wavetitle], dict):
-          lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height)
+          y += 20
+          lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
           x.append(_x)
           y += _y
           keys.append(lkeys)
