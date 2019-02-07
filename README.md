@@ -7,21 +7,20 @@
 
 [WaveJSON](https://github.com/drom/wavedrom/wiki/WaveJSON) is an application of the [JSON](http://json.org/) format. The purpose of [WaveJSON](https://github.com/drom/wavedrom/wiki/WaveJSON) is to provide a compact exchange format for digital timing diagrams utilized by digital HW / IC engineers.
 
-The engine is using [WaveDromSkin](unpacked/README.md) skin mechanism to render a complete picture.
+However, this great tool need either a headless web browser or node to generate documentations. Python being mainstream and cross-platform why not leverage its power?
+
+This version is not a mere copy of the original one. The goals are to ensure the compatibility and to add new features. To name a few:
+- long name for nodes for creating edges
+- metastability wave
+- analogue waveforms (step, capacitive step, slewing, arbitrary waves)
+
+The inputs could be either json, cson, or yaml while outputs would be avg, postscript, and libreoffice draw.
 
 ## Screenshot
 
 ![Alt text](http://wavedrom.com/images/screenshot.png "screenshot")
 
-## Web usage
-
-**WaveDrom** timing diagrams can be embedded into the web pages, blogs, and wikis to be rendered by the most of modern browsers:
-
-![alt text](http://wavedrom.com/images/firefox_22.gif "firefox") 4+
-![alt text](http://wavedrom.com/images/chrome_22.gif "chrome") 10+
-![alt text](http://wavedrom.com/images/safari_22.gif "safari") 5.1+
-![alt text](http://wavedrom.com/images/opera_22.gif "opera") 12+
-![alt text](http://wavedrom.com/images/ie_22.gif "ie") 11
+## Architecture
 
 ### HTML pages
 
