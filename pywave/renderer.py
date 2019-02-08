@@ -379,8 +379,8 @@ class Renderer:
               dy = kwargs.get("dy", 0)
               ans = ""
               _shape, s, e, text = edge
-              s = s[0] + 3, s[1] + brick_height * 0.5
-              e = e[0] + 3, e[1] + brick_height * 0.5
+              s = s[0] + 3 + adj.get("start_x", 0), s[1] + brick_height * 0.5 + adj.get("start_y", 0)
+              e = e[0] + 3 + adj.get("end_x", 0), e[1] + brick_height * 0.5 + adj.get("end_y", 0)
               style = "edges "
               style += "arrowtail " if _shape[-1] == '>' else ''
               style += "arrowhead " if _shape[0] == '<' else ''
@@ -395,10 +395,13 @@ class Renderer:
                 ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], f"class=\"{style}\"")
               elif _shape in ['<-|', '-|', '-|>', '<-|>']:
                 ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                mx, my = e[0], s[1]
               elif _shape in ['<|-', '|-', '|->', '<|->']:
                 ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                mx, my = s[0], e[1]
               elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
                 ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                mx, my = mx, e[1]
               ans += self.text(mx+dx, my+dy, text, "text-anchor=\"middle\"")
               return ans
             global _EDGE_COUNT

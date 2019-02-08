@@ -176,7 +176,8 @@ class TestSvgMethods(unittest.TestCase):
         "[(t, cos(4*pi*t/Tmax)*sin(16*pi*t/Tmax)*VDDA/2+VDDA/2) for t in time]"
       ]},
       "INT_S": {"wave": "ssss", "repeat": 4, "slewing": 12, "analogue": [0.4*(i%4)+0.1 for i in range(16)]},
-      "INT_C": {"wave": "cccc", "repeat": 4, "slewing": 12, "analogue": [0.4*(3-i%4)+0.1 for i in range(16)]}
+      "INT_C": {"wave": "cccc", "repeat": 4, "slewing": 12, "analogue": [0.4*(3-i%4)+0.1 for i in range(16)]},
+      "trigger": {"wave": "0i1I0I1iI"}
     }
     with open("./output/wavedrom_step10.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))

@@ -53,6 +53,8 @@ class BRICKS(Enum):
   ana   = 'a'
   step  = 's'
   cap   = 'c'
+  imp   = 'i'
+  Imp   = 'I'
 
   @staticmethod
   def transform_y(y: float, height: float = 20):
@@ -356,6 +358,16 @@ class Step(Brick):
     # add shape
     self.paths.append([(0, self.last_y), (dt, y), (self.width, y)])
 
+class Impulse(Brick):
+  def __init__(self, y, **kwargs):
+    Brick.__init__(self, **kwargs)
+    if self.is_first:
+      self.last_y = self.height
+    else:
+      self.last_y = self.height if self.last_y is None else self.last_y
+    # add shape
+    self.paths.append([(0, self.height-y), (0, y), (0, self.height-y), (self.width, self.height-y)])
+
 def generate_brick(symbol: str, **kwargs) -> dict:
   # get option supported
   # sizing
@@ -417,6 +429,11 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   elif symbol == BRICKS.Meta:
     kwargs.update({"then_one": True})
     b = Meta(**kwargs)
+  # impulse symbol
+  elif symbol == BRICKS.imp:
+    b = Impulse(height, **kwargs)
+  elif symbol == BRICKS.Imp:
+    b = Impulse(0, **kwargs)
   # full custom analogue bloc
   elif symbol == BRICKS.step:
     b = Step(BRICKS.transform_y(float(equation), height), **kwargs)
@@ -431,18 +448,4 @@ def generate_brick(symbol: str, **kwargs) -> dict:
   else:
     raise NotImplementedError()
   b.symbol = symbol
-  # filter paths according to options
-  #if ignore_transition:
-  #  for i, p in enumerate(b.paths):
-  #    x, y = p[1+s]
-  #    b.paths[i] = [(0, last_y)] + p[1+s:]
-  #  for i, p in enumerate(b.splines):
-  #    c, x, y = p[-1]
-  #    b.splines[i] = [('M', 0, last_y), (c, x, y)]
-  #  for i, p in enumerate(b.polygons):
-  #    x0, _ = p[0]
-  #    _, y1 = p[1]
-  #    _, y2 = p[-2]
-  #    x3, _ = p[-1]
-  #    b.polygons[i] = [(x0, y1)] + p[2:-2] + [(x3, y2)]
   return b

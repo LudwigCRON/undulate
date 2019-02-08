@@ -55,7 +55,7 @@ DEFINITION = """
         <line x1="0" y1="0" x2="0" y2="5" style="stroke:black; stroke-width:1" />
     </pattern>
     <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5"
-        markerWidth="8" markerHeight="8"
+        markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse"
         orient="auto-start-reverse" style="fill:#00F;">
       <path d="M 0 0 L 10 5 L 0 10 z" />
     </marker>
