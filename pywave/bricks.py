@@ -341,7 +341,7 @@ class Cap(Brick):
       self.last_y = self.height
     else:
       self.last_y = self.height if self.last_y is None else self.last_y
-    dt = abs(self.height - self.last_y) * self.slewing / self.height
+    dt = abs(y - self.last_y) * self.slewing / self.height
     # add shape
     self.splines.append([
           ('M', 0, self.last_y), ('C', dt, y), ('', dt, y),
@@ -354,7 +354,7 @@ class Step(Brick):
       self.last_y = self.height
     else:
       self.last_y = self.height if self.last_y is None else self.last_y
-    dt = abs(self.height - self.last_y) * self.slewing / self.height
+    dt = abs(y - self.last_y) * self.slewing / self.height
     # add shape
     self.paths.append([(0, self.last_y), (dt, y), (self.width, y)])
 

@@ -177,7 +177,8 @@ class TestSvgMethods(unittest.TestCase):
       ]},
       "INT_S": {"wave": "ssss", "repeat": 4, "slewing": 12, "analogue": [0.4*(i%4)+0.1 for i in range(16)]},
       "INT_C": {"wave": "cccc", "repeat": 4, "slewing": 12, "analogue": [0.4*(3-i%4)+0.1 for i in range(16)]},
-      "trigger": {"wave": "0i1I0I1iI"}
+      "trigger": {"wave": "0i1I0I1iI"},
+      "pwm": {"wave": "p........", "duty_cycles":[i/10 for i in range(10)]}
     }
     with open("./output/wavedrom_step10.svg", "w+") as fp:
       fp.write(svg.draw(wavelanes))

@@ -204,6 +204,7 @@ class Renderer:
                   A list of string is expected
     [slewing]    : current limitation which limit the transition speed of a signal
                   default is 3
+    [duty_cycles]: A list of duty_cycle for each bricks
     """
     # options
     period       = kwargs.get("period", 1)
@@ -213,6 +214,7 @@ class Renderer:
     brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
     gap_offset   = kwargs.get("gap_offset", brick_width*0.75)
     slewing      = kwargs.get("slewing", 3)
+    duty_cycles  = kwargs.get("duty_cycles", [])
     analogue     = kwargs.get("analogue", [])
     # in case a string is given reformat it as a list
     if isinstance(data, str):
@@ -264,6 +266,7 @@ class Renderer:
             "is_first": i == 0,
             "last_y": last_y,
             "slewing": slewing,
+            "duty_cycle": max(duty_cycles[i], slewing*2/brick_width) if i < len(duty_cycles) else 0.5,
             "equation": analogue[Nana] if Nana < len(analogue) else "0",
             "data": data[data_counter] if len(data) > data_counter else ""
         })
