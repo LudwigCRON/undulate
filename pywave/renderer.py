@@ -210,7 +210,7 @@ class Renderer:
     phase        = kwargs.get("phase", 0)
     data         = kwargs.get("data", "")
     brick_width  = period * kwargs.get("brick_width", 20)
-    brick_height = kwargs.get("brick_height", 20)
+    brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
     gap_offset   = kwargs.get("gap_offset", brick_width*0.75)
     slewing      = kwargs.get("slewing", 3)
     analogue     = kwargs.get("analogue", [])
