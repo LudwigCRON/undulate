@@ -17,15 +17,19 @@ This version is not a mere copy of the original one. The goals are to ensure the
 The inputs could be either json, cson, or yaml while outputs would be avg, postscript, and libreoffice draw.
 
 ## Screenshot
-
+pywave is compatible with pydrom...
 ![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master//test/output/wavedrom_step4.svg "screenshot")
 
+...with a slight variation on the group representation...
 ![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master//test/output/wavedrom_step5.svg "screenshot")
 
+...aligning signal start and end when phase is used...
 ![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master//test/output/wavedrom_step6.svg "screenshot")
 
+...can adjust the text position of edges...
 ![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master//test/output/wavedrom_step7.svg "screenshot")
 
+...and represents analogue signals, impulses, and more...
 ![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master/test/output/wavedrom_step10.svg "screenshot")
 
 ## Architecture
