@@ -39,88 +39,48 @@ pywave is compatible with pydrom...
 
 ## Architecture
 
-### HTML pages
+### File Formats
+**[WaveJSON](https://github.com/drom/wavedrom/wiki/WaveJSON)**
 
-There are three steps to insert **WaveDrom** diagrams directly into your page:
-
-1) Put the following line into your HTML page ```<header>``` or ```<body>```:
-
-```html
-<script src="http://wavedrom.com/skins/default.js" type="text/javascript"></script>
-<script src="http://wavedrom.com/wavedrom.min.js" type="text/javascript"></script>
-```
-or from a CDN:
-
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wavedrom/1.6.2/skins/default.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wavedrom/1.6.2/wavedrom.min.js" type="text/javascript"></script>
-```
-
-2) Set the ``onload`` event for the HTML body.
-
-```html
-<body onload="WaveDrom.ProcessAll()">
-```
-
-3) Insert [WaveJSON](https://github.com/drom/wavedrom/wiki/WaveJSON) source inside HTML ``<body>`` wrapped with the ``<script>`` tag:
-
-```html
-<script type="WaveDrom">
+json-ml
+```json
 { signal : [
   { name: "clk",  wave: "p......" },
   { name: "bus",  wave: "x.34.5x",   data: "head body tail" },
   { name: "wire", wave: "0.1..0." },
 ]}
-</script>
+```
+json
+```json
+{ "signal": [
+  { "name": "clk",  "wave"":" "p......" },
+  { "name": "bus",  "wave"":" "x.34.5x",   "data"":" "head body tail" },
+  { "name": "wire", "wave"":" "0.1..0." },
+]}
+```
+and then notice the "signal" vanishes
+yaml
+```yaml
+clk:
+  wave: p......
+bus:
+  wave: x.34.5x
+  data: head body tail
+wire:
+  wave: 0.1..0.
+````
+
+toml
+```toml
+clk.wave : p......
+bus.wave : x.34.5x
+wire.wave: 0.1..0.
+
+bus.data: head body tail
 ```
 
-The script will find all ``<script type="WaveDrom">`` instances and insert a timing diagram at that point.
-
-
- * [jsbin](http://jsbin.com/uderuw/17)
- * [jsfiddle](http://jsfiddle.net/H7nBn/25)
-
-
-### impress.js
-
-(http://wavedrom.com/impress.html)
-
-
-### Blogs & Wikis
-
-Blogger integration: (http://wavedrom.blogspot.com/2011/08/wavedrom-digital-timing-diagram-in-your.html)
-
-MediaWiki integration: (https://github.com/Martoni/mediawiki_wavedrom)
-
-## Editor
-
-[WaveDromEditor](http://wavedrom.com/editor.html)
-is an online real-time editor of digital timing diagrams based on the **WaveDrom** engine and **WaveJSON** format.
-
 ## Standalone WaveDromEditor
-
-### Windows
-1. Download latest `wavedrom-editor-v1.5.0-win-{ia32|ia64}.zip` release from here: [releases](https://github.com/wavedrom/wavedrom.github.io/releases)
-2. Unzip it into a working directory.
-3. Run the editor: `wavedrom-editor.exe`
-
-### Linux
-1. Download the latest `wavedrom-editor-v1.6.2-linux-{ia32|x64}.tar.gz` release from here: [releases](https://github.com/wavedrom/wavedrom.github.io/releases)
-2. unzip-untar the package: `tar -xvzf wavedrom-editor-v1.6.2-linux-x64.tar.gz`
-3. Run the editor: `./WaveDromEditor/linux64/wavedrom-editor`
-
-## OS X
-1. Download the latest `wavedrom-editor-v1.6.2-osx-x64.zip` release:
-2. Unzip
-3. Run
-
-## Community
-
-Please use the [WaveDrom user group](http://groups.google.com/group/wavedrom) for discussions, questions, ideas, or whatever.
-
-## Contributing
-
-[Contributing](./.github/CONTRIBUTING.md)
+Not yet
 
 ## License
 
