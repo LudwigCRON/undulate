@@ -18,15 +18,15 @@ The inputs could be either json, cson, or yaml while outputs would be avg, posts
 
 ## Screenshot
 
-![Alt text](./test/output/wavedrom_step4.svg "screenshot")
+![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master//test/output/wavedrom_step4.svg "screenshot")
 
-![Alt text](./test/output/wavedrom_step5.svg "screenshot")
+![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master//test/output/wavedrom_step5.svg "screenshot")
 
-![Alt text](./test/output/wavedrom_step6.svg "screenshot")
+![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master//test/output/wavedrom_step6.svg "screenshot")
 
-![Alt text](./test/output/wavedrom_step7.svg "screenshot")
+![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master//test/output/wavedrom_step7.svg "screenshot")
 
-![Alt text](./test/output/wavedrom_step10.svg "screenshot")
+![Alt text](https://raw.githubusercontent.com/LudwigCRON/pywave/master/test/output/wavedrom_step10.svg "screenshot")
 
 ## Architecture
 
