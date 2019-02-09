@@ -155,14 +155,14 @@ class Renderer:
     ans += "</g>"
     return ans
 
-  def wavelane_title(self, name: str, extra: str = ""):
+  def wavelane_title(self, name: str, extra: str = "", vscale: float = 1):
     """
     wavelane_title generate the title in front of a waveform
     name: name of the waveform print alongside
     """
     if "spacer" in name or not name.strip():
       return ""
-    return self.text(-10, 15, name, self._WAVE_TITLE)
+    return self.text(-10, 15 * vscale, name, self._WAVE_TITLE)
 
   def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
     repeat       = kwargs.get("repeat", 1)
@@ -205,9 +205,11 @@ class Renderer:
     [slewing]    : current limitation which limit the transition speed of a signal
                   default is 3
     [duty_cycles]: A list of duty_cycle for each bricks
+    [periods]    : A list of period for each bricks
     """
     # options
     period       = kwargs.get("period", 1)
+    periods      = kwargs.get("periods", [])
     phase        = kwargs.get("phase", 0)
     data         = kwargs.get("data", "")
     brick_width  = period * kwargs.get("brick_width", 20)
@@ -252,16 +254,18 @@ class Renderer:
         else:
           last_y = brick_height
           symbol = BRICKS.from_str(b)
-        # adjust the width of a brick depending on the phase
+        # adjust the width of a brick depending on the phase and periods
+        p = max(periods[i], slewing*2/brick_width) if i < len(periods) else 1
         if i == 0:
-          width_with_phase = brick_width*(k-phase)
+          width_with_phase = p*brick_width*(k-phase)
         elif i == len(_wavelane) - 1:
-          width_with_phase = brick_width*(k+phase)
+          width_with_phase = p*brick_width*(k+phase)
         else:
-          width_with_phase = k*brick_width
+          width_with_phase = p*k*brick_width
         # update the arguments to be passed for the generation
         kwargs.update({
             "brick_width": width_with_phase,
+            "brick_height": brick_height,
             "ignore_transition": ignore,
             "is_first": i == 0,
             "last_y": last_y,
@@ -295,7 +299,7 @@ class Renderer:
       i += 1
     # generate waveform
     def _gen():
-      ans = self.wavelane_title(name) if name else ""
+      ans = self.wavelane_title(name, vscale=kwargs.get("vscale", 1)) if name else ""
       for w in wave:
         symb, b, e = w
         ans += self.brick(symb, b, extra=e)
@@ -361,7 +365,7 @@ class Renderer:
               [ (s[0] * width - phase + slewing * 0.5, _y, chain[1+next(j)]) if not s[1].isalpha()
                 else (s[0] * width - phase + slewing * 0.5, _y, s[1]) for s in list(zip(i, n[::]))]
             )
-          _y += brick_height * 1.5
+          _y += brick_height * 1.5 * wavelane.get("vscale", 1)
         # list edgeds to perform
         elif name == "edge":
           # parse edges declaration
@@ -464,7 +468,7 @@ class Renderer:
             self.translate(offsetx, offsety),
             **args
           )
-          offsety += brick_height * 1.5
+          offsety += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
         # spacer
         elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
           offsety += brick_height * 1.5
@@ -512,13 +516,15 @@ class Renderer:
       x, y, keys = [], 0, []
       for _, wavetitle in enumerate(wavelanes.keys()):
         if "wave" in wavelanes[wavetitle]:
-          _l = len(wavelanes[wavetitle]["wave"]) * brick_width
-          if "repeat" in wavelanes[wavetitle]:
-            _l *= wavelanes[wavetitle]["repeat"]
-          if "period" in wavelanes[wavetitle]:
-            _l *= wavelanes[wavetitle]["period"]
+          if not "periods" in wavelanes[wavetitle]:
+            _l = len(wavelanes[wavetitle]["wave"])
+          else:
+            _l = sum(wavelanes[wavetitle]["periods"])
+          _l *= brick_width
+          _l *= wavelanes[wavetitle].get("repeat", 1)
+          _l *= wavelanes[wavetitle].get("period", 1)
           x.append(_l)
-          y += brick_height * 1.5
+          y += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
           keys.append(len(wavetitle))
         elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
           y += brick_height * 1.5
