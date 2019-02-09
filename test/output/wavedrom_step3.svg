@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="324" height="90.0" viewBox="-1 -1 326 92.0" overflow="hidden">
+<style>
+text{font-size:0.9em;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:500;
+    font-stretch:normal;
+    text-align:center;
+    fill-opacity:1;
+    font-family:fira mono, droid sans mono, monospace;}
+.muted{fill:#aaa}
+.warning{fill:#f6b900}
+.error{fill:#f60000}
+.info{fill:#0041c4}
+.success{fill:#00ab00}
+.h1{font-size:18.31px;font-weight:bold}
+.border{stroke-width: 1.25px; stroke: #000}
+.h2{font-size:14.65px;font-weight:bold}
+.h3{font-size:11.72px;font-weight:bold}
+.h4{font-size:9.38px;font-weight:bold}
+.h5{font-size:7.50px;font-weight:bold}
+.h6{font-size:6px;font-weight:bold}
+.path{fill:none;
+    stroke:#000;
+    stroke-width:1;
+    stroke-linecap:round;
+    stroke-linejoin:miter;
+    stroke-miterlimit:4;
+    stroke-opacity:1;
+    stroke-dasharray:none}
+.stripe{fill:none;
+    stroke:#000;
+    stroke-width:0.5;
+    stroke-linecap:round;
+    stroke-linejoin:miter;
+    stroke-miterlimit:4;
+    stroke-opacity:1;
+    stroke-dasharray:none}
+.arrow{fill:#000000;fill-opacity:1;stroke:none}
+.hide{fill:#ffffff;fill-opacity:1;stroke:2}
+.s3 > polygon {fill:#ffffb4;fill-opacity:1,stroke:none}
+.s4 > polygon {fill:#ffe0b9;fill-opacity:1,stroke:none}
+.s5 > polygon {fill:#b9e0ff;fill-opacity:1,stroke:none}
+.ticks {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
+.edges {fill:none;stroke:#00F;stroke-width:1}
+.edges.arrowhead {marker-start:url(#arrow); overflow:visible;}
+.edges.arrowtail {marker-end:url(#arrow); overflow:visible;}
+.edges + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
+</style>
+
+<defs>
+    <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="5" style="stroke:black; stroke-width:1" />
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5"
+        markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse"
+        orient="auto-start-reverse" style="fill:#00F;">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <filter x="0" y="0" width="1" height="1" id="solid">
+      <feFlood flood-color="white"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+</defs>
+<g id="a"  >
+<g id="ticks_6" transform="translate(45, 0)" >
+<path d="m0,0 0,90.0" class="ticks" />
+<path d="m40,0 0,90.0" class="ticks" />
+<path d="m80,0 0,90.0" class="ticks" />
+<path d="m120,0 0,90.0" class="ticks" />
+<path d="m160,0 0,90.0" class="ticks" />
+<path d="m200,0 0,90.0" class="ticks" />
+<path d="m240,0 0,90.0" class="ticks" />
+</g>
+
+<g id="clk"  transform="translate(45, 0)"  >
+<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >clk</text>
+<g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)" class="s">
+<path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
+<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.0, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
+</g><g data-symbol="BRICKS.Pclk"  transform="translate(40, 0)" class="s">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
+<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
+</g><g data-symbol="BRICKS.Pclk"  transform="translate(80, 0)" class="s">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
+<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
+</g><g data-symbol="BRICKS.Pclk"  transform="translate(120, 0)" class="s">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
+<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
+</g><g data-symbol="BRICKS.Pclk"  transform="translate(160, 0)" class="s">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
+<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
+</g><g data-symbol="BRICKS.Pclk"  transform="translate(200, 0)" class="s">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
+<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
+</g><g data-symbol="BRICKS.Pclk"  transform="translate(240, 0)" class="s">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
+<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
+</g></g>
+<g id="bus"  transform="translate(45, 30.0)"  >
+<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >bus</text>
+<g data-symbol="BRICKS.x"  transform="translate(0, 0)" class="s">
+<polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " fill="url(#diagonalHatch)" />
+<path d="M0,0 L3,0 L77,0 L80,10.0" class="path" />
+<path d="M0,20 L3,20 L77,20 L80,10.0" class="path" />
+</g><g data-symbol="BRICKS.data"  transform="translate(80, 0)" class="s">
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
+<path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
+<path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
+<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >head</text>
+</g><g data-symbol="BRICKS.data"  transform="translate(120, 0)" class="s">
+<polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " fill="none" />
+<path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" />
+<path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" />
+<text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >body</text>
+</g><g data-symbol="BRICKS.data"  transform="translate(200, 0)" class="s">
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
+<path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
+<path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
+<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >tail</text>
+</g><g data-symbol="BRICKS.x"  transform="translate(240, 0)" class="s">
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
+<path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
+<path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
+</g></g>
+<g id="wire"  transform="translate(45, 60.0)"  >
+<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >wire</text>
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s">
+<path d="M0,20 L3,20 L6,20 L80,20" class="path" />
+</g><g data-symbol="BRICKS.one"  transform="translate(80, 0)" class="s">
+<path d="M0,20 L3,20 L6,0 L120,0" class="path" />
+</g><g data-symbol="BRICKS.zero"  transform="translate(200, 0)" class="s">
+<path d="M0,0 L3,0 L6,20 L80,20" class="path" />
+</g></g>
+</g>
+<g id="edges"  transform="translate(45, 0)"  >
+</g>
+
+</svg>
