@@ -255,13 +255,13 @@ class Renderer:
           last_y = brick_height
           symbol = BRICKS.from_str(b)
         # adjust the width of a brick depending on the phase and periods
-        p = max(periods[i], slewing*2/brick_width) if i < len(periods) else 1
+        pmul = max(periods[i], slewing*2/brick_width) if i < len(periods) else 1
         if i == 0:
-          width_with_phase = p*brick_width*(k-phase)
+          width_with_phase = pmul*brick_width*(k-phase)
         elif i == len(_wavelane) - 1:
-          width_with_phase = p*brick_width*(k+phase)
+          width_with_phase = pmul*brick_width*(k+phase)
         else:
-          width_with_phase = p*k*brick_width
+          width_with_phase = pmul*k*brick_width
         # update the arguments to be passed for the generation
         kwargs.update({
             "brick_width": width_with_phase,
@@ -281,11 +281,12 @@ class Renderer:
         wave.append((
             symbol,
             generate_brick(symbol, **kwargs),
-            (self.translate(pos if i > 0 else pos, 0) +
+            (self.translate(pos, 0) +
             f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else ''}\"")
         ))
         if symbol == BRICKS.data:
           data_counter += 1
+        pos += width_with_phase
       else:
         # create the gap
         symbol = BRICKS.gap
@@ -295,13 +296,14 @@ class Renderer:
             generate_brick(symbol, **kwargs),
             self.translate(pos+gap_offset, 0)
         ))
-      pos += width_with_phase
+        pos += brick_width
       i += 1
     # generate waveform
     def _gen():
       ans = self.wavelane_title(name, vscale=kwargs.get("vscale", 1)) if name else ""
       for w in wave:
         symb, b, e = w
+        print(name, symb, e)
         ans += self.brick(symb, b, extra=e)
       return ans
     return self.group(
