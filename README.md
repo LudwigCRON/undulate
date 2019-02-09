@@ -72,11 +72,11 @@ wire:
 
 toml
 ```toml
-clk.wave : p......
-bus.wave : x.34.5x
-wire.wave: 0.1..0.
+clk.wave = p......
+bus.wave = x.34.5x
+wire.wave= 0.1..0.
 
-bus.data: head body tail
+bus.data= head body tail
 ```
 
 ## Standalone WaveDromEditor
