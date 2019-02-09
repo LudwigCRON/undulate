@@ -19,23 +19,23 @@ The inputs could be either json, cson, or yaml while outputs would be avg, posts
 ## Screenshot
 pywave is compatible with pydrom...
 
-![Alt text](/test/output/wavedrom_step4.svg?raw=true "screenshot")
+![Alt text](/test/output/wavedrom_step4.svg?sanitize=true "screenshot")
 
 ...with a slight variation on the group representation...
 
-![Alt text](/test/output/wavedrom_step5.svg?raw=true "screenshot")
+![Alt text](/test/output/wavedrom_step5.svg?sanitize=true "screenshot")
 
 ...aligning signal start and end when phase is used...
 
-![Alt text](/test/output/wavedrom_step6.svg?raw=true "screenshot")
+![Alt text](/test/output/wavedrom_step6.svg?sanitize=true "screenshot")
 
 ...can adjust the text position of edges...
 
-![Alt text](/test/output/wavedrom_step7.svg?raw=true "screenshot")
+![Alt text](/test/output/wavedrom_step7.svg?sanitize=true "screenshot")
 
 ...and represents analogue signals, impulses, and more...
 
-![Alt text](/test/output/wavedrom_step10.svg?raw=true "screenshot")
+![Alt text](/test/output/wavedrom_step10.svg?sanitize=true "screenshot")
 
 ## Architecture
 
