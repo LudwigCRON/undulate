@@ -487,7 +487,7 @@ class Renderer:
           # spacer
           elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
             offsety += brick_height * 1.5
-          elif not wavetitle in ["head", "foot"]:
+          elif not wavetitle in ["head", "foot", "config"]:
             args = kwargs
             args.update({"offsetx": offsetx, "offsety": offsety, "no_ticks": True})
             j, tmp = self.wavegroup(
@@ -563,7 +563,7 @@ class Renderer:
             keys.append(len(wavetitle))
           elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
             y += brick_height * 1.5
-          elif not wavetitle in ["head", "foot"]:
+          elif not wavetitle in ["head", "foot", "config"]:
             y += 20
             lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
             x.append(_x)
