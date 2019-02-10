@@ -21,7 +21,7 @@ text{font-size:0.9em;
 .h4{font-size:9.38px;font-weight:bold}
 .h5{font-size:7.50px;font-weight:bold}
 .h6{font-size:6px;font-weight:bold}
-.path{fill:none;
+.s0, .s1, .path{fill:none;
     stroke:#000;
     stroke-width:1;
     stroke-linecap:round;

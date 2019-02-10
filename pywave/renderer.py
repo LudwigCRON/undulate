@@ -7,9 +7,9 @@ into different format
 """
 
 import re
-import skin
+from .skin import DEFAULT, DEFINITION
 from itertools import count
-from bricks import BRICKS, Brick, generate_brick
+from .bricks import BRICKS, Brick, generate_brick
 
 # Counter for unique id generation
 # counter of group of wave
@@ -189,6 +189,14 @@ class Renderer:
         previous_brick = b
     return _wavelane
 
+  def _get_or_eval(self, name: str, default, **kwargs):
+    """
+    if is a str, evaluate the code or get it in a standard way
+    """
+    if isinstance(kwargs.get(name), str):
+      return eval(kwargs.get(name, ""))
+    return kwargs.get(name, default)
+
   @incr_wavelane
   def wavelane(self, name: str, wavelane: str, extra: str = "", **kwargs):
     """
@@ -209,15 +217,15 @@ class Renderer:
     """
     # options
     period       = kwargs.get("period", 1)
-    periods      = kwargs.get("periods", [])
     phase        = kwargs.get("phase", 0)
     data         = kwargs.get("data", "")
     brick_width  = period * kwargs.get("brick_width", 20)
     brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
     gap_offset   = kwargs.get("gap_offset", brick_width*0.75)
     slewing      = kwargs.get("slewing", 3)
-    duty_cycles  = kwargs.get("duty_cycles", [])
-    analogue     = kwargs.get("analogue", [])
+    analogue     = self._get_or_eval("analogue", [], **kwargs)
+    duty_cycles  = self._get_or_eval("duty_cycles", [], **kwargs)
+    periods      = self._get_or_eval("periods", [], **kwargs)
     # in case a string is given reformat it as a list
     if isinstance(data, str):
       data = data.strip().split()
@@ -282,7 +290,7 @@ class Renderer:
             symbol,
             generate_brick(symbol, **kwargs),
             (self.translate(pos, 0) +
-            f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else ''}\"")
+            f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else '2'}\"")
         ))
         if symbol == BRICKS.data:
           data_counter += 1
@@ -303,7 +311,6 @@ class Renderer:
       ans = self.wavelane_title(name, vscale=kwargs.get("vscale", 1)) if name else ""
       for w in wave:
         symb, b, e = w
-        print(name, symb, e)
         ans += self.brick(symb, b, extra=e)
       return ans
     return self.group(
@@ -521,7 +528,8 @@ class Renderer:
           if not "periods" in wavelanes[wavetitle]:
             _l = len(wavelanes[wavetitle]["wave"])
           else:
-            _l = sum(wavelanes[wavetitle]["periods"])
+            periods = self._get_or_eval("periods", [], **wavelanes[wavetitle])
+            _l = sum(periods)
           _l *= brick_width
           _l *= wavelanes[wavetitle].get("repeat", 1)
           _l *= wavelanes[wavetitle].get("period", 1)
@@ -633,8 +641,8 @@ class SvgRenderer(Renderer):
     return (
       f"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width+lkeys*11}\" height=\"{height}\" "
       f"viewBox=\"-1 -1 {width+lkeys*11+2} {height+2}\" overflow=\"hidden\">\n"
-      f"<style>{skin.DEFAULT}</style>\n"
-      f"{skin.DEFINITION}"
+      f"<style>{DEFAULT}</style>\n"
+      f"{DEFINITION}"
       ""+self.wavegroup(_id, wavelanes, brick_width=brick_width, brick_height=brick_height, width=width, height=height)[1]+""
       "\n</svg>"
     )

@@ -1,3 +1,5 @@
 .vscode
+.DS_Store
+.antlr
 __pycache__
 
