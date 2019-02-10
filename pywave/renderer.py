@@ -272,7 +272,6 @@ class Renderer:
           width_with_phase = pmul*k*brick_width
         if pos <= 0:
           is_first = 0
-        print(is_first, name, b, data[data_counter])
         # update the arguments to be passed for the generation
         kwargs.update({
             "brick_width": width_with_phase + pos if pos < 0 else width_with_phase,
@@ -488,23 +487,37 @@ class Renderer:
           # spacer
           elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
             offsety += brick_height * 1.5
+          elif not wavetitle in ["head", "foot"]:
+            args = kwargs
+            args.update({"offsetx": offsetx, "offsety": offsety, "no_ticks": True})
+            j, tmp = self.wavegroup(
+              wavetitle,
+              wavelanes[wavetitle],
+              self.translate(0, offsety),
+              depth+1,
+              **args
+            )
+            ans += tmp
+            offsety += j
           # group of signals
-          elif isinstance(wavelanes[wavetitle], list):
-            if isinstance(wavelanes[wavetitle][0], dict):
-              args = kwargs
-              args.update({"offsetx": offsetx, "offsety": offsety, "no_ticks": True})
-              j, tmp = self.wavegroup(
-                wavetitle,
-                wavelanes[wavetitle],
-                self.translate(0, offsety),
-                depth+1,
-                **args
-              )
-              ans += tmp
-              offsety += j
+        elif isinstance(wavelanes[wavetitle], list):
+          if len(wavelanes[wavetitle]) > 0 and \
+             isinstance(wavelanes[wavetitle][0], dict) and \
+             "wave" in wavelanes[wavetitle][0]:
+            args = kwargs
+            args.update({"offsetx": offsetx, "offsety": offsety, "no_ticks": True})
+            j, tmp = self.wavegroup(
+              wavetitle,
+              wavelanes[wavetitle],
+              self.translate(0, offsety),
+              depth+1,
+              **args
+            )
+            ans += tmp
+            offsety += j
           # extra config
-          else:
-            pass
+        else:
+          pass
       # add ticks only for the principale group
       if not no_ticks:
         ans = self.ticks(width, height, brick_width, offsetx=offsetx) + "\n" + ans
@@ -535,7 +548,6 @@ class Renderer:
     if isinstance(wavelanes, dict):
       x, y, keys = [0], 0, [0]
       for wavetitle in wavelanes.keys():
-        print(wavetitle)
         if isinstance(wavelanes[wavetitle], dict):
           if "wave" in wavelanes[wavetitle]:
             if not "periods" in wavelanes[wavetitle]:
@@ -551,13 +563,21 @@ class Renderer:
             keys.append(len(wavetitle))
           elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
             y += brick_height * 1.5
-          elif isinstance(wavelanes[wavetitle], list):
-            if isinstance(wavelanes[wavetitle][0], dict):
-              y += 20
-              lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
-              x.append(_x)
-              y += _y
-              keys.append(lkeys)
+          elif not wavetitle in ["head", "foot"]:
+            y += 20
+            lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
+            x.append(_x)
+            y += _y
+            keys.append(lkeys)
+        elif isinstance(wavelanes[wavetitle], list):
+          if len(wavelanes[wavetitle]) > 0 and \
+             isinstance(wavelanes[wavetitle][0], dict) and \
+             "wave" in wavelanes[wavetitle][0]:
+            y += 20
+            lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
+            x.append(_x)
+            y += _y
+            keys.append(lkeys)
       return (max(keys), max(x), y)
 
   def draw(self, wavelanes, **kwargs) -> str:

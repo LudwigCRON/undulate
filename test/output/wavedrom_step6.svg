@@ -63,7 +63,7 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_13" transform="translate(45, 0)" >
+<g id="ticks_12" transform="translate(45, 0)" >
 <path d="m0,0 0,150.0" class="ticks" />
 <path d="m40,0 0,150.0" class="ticks" />
 <path d="m80,0 0,150.0" class="ticks" />

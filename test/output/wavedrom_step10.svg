@@ -63,7 +63,7 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_4" transform="translate(135, 0)" >
+<g id="ticks_3" transform="translate(135, 0)" >
 <path d="m0,0 0,270.0" class="ticks" />
 <path d="m40,0 0,270.0" class="ticks" />
 <path d="m80,0 0,270.0" class="ticks" />
@@ -233,7 +233,7 @@ text{font-size:0.9em;
 </g><g data-symbol="BRICKS.imp"  transform="translate(280, 0)" class="s2">
 <path d="M0,0 L0,20 L0,0 L40,0" class="path" />
 </g><g data-symbol="BRICKS.Imp"  transform="translate(320, 0)" class="s2">
-<path d="M0,20 L0,0 L0,20 L40,20" class="path" />
+<path d="M0,20 L0,0 L0,20 L320,20" class="path" />
 </g></g>
 <g id="pwm"  transform="translate(135, 210.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >pwm</text>
@@ -311,7 +311,7 @@ text{font-size:0.9em;
 </g><g data-symbol="BRICKS.pclk"  transform="translate(462.0, 0)" class="s2">
 <path d="M0,10.0 L1.5,0 L33.5,0 L36.5,20 L68.5,20 L70.0,10.0" class="path" />
 </g><g data-symbol="BRICKS.pclk"  transform="translate(532.0, 0)" class="s2">
-<path d="M0,10.0 L1.5,0 L36.0,0 L39.0,20 L73.5,20 L75.0,10.0" class="path" />
+<path d="M0,10.0 L1.5,0 L52.5,0 L55.5,20 L106.5,20 L108.0,10.0" class="path" />
 </g></g>
 </g>
 <g id="edges"  transform="translate(135, 0)"  >
