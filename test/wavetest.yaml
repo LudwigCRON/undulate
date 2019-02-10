@@ -1,0 +1,136 @@
+Alfa:
+  wave: "01.zx=ud.23.45"
+
+SAlfa:
+  wave: "01.zx=ud.23.45"
+  slewing: 8
+
+test 1:
+  pclk:
+    wave: "p......."
+  Pclk:
+    wave: "P......."
+  nclk:
+    wave: "n......."
+  Nclk:
+    wave: "N......."
+  clk0:
+    wave: "phnlPHNL"
+  clk1:
+    wave: "xhlhLHl."
+  clk2:
+    wave: "hpHplnLn"
+  clk3:
+    wave: "nhNhplPl"
+  clk4:
+    wave: "xlh.L.Hx"
+
+test 2:
+  clk:
+    wave: "P......"
+  bus:
+    wave: "x.==.=x"
+    data: 
+      - head
+      - body
+      - tail
+  wire:
+    wave: "0.1..0."
+
+test 3:
+  clk:
+    wave: "p.....|..."
+  Data:
+    wave: "x.345x|=.x"
+    data: ["head", "body", "tail", "data"]
+  Request:
+    wave: "0.1..0|1.0"
+  spacer:
+    wave: ""
+  Acknowledge:
+    wave: "1.....|01."
+
+test 4:
+    clk:
+      wave: "p..Pp..P"
+    Master:
+      ctrl:
+        write:
+          wave: "01.0...."
+        read: 
+          wave: "0...1..0"
+      addr:
+        wave: "x3.x4..x"
+        data: "A1 A2"
+      wdata:
+        wave: "x3.x...."
+        data: "D1"
+      spacer_1: {}
+      Slave:
+        ctrl:
+          ack:
+            wave: "x01x0.1x"
+        rdata:
+          wave: "x.....4x"
+          data: "Q2"
+
+test 5:
+  CK:
+    wave: "P......."
+    period: 2
+  CMD:
+    wave: "x.3x=x4x=x=x=x=x"
+    data: "RAS NOP CAS NOP NOP NOP NOP"
+    phase: 0.5
+  ADDR:
+    wave: "x.=x..=x........"
+    data: "ROW COL"
+    phase: 0.5
+  DQS:
+    wave: "z.......0.1010z."
+  DQ:
+    wave: "z.........5555z."
+    data: "D0 D1 D2 D3"
+
+test 6:
+  DQS  :
+    wave: "z......m0.1010z."
+  DQS_1:
+    wave: "z.....M.0.1010z."
+  DQS_2:
+    wave: "z....m..0.1010z."
+  DQS_3:
+    wave: "z...M...0.1010z."
+
+test 7:
+  CK  :
+    wave: "P......."
+    repeat: 2
+  GBF:
+    wave: "a..."
+    repeat: 4
+    analogue:
+      - "[(t, t*VDDA/Tmax) for t in time]"
+      - "[(t, VDDA/2*cos(32*pi*t/Tmax)+VDDA/2) for t in time]"
+      - "[(t, exp(-t/Tmax)*VDDA/2*cos(32*pi*t/Tmax)+VDDA/2) for t in time]"
+      - "[(t, cos(4*pi*t/Tmax)*sin(16*pi*t/Tmax)*VDDA/2+VDDA/2) for t in time]"
+  INT_S:
+    wave: "ssss"
+    repeat: 4
+    vscale: 2
+    slewing: 12
+    analogue: "[0.4*(i%4)+0.1 for i in range(16)]"
+  INT_C:
+    wave: "cccc"
+    repeat: 4
+    vscale: 2
+    slewing: 12
+    analogue: "[0.4*(3-i%4)+0.1 for i in range(16)]"
+  trigger:
+    wave: "0i1I0I1iI"
+  pwm:
+    wave: "p...n...P...N..."
+    duty_cycles: "[i/16 for i in range(16)]"
+  adaptive_clock: 
+    wave: "p..............."
+    periods: "[i/8 for i in range(16)]"

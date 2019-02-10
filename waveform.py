@@ -8,6 +8,8 @@ Command line interface to draw your waveforms
 
 import os
 import sys
+import toml
+import yaml
 import json
 import time
 import pywave
@@ -75,8 +77,12 @@ def parse(filepath: str) -> (bool, object):
           ans[k] = v
   elif ext in SUPPORTED_FORMAT[1]:
     print("YAML file")
+    with open(filepath, "r+") as fp:
+      ans = yaml.load(fp)
   else:
     print("TOML file")
+    with open(filepath, "r+") as fp:
+      ans = toml.load(fp)
   return (err, ans if not err else None)
 
 if __name__ == "__main__":
