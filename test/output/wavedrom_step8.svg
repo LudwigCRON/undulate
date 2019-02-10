@@ -20,7 +20,7 @@ text{font-size:0.9em;
 .h4{font-size:9.38px;font-weight:bold}
 .h5{font-size:7.50px;font-weight:bold}
 .h6{font-size:6px;font-weight:bold}
-.path{fill:none;
+.s0, .s1, .path{fill:none;
     stroke:#000;
     stroke-width:1;
     stroke-linecap:round;
@@ -75,29 +75,29 @@ text{font-size:0.9em;
 
 <g id="A"  transform="translate(18, 0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >A</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(40, 0)" class="s">
+</g><g data-symbol="BRICKS.one"  transform="translate(40, 0)" class="s2">
 <path d="M0,20 L3,20 L6,0 L120,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(160, 0)" class="s">
+</g><g data-symbol="BRICKS.zero"  transform="translate(160, 0)" class="s2">
 <path d="M0,0 L3,0 L6,20 L120,20" class="path" />
 </g></g>
 <g id="B"  transform="translate(18, 30.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >B</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
 <path d="M0,20 L3,20 L6,20 L60.0,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(60.0, 0)" class="s">
+</g><g data-symbol="BRICKS.one"  transform="translate(60.0, 0)" class="s2">
 <path d="M0,20 L3,20 L6,0 L120,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(180.0, 0)" class="s">
+</g><g data-symbol="BRICKS.zero"  transform="translate(180.0, 0)" class="s2">
 <path d="M0,0 L3,0 L6,20 L100.0,20" class="path" />
 </g></g>
 <g id="C"  transform="translate(18, 60.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >C</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
 <path d="M0,20 L3,20 L6,20 L120,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(120, 0)" class="s">
+</g><g data-symbol="BRICKS.one"  transform="translate(120, 0)" class="s2">
 <path d="M0,20 L3,20 L6,0 L120,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(240, 0)" class="s">
+</g><g data-symbol="BRICKS.zero"  transform="translate(240, 0)" class="s2">
 <path d="M0,0 L3,0 L6,20 L40,20" class="path" />
 </g></g>
 </g>

@@ -234,7 +234,7 @@ class Renderer:
     # look for repetition '.'
     _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
     # generate bricks
-    symbol, data_counter, i, Nana = None, 0, 0, 0
+    symbol, data_counter, is_first, b_counter, ana_counter = None, 0, 0, 0, 0
     for b, k in _wavelane:
       if b != '|':
         # get the final height of the last brick
@@ -263,37 +263,42 @@ class Renderer:
           last_y = brick_height
           symbol = BRICKS.from_str(b)
         # adjust the width of a brick depending on the phase and periods
-        pmul = max(periods[i], slewing*2/brick_width) if i < len(periods) else 1
-        if i == 0:
+        pmul = max(periods[b_counter], slewing*2/brick_width) if b_counter < len(periods) else 1
+        if is_first == 0:
           width_with_phase = pmul*brick_width*(k-phase)
-        elif i == len(_wavelane) - 1:
-          width_with_phase = pmul*brick_width*(k+phase)
+        elif b_counter == len(_wavelane) - 1:
+          width_with_phase = max(pmul*brick_width*(k+phase), kwargs.get("width", 0)-pos)
         else:
           width_with_phase = pmul*k*brick_width
+        if pos <= 0:
+          is_first = 0
+        print(is_first, name, b, data[data_counter])
         # update the arguments to be passed for the generation
         kwargs.update({
-            "brick_width": width_with_phase,
+            "brick_width": width_with_phase + pos if pos < 0 else width_with_phase,
             "brick_height": brick_height,
             "ignore_transition": ignore,
-            "is_first": i == 0,
+            "is_first": is_first == 0,
             "last_y": last_y,
             "slewing": slewing,
-            "duty_cycle": max(duty_cycles[i], slewing*2/brick_width) if i < len(duty_cycles) else 0.5,
-            "equation": analogue[Nana] if Nana < len(analogue) else "0",
+            "duty_cycle": max(duty_cycles[b_counter], slewing*2/brick_width) if b_counter < len(duty_cycles) else 0.5,
+            "equation": analogue[ana_counter] if ana_counter < len(analogue) else "0",
             "data": data[data_counter] if len(data) > data_counter else ""
         })
         # get next equation if analogue
         if symbol in [BRICKS.ana, BRICKS.step, BRICKS.cap]:
-          Nana += 1
-        # create the new brick
-        wave.append((
-            symbol,
-            generate_brick(symbol, **kwargs),
-            (self.translate(pos, 0) +
-            f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else '2'}\"")
-        ))
+          ana_counter += 1
+        # get next data
         if symbol == BRICKS.data:
           data_counter += 1
+        # create the new brick
+        if pos + width_with_phase > 0:
+          wave.append((
+              symbol,
+              generate_brick(symbol, **kwargs),
+              (self.translate(max(0, pos), 0) +
+              f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else '2'}\"")
+          ))
         pos += width_with_phase
       else:
         # create the gap
@@ -305,7 +310,8 @@ class Renderer:
             self.translate(pos+gap_offset, 0)
         ))
         pos += brick_width
-      i += 1
+      is_first  += 1
+      b_counter += 1
     # generate waveform
     def _gen():
       ans = self.wavelane_title(name, vscale=kwargs.get("vscale", 1)) if name else ""
@@ -466,34 +472,39 @@ class Renderer:
         ans = ""
       for _, wavetitle in enumerate(wavelanes.keys()):
         # signal
-        if "wave" in wavelanes[wavetitle]:
-          wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]
-          l = len(wave)
-          width = l * brick_width if l * brick_width > width else width
-          args.update(**kwargs)
-          ans += self.wavelane(
-            wavetitle,
-            wave,
-            self.translate(offsetx, offsety),
-            **args
-          )
-          offsety += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
-        # spacer
-        elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
-          offsety += brick_height * 1.5
-        # group of signals
-        else:
-          args = kwargs
-          args.update({"offsetx": offsetx, "offsety": offsety, "no_ticks": True})
-          j, tmp = self.wavegroup(
-            wavetitle,
-            wavelanes[wavetitle],
-            self.translate(0, offsety),
-            depth+1,
-            **args
-          )
-          ans += tmp
-          offsety += j
+        if isinstance(wavelanes[wavetitle], dict):
+          if "wave" in wavelanes[wavetitle]:
+            wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]
+            l = len(wave)
+            width = l * brick_width if l * brick_width > width else width
+            args.update(**kwargs)
+            ans += self.wavelane(
+              wavetitle,
+              wave,
+              self.translate(offsetx, offsety),
+              **args
+            )
+            offsety += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
+          # spacer
+          elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
+            offsety += brick_height * 1.5
+          # group of signals
+          elif isinstance(wavelanes[wavetitle], list):
+            if isinstance(wavelanes[wavetitle][0], dict):
+              args = kwargs
+              args.update({"offsetx": offsetx, "offsety": offsety, "no_ticks": True})
+              j, tmp = self.wavegroup(
+                wavetitle,
+                wavelanes[wavetitle],
+                self.translate(0, offsety),
+                depth+1,
+                **args
+              )
+              ans += tmp
+              offsety += j
+          # extra config
+          else:
+            pass
       # add ticks only for the principale group
       if not no_ticks:
         ans = self.ticks(width, height, brick_width, offsetx=offsetx) + "\n" + ans
@@ -522,30 +533,31 @@ class Renderer:
     [period]        : time dilatation factor, default is 1
     """
     if isinstance(wavelanes, dict):
-      x, y, keys = [], 0, []
-      for _, wavetitle in enumerate(wavelanes.keys()):
-        if "wave" in wavelanes[wavetitle]:
-          if not "periods" in wavelanes[wavetitle]:
-            _l = len(wavelanes[wavetitle]["wave"])
-          else:
-            periods = self._get_or_eval("periods", [], **wavelanes[wavetitle])
-            _l = sum(periods)
-          _l *= brick_width
-          _l *= wavelanes[wavetitle].get("repeat", 1)
-          _l *= wavelanes[wavetitle].get("period", 1)
-          x.append(_l)
-          y += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
-          keys.append(len(wavetitle))
-        elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
-          y += brick_height * 1.5
-        elif isinstance(wavelanes[wavetitle], dict):
-          y += 20
-          lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
-          x.append(_x)
-          y += _y
-          keys.append(lkeys)
-        else:
-          pass
+      x, y, keys = [0], 0, [0]
+      for wavetitle in wavelanes.keys():
+        print(wavetitle)
+        if isinstance(wavelanes[wavetitle], dict):
+          if "wave" in wavelanes[wavetitle]:
+            if not "periods" in wavelanes[wavetitle]:
+              _l = len(wavelanes[wavetitle]["wave"])
+            else:
+              periods = self._get_or_eval("periods", [], **wavelanes[wavetitle])
+              _l = sum(periods)
+            _l *= brick_width
+            _l *= wavelanes[wavetitle].get("repeat", 1)
+            _l *= wavelanes[wavetitle].get("period", 1)
+            x.append(_l)
+            y += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
+            keys.append(len(wavetitle))
+          elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
+            y += brick_height * 1.5
+          elif isinstance(wavelanes[wavetitle], list):
+            if isinstance(wavelanes[wavetitle][0], dict):
+              y += 20
+              lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
+              x.append(_x)
+              y += _y
+              keys.append(lkeys)
       return (max(keys), max(x), y)
 
   def draw(self, wavelanes, **kwargs) -> str:

@@ -7,6 +7,7 @@ Command line interface to draw your waveforms
 """
 
 import os
+import re
 import sys
 import toml
 import yaml
@@ -30,7 +31,6 @@ def _parse_wavelane(wavelane: dict):
     del wavelane["name"]
   if len(_name) == 0:
     _name = f"spacer_{int(time.time())}"
-  print(_name, wavelane)
   return (_name, wavelane)
 
 def _parse_group(wavegroup: list):
@@ -65,16 +65,24 @@ def parse(filepath: str) -> (bool, object):
     print("ERROR: this filetype is not yet supported", file=sys.stderr)
   # call parser
   if ext in SUPPORTED_FORMAT[0]:
-    print("JSON file" if not "ml" in ext else "JSONML file")
+    print("JSON file")
     with open(filepath, "r+") as fp:
-      tmp = json.load(fp)
-      for k, v in tmp.items():
-        if k == "signal":
-          for _, sig in enumerate(v):
-            n, wave = _parse_wavelane(sig) if isinstance(sig, dict) else _parse_group(sig)
-            ans[n] = wave
-        else:
-          ans[k] = v
+      content = ' '.join([line[:line.find("//")] if line.find("//") >= 0 else line for line in fp.readlines()])
+    # add double quotes around strings
+    content = re.sub("([{,]?)\s*(\w+)\s*:", r'\1 "\2":', content, flags=re.M)
+    # replace single quotes with double quotes
+    content = re.sub("'([\w\s\<\-\~\|\>]*)\s*'", r'"\1"', content, flags=re.M)
+    # remove final extra comma of arrays definition
+    content = re.sub("(,\s*\])", r"]", content, flags=re.M)
+    tmp = json.loads(content)
+    for k, v in tmp.items():
+      if k == "signal":
+        for _, sig in enumerate(v):
+          n, wave = _parse_wavelane(sig) if isinstance(sig, dict) else _parse_group(sig)
+          ans[n] = wave
+      else:
+        ans[k] = v
+    print(ans)
   elif ext in SUPPORTED_FORMAT[1]:
     print("YAML file")
     with open(filepath, "r+") as fp:
