@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1212" height="320.0" viewBox="-1 -1 1214 322.0" overflow="hidden">
+<svg xmlns="http://www.w3.org/2000/svg" width="1212" height="300.0" viewBox="-1 -1 1214 302.0" overflow="hidden">
 <style>
 text{font-size:0.9em;
     font-style:normal;
@@ -63,34 +63,34 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_2" transform="translate(117, 0)" >
-<path d="m0,0 0,320.0" class="ticks" />
-<path d="m40,0 0,320.0" class="ticks" />
-<path d="m80,0 0,320.0" class="ticks" />
-<path d="m120,0 0,320.0" class="ticks" />
-<path d="m160,0 0,320.0" class="ticks" />
-<path d="m200,0 0,320.0" class="ticks" />
-<path d="m240,0 0,320.0" class="ticks" />
-<path d="m280,0 0,320.0" class="ticks" />
-<path d="m320,0 0,320.0" class="ticks" />
-<path d="m360,0 0,320.0" class="ticks" />
-<path d="m400,0 0,320.0" class="ticks" />
-<path d="m440,0 0,320.0" class="ticks" />
-<path d="m480,0 0,320.0" class="ticks" />
-<path d="m520,0 0,320.0" class="ticks" />
-<path d="m560,0 0,320.0" class="ticks" />
-<path d="m600,0 0,320.0" class="ticks" />
-<path d="m640,0 0,320.0" class="ticks" />
-<path d="m680,0 0,320.0" class="ticks" />
-<path d="m720,0 0,320.0" class="ticks" />
-<path d="m760,0 0,320.0" class="ticks" />
-<path d="m800,0 0,320.0" class="ticks" />
-<path d="m840,0 0,320.0" class="ticks" />
-<path d="m880,0 0,320.0" class="ticks" />
-<path d="m920,0 0,320.0" class="ticks" />
-<path d="m960,0 0,320.0" class="ticks" />
-<path d="m1000,0 0,320.0" class="ticks" />
-<path d="m1040,0 0,320.0" class="ticks" />
+<g id="ticks_1" transform="translate(117, 0)" >
+<path d="m0,0 0,300.0" class="ticks" />
+<path d="m40,0 0,300.0" class="ticks" />
+<path d="m80,0 0,300.0" class="ticks" />
+<path d="m120,0 0,300.0" class="ticks" />
+<path d="m160,0 0,300.0" class="ticks" />
+<path d="m200,0 0,300.0" class="ticks" />
+<path d="m240,0 0,300.0" class="ticks" />
+<path d="m280,0 0,300.0" class="ticks" />
+<path d="m320,0 0,300.0" class="ticks" />
+<path d="m360,0 0,300.0" class="ticks" />
+<path d="m400,0 0,300.0" class="ticks" />
+<path d="m440,0 0,300.0" class="ticks" />
+<path d="m480,0 0,300.0" class="ticks" />
+<path d="m520,0 0,300.0" class="ticks" />
+<path d="m560,0 0,300.0" class="ticks" />
+<path d="m600,0 0,300.0" class="ticks" />
+<path d="m640,0 0,300.0" class="ticks" />
+<path d="m680,0 0,300.0" class="ticks" />
+<path d="m720,0 0,300.0" class="ticks" />
+<path d="m760,0 0,300.0" class="ticks" />
+<path d="m800,0 0,300.0" class="ticks" />
+<path d="m840,0 0,300.0" class="ticks" />
+<path d="m880,0 0,300.0" class="ticks" />
+<path d="m920,0 0,300.0" class="ticks" />
+<path d="m960,0 0,300.0" class="ticks" />
+<path d="m1000,0 0,300.0" class="ticks" />
+<path d="m1040,0 0,300.0" class="ticks" />
 </g>
 
 <g id="seq"  transform="translate(117, 0)"  >
@@ -803,12 +803,6 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,20 L197.0,20 L200.0,10.0" class="path" />
 <text x="100.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
 </g></g>
-<g id="config"  transform="translate(0, 300.0)"  >
-<text x="0" y="10" class="h2" >config</text>
-<path d="M0,14 L1197,14" class="border" />
-</g>
-<g id="edges"  transform="translate(117, 0)"  >
-</g>
 </g>
 <g id="edges"  transform="translate(117, 0)"  >
 <g id="edge_0"  >
