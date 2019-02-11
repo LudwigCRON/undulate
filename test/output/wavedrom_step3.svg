@@ -63,7 +63,7 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_5" transform="translate(45, 0)" >
+<g id="ticks_5" transform="translate(50, 0)" >
 <path d="m0,0 0,90.0" class="ticks" />
 <path d="m40,0 0,90.0" class="ticks" />
 <path d="m80,0 0,90.0" class="ticks" />
@@ -73,7 +73,7 @@ text{font-size:0.9em;
 <path d="m240,0 0,90.0" class="ticks" />
 </g>
 
-<g id="clk"  transform="translate(45, 0)"  >
+<g id="clk"  transform="translate(50, 0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >clk</text>
 <g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)" class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
@@ -97,7 +97,7 @@ text{font-size:0.9em;
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 <path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
 </g></g>
-<g id="bus"  transform="translate(45, 30.0)"  >
+<g id="bus"  transform="translate(50, 30.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >bus</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)" class="s2">
 <polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " fill="url(#diagonalHatch)" />
@@ -123,7 +123,7 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
 </g></g>
-<g id="wire"  transform="translate(45, 60.0)"  >
+<g id="wire"  transform="translate(50, 60.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >wire</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
 <path d="M0,20 L3,20 L6,20 L80,20" class="path" />
@@ -133,7 +133,7 @@ text{font-size:0.9em;
 <path d="M0,0 L3,0 L6,20 L80,20" class="path" />
 </g></g>
 </g>
-<g id="edges"  transform="translate(45, 0)"  >
+<g id="edges"  transform="translate(50, 0)"  >
 </g>
 
 </svg>

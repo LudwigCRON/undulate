@@ -63,7 +63,7 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_2" transform="translate(54, 0)" >
+<g id="ticks_2" transform="translate(60, 0)" >
 <path d="m0,0 0,60.0" class="ticks" />
 <path d="m40,0 0,60.0" class="ticks" />
 <path d="m80,0 0,60.0" class="ticks" />
@@ -80,7 +80,7 @@ text{font-size:0.9em;
 <path d="m520,0 0,60.0" class="ticks" />
 </g>
 
-<g id="Alfa"  transform="translate(54, 0)"  >
+<g id="Alfa"  transform="translate(60, 0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Alfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
@@ -117,7 +117,7 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
 </g></g>
-<g id="SAlfa"  transform="translate(54, 30.0)"  >
+<g id="SAlfa"  transform="translate(60, 30.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >SAlfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
 <path d="M0,20 L3,20 L11,20 L40,20" class="path" />
@@ -155,7 +155,7 @@ text{font-size:0.9em;
 <path d="M0,10.0 L8,20 L32,20 L40,10.0" class="path" />
 </g></g>
 </g>
-<g id="edges"  transform="translate(54, 0)"  >
+<g id="edges"  transform="translate(60, 0)"  >
 </g>
 
 </svg>
