@@ -337,7 +337,7 @@ class Renderer:
     offsety = kwargs.get("offsety", 0)
     def _gen():
       ans = ""
-      for x in range(0, width, step):
+      for x in range(0, int(width), step):
         ans += self.spline([('m', x, 0), ('', 0, height-offsety)], "class=\"ticks\"")
       return ans
     return self.group(
