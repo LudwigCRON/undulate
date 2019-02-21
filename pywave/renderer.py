@@ -7,6 +7,7 @@ into different format
 """
 
 import re
+import copy
 from .skin import DEFAULT, DEFINITION
 from itertools import count
 from .bricks import BRICKS, Brick, generate_brick
@@ -60,6 +61,7 @@ class Renderer:
   _EDGE_REGEXP = r"([\w\.\_]+)([~\|\/\-\>\<]+)([\w\.\_]+)"
   _WAVE_TITLE  = ""
   _DATA_TEXT   = ""
+  _SYMBOL_TEMP = None
 
   def __init__(self):
     pass
@@ -78,7 +80,7 @@ class Renderer:
     """
     raise NotImplementedError()
 
-  def path(self, vertices: list, extra: str = "") -> str:
+  def path(self, vertices: list, extra: str = "", **kwargs) -> str:
     """
     path draw a path to represent common signals
     vertices: list of of x-y coordinates in a tuple
@@ -86,7 +88,7 @@ class Renderer:
     """
     raise NotImplementedError()
 
-  def arrow(self, x, y, angle, extra: str = "") -> str:
+  def arrow(self, x, y, angle, extra: str = "", **kwargs) -> str:
     """
     arrow draw an arrow to represent edge trigger on clock signals
     x       : x coordinate of the arrow center
@@ -96,7 +98,7 @@ class Renderer:
     """
     raise NotImplementedError()
 
-  def polygon(self, vertices: list, extra: str = "") -> str:
+  def polygon(self, vertices: list, extra: str = "", **kwargs) -> str:
     """
     polygon draw a closed shape to represent common data
     vertices: list of of x-y coordinates in a tuple
@@ -104,7 +106,7 @@ class Renderer:
     """
     raise NotImplementedError()
 
-  def spline(self, vertices: list, extra: str = "") -> str:
+  def spline(self, vertices: list, extra: str = "", **kwargs) -> str:
     """
     spline draw a path to represent smooth signals
     vertices: list of of type-x-y coordinates in a tuple of control points
@@ -114,7 +116,7 @@ class Renderer:
     """
     raise NotImplementedError()
 
-  def text(self, x: float, y: float, text: str = "", extra: str = "") -> str:
+  def text(self, x: float, y: float, text: str = "", extra: str = "", **kwargs) -> str:
     """
     text draw a text for data
     x       : x coordinate of the text
@@ -123,36 +125,36 @@ class Renderer:
     """
     raise NotImplementedError()
 
-  def translate(self, x: float, y: float) -> str:
+  def translate(self, x: float, y: float, **kwargs) -> str:
     """
     translation function that is inherited for svg and eps
     """
     raise NotImplementedError()
 
-  def brick(self, symbol: str, b: Brick, extra: str = "", height: int = 20) -> str:
+  def brick(self, symbol: str, b: Brick, height: int = 20, **kwargs) -> str:
     """
     brick generate the symbol for a Brick element
     (collection of paths, splines, arrows, polygons, text)
-    x       : x coordinate of the text
-    y       : y coordinate of the text
-    text    : text to display
     """
-    ans = f"<g data-symbol=\"{symbol}\" {extra}>\n"
+    ans, content = "", ""
     for _, poly in enumerate(b.polygons):
       filling = "url(#diagonalHatch)" if symbol == BRICKS.x else "none"
-      ans += self.polygon(poly, f"fill=\"{filling}\"")
+      content += self.polygon(poly, fill=filling, **kwargs)
     for _, path in enumerate(b.paths):
-      ans += self.path(path, "class=\"path\"")
+      content += self.path(path, style_repr="path", **kwargs)
     for _, arrow in enumerate(b.arrows):
-      ans += self.arrow(*arrow, "class=\"arrow\"")
+      content += self.arrow(*arrow, style_repr="arrow", **kwargs)
     for i, spline in enumerate(b.splines):
       if i == 0 and symbol == BRICKS.gap:
-        ans += self.spline(spline, "class=\"hide\"")
+        content += self.spline(spline, style_repr="hide", **kwargs)
       else:
-        ans += self.spline(spline, "class=\"path\"")
+        content += self.spline(spline, style_repr="path", **kwargs)
     if len(b.text[2]) > 0:
-      ans += self.text(*b.text, self._DATA_TEXT)
-    ans += "</g>"
+      a = copy.deepcopy(kwargs)
+      a.update({"extra": self._DATA_TEXT})
+      content += self.text(*b.text, **a)
+    if self._SYMBOL_TEMP:
+      ans = self._SYMBOL_TEMP(symbol, content, **kwargs)
     return ans
 
   def wavelane_title(self, name: str, extra: str = "", vscale: float = 1):
@@ -162,7 +164,7 @@ class Renderer:
     """
     if "spacer" in name or not name.strip():
       return ""
-    return self.text(-10, 15 * vscale, name, self._WAVE_TITLE)
+    return self.text(-10, 15 * vscale, name, extra=self._WAVE_TITLE, offset=extra)
 
   def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
     repeat       = kwargs.get("repeat", 1)
@@ -240,7 +242,7 @@ class Renderer:
         # get the final height of the last brick
         last = -2 if symbol == BRICKS.gap else -1
         if wave:
-          s, br, c = wave[last]
+          s, br, c, style = wave[last]
           last_y = br.get_last_y()
           symbol = BRICKS.from_str(b)
           ignore = BRICKS.ignore_transition(wave[last] if wave else None, symbol)
@@ -250,13 +252,13 @@ class Renderer:
               br.alter_end(3, brick_height)
             else:
               br.alter_end(3, 0)
-            wave[last] = (s, br, c)
+            wave[last] = (s, br, c, style)
             ignore = True
           # adjust clock symbols
           if symbol in [BRICKS.low, BRICKS.Low] and \
              s in [BRICKS.Pclk, BRICKS.pclk, BRICKS.Nclk, BRICKS.nclk]:
             br.alter_end(0, brick_height)
-            wave[last] = (s, br, c)
+            wave[last] = (s, br, c, style)
             ignore = True
           last_y = br.get_last_y()
         else:
@@ -295,8 +297,8 @@ class Renderer:
           wave.append((
               symbol,
               generate_brick(symbol, **kwargs),
-              (self.translate(max(0, pos), 0) +
-              f"class=\"s{b if b.isdigit() and int(b, 10) > 1 else '2'}\"")
+              self.translate(max(0, pos), 0, dont_touch=True),
+              f"s{b if b.isdigit() and int(b, 10) > 1 else '2'}"
           ))
         pos += width_with_phase
       else:
@@ -306,7 +308,8 @@ class Renderer:
         wave.append((
             symbol,
             generate_brick(symbol, **kwargs),
-            self.translate(pos+gap_offset, 0)
+            self.translate(pos+gap_offset, 0, dont_touch=True),
+            ""
         ))
         pos += brick_width
       is_first  += 1
@@ -315,8 +318,9 @@ class Renderer:
     def _gen():
       ans = self.wavelane_title(name, vscale=kwargs.get("vscale", 1)) if name else ""
       for w in wave:
-        symb, b, e = w
-        ans += self.brick(symb, b, extra=e)
+        symb, b, e, style = w
+        kwargs.update({"extra": e, "style": style})
+        ans += self.brick(symb, b, **kwargs)
       return ans
     return self.group(
       _gen,
@@ -338,12 +342,16 @@ class Renderer:
     def _gen():
       ans = ""
       for x in range(0, width, step):
-        ans += self.spline([('m', x, 0), ('', 0, height-offsety)], "class=\"ticks\"")
+        ans += self.spline(
+          [('m', x, 0), ('l', 0, height-offsety)],
+          style_repr="ticks",
+          extra=self.translate(offsetx, 0, dont_touch=True),
+          **kwargs)
       return ans
     return self.group(
       _gen,
       f"ticks_{_WAVEGROUP_COUNT}",
-      f"transform=\"translate({offsetx}, 0)\"")
+      self.translate(offsetx, 0))
 
   def edges(self, wavelanes, extra: str = "", **kwargs) -> str:
     """
@@ -407,23 +415,23 @@ class Renderer:
               style += "arrowhead " if _shape[0] == '<' else ''
               mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
               if _shape in ['<~', '~', '~>', '<~>']:
-                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], style)
               elif _shape in ['<-~', '-~', '-~>', '<-~>']:
-                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], style)
               elif _shape in ['<~-', '~-', '~->', '<~->']:
-                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], style)
               elif _shape in ['<-', '-', '->', '<->']:
-                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], f"class=\"{style}\"")
+                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], style)
               elif _shape in ['<-|', '-|', '-|>', '<-|>']:
-                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], style)
                 mx, my = e[0], s[1]
               elif _shape in ['<|-', '|-', '|->', '<|->']:
-                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], style)
                 mx, my = s[0], e[1]
               elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
-                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], f"class=\"{style}\"")
+                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], style)
                 mx, my = mx, e[1]
-              ans += self.text(mx+dx, my+dy, text, "text-anchor=\"middle\"")
+              ans += self.text(mx+dx, my+dy, text, extra="text-anchor=\"middle\"")
               return ans
             global _EDGE_COUNT
             ans += self.group(lambda : _gen(**adj), f"edge_{_EDGE_COUNT}")
@@ -463,9 +471,9 @@ class Renderer:
       offsetx, offsety = offset[0], offset[1]
       # return value
       if depth > 1:
-        ans = self.text(0, offsety+10, name, f"class=\"h{depth}\"")
+        ans = self.text(0, offsety+10, name, extra=f"class=\"h{depth}\"")
         if depth == 2:
-          ans += self.path([(0, offsety+14), (width+offsetx, offsety+14)], "class=\"border\"")
+          ans += self.path([(0, offsety+14), (width+offsetx, offsety+14)], "border")
         offsety += 20
       else:
         ans = ""
@@ -480,7 +488,7 @@ class Renderer:
             ans += self.wavelane(
               wavetitle,
               wave,
-              self.translate(offsetx, offsety),
+              self.translate(offsetx, offsety, no_acc=False),
               **args
             )
             offsety += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
@@ -493,7 +501,7 @@ class Renderer:
             j, tmp = self.wavegroup(
               wavetitle,
               wavelanes[wavetitle],
-              self.translate(0, offsety),
+              self.translate(0, offsety, no_acc=True),
               depth+1,
               **args
             )
@@ -509,7 +517,7 @@ class Renderer:
             j, tmp = self.wavegroup(
               wavetitle,
               wavelanes[wavetitle],
-              self.translate(0, offsety),
+              self.translate(0, offsety, no_acc=True),
               depth+1,
               **args
             )
@@ -588,93 +596,3 @@ class Renderer:
     [brick_height] : height of a brick
     """
     raise NotImplementedError()
-
-class SvgRenderer(Renderer):
-  """
-  Render the wavelanes as an svg
-  """
-  _WAVE_TITLE  = "class=\"info\" text-anchor=\"end\" xml:space=\"preserve\""
-  _DATA_TEXT   = "text-anchor=\"middle\" dominant-baseline=\"middle\" alignment-baseline=\"central\""
-
-  def __init__(self):
-    Renderer.__init__(self)
-
-  def group(self, callback, id: str = "", extra: str = "") -> str:
-    """
-    group define a group
-    """
-    ans = f"<g id=\"{id}\" {extra} >\n"
-    ans += callback()
-    ans += "</g>\n"
-    return ans
-
-  def path(self, vertices: list, extra: str = "") -> str:
-    """
-    path draw a path to represent common signals
-    vertices: list of of x-y coordinates in a tuple
-    [extra] : optional attributes for the svg (eg class)
-    """
-    path = ''.join([f"L{x},{y} " for x, y in vertices])
-    path = 'M' + path[1:]
-    return f"<path d=\"{path.strip()}\" {extra} />\n"
-
-  def arrow(self, x, y, angle, extra: str = "") -> str:
-    """
-    arrow draw an arrow to represent edge trigger on clock signals
-    x       : x coordinate of the arrow center
-    y       : y coordinate of the arrow center
-    angle   : angle in degree to rotate the arrow
-    [extra] : optional attributes for the svg (eg class)
-    """
-    return (f"<path d=\"M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z\" "
-            f"transform=\"translate({x-3.5}, {y-3.5}) rotate({angle-90}, 3.5, 3.5)\" "
-            f"{extra} />\n")
-
-  def polygon(self, vertices: list, extra: str = "") -> str:
-    """
-    polygon draw a closed shape to represent common data
-    vertices: list of of x-y coordinates in a tuple
-    [extra] : optional attributes for the svg (eg class)
-    """
-    ans = "<polygon points=\""
-    for x, y in vertices:
-      ans += f"{x},{y} "
-    ans += f"\" {extra} />\n"
-    return ans
-
-  def spline(self, vertices: list, extra: str = "") -> str:
-    """
-    spline draw a path to represent smooth signals
-    vertices: list of of type-x-y coordinates in a tuple of control points
-              where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
-              svg operator
-    [extra] : optional attributes for the svg (eg class)
-    """
-    path = ''.join([f"{v[0]}{v[1]},{v[2]} " for v in vertices])
-    return f"<path d=\"{path.strip()}\" {extra} />\n"
-
-  def text(self, x: float, y: float, text: str = "", extra: str = "") -> str:
-    """
-    text draw a text for data
-    x       : x coordinate of the text
-    y       : y coordinate of the text
-    text    : text to display
-    """
-    return (f"<text x=\"{x}\" y=\"{y}\" {extra} >{text}</text>\n")
-
-  def translate(self, x: float, y: float) -> str:
-    return f" transform=\"translate({x}, {y})\" "
-
-  def draw(self, wavelanes, **kwargs) -> str:
-    _id          = kwargs.get("id", "a")
-    brick_width  = kwargs.get("brick_width", 40)
-    brick_height = kwargs.get("brick_height", 20)
-    lkeys, width, height = self.size(wavelanes, brick_width, brick_height)
-    return (
-      f"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width+lkeys*11}\" height=\"{height}\" "
-      f"viewBox=\"-1 -1 {width+lkeys*11+2} {height+2}\" overflow=\"hidden\">\n"
-      f"<style>{DEFAULT}</style>\n"
-      f"{DEFINITION}"
-      ""+self.wavegroup(_id, wavelanes, brick_width=brick_width, brick_height=brick_height, width=width, height=height)[1]+""
-      "\n</svg>"
-    )

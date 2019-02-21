@@ -63,99 +63,126 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_13" transform="translate(18, 0)" >
-<path d="m0,0 0,210.0" class="ticks" />
-<path d="m40,0 0,210.0" class="ticks" />
-<path d="m80,0 0,210.0" class="ticks" />
-<path d="m120,0 0,210.0" class="ticks" />
-<path d="m160,0 0,210.0" class="ticks" />
-<path d="m200,0 0,210.0" class="ticks" />
-<path d="m240,0 0,210.0" class="ticks" />
-<path d="m280,0 0,210.0" class="ticks" />
-<path d="m320,0 0,210.0" class="ticks" />
-<path d="m360,0 0,210.0" class="ticks" />
-<path d="m400,0 0,210.0" class="ticks" />
-<path d="m440,0 0,210.0" class="ticks" />
-<path d="m480,0 0,210.0" class="ticks" />
-<path d="m520,0 0,210.0" class="ticks" />
-<path d="m560,0 0,210.0" class="ticks" />
+<g id="ticks_13"  transform="translate(18, 0)"  >
+<path d="m0,0 l0,210.0" class="ticks" />
+<path d="m40,0 l0,210.0" class="ticks" />
+<path d="m80,0 l0,210.0" class="ticks" />
+<path d="m120,0 l0,210.0" class="ticks" />
+<path d="m160,0 l0,210.0" class="ticks" />
+<path d="m200,0 l0,210.0" class="ticks" />
+<path d="m240,0 l0,210.0" class="ticks" />
+<path d="m280,0 l0,210.0" class="ticks" />
+<path d="m320,0 l0,210.0" class="ticks" />
+<path d="m360,0 l0,210.0" class="ticks" />
+<path d="m400,0 l0,210.0" class="ticks" />
+<path d="m440,0 l0,210.0" class="ticks" />
+<path d="m480,0 l0,210.0" class="ticks" />
+<path d="m520,0 l0,210.0" class="ticks" />
+<path d="m560,0 l0,210.0" class="ticks" />
 </g>
 
 <g id="A"  transform="translate(18, 0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >A</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(40, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(40, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L360,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(400, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.zero"  transform="translate(400, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,20 L200,20" class="path" />
-</g></g>
+</g>
+</g>
 <g id="B"  transform="translate(18, 30.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >B</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L80,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(80, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(80, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L320,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(400, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.zero"  transform="translate(400, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,20 L80,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(480, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(480, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L120,0" class="path" />
-</g></g>
+</g>
+</g>
 <g id="C"  transform="translate(18, 60.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >C</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L120,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(120, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(120, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L200,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(320, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.zero"  transform="translate(320, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,20 L160,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(480, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(480, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L120,0" class="path" />
-</g></g>
+</g>
+</g>
 <g id="D"  transform="translate(18, 90.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >D</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L160,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(160, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(160, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L120,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(280, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.zero"  transform="translate(280, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,20 L240,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(520, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(520, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L80,0" class="path" />
-</g></g>
+</g>
+</g>
 <g id="E"  transform="translate(18, 120.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >E</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L200,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(200, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(200, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L40,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(240, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.zero"  transform="translate(240, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,20 L320,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(560, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(560, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L40,0" class="path" />
-</g></g>
+</g>
+</g>
 <g id="F"  transform="translate(18, 150.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >F</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L200,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(200, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(200, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L40,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(240, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.zero"  transform="translate(240, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,20 L320,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(560, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(560, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L40,0" class="path" />
-</g></g>
+</g>
+</g>
 <g id="G"  transform="translate(18, 180.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >G</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)" class="s2">
+<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L280,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(280, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(280, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L40,0" class="path" />
-</g><g data-symbol="BRICKS.zero"  transform="translate(320, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.zero"  transform="translate(320, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,20 L240,20" class="path" />
-</g><g data-symbol="BRICKS.one"  transform="translate(560, 0)" class="s2">
+</g>
+<g data-symbol="BRICKS.one"  transform="translate(560, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L40,0" class="path" />
-</g></g>
+</g>
+</g>
 </g>
 <g id="edges"  transform="translate(18, 0)"  >
 <g id="edge_0"  >

@@ -23,7 +23,7 @@ SUPPORTED_FORMAT = [
     [".toml"]
 ]
 
-SUPPORTED_RENDER = ["svg"]
+SUPPORTED_RENDER = ["svg", "eps"]
 
 def _parse_wavelane(wavelane: dict):
   _name = wavelane.get("name", "").strip()
@@ -112,6 +112,8 @@ if __name__ == "__main__":
         renderer = None
         if cli_args.format == "svg":
           renderer = pywave.SvgRenderer()
+        elif cli_args.format == "eps":
+          renderer = pywave.EpsRenderer()
         try:
           with open(cli_args.output, "w+") as fp:
             fp.write(renderer.draw(obj))

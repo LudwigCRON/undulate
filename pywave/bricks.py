@@ -224,7 +224,7 @@ class HighZ(Brick):
     dt = abs(self.height - self.last_y) * self.slewing / self.height
     # add shape
     self.splines.append([
-      ('M', 0, self.last_y), ('C', dt, self.height / 2), ('', dt, self.height / 2),
+      ('m', 0, self.last_y), ('C', dt, self.height / 2), ('', dt, self.height / 2),
       ('', min(self.width, 20), self.height/2), ('L', self.width, self.height/2)])
 
 class Zero(Brick):
@@ -303,7 +303,7 @@ class Up(Brick):
     Brick.__init__(self, **kwargs)
     self.last_y = self.height if self.last_y is None else self.last_y
     self.splines.append([
-      ('m', 0, self.last_y), ('', 3, 0), ('C', 3 + self.slewing, self.last_y),
+      ('m', 0, self.last_y), ('l', 3, 0), ('C', 3 + self.slewing, self.last_y),
       ('', 3 + self.slewing, 0), ('', min(self.width, 20), 0), ('L', self.width, 0)])
 
 class Down(Brick):
@@ -311,7 +311,7 @@ class Down(Brick):
     Brick.__init__(self, **kwargs)
     self.last_y = self.height if self.last_y is None else self.last_y
     self.splines.append([
-      ('m', 0, self.last_y), ('', 3, 0), ('C', self.slewing, self.last_y),
+      ('m', 0, self.last_y), ('l', 3, 0), ('C', 3 + self.slewing, self.last_y),
       ('', 3 + self.slewing, self.height - self.last_y), ('', min(self.width, 20), self.height),
       ('L', self.width, self.height)])
 
@@ -323,7 +323,7 @@ class Meta(Brick):
     time = range(int(dt), int(self.width*0.75+1))
     if (int(0.75*self.width+1)-int(dt)) % 2 == 1:
       time = range(int(dt), int(self.width*0.75+2))
-    _tmp = [('M', 0, self.last_y)]
+    _tmp = [('m', 0, self.last_y)]
     if kwargs.get("then_one", False):
       for t in time:
         _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-self.width)/self.width)*math.cos(8*math.pi*t/self.width))*0.5*self.height))
@@ -344,7 +344,7 @@ class Cap(Brick):
     dt = abs(y - self.last_y) * self.slewing / self.height
     # add shape
     self.splines.append([
-          ('M', 0, self.last_y), ('C', dt, y), ('', dt, y),
+          ('m', 0, self.last_y), ('C', dt, y), ('', dt, y),
           ('', self.width, y), ('L', self.width, y)])
 
 class Step(Brick):
