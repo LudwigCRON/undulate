@@ -257,7 +257,7 @@ class EpsRenderer(Renderer):
       "} def\n"
       "0 0 moveto\n"
       "1 1 scale\n"
-      ""+self.wavegroup(_id, wavelanes, brick_width=brick_width, brick_height=brick_height, width=width, height=height)[1]+""
+      ""+self.wavegroup(_id, wavelanes, brick_width=brick_width, brick_height=brick_height, width=width, height=height, offsetx=lkeys*10+10)[1]+""
       "showpage\n"
       "%%Trailer\n"
       "end\n"
