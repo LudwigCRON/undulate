@@ -63,34 +63,34 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_1" transform="translate(117, 0)" >
-<path d="m0,0 0,300.0" class="ticks" />
-<path d="m40,0 0,300.0" class="ticks" />
-<path d="m80,0 0,300.0" class="ticks" />
-<path d="m120,0 0,300.0" class="ticks" />
-<path d="m160,0 0,300.0" class="ticks" />
-<path d="m200,0 0,300.0" class="ticks" />
-<path d="m240,0 0,300.0" class="ticks" />
-<path d="m280,0 0,300.0" class="ticks" />
-<path d="m320,0 0,300.0" class="ticks" />
-<path d="m360,0 0,300.0" class="ticks" />
-<path d="m400,0 0,300.0" class="ticks" />
-<path d="m440,0 0,300.0" class="ticks" />
-<path d="m480,0 0,300.0" class="ticks" />
-<path d="m520,0 0,300.0" class="ticks" />
-<path d="m560,0 0,300.0" class="ticks" />
-<path d="m600,0 0,300.0" class="ticks" />
-<path d="m640,0 0,300.0" class="ticks" />
-<path d="m680,0 0,300.0" class="ticks" />
-<path d="m720,0 0,300.0" class="ticks" />
-<path d="m760,0 0,300.0" class="ticks" />
-<path d="m800,0 0,300.0" class="ticks" />
-<path d="m840,0 0,300.0" class="ticks" />
-<path d="m880,0 0,300.0" class="ticks" />
-<path d="m920,0 0,300.0" class="ticks" />
-<path d="m960,0 0,300.0" class="ticks" />
-<path d="m1000,0 0,300.0" class="ticks" />
-<path d="m1040,0 0,300.0" class="ticks" />
+<g id="ticks_1"  transform="translate(117, 0)"  >
+<path d="m0,0 l0,300.0" class="ticks" />
+<path d="m40,0 l0,300.0" class="ticks" />
+<path d="m80,0 l0,300.0" class="ticks" />
+<path d="m120,0 l0,300.0" class="ticks" />
+<path d="m160,0 l0,300.0" class="ticks" />
+<path d="m200,0 l0,300.0" class="ticks" />
+<path d="m240,0 l0,300.0" class="ticks" />
+<path d="m280,0 l0,300.0" class="ticks" />
+<path d="m320,0 l0,300.0" class="ticks" />
+<path d="m360,0 l0,300.0" class="ticks" />
+<path d="m400,0 l0,300.0" class="ticks" />
+<path d="m440,0 l0,300.0" class="ticks" />
+<path d="m480,0 l0,300.0" class="ticks" />
+<path d="m520,0 l0,300.0" class="ticks" />
+<path d="m560,0 l0,300.0" class="ticks" />
+<path d="m600,0 l0,300.0" class="ticks" />
+<path d="m640,0 l0,300.0" class="ticks" />
+<path d="m680,0 l0,300.0" class="ticks" />
+<path d="m720,0 l0,300.0" class="ticks" />
+<path d="m760,0 l0,300.0" class="ticks" />
+<path d="m800,0 l0,300.0" class="ticks" />
+<path d="m840,0 l0,300.0" class="ticks" />
+<path d="m880,0 l0,300.0" class="ticks" />
+<path d="m920,0 l0,300.0" class="ticks" />
+<path d="m960,0 l0,300.0" class="ticks" />
+<path d="m1000,0 l0,300.0" class="ticks" />
+<path d="m1040,0 l0,300.0" class="ticks" />
 </g>
 
 <g id="seq"  transform="translate(117, 0)"  >
@@ -168,7 +168,7 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(510.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z," class="hide" />
+<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
 <path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g>
@@ -260,7 +260,7 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(490.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z," class="hide" />
+<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
 <path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g>
@@ -346,7 +346,7 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(470.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z," class="hide" />
+<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
 <path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g>
@@ -432,7 +432,7 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(450.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z," class="hide" />
+<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
 <path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g>
@@ -512,7 +512,7 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(430.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z," class="hide" />
+<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
 <path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g>

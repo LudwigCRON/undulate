@@ -415,21 +415,21 @@ class Renderer:
               style += "arrowhead " if _shape[0] == '<' else ''
               mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
               if _shape in ['<~', '~', '~>', '<~>']:
-                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], style=style)
+                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], style_repr=style)
               elif _shape in ['<-~', '-~', '-~>', '<-~>']:
-                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], style=style)
+                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], style_repr=style)
               elif _shape in ['<~-', '~-', '~->', '<~->']:
-                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], style=style)
+                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], style_repr=style)
               elif _shape in ['<-', '-', '->', '<->']:
-                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], style=style)
+                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], style_repr=style)
               elif _shape in ['<-|', '-|', '-|>', '<-|>']:
-                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], style=style)
+                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], style_repr=style)
                 mx, my = e[0], s[1]
               elif _shape in ['<|-', '|-', '|->', '<|->']:
-                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], style=style)
+                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], style_repr=style)
                 mx, my = s[0], e[1]
               elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
-                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], style=style)
+                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], style_repr=style)
                 mx, my = mx, e[1]
               ans += self.text(mx+dx, my+dy, text, extra="text-anchor=\"middle\"")
               return ans
