@@ -63,7 +63,6 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<<<<<<< HEAD
 <g id="ticks_2"  transform="translate(54, 0)"  >
 <path d="m0,0 l0,60.0" class="ticks" />
 <path d="m40,0 l0,60.0" class="ticks" />
@@ -79,26 +78,9 @@ text{font-size:0.9em;
 <path d="m440,0 l0,60.0" class="ticks" />
 <path d="m480,0 l0,60.0" class="ticks" />
 <path d="m520,0 l0,60.0" class="ticks" />
-=======
-<g id="ticks_2" transform="translate(60, 0)" >
-<path d="m0,0 0,60.0" class="ticks" />
-<path d="m40,0 0,60.0" class="ticks" />
-<path d="m80,0 0,60.0" class="ticks" />
-<path d="m120,0 0,60.0" class="ticks" />
-<path d="m160,0 0,60.0" class="ticks" />
-<path d="m200,0 0,60.0" class="ticks" />
-<path d="m240,0 0,60.0" class="ticks" />
-<path d="m280,0 0,60.0" class="ticks" />
-<path d="m320,0 0,60.0" class="ticks" />
-<path d="m360,0 0,60.0" class="ticks" />
-<path d="m400,0 0,60.0" class="ticks" />
-<path d="m440,0 0,60.0" class="ticks" />
-<path d="m480,0 0,60.0" class="ticks" />
-<path d="m520,0 0,60.0" class="ticks" />
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 </g>
 
-<g id="Alfa"  transform="translate(60, 0)"  >
+<g id="Alfa"  transform="translate(54, 0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Alfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
@@ -144,14 +126,9 @@ text{font-size:0.9em;
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
-<<<<<<< HEAD
 </g>
 </g>
 <g id="SAlfa"  transform="translate(54, 30.0)"  >
-=======
-</g></g>
-<g id="SAlfa"  transform="translate(60, 30.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >SAlfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L11,20 L40,20" class="path" />
@@ -200,7 +177,7 @@ text{font-size:0.9em;
 </g>
 </g>
 </g>
-<g id="edges"  transform="translate(60, 0)"  >
+<g id="edges"  transform="translate(54, 0)"  >
 </g>
 
 </svg>

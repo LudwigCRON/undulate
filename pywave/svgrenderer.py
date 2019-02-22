@@ -102,6 +102,6 @@ class SvgRenderer(Renderer):
       f"viewBox=\"-1 -1 {width+lkeys*11+2} {height+2}\" overflow=\"hidden\">\n"
       f"<style>{DEFAULT}</style>\n"
       f"{DEFINITION}"
-      ""+self.wavegroup(_id, wavelanes, brick_width=brick_width, brick_height=brick_height, width=width, height=height)[1]+""
+      ""+self.wavegroup(_id, wavelanes, brick_width=brick_width, brick_height=brick_height, width=width, height=height, offsetx=lkeys*10+10)[1]+""
       "\n</svg>"
     )

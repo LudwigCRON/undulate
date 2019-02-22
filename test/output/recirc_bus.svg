@@ -63,7 +63,6 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<<<<<<< HEAD
 <g id="ticks_1"  transform="translate(81, 0)"  >
 <path d="m0,0 l0,210.0" class="ticks" />
 <path d="m40,0 l0,210.0" class="ticks" />
@@ -77,24 +76,9 @@ text{font-size:0.9em;
 <path d="m360,0 l0,210.0" class="ticks" />
 <path d="m400,0 l0,210.0" class="ticks" />
 <path d="m440,0 l0,210.0" class="ticks" />
-=======
-<g id="ticks_1" transform="translate(90, 0)" >
-<path d="m0,0 0,210.0" class="ticks" />
-<path d="m40,0 0,210.0" class="ticks" />
-<path d="m80,0 0,210.0" class="ticks" />
-<path d="m120,0 0,210.0" class="ticks" />
-<path d="m160,0 0,210.0" class="ticks" />
-<path d="m200,0 0,210.0" class="ticks" />
-<path d="m240,0 0,210.0" class="ticks" />
-<path d="m280,0 0,210.0" class="ticks" />
-<path d="m320,0 0,210.0" class="ticks" />
-<path d="m360,0 0,210.0" class="ticks" />
-<path d="m400,0 0,210.0" class="ticks" />
-<path d="m440,0 0,210.0" class="ticks" />
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 </g>
 
-<g id="F1"  transform="translate(90, 0)"  >
+<g id="F1"  transform="translate(81, 0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >F1</text>
 <g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
@@ -143,14 +127,9 @@ text{font-size:0.9em;
 <g data-symbol="BRICKS.Pclk"  transform="translate(440, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 <path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
-<<<<<<< HEAD
 </g>
 </g>
 <g id="F2"  transform="translate(81, 30.0)"  >
-=======
-</g></g>
-<g id="F2"  transform="translate(90, 30.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >F2</text>
 <g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L64.5,0 L67.5,20 L130.5,20 L132.0,10.0" class="path" />
@@ -167,14 +146,9 @@ text{font-size:0.9em;
 <g data-symbol="BRICKS.Pclk"  transform="translate(372.0, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L52.5,0 L55.5,20 L106.5,20 L108.0,10.0" class="path" />
 <path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
-<<<<<<< HEAD
 </g>
 </g>
 <g id="BUS"  transform="translate(81, 60.0)"  >
-=======
-</g></g>
-<g id="BUS"  transform="translate(90, 60.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >BUS</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " fill="url(#diagonalHatch)" />
@@ -191,14 +165,9 @@ text{font-size:0.9em;
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" />
-<<<<<<< HEAD
 </g>
 </g>
 <g id="ENABLE"  transform="translate(81, 90.0)"  >
-=======
-</g></g>
-<g id="ENABLE"  transform="translate(90, 90.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >ENABLE</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
@@ -211,42 +180,27 @@ text{font-size:0.9em;
 </g>
 <g data-symbol="BRICKS.one"  transform="translate(120, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,0 L360,0" class="path" />
-<<<<<<< HEAD
 </g>
 </g>
 <g id="ENABLE_1"  transform="translate(81, 120.0)"  >
-=======
-</g></g>
-<g id="ENABLE_1"  transform="translate(90, 120.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >ENABLE_1</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L132.0,20" class="path" />
 </g>
 <g data-symbol="BRICKS.one"  transform="translate(132.0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L348.0,0" class="path" />
-<<<<<<< HEAD
 </g>
 </g>
 <g id="ENABLE_2"  transform="translate(81, 150.0)"  >
-=======
-</g></g>
-<g id="ENABLE_2"  transform="translate(90, 150.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >ENABLE_2</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L252.0,20" class="path" />
 </g>
 <g data-symbol="BRICKS.one"  transform="translate(252.0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L228.0,0" class="path" />
-<<<<<<< HEAD
 </g>
 </g>
 <g id="BUS_2"  transform="translate(81, 180.0)"  >
-=======
-</g></g>
-<g id="BUS_2"  transform="translate(90, 180.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >BUS_2</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L396.0,20" class="path" />
@@ -259,7 +213,7 @@ text{font-size:0.9em;
 </g>
 </g>
 </g>
-<g id="edges"  transform="translate(90, 0)"  >
+<g id="edges"  transform="translate(81, 0)"  >
 </g>
 
 </svg>

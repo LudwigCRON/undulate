@@ -63,8 +63,7 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<<<<<<< HEAD
-<g id="ticks_1"  transform="translate(117, 0)"  >
+<g id="ticks_1"  transform="translate(130, 0)"  >
 <path d="m0,0 l0,300.0" class="ticks" />
 <path d="m40,0 l0,300.0" class="ticks" />
 <path d="m80,0 l0,300.0" class="ticks" />
@@ -92,36 +91,6 @@ text{font-size:0.9em;
 <path d="m960,0 l0,300.0" class="ticks" />
 <path d="m1000,0 l0,300.0" class="ticks" />
 <path d="m1040,0 l0,300.0" class="ticks" />
-=======
-<g id="ticks_1" transform="translate(130, 0)" >
-<path d="m0,0 0,300.0" class="ticks" />
-<path d="m40,0 0,300.0" class="ticks" />
-<path d="m80,0 0,300.0" class="ticks" />
-<path d="m120,0 0,300.0" class="ticks" />
-<path d="m160,0 0,300.0" class="ticks" />
-<path d="m200,0 0,300.0" class="ticks" />
-<path d="m240,0 0,300.0" class="ticks" />
-<path d="m280,0 0,300.0" class="ticks" />
-<path d="m320,0 0,300.0" class="ticks" />
-<path d="m360,0 0,300.0" class="ticks" />
-<path d="m400,0 0,300.0" class="ticks" />
-<path d="m440,0 0,300.0" class="ticks" />
-<path d="m480,0 0,300.0" class="ticks" />
-<path d="m520,0 0,300.0" class="ticks" />
-<path d="m560,0 0,300.0" class="ticks" />
-<path d="m600,0 0,300.0" class="ticks" />
-<path d="m640,0 0,300.0" class="ticks" />
-<path d="m680,0 0,300.0" class="ticks" />
-<path d="m720,0 0,300.0" class="ticks" />
-<path d="m760,0 0,300.0" class="ticks" />
-<path d="m800,0 0,300.0" class="ticks" />
-<path d="m840,0 0,300.0" class="ticks" />
-<path d="m880,0 0,300.0" class="ticks" />
-<path d="m920,0 0,300.0" class="ticks" />
-<path d="m960,0 0,300.0" class="ticks" />
-<path d="m1000,0 0,300.0" class="ticks" />
-<path d="m1040,0 0,300.0" class="ticks" />
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 </g>
 
 <g id="seq"  transform="translate(130, 0)"  >
@@ -209,14 +178,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L557,0 L560,10.0" class="path" />
 <path d="M0,10.0 L3,20 L557,20 L560,10.0" class="path" />
 <text x="280.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
-<<<<<<< HEAD
 </g>
 </g>
-<g id="seq_phase0.5"  transform="translate(117, 30.0)"  >
-=======
-</g></g>
 <g id="seq_phase0.5"  transform="translate(130, 30.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >seq_phase0.5</text>
 <g data-symbol="BRICKS.data"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 17.0,0 20.0,10.0 17.0,20 3,20 0,20 " fill="none" />
@@ -301,14 +265,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L577.0,0 L580.0,10.0" class="path" />
 <path d="M0,10.0 L3,20 L577.0,20 L580.0,10.0" class="path" />
 <text x="290.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
-<<<<<<< HEAD
 </g>
 </g>
-<g id="seq_phase1.0"  transform="translate(117, 60.0)"  >
-=======
-</g></g>
 <g id="seq_phase1.0"  transform="translate(130, 60.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >seq_phase1.0</text>
 <g data-symbol="BRICKS.data"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,20 " fill="none" />
@@ -387,14 +346,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L597.0,0 L600.0,10.0" class="path" />
 <path d="M0,10.0 L3,20 L597.0,20 L600.0,10.0" class="path" />
 <text x="300.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
-<<<<<<< HEAD
 </g>
 </g>
-<g id="seq_phase1.5"  transform="translate(117, 90.0)"  >
-=======
-</g></g>
 <g id="seq_phase1.5"  transform="translate(130, 90.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >seq_phase1.5</text>
 <g data-symbol="BRICKS.data"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 17.0,0 20.0,10.0 17.0,20 3,20 0,20 " fill="none" />
@@ -473,14 +427,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L617.0,0 L620.0,10.0" class="path" />
 <path d="M0,10.0 L3,20 L617.0,20 L620.0,10.0" class="path" />
 <text x="310.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
-<<<<<<< HEAD
 </g>
 </g>
-<g id="seq_phase2.0"  transform="translate(117, 120.0)"  >
-=======
-</g></g>
 <g id="seq_phase2.0"  transform="translate(130, 120.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >seq_phase2.0</text>
 <g data-symbol="BRICKS.data"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,20 " fill="none" />
@@ -553,14 +502,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L637.0,0 L640.0,10.0" class="path" />
 <path d="M0,10.0 L3,20 L637.0,20 L640.0,10.0" class="path" />
 <text x="320.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
-<<<<<<< HEAD
 </g>
 </g>
-<g id="seq2"  transform="translate(117, 150.0)"  >
-=======
-</g></g>
 <g id="seq2"  transform="translate(130, 150.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >seq2</text>
 <g data-symbol="BRICKS.data"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 77.0,0 80.0,10.0 77.0,20 3,20 0,20 " fill="none" />
@@ -645,14 +589,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L37.0,0 L40.0,10.0" class="path" />
 <path d="M0,10.0 L3,20 L37.0,20 L40.0,10.0" class="path" />
 <text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
-<<<<<<< HEAD
 </g>
 </g>
-<g id="seq2_phase1"  transform="translate(117, 180.0)"  >
-=======
-</g></g>
 <g id="seq2_phase1"  transform="translate(130, 180.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >seq2_phase1</text>
 <g data-symbol="BRICKS.data"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 37.0,0 40.0,10.0 37.0,20 3,20 0,20 " fill="none" />
@@ -737,14 +676,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L77.0,0 L80.0,10.0" class="path" />
 <path d="M0,10.0 L3,20 L77.0,20 L80.0,10.0" class="path" />
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
-<<<<<<< HEAD
 </g>
 </g>
-<g id="seq2_phase2"  transform="translate(117, 210.0)"  >
-=======
-</g></g>
 <g id="seq2_phase2"  transform="translate(130, 210.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >seq2_phase2</text>
 <g data-symbol="BRICKS.data"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " fill="none" />
@@ -823,14 +757,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L117.0,0 L120.0,10.0" class="path" />
 <path d="M0,10.0 L3,20 L117.0,20 L120.0,10.0" class="path" />
 <text x="60.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
-<<<<<<< HEAD
 </g>
 </g>
-<g id="seq2_phase3"  transform="translate(117, 240.0)"  >
-=======
-</g></g>
 <g id="seq2_phase3"  transform="translate(130, 240.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >seq2_phase3</text>
 <g data-symbol="BRICKS.data"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 37.0,0 40.0,10.0 37.0,20 3,20 0,20 " fill="none" />
@@ -909,14 +838,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,0 L157.0,0 L160.0,10.0" class="path" />
 <path d="M0,10.0 L3,20 L157.0,20 L160.0,10.0" class="path" />
 <text x="80.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >13</text>
-<<<<<<< HEAD
 </g>
 </g>
-<g id="seq2_phase4"  transform="translate(117, 270.0)"  >
-=======
-</g></g>
 <g id="seq2_phase4"  transform="translate(130, 270.0)"  >
->>>>>>> e7253d57c14b3d15f8d1ab1bf6318a8fe04b4f18
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >seq2_phase4</text>
 <g data-symbol="BRICKS.data"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " fill="none" />
