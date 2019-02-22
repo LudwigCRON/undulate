@@ -1,14 +1,13 @@
 %!PS-Adobe-3.0
 %%LanguageLevel: 2
 %%Pages: 1
-<< /PageSize [400 150.0] >> setpagedevice
+<< /PageSize [523 152.0] >> setpagedevice
 %%EndComments
 %%BeginProlog
 % Use own dictionary to avoid conflicts
 10 dict begin
 %%EndProlog
 %%Page: 1 1
-400 150.0 1
 /Courier findfont
 9 scalefont
 setfont
@@ -18,303 +17,647 @@ setfont
   /y exch def % handle top of stack: y coord of line
   /x exch def % handle top of stack: x coord of line
   dup stringwidth pop % stack: width string
-  x y moveto % move to right end
+  x y rmoveto % move to right end
   neg 0 rmoveto % move to left end
   show % print string
 } def
+/center-justify { % stack: string y
+  /y exch def % handle top of stack: y coord of line
+  /x exch def % handle top of stack: x coord of line
+  x y rmoveto % move to right end
+  dup stringwidth pop 2 div neg 0 rmoveto show} def
 0 0 moveto
 1 1 scale
 gsave
-
 gsave
-468 0 translate
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 0 0 rmoveto
+0 0 0 150.0 rlineto
+stroke
+grestore
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 40 0 rmoveto
+40 0 0 150.0 rlineto
+stroke
+grestore
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 80 0 rmoveto
+80 0 0 150.0 rlineto
+stroke
+grestore
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 120 0 rmoveto
+120 0 0 150.0 rlineto
+stroke
+grestore
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 160 0 rmoveto
+160 0 0 150.0 rlineto
+stroke
+grestore
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 200 0 rmoveto
+200 0 0 150.0 rlineto
+stroke
+grestore
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 240 0 rmoveto
+240 0 0 150.0 rlineto
+stroke
+grestore
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 280 0 rmoveto
+280 0 0 150.0 rlineto
+stroke
+grestore
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 320 0 rmoveto
+320 0 0 150.0 rlineto
+stroke
+grestore
+gsave
+0.8 setgray
+[1 1] 0 setdash
+newpath
+0 0 moveto
+0 0 360 0 rmoveto
+360 0 0 150.0 rlineto
+stroke
+grestore
 grestore
 
 gsave
-108 0 translate
-(clk) -10 15 right-justify
-108 0 moveto
-newpath
-108 128 moveto
-111.0 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-148 0 moveto
-newpath
-108 118.0 moveto
-109.5 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-188 0 moveto
-newpath
-108 118.0 moveto
-109.5 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-228 0 moveto
-newpath
-108 118.0 moveto
-109.5 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-268 0 moveto
-newpath
-108 118.0 moveto
-109.5 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-308 0 moveto
-newpath
-108 118.0 moveto
-109.5 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-348 0 moveto
-newpath
-108 118.0 moveto
-109.5 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-388 0 moveto
-newpath
-108 118.0 moveto
-109.5 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-428 0 moveto
-newpath
-108 118.0 moveto
-109.5 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-468 0 moveto
-newpath
-108 118.0 moveto
-109.5 108 lineto
-126.5 108 lineto
-129.5 128 lineto
-146.5 128 lineto
-148 118.0 lineto
-stroke
-
-grestore
+108 125.0 moveto (clk) -10 6 right-justify
 gsave
-108 30.0 translate
-(Data) -10 15 right-justify
-108 30.0 moveto
+108 125.0 translate 0 0 moveto
 newpath
-108 108 moveto
-111 108 lineto
-185 108 lineto
-188 118.0 lineto
-stroke
-newpath
-108 128 moveto
-111 128 lineto
-185 128 lineto
-188 118.0 lineto
-stroke
-
-188 30.0 moveto
-newpath
-108 118.0 moveto
-111 108 lineto
-145 108 lineto
-148 118.0 lineto
-stroke
-newpath
-108 118.0 moveto
-111 128 lineto
-145 128 lineto
-148 118.0 lineto
-stroke
-20.0 10.0 moveto (head) show
-
-228 30.0 moveto
-newpath
-108 118.0 moveto
-111 108 lineto
-145 108 lineto
-148 118.0 lineto
-stroke
-newpath
-108 118.0 moveto
-111 128 lineto
-145 128 lineto
-148 118.0 lineto
-stroke
-20.0 10.0 moveto (body) show
-
-268 30.0 moveto
-newpath
-108 118.0 moveto
-111 108 lineto
-145 108 lineto
-148 118.0 lineto
-stroke
-newpath
-108 118.0 moveto
-111 128 lineto
-145 128 lineto
-148 118.0 lineto
-stroke
-20.0 10.0 moveto (tail) show
-
-308 30.0 moveto
-newpath
-108 118.0 moveto
-111 108 lineto
-185 108 lineto
-188 118.0 lineto
-stroke
-newpath
-108 118.0 moveto
-111 128 lineto
-185 128 lineto
-188 118.0 lineto
-stroke
-
-388 30.0 moveto
-newpath
-108 118.0 moveto
-111 108 lineto
-185 108 lineto
-188 118.0 lineto
-stroke
-newpath
-108 118.0 moveto
-111 128 lineto
-185 128 lineto
-188 118.0 lineto
-stroke
-40.0 10.0 moveto (data) show
-
-468 30.0 moveto
-newpath
-108 118.0 moveto
-111 108 lineto
-145 108 lineto
-148 118.0 lineto
-stroke
-newpath
-108 118.0 moveto
-111 128 lineto
-145 128 lineto
-148 118.0 lineto
+0 0 moveto
+0 0 rmoveto
+3.0 20 rlineto
+15.5 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
 stroke
 
 grestore
 gsave
-108 60.0 translate
-(Request) -10 15 right-justify
-108 60.0 moveto
+148 125.0 translate 0 0 moveto
 newpath
-108 128 moveto
-111 128 lineto
-114 128 lineto
-188 128 lineto
-stroke
-
-188 60.0 moveto
-newpath
-108 128 moveto
-111 128 lineto
-114 108 lineto
-228 108 lineto
-stroke
-
-308 60.0 moveto
-newpath
-108 108 moveto
-111 108 lineto
-114 128 lineto
-188 128 lineto
-stroke
-
-388 60.0 moveto
-newpath
-108 128 moveto
-111 128 lineto
-114 108 lineto
-188 108 lineto
-stroke
-
-468 60.0 moveto
-newpath
-108 108 moveto
-111 108 lineto
-114 128 lineto
-148 128 lineto
+0 0 moveto
+0 10.0 rmoveto
+1.5 10.0 rlineto
+17.0 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
 stroke
 
 grestore
 gsave
-108 120.0 translate
-(Acknowledge) -10 15 right-justify
-108 120.0 moveto
+188 125.0 translate 0 0 moveto
 newpath
-108 108 moveto
-111 108 lineto
-114 108 lineto
-388 108 lineto
+0 0 moveto
+0 10.0 rmoveto
+1.5 10.0 rlineto
+17.0 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
 stroke
 
-388 120.0 moveto
+grestore
+gsave
+228 125.0 translate 0 0 moveto
 newpath
-108 108 moveto
-111 108 lineto
-114 128 lineto
-148 128 lineto
+0 0 moveto
+0 10.0 rmoveto
+1.5 10.0 rlineto
+17.0 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
 stroke
 
-428 120.0 moveto
+grestore
+gsave
+268 125.0 translate 0 0 moveto
 newpath
-108 128 moveto
-111 128 lineto
-114 108 lineto
-188 108 lineto
+0 0 moveto
+0 10.0 rmoveto
+1.5 10.0 rlineto
+17.0 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
+stroke
+
+grestore
+gsave
+308 125.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 10.0 rmoveto
+1.5 10.0 rlineto
+17.0 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
+stroke
+
+grestore
+gsave
+348 125.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 10.0 rmoveto
+1.5 10.0 rlineto
+17.0 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
+stroke
+
+grestore
+gsave
+378.0 125.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 0 7 22 rmoveto
+-15 18 -4 20 -5 20 -5 -28 -5 -4 -10 -4 -10 -4 4 20 rlineto
+stroke
+newpath
+0 0 moveto
+0 0 -7 -2 moveto
+stroke
+newpath
+0 0 moveto
+0 0 -3 -2 moveto
+stroke
+
+grestore
+gsave
+388 125.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 10.0 rmoveto
+1.5 10.0 rlineto
+17.0 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
+stroke
+
+grestore
+gsave
+428 125.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 10.0 rmoveto
+1.5 10.0 rlineto
+17.0 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
+stroke
+
+grestore
+gsave
+468 125.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 10.0 rmoveto
+1.5 10.0 rlineto
+17.0 0 rlineto
+3.0 -20 rlineto
+17.0 0 rlineto
+1.5 10.0 rlineto
 stroke
 
 grestore
 grestore
 gsave
-576 0 translate
+108 95.0 moveto (Data) -10 6 right-justify
+gsave
+108 95.0 translate 0 0 moveto
+gsave
+newpath
+0 0 moveto
+0 20 rlineto
+3 0 rlineto
+74 0 rlineto
+3 -10.0 rlineto
+-3 -10.0 rlineto
+-74 0 rlineto
+-3 0 rlineto
+closepath
+clip
+newpath
+0.5 setlinewidth
+-30 0 moveto
+0 20 lineto
+-20 0 moveto
+10 20 lineto
+-10 0 moveto
+20 20 lineto
+0 0 moveto
+30 20 lineto
+10 0 moveto
+40 20 lineto
+20 0 moveto
+50 20 lineto
+30 0 moveto
+60 20 lineto
+40 0 moveto
+70 20 lineto
+50 0 moveto
+80 20 lineto
+60 0 moveto
+90 20 lineto
+70 0 moveto
+100 20 lineto
+stroke
+grestore
+newpath
+0 0 moveto
+0 20 rmoveto
+3 0 rlineto
+74 0 rlineto
+3 -10.0 rlineto
+stroke
+newpath
+0 0 moveto
+0 0 rmoveto
+3 0 rlineto
+74 0 rlineto
+3 10.0 rlineto
+stroke
+
+grestore
+gsave
+188 95.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 10.0 rlineto
+34 0 rlineto
+3 -10.0 rlineto
+stroke
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 -10.0 rlineto
+34 0 rlineto
+3 10.0 rlineto
+stroke
+0 0 moveto (head) 20.0 7.0 center-justify
+
+grestore
+gsave
+228 95.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 10.0 rlineto
+34 0 rlineto
+3 -10.0 rlineto
+stroke
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 -10.0 rlineto
+34 0 rlineto
+3 10.0 rlineto
+stroke
+0 0 moveto (body) 20.0 7.0 center-justify
+
+grestore
+gsave
+268 95.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 10.0 rlineto
+34 0 rlineto
+3 -10.0 rlineto
+stroke
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 -10.0 rlineto
+34 0 rlineto
+3 10.0 rlineto
+stroke
+0 0 moveto (tail) 20.0 7.0 center-justify
+
+grestore
+gsave
+308 95.0 translate 0 0 moveto
+gsave
+newpath
+0 0 moveto
+0 10.0 rlineto
+3 10.0 rlineto
+74 0 rlineto
+3 -10.0 rlineto
+-3 -10.0 rlineto
+-74 0 rlineto
+-3 10.0 rlineto
+closepath
+clip
+newpath
+0.5 setlinewidth
+-30 0 moveto
+0 20 lineto
+-20 0 moveto
+10 20 lineto
+-10 0 moveto
+20 20 lineto
+0 0 moveto
+30 20 lineto
+10 0 moveto
+40 20 lineto
+20 0 moveto
+50 20 lineto
+30 0 moveto
+60 20 lineto
+40 0 moveto
+70 20 lineto
+50 0 moveto
+80 20 lineto
+60 0 moveto
+90 20 lineto
+70 0 moveto
+100 20 lineto
+stroke
+grestore
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 10.0 rlineto
+74 0 rlineto
+3 -10.0 rlineto
+stroke
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 -10.0 rlineto
+74 0 rlineto
+3 10.0 rlineto
+stroke
+
+grestore
+gsave
+378.0 95.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 0 7 22 rmoveto
+-15 18 -4 20 -5 20 -5 -28 -5 -4 -10 -4 -10 -4 4 20 rlineto
+stroke
+newpath
+0 0 moveto
+0 0 -7 -2 moveto
+stroke
+newpath
+0 0 moveto
+0 0 -3 -2 moveto
+stroke
+
+grestore
+gsave
+388 95.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 10.0 rlineto
+74 0 rlineto
+3 -10.0 rlineto
+stroke
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 -10.0 rlineto
+74 0 rlineto
+3 10.0 rlineto
+stroke
+0 0 moveto (data) 40.0 7.0 center-justify
+
+grestore
+gsave
+468 95.0 translate 0 0 moveto
+gsave
+newpath
+0 0 moveto
+0 10.0 rlineto
+3 10.0 rlineto
+34 0 rlineto
+3 -10.0 rlineto
+-3 -10.0 rlineto
+-34 0 rlineto
+-3 10.0 rlineto
+closepath
+clip
+newpath
+0.5 setlinewidth
+-30 0 moveto
+0 20 lineto
+-20 0 moveto
+10 20 lineto
+-10 0 moveto
+20 20 lineto
+0 0 moveto
+30 20 lineto
+10 0 moveto
+40 20 lineto
+20 0 moveto
+50 20 lineto
+30 0 moveto
+60 20 lineto
+stroke
+grestore
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 10.0 rlineto
+34 0 rlineto
+3 -10.0 rlineto
+stroke
+newpath
+0 0 moveto
+0 10.0 rmoveto
+3 -10.0 rlineto
+34 0 rlineto
+3 10.0 rlineto
+stroke
+
+grestore
+grestore
+gsave
+108 65.0 moveto (Request) -10 6 right-justify
+gsave
+108 65.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 0 rmoveto
+3 0 rlineto
+3 0 rlineto
+74 0 rlineto
+stroke
+
+grestore
+gsave
+188 65.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 0 rmoveto
+3 0 rlineto
+3 20 rlineto
+114 0 rlineto
+stroke
+
+grestore
+gsave
+308 65.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 20 rmoveto
+3 0 rlineto
+3 -20 rlineto
+74 0 rlineto
+stroke
+
+grestore
+gsave
+378.0 65.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 0 7 22 rmoveto
+-15 18 -4 20 -5 20 -5 -28 -5 -4 -10 -4 -10 -4 4 20 rlineto
+stroke
+newpath
+0 0 moveto
+0 0 -7 -2 moveto
+stroke
+newpath
+0 0 moveto
+0 0 -3 -2 moveto
+stroke
+
+grestore
+gsave
+388 65.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 0 rmoveto
+3 0 rlineto
+3 20 rlineto
+74 0 rlineto
+stroke
+
+grestore
+gsave
+468 65.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 20 rmoveto
+3 0 rlineto
+3 -20 rlineto
+34 0 rlineto
+stroke
+
+grestore
+grestore
+gsave
+108 5.0 moveto (Acknowledge) -10 6 right-justify
+gsave
+108 5.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 20 rmoveto
+3 0 rlineto
+3 0 rlineto
+274 0 rlineto
+stroke
+
+grestore
+gsave
+378.0 5.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 0 7 22 rmoveto
+-15 18 -4 20 -5 20 -5 -28 -5 -4 -10 -4 -10 -4 4 20 rlineto
+stroke
+newpath
+0 0 moveto
+0 0 -7 -2 moveto
+stroke
+newpath
+0 0 moveto
+0 0 -3 -2 moveto
+stroke
+
+grestore
+gsave
+388 5.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 20 rmoveto
+3 0 rlineto
+3 -20 rlineto
+34 0 rlineto
+stroke
+
+grestore
+gsave
+428 5.0 translate 0 0 moveto
+newpath
+0 0 moveto
+0 0 rmoveto
+3 0 rlineto
+3 20 rlineto
+74 0 rlineto
+stroke
+
+grestore
+grestore
+grestore
+gsave
 grestore
 showpage
 %%Trailer

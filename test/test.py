@@ -26,7 +26,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step1.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_wavedrom_step2(self):
     """
     test clock generation
@@ -45,7 +44,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step2.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_wavedrom_step3(self):
     """
     small bus example
@@ -58,7 +56,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step3.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_wavedrom_step4(self):
     """
     spacer and gaps
@@ -73,7 +70,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step4.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_wavedrom_step5(self):
     """
     groups support
@@ -99,7 +95,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step5.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_wavedrom_step6(self):
     """
     phase and period
@@ -114,7 +109,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step6.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_wavedrom_step7(self):
     """
     Arrows
@@ -139,7 +133,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step7.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_wavedrom_step8(self):
     """
     Sharp edge lines
@@ -157,7 +150,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step8.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_wavedrom_step9(self):
     """
     phase and period
@@ -175,7 +167,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step9.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_wavedrom_step10(self):
     """
     phase and period
@@ -199,7 +190,6 @@ class TestSvgMethods(unittest.TestCase):
     with open(f"./output/wavedrom_step10.{cli_args.format}", "w+") as fp:
       fp.write(renderer.draw(wavelanes))
 
-  @unittest.skipIf("eps" in sys.argv, "eps debug")
   def test_extra_mux_recirc(self):
     """
     real phase use case

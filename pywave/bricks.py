@@ -303,7 +303,7 @@ class Up(Brick):
     Brick.__init__(self, **kwargs)
     self.last_y = self.height if self.last_y is None else self.last_y
     self.splines.append([
-      ('m', 0, self.last_y), ('l', 3, 0), ('C', 3 + self.slewing, self.last_y),
+      ('M', 0, self.last_y), ('L', 3, self.last_y), ('C', 3 + self.slewing, self.last_y),
       ('', 3 + self.slewing, 0), ('', min(self.width, 20), 0), ('L', self.width, 0)])
 
 class Down(Brick):
@@ -311,7 +311,7 @@ class Down(Brick):
     Brick.__init__(self, **kwargs)
     self.last_y = self.height if self.last_y is None else self.last_y
     self.splines.append([
-      ('m', 0, self.last_y), ('l', 3, 0), ('C', 3 + self.slewing, self.last_y),
+      ('M', 0, self.last_y), ('L', 3, self.last_y), ('C', 3 + self.slewing, self.last_y),
       ('', 3 + self.slewing, self.height - self.last_y), ('', min(self.width, 20), self.height),
       ('L', self.width, self.height)])
 

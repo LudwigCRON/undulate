@@ -415,21 +415,21 @@ class Renderer:
               style += "arrowhead " if _shape[0] == '<' else ''
               mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
               if _shape in ['<~', '~', '~>', '<~>']:
-                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], style)
+                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], style=style)
               elif _shape in ['<-~', '-~', '-~>', '<-~>']:
-                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], style)
+                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], style=style)
               elif _shape in ['<~-', '~-', '~->', '<~->']:
-                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], style)
+                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], style=style)
               elif _shape in ['<-', '-', '->', '<->']:
-                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], style)
+                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], style=style)
               elif _shape in ['<-|', '-|', '-|>', '<-|>']:
-                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], style)
+                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], style=style)
                 mx, my = e[0], s[1]
               elif _shape in ['<|-', '|-', '|->', '<|->']:
-                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], style)
+                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], style=style)
                 mx, my = s[0], e[1]
               elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
-                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], style)
+                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], style=style)
                 mx, my = mx, e[1]
               ans += self.text(mx+dx, my+dy, text, extra="text-anchor=\"middle\"")
               return ans
@@ -471,9 +471,9 @@ class Renderer:
       offsetx, offsety = offset[0], offset[1]
       # return value
       if depth > 1:
-        ans = self.text(0, offsety+10, name, extra=f"class=\"h{depth}\"")
+        ans = self.text(0, offsety+10, name, style_repr=f"class=\"h{depth}\"", **kwargs)
         if depth == 2:
-          ans += self.path([(0, offsety+14), (width+offsetx, offsety+14)], "border")
+          ans += self.path([(0, offsety+14), (width+offsetx, offsety+14)], style_repr="border", **kwargs)
         offsety += 20
       else:
         ans = ""
@@ -488,7 +488,7 @@ class Renderer:
             ans += self.wavelane(
               wavetitle,
               wave,
-              self.translate(offsetx, offsety, no_acc=False),
+              self.translate(offsetx, offsety, height=height, no_acc=True),
               **args
             )
             offsety += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
@@ -501,7 +501,7 @@ class Renderer:
             j, tmp = self.wavegroup(
               wavetitle,
               wavelanes[wavetitle],
-              self.translate(0, offsety, no_acc=True),
+              self.translate(0, offsety, height=height, no_acc=True),
               depth+1,
               **args
             )
@@ -517,7 +517,7 @@ class Renderer:
             j, tmp = self.wavegroup(
               wavetitle,
               wavelanes[wavetitle],
-              self.translate(0, offsety, no_acc=True),
+              self.translate(0, offsety, height=height, no_acc=True),
               depth+1,
               **args
             )
