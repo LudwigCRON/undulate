@@ -87,7 +87,10 @@ class SvgRenderer(Renderer):
     text    : text to display
     """
     extra = kwargs.get("extra", "")
-    return (f"<text x=\"{x}\" y=\"{y}\" {extra} >{text}</text>\n")
+    style = kwargs.get("style_repr", "")
+    if style:
+      style = f"class=\"{style}\""
+    return (f"<text x=\"{x}\" y=\"{y}\" {extra} {style}>{text}</text>\n")
 
   def translate(self, x: float, y: float, **kwargs) -> str:
     return f" transform=\"translate({x}, {y})\" "

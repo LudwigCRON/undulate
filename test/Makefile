@@ -22,8 +22,13 @@ legacy: legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml
 new: wavetest.json wavetest.yaml
 	@echo "New Done"
 
-internal:
-	./test.py
+internal-eps:
+	./test.py -f eps
+
+internal-svg:
+	./test.py -f svg
+
+internal: internal-eps internal-svg
 
 eps: wavetest.yaml
 	../waveform.py -i ${TESTPATH}/$< -f eps -o ${TESTPATH}/output/$(subst .yaml,-yaml.eps,$<)

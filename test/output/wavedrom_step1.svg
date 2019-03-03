@@ -63,24 +63,24 @@ text{font-size:0.9em;
     </filter>
 </defs>
 <g id="a"  >
-<g id="ticks_2"  transform="translate(54, 0)"  >
-<path d="m0,0 l0,60.0" class="ticks" />
-<path d="m40,0 l0,60.0" class="ticks" />
-<path d="m80,0 l0,60.0" class="ticks" />
-<path d="m120,0 l0,60.0" class="ticks" />
-<path d="m160,0 l0,60.0" class="ticks" />
-<path d="m200,0 l0,60.0" class="ticks" />
-<path d="m240,0 l0,60.0" class="ticks" />
-<path d="m280,0 l0,60.0" class="ticks" />
-<path d="m320,0 l0,60.0" class="ticks" />
-<path d="m360,0 l0,60.0" class="ticks" />
-<path d="m400,0 l0,60.0" class="ticks" />
-<path d="m440,0 l0,60.0" class="ticks" />
-<path d="m480,0 l0,60.0" class="ticks" />
-<path d="m520,0 l0,60.0" class="ticks" />
+<g id="ticks_2"  transform="translate(60, 0)"  >
+<path d="M0,0 L0,60.0" class="ticks" />
+<path d="M40,0 L40,60.0" class="ticks" />
+<path d="M80,0 L80,60.0" class="ticks" />
+<path d="M120,0 L120,60.0" class="ticks" />
+<path d="M160,0 L160,60.0" class="ticks" />
+<path d="M200,0 L200,60.0" class="ticks" />
+<path d="M240,0 L240,60.0" class="ticks" />
+<path d="M280,0 L280,60.0" class="ticks" />
+<path d="M320,0 L320,60.0" class="ticks" />
+<path d="M360,0 L360,60.0" class="ticks" />
+<path d="M400,0 L400,60.0" class="ticks" />
+<path d="M440,0 L440,60.0" class="ticks" />
+<path d="M480,0 L480,60.0" class="ticks" />
+<path d="M520,0 L520,60.0" class="ticks" />
 </g>
 
-<g id="Alfa"  transform="translate(54, 0)"  >
+<g id="Alfa"  transform="translate(60, 0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Alfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
@@ -128,7 +128,7 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" />
 </g>
 </g>
-<g id="SAlfa"  transform="translate(54, 30.0)"  >
+<g id="SAlfa"  transform="translate(60, 30.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >SAlfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L11,20 L40,20" class="path" />
@@ -177,7 +177,7 @@ text{font-size:0.9em;
 </g>
 </g>
 </g>
-<g id="edges"  transform="translate(54, 0)"  >
+<g id="edges"  transform="translate(60, 0)"  >
 </g>
 
 </svg>

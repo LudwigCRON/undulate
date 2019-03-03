@@ -52,6 +52,27 @@ def incr_edge(f):
 
 # TODO create an abstract parameter for style
 # TODO autoscale or scaling for analogue
+# TODO add support of T curves in svg
+
+def SvgCurveConvert(vertices: list) -> list:
+  px, py, pt    =  0, 0, 'm'
+  ans, ppx, ppy = [], 0, 0
+  for t, x, y in vertices:
+    # translate S into C
+    if (t in ['s', 'S']) and (pt in ['s', 'S', 'c', 'C']):
+      ans.append(('c' if t == 's' else 'C', px+(px-ppx), py+(py-ppy)))
+      ans.append(('', x, y))
+    # translate Q into C
+    elif t in ['q', 'Q'] or (t in ['s', 'S'] and not pt in ['s', 'S', 'c', 'C']):
+      ans.append(('c' if t in ['s', 'q'] else 'C', x, y))
+      ans.append(('', x, y))
+    else:
+      ans.append((t, x, y))
+    if t in ['m', 'M', 'l', 'L', 's', 'S', 'c', 'C', 'q', 'Q', 't', 'T']:
+      pt = t
+    px, py = x, y
+    ppx, ppy = px, py
+  return ans
 
 class Renderer:
   """
@@ -342,10 +363,10 @@ class Renderer:
     def _gen():
       ans = ""
       for x in range(0, int(width), step):
-        ans += self.spline(
-          [('m', x, 0), ('l', 0, height-offsety)],
+        ans += self.path(
+          [(x, 0), (x, height-offsety)],
           style_repr="ticks",
-          extra=self.translate(offsetx, 0, dont_touch=True),
+          extra=self.translate(offsetx, 0, dont_touch=False, no_acc=True),
           **kwargs)
       return ans
     return self.group(
@@ -460,7 +481,7 @@ class Renderer:
     # prepare the return group
     _default_offset_x = [len(s)+1 for s in wavelanes.keys() if not (Renderer.is_spacer(s) or s in ["edge", "adjustment"])]
     offsetx = kwargs.get("offsetx", max(_default_offset_x)*9)
-    offsety = 0
+    offsety = 0 # kwargs.get("offsety", 0)
     def _gen(offset):
       # options
       brick_width  = kwargs.get("brick_width", 20)
@@ -471,14 +492,14 @@ class Renderer:
       offsetx, offsety = offset[0], offset[1]
       # return value
       if depth > 1:
-        ans = self.text(0, offsety+10, name, style_repr=f"class=\"h{depth}\"", **kwargs)
+        ans = self.text(0, offsety+10, name, style_repr=f"h{depth}", **kwargs)
         if depth == 2:
           ans += self.path([(0, offsety+14), (width+offsetx, offsety+14)], style_repr="border", **kwargs)
         offsety += 20
       else:
         ans = ""
       for _, wavetitle in enumerate(wavelanes.keys()):
-        # signal
+        # signal in a dict
         if isinstance(wavelanes[wavetitle], dict):
           if "wave" in wavelanes[wavetitle]:
             wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]
@@ -495,34 +516,35 @@ class Renderer:
           # spacer
           elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
             offsety += brick_height * 1.5
+          # named group
           elif not wavetitle in ["head", "foot", "config"]:
             args = kwargs
             args.update({"offsetx": offsetx, "offsety": offsety, "no_ticks": True})
             j, tmp = self.wavegroup(
               wavetitle,
               wavelanes[wavetitle],
-              self.translate(0, offsety, height=height, no_acc=True),
+              self.translate(0, offsety, height=height, dont_touch=True),
               depth+1,
               **args
             )
             ans += tmp
             offsety += j
           # group of signals
-        elif isinstance(wavelanes[wavetitle], list):
-          if len(wavelanes[wavetitle]) > 0 and \
-             isinstance(wavelanes[wavetitle][0], dict) and \
-             "wave" in wavelanes[wavetitle][0]:
-            args = kwargs
-            args.update({"offsetx": offsetx, "offsety": offsety, "no_ticks": True})
-            j, tmp = self.wavegroup(
-              wavetitle,
-              wavelanes[wavetitle],
-              self.translate(0, offsety, height=height, no_acc=True),
-              depth+1,
-              **args
-            )
-            ans += tmp
-            offsety += j
+        #elif isinstance(wavelanes[wavetitle], list):
+        #  if len(wavelanes[wavetitle]) > 0 and \
+        #     isinstance(wavelanes[wavetitle][0], dict) and \
+        #     "wave" in wavelanes[wavetitle][0]:
+        #    args = kwargs
+        #    args.update({"offsetx": offsetx, "offsety": offsety, "no_ticks": True})
+        #    j, tmp = self.wavegroup(
+        #      wavetitle,
+        #      wavelanes[wavetitle],
+        #      self.translate(0, offsety, height=height, no_acc=True),
+        #      depth+1,
+        #      **args
+        #    )
+        #    ans += tmp
+        #    offsety += j
           # extra config
         else:
           pass
@@ -531,7 +553,7 @@ class Renderer:
         ans = self.ticks(width, height, brick_width, offsetx=offsetx) + "\n" + ans
       offset[0], offset[1] = offsetx, offsety
       return ans
-    # a use full signal is in a dict
+    # a useful signal is in a dict
     if isinstance(wavelanes, dict):
       # room for displaying names
       offset = [offsetx, offsety]

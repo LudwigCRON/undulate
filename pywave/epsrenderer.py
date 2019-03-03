@@ -6,9 +6,13 @@ epsrenderer.py use the logic of renderer.py to render waveforms
 into encapsulated postcript file or postscript file
 """
 
+# TODO fix position of edges
+# TODO fix position of wavelane in group with spacers
+
+import copy
 from .skin import DEFAULT, DEFINITION
-from .renderer import Renderer
-from .bricks import Brick
+from .renderer import Renderer, SvgCurveConvert
+from .bricks import BRICKS, Brick, generate_brick
 
 class EpsRenderer(Renderer):
   """
@@ -45,16 +49,25 @@ class EpsRenderer(Renderer):
     vertices: list of of x-y coordinates in a tuple
     [extra] : optional attributes for the svg (eg class)
     """
+    style        = kwargs.get("style_repr", "")
+    extra        = kwargs.get("extra", "")
     block_height = kwargs.get("block_height", 20)
-    path = ["newpath", "0 0 moveto"]
-    px, py = 0, 0
+    path = []
+    if style == "ticks":
+      path = ["gsave", "0.8 setgray", "[1 1] 0 setdash", extra]
+    path.extend(["newpath", "0 0 moveto"])
+    px, py, i = 0, 0, len(path)
     for v in vertices:
       x, y = v
       y = block_height - y
-      path.append(f"{x - px} {y - py} rlineto")
+      path.append(f"{x - px:.5f} {y - py:.5f} rlineto")
       px, py = x, y
-    path[2] = path[2].replace("rlineto", "rmoveto")
-    path.append("stroke\n")
+    path[i] = path[i].replace("rlineto", "rmoveto")
+    if style == "ticks":
+      path.append("stroke")
+      path.append("grestore\n")
+    else:
+      path.append("stroke\n")
     return '\n'.join(path)
 
   def arrow(self, x, y, angle, extra: str = "", **kwargs) -> str:
@@ -110,8 +123,9 @@ class EpsRenderer(Renderer):
       path.append("clip")
       path.append("newpath")
       path.append("0.5 setlinewidth")
-      for x in range(int(xmin-abs(ymax-ymin)), int(xmax+10), 10):
-        path.append(f"{x-10} {ymin} moveto")
+      step = 8
+      for x in range(int(xmin-abs(ymax-ymin)), int(xmax+step), step):
+        path.append(f"{x-step} {ymin} moveto")
         path.append(f"{x+abs(ymax-ymin)} {ymax} lineto")
       path.append("stroke")
     else:
@@ -130,47 +144,40 @@ class EpsRenderer(Renderer):
     [extra] : optional attributes for the svg (eg class)
     """
     style        = kwargs.get("style_repr", "")
+    extra        = kwargs.get("extra", "")
     block_height = kwargs.get("block_height", 20)
+    # debug spline
+    vertices = SvgCurveConvert(vertices)
     # ticks are disabled for debug purpose only
-    path, c, cmd, line = [], 0, "", ""
-    if style == "ticks":
-      path = ["gsave", "0.8 setgray", "[1 1] 0 setdash"]
+    path, c, cmd, line = [], 0, "moveto", ""
     path.extend(["newpath", "0 0 moveto"])
     px, py = 0, 0
     for v in vertices:
       s, x, y = v
-      if not style == "ticks":
-        if isinstance(y, (float, int)):
-          y = -y
-          if not s.startswith('r'):
-            y += block_height
+      if isinstance(y, (float, int)):
+        y = -y
+        if not s.startswith('r'):
+          y += block_height
       # check the command
-      cmd = "rcurveto"  if s in "cqts" else \
-            "curveto"   if s in "CQTS" else \
+      cmd = "rcurveto"  if s in ["c", "q", "t", "s"] else \
+            "curveto"   if s in ["C", "Q", "T", "S"] else \
             "rlineto"   if s == "l" else \
             "lineto"    if s == "L" else \
             "rmoveto"   if s == "m" else \
             "moveto"    if s == "M" else \
             "closepath" if s == "z" else cmd
-      if c == 0:
-        c = 2 if s in "CQTcqt" else \
-            1 if s in "Ss"     else c
-        if s in "Ss":
-          line += f"{x+(x-px)} {y+(y-py)} "
-        else:
-          line += f"{px} {py} "
-      if c > 0:
-        c -= 1
+      c = 2 if s in ["C", "c"] else c
+      if c == 2:
+        line = f"{x} {y} "
+        c = 1
+      elif c > 0:
         line += f"{x} {y} "
+        c -= 1
       else:
         path.append(f"{line}{x} {y} {cmd}")
         line = ""
       px, py = x, y
-    if style == "ticks":
-      path.append("stroke")
-      path.append("grestore\n")
-    else:
-      path.append("stroke\n")
+    path.append("stroke\n")
     return '\n'.join(path)
 
   def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
@@ -198,7 +205,7 @@ class EpsRenderer(Renderer):
         self._ox, self._oy = x, y
       else:
         self._ox, self._oy = self._ox + x, self._oy + y
-      return f"{self._ox} {self._height - self._oy} translate"
+      return f"{self._ox} {self._height - self._oy} translate 0 0 moveto"
     else:
       return f"{self._ox + x} {self._height - self._oy - y} translate 0 0 moveto"
   

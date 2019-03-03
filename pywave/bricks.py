@@ -292,11 +292,10 @@ class Gap(Brick):
     #if self.is_first:
     #raise "a gap cannot be first in a wavelane"
     self.splines.append([
-      ('m', 7, -2), ('', -4, 0), ('c', -5, 0), ('', -5, self.height + 4),
-      ('', -10, self.height + 4), ('l', 4, 0), ('C', 2, self.height + 4), ('', 2, -2),
-      ('', 7, -2), ('z', '', '')])
-    self.splines.append([('M', -7, self.height+2), ('C', -2, self.height+2), ('', -2, -2), ('', 3, -2)])
-    self.splines.append([('M', -3, self.height + 2), ('C', 2, self.height + 2), ('', 2, -2), ('', 7, -2)])
+      ('m', 0, self.height + 2), ('c', 5, 0), ('', 0, -self.height-4), ('', 5, -self.height-4),
+      ('l', -3, 0), ('c', -5, 0), ('', 0, self.height+4), ('', -5, self.height+4), ('z', '', '')])
+    self.splines.append([('m', 0, self.height + 2), ('c', 5, 0), ('', 0, -self.height-4), ('', 5, -self.height-4)])
+    self.splines.append([('m', -3, self.height + 2), ('c', 5, 0), ('', 0, -self.height-4), ('', 5, -self.height-4)])
 
 class Up(Brick):
   def __init__(self, **kwargs):
@@ -326,12 +325,16 @@ class Meta(Brick):
     _tmp = [('m', 0, self.last_y)]
     if kwargs.get("then_one", False):
       for t in time:
-        _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-self.width)/self.width)*math.cos(8*math.pi*t/self.width))*0.5*self.height))
-      _tmp.extend([('S', self.width * 0.75, 0), ('', self.width, 0)])
+        _tmp.append(('L' if t == dt else '', t, (1+math.exp(2*(t-self.width)/self.width)*math.sin(math.pi+8*math.pi*t/self.width))*0.5*self.height))
+      t, x, y = _tmp[-1]
+      dx = max(y*self.slewing/self.height, y)
+      _tmp.extend([('C', x+dx, 0), ('', x+dx, 0), ('', self.width, 0)])
     else:
       for t in time:
-        _tmp.append(('S' if t == dt else '', t, (1+math.exp((t-self.width)/self.width)*math.sin(8*math.pi*t/self.width))*0.5*self.height))
-      _tmp.extend([('S', self.width * 0.75, self.height), ('', self.width, self.height)])
+        _tmp.append(('L' if t == dt else '', t, (1+math.exp(2*(t-self.width)/self.width)*math.sin(8*math.pi*t/self.width))*0.5*self.height))
+      t, x, y = _tmp[-1]
+      dx = max((self.height-y)*self.slewing/self.height, (self.height-y))
+      _tmp.extend([('C', x + dx, self.height), ('', x+dx, self.height), ('', self.width, self.height)])
     self.splines.append(_tmp)
 
 class Cap(Brick):
