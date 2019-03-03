@@ -224,7 +224,7 @@ class HighZ(Brick):
     dt = abs(self.height - self.last_y) * self.slewing / self.height
     # add shape
     self.splines.append([
-      ('m', 0, self.last_y), ('C', dt, self.height / 2), ('', dt, self.height / 2),
+      ('M', 0, self.last_y), ('C', dt, self.height / 2), ('', dt, self.height / 2),
       ('', min(self.width, 20), self.height/2), ('L', self.width, self.height/2)])
 
 class Zero(Brick):
@@ -292,10 +292,10 @@ class Gap(Brick):
     #if self.is_first:
     #raise "a gap cannot be first in a wavelane"
     self.splines.append([
-      ('m', 0, self.height + 2), ('c', 5, 0), ('', 0, -self.height-4), ('', 5, -self.height-4),
-      ('l', -3, 0), ('c', -5, 0), ('', 0, self.height+4), ('', -5, self.height+4), ('z', '', '')])
-    self.splines.append([('m', 0, self.height + 2), ('c', 5, 0), ('', 0, -self.height-4), ('', 5, -self.height-4)])
-    self.splines.append([('m', -3, self.height + 2), ('c', 5, 0), ('', 0, -self.height-4), ('', 5, -self.height-4)])
+      ('M', 0, self.height + 2), ('C', 5, self.height + 2), ('', 5, -4), ('', 10, -4),
+      ('L', 7, 0), ('C', 2, 0), ('', 2, self.height+4), ('', -3, self.height+4), ('z', '', '')])
+    self.splines.append([('M', 0, self.height + 2), ('C', 5, self.height + 2), ('', 5, -2), ('', 10, -2)])
+    self.splines.append([('M', -3, self.height + 2), ('C', 2, self.height + 2), ('', 2, -2), ('', 7, -2)])
 
 class Up(Brick):
   def __init__(self, **kwargs):

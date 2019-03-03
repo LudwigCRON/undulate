@@ -6,7 +6,7 @@ epsrenderer.py use the logic of renderer.py to render waveforms
 into encapsulated postcript file or postscript file
 """
 
-# TODO fix position of edges
+# TODO fix position of edges --> seems to be only a y=-y
 # TODO fix position of wavelane in group with spacers
 
 import copy
@@ -19,6 +19,7 @@ class EpsRenderer(Renderer):
   Render the wavelanes as an eps
   """
   _WAVE_TITLE  = "right-justify"
+  POS_ACC = True
 
   def __init__(self):
     Renderer.__init__(self)
@@ -54,7 +55,7 @@ class EpsRenderer(Renderer):
     block_height = kwargs.get("block_height", 20)
     path = []
     if style == "ticks":
-      path = ["gsave", "0.8 setgray", "[1 1] 0 setdash", extra]
+      path = ["gsave", "0.5 setlinewidth", "0.8 setgray", "[0.5 0.5] 0 setdash", extra]
     path.extend(["newpath", "0 0 moveto"])
     px, py, i = 0, 0, len(path)
     for v in vertices:
@@ -152,20 +153,26 @@ class EpsRenderer(Renderer):
     path, c, cmd, line = [], 0, "moveto", ""
     path.extend(["newpath", "0 0 moveto"])
     px, py = 0, 0
-    for v in vertices:
+    print(vertices)
+    for i, v in enumerate(vertices):
       s, x, y = v
-      if isinstance(y, (float, int)):
-        y = -y
-        if not s.startswith('r'):
-          y += block_height
       # check the command
-      cmd = "rcurveto"  if s in ["c", "q", "t", "s"] else \
-            "curveto"   if s in ["C", "Q", "T", "S"] else \
+      cmd = "rcurveto"  if s == "c" else \
+            "curveto"   if s == "C" else \
             "rlineto"   if s == "l" else \
             "lineto"    if s == "L" else \
             "rmoveto"   if s == "m" else \
             "moveto"    if s == "M" else \
-            "closepath" if s == "z" else cmd
+            "closepath" if s == "z" or s == "Z" else cmd
+      if isinstance(y, (float, int)):
+        y = -y
+        # if not first point of bloc of relative coordinate invert
+        if i == 0 or not (cmd[0] == 'r'):
+          y += block_height
+        # if edges shift them
+        if "edges" in style:
+          y += self._height
+      # gather 3 points to draw a bezier curve
       c = 2 if s in ["C", "c"] else c
       if c == 2:
         line = f"{x} {y} "
@@ -176,8 +183,15 @@ class EpsRenderer(Renderer):
       else:
         path.append(f"{line}{x} {y} {cmd}")
         line = ""
+      # hold last point
       px, py = x, y
-    path.append("stroke\n")
+    if style == "hide":
+      path.append("1 1 1 setrgbcolor")
+      path.append("fill\n")
+    else:
+      path.append("0 0 0 setrgbcolor")
+      path.append("stroke\n")
+    print(path)
     return '\n'.join(path)
 
   def text(self, x: float, y: float, text: str = "", **kwargs) -> str:

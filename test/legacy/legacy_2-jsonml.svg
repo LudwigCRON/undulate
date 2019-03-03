@@ -64,33 +64,33 @@ text{font-size:0.9em;
 </defs>
 <g id="a"  >
 <g id="ticks_1"  transform="translate(130, 0)"  >
-<path d="m0,0 l0,300.0" class="ticks" />
-<path d="m40,0 l0,300.0" class="ticks" />
-<path d="m80,0 l0,300.0" class="ticks" />
-<path d="m120,0 l0,300.0" class="ticks" />
-<path d="m160,0 l0,300.0" class="ticks" />
-<path d="m200,0 l0,300.0" class="ticks" />
-<path d="m240,0 l0,300.0" class="ticks" />
-<path d="m280,0 l0,300.0" class="ticks" />
-<path d="m320,0 l0,300.0" class="ticks" />
-<path d="m360,0 l0,300.0" class="ticks" />
-<path d="m400,0 l0,300.0" class="ticks" />
-<path d="m440,0 l0,300.0" class="ticks" />
-<path d="m480,0 l0,300.0" class="ticks" />
-<path d="m520,0 l0,300.0" class="ticks" />
-<path d="m560,0 l0,300.0" class="ticks" />
-<path d="m600,0 l0,300.0" class="ticks" />
-<path d="m640,0 l0,300.0" class="ticks" />
-<path d="m680,0 l0,300.0" class="ticks" />
-<path d="m720,0 l0,300.0" class="ticks" />
-<path d="m760,0 l0,300.0" class="ticks" />
-<path d="m800,0 l0,300.0" class="ticks" />
-<path d="m840,0 l0,300.0" class="ticks" />
-<path d="m880,0 l0,300.0" class="ticks" />
-<path d="m920,0 l0,300.0" class="ticks" />
-<path d="m960,0 l0,300.0" class="ticks" />
-<path d="m1000,0 l0,300.0" class="ticks" />
-<path d="m1040,0 l0,300.0" class="ticks" />
+<path d="M0,0 L0,300.0" class="ticks" />
+<path d="M40,0 L40,300.0" class="ticks" />
+<path d="M80,0 L80,300.0" class="ticks" />
+<path d="M120,0 L120,300.0" class="ticks" />
+<path d="M160,0 L160,300.0" class="ticks" />
+<path d="M200,0 L200,300.0" class="ticks" />
+<path d="M240,0 L240,300.0" class="ticks" />
+<path d="M280,0 L280,300.0" class="ticks" />
+<path d="M320,0 L320,300.0" class="ticks" />
+<path d="M360,0 L360,300.0" class="ticks" />
+<path d="M400,0 L400,300.0" class="ticks" />
+<path d="M440,0 L440,300.0" class="ticks" />
+<path d="M480,0 L480,300.0" class="ticks" />
+<path d="M520,0 L520,300.0" class="ticks" />
+<path d="M560,0 L560,300.0" class="ticks" />
+<path d="M600,0 L600,300.0" class="ticks" />
+<path d="M640,0 L640,300.0" class="ticks" />
+<path d="M680,0 L680,300.0" class="ticks" />
+<path d="M720,0 L720,300.0" class="ticks" />
+<path d="M760,0 L760,300.0" class="ticks" />
+<path d="M800,0 L800,300.0" class="ticks" />
+<path d="M840,0 L840,300.0" class="ticks" />
+<path d="M880,0 L880,300.0" class="ticks" />
+<path d="M920,0 L920,300.0" class="ticks" />
+<path d="M960,0 L960,300.0" class="ticks" />
+<path d="M1000,0 L1000,300.0" class="ticks" />
+<path d="M1040,0 L1040,300.0" class="ticks" />
 </g>
 
 <g id="seq"  transform="translate(130, 0)"  >
@@ -168,9 +168,9 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(510.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
-<path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
-<path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
+<path d="m0,22 c5,0 0,-24 5,-24 l-3,0 c-5,0 0,24 -5,24 z" class="hide" />
+<path d="m0,22 c5,0 0,-24 5,-24" class="path" />
+<path d="m-3,22 c5,0 0,-24 5,-24" class="path" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(520, 0)"  class="s2">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
@@ -260,9 +260,9 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(490.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
-<path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
-<path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
+<path d="m0,22 c5,0 0,-24 5,-24 l-3,0 c-5,0 0,24 -5,24 z" class="hide" />
+<path d="m0,22 c5,0 0,-24 5,-24" class="path" />
+<path d="m-3,22 c5,0 0,-24 5,-24" class="path" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(500.0, 0)"  class="s2">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
@@ -346,9 +346,9 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(470.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
-<path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
-<path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
+<path d="m0,22 c5,0 0,-24 5,-24 l-3,0 c-5,0 0,24 -5,24 z" class="hide" />
+<path d="m0,22 c5,0 0,-24 5,-24" class="path" />
+<path d="m-3,22 c5,0 0,-24 5,-24" class="path" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(480.0, 0)"  class="s2">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
@@ -432,9 +432,9 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(450.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
-<path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
-<path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
+<path d="m0,22 c5,0 0,-24 5,-24 l-3,0 c-5,0 0,24 -5,24 z" class="hide" />
+<path d="m0,22 c5,0 0,-24 5,-24" class="path" />
+<path d="m-3,22 c5,0 0,-24 5,-24" class="path" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(460.0, 0)"  class="s2">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
@@ -512,9 +512,9 @@ text{font-size:0.9em;
 <text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(430.0, 0)"  class="">
-<path d="m7,-2 -4,0 c-5,0 -5,24 -10,24 l4,0 C2,24 2,-2 7,-2 z" class="hide" />
-<path d="M-7,22 C-2,22 -2,-2 3,-2" class="path" />
-<path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
+<path d="m0,22 c5,0 0,-24 5,-24 l-3,0 c-5,0 0,24 -5,24 z" class="hide" />
+<path d="m0,22 c5,0 0,-24 5,-24" class="path" />
+<path d="m-3,22 c5,0 0,-24 5,-24" class="path" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(440.0, 0)"  class="s2">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />

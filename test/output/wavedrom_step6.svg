@@ -235,7 +235,7 @@ text{font-size:0.9em;
 <g id="DQS"  transform="translate(50, 90.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >DQS</text>
 <g data-symbol="BRICKS.highz"  transform="translate(0, 0)"  class="s2">
-<path d="m0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L320,10.0" class="path" />
+<path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L320,10.0" class="path" />
 </g>
 <g data-symbol="BRICKS.zero"  transform="translate(320, 0)"  class="s2">
 <path d="M0,10.0 L3,10.0 L6,20 L80,20" class="path" />
@@ -253,13 +253,13 @@ text{font-size:0.9em;
 <path d="M0,0 L3,0 L6,20 L40,20" class="path" />
 </g>
 <g data-symbol="BRICKS.highz"  transform="translate(560, 0)"  class="s2">
-<path d="m0,20 C0.0,10.0 0.0,10.0 20,10.0 L80,10.0" class="path" />
+<path d="M0,20 C0.0,10.0 0.0,10.0 20,10.0 L80,10.0" class="path" />
 </g>
 </g>
 <g id="DQ"  transform="translate(50, 120.0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >DQ</text>
 <g data-symbol="BRICKS.highz"  transform="translate(0, 0)"  class="s2">
-<path d="m0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L400,10.0" class="path" />
+<path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L400,10.0" class="path" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(400, 0)"  class="s5">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="none" />
@@ -286,7 +286,7 @@ text{font-size:0.9em;
 <text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >D3</text>
 </g>
 <g data-symbol="BRICKS.highz"  transform="translate(560, 0)"  class="s2">
-<path d="m0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L80,10.0" class="path" />
+<path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L80,10.0" class="path" />
 </g>
 </g>
 </g>

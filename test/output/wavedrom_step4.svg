@@ -100,9 +100,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(270.0, 0)"  class="">
-<path d="m0,22 c5,0 0,-24 5,-24 l-3,0 c-5,0 0,24 -5,24 z" class="hide" />
-<path d="m0,22 c5,0 0,-24 5,-24" class="path" />
-<path d="m-3,22 c5,0 0,-24 5,-24" class="path" />
+<path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" />
+<path d="M0,22 C5,22 5,-2 10,-2" class="path" />
+<path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g>
 <g data-symbol="BRICKS.pclk"  transform="translate(280, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
@@ -145,9 +145,9 @@ text{font-size:0.9em;
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" />
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(270.0, 0)"  class="">
-<path d="m0,22 c5,0 0,-24 5,-24 l-3,0 c-5,0 0,24 -5,24 z" class="hide" />
-<path d="m0,22 c5,0 0,-24 5,-24" class="path" />
-<path d="m-3,22 c5,0 0,-24 5,-24" class="path" />
+<path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" />
+<path d="M0,22 C5,22 5,-2 10,-2" class="path" />
+<path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(280, 0)"  class="s2">
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " fill="none" />
@@ -173,9 +173,9 @@ text{font-size:0.9em;
 <path d="M0,0 L3,0 L6,20 L80,20" class="path" />
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(270.0, 0)"  class="">
-<path d="m0,22 c5,0 0,-24 5,-24 l-3,0 c-5,0 0,24 -5,24 z" class="hide" />
-<path d="m0,22 c5,0 0,-24 5,-24" class="path" />
-<path d="m-3,22 c5,0 0,-24 5,-24" class="path" />
+<path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" />
+<path d="M0,22 C5,22 5,-2 10,-2" class="path" />
+<path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g>
 <g data-symbol="BRICKS.one"  transform="translate(280, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,0 L80,0" class="path" />
@@ -190,9 +190,9 @@ text{font-size:0.9em;
 <path d="M0,0 L3,0 L6,0 L280,0" class="path" />
 </g>
 <g data-symbol="BRICKS.gap"  transform="translate(270.0, 0)"  class="">
-<path d="m0,22 c5,0 0,-24 5,-24 l-3,0 c-5,0 0,24 -5,24 z" class="hide" />
-<path d="m0,22 c5,0 0,-24 5,-24" class="path" />
-<path d="m-3,22 c5,0 0,-24 5,-24" class="path" />
+<path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" />
+<path d="M0,22 C5,22 5,-2 10,-2" class="path" />
+<path d="M-3,22 C2,22 2,-2 7,-2" class="path" />
 </g>
 <g data-symbol="BRICKS.zero"  transform="translate(280, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,20 L40,20" class="path" />

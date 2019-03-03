@@ -104,10 +104,10 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="Master"  transform="translate(0, 30.0)"  >
-<text x="0" y="10"  >Master</text>
+<text x="0" y="10"  class="h2">Master</text>
 <path d="M0,14 L380,14" class="border" />
 <g id="ctrl"  transform="translate(0, 20)"  >
-<text x="0" y="10"  >ctrl</text>
+<text x="0" y="10"  class="h3">ctrl</text>
 <g id="write"  transform="translate(60, 20)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >write</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
@@ -188,10 +188,10 @@ text{font-size:0.9em;
 <g id="edges"  transform="translate(60, 0)"  >
 </g>
 <g id="Slave"  transform="translate(0, 220.0)"  >
-<text x="0" y="10"  >Slave</text>
+<text x="0" y="10"  class="h2">Slave</text>
 <path d="M0,14 L380,14" class="border" />
 <g id="ctrl"  transform="translate(0, 20)"  >
-<text x="0" y="10"  >ctrl</text>
+<text x="0" y="10"  class="h3">ctrl</text>
 <g id="ack"  transform="translate(60, 20)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >ack</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
