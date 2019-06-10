@@ -82,8 +82,9 @@ class Renderer:
   _EDGE_REGEXP = r"([\w\.\_]+)([~\|\/\-\>\<]+)([\w\.\_]+)"
   _WAVE_TITLE  = ""
   _DATA_TEXT   = ""
+  _GROUP_NAME  = ""
   _SYMBOL_TEMP = None
-  POS_ACC = False
+  _FIRST_TRANSLATION = True
 
   def __init__(self):
     pass
@@ -486,25 +487,34 @@ class Renderer:
     _default_offset_x = [len(s)+1 for s in wavelanes.keys() if not (Renderer.is_spacer(s) or s in ["edge", "adjustment"])]
     offsetx = kwargs.get("offsetx", max(_default_offset_x)*9)
     offsety = kwargs.get("offsety", 0)
+    translate = kwargs.get("translate", False)
     def _gen(offset):
       # options
-      brick_width  = kwargs.get("brick_width", 20)
+      brick_width  = kwargs.get("brick_width", 40)
       brick_height = kwargs.get("brick_height", 20)
       width        = kwargs.get("width", 0)
       height       = kwargs.get("height", 0)
       no_ticks     = kwargs.get("no_ticks", False)
-      ox, oy = offset[0], offset[1]
-      # return value
+      ox, oy, dy = offset[0], offset[1], 0
+      # some space for group separation
+      dy = 20 if depth > 1 else 0
+      oy += dy
+      if translate:
+        self.translate(ox if translate and depth == 1 else 0, dy)
+      # return value is ans
       if depth > 1:
-        ans = self.text(0, oy+10, name, style_repr=f"h{depth}", **kwargs)
+        # add group name
+        ans = self.text(0, oy-10, name, style_repr=f"h{depth}", extra=self._GROUP_NAME, **kwargs)
+        # add group separator
         if depth == 2:
-          ans += self.path([(0, oy+14), (width+ox, oy+14)], style_repr="border", **kwargs)
-        oy += 20
+          ans += self.path([(0, dy-6), (width+ox, dy-6)], style_repr="border ctx-y", **kwargs)
       else:
         ans = ""
+      # look through waveforms data
       for _, wavetitle in enumerate(wavelanes.keys()):
         # signal in a dict
         if isinstance(wavelanes[wavetitle], dict):
+          # waveform
           if "wave" in wavelanes[wavetitle]:
             wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]
             l = len(wave)
@@ -513,27 +523,30 @@ class Renderer:
             ans += self.wavelane(
               wavetitle,
               wave,
-              self.translate(ox, oy, no_acc=True),
+              self.translate(0 if translate else ox, 0 if translate else oy),
               **args
             )
-            oy += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
+            dy = brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
           # spacer or only for label nodes
           elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
-            oy += brick_height * 1.5
+            dy = brick_height * 1.5
           # named group
           elif not wavetitle in ["head", "foot", "config"]:
+            self._FIRST_TRANSLATION = False
             args = kwargs
-            args.update({"offsetx": ox, "offsety": oy if self.POS_ACC else 0, "no_ticks": True})
-            j, tmp = self.wavegroup(
+            args.update({"offsetx": ox, "offsety": 0, "no_ticks": True})
+            dy, tmp = self.wavegroup(
               wavetitle,
               wavelanes[wavetitle],
-              self.translate(0, oy),
+              self.translate(ox, oy, dont_touch=True),
               depth+1,
               **args
             )
             ans += tmp
-            oy += j
-          # extra config
+          oy += dy
+          if translate:
+            self.translate(0, dy)
+        # extra config
         else:
           pass
       # add ticks only for the principale group
@@ -548,7 +561,7 @@ class Renderer:
       ans = self.group(lambda: _gen(offset), name, extra)
       offsetx, offsety = offset[0], offset[1]
       # finish the group
-      ans += self.edges(wavelanes, extra=self.translate(offsetx, 0), **kwargs)
+      ans += self.edges(wavelanes, extra=self.translate(offsetx, 0, dont_touch=True), **kwargs)
       return (offsety, ans)
     # unknown options
     else:

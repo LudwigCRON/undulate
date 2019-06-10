@@ -18,8 +18,9 @@ class EpsRenderer(Renderer):
   """
   Render the wavelanes as an eps
   """
-  _WAVE_TITLE  = "right-justify"
-  POS_ACC = True
+  _WAVE_TITLE = "right-justify bold"
+  _DATA_TEXT  = "center-justify abs"
+  _GROUP_NAME = "bold group"
 
   def __init__(self):
     Renderer.__init__(self)
@@ -37,12 +38,7 @@ class EpsRenderer(Renderer):
     """
     group define a group
     """
-    ans = (
-      "gsave\n"
-      ""+callback()+""
-      "grestore\n"
-    )
-    return ans
+    return f"gsave\n{callback()}\ngrestore\n"
 
   def path(self, vertices: list, **kwargs) -> str:
     """
@@ -53,18 +49,28 @@ class EpsRenderer(Renderer):
     style        = kwargs.get("style_repr", "")
     extra        = kwargs.get("extra", "")
     block_height = kwargs.get("block_height", 20)
-    path = []
-    if style == "ticks":
+    height       = kwargs.get("height", 20)
+    path, ctx = [], self._offset_stack[-1]
+    if "ticks" in style:
       path = ["gsave", "0.5 setlinewidth", "0.8 setgray", "[0.5 0.5] 0 setdash", extra]
-    path.extend(["newpath", "0 0 moveto"])
+    elif "border" in style:
+      path = ["gsave", "1.5 setlinewidth", extra]
+    path.extend(["newpath"])
     px, py, i = 0, 0, len(path)
     for v in vertices:
       x, y = v
-      y = block_height - y
+      if "ctx-y" in style:
+        x, y = x, height - ctx[1] - y
+      elif "ctx-x" in style:
+        x, y = ctx[0] + x, height - y
+      elif "ctx" in style:
+        x, y = ctx[0] + x, height - ctx[1] - y
+      else:
+        y = block_height - y
       path.append(f"{x - px:.5f} {y - py:.5f} rlineto")
       px, py = x, y
-    path[i] = path[i].replace("rlineto", "rmoveto")
-    if style == "ticks":
+    path[i] = path[i].replace("rlineto", "moveto")
+    if any([w in style for w in ["ticks", "border"]]):
       path.append("stroke")
       path.append("grestore\n")
     else:
@@ -153,7 +159,6 @@ class EpsRenderer(Renderer):
     path, c, cmd, line = [], 0, "moveto", ""
     path.extend(["newpath", "0 0 moveto"])
     px, py = 0, 0
-    print(vertices)
     for i, v in enumerate(vertices):
       s, x, y = v
       # check the command
@@ -191,7 +196,6 @@ class EpsRenderer(Renderer):
     else:
       path.append("0 0 0 setrgbcolor")
       path.append("stroke\n")
-    print(path)
     return '\n'.join(path)
 
   def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
@@ -201,14 +205,32 @@ class EpsRenderer(Renderer):
     y       : y coordinate of the text
     text    : text to display
     """
-    extra = kwargs.get("extra", "")
+    extra      = kwargs.get("extra", "")
     ans = ""
+    # set font style
+    if "bold" in extra:
+      ans = "/Courier-Bold findfont 12 scalefont setfont\n"
+    elif "group" in extra:
+      ans = "/Courier-Bold findfont 14 scalefont setfont\n"
+    else:
+      ans = "/Courier findfont 12 scalefont setfont\n"
+    # not relative
+    if "abs" in extra:
+      ox, oy = 0, 0
+    else:
+      ox, oy = self._ox, self._height - self._oy
+    # shift the group name
+    if "group" in extra:
+      ox, oy = 5, oy+36
+    # show text
     if text.strip():
-      if extra == "right-justify":
-        ans += f"{self._ox} {self._height - self._oy} moveto ({text}) {x} {y-9} right-justify\n"
+      if "right-justify" in extra:
+        ans += f"{ox} {oy} moveto ({text}) {x} {y-9} right-justify"
+      elif "center-justify" in extra:
+        ans += f"{ox} {oy} moveto ({text}) {x} {y-3} center-justify"
       else:
-        ans += f"0 0 moveto ({text}) {x} {y-3} center-justify\n"
-    return ans
+        ans += f"{ox} {oy} moveto ({text}) show"
+    return f"gsave\n{ans}\ngrestore\n"
 
   def translate(self, x: float, y: float, **kwargs) -> str:
     no_acc      = kwargs.get("no_acc", False)
@@ -230,13 +252,17 @@ class EpsRenderer(Renderer):
       self._ox, self._oy = 0, 0
 
   def wavelane(self, *args, **kwargs) -> str:
+    l = len(self._offset_stack)
     ans = Renderer.wavelane(self, *args, **kwargs)
-    self.untranslate()
+    while len(self._offset_stack) > l:
+      self.untranslate()
     return ans
   
   def wavegroup(self, *args, **kwargs) -> str:
+    l = len(self._offset_stack)
     ans = Renderer.wavegroup(self, *args, **kwargs)
-    self.untranslate()
+    while len(self._offset_stack) > l:
+      self.untranslate()
     return ans
 
   def draw(self, wavelanes, **kwargs) -> str:
@@ -245,6 +271,14 @@ class EpsRenderer(Renderer):
     brick_height = kwargs.get("brick_height", 20)
     lkeys, width, height = self.size(wavelanes, brick_width, brick_height)
     self._height = height - brick_height * 1.25
+    # update viewport information
+    kwargs.update({
+      "translate": True, 
+      "brick_height":brick_height, 
+      "brick_width": brick_width,
+      "height": height, 
+      "width": width, 
+      "offsetx":lkeys*10+10})
     return (
       "%!PS-Adobe-3.0\n"
       "%%LanguageLevel: 2\n"
@@ -278,7 +312,8 @@ class EpsRenderer(Renderer):
       "} def\n"
       "0 0 moveto\n"
       "1 1 scale\n"
-      ""+self.wavegroup(_id, wavelanes, brick_width=brick_width, brick_height=brick_height, width=width, height=height, offsetx=lkeys*10+10)[1]+""
+      "gsave\n"
+      ""+self.wavegroup(_id, wavelanes, **kwargs)[1]+""
       "showpage\n"
       "%%Trailer\n"
       "end\n"
