@@ -134,6 +134,7 @@ if __name__ == "__main__":
     else:
       if cli_args.is_reg:
         obj = register_to_wavelane(obj)
+        print(obj)
       if cli_args.output:
         renderer = None
         if cli_args.format == "svg":
@@ -142,6 +143,6 @@ if __name__ == "__main__":
           renderer = pywave.EpsRenderer()
         try:
           with open(cli_args.output, "w+") as fp:
-            fp.write(renderer.draw(obj))
+            fp.write(renderer.draw(obj, brick_height=(40 if cli_args.is_reg else 20)))
         except Exception as e:
           traceback.print_tb(e.__traceback__)

@@ -44,9 +44,10 @@ class Register:
   
   def to_wavelane(self):
     wave = ''.join([field.wave for field in self.fields[::-1]])
+    data = ''.join([field.data for field in self.fields[::-1]])
     print(wave)
     ans = {}
-    ans[self.name] = {"wave": wave, "brick_height":40}
+    ans[self.name] = {"wave": wave, "data": data}
     return ans
 
 
@@ -67,6 +68,8 @@ class FieldStart(pywave.Brick):
           (0, self.height),
           (0, 0),
           (self.width, 0)])
+    # add text
+    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
 
 class FieldMid(pywave.Brick):
   """
@@ -90,6 +93,8 @@ class FieldMid(pywave.Brick):
           (0, self.height),
           (0, 0),
           (self.width, 0)])
+    # add text
+    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
 
 class FieldEnd(pywave.Brick):
   """
@@ -108,6 +113,8 @@ class FieldEnd(pywave.Brick):
           (0, self.height),
           (0, 0),
           (self.width, 0)])
+    # add text
+    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
 
 class FieldBit(pywave.Brick):
   """
@@ -127,6 +134,8 @@ class FieldBit(pywave.Brick):
           (0, self.height),
           (0, 0),
           (self.width, 0)])
+    # add text
+    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
 
 class Field:
   """
@@ -143,7 +152,7 @@ class Field:
     self.width = 1
     self.attributes = []
     self.wave = ""
-    self.data = []
+    self.data = ""
 
   @staticmethod
   def from_dict(d: dict):
@@ -157,11 +166,16 @@ class Field:
     f.width = d.get("width", d.get("bits", 1))
     f.attributes = d.get("attributes", d.get("attr", None))
     if isinstance(d.get("name", ""), int):
+      # convert number to bits
       f.data = ("{0:0"+(str(f.width))+"b}").format(d.get("name", ""))
+      # split for each bits
+      f.data = ' '.join([c for c in f.data])
       print(f.data)
+    else:
+      f.data = ' '.join([' ']*f.width)
     if f.width > 1:
       f.wave = pywave.BRICKS.field_start.value + \
-            ''.join([pywave.BRICKS.field_mid.value]*(f.width-1)) + \
+            ''.join([pywave.BRICKS.field_mid.value]*(f.width-2)) + \
             pywave.BRICKS.field_end.value
     else:
       f.wave = pywave.BRICKS.field_bit.value

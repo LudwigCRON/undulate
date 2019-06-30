@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1593" height="30.0" viewBox="-1 -1 1595 32.0" overflow="hidden">
+<svg xmlns="http://www.w3.org/2000/svg" width="1313" height="60.0" viewBox="-1 -1 1315 62.0" overflow="hidden">
 <style>
 text{font-size:0.9em;
     font-style:normal;
@@ -64,189 +64,186 @@ text{font-size:0.9em;
 </defs>
 <g id="a"  >
 <g id="ticks_1"  transform="translate(40, 0)"  >
-<path d="M0,0 L0,30.0" class="ticks" />
-<path d="M40,0 L40,30.0" class="ticks" />
-<path d="M80,0 L80,30.0" class="ticks" />
-<path d="M120,0 L120,30.0" class="ticks" />
-<path d="M160,0 L160,30.0" class="ticks" />
-<path d="M200,0 L200,30.0" class="ticks" />
-<path d="M240,0 L240,30.0" class="ticks" />
-<path d="M280,0 L280,30.0" class="ticks" />
-<path d="M320,0 L320,30.0" class="ticks" />
-<path d="M360,0 L360,30.0" class="ticks" />
-<path d="M400,0 L400,30.0" class="ticks" />
-<path d="M440,0 L440,30.0" class="ticks" />
-<path d="M480,0 L480,30.0" class="ticks" />
-<path d="M520,0 L520,30.0" class="ticks" />
-<path d="M560,0 L560,30.0" class="ticks" />
-<path d="M600,0 L600,30.0" class="ticks" />
-<path d="M640,0 L640,30.0" class="ticks" />
-<path d="M680,0 L680,30.0" class="ticks" />
-<path d="M720,0 L720,30.0" class="ticks" />
-<path d="M760,0 L760,30.0" class="ticks" />
-<path d="M800,0 L800,30.0" class="ticks" />
-<path d="M840,0 L840,30.0" class="ticks" />
-<path d="M880,0 L880,30.0" class="ticks" />
-<path d="M920,0 L920,30.0" class="ticks" />
-<path d="M960,0 L960,30.0" class="ticks" />
-<path d="M1000,0 L1000,30.0" class="ticks" />
-<path d="M1040,0 L1040,30.0" class="ticks" />
-<path d="M1080,0 L1080,30.0" class="ticks" />
-<path d="M1120,0 L1120,30.0" class="ticks" />
-<path d="M1160,0 L1160,30.0" class="ticks" />
-<path d="M1200,0 L1200,30.0" class="ticks" />
-<path d="M1240,0 L1240,30.0" class="ticks" />
-<path d="M1280,0 L1280,30.0" class="ticks" />
-<path d="M1320,0 L1320,30.0" class="ticks" />
-<path d="M1360,0 L1360,30.0" class="ticks" />
-<path d="M1400,0 L1400,30.0" class="ticks" />
-<path d="M1440,0 L1440,30.0" class="ticks" />
-<path d="M1480,0 L1480,30.0" class="ticks" />
-<path d="M1520,0 L1520,30.0" class="ticks" />
+<path d="M0,0 L0,60.0" class="ticks" />
+<path d="M40,0 L40,60.0" class="ticks" />
+<path d="M80,0 L80,60.0" class="ticks" />
+<path d="M120,0 L120,60.0" class="ticks" />
+<path d="M160,0 L160,60.0" class="ticks" />
+<path d="M200,0 L200,60.0" class="ticks" />
+<path d="M240,0 L240,60.0" class="ticks" />
+<path d="M280,0 L280,60.0" class="ticks" />
+<path d="M320,0 L320,60.0" class="ticks" />
+<path d="M360,0 L360,60.0" class="ticks" />
+<path d="M400,0 L400,60.0" class="ticks" />
+<path d="M440,0 L440,60.0" class="ticks" />
+<path d="M480,0 L480,60.0" class="ticks" />
+<path d="M520,0 L520,60.0" class="ticks" />
+<path d="M560,0 L560,60.0" class="ticks" />
+<path d="M600,0 L600,60.0" class="ticks" />
+<path d="M640,0 L640,60.0" class="ticks" />
+<path d="M680,0 L680,60.0" class="ticks" />
+<path d="M720,0 L720,60.0" class="ticks" />
+<path d="M760,0 L760,60.0" class="ticks" />
+<path d="M800,0 L800,60.0" class="ticks" />
+<path d="M840,0 L840,60.0" class="ticks" />
+<path d="M880,0 L880,60.0" class="ticks" />
+<path d="M920,0 L920,60.0" class="ticks" />
+<path d="M960,0 L960,60.0" class="ticks" />
+<path d="M1000,0 L1000,60.0" class="ticks" />
+<path d="M1040,0 L1040,60.0" class="ticks" />
+<path d="M1080,0 L1080,60.0" class="ticks" />
+<path d="M1120,0 L1120,60.0" class="ticks" />
+<path d="M1160,0 L1160,60.0" class="ticks" />
+<path d="M1200,0 L1200,60.0" class="ticks" />
+<path d="M1240,0 L1240,60.0" class="ticks" />
 </g>
 
 <g id="reg"  transform="translate(40, 0)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >reg</text>
 <g data-symbol="BRICKS.field_start"  transform="translate(0, 0)"  class="s2">
-<path d="M40,20 L0,20 L0,0 L40,0" class="path" />
+<path d="M40,40 L0,40 L0,0 L40,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(40, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(80, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<g data-symbol="BRICKS.field_end"  transform="translate(80, 0)"  class="s2">
+<path d="M0,40 L40,40 L40,0 L0,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_end"  transform="translate(120, 0)"  class="s2">
-<path d="M0,20 L40,20 L40,0 L0,0" class="path" />
+<g data-symbol="BRICKS.field_start"  transform="translate(120, 0)"  class="s2">
+<path d="M40,40 L0,40 L0,0 L40,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_start"  transform="translate(160, 0)"  class="s2">
-<path d="M40,20 L0,20 L0,0 L40,0" class="path" />
+<g data-symbol="BRICKS.field_mid"  transform="translate(160, 0)"  class="s2">
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(200, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<g data-symbol="BRICKS.field_end"  transform="translate(200, 0)"  class="s2">
+<path d="M0,40 L40,40 L40,0 L0,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(240, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<g data-symbol="BRICKS.field_bit"  transform="translate(240, 0)"  class="s2">
+<path d="M0,0 L0,40 L40,40 L40,0 L0,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_end"  transform="translate(280, 0)"  class="s2">
-<path d="M0,20 L40,20 L40,0 L0,0" class="path" />
+<g data-symbol="BRICKS.field_start"  transform="translate(280, 0)"  class="s2">
+<path d="M40,40 L0,40 L0,0 L40,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_bit"  transform="translate(320, 0)"  class="s2">
-<path d="M0,0 L0,20 L40,20 L40,0 L0,0" class="path" />
+<g data-symbol="BRICKS.field_mid"  transform="translate(320, 0)"  class="s2">
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_start"  transform="translate(360, 0)"  class="s2">
-<path d="M40,20 L0,20 L0,0 L40,0" class="path" />
+<g data-symbol="BRICKS.field_mid"  transform="translate(360, 0)"  class="s2">
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(400, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(440, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<g data-symbol="BRICKS.field_end"  transform="translate(440, 0)"  class="s2">
+<path d="M0,40 L40,40 L40,0 L0,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(480, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<g data-symbol="BRICKS.field_start"  transform="translate(480, 0)"  class="s2">
+<path d="M40,40 L0,40 L0,0 L40,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(520, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_end"  transform="translate(560, 0)"  class="s2">
-<path d="M0,20 L40,20 L40,0 L0,0" class="path" />
+<g data-symbol="BRICKS.field_mid"  transform="translate(560, 0)"  class="s2">
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_start"  transform="translate(600, 0)"  class="s2">
-<path d="M40,20 L0,20 L0,0 L40,0" class="path" />
+<g data-symbol="BRICKS.field_mid"  transform="translate(600, 0)"  class="s2">
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(640, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<g data-symbol="BRICKS.field_end"  transform="translate(640, 0)"  class="s2">
+<path d="M0,40 L40,40 L40,0 L0,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(680, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<g data-symbol="BRICKS.field_start"  transform="translate(680, 0)"  class="s2">
+<path d="M40,40 L0,40 L0,0 L40,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(720, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(760, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<g data-symbol="BRICKS.field_end"  transform="translate(760, 0)"  class="s2">
+<path d="M0,40 L40,40 L40,0 L0,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_end"  transform="translate(800, 0)"  class="s2">
-<path d="M0,20 L40,20 L40,0 L0,0" class="path" />
+<g data-symbol="BRICKS.field_start"  transform="translate(800, 0)"  class="s2">
+<path d="M40,40 L0,40 L0,0 L40,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_start"  transform="translate(840, 0)"  class="s2">
-<path d="M40,20 L0,20 L0,0 L40,0" class="path" />
+<g data-symbol="BRICKS.field_mid"  transform="translate(840, 0)"  class="s2">
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(880, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(920, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_end"  transform="translate(960, 0)"  class="s2">
-<path d="M0,20 L40,20 L40,0 L0,0" class="path" />
+<path d="M0,40 L40,40 L40,0 L0,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_start"  transform="translate(1000, 0)"  class="s2">
-<path d="M40,20 L0,20 L0,0 L40,0" class="path" />
+<path d="M40,40 L0,40 L0,0 L40,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(1040, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(1080, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(1120, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(1160, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_end"  transform="translate(1200, 0)"  class="s2">
-<path d="M0,20 L40,20 L40,0 L0,0" class="path" />
+<g data-symbol="BRICKS.field_mid"  transform="translate(1200, 0)"  class="s2">
+<path d="M40,30.0 l0,10.0 l-40,0 l0,-10.0" class="path" />
+<path d="M40,10.0 l0,-10.0 l-40,0 l0,10.0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
-<g data-symbol="BRICKS.field_start"  transform="translate(1240, 0)"  class="s2">
-<path d="M40,20 L0,20 L0,0 L40,0" class="path" />
-</g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(1280, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
-</g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(1320, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
-</g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(1360, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
-</g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(1400, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
-</g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(1440, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
-</g>
-<g data-symbol="BRICKS.field_mid"  transform="translate(1480, 0)"  class="s2">
-<path d="M40,15.0 l0,5.0 l-40,0 l0,-5.0" class="path" />
-<path d="M40,5.0 l0,-5.0 l-40,0 l0,5.0" class="path" />
-</g>
-<g data-symbol="BRICKS.field_end"  transform="translate(1520, 0)"  class="s2">
-<path d="M0,20 L40,20 L40,0 L0,0" class="path" />
+<g data-symbol="BRICKS.field_end"  transform="translate(1240, 0)"  class="s2">
+<path d="M0,40 L40,40 L40,0 L0,0" class="path" />
+<text x="20.0" y="20.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
 </g>
 </g>
 </g>
