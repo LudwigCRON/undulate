@@ -12,7 +12,6 @@ into encapsulated postcript file or postscript file
 import copy
 from .skin import DEFAULT, DEFINITION
 from .renderer import Renderer, SvgCurveConvert
-from .bricks import BRICKS, Brick, generate_brick
 
 class EpsRenderer(Renderer):
   """

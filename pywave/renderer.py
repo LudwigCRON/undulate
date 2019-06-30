@@ -8,9 +8,9 @@ into different format
 
 import re
 import copy
+import pywave
 from .skin import DEFAULT, DEFINITION
 from itertools import count
-from .bricks import BRICKS, Brick, generate_brick
 
 # Counter for unique id generation
 # counter of group of wave
@@ -157,21 +157,21 @@ class Renderer:
   def untranslate(self):
     pass
 
-  def brick(self, symbol: str, b: Brick, height: int = 20, **kwargs) -> str:
+  def brick(self, symbol: str, b: pywave.Brick, height: int = 20, **kwargs) -> str:
     """
-    brick generate the symbol for a Brick element
+    brick generate the symbol for a pywave.Brick element
     (collection of paths, splines, arrows, polygons, text)
     """
     ans, content = "", ""
     for _, poly in enumerate(b.polygons):
-      filling = "url(#diagonalHatch)" if symbol == BRICKS.x else "none"
+      filling = "url(#diagonalHatch)" if symbol == pywave.BRICKS.x else "none"
       content += self.polygon(poly, fill=filling, **kwargs)
     for _, path in enumerate(b.paths):
       content += self.path(path, style_repr="path", **kwargs)
     for _, arrow in enumerate(b.arrows):
       content += self.arrow(*arrow, style_repr="arrow", **kwargs)
     for i, spline in enumerate(b.splines):
-      if i == 0 and symbol == BRICKS.gap:
+      if i == 0 and symbol == pywave.BRICKS.gap:
         content += self.spline(spline, style_repr="hide", **kwargs)
       else:
         content += self.spline(spline, style_repr="path", **kwargs)
@@ -266,30 +266,30 @@ class Renderer:
     for b, k in _wavelane:
       if b != '|':
         # get the final height of the last brick
-        last = -2 if symbol == BRICKS.gap else -1
+        last = -2 if symbol == pywave.BRICKS.gap else -1
         if wave:
           s, br, c, style = wave[last]
           last_y = br.get_last_y()
-          symbol = BRICKS.from_str(b)
-          ignore = BRICKS.ignore_transition(wave[last] if wave else None, symbol)
+          symbol = pywave.BRICKS.from_str(b)
+          ignore = pywave.BRICKS.ignore_transition(wave[last] if wave else None, symbol)
           # adjust transition from data or x
-          if s in [BRICKS.data, BRICKS.x] and symbol in [BRICKS.zero, BRICKS.one, BRICKS.low, BRICKS.high]:
-            if symbol in [BRICKS.zero, BRICKS.low]:
+          if s in [pywave.BRICKS.data, pywave.BRICKS.x] and symbol in [pywave.BRICKS.zero, pywave.BRICKS.one, pywave.BRICKS.low, pywave.BRICKS.high]:
+            if symbol in [pywave.BRICKS.zero, pywave.BRICKS.low]:
               br.alter_end(3, brick_height)
             else:
               br.alter_end(3, 0)
             wave[last] = (s, br, c, style)
             ignore = True
           # adjust clock symbols
-          if symbol in [BRICKS.low, BRICKS.Low] and \
-             s in [BRICKS.Pclk, BRICKS.pclk, BRICKS.Nclk, BRICKS.nclk]:
+          if symbol in [pywave.BRICKS.low, pywave.BRICKS.Low] and \
+             s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk, pywave.BRICKS.Nclk, pywave.BRICKS.nclk]:
             br.alter_end(0, brick_height)
             wave[last] = (s, br, c, style)
             ignore = True
           last_y = br.get_last_y()
         else:
           last_y = brick_height
-          symbol = BRICKS.from_str(b)
+          symbol = pywave.BRICKS.from_str(b)
         # adjust the width of a brick depending on the phase and periods
         pmul = max(periods[b_counter], slewing*2/brick_width) if b_counter < len(periods) else 1
         if is_first == 0:
@@ -313,27 +313,27 @@ class Renderer:
             "data": data[data_counter] if len(data) > data_counter else ""
         })
         # get next equation if analogue
-        if symbol in [BRICKS.ana, BRICKS.step, BRICKS.cap]:
+        if symbol in [pywave.BRICKS.ana, pywave.BRICKS.step, pywave.BRICKS.cap]:
           ana_counter += 1
         # get next data
-        if symbol == BRICKS.data:
+        if symbol == pywave.BRICKS.data:
           data_counter += 1
         # create the new brick
         if pos + width_with_phase > 0:
           wave.append((
               symbol,
-              generate_brick(symbol, **kwargs),
+              pywave.generate_brick(symbol, **kwargs),
               self.translate(max(0, pos), 0, dont_touch=True),
               f"s{b if b.isdigit() and int(b, 10) > 1 else '2'}"
           ))
         pos += width_with_phase
       else:
         # create the gap
-        symbol = BRICKS.gap
+        symbol = pywave.BRICKS.gap
         pos -= brick_width
         wave.append((
             symbol,
-            generate_brick(symbol, **kwargs),
+            pywave.generate_brick(symbol, **kwargs),
             self.translate(pos+gap_offset, 0, dont_touch=True),
             ""
         ))
@@ -485,7 +485,7 @@ class Renderer:
       return (0, "")
     # prepare the return group
     _default_offset_x = [len(s)+1 for s in wavelanes.keys() if not (Renderer.is_spacer(s) or s in ["edge", "adjustment"])]
-    offsetx = kwargs.get("offsetx", max(_default_offset_x)*9)
+    offsetx = kwargs.get("offsetx", max(_default_offset_x, default=0)*9)
     offsety = kwargs.get("offsety", 0)
     translate = kwargs.get("translate", False)
     def _gen(offset):
@@ -521,10 +521,10 @@ class Renderer:
             width = l * brick_width if l * brick_width > width else width
             args.update(**kwargs)
             ans += self.wavelane(
-              wavetitle,
-              wave,
-              self.translate(0 if translate else ox, 0 if translate else oy),
-              **args
+                wavetitle,
+                wave,
+                self.translate(0 if translate else ox, 0 if translate else oy),
+                **args
             )
             dy = brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
           # spacer or only for label nodes
@@ -536,11 +536,11 @@ class Renderer:
             args = kwargs
             args.update({"offsetx": ox, "offsety": 0, "no_ticks": True})
             dy, tmp = self.wavegroup(
-              wavetitle,
-              wavelanes[wavetitle],
-              self.translate(0, oy, dont_touch=True),
-              depth+1,
-              **args
+                wavetitle,
+                wavelanes[wavetitle],
+                self.translate(0, oy, dont_touch=True),
+                depth+1,
+                **args
             )
             ans += tmp
           oy += dy
@@ -565,7 +565,7 @@ class Renderer:
       return (offsety, ans)
     # unknown options
     else:
-      raise "Unkown wavelane type or option"
+      raise Exception("Unkown wavelane type or option")
     return (0, "")
 
   def size(self, wavelanes, brick_width: int = 20, brick_height: int = 28, depth: int = 1):

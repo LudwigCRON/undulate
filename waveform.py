@@ -9,13 +9,16 @@ Command line interface to draw your waveforms
 import os
 import re
 import sys
-import toml
-import yaml
-import json
-import time
-import pywave
 import argparse
 import traceback
+
+import json
+import time
+import yaml
+import toml
+
+import pywave
+
 
 SUPPORTED_FORMAT = [
     [".json", ".js", ".jsonml", ".jsml"],
@@ -25,11 +28,20 @@ SUPPORTED_FORMAT = [
 
 SUPPORTED_RENDER = ["svg", "eps"]
 
+def _number_convert(match):
+  base, number = match.group(1).lower(), match.group(2)
+  if base in "xh":
+    return str(int(number, 16))
+  elif base == "b":
+    return str(int(number, 2))
+  else:
+    return str(int(number, 10))
+
 def _parse_wavelane(wavelane: dict):
   _name = wavelane.get("name", "").strip()
   if "name" in wavelane:
     del wavelane["name"]
-  if len(_name) == 0:
+  if _name:
     _name = f"spacer_{int(time.time())}"
   return (_name, wavelane)
 
@@ -69,11 +81,13 @@ def parse(filepath: str) -> (bool, object):
     with open(filepath, "r+") as fp:
       content = ' '.join([line[:line.find("//")] if line.find("//") >= 0 else line for line in fp.readlines()])
     # add double quotes around strings
-    content = re.sub("([{,]?)\s*(\w+)\s*:", r'\1 "\2":', content, flags=re.M)
+    content = re.sub(r"([{,]?)\s*(\w+)\s*:", r'\1 "\2":', content, flags=re.M)
     # replace single quotes with double quotes
-    content = re.sub("'([\w\s\<\-\~\|\>]*)\s*'", r'"\1"', content, flags=re.M)
+    content = re.sub(r"'([\w\s\<\-\~\|\>,\.:\[\]\(\)]*)\s*'", r'"\1"', content, flags=re.M)
     # remove final extra comma of arrays definition
-    content = re.sub("(,\s*\])", r"]", content, flags=re.M)
+    content = re.sub(r"(,\s*\])", r"]", content, flags=re.M)
+    # change hex numbers to int
+    content = re.sub("0'?([xbhdXBHD])([0-9ABCDEF]+)", _number_convert, content, flags=re.M)
     tmp = json.loads(content)
     for k, v in tmp.items():
       if k == "signal":
@@ -93,11 +107,21 @@ def parse(filepath: str) -> (bool, object):
       ans = toml.load(fp)
   return (err, ans if not err else None)
 
+def register_to_wavelane(obj: dict) -> object:
+  """
+  convert a register definition as a wavelane
+  """
+  reg = pywave.Register()
+  for field in obj.get("reg", []):
+    reg.push_field(pywave.Field.from_dict(field))
+  return reg.to_wavelane()
+
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='waveform generator from textual format')
-  parser.add_argument("-i", "--input", help="path to the input text file", default=None)
-  parser.add_argument("-f", "--format", help="file format of the output", default="svg")
-  parser.add_argument("-o", "--output", help="path to the output file", default=None)
+  parser.add_argument("-i", "--input", help="path to the input text file", default=None, type=str)
+  parser.add_argument("-f", "--format", help="file format of the output", default="svg", type=str)
+  parser.add_argument("-r", "--is_reg", help="is register description", action="store_true", default=False)
+  parser.add_argument("-o", "--output", help="path to the output file", default=None, type=str)
   cli_args = parser.parse_args()
   # check the input file
   err, obj = parse(cli_args.input)
@@ -108,6 +132,8 @@ if __name__ == "__main__":
       for f in SUPPORTED_RENDER:
         print(f"  - {f}", file=sys.stderr)
     else:
+      if cli_args.is_reg:
+        obj = register_to_wavelane(obj)
       if cli_args.output:
         renderer = None
         if cli_args.format == "svg":
