@@ -538,7 +538,7 @@ class Renderer:
             dy, tmp = self.wavegroup(
               wavetitle,
               wavelanes[wavetitle],
-              self.translate(ox, oy, dont_touch=True),
+              self.translate(0, oy, dont_touch=True),
               depth+1,
               **args
             )

@@ -103,10 +103,10 @@ text{font-size:0.9em;
 <path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.75, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
 </g>
 </g>
-<g id="Master"  transform="translate(60, 30.0)"  >
+<g id="Master"  transform="translate(0, 30.0)"  >
 <text x="0" y="10"  class="h2">Master</text>
 <path d="M0,14 L380,14" class="border ctx-y" />
-<g id="ctrl"  transform="translate(60, 20)"  >
+<g id="ctrl"  transform="translate(0, 20)"  >
 <text x="0" y="10"  class="h3">ctrl</text>
 <g id="write"  transform="translate(60, 20)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >write</text>
@@ -187,10 +187,10 @@ text{font-size:0.9em;
 </g>
 <g id="edges"  transform="translate(60, 0)"  >
 </g>
-<g id="Slave"  transform="translate(60, 220.0)"  >
+<g id="Slave"  transform="translate(0, 220.0)"  >
 <text x="0" y="10"  class="h2">Slave</text>
 <path d="M0,14 L380,14" class="border ctx-y" />
-<g id="ctrl"  transform="translate(60, 20)"  >
+<g id="ctrl"  transform="translate(0, 20)"  >
 <text x="0" y="10"  class="h3">ctrl</text>
 <g id="ack"  transform="translate(60, 20)"  >
 <text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >ack</text>
