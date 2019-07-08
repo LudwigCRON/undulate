@@ -13,7 +13,7 @@ class Brick:
   to fill an area
   """
   __slots__ = [
-      "symbol", "paths", "arrows", "polygons", "splines", "text",
+      "symbol", "paths", "arrows", "polygons", "splines", "texts",
       "width", "height", "styles",
       "slewing", "duty_cycle", "ignore_transition",
       "is_first", "last_y",
@@ -38,7 +38,7 @@ class Brick:
     self.arrows    = []
     self.polygons  = []
     self.splines   = []
-    self.text      = (10, 10, "")
+    self.texts     = []
     self.styles    = {"background": None, "foreground": "#000000"}
 
   def get_last_y(self):

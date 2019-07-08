@@ -173,7 +173,7 @@ class Data(pywave.Brick):
           (self.width-self.slewing, self.height), (self.slewing, self.height), (0, self.height/2)
       ])
     # add text
-    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
+    self.texts.append((self.width / 2, self.height / 2, kwargs.get("data", "")))
 
 class Gap(pywave.Brick):
   """

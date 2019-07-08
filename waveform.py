@@ -143,6 +143,7 @@ if __name__ == "__main__":
           renderer = pywave.EpsRenderer()
         try:
           with open(cli_args.output, "w+") as fp:
-            fp.write(renderer.draw(obj, brick_height=(40 if cli_args.is_reg else 20)))
+            fp.write(renderer.draw(obj, brick_height=(48 if cli_args.is_reg else 20),
+                                        brick_width=(25 if cli_args.is_reg else 40)))
         except Exception as e:
           traceback.print_tb(e.__traceback__)

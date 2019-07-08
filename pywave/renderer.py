@@ -175,10 +175,11 @@ class Renderer:
         content += self.spline(spline, style_repr="hide", **kwargs)
       else:
         content += self.spline(spline, style_repr="path", **kwargs)
-    if len(b.text[2]) > 0:
-      a = copy.deepcopy(kwargs)
-      a.update({"extra": self._DATA_TEXT})
-      content += self.text(*b.text, **a)
+    for i, span in enumerate(b.texts):
+      if len(str(span[2])) > 0:
+        a = copy.deepcopy(kwargs)
+        a.update({"extra": self._DATA_TEXT})
+        content += self.text(*span, **a)
     if self._SYMBOL_TEMP:
       ans = self._SYMBOL_TEMP(symbol, content, **kwargs)
     return ans
@@ -247,6 +248,7 @@ class Renderer:
     period       = kwargs.get("period", 1)
     phase        = kwargs.get("phase", 0)
     data         = kwargs.get("data", "")
+    regpos       = kwargs.get("regpos", "")
     brick_width  = period * kwargs.get("brick_width", 20)
     brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
     gap_offset   = kwargs.get("gap_offset", brick_width*0.75)
@@ -256,13 +258,13 @@ class Renderer:
     periods      = self._get_or_eval("periods", [], **kwargs)
     # in case a string is given reformat it as a list
     if isinstance(data, str):
-      data = data.strip().split()
+      data = data.split(' ')
     # generate the waveform
     wave, pos, ignore, last_y = [], 0, False, None
     # look for repetition '.'
     _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
     # generate bricks
-    symbol, data_counter, is_first, b_counter, ana_counter = None, 0, 0, 0, 0
+    symbol, data_counter, regpos_counter, is_first, b_counter, ana_counter = None, 0, 0, 0, 0, 0
     for b, k in _wavelane:
       if b != '|':
         # get the final height of the last brick
@@ -310,14 +312,19 @@ class Renderer:
             "slewing": slewing,
             "duty_cycle": max(duty_cycles[b_counter], slewing*2/brick_width) if b_counter < len(duty_cycles) else 0.5,
             "equation": analogue[ana_counter] if ana_counter < len(analogue) else "0",
-            "data": data[data_counter] if len(data) > data_counter else ""
+            "data": data[data_counter] if len(data) > data_counter else "",
+            "regpos": regpos[regpos_counter] if len(regpos) > regpos_counter else ""
         })
         # get next equation if analogue
         if symbol in [pywave.BRICKS.ana, pywave.BRICKS.step, pywave.BRICKS.cap]:
           ana_counter += 1
         # get next data
-        if symbol == pywave.BRICKS.data:
+        if symbol in [pywave.BRICKS.data, 
+          pywave.BRICKS.field_start, pywave.BRICKS.field_mid,
+          pywave.BRICKS.field_end, pywave.BRICKS.field_bit]:
           data_counter += 1
+        if symbol in [pywave.BRICKS.field_start, pywave.BRICKS.field_end, pywave.BRICKS.field_bit]:
+          regpos_counter += 1
         # create the new brick
         if pos + width_with_phase > 0:
           wave.append((

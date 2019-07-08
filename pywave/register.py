@@ -7,6 +7,7 @@ to represent a register
 """
 
 import pywave
+from itertools import accumulate
 
 class Register:
   """
@@ -44,10 +45,18 @@ class Register:
   
   def to_wavelane(self):
     wave = ''.join([field.wave for field in self.fields[::-1]])
-    data = ''.join([field.data for field in self.fields[::-1]])
+    data = ' '.join([field.data for field in self.fields[::-1]])
+    # calculate position of extremities
+    pos = [0]
+    for i, f in enumerate(self.fields):
+      if f.width > 1:
+        pos.append(f.width-1)
+      pos.append(1)
+    pos = list(accumulate(pos[:-1]))[::-1]
+    print(pos)
     print(wave)
     ans = {}
-    ans[self.name] = {"wave": wave, "data": data}
+    ans[self.name] = {"wave": wave, "data": data, "regpos": pos}
     return ans
 
 
@@ -60,16 +69,17 @@ class FieldStart(pywave.Brick):
     self.paths.append([
         (self.width, self.height),
         (0, self.height),
-        (0, 0),
-        (self.width, 0)])
+        (0, self.height/4),
+        (self.width, self.height/4)])
     if not self.styles.get("background", None) is None:
       self.polygons.append([
           (self.width, self.height),
           (0, self.height),
-          (0, 0),
-          (self.width, 0)])
+          (0, self.height/4),
+          (self.width, self.height/4)])
     # add text
-    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
+    self.texts.append((self.width / 2, self.height * 0.625, kwargs.get("data", "")))
+    self.texts.append((self.width / 2, self.height * 0.125, kwargs.get("regpos", "")))
 
 class FieldMid(pywave.Brick):
   """
@@ -78,23 +88,23 @@ class FieldMid(pywave.Brick):
   def __init__(self, **kwargs):
     pywave.Brick.__init__(self, **kwargs)
     self.splines.append([
-        ('M', self.width, self.height*0.75),
-        ('l', 0, self.height*0.25),
+        ('M', self.width, self.height*0.875),
+        ('l', 0, self.height*0.125),
         ('l', -self.width, 0),
-        ('l', 0, -self.height*0.25)])
+        ('l', 0, -self.height*0.125)])
     self.splines.append([
-        ('M', self.width, self.height*0.25),
-        ('l', 0, -self.height*0.25),
+        ('M', self.width, self.height*0.375),
+        ('l', 0, -self.height*0.125),
         ('l', -self.width, 0),
-        ('l', 0, self.height*0.25)])
+        ('l', 0, self.height*0.125)])
     if not self.styles.get("background", None) is None:
       self.polygons.append([
           (self.width, self.height),
           (0, self.height),
-          (0, 0),
-          (self.width, 0)])
+          (0, self.height/4),
+          (self.width, self.height/4)])
     # add text
-    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
+    self.texts.append((self.width / 2, self.height * 0.625, kwargs.get("data", "")))
 
 class FieldEnd(pywave.Brick):
   """
@@ -105,16 +115,17 @@ class FieldEnd(pywave.Brick):
     self.paths.append([
         (0, self.height),
         (self.width, self.height),
-        (self.width, 0),
-        (0, 0)])
+        (self.width, self.height / 4),
+        (0, self.height / 4)])
     if not self.styles.get("background", None) is None:
       self.polygons.append([
           (self.width, self.height),
           (0, self.height),
-          (0, 0),
-          (self.width, 0)])
+          (0, self.height/4),
+          (self.width, self.height/4)])
     # add text
-    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
+    self.texts.append((self.width / 2, self.height * 0.625, kwargs.get("data", "")))
+    self.texts.append((self.width / 2, self.height * 0.125, kwargs.get("regpos", "")))
 
 class FieldBit(pywave.Brick):
   """
@@ -123,19 +134,20 @@ class FieldBit(pywave.Brick):
   def __init__(self, **kwargs):
     pywave.Brick.__init__(self, **kwargs)
     self.paths.append([
-        (0, 0),
+        (0, self.height/4),
         (0, self.height),
         (self.width, self.height),
-        (self.width, 0),
-        (0, 0)])
+        (self.width, self.height/4),
+        (0, self.height/4)])
     if not self.styles.get("background", None) is None:
       self.polygons.append([
           (self.width, self.height),
           (0, self.height),
-          (0, 0),
-          (self.width, 0)])
+          (0, self.height / 4),
+          (self.width, self.height / 4)])
     # add text
-    self.text = (self.width / 2, self.height / 2, kwargs.get("data", ""))
+    self.texts.append((self.width / 2, self.height * 0.625, kwargs.get("data", "")))
+    self.texts.append((self.width / 2, self.height * 0.125, kwargs.get("regpos", "")))
 
 class Field:
   """
@@ -170,9 +182,16 @@ class Field:
       f.data = ("{0:0"+(str(f.width))+"b}").format(d.get("name", ""))
       # split for each bits
       f.data = ' '.join([c for c in f.data])
-      print(f.data)
+    elif isinstance(d.get("name", ""), str):
+      # center the name in the middle
+      l = (f.width-1)//2
+      e = (f.width-1)/2 - l
+      f.data = ''.join([' ']*l if e == 0 else [' ']*(l+1))
+      f.data += d.get("name", "")
+      f.data += ''.join([' ']*l)
     else:
-      f.data = ' '.join([' ']*f.width)
+      # skip the field
+      f.data = ' '.join(['']*f.width)
     if f.width > 1:
       f.wave = pywave.BRICKS.field_start.value + \
             ''.join([pywave.BRICKS.field_mid.value]*(f.width-2)) + \
