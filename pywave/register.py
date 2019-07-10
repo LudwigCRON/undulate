@@ -17,7 +17,7 @@ class Register:
   __slots__ = ["name", "description", "fields", "__counter"]
   def __init__(self):
     # default value
-    self.name = "reg"
+    self.name = ""
     self.description = ""
     self.fields = []
     # for auto increment field start position
@@ -46,6 +46,7 @@ class Register:
   def to_wavelane(self):
     wave = ''.join([field.wave for field in self.fields[::-1]])
     data = ' '.join([field.data for field in self.fields[::-1]])
+    attr = [(field.width, field.attributes) for field in self.fields[::-1]]
     # calculate position of extremities
     pos = [0]
     for i, f in enumerate(self.fields):
@@ -53,10 +54,8 @@ class Register:
         pos.append(f.width-1)
       pos.append(1)
     pos = list(accumulate(pos[:-1]))[::-1]
-    print(pos)
-    print(wave)
     ans = {}
-    ans[self.name] = {"wave": wave, "data": data, "regpos": pos}
+    ans[self.name] = {"wave": wave, "data": data, "regpos": pos, "attr": attr}
     return ans
 
 
@@ -77,6 +76,11 @@ class FieldStart(pywave.Brick):
           (0, self.height),
           (0, self.height/4),
           (self.width, self.height/4)])
+    # add attributes
+    width, attrs = kwargs.get("attr", None)
+    if attrs:
+      for i, attr in enumerate(attrs):
+        self.texts.append(((self.width * width)/2, self.height + 12 * (i+1), attr, "attr"))
     # add text
     self.texts.append((self.width / 2, self.height * 0.625, kwargs.get("data", "")))
     self.texts.append((self.width / 2, self.height * 0.125, kwargs.get("regpos", "")))
@@ -177,6 +181,11 @@ class Field:
     f.description = d.get("description", "")
     f.width = d.get("width", d.get("bits", 1))
     f.attributes = d.get("attributes", d.get("attr", None))
+    # convert attributes for string and int
+    if isinstance(f.attributes, str):
+      f.attributes = [f.attributes]
+    elif isinstance(f.attributes, list):
+      f.attributes = [("{0:0"+(str(f.width))+"b}").format(a) if isinstance(a, int) else a for a in f.attributes]
     if isinstance(d.get("name", ""), int):
       # convert number to bits
       f.data = ("{0:0"+(str(f.width))+"b}").format(d.get("name", ""))

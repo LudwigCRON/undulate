@@ -19,6 +19,8 @@ import toml
 
 import pywave
 
+from pprint import pprint
+
 
 SUPPORTED_FORMAT = [
     [".json", ".js", ".jsonml", ".jsml"],
@@ -96,7 +98,7 @@ def parse(filepath: str) -> (bool, object):
           ans[n] = wave
       else:
         ans[k] = v
-    print(ans)
+    pprint(ans)
   elif ext in SUPPORTED_FORMAT[1]:
     print("YAML file")
     with open(filepath, "r+") as fp:
@@ -134,7 +136,6 @@ if __name__ == "__main__":
     else:
       if cli_args.is_reg:
         obj = register_to_wavelane(obj)
-        print(obj)
       if cli_args.output:
         renderer = None
         if cli_args.format == "svg":
@@ -143,7 +144,8 @@ if __name__ == "__main__":
           renderer = pywave.EpsRenderer()
         try:
           with open(cli_args.output, "w+") as fp:
-            fp.write(renderer.draw(obj, brick_height=(48 if cli_args.is_reg else 20),
-                                        brick_width=(25 if cli_args.is_reg else 40)))
+            fp.write(renderer.draw(obj, brick_height=(50 if cli_args.is_reg else 20),
+                                        brick_width=(28 if cli_args.is_reg else 40),
+                                        is_reg=cli_args.is_reg))
         except Exception as e:
           traceback.print_tb(e.__traceback__)

@@ -37,3 +37,5 @@ eps: wavetest.yaml
 register:
 	../waveform.py -r -i "${TESTPATH}/reg-opivi.jsonml" -f svg -o "${TESTPATH}/legacy/reg-opivi-jsonml.svg"
 	../waveform.py -r -i "${TESTPATH}/reg-vl.jsonml" -f svg -o "${TESTPATH}/legacy/reg-vl-jsonml.svg"
+	../waveform.py -r -i "${TESTPATH}/reg-opivi.jsonml" -f eps -o "${TESTPATH}/legacy/reg-opivi-jsonml.eps"
+	../waveform.py -r -i "${TESTPATH}/reg-vl.jsonml" -f eps -o "${TESTPATH}/legacy/reg-vl-jsonml.eps"

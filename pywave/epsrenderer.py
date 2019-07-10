@@ -268,7 +268,12 @@ class EpsRenderer(Renderer):
     _id          = kwargs.get("id", "a")
     brick_width  = kwargs.get("brick_width", 40)
     brick_height = kwargs.get("brick_height", 20)
-    lkeys, width, height = self.size(wavelanes, brick_width, brick_height)
+    is_reg       = kwargs.get("is_reg", False)
+    lkeys, width, height, n = self.size(wavelanes, brick_width, brick_height)
+    # remove offset for the name in register
+    if is_reg:
+      lkeys = -1
+      height += n * 12
     self._height = height - brick_height * 1.25
     # update viewport information
     kwargs.update({

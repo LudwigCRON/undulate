@@ -179,6 +179,10 @@ class Renderer:
       if len(str(span[2])) > 0:
         a = copy.deepcopy(kwargs)
         a.update({"extra": self._DATA_TEXT})
+        # get style of text
+        if len(span) > 3:
+          a.update({"style_repr": span[3]})
+          span = span[:-1]
         content += self.text(*span, **a)
     if self._SYMBOL_TEMP:
       ans = self._SYMBOL_TEMP(symbol, content, **kwargs)
@@ -249,6 +253,7 @@ class Renderer:
     phase        = kwargs.get("phase", 0)
     data         = kwargs.get("data", "")
     regpos       = kwargs.get("regpos", "")
+    attributes   = kwargs.get("attr", [])
     brick_width  = period * kwargs.get("brick_width", 20)
     brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
     gap_offset   = kwargs.get("gap_offset", brick_width*0.75)
@@ -264,7 +269,8 @@ class Renderer:
     # look for repetition '.'
     _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
     # generate bricks
-    symbol, data_counter, regpos_counter, is_first, b_counter, ana_counter = None, 0, 0, 0, 0, 0
+    data_counter, regpos_counter, attr_counter = 0, 0, 0
+    symbol, is_first, b_counter, ana_counter = None, 0, 0, 0
     for b, k in _wavelane:
       if b != '|':
         # get the final height of the last brick
@@ -313,11 +319,15 @@ class Renderer:
             "duty_cycle": max(duty_cycles[b_counter], slewing*2/brick_width) if b_counter < len(duty_cycles) else 0.5,
             "equation": analogue[ana_counter] if ana_counter < len(analogue) else "0",
             "data": data[data_counter] if len(data) > data_counter else "",
-            "regpos": regpos[regpos_counter] if len(regpos) > regpos_counter else ""
+            "regpos": regpos[regpos_counter] if len(regpos) > regpos_counter else "",
+            "attr": attributes[attr_counter] if len(attributes) > attr_counter else ""
         })
         # get next equation if analogue
         if symbol in [pywave.BRICKS.ana, pywave.BRICKS.step, pywave.BRICKS.cap]:
           ana_counter += 1
+        # get next attr
+        if symbol in [pywave.BRICKS.field_start, pywave.BRICKS.field_bit]:
+          attr_counter += 1
         # get next data
         if symbol in [pywave.BRICKS.data, 
           pywave.BRICKS.field_start, pywave.BRICKS.field_mid,
@@ -584,10 +594,17 @@ class Renderer:
     [period]        : time dilatation factor, default is 1
     """
     if isinstance(wavelanes, dict):
-      x, y, keys = [0], 0, [0]
+      x, y, n, keys = [0], 0, 0, [0]
       for wavetitle in wavelanes.keys():
         if isinstance(wavelanes[wavetitle], dict):
+          # add some extra for attr in registers
+          _attr = wavelanes[wavetitle].get("attr", [(0, None)] )
+          if isinstance(_attr, list):
+            _n = [len(_a[1]) for _a in _attr if not _a[1] is None and isinstance(_a[1], list)]
+            n += max(_n) if _n else 0
+          # handle a wavelane
           if "wave" in wavelanes[wavetitle]:
+            # estimate length of the wavelane
             if not "periods" in wavelanes[wavetitle]:
               _l = len(wavelanes[wavetitle]["wave"])
             else:
@@ -597,26 +614,32 @@ class Renderer:
             _l *= wavelanes[wavetitle].get("repeat", 1)
             _l *= wavelanes[wavetitle].get("period", 1)
             x.append(_l)
+            # estimate height
             y += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
             keys.append(len(wavetitle))
+            # if it is only spacers allocate space
           elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
             y += brick_height * 1.5
+            # otherwise it is a new wavegroup
           elif not wavetitle in ["head", "foot", "config"]:
             y += 20
-            lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
+            lkeys, _x, _y, _n = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
             x.append(_x)
             y += _y
+            n += _n
             keys.append(lkeys)
+            # or an old wavegroup
         elif isinstance(wavelanes[wavetitle], list):
           if len(wavelanes[wavetitle]) > 0 and \
              isinstance(wavelanes[wavetitle][0], dict) and \
              "wave" in wavelanes[wavetitle][0]:
             y += 20
-            lkeys, _x, _y = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
+            lkeys, _x, _y, _n = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
             x.append(_x)
             y += _y
+            n += _n
             keys.append(lkeys)
-      return (max(keys), max(x), y)
+      return (max(keys), max(x), y, n)
 
   def draw(self, wavelanes, **kwargs) -> str:
     """

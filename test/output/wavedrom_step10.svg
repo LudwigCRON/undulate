@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="794" height="270.0" viewBox="-1 -1 796 272.0" overflow="hidden">
+<svg xmlns="http://www.w3.org/2000/svg" width="805" height="270.0" viewBox="-1 -1 806 272.0" overflow="hidden">
 <style>
 text{font-size:0.9em;
     font-style:normal;
@@ -13,6 +13,7 @@ text{font-size:0.9em;
 .error{fill:#f60000}
 .info{fill:#0041c4}
 .success{fill:#00ab00}
+.attr{font-size:9px;}
 .h1{font-size:18.31px;font-weight:bold}
 .border{stroke-width: 1.25px; stroke: #000}
 .h2{font-size:14.65px;font-weight:bold}

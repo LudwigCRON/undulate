@@ -99,10 +99,15 @@ class SvgRenderer(Renderer):
     _id          = kwargs.get("id", "a")
     brick_width  = kwargs.get("brick_width", 40)
     brick_height = kwargs.get("brick_height", 20)
-    lkeys, width, height = self.size(wavelanes, brick_width, brick_height)
+    is_reg       = kwargs.get("is_reg", False)
+    lkeys, width, height, n = self.size(wavelanes, brick_width, brick_height)
+    # remove offset for the name in register
+    if is_reg:
+      lkeys = -1
+      height += n * 12
     return (
-      f"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width+lkeys*11}\" height=\"{height}\" "
-      f"viewBox=\"-1 -1 {width+lkeys*11+2} {height+2}\" overflow=\"hidden\">\n"
+      f"<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"{width+lkeys*11+11}\" height=\"{height}\" "
+      f"viewBox=\"-1 -1 {width+lkeys*11+12} {height+2}\" overflow=\"hidden\">\n"
       f"<style>{DEFAULT}</style>\n"
       f"{DEFINITION}"
       ""+self.wavegroup(_id, wavelanes, brick_width=brick_width, brick_height=brick_height, width=width, height=height, offsetx=lkeys*10+10)[1]+""
