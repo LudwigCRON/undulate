@@ -169,8 +169,8 @@ class Data(pywave.Brick):
       ])
     else:
       self.polygons.append([
-          (0, self.height/2), (self.slewing, 0), (self.width-self.slewing, 0), (self.width, self.height/2),
-          (self.width-self.slewing, self.height), (self.slewing, self.height), (0, self.height/2)
+          (0, self.last_y), (self.slewing, 0), (self.width-self.slewing, 0), (self.width, self.height/2),
+          (self.width-self.slewing, self.height), (self.slewing, self.height), (0, self.last_y)
       ])
     # add text
     self.texts.append((self.width / 2, self.height / 2, kwargs.get("data", "")))

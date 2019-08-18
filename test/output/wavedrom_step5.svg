@@ -207,7 +207,7 @@ text{font-size:0.9em;
 <path d="M0,20 L3,20 L6,0 L40,0" class="path" />
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(120, 0)"  class="s2">
-<polygon points="0,10.0 3,0 40,0 43,20 40,20 37,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
+<polygon points="0,0 3,0 40,0 43,20 40,20 37,20 3,20 0,0 " fill="url(#diagonalHatch)" />
 <path d="M0,0 L3,0 L37,0 L40,0 L43,20" class="path" />
 <path d="M0,0 L3,20 L37,20 L40,20 L43,20" class="path" />
 </g>
@@ -218,7 +218,7 @@ text{font-size:0.9em;
 <path d="M0,20 L3,20 L6,0 L40,0" class="path" />
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(280, 0)"  class="s2">
-<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
+<polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,0 " fill="url(#diagonalHatch)" />
 <path d="M0,0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,0 L3,20 L37,20 L40,10.0" class="path" />
 </g>

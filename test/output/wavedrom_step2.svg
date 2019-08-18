@@ -336,7 +336,7 @@ text{font-size:0.9em;
 <path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.0, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(280, 0)"  class="s2">
-<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " fill="url(#diagonalHatch)" />
+<polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,0 " fill="url(#diagonalHatch)" />
 <path d="M0,0 L3,0 L37,0 L40,10.0" class="path" />
 <path d="M0,0 L3,20 L37,20 L40,10.0" class="path" />
 </g>
