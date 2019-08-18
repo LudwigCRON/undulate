@@ -37,7 +37,7 @@ class EpsRenderer(Renderer):
     """
     group define a group
     """
-    return f"gsave\n{callback()}\ngrestore\n"
+    return f"gsave\n{extra}\n{callback()}\ngrestore\n"
 
   def path(self, vertices: list, **kwargs) -> str:
     """
@@ -222,7 +222,7 @@ class EpsRenderer(Renderer):
     if "group" in extra:
       ox, oy = 5, oy+36
     # show text
-    if text.strip():
+    if text:
       if "right-justify" in extra:
         ans += f"{ox} {oy} moveto ({text}) {x} {y-9} right-justify"
       elif "center-justify" in extra:

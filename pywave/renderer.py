@@ -195,7 +195,7 @@ class Renderer:
     """
     if "spacer" in name or not name.strip():
       return ""
-    return self.text(-10, 15 * vscale, name, extra=self._WAVE_TITLE, offset=extra)
+    return self.text(-10, 15 * vscale, name, extra=self._WAVE_TITLE, offset=extra, style_repr="title")
 
   def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
     repeat       = kwargs.get("repeat", 1)
@@ -388,7 +388,7 @@ class Renderer:
         ans += self.path(
           [(x, 0), (x, height-offsety)],
           style_repr="ticks",
-          extra=self.translate(offsetx, 0, dont_touch=False, no_acc=True),
+          extra="",
           **kwargs)
       return ans
     return self.group(
@@ -540,7 +540,7 @@ class Renderer:
             ans += self.wavelane(
                 wavetitle,
                 wave,
-                self.translate(0 if translate else ox, 0 if translate else oy),
+                "" if translate else self.translate(ox, oy),
                 **args
             )
             dy = brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
@@ -555,7 +555,7 @@ class Renderer:
             dy, tmp = self.wavegroup(
                 wavetitle,
                 wavelanes[wavetitle],
-                self.translate(0, oy, dont_touch=True),
+                "" if translate else self.translate(0, oy, dont_touch=True),
                 depth+1,
                 **args
             )

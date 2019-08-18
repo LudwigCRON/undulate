@@ -13,7 +13,7 @@ class SvgRenderer(Renderer):
   """
   Render the wavelanes as an svg
   """
-  _WAVE_TITLE  = "class=\"info\" text-anchor=\"end\" xml:space=\"preserve\""
+  _WAVE_TITLE  = "text-anchor=\"end\" xml:space=\"preserve\""
   _DATA_TEXT   = "text-anchor=\"middle\" dominant-baseline=\"middle\" alignment-baseline=\"central\""
 
   def __init__(self):

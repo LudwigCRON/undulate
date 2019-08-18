@@ -8,3 +8,4 @@ from .register import Register, Field, generate_register_symbol
 from .renderer import Renderer
 from .svgrenderer import SvgRenderer
 from .epsrenderer import EpsRenderer
+from .cairorenderer import CairoRenderer

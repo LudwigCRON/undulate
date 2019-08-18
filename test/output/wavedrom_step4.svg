@@ -11,7 +11,7 @@ text{font-size:0.9em;
 .muted{fill:#aaa}
 .warning{fill:#f6b900}
 .error{fill:#f60000}
-.info{fill:#0041c4}
+.info, .title{fill:#0041c4}
 .success{fill:#00ab00}
 .attr{font-size:9px;}
 .h1{font-size:18.31px;font-weight:bold}
@@ -78,7 +78,7 @@ text{font-size:0.9em;
 </g>
 
 <g id="clk"  transform="translate(120, 0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >clk</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">clk</text>
 <g data-symbol="BRICKS.pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g>
@@ -116,7 +116,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="Data"  transform="translate(120, 30.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Data</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">Data</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " fill="url(#diagonalHatch)" />
 <path d="M0,0 L3,0 L77,0 L80,10.0" class="path" />
@@ -163,7 +163,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="Request"  transform="translate(120, 60.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Request</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">Request</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L80,20" class="path" />
 </g>
@@ -186,7 +186,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="Acknowledge"  transform="translate(120, 120.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >Acknowledge</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">Acknowledge</text>
 <g data-symbol="BRICKS.one"  transform="translate(0, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,0 L280,0" class="path" />
 </g>

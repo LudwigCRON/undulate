@@ -11,7 +11,7 @@ text{font-size:0.9em;
 .muted{fill:#aaa}
 .warning{fill:#f6b900}
 .error{fill:#f60000}
-.info{fill:#0041c4}
+.info, .title{fill:#0041c4}
 .success{fill:#00ab00}
 .attr{font-size:9px;}
 .h1{font-size:18.31px;font-weight:bold}
@@ -84,7 +84,7 @@ text{font-size:0.9em;
 </g>
 
 <g id="CK"  transform="translate(60, 0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >CK</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">CK</text>
 <g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L38.5,0 L41.5,20 L78.5,20 L80,10.0" class="path" />
 <path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(-2.0, 6.5) rotate(-171.4692343900519, 3.5, 3.5)" class="arrow" />
@@ -119,7 +119,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="CMD"  transform="translate(60, 30.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >CMD</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">CMD</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 57.0,0 60.0,10.0 57.0,20 3,20 0,20 " fill="url(#diagonalHatch)" />
 <path d="M0,0 L3,0 L57.0,0 L60.0,10.0" class="path" />
@@ -193,7 +193,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="ADDR"  transform="translate(60, 60.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >ADDR</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">ADDR</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 57.0,0 60.0,10.0 57.0,20 3,20 0,20 " fill="url(#diagonalHatch)" />
 <path d="M0,0 L3,0 L57.0,0 L60.0,10.0" class="path" />
@@ -243,7 +243,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="DQS"  transform="translate(60, 90.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >DQS</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">DQS</text>
 <g data-symbol="BRICKS.highz"  transform="translate(0, 0)"  class="s2">
 <path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L280,10.0" class="path" />
 </g>
@@ -270,7 +270,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="DQS_1"  transform="translate(60, 120.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >DQS_1</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">DQS_1</text>
 <g data-symbol="BRICKS.highz"  transform="translate(0, 0)"  class="s2">
 <path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L240,10.0" class="path" />
 </g>
@@ -297,7 +297,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="DQS_2"  transform="translate(60, 150.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >DQS_2</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">DQS_2</text>
 <g data-symbol="BRICKS.highz"  transform="translate(0, 0)"  class="s2">
 <path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L200,10.0" class="path" />
 </g>
@@ -324,7 +324,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="DQS_3"  transform="translate(60, 180.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >DQS_3</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">DQS_3</text>
 <g data-symbol="BRICKS.highz"  transform="translate(0, 0)"  class="s2">
 <path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L160,10.0" class="path" />
 </g>
@@ -351,7 +351,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="DQ"  transform="translate(60, 210.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >DQ</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">DQ</text>
 <g data-symbol="BRICKS.highz"  transform="translate(0, 0)"  class="s2">
 <path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L400,10.0" class="path" />
 </g>

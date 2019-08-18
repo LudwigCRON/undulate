@@ -28,7 +28,7 @@ SUPPORTED_FORMAT = [
     [".toml"]
 ]
 
-SUPPORTED_RENDER = ["svg", "eps"]
+SUPPORTED_RENDER = ["svg", "eps", "cairo-svg"]
 
 def _number_convert(match):
   base, number = match.group(1).lower(), match.group(2)
@@ -142,6 +142,8 @@ if __name__ == "__main__":
           renderer = pywave.SvgRenderer()
         elif cli_args.format == "eps":
           renderer = pywave.EpsRenderer()
+        elif cli_args.format.startswith("cairo-"):
+          renderer = pywave.CairoRenderer(extension=cli_args.format.split('-')[-1])
         try:
           with open(cli_args.output, "w+") as fp:
             fp.write(renderer.draw(obj, brick_height=(50 if cli_args.is_reg else 20),

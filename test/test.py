@@ -5,9 +5,12 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 # imports as in pywave.py
-from pywave import SvgRenderer, EpsRenderer
+from pywave import SvgRenderer, EpsRenderer, CairoRenderer
 import argparse
 import unittest
+
+renderer = None
+out_txt = True
 
 class TestSvgMethods(unittest.TestCase):
   """
@@ -19,17 +22,22 @@ class TestSvgMethods(unittest.TestCase):
     """
     test supported state of a signal
     """
+    filename = f"./output/wavedrom_step1.{cli_args.format}"
     wavelanes = {
         "Alfa": {"wave":"01.zx=ud.23.45"},
         "SAlfa": {"wave":"01.zx=ud.23.45", "slewing":8}
     }
-    with open(f"./output/wavedrom_step1.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_wavedrom_step2(self):
     """
     test clock generation
     """
+    filename = f"./output/wavedrom_step2.{cli_args.format}"
     wavelanes = {
         "pclk": {"wave": "p......."},
         "Pclk": {"wave": "P......."},
@@ -41,25 +49,33 @@ class TestSvgMethods(unittest.TestCase):
         "clk3": {"wave": "nhNhplPl"},
         "clk4": {"wave": "xlh.L.Hx"},
     }
-    with open(f"./output/wavedrom_step2.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_wavedrom_step3(self):
     """
     small bus example
     """
+    filename = f"./output/wavedrom_step3.{cli_args.format}"
     wavelanes = {
         "clk": {"wave": "P......"},
         "bus": {"wave": "x.==.=x", "data": ["head", "body", "tail", "data"]},
         "wire": {"wave": "0.1..0."}
     }
-    with open(f"./output/wavedrom_step3.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_wavedrom_step4(self):
     """
     spacer and gaps
     """
+    filename = f"./output/wavedrom_step4.{cli_args.format}"
     wavelanes = {
         "clk":{"wave": "p.....|..."},
         "Data":{"wave": "x.345x|=.x", "data": ["head", "body", "tail", "data"]},
@@ -67,13 +83,17 @@ class TestSvgMethods(unittest.TestCase):
         "spacer_0":{},
         "Acknowledge":{"wave": "1.....|01."}
     }
-    with open(f"./output/wavedrom_step4.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_wavedrom_step5(self):
     """
     groups support
     """
+    filename = f"./output/wavedrom_step5.{cli_args.format}"
     wavelanes = {
         "clk": {"wave": "p..Pp..P"},
         "Master": {
@@ -92,13 +112,17 @@ class TestSvgMethods(unittest.TestCase):
             "rdata": {"wave": "x.....4x", "data": "Q2"}
         }
     }
-    with open(f"./output/wavedrom_step5.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_wavedrom_step6(self):
     """
     phase and period
     """
+    filename = f"./output/wavedrom_step6.{cli_args.format}"
     wavelanes = {
         "CK"  : {"wave": "P.......", "period": 2},
         "CMD" : {"wave": "x.3x=x4x=x=x=x=x", "data": "RAS NOP CAS NOP NOP NOP NOP", "phase": 0.5},
@@ -106,13 +130,17 @@ class TestSvgMethods(unittest.TestCase):
         "DQS" : {"wave": "z.......0.1010z."},
         "DQ"  : {"wave": "z.........5555z.", "data": "D0 D1 D2 D3"}
     }
-    with open(f"./output/wavedrom_step6.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_wavedrom_step7(self):
     """
     Arrows
     """
+    filename = f"./output/wavedrom_step7.{cli_args.format}"
     wavelanes = {
         "A": {"wave": "01........0....", "node": ".a........j"},
         "B": {"wave": "0.1.......0.1..", "node": "..b.......i"},
@@ -130,13 +158,17 @@ class TestSvgMethods(unittest.TestCase):
             {"edge": 10, "dx": -10, "dy": 0}
         ]
     }
-    with open(f"./output/wavedrom_step7.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_wavedrom_step8(self):
     """
     Sharp edge lines
     """
+    filename = f"./output/wavedrom_step8.{cli_args.format}"
     wavelanes = {
         "A": {"wave": "01..0..", "node": ".a..e.."},
         "B": {"wave": "0.1..0.", "node": "..b..d.", "phase":0.5},
@@ -147,13 +179,17 @@ class TestSvgMethods(unittest.TestCase):
             'e|->d t6', 'c-g', 'f-h', 'g<->h 3 ms'
         ]
     }
-    with open(f"./output/wavedrom_step8.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_wavedrom_step9(self):
     """
     phase and period
     """
+    filename = f"./output/wavedrom_step9.{cli_args.format}"
     wavelanes = {
         "CK"   : {"wave": "P.......", "period": 2},
         "CMD"  : {"wave": "x.3x=x4x", "repeat":2, "data": "RAS NOP CAS NOP NOP NOP NOP", "phase": 0.5},
@@ -164,13 +200,17 @@ class TestSvgMethods(unittest.TestCase):
         "DQS_3": {"wave": "z...M...0.1010z."},
         "DQ"   : {"wave": "z.........5555z.", "data": "D0 D1 D2 D3"}
     }
-    with open(f"./output/wavedrom_step9.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_wavedrom_step10(self):
     """
     phase and period
     """
+    filename = f"./output/wavedrom_step10.{cli_args.format}"
     wavelanes = {
         "CK"  : {"wave": "P.......", "repeat": 2},
         "GBF": {"wave": "a...", "repeat": 4, "analogue": [
@@ -187,13 +227,17 @@ class TestSvgMethods(unittest.TestCase):
         "pwm": {"wave": "p...n...P...N...", "duty_cycles":[i/16 for i in range(16)]},
         "adaptive_clock": {"wave": "p...............", "periods":[i/8 for i in range(16)]}
     }
-    with open(f"./output/wavedrom_step10.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
   def test_extra_mux_recirc(self):
     """
     real phase use case
     """
+    filename = f"./output/recirc_bus.{cli_args.format}"
     wavelanes = {
         "F1"      : {"wave": "P...........", "node": "........."},
         "F2"      : {"wave": "P...", "node": ".........", "period": 3, "phase": -0.1},
@@ -204,8 +248,11 @@ class TestSvgMethods(unittest.TestCase):
         "BUS_2"   : {"wave": "0..=", "data": "COFFEE", "period": 3, "phase": -0.3},
         "edge": []
     }
-    with open(f"./output/recirc_bus.{cli_args.format}", "w+") as fp:
-      fp.write(renderer.draw(wavelanes))
+    if out_txt: 
+      with open(filename, "w+") as fp:
+        fp.write(renderer.draw(wavelanes, filename=filename))
+    else:
+      renderer.draw(wavelanes, filename=filename)
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser()
@@ -214,7 +261,10 @@ if __name__ == "__main__":
   cli_args = parser.parse_args()
   if cli_args.format == "svg":
     renderer = SvgRenderer()
-  elif "eps" in sys.argv:
+  elif "eps" in cli_args.format:
     renderer = EpsRenderer()
+  elif "cairo-" in cli_args.format:
+    renderer = CairoRenderer(extension=cli_args.format.split('-')[-1])
+    out_txt = False
   sys.argv[1:] = cli_args.unittest_args
   unittest.main()

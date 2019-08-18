@@ -1,5 +1,180 @@
 #!/usr/bin/env python3
 
+"""
+This define the style of the drawing
+it follows the principle of the css but accept only a subset:
+font: size, style, variant, weight, stretch, align, family
+fill: color, opacity
+stroke: color, width, opacity, linecap, linejoin, mitterlimit, dasharray, opacity
+
+colors should always be in rgba with value from 0—255
+"""
+from enum import Enum
+
+class Engine(Enum):
+    SVG   = 0,
+    EPS   = 1,
+    CAIRO = 2
+
+class SizeUnit(Enum):
+    EM = 16
+    PX = 1
+    PT = 1.333
+
+class LineCap(Enum):
+    BUTT   = 0,
+    ROUND  = 1,
+    SQUARE = 2
+
+class LineJoin(Enum):
+    MITER = 0, 
+    ROUND = 1, 
+    BEVEL = 2
+
+class TextAlign(Enum):
+    LEFT    = 0,
+    CENTER  = 1,
+    RIGHT   = 2,
+    JUSTIFY = 3
+
+# style definition for cairo renderer
+DEFAULT_STYLE = {
+    "title": {
+        "fill"        : (0, 65, 196, 255),
+        "font-weight" : 500,
+        "font-size"   : (0.9, SizeUnit.EM),
+        "font-family" : "monospace",
+        "text-align"  : TextAlign.RIGHT
+    },
+    "text": {
+        "fill"        : (0, 0, 0, 255),
+        "font-size"   : (0.9, SizeUnit.EM),
+        "font-style"  : "normal",
+        "font-variant": "normal",
+        "font-weight" : 500,
+        "font-stretch": "normal",
+        "text-align"  : TextAlign.CENTER,
+        "font-family" : "monospace"
+    },
+    "path": {
+        "fill": None,
+        "stroke": (0, 0, 0, 255),
+        "stroke-width": 1,
+        "stroke-linecap": LineCap.ROUND,
+        "stroke-linejoin": LineJoin.MITER,
+        "stroke-miterlimit": 4,
+        "stroke-dasharray": None
+    },
+    "stripe": {
+        "fill": None,
+        "stroke": (0, 0, 0, 255),
+        "stroke-width": 0.5,
+        "stroke-linecap": LineCap.ROUND,
+        "stroke-linejoin": LineJoin.MITER,
+        "stroke-miterlimit": 4,
+        "stroke-dasharray": None
+    },
+    "data": {
+        "text-anchor": "middle",
+        "dominant-baseline": "middle",
+        "alignment-baseline": "central"
+    },
+    "arrow": {
+        "fill": (0, 0, 0, 255),
+        "stroke": None
+    },
+    "hide": {
+        "fill": (255, 255, 255, 255),
+        "stroke-width": 2
+    },
+    "s0": {
+        "fill": None,
+        "stroke": (0, 0, 0, 255),
+        "stroke-width": 1,
+        "stroke-linecap": LineCap.ROUND,
+        "stroke-linejoin": LineJoin.MITER,
+        "stroke-miterlimit": 4,
+        "stroke-dasharray": None
+    },
+    "s1": {
+        "fill": None,
+        "stroke": (0, 0, 0, 255),
+        "stroke-width": 1,
+        "stroke-linecap": LineCap.ROUND,
+        "stroke-linejoin": LineJoin.MITER,
+        "stroke-miterlimit": 4,
+        "stroke-dasharray": None
+    },
+    "s2 > polygon": {
+        "fill": (0, 0, 0, 0),
+        "stroke": None
+    },
+    "s3 > polygon": {
+        "fill": (255, 255, 176, 255),
+        "stroke": None
+    },
+    "s4 > polygon": {
+        "fill": (255, 224, 185, 255),
+        "stroke":None
+    },
+    "s5 > polygon": {
+        "fill": (185, 224, 255, 255),
+        "stroke": None
+    },
+    "ticks": {
+        "stroke": (136, 136, 136, 255),
+        "stroke-width": 0.5,
+        "stroke-dasharray": [1, 3]
+    },
+    "edge": {
+        "fill": None,
+        "stroke": (0, 0, 255, 255),
+        "stroke-width": 1
+    },
+    "edge-arrowhead": {
+        "marker-start": "#arrow",
+        "overflow": "visible"
+    },
+    "edge-arrowtail": {
+        "marker-end": "#arrow",
+        "overflow": "visible"
+    },
+    "edge-text": {
+        "font-size": (0.625, SizeUnit.EM),
+        "filter": "#solid",
+        "transform": "translate(0, 2.5px)"
+    },
+    "border": {
+        "stroke-width": (1.25, SizeUnit.PX),
+        "stroke": (0, 0, 0, 255)
+    },
+    "h1": {
+        "font-size": (18.31, SizeUnit.PX),
+        "font-weight": "bold"
+    },
+    "h2": {
+        "font-size": (14.65, SizeUnit.PX),
+        "font-weight": "bold"
+    },
+    "h3": {
+        "font-size": (11.72, SizeUnit.PX),
+        "font-weight": "bold"
+    },
+    "h4": {
+        "font-size": (9.38, SizeUnit.PX),
+        "font-weight": "bold"
+    },
+    "h5": {
+        "font-size": (7.5, SizeUnit.PX),
+        "font-weight": "bold"
+    },
+    "h6": {
+        "font-size": (6, SizeUnit.PX),
+        "font-weight": "bold"
+    }
+}
+
+# default style for the SvgRenderer
 DEFAULT = """
 text{font-size:0.9em;
     font-style:normal;
@@ -12,7 +187,7 @@ text{font-size:0.9em;
 .muted{fill:#aaa}
 .warning{fill:#f6b900}
 .error{fill:#f60000}
-.info{fill:#0041c4}
+.info, .title{fill:#0041c4}
 .success{fill:#00ab00}
 .attr{font-size:9px;}
 .h1{font-size:18.31px;font-weight:bold}
@@ -66,3 +241,122 @@ DEFINITION = """
     </filter>
 </defs>
 """
+
+try:
+    import cairo
+except ImportError:
+    print("Cairo is not installed and cannot be used")
+else:
+    def apply_cairo_style(context, name: str):
+        style = get_style(name)
+        apply_cairo_font(context, style)
+        apply_cairo_fill(context, style)
+        apply_cairo_stroke(context, style)
+        
+    def apply_cairo_fill(context, style: dict):
+        # color
+        t = style.get("fill", None)
+        if not t is None:
+            r, g, b, a = t
+            context.set_source_rgba(r/255, g/255, b/255, a/255)
+    
+    def apply_cairo_stroke(context, style: dict):
+        # color
+        t = style.get("stroke", None)
+        if not t is None:
+            r, g, b, a = t
+            context.set_source_rgba(r/255, g/255, b/255, a/255)
+        # width
+        w = style.get("stroke-width", 1)
+        if not w is None:
+            context.set_line_width(w)
+        # line cap
+        lc = style.get("stroke-linecap", LineCap.ROUND)
+        if lc == LineCap.SQUARE:
+            context.set_line_cap(cairo.LINE_CAP_SQUARE)
+        elif lc == LineCap.BUTT:
+            context.set_line_cap(cairo.LINE_CAP_BUTT)
+        else:
+            context.set_line_cap(cairo.LINE_CAP_ROUND)
+        # line join
+        lj = style.get("stroke-linejoin", LineJoin.MITER)
+        if lj == LineJoin.BEVEL:
+            context.set_line_join(cairo.LINE_JOIN_BEVEL)
+        elif lj == LineJoin.ROUND:
+            context.set_line_join(cairo.LINE_JOIN_ROUND)
+        else:
+            context.set_line_join(cairo.LINE_JOIN_MITER)
+        # dash array
+        da = style.get("stroke-dasharray", [])
+        of = style.get("stroke-dasharray-offset", 0)
+        if of is None:
+            of = 0
+        if da:
+            context.set_dash(da, of)
+
+    def cairo_text_align(context, style: dict, text: str):
+        text_align = style.get("text-align", TextAlign.CENTER)
+        # get text width
+        xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
+        # apply style
+        if text_align == TextAlign.LEFT:
+            return (0, 0)
+        elif text_align == TextAlign.RIGHT:
+            return (width, 0)
+        else:
+            return (width/2, 0)
+
+    def apply_cairo_font(context, style: dict):
+        # font slant
+        font_style  = style.get("font-style", "")
+        if "it" in font_style:
+            font_style = cairo.FONT_SLANT_ITALIC
+        elif "ob" in font_style:
+            font_style = cairo.FONT_SLANT_OBLIQUE
+        else:
+            font_style = cairo.FONT_SLANT_NORMAL
+        # normal or bold
+        w = style.get("font-weight", 200)
+        if isinstance(w, str) and "bold" in w:
+            font_weight = cairo.FONT_WEIGHT_BOLD
+        elif isinstance(w, int) and w > 400:
+            font_weight = cairo.FONT_WEIGHT_BOLD
+        else:
+            font_weight = cairo.FONT_WEIGHT_NORMAL
+        # fetch font family
+        font_family = style.get("font-family", None)
+        if not font_family is None and isinstance(font_family, str):
+            context.select_font_face(font_family, font_style, font_weight)
+        # font size
+        font_size = style.get("font-size", None)
+        if not font_size is None:
+            s, u = font_size
+            context.set_font_size(s*u.value)
+
+def apply_style(context, name: str, engine: Engine):
+    if engine in [Engine.SVG, Engine.EPS]:
+        # not yet implemented for eps and not needed for SVGRenderer
+        pass
+    elif engine == Engine.CAIRO:
+        apply_cairo_style(context, name)
+    else:
+        raise "Engine selected is not yet supported"
+
+def apply_fill(context, name: str, engine: Engine):
+    if engine == Engine.CAIRO:
+        apply_cairo_fill(context, get_style(name))
+
+def apply_stroke(context, name: str, engine: Engine):
+    if engine == Engine.CAIRO:
+        apply_cairo_stroke(context, get_style(name))
+
+def apply_font(context, name: str, engine: Engine):
+    if engine == Engine.CAIRO:
+        apply_cairo_font(context, get_style(name))
+
+def get_style(name: str) -> dict:
+    return DEFAULT_STYLE.get(name, {})
+
+def text_align(context, name: str, text: str, engine: Engine):
+    if engine == Engine.CAIRO:
+        return cairo_text_align(context, get_style(name), text)

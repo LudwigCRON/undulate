@@ -11,7 +11,7 @@ text{font-size:0.9em;
 .muted{fill:#aaa}
 .warning{fill:#f6b900}
 .error{fill:#f60000}
-.info{fill:#0041c4}
+.info, .title{fill:#0041c4}
 .success{fill:#00ab00}
 .attr{font-size:9px;}
 .h1{font-size:18.31px;font-weight:bold}
@@ -83,7 +83,7 @@ text{font-size:0.9em;
 </g>
 
 <g id="A"  transform="translate(20, 0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >A</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">A</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
 </g>
@@ -95,7 +95,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="B"  transform="translate(20, 30.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >B</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">B</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L80,20" class="path" />
 </g>
@@ -110,7 +110,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="C"  transform="translate(20, 60.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >C</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">C</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L120,20" class="path" />
 </g>
@@ -125,7 +125,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="D"  transform="translate(20, 90.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >D</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">D</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L160,20" class="path" />
 </g>
@@ -140,7 +140,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="E"  transform="translate(20, 120.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >E</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">E</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L200,20" class="path" />
 </g>
@@ -155,7 +155,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="F"  transform="translate(20, 150.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >F</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">F</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L200,20" class="path" />
 </g>
@@ -170,7 +170,7 @@ text{font-size:0.9em;
 </g>
 </g>
 <g id="G"  transform="translate(20, 180.0)"  >
-<text x="-10" y="15" class="info" text-anchor="end" xml:space="preserve" >G</text>
+<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">G</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L280,20" class="path" />
 </g>
