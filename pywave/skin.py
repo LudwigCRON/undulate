@@ -145,32 +145,50 @@ DEFAULT_STYLE = {
         "transform": "translate(0, 2.5px)"
     },
     "border": {
-        "stroke-width": (1.25, SizeUnit.PX),
+        "stroke-width": 1.25,
         "stroke": (0, 0, 0, 255)
     },
     "h1": {
+        "fill": (0, 0, 0, 255),
         "font-size": (18.31, SizeUnit.PX),
-        "font-weight": "bold"
+        "font-weight": "bold",
+        "font-family" : "monospace",
+        "text-align"  : TextAlign.LEFT
     },
     "h2": {
+        "fill": (0, 0, 0, 255),
         "font-size": (14.65, SizeUnit.PX),
-        "font-weight": "bold"
+        "font-weight": "bold",
+        "font-family" : "monospace",
+        "text-align"  : TextAlign.LEFT
     },
     "h3": {
+        "fill": (0, 0, 0, 255),
         "font-size": (11.72, SizeUnit.PX),
-        "font-weight": "bold"
+        "font-weight": "bold",
+        "font-family" : "monospace",
+        "text-align"  : TextAlign.LEFT
     },
     "h4": {
+        "fill": (0, 0, 0, 255),
         "font-size": (9.38, SizeUnit.PX),
-        "font-weight": "bold"
+        "font-weight": "bold",
+        "font-family" : "monospace",
+        "text-align"  : TextAlign.LEFT
     },
     "h5": {
+        "fill": (0, 0, 0, 255),
         "font-size": (7.5, SizeUnit.PX),
-        "font-weight": "bold"
+        "font-weight": "bold",
+        "font-family" : "monospace",
+        "text-align"  : TextAlign.LEFT
     },
     "h6": {
+        "fill": (0, 0, 0, 255),
         "font-size": (6, SizeUnit.PX),
-        "font-weight": "bold"
+        "font-weight": "bold",
+        "font-family" : "monospace",
+        "text-align"  : TextAlign.LEFT
     }
 }
 
@@ -267,7 +285,7 @@ else:
             r, g, b, a = t
             context.set_source_rgba(r/255, g/255, b/255, a/255)
         # width
-        w = style.get("stroke-width", 1)
+        w = style.get("stroke-width", 1.0)
         if not w is None:
             context.set_line_width(w)
         # line cap
@@ -355,7 +373,11 @@ def apply_font(context, name: str, engine: Engine):
         apply_cairo_font(context, get_style(name))
 
 def get_style(name: str) -> dict:
-    return DEFAULT_STYLE.get(name, {})
+    selectors = DEFAULT_STYLE.keys()
+    if name in selectors:
+        return DEFAULT_STYLE.get(name, {})
+    else:
+        return DEFAULT_STYLE.get(name.split(' ')[0], {})
 
 def text_align(context, name: str, text: str, engine: Engine):
     if engine == Engine.CAIRO:

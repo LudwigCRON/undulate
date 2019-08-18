@@ -30,7 +30,7 @@
 <clipPath id="clip2">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip2)">
+<g id="surface615" clip-path="url(#clip2)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -41,7 +41,7 @@
 <clipPath id="clip3">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip3)">
+<g id="surface618" clip-path="url(#clip3)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -53,7 +53,7 @@
 <clipPath id="clip4">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip4)">
+<g id="surface621" clip-path="url(#clip4)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -65,7 +65,7 @@
 <clipPath id="clip5">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip5)">
+<g id="surface624" clip-path="url(#clip5)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -77,7 +77,7 @@
 <clipPath id="clip6">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip6)">
+<g id="surface627" clip-path="url(#clip6)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -89,7 +89,7 @@
 <clipPath id="clip7">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip7)">
+<g id="surface630" clip-path="url(#clip7)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -101,7 +101,7 @@
 <clipPath id="clip8">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip8)">
+<g id="surface633" clip-path="url(#clip8)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -113,7 +113,7 @@
 <clipPath id="clip9">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip9)">
+<g id="surface636" clip-path="url(#clip9)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -133,20 +133,20 @@
 <clipPath id="clip1">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip1)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip1)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <clipPath id="clip13">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip13)">
+<g id="surface615" clip-path="url(#clip13)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -157,7 +157,7 @@
 <clipPath id="clip14">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip14)">
+<g id="surface618" clip-path="url(#clip14)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -169,7 +169,7 @@
 <clipPath id="clip15">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip15)">
+<g id="surface621" clip-path="url(#clip15)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -181,7 +181,7 @@
 <clipPath id="clip16">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip16)">
+<g id="surface624" clip-path="url(#clip16)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -193,7 +193,7 @@
 <clipPath id="clip17">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip17)">
+<g id="surface627" clip-path="url(#clip17)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -205,7 +205,7 @@
 <clipPath id="clip18">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip18)">
+<g id="surface630" clip-path="url(#clip18)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -217,7 +217,7 @@
 <clipPath id="clip19">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip19)">
+<g id="surface633" clip-path="url(#clip19)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -229,7 +229,7 @@
 <clipPath id="clip20">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip20)">
+<g id="surface636" clip-path="url(#clip20)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -249,33 +249,33 @@
 <clipPath id="clip12">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip12)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip12)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern0" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern1" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip11">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip11)">
+<g id="surface641" clip-path="url(#clip11)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern0);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern1);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <clipPath id="clip24">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip24)">
+<g id="surface615" clip-path="url(#clip24)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -286,7 +286,7 @@
 <clipPath id="clip25">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip25)">
+<g id="surface618" clip-path="url(#clip25)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -298,7 +298,7 @@
 <clipPath id="clip26">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip26)">
+<g id="surface621" clip-path="url(#clip26)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -310,7 +310,7 @@
 <clipPath id="clip27">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip27)">
+<g id="surface624" clip-path="url(#clip27)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -322,7 +322,7 @@
 <clipPath id="clip28">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip28)">
+<g id="surface627" clip-path="url(#clip28)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -334,7 +334,7 @@
 <clipPath id="clip29">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip29)">
+<g id="surface630" clip-path="url(#clip29)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -346,7 +346,7 @@
 <clipPath id="clip30">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip30)">
+<g id="surface633" clip-path="url(#clip30)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -358,7 +358,7 @@
 <clipPath id="clip31">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip31)">
+<g id="surface636" clip-path="url(#clip31)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -378,46 +378,46 @@
 <clipPath id="clip23">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip23)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip23)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern3" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern4" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip22">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip22)">
+<g id="surface641" clip-path="url(#clip22)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern3);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern4);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <pattern id="pattern2" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <pattern id="pattern5" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <clipPath id="clip21">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface654" clip-path="url(#clip21)">
+<g id="surface644" clip-path="url(#clip21)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern2);stroke-miterlimit:10;" d="M 125 70 C 45 70 45 10 45 10 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern5);" d="M 101.914062 33.3125 L 102.804688 33.3125 L 102.804688 34.769531 L 103.636719 34.769531 L 103.636719 35.488281 L 102.804688 35.488281 L 102.804688 38.902344 C 102.804688 39.085938 102.863281 39.207031 102.988281 39.265625 C 103.054688 39.304688 103.171875 39.320312 103.328125 39.320312 C 103.371094 39.320312 103.417969 39.320312 103.46875 39.320312 C 103.515625 39.316406 103.574219 39.3125 103.636719 39.304688 L 103.636719 40 C 103.535156 40.03125 103.433594 40.050781 103.324219 40.0625 C 103.214844 40.078125 103.09375 40.082031 102.96875 40.082031 C 102.558594 40.082031 102.28125 39.976562 102.132812 39.769531 C 101.988281 39.558594 101.914062 39.285156 101.914062 38.949219 L 101.914062 35.488281 L 101.207031 35.488281 L 101.207031 34.769531 L 101.914062 34.769531 Z M 104.183594 40 C 104.214844 39.398438 104.339844 38.875 104.558594 38.429688 C 104.773438 37.984375 105.195312 37.578125 105.824219 37.210938 L 106.761719 36.671875 C 107.183594 36.425781 107.476562 36.21875 107.644531 36.046875 C 107.910156 35.773438 108.046875 35.464844 108.046875 35.117188 C 108.046875 34.710938 107.925781 34.386719 107.679688 34.148438 C 107.433594 33.910156 107.109375 33.789062 106.703125 33.789062 C 106.101562 33.789062 105.683594 34.015625 105.453125 34.472656 C 105.328125 34.71875 105.261719 35.054688 105.246094 35.488281 L 104.355469 35.488281 C 104.363281 34.878906 104.476562 34.382812 104.691406 34 C 105.074219 33.320312 105.746094 32.984375 106.707031 32.984375 C 107.507812 32.984375 108.09375 33.199219 108.464844 33.632812 C 108.832031 34.066406 109.019531 34.546875 109.019531 35.078125 C 109.019531 35.636719 108.820312 36.117188 108.425781 36.515625 C 108.199219 36.746094 107.789062 37.023438 107.199219 37.351562 L 106.53125 37.726562 C 106.214844 37.902344 105.960938 38.066406 105.78125 38.226562 C 105.457031 38.511719 105.25 38.824219 105.164062 39.171875 L 108.984375 39.171875 L 108.984375 40 Z M 104.183594 40 "/>
 </g>
 <clipPath id="clip36">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip36)">
+<g id="surface615" clip-path="url(#clip36)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -428,7 +428,7 @@
 <clipPath id="clip37">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip37)">
+<g id="surface618" clip-path="url(#clip37)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -440,7 +440,7 @@
 <clipPath id="clip38">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip38)">
+<g id="surface621" clip-path="url(#clip38)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -452,7 +452,7 @@
 <clipPath id="clip39">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip39)">
+<g id="surface624" clip-path="url(#clip39)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -464,7 +464,7 @@
 <clipPath id="clip40">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip40)">
+<g id="surface627" clip-path="url(#clip40)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -476,7 +476,7 @@
 <clipPath id="clip41">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip41)">
+<g id="surface630" clip-path="url(#clip41)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -488,7 +488,7 @@
 <clipPath id="clip42">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip42)">
+<g id="surface633" clip-path="url(#clip42)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -500,7 +500,7 @@
 <clipPath id="clip43">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip43)">
+<g id="surface636" clip-path="url(#clip43)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -520,59 +520,59 @@
 <clipPath id="clip35">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip35)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip35)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern8" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern9" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip34">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip34)">
+<g id="surface641" clip-path="url(#clip34)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern8);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern9);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <pattern id="pattern7" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <pattern id="pattern10" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <clipPath id="clip33">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface654" clip-path="url(#clip33)">
+<g id="surface644" clip-path="url(#clip33)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern7);stroke-miterlimit:10;" d="M 125 70 C 45 70 45 10 45 10 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern10);" d="M 101.914062 33.3125 L 102.804688 33.3125 L 102.804688 34.769531 L 103.636719 34.769531 L 103.636719 35.488281 L 102.804688 35.488281 L 102.804688 38.902344 C 102.804688 39.085938 102.863281 39.207031 102.988281 39.265625 C 103.054688 39.304688 103.171875 39.320312 103.328125 39.320312 C 103.371094 39.320312 103.417969 39.320312 103.46875 39.320312 C 103.515625 39.316406 103.574219 39.3125 103.636719 39.304688 L 103.636719 40 C 103.535156 40.03125 103.433594 40.050781 103.324219 40.0625 C 103.214844 40.078125 103.09375 40.082031 102.96875 40.082031 C 102.558594 40.082031 102.28125 39.976562 102.132812 39.769531 C 101.988281 39.558594 101.914062 39.285156 101.914062 38.949219 L 101.914062 35.488281 L 101.207031 35.488281 L 101.207031 34.769531 L 101.914062 34.769531 Z M 104.183594 40 C 104.214844 39.398438 104.339844 38.875 104.558594 38.429688 C 104.773438 37.984375 105.195312 37.578125 105.824219 37.210938 L 106.761719 36.671875 C 107.183594 36.425781 107.476562 36.21875 107.644531 36.046875 C 107.910156 35.773438 108.046875 35.464844 108.046875 35.117188 C 108.046875 34.710938 107.925781 34.386719 107.679688 34.148438 C 107.433594 33.910156 107.109375 33.789062 106.703125 33.789062 C 106.101562 33.789062 105.683594 34.015625 105.453125 34.472656 C 105.328125 34.71875 105.261719 35.054688 105.246094 35.488281 L 104.355469 35.488281 C 104.363281 34.878906 104.476562 34.382812 104.691406 34 C 105.074219 33.320312 105.746094 32.984375 106.707031 32.984375 C 107.507812 32.984375 108.09375 33.199219 108.464844 33.632812 C 108.832031 34.066406 109.019531 34.546875 109.019531 35.078125 C 109.019531 35.636719 108.820312 36.117188 108.425781 36.515625 C 108.199219 36.746094 107.789062 37.023438 107.199219 37.351562 L 106.53125 37.726562 C 106.214844 37.902344 105.960938 38.066406 105.78125 38.226562 C 105.457031 38.511719 105.25 38.824219 105.164062 39.171875 L 108.984375 39.171875 L 108.984375 40 Z M 104.183594 40 "/>
 </g>
 <pattern id="pattern6" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <pattern id="pattern11" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <clipPath id="clip32">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface657" clip-path="url(#clip32)">
+<g id="surface647" clip-path="url(#clip32)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern6);stroke-miterlimit:10;" d="M 125 70 C 165 70 165 100 165 100 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern11);" d="M 152.476562 78.3125 L 153.367188 78.3125 L 153.367188 79.769531 L 154.199219 79.769531 L 154.199219 80.488281 L 153.367188 80.488281 L 153.367188 83.902344 C 153.367188 84.085938 153.425781 84.207031 153.550781 84.265625 C 153.617188 84.304688 153.734375 84.320312 153.890625 84.320312 C 153.933594 84.320312 153.980469 84.320312 154.03125 84.320312 C 154.078125 84.316406 154.136719 84.3125 154.199219 84.304688 L 154.199219 85 C 154.097656 85.03125 153.996094 85.050781 153.886719 85.0625 C 153.777344 85.078125 153.65625 85.082031 153.53125 85.082031 C 153.121094 85.082031 152.84375 84.976562 152.695312 84.769531 C 152.550781 84.558594 152.476562 84.285156 152.476562 83.949219 L 152.476562 80.488281 L 151.769531 80.488281 L 151.769531 79.769531 L 152.476562 79.769531 Z M 155.078125 79.796875 L 155.972656 79.796875 L 155.972656 85 L 155.078125 85 Z M 155.078125 77.828125 L 155.972656 77.828125 L 155.972656 78.824219 L 155.078125 78.824219 Z M 157.300781 79.769531 L 158.171875 79.769531 L 158.171875 80.511719 C 158.378906 80.253906 158.566406 80.070312 158.734375 79.953125 C 159.023438 79.753906 159.355469 79.652344 159.722656 79.652344 C 160.140625 79.652344 160.476562 79.757812 160.726562 79.960938 C 160.871094 80.078125 161 80.25 161.117188 80.476562 C 161.3125 80.199219 161.542969 79.992188 161.808594 79.855469 C 162.070312 79.71875 162.367188 79.652344 162.695312 79.652344 C 163.398438 79.652344 163.878906 79.90625 164.132812 80.414062 C 164.269531 80.6875 164.335938 81.054688 164.335938 81.519531 L 164.335938 85 L 163.421875 85 L 163.421875 81.367188 C 163.421875 81.019531 163.335938 80.78125 163.164062 80.648438 C 162.988281 80.519531 162.777344 80.453125 162.523438 80.453125 C 162.179688 80.453125 161.882812 80.570312 161.632812 80.800781 C 161.382812 81.03125 161.261719 81.417969 161.261719 81.957031 L 161.261719 85 L 160.367188 85 L 160.367188 81.585938 C 160.367188 81.230469 160.324219 80.972656 160.242188 80.8125 C 160.109375 80.566406 159.859375 80.445312 159.492188 80.445312 C 159.160156 80.445312 158.859375 80.574219 158.585938 80.828125 C 158.316406 81.085938 158.179688 81.554688 158.179688 82.226562 L 158.179688 85 L 157.300781 85 Z M 167.804688 79.652344 C 168.175781 79.652344 168.539062 79.742188 168.886719 79.914062 C 169.234375 80.089844 169.5 80.3125 169.679688 80.589844 C 169.855469 80.855469 169.976562 81.164062 170.03125 81.515625 C 170.085938 81.753906 170.109375 82.140625 170.109375 82.664062 L 166.277344 82.664062 C 166.292969 83.195312 166.421875 83.621094 166.65625 83.941406 C 166.890625 84.261719 167.25 84.421875 167.742188 84.421875 C 168.203125 84.421875 168.570312 84.273438 168.84375 83.96875 C 169 83.792969 169.109375 83.589844 169.171875 83.359375 L 170.039062 83.359375 C 170.015625 83.550781 169.941406 83.765625 169.8125 84 C 169.683594 84.238281 169.539062 84.429688 169.378906 84.578125 C 169.113281 84.839844 168.78125 85.015625 168.386719 85.109375 C 168.175781 85.160156 167.9375 85.1875 167.671875 85.1875 C 167.019531 85.1875 166.46875 84.949219 166.015625 84.476562 C 165.5625 84 165.335938 83.339844 165.335938 82.484375 C 165.335938 81.644531 165.5625 80.964844 166.019531 80.4375 C 166.476562 79.914062 167.070312 79.652344 167.804688 79.652344 Z M 169.207031 81.96875 C 169.171875 81.585938 169.089844 81.28125 168.960938 81.054688 C 168.71875 80.632812 168.316406 80.421875 167.753906 80.421875 C 167.351562 80.421875 167.011719 80.566406 166.738281 80.855469 C 166.464844 81.148438 166.320312 81.519531 166.304688 81.96875 Z M 175.925781 85.191406 C 175.097656 85.191406 174.5 84.964844 174.125 84.507812 C 173.753906 84.054688 173.566406 83.503906 173.566406 82.851562 L 174.484375 82.851562 C 174.523438 83.304688 174.609375 83.632812 174.738281 83.835938 C 174.96875 84.203125 175.378906 84.390625 175.976562 84.390625 C 176.4375 84.390625 176.808594 84.265625 177.085938 84.019531 C 177.367188 83.773438 177.507812 83.453125 177.507812 83.0625 C 177.507812 82.578125 177.359375 82.242188 177.066406 82.050781 C 176.773438 81.859375 176.363281 81.761719 175.835938 81.761719 C 175.777344 81.761719 175.71875 81.761719 175.660156 81.765625 C 175.601562 81.765625 175.539062 81.769531 175.476562 81.773438 L 175.476562 80.996094 C 175.566406 81.007812 175.644531 81.011719 175.707031 81.015625 C 175.769531 81.019531 175.835938 81.019531 175.90625 81.019531 C 176.234375 81.019531 176.503906 80.96875 176.71875 80.863281 C 177.089844 80.679688 177.273438 80.355469 177.273438 79.886719 C 177.273438 79.539062 177.148438 79.269531 176.902344 79.082031 C 176.65625 78.894531 176.367188 78.796875 176.039062 78.796875 C 175.453125 78.796875 175.046875 78.992188 174.820312 79.382812 C 174.699219 79.597656 174.628906 79.90625 174.613281 80.304688 L 173.742188 80.304688 C 173.742188 79.78125 173.847656 79.339844 174.054688 78.976562 C 174.414062 78.324219 175.042969 78 175.945312 78 C 176.65625 78 177.210938 78.15625 177.601562 78.472656 C 177.992188 78.789062 178.1875 79.25 178.1875 79.851562 C 178.1875 80.28125 178.070312 80.632812 177.839844 80.898438 C 177.695312 81.0625 177.511719 81.195312 177.28125 81.289062 C 177.648438 81.390625 177.9375 81.585938 178.144531 81.871094 C 178.351562 82.160156 178.453125 82.511719 178.453125 82.929688 C 178.453125 83.597656 178.234375 84.140625 177.796875 84.5625 C 177.355469 84.980469 176.734375 85.191406 175.925781 85.191406 Z M 175.925781 85.191406 "/>
 </g>
 <clipPath id="clip49">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip49)">
+<g id="surface615" clip-path="url(#clip49)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -583,7 +583,7 @@
 <clipPath id="clip50">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip50)">
+<g id="surface618" clip-path="url(#clip50)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -595,7 +595,7 @@
 <clipPath id="clip51">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip51)">
+<g id="surface621" clip-path="url(#clip51)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -607,7 +607,7 @@
 <clipPath id="clip52">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip52)">
+<g id="surface624" clip-path="url(#clip52)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -619,7 +619,7 @@
 <clipPath id="clip53">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip53)">
+<g id="surface627" clip-path="url(#clip53)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -631,7 +631,7 @@
 <clipPath id="clip54">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip54)">
+<g id="surface630" clip-path="url(#clip54)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -643,7 +643,7 @@
 <clipPath id="clip55">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip55)">
+<g id="surface633" clip-path="url(#clip55)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -655,7 +655,7 @@
 <clipPath id="clip56">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip56)">
+<g id="surface636" clip-path="url(#clip56)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -675,68 +675,68 @@
 <clipPath id="clip48">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip48)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip48)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern15" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern16" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip47">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip47)">
+<g id="surface641" clip-path="url(#clip47)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern15);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern16);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <pattern id="pattern14" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <pattern id="pattern17" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <clipPath id="clip46">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface654" clip-path="url(#clip46)">
+<g id="surface644" clip-path="url(#clip46)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern14);stroke-miterlimit:10;" d="M 125 70 C 45 70 45 10 45 10 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern17);" d="M 101.914062 33.3125 L 102.804688 33.3125 L 102.804688 34.769531 L 103.636719 34.769531 L 103.636719 35.488281 L 102.804688 35.488281 L 102.804688 38.902344 C 102.804688 39.085938 102.863281 39.207031 102.988281 39.265625 C 103.054688 39.304688 103.171875 39.320312 103.328125 39.320312 C 103.371094 39.320312 103.417969 39.320312 103.46875 39.320312 C 103.515625 39.316406 103.574219 39.3125 103.636719 39.304688 L 103.636719 40 C 103.535156 40.03125 103.433594 40.050781 103.324219 40.0625 C 103.214844 40.078125 103.09375 40.082031 102.96875 40.082031 C 102.558594 40.082031 102.28125 39.976562 102.132812 39.769531 C 101.988281 39.558594 101.914062 39.285156 101.914062 38.949219 L 101.914062 35.488281 L 101.207031 35.488281 L 101.207031 34.769531 L 101.914062 34.769531 Z M 104.183594 40 C 104.214844 39.398438 104.339844 38.875 104.558594 38.429688 C 104.773438 37.984375 105.195312 37.578125 105.824219 37.210938 L 106.761719 36.671875 C 107.183594 36.425781 107.476562 36.21875 107.644531 36.046875 C 107.910156 35.773438 108.046875 35.464844 108.046875 35.117188 C 108.046875 34.710938 107.925781 34.386719 107.679688 34.148438 C 107.433594 33.910156 107.109375 33.789062 106.703125 33.789062 C 106.101562 33.789062 105.683594 34.015625 105.453125 34.472656 C 105.328125 34.71875 105.261719 35.054688 105.246094 35.488281 L 104.355469 35.488281 C 104.363281 34.878906 104.476562 34.382812 104.691406 34 C 105.074219 33.320312 105.746094 32.984375 106.707031 32.984375 C 107.507812 32.984375 108.09375 33.199219 108.464844 33.632812 C 108.832031 34.066406 109.019531 34.546875 109.019531 35.078125 C 109.019531 35.636719 108.820312 36.117188 108.425781 36.515625 C 108.199219 36.746094 107.789062 37.023438 107.199219 37.351562 L 106.53125 37.726562 C 106.214844 37.902344 105.960938 38.066406 105.78125 38.226562 C 105.457031 38.511719 105.25 38.824219 105.164062 39.171875 L 108.984375 39.171875 L 108.984375 40 Z M 104.183594 40 "/>
 </g>
 <pattern id="pattern13" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <pattern id="pattern18" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <clipPath id="clip45">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface657" clip-path="url(#clip45)">
+<g id="surface647" clip-path="url(#clip45)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern13);stroke-miterlimit:10;" d="M 125 70 C 165 70 165 100 165 100 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern18);" d="M 152.476562 78.3125 L 153.367188 78.3125 L 153.367188 79.769531 L 154.199219 79.769531 L 154.199219 80.488281 L 153.367188 80.488281 L 153.367188 83.902344 C 153.367188 84.085938 153.425781 84.207031 153.550781 84.265625 C 153.617188 84.304688 153.734375 84.320312 153.890625 84.320312 C 153.933594 84.320312 153.980469 84.320312 154.03125 84.320312 C 154.078125 84.316406 154.136719 84.3125 154.199219 84.304688 L 154.199219 85 C 154.097656 85.03125 153.996094 85.050781 153.886719 85.0625 C 153.777344 85.078125 153.65625 85.082031 153.53125 85.082031 C 153.121094 85.082031 152.84375 84.976562 152.695312 84.769531 C 152.550781 84.558594 152.476562 84.285156 152.476562 83.949219 L 152.476562 80.488281 L 151.769531 80.488281 L 151.769531 79.769531 L 152.476562 79.769531 Z M 155.078125 79.796875 L 155.972656 79.796875 L 155.972656 85 L 155.078125 85 Z M 155.078125 77.828125 L 155.972656 77.828125 L 155.972656 78.824219 L 155.078125 78.824219 Z M 157.300781 79.769531 L 158.171875 79.769531 L 158.171875 80.511719 C 158.378906 80.253906 158.566406 80.070312 158.734375 79.953125 C 159.023438 79.753906 159.355469 79.652344 159.722656 79.652344 C 160.140625 79.652344 160.476562 79.757812 160.726562 79.960938 C 160.871094 80.078125 161 80.25 161.117188 80.476562 C 161.3125 80.199219 161.542969 79.992188 161.808594 79.855469 C 162.070312 79.71875 162.367188 79.652344 162.695312 79.652344 C 163.398438 79.652344 163.878906 79.90625 164.132812 80.414062 C 164.269531 80.6875 164.335938 81.054688 164.335938 81.519531 L 164.335938 85 L 163.421875 85 L 163.421875 81.367188 C 163.421875 81.019531 163.335938 80.78125 163.164062 80.648438 C 162.988281 80.519531 162.777344 80.453125 162.523438 80.453125 C 162.179688 80.453125 161.882812 80.570312 161.632812 80.800781 C 161.382812 81.03125 161.261719 81.417969 161.261719 81.957031 L 161.261719 85 L 160.367188 85 L 160.367188 81.585938 C 160.367188 81.230469 160.324219 80.972656 160.242188 80.8125 C 160.109375 80.566406 159.859375 80.445312 159.492188 80.445312 C 159.160156 80.445312 158.859375 80.574219 158.585938 80.828125 C 158.316406 81.085938 158.179688 81.554688 158.179688 82.226562 L 158.179688 85 L 157.300781 85 Z M 167.804688 79.652344 C 168.175781 79.652344 168.539062 79.742188 168.886719 79.914062 C 169.234375 80.089844 169.5 80.3125 169.679688 80.589844 C 169.855469 80.855469 169.976562 81.164062 170.03125 81.515625 C 170.085938 81.753906 170.109375 82.140625 170.109375 82.664062 L 166.277344 82.664062 C 166.292969 83.195312 166.421875 83.621094 166.65625 83.941406 C 166.890625 84.261719 167.25 84.421875 167.742188 84.421875 C 168.203125 84.421875 168.570312 84.273438 168.84375 83.96875 C 169 83.792969 169.109375 83.589844 169.171875 83.359375 L 170.039062 83.359375 C 170.015625 83.550781 169.941406 83.765625 169.8125 84 C 169.683594 84.238281 169.539062 84.429688 169.378906 84.578125 C 169.113281 84.839844 168.78125 85.015625 168.386719 85.109375 C 168.175781 85.160156 167.9375 85.1875 167.671875 85.1875 C 167.019531 85.1875 166.46875 84.949219 166.015625 84.476562 C 165.5625 84 165.335938 83.339844 165.335938 82.484375 C 165.335938 81.644531 165.5625 80.964844 166.019531 80.4375 C 166.476562 79.914062 167.070312 79.652344 167.804688 79.652344 Z M 169.207031 81.96875 C 169.171875 81.585938 169.089844 81.28125 168.960938 81.054688 C 168.71875 80.632812 168.316406 80.421875 167.753906 80.421875 C 167.351562 80.421875 167.011719 80.566406 166.738281 80.855469 C 166.464844 81.148438 166.320312 81.519531 166.304688 81.96875 Z M 175.925781 85.191406 C 175.097656 85.191406 174.5 84.964844 174.125 84.507812 C 173.753906 84.054688 173.566406 83.503906 173.566406 82.851562 L 174.484375 82.851562 C 174.523438 83.304688 174.609375 83.632812 174.738281 83.835938 C 174.96875 84.203125 175.378906 84.390625 175.976562 84.390625 C 176.4375 84.390625 176.808594 84.265625 177.085938 84.019531 C 177.367188 83.773438 177.507812 83.453125 177.507812 83.0625 C 177.507812 82.578125 177.359375 82.242188 177.066406 82.050781 C 176.773438 81.859375 176.363281 81.761719 175.835938 81.761719 C 175.777344 81.761719 175.71875 81.761719 175.660156 81.765625 C 175.601562 81.765625 175.539062 81.769531 175.476562 81.773438 L 175.476562 80.996094 C 175.566406 81.007812 175.644531 81.011719 175.707031 81.015625 C 175.769531 81.019531 175.835938 81.019531 175.90625 81.019531 C 176.234375 81.019531 176.503906 80.96875 176.71875 80.863281 C 177.089844 80.679688 177.273438 80.355469 177.273438 79.886719 C 177.273438 79.539062 177.148438 79.269531 176.902344 79.082031 C 176.65625 78.894531 176.367188 78.796875 176.039062 78.796875 C 175.453125 78.796875 175.046875 78.992188 174.820312 79.382812 C 174.699219 79.597656 174.628906 79.90625 174.613281 80.304688 L 173.742188 80.304688 C 173.742188 79.78125 173.847656 79.339844 174.054688 78.976562 C 174.414062 78.324219 175.042969 78 175.945312 78 C 176.65625 78 177.210938 78.15625 177.601562 78.472656 C 177.992188 78.789062 178.1875 79.25 178.1875 79.851562 C 178.1875 80.28125 178.070312 80.632812 177.839844 80.898438 C 177.695312 81.0625 177.511719 81.195312 177.28125 81.289062 C 177.648438 81.390625 177.9375 81.585938 178.144531 81.871094 C 178.351562 82.160156 178.453125 82.511719 178.453125 82.929688 C 178.453125 83.597656 178.234375 84.140625 177.796875 84.5625 C 177.355469 84.980469 176.734375 85.191406 175.925781 85.191406 Z M 175.925781 85.191406 "/>
 </g>
 <pattern id="pattern12" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface657"/>
+<use xlink:href="#surface647"/>
 </pattern>
 <clipPath id="clip44">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface660" clip-path="url(#clip44)">
+<g id="surface650" clip-path="url(#clip44)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern12);stroke-miterlimit:10;" d="M 165 100 C 165 100 165 130 205 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <clipPath id="clip63">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip63)">
+<g id="surface615" clip-path="url(#clip63)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -747,7 +747,7 @@
 <clipPath id="clip64">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip64)">
+<g id="surface618" clip-path="url(#clip64)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -759,7 +759,7 @@
 <clipPath id="clip65">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip65)">
+<g id="surface621" clip-path="url(#clip65)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -771,7 +771,7 @@
 <clipPath id="clip66">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip66)">
+<g id="surface624" clip-path="url(#clip66)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -783,7 +783,7 @@
 <clipPath id="clip67">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip67)">
+<g id="surface627" clip-path="url(#clip67)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -795,7 +795,7 @@
 <clipPath id="clip68">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip68)">
+<g id="surface630" clip-path="url(#clip68)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -807,7 +807,7 @@
 <clipPath id="clip69">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip69)">
+<g id="surface633" clip-path="url(#clip69)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -819,7 +819,7 @@
 <clipPath id="clip70">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip70)">
+<g id="surface636" clip-path="url(#clip70)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -839,77 +839,77 @@
 <clipPath id="clip62">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip62)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip62)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern23" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern24" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip61">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip61)">
+<g id="surface641" clip-path="url(#clip61)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern23);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern24);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <pattern id="pattern22" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <pattern id="pattern25" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <clipPath id="clip60">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface654" clip-path="url(#clip60)">
+<g id="surface644" clip-path="url(#clip60)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern22);stroke-miterlimit:10;" d="M 125 70 C 45 70 45 10 45 10 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern25);" d="M 101.914062 33.3125 L 102.804688 33.3125 L 102.804688 34.769531 L 103.636719 34.769531 L 103.636719 35.488281 L 102.804688 35.488281 L 102.804688 38.902344 C 102.804688 39.085938 102.863281 39.207031 102.988281 39.265625 C 103.054688 39.304688 103.171875 39.320312 103.328125 39.320312 C 103.371094 39.320312 103.417969 39.320312 103.46875 39.320312 C 103.515625 39.316406 103.574219 39.3125 103.636719 39.304688 L 103.636719 40 C 103.535156 40.03125 103.433594 40.050781 103.324219 40.0625 C 103.214844 40.078125 103.09375 40.082031 102.96875 40.082031 C 102.558594 40.082031 102.28125 39.976562 102.132812 39.769531 C 101.988281 39.558594 101.914062 39.285156 101.914062 38.949219 L 101.914062 35.488281 L 101.207031 35.488281 L 101.207031 34.769531 L 101.914062 34.769531 Z M 104.183594 40 C 104.214844 39.398438 104.339844 38.875 104.558594 38.429688 C 104.773438 37.984375 105.195312 37.578125 105.824219 37.210938 L 106.761719 36.671875 C 107.183594 36.425781 107.476562 36.21875 107.644531 36.046875 C 107.910156 35.773438 108.046875 35.464844 108.046875 35.117188 C 108.046875 34.710938 107.925781 34.386719 107.679688 34.148438 C 107.433594 33.910156 107.109375 33.789062 106.703125 33.789062 C 106.101562 33.789062 105.683594 34.015625 105.453125 34.472656 C 105.328125 34.71875 105.261719 35.054688 105.246094 35.488281 L 104.355469 35.488281 C 104.363281 34.878906 104.476562 34.382812 104.691406 34 C 105.074219 33.320312 105.746094 32.984375 106.707031 32.984375 C 107.507812 32.984375 108.09375 33.199219 108.464844 33.632812 C 108.832031 34.066406 109.019531 34.546875 109.019531 35.078125 C 109.019531 35.636719 108.820312 36.117188 108.425781 36.515625 C 108.199219 36.746094 107.789062 37.023438 107.199219 37.351562 L 106.53125 37.726562 C 106.214844 37.902344 105.960938 38.066406 105.78125 38.226562 C 105.457031 38.511719 105.25 38.824219 105.164062 39.171875 L 108.984375 39.171875 L 108.984375 40 Z M 104.183594 40 "/>
 </g>
 <pattern id="pattern21" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <pattern id="pattern26" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <clipPath id="clip59">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface657" clip-path="url(#clip59)">
+<g id="surface647" clip-path="url(#clip59)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern21);stroke-miterlimit:10;" d="M 125 70 C 165 70 165 100 165 100 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern26);" d="M 152.476562 78.3125 L 153.367188 78.3125 L 153.367188 79.769531 L 154.199219 79.769531 L 154.199219 80.488281 L 153.367188 80.488281 L 153.367188 83.902344 C 153.367188 84.085938 153.425781 84.207031 153.550781 84.265625 C 153.617188 84.304688 153.734375 84.320312 153.890625 84.320312 C 153.933594 84.320312 153.980469 84.320312 154.03125 84.320312 C 154.078125 84.316406 154.136719 84.3125 154.199219 84.304688 L 154.199219 85 C 154.097656 85.03125 153.996094 85.050781 153.886719 85.0625 C 153.777344 85.078125 153.65625 85.082031 153.53125 85.082031 C 153.121094 85.082031 152.84375 84.976562 152.695312 84.769531 C 152.550781 84.558594 152.476562 84.285156 152.476562 83.949219 L 152.476562 80.488281 L 151.769531 80.488281 L 151.769531 79.769531 L 152.476562 79.769531 Z M 155.078125 79.796875 L 155.972656 79.796875 L 155.972656 85 L 155.078125 85 Z M 155.078125 77.828125 L 155.972656 77.828125 L 155.972656 78.824219 L 155.078125 78.824219 Z M 157.300781 79.769531 L 158.171875 79.769531 L 158.171875 80.511719 C 158.378906 80.253906 158.566406 80.070312 158.734375 79.953125 C 159.023438 79.753906 159.355469 79.652344 159.722656 79.652344 C 160.140625 79.652344 160.476562 79.757812 160.726562 79.960938 C 160.871094 80.078125 161 80.25 161.117188 80.476562 C 161.3125 80.199219 161.542969 79.992188 161.808594 79.855469 C 162.070312 79.71875 162.367188 79.652344 162.695312 79.652344 C 163.398438 79.652344 163.878906 79.90625 164.132812 80.414062 C 164.269531 80.6875 164.335938 81.054688 164.335938 81.519531 L 164.335938 85 L 163.421875 85 L 163.421875 81.367188 C 163.421875 81.019531 163.335938 80.78125 163.164062 80.648438 C 162.988281 80.519531 162.777344 80.453125 162.523438 80.453125 C 162.179688 80.453125 161.882812 80.570312 161.632812 80.800781 C 161.382812 81.03125 161.261719 81.417969 161.261719 81.957031 L 161.261719 85 L 160.367188 85 L 160.367188 81.585938 C 160.367188 81.230469 160.324219 80.972656 160.242188 80.8125 C 160.109375 80.566406 159.859375 80.445312 159.492188 80.445312 C 159.160156 80.445312 158.859375 80.574219 158.585938 80.828125 C 158.316406 81.085938 158.179688 81.554688 158.179688 82.226562 L 158.179688 85 L 157.300781 85 Z M 167.804688 79.652344 C 168.175781 79.652344 168.539062 79.742188 168.886719 79.914062 C 169.234375 80.089844 169.5 80.3125 169.679688 80.589844 C 169.855469 80.855469 169.976562 81.164062 170.03125 81.515625 C 170.085938 81.753906 170.109375 82.140625 170.109375 82.664062 L 166.277344 82.664062 C 166.292969 83.195312 166.421875 83.621094 166.65625 83.941406 C 166.890625 84.261719 167.25 84.421875 167.742188 84.421875 C 168.203125 84.421875 168.570312 84.273438 168.84375 83.96875 C 169 83.792969 169.109375 83.589844 169.171875 83.359375 L 170.039062 83.359375 C 170.015625 83.550781 169.941406 83.765625 169.8125 84 C 169.683594 84.238281 169.539062 84.429688 169.378906 84.578125 C 169.113281 84.839844 168.78125 85.015625 168.386719 85.109375 C 168.175781 85.160156 167.9375 85.1875 167.671875 85.1875 C 167.019531 85.1875 166.46875 84.949219 166.015625 84.476562 C 165.5625 84 165.335938 83.339844 165.335938 82.484375 C 165.335938 81.644531 165.5625 80.964844 166.019531 80.4375 C 166.476562 79.914062 167.070312 79.652344 167.804688 79.652344 Z M 169.207031 81.96875 C 169.171875 81.585938 169.089844 81.28125 168.960938 81.054688 C 168.71875 80.632812 168.316406 80.421875 167.753906 80.421875 C 167.351562 80.421875 167.011719 80.566406 166.738281 80.855469 C 166.464844 81.148438 166.320312 81.519531 166.304688 81.96875 Z M 175.925781 85.191406 C 175.097656 85.191406 174.5 84.964844 174.125 84.507812 C 173.753906 84.054688 173.566406 83.503906 173.566406 82.851562 L 174.484375 82.851562 C 174.523438 83.304688 174.609375 83.632812 174.738281 83.835938 C 174.96875 84.203125 175.378906 84.390625 175.976562 84.390625 C 176.4375 84.390625 176.808594 84.265625 177.085938 84.019531 C 177.367188 83.773438 177.507812 83.453125 177.507812 83.0625 C 177.507812 82.578125 177.359375 82.242188 177.066406 82.050781 C 176.773438 81.859375 176.363281 81.761719 175.835938 81.761719 C 175.777344 81.761719 175.71875 81.761719 175.660156 81.765625 C 175.601562 81.765625 175.539062 81.769531 175.476562 81.773438 L 175.476562 80.996094 C 175.566406 81.007812 175.644531 81.011719 175.707031 81.015625 C 175.769531 81.019531 175.835938 81.019531 175.90625 81.019531 C 176.234375 81.019531 176.503906 80.96875 176.71875 80.863281 C 177.089844 80.679688 177.273438 80.355469 177.273438 79.886719 C 177.273438 79.539062 177.148438 79.269531 176.902344 79.082031 C 176.65625 78.894531 176.367188 78.796875 176.039062 78.796875 C 175.453125 78.796875 175.046875 78.992188 174.820312 79.382812 C 174.699219 79.597656 174.628906 79.90625 174.613281 80.304688 L 173.742188 80.304688 C 173.742188 79.78125 173.847656 79.339844 174.054688 78.976562 C 174.414062 78.324219 175.042969 78 175.945312 78 C 176.65625 78 177.210938 78.15625 177.601562 78.472656 C 177.992188 78.789062 178.1875 79.25 178.1875 79.851562 C 178.1875 80.28125 178.070312 80.632812 177.839844 80.898438 C 177.695312 81.0625 177.511719 81.195312 177.28125 81.289062 C 177.648438 81.390625 177.9375 81.585938 178.144531 81.871094 C 178.351562 82.160156 178.453125 82.511719 178.453125 82.929688 C 178.453125 83.597656 178.234375 84.140625 177.796875 84.5625 C 177.355469 84.980469 176.734375 85.191406 175.925781 85.191406 Z M 175.925781 85.191406 "/>
 </g>
 <pattern id="pattern20" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface657"/>
+<use xlink:href="#surface647"/>
 </pattern>
 <clipPath id="clip58">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface660" clip-path="url(#clip58)">
+<g id="surface650" clip-path="url(#clip58)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern20);stroke-miterlimit:10;" d="M 165 100 C 165 100 165 130 205 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern19" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface660"/>
+<use xlink:href="#surface650"/>
 </pattern>
 <clipPath id="clip57">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface663" clip-path="url(#clip57)">
+<g id="surface653" clip-path="url(#clip57)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern19);stroke-miterlimit:10;" d="M 205 130 C 241 130 209 130 245 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <clipPath id="clip78">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip78)">
+<g id="surface615" clip-path="url(#clip78)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -920,7 +920,7 @@
 <clipPath id="clip79">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip79)">
+<g id="surface618" clip-path="url(#clip79)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -932,7 +932,7 @@
 <clipPath id="clip80">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip80)">
+<g id="surface621" clip-path="url(#clip80)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -944,7 +944,7 @@
 <clipPath id="clip81">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip81)">
+<g id="surface624" clip-path="url(#clip81)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -956,7 +956,7 @@
 <clipPath id="clip82">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip82)">
+<g id="surface627" clip-path="url(#clip82)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -968,7 +968,7 @@
 <clipPath id="clip83">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip83)">
+<g id="surface630" clip-path="url(#clip83)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -980,7 +980,7 @@
 <clipPath id="clip84">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip84)">
+<g id="surface633" clip-path="url(#clip84)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -992,7 +992,7 @@
 <clipPath id="clip85">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip85)">
+<g id="surface636" clip-path="url(#clip85)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -1012,86 +1012,86 @@
 <clipPath id="clip77">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip77)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip77)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern32" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern33" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip76">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip76)">
+<g id="surface641" clip-path="url(#clip76)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern32);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern33);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <pattern id="pattern31" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <pattern id="pattern34" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <clipPath id="clip75">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface654" clip-path="url(#clip75)">
+<g id="surface644" clip-path="url(#clip75)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern31);stroke-miterlimit:10;" d="M 125 70 C 45 70 45 10 45 10 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern34);" d="M 101.914062 33.3125 L 102.804688 33.3125 L 102.804688 34.769531 L 103.636719 34.769531 L 103.636719 35.488281 L 102.804688 35.488281 L 102.804688 38.902344 C 102.804688 39.085938 102.863281 39.207031 102.988281 39.265625 C 103.054688 39.304688 103.171875 39.320312 103.328125 39.320312 C 103.371094 39.320312 103.417969 39.320312 103.46875 39.320312 C 103.515625 39.316406 103.574219 39.3125 103.636719 39.304688 L 103.636719 40 C 103.535156 40.03125 103.433594 40.050781 103.324219 40.0625 C 103.214844 40.078125 103.09375 40.082031 102.96875 40.082031 C 102.558594 40.082031 102.28125 39.976562 102.132812 39.769531 C 101.988281 39.558594 101.914062 39.285156 101.914062 38.949219 L 101.914062 35.488281 L 101.207031 35.488281 L 101.207031 34.769531 L 101.914062 34.769531 Z M 104.183594 40 C 104.214844 39.398438 104.339844 38.875 104.558594 38.429688 C 104.773438 37.984375 105.195312 37.578125 105.824219 37.210938 L 106.761719 36.671875 C 107.183594 36.425781 107.476562 36.21875 107.644531 36.046875 C 107.910156 35.773438 108.046875 35.464844 108.046875 35.117188 C 108.046875 34.710938 107.925781 34.386719 107.679688 34.148438 C 107.433594 33.910156 107.109375 33.789062 106.703125 33.789062 C 106.101562 33.789062 105.683594 34.015625 105.453125 34.472656 C 105.328125 34.71875 105.261719 35.054688 105.246094 35.488281 L 104.355469 35.488281 C 104.363281 34.878906 104.476562 34.382812 104.691406 34 C 105.074219 33.320312 105.746094 32.984375 106.707031 32.984375 C 107.507812 32.984375 108.09375 33.199219 108.464844 33.632812 C 108.832031 34.066406 109.019531 34.546875 109.019531 35.078125 C 109.019531 35.636719 108.820312 36.117188 108.425781 36.515625 C 108.199219 36.746094 107.789062 37.023438 107.199219 37.351562 L 106.53125 37.726562 C 106.214844 37.902344 105.960938 38.066406 105.78125 38.226562 C 105.457031 38.511719 105.25 38.824219 105.164062 39.171875 L 108.984375 39.171875 L 108.984375 40 Z M 104.183594 40 "/>
 </g>
 <pattern id="pattern30" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <pattern id="pattern35" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <clipPath id="clip74">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface657" clip-path="url(#clip74)">
+<g id="surface647" clip-path="url(#clip74)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern30);stroke-miterlimit:10;" d="M 125 70 C 165 70 165 100 165 100 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern35);" d="M 152.476562 78.3125 L 153.367188 78.3125 L 153.367188 79.769531 L 154.199219 79.769531 L 154.199219 80.488281 L 153.367188 80.488281 L 153.367188 83.902344 C 153.367188 84.085938 153.425781 84.207031 153.550781 84.265625 C 153.617188 84.304688 153.734375 84.320312 153.890625 84.320312 C 153.933594 84.320312 153.980469 84.320312 154.03125 84.320312 C 154.078125 84.316406 154.136719 84.3125 154.199219 84.304688 L 154.199219 85 C 154.097656 85.03125 153.996094 85.050781 153.886719 85.0625 C 153.777344 85.078125 153.65625 85.082031 153.53125 85.082031 C 153.121094 85.082031 152.84375 84.976562 152.695312 84.769531 C 152.550781 84.558594 152.476562 84.285156 152.476562 83.949219 L 152.476562 80.488281 L 151.769531 80.488281 L 151.769531 79.769531 L 152.476562 79.769531 Z M 155.078125 79.796875 L 155.972656 79.796875 L 155.972656 85 L 155.078125 85 Z M 155.078125 77.828125 L 155.972656 77.828125 L 155.972656 78.824219 L 155.078125 78.824219 Z M 157.300781 79.769531 L 158.171875 79.769531 L 158.171875 80.511719 C 158.378906 80.253906 158.566406 80.070312 158.734375 79.953125 C 159.023438 79.753906 159.355469 79.652344 159.722656 79.652344 C 160.140625 79.652344 160.476562 79.757812 160.726562 79.960938 C 160.871094 80.078125 161 80.25 161.117188 80.476562 C 161.3125 80.199219 161.542969 79.992188 161.808594 79.855469 C 162.070312 79.71875 162.367188 79.652344 162.695312 79.652344 C 163.398438 79.652344 163.878906 79.90625 164.132812 80.414062 C 164.269531 80.6875 164.335938 81.054688 164.335938 81.519531 L 164.335938 85 L 163.421875 85 L 163.421875 81.367188 C 163.421875 81.019531 163.335938 80.78125 163.164062 80.648438 C 162.988281 80.519531 162.777344 80.453125 162.523438 80.453125 C 162.179688 80.453125 161.882812 80.570312 161.632812 80.800781 C 161.382812 81.03125 161.261719 81.417969 161.261719 81.957031 L 161.261719 85 L 160.367188 85 L 160.367188 81.585938 C 160.367188 81.230469 160.324219 80.972656 160.242188 80.8125 C 160.109375 80.566406 159.859375 80.445312 159.492188 80.445312 C 159.160156 80.445312 158.859375 80.574219 158.585938 80.828125 C 158.316406 81.085938 158.179688 81.554688 158.179688 82.226562 L 158.179688 85 L 157.300781 85 Z M 167.804688 79.652344 C 168.175781 79.652344 168.539062 79.742188 168.886719 79.914062 C 169.234375 80.089844 169.5 80.3125 169.679688 80.589844 C 169.855469 80.855469 169.976562 81.164062 170.03125 81.515625 C 170.085938 81.753906 170.109375 82.140625 170.109375 82.664062 L 166.277344 82.664062 C 166.292969 83.195312 166.421875 83.621094 166.65625 83.941406 C 166.890625 84.261719 167.25 84.421875 167.742188 84.421875 C 168.203125 84.421875 168.570312 84.273438 168.84375 83.96875 C 169 83.792969 169.109375 83.589844 169.171875 83.359375 L 170.039062 83.359375 C 170.015625 83.550781 169.941406 83.765625 169.8125 84 C 169.683594 84.238281 169.539062 84.429688 169.378906 84.578125 C 169.113281 84.839844 168.78125 85.015625 168.386719 85.109375 C 168.175781 85.160156 167.9375 85.1875 167.671875 85.1875 C 167.019531 85.1875 166.46875 84.949219 166.015625 84.476562 C 165.5625 84 165.335938 83.339844 165.335938 82.484375 C 165.335938 81.644531 165.5625 80.964844 166.019531 80.4375 C 166.476562 79.914062 167.070312 79.652344 167.804688 79.652344 Z M 169.207031 81.96875 C 169.171875 81.585938 169.089844 81.28125 168.960938 81.054688 C 168.71875 80.632812 168.316406 80.421875 167.753906 80.421875 C 167.351562 80.421875 167.011719 80.566406 166.738281 80.855469 C 166.464844 81.148438 166.320312 81.519531 166.304688 81.96875 Z M 175.925781 85.191406 C 175.097656 85.191406 174.5 84.964844 174.125 84.507812 C 173.753906 84.054688 173.566406 83.503906 173.566406 82.851562 L 174.484375 82.851562 C 174.523438 83.304688 174.609375 83.632812 174.738281 83.835938 C 174.96875 84.203125 175.378906 84.390625 175.976562 84.390625 C 176.4375 84.390625 176.808594 84.265625 177.085938 84.019531 C 177.367188 83.773438 177.507812 83.453125 177.507812 83.0625 C 177.507812 82.578125 177.359375 82.242188 177.066406 82.050781 C 176.773438 81.859375 176.363281 81.761719 175.835938 81.761719 C 175.777344 81.761719 175.71875 81.761719 175.660156 81.765625 C 175.601562 81.765625 175.539062 81.769531 175.476562 81.773438 L 175.476562 80.996094 C 175.566406 81.007812 175.644531 81.011719 175.707031 81.015625 C 175.769531 81.019531 175.835938 81.019531 175.90625 81.019531 C 176.234375 81.019531 176.503906 80.96875 176.71875 80.863281 C 177.089844 80.679688 177.273438 80.355469 177.273438 79.886719 C 177.273438 79.539062 177.148438 79.269531 176.902344 79.082031 C 176.65625 78.894531 176.367188 78.796875 176.039062 78.796875 C 175.453125 78.796875 175.046875 78.992188 174.820312 79.382812 C 174.699219 79.597656 174.628906 79.90625 174.613281 80.304688 L 173.742188 80.304688 C 173.742188 79.78125 173.847656 79.339844 174.054688 78.976562 C 174.414062 78.324219 175.042969 78 175.945312 78 C 176.65625 78 177.210938 78.15625 177.601562 78.472656 C 177.992188 78.789062 178.1875 79.25 178.1875 79.851562 C 178.1875 80.28125 178.070312 80.632812 177.839844 80.898438 C 177.695312 81.0625 177.511719 81.195312 177.28125 81.289062 C 177.648438 81.390625 177.9375 81.585938 178.144531 81.871094 C 178.351562 82.160156 178.453125 82.511719 178.453125 82.929688 C 178.453125 83.597656 178.234375 84.140625 177.796875 84.5625 C 177.355469 84.980469 176.734375 85.191406 175.925781 85.191406 Z M 175.925781 85.191406 "/>
 </g>
 <pattern id="pattern29" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface657"/>
+<use xlink:href="#surface647"/>
 </pattern>
 <clipPath id="clip73">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface660" clip-path="url(#clip73)">
+<g id="surface650" clip-path="url(#clip73)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern29);stroke-miterlimit:10;" d="M 165 100 C 165 100 165 130 205 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern28" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface660"/>
+<use xlink:href="#surface650"/>
 </pattern>
 <clipPath id="clip72">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface663" clip-path="url(#clip72)">
+<g id="surface653" clip-path="url(#clip72)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern28);stroke-miterlimit:10;" d="M 205 130 C 241 130 209 130 245 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern27" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface663"/>
+<use xlink:href="#surface653"/>
 </pattern>
 <clipPath id="clip71">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface666" clip-path="url(#clip71)">
+<g id="surface656" clip-path="url(#clip71)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern27);stroke-miterlimit:10;" d="M 245 130 L 285 100 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <clipPath id="clip94">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip94)">
+<g id="surface615" clip-path="url(#clip94)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -1102,7 +1102,7 @@
 <clipPath id="clip95">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip95)">
+<g id="surface618" clip-path="url(#clip95)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -1114,7 +1114,7 @@
 <clipPath id="clip96">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip96)">
+<g id="surface621" clip-path="url(#clip96)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -1126,7 +1126,7 @@
 <clipPath id="clip97">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip97)">
+<g id="surface624" clip-path="url(#clip97)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -1138,7 +1138,7 @@
 <clipPath id="clip98">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip98)">
+<g id="surface627" clip-path="url(#clip98)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -1150,7 +1150,7 @@
 <clipPath id="clip99">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip99)">
+<g id="surface630" clip-path="url(#clip99)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -1162,7 +1162,7 @@
 <clipPath id="clip100">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip100)">
+<g id="surface633" clip-path="url(#clip100)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -1174,7 +1174,7 @@
 <clipPath id="clip101">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip101)">
+<g id="surface636" clip-path="url(#clip101)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -1194,95 +1194,95 @@
 <clipPath id="clip93">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip93)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip93)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern42" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern43" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip92">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip92)">
+<g id="surface641" clip-path="url(#clip92)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern42);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern43);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <pattern id="pattern41" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <pattern id="pattern44" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <clipPath id="clip91">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface654" clip-path="url(#clip91)">
+<g id="surface644" clip-path="url(#clip91)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern41);stroke-miterlimit:10;" d="M 125 70 C 45 70 45 10 45 10 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern44);" d="M 101.914062 33.3125 L 102.804688 33.3125 L 102.804688 34.769531 L 103.636719 34.769531 L 103.636719 35.488281 L 102.804688 35.488281 L 102.804688 38.902344 C 102.804688 39.085938 102.863281 39.207031 102.988281 39.265625 C 103.054688 39.304688 103.171875 39.320312 103.328125 39.320312 C 103.371094 39.320312 103.417969 39.320312 103.46875 39.320312 C 103.515625 39.316406 103.574219 39.3125 103.636719 39.304688 L 103.636719 40 C 103.535156 40.03125 103.433594 40.050781 103.324219 40.0625 C 103.214844 40.078125 103.09375 40.082031 102.96875 40.082031 C 102.558594 40.082031 102.28125 39.976562 102.132812 39.769531 C 101.988281 39.558594 101.914062 39.285156 101.914062 38.949219 L 101.914062 35.488281 L 101.207031 35.488281 L 101.207031 34.769531 L 101.914062 34.769531 Z M 104.183594 40 C 104.214844 39.398438 104.339844 38.875 104.558594 38.429688 C 104.773438 37.984375 105.195312 37.578125 105.824219 37.210938 L 106.761719 36.671875 C 107.183594 36.425781 107.476562 36.21875 107.644531 36.046875 C 107.910156 35.773438 108.046875 35.464844 108.046875 35.117188 C 108.046875 34.710938 107.925781 34.386719 107.679688 34.148438 C 107.433594 33.910156 107.109375 33.789062 106.703125 33.789062 C 106.101562 33.789062 105.683594 34.015625 105.453125 34.472656 C 105.328125 34.71875 105.261719 35.054688 105.246094 35.488281 L 104.355469 35.488281 C 104.363281 34.878906 104.476562 34.382812 104.691406 34 C 105.074219 33.320312 105.746094 32.984375 106.707031 32.984375 C 107.507812 32.984375 108.09375 33.199219 108.464844 33.632812 C 108.832031 34.066406 109.019531 34.546875 109.019531 35.078125 C 109.019531 35.636719 108.820312 36.117188 108.425781 36.515625 C 108.199219 36.746094 107.789062 37.023438 107.199219 37.351562 L 106.53125 37.726562 C 106.214844 37.902344 105.960938 38.066406 105.78125 38.226562 C 105.457031 38.511719 105.25 38.824219 105.164062 39.171875 L 108.984375 39.171875 L 108.984375 40 Z M 104.183594 40 "/>
 </g>
 <pattern id="pattern40" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <pattern id="pattern45" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <clipPath id="clip90">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface657" clip-path="url(#clip90)">
+<g id="surface647" clip-path="url(#clip90)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern40);stroke-miterlimit:10;" d="M 125 70 C 165 70 165 100 165 100 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern45);" d="M 152.476562 78.3125 L 153.367188 78.3125 L 153.367188 79.769531 L 154.199219 79.769531 L 154.199219 80.488281 L 153.367188 80.488281 L 153.367188 83.902344 C 153.367188 84.085938 153.425781 84.207031 153.550781 84.265625 C 153.617188 84.304688 153.734375 84.320312 153.890625 84.320312 C 153.933594 84.320312 153.980469 84.320312 154.03125 84.320312 C 154.078125 84.316406 154.136719 84.3125 154.199219 84.304688 L 154.199219 85 C 154.097656 85.03125 153.996094 85.050781 153.886719 85.0625 C 153.777344 85.078125 153.65625 85.082031 153.53125 85.082031 C 153.121094 85.082031 152.84375 84.976562 152.695312 84.769531 C 152.550781 84.558594 152.476562 84.285156 152.476562 83.949219 L 152.476562 80.488281 L 151.769531 80.488281 L 151.769531 79.769531 L 152.476562 79.769531 Z M 155.078125 79.796875 L 155.972656 79.796875 L 155.972656 85 L 155.078125 85 Z M 155.078125 77.828125 L 155.972656 77.828125 L 155.972656 78.824219 L 155.078125 78.824219 Z M 157.300781 79.769531 L 158.171875 79.769531 L 158.171875 80.511719 C 158.378906 80.253906 158.566406 80.070312 158.734375 79.953125 C 159.023438 79.753906 159.355469 79.652344 159.722656 79.652344 C 160.140625 79.652344 160.476562 79.757812 160.726562 79.960938 C 160.871094 80.078125 161 80.25 161.117188 80.476562 C 161.3125 80.199219 161.542969 79.992188 161.808594 79.855469 C 162.070312 79.71875 162.367188 79.652344 162.695312 79.652344 C 163.398438 79.652344 163.878906 79.90625 164.132812 80.414062 C 164.269531 80.6875 164.335938 81.054688 164.335938 81.519531 L 164.335938 85 L 163.421875 85 L 163.421875 81.367188 C 163.421875 81.019531 163.335938 80.78125 163.164062 80.648438 C 162.988281 80.519531 162.777344 80.453125 162.523438 80.453125 C 162.179688 80.453125 161.882812 80.570312 161.632812 80.800781 C 161.382812 81.03125 161.261719 81.417969 161.261719 81.957031 L 161.261719 85 L 160.367188 85 L 160.367188 81.585938 C 160.367188 81.230469 160.324219 80.972656 160.242188 80.8125 C 160.109375 80.566406 159.859375 80.445312 159.492188 80.445312 C 159.160156 80.445312 158.859375 80.574219 158.585938 80.828125 C 158.316406 81.085938 158.179688 81.554688 158.179688 82.226562 L 158.179688 85 L 157.300781 85 Z M 167.804688 79.652344 C 168.175781 79.652344 168.539062 79.742188 168.886719 79.914062 C 169.234375 80.089844 169.5 80.3125 169.679688 80.589844 C 169.855469 80.855469 169.976562 81.164062 170.03125 81.515625 C 170.085938 81.753906 170.109375 82.140625 170.109375 82.664062 L 166.277344 82.664062 C 166.292969 83.195312 166.421875 83.621094 166.65625 83.941406 C 166.890625 84.261719 167.25 84.421875 167.742188 84.421875 C 168.203125 84.421875 168.570312 84.273438 168.84375 83.96875 C 169 83.792969 169.109375 83.589844 169.171875 83.359375 L 170.039062 83.359375 C 170.015625 83.550781 169.941406 83.765625 169.8125 84 C 169.683594 84.238281 169.539062 84.429688 169.378906 84.578125 C 169.113281 84.839844 168.78125 85.015625 168.386719 85.109375 C 168.175781 85.160156 167.9375 85.1875 167.671875 85.1875 C 167.019531 85.1875 166.46875 84.949219 166.015625 84.476562 C 165.5625 84 165.335938 83.339844 165.335938 82.484375 C 165.335938 81.644531 165.5625 80.964844 166.019531 80.4375 C 166.476562 79.914062 167.070312 79.652344 167.804688 79.652344 Z M 169.207031 81.96875 C 169.171875 81.585938 169.089844 81.28125 168.960938 81.054688 C 168.71875 80.632812 168.316406 80.421875 167.753906 80.421875 C 167.351562 80.421875 167.011719 80.566406 166.738281 80.855469 C 166.464844 81.148438 166.320312 81.519531 166.304688 81.96875 Z M 175.925781 85.191406 C 175.097656 85.191406 174.5 84.964844 174.125 84.507812 C 173.753906 84.054688 173.566406 83.503906 173.566406 82.851562 L 174.484375 82.851562 C 174.523438 83.304688 174.609375 83.632812 174.738281 83.835938 C 174.96875 84.203125 175.378906 84.390625 175.976562 84.390625 C 176.4375 84.390625 176.808594 84.265625 177.085938 84.019531 C 177.367188 83.773438 177.507812 83.453125 177.507812 83.0625 C 177.507812 82.578125 177.359375 82.242188 177.066406 82.050781 C 176.773438 81.859375 176.363281 81.761719 175.835938 81.761719 C 175.777344 81.761719 175.71875 81.761719 175.660156 81.765625 C 175.601562 81.765625 175.539062 81.769531 175.476562 81.773438 L 175.476562 80.996094 C 175.566406 81.007812 175.644531 81.011719 175.707031 81.015625 C 175.769531 81.019531 175.835938 81.019531 175.90625 81.019531 C 176.234375 81.019531 176.503906 80.96875 176.71875 80.863281 C 177.089844 80.679688 177.273438 80.355469 177.273438 79.886719 C 177.273438 79.539062 177.148438 79.269531 176.902344 79.082031 C 176.65625 78.894531 176.367188 78.796875 176.039062 78.796875 C 175.453125 78.796875 175.046875 78.992188 174.820312 79.382812 C 174.699219 79.597656 174.628906 79.90625 174.613281 80.304688 L 173.742188 80.304688 C 173.742188 79.78125 173.847656 79.339844 174.054688 78.976562 C 174.414062 78.324219 175.042969 78 175.945312 78 C 176.65625 78 177.210938 78.15625 177.601562 78.472656 C 177.992188 78.789062 178.1875 79.25 178.1875 79.851562 C 178.1875 80.28125 178.070312 80.632812 177.839844 80.898438 C 177.695312 81.0625 177.511719 81.195312 177.28125 81.289062 C 177.648438 81.390625 177.9375 81.585938 178.144531 81.871094 C 178.351562 82.160156 178.453125 82.511719 178.453125 82.929688 C 178.453125 83.597656 178.234375 84.140625 177.796875 84.5625 C 177.355469 84.980469 176.734375 85.191406 175.925781 85.191406 Z M 175.925781 85.191406 "/>
 </g>
 <pattern id="pattern39" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface657"/>
+<use xlink:href="#surface647"/>
 </pattern>
 <clipPath id="clip89">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface660" clip-path="url(#clip89)">
+<g id="surface650" clip-path="url(#clip89)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern39);stroke-miterlimit:10;" d="M 165 100 C 165 100 165 130 205 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern38" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface660"/>
+<use xlink:href="#surface650"/>
 </pattern>
 <clipPath id="clip88">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface663" clip-path="url(#clip88)">
+<g id="surface653" clip-path="url(#clip88)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern38);stroke-miterlimit:10;" d="M 205 130 C 241 130 209 130 245 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern37" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface663"/>
+<use xlink:href="#surface653"/>
 </pattern>
 <clipPath id="clip87">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface666" clip-path="url(#clip87)">
+<g id="surface656" clip-path="url(#clip87)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern37);stroke-miterlimit:10;" d="M 245 130 L 285 100 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern36" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface666"/>
+<use xlink:href="#surface656"/>
 </pattern>
 <clipPath id="clip86">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface669" clip-path="url(#clip86)">
+<g id="surface659" clip-path="url(#clip86)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern36);stroke-miterlimit:10;" d="M 285 100 C 325 100 325 70 325 70 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <clipPath id="clip111">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip111)">
+<g id="surface615" clip-path="url(#clip111)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -1293,7 +1293,7 @@
 <clipPath id="clip112">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip112)">
+<g id="surface618" clip-path="url(#clip112)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -1305,7 +1305,7 @@
 <clipPath id="clip113">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip113)">
+<g id="surface621" clip-path="url(#clip113)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -1317,7 +1317,7 @@
 <clipPath id="clip114">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip114)">
+<g id="surface624" clip-path="url(#clip114)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -1329,7 +1329,7 @@
 <clipPath id="clip115">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip115)">
+<g id="surface627" clip-path="url(#clip115)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -1341,7 +1341,7 @@
 <clipPath id="clip116">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip116)">
+<g id="surface630" clip-path="url(#clip116)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -1353,7 +1353,7 @@
 <clipPath id="clip117">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip117)">
+<g id="surface633" clip-path="url(#clip117)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -1365,7 +1365,7 @@
 <clipPath id="clip118">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip118)">
+<g id="surface636" clip-path="url(#clip118)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -1385,108 +1385,108 @@
 <clipPath id="clip110">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip110)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip110)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern53" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern54" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip109">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip109)">
+<g id="surface641" clip-path="url(#clip109)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern53);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern54);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <pattern id="pattern52" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <pattern id="pattern55" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <clipPath id="clip108">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface654" clip-path="url(#clip108)">
+<g id="surface644" clip-path="url(#clip108)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern52);stroke-miterlimit:10;" d="M 125 70 C 45 70 45 10 45 10 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern55);" d="M 101.914062 33.3125 L 102.804688 33.3125 L 102.804688 34.769531 L 103.636719 34.769531 L 103.636719 35.488281 L 102.804688 35.488281 L 102.804688 38.902344 C 102.804688 39.085938 102.863281 39.207031 102.988281 39.265625 C 103.054688 39.304688 103.171875 39.320312 103.328125 39.320312 C 103.371094 39.320312 103.417969 39.320312 103.46875 39.320312 C 103.515625 39.316406 103.574219 39.3125 103.636719 39.304688 L 103.636719 40 C 103.535156 40.03125 103.433594 40.050781 103.324219 40.0625 C 103.214844 40.078125 103.09375 40.082031 102.96875 40.082031 C 102.558594 40.082031 102.28125 39.976562 102.132812 39.769531 C 101.988281 39.558594 101.914062 39.285156 101.914062 38.949219 L 101.914062 35.488281 L 101.207031 35.488281 L 101.207031 34.769531 L 101.914062 34.769531 Z M 104.183594 40 C 104.214844 39.398438 104.339844 38.875 104.558594 38.429688 C 104.773438 37.984375 105.195312 37.578125 105.824219 37.210938 L 106.761719 36.671875 C 107.183594 36.425781 107.476562 36.21875 107.644531 36.046875 C 107.910156 35.773438 108.046875 35.464844 108.046875 35.117188 C 108.046875 34.710938 107.925781 34.386719 107.679688 34.148438 C 107.433594 33.910156 107.109375 33.789062 106.703125 33.789062 C 106.101562 33.789062 105.683594 34.015625 105.453125 34.472656 C 105.328125 34.71875 105.261719 35.054688 105.246094 35.488281 L 104.355469 35.488281 C 104.363281 34.878906 104.476562 34.382812 104.691406 34 C 105.074219 33.320312 105.746094 32.984375 106.707031 32.984375 C 107.507812 32.984375 108.09375 33.199219 108.464844 33.632812 C 108.832031 34.066406 109.019531 34.546875 109.019531 35.078125 C 109.019531 35.636719 108.820312 36.117188 108.425781 36.515625 C 108.199219 36.746094 107.789062 37.023438 107.199219 37.351562 L 106.53125 37.726562 C 106.214844 37.902344 105.960938 38.066406 105.78125 38.226562 C 105.457031 38.511719 105.25 38.824219 105.164062 39.171875 L 108.984375 39.171875 L 108.984375 40 Z M 104.183594 40 "/>
 </g>
 <pattern id="pattern51" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <pattern id="pattern56" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <clipPath id="clip107">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface657" clip-path="url(#clip107)">
+<g id="surface647" clip-path="url(#clip107)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern51);stroke-miterlimit:10;" d="M 125 70 C 165 70 165 100 165 100 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern56);" d="M 152.476562 78.3125 L 153.367188 78.3125 L 153.367188 79.769531 L 154.199219 79.769531 L 154.199219 80.488281 L 153.367188 80.488281 L 153.367188 83.902344 C 153.367188 84.085938 153.425781 84.207031 153.550781 84.265625 C 153.617188 84.304688 153.734375 84.320312 153.890625 84.320312 C 153.933594 84.320312 153.980469 84.320312 154.03125 84.320312 C 154.078125 84.316406 154.136719 84.3125 154.199219 84.304688 L 154.199219 85 C 154.097656 85.03125 153.996094 85.050781 153.886719 85.0625 C 153.777344 85.078125 153.65625 85.082031 153.53125 85.082031 C 153.121094 85.082031 152.84375 84.976562 152.695312 84.769531 C 152.550781 84.558594 152.476562 84.285156 152.476562 83.949219 L 152.476562 80.488281 L 151.769531 80.488281 L 151.769531 79.769531 L 152.476562 79.769531 Z M 155.078125 79.796875 L 155.972656 79.796875 L 155.972656 85 L 155.078125 85 Z M 155.078125 77.828125 L 155.972656 77.828125 L 155.972656 78.824219 L 155.078125 78.824219 Z M 157.300781 79.769531 L 158.171875 79.769531 L 158.171875 80.511719 C 158.378906 80.253906 158.566406 80.070312 158.734375 79.953125 C 159.023438 79.753906 159.355469 79.652344 159.722656 79.652344 C 160.140625 79.652344 160.476562 79.757812 160.726562 79.960938 C 160.871094 80.078125 161 80.25 161.117188 80.476562 C 161.3125 80.199219 161.542969 79.992188 161.808594 79.855469 C 162.070312 79.71875 162.367188 79.652344 162.695312 79.652344 C 163.398438 79.652344 163.878906 79.90625 164.132812 80.414062 C 164.269531 80.6875 164.335938 81.054688 164.335938 81.519531 L 164.335938 85 L 163.421875 85 L 163.421875 81.367188 C 163.421875 81.019531 163.335938 80.78125 163.164062 80.648438 C 162.988281 80.519531 162.777344 80.453125 162.523438 80.453125 C 162.179688 80.453125 161.882812 80.570312 161.632812 80.800781 C 161.382812 81.03125 161.261719 81.417969 161.261719 81.957031 L 161.261719 85 L 160.367188 85 L 160.367188 81.585938 C 160.367188 81.230469 160.324219 80.972656 160.242188 80.8125 C 160.109375 80.566406 159.859375 80.445312 159.492188 80.445312 C 159.160156 80.445312 158.859375 80.574219 158.585938 80.828125 C 158.316406 81.085938 158.179688 81.554688 158.179688 82.226562 L 158.179688 85 L 157.300781 85 Z M 167.804688 79.652344 C 168.175781 79.652344 168.539062 79.742188 168.886719 79.914062 C 169.234375 80.089844 169.5 80.3125 169.679688 80.589844 C 169.855469 80.855469 169.976562 81.164062 170.03125 81.515625 C 170.085938 81.753906 170.109375 82.140625 170.109375 82.664062 L 166.277344 82.664062 C 166.292969 83.195312 166.421875 83.621094 166.65625 83.941406 C 166.890625 84.261719 167.25 84.421875 167.742188 84.421875 C 168.203125 84.421875 168.570312 84.273438 168.84375 83.96875 C 169 83.792969 169.109375 83.589844 169.171875 83.359375 L 170.039062 83.359375 C 170.015625 83.550781 169.941406 83.765625 169.8125 84 C 169.683594 84.238281 169.539062 84.429688 169.378906 84.578125 C 169.113281 84.839844 168.78125 85.015625 168.386719 85.109375 C 168.175781 85.160156 167.9375 85.1875 167.671875 85.1875 C 167.019531 85.1875 166.46875 84.949219 166.015625 84.476562 C 165.5625 84 165.335938 83.339844 165.335938 82.484375 C 165.335938 81.644531 165.5625 80.964844 166.019531 80.4375 C 166.476562 79.914062 167.070312 79.652344 167.804688 79.652344 Z M 169.207031 81.96875 C 169.171875 81.585938 169.089844 81.28125 168.960938 81.054688 C 168.71875 80.632812 168.316406 80.421875 167.753906 80.421875 C 167.351562 80.421875 167.011719 80.566406 166.738281 80.855469 C 166.464844 81.148438 166.320312 81.519531 166.304688 81.96875 Z M 175.925781 85.191406 C 175.097656 85.191406 174.5 84.964844 174.125 84.507812 C 173.753906 84.054688 173.566406 83.503906 173.566406 82.851562 L 174.484375 82.851562 C 174.523438 83.304688 174.609375 83.632812 174.738281 83.835938 C 174.96875 84.203125 175.378906 84.390625 175.976562 84.390625 C 176.4375 84.390625 176.808594 84.265625 177.085938 84.019531 C 177.367188 83.773438 177.507812 83.453125 177.507812 83.0625 C 177.507812 82.578125 177.359375 82.242188 177.066406 82.050781 C 176.773438 81.859375 176.363281 81.761719 175.835938 81.761719 C 175.777344 81.761719 175.71875 81.761719 175.660156 81.765625 C 175.601562 81.765625 175.539062 81.769531 175.476562 81.773438 L 175.476562 80.996094 C 175.566406 81.007812 175.644531 81.011719 175.707031 81.015625 C 175.769531 81.019531 175.835938 81.019531 175.90625 81.019531 C 176.234375 81.019531 176.503906 80.96875 176.71875 80.863281 C 177.089844 80.679688 177.273438 80.355469 177.273438 79.886719 C 177.273438 79.539062 177.148438 79.269531 176.902344 79.082031 C 176.65625 78.894531 176.367188 78.796875 176.039062 78.796875 C 175.453125 78.796875 175.046875 78.992188 174.820312 79.382812 C 174.699219 79.597656 174.628906 79.90625 174.613281 80.304688 L 173.742188 80.304688 C 173.742188 79.78125 173.847656 79.339844 174.054688 78.976562 C 174.414062 78.324219 175.042969 78 175.945312 78 C 176.65625 78 177.210938 78.15625 177.601562 78.472656 C 177.992188 78.789062 178.1875 79.25 178.1875 79.851562 C 178.1875 80.28125 178.070312 80.632812 177.839844 80.898438 C 177.695312 81.0625 177.511719 81.195312 177.28125 81.289062 C 177.648438 81.390625 177.9375 81.585938 178.144531 81.871094 C 178.351562 82.160156 178.453125 82.511719 178.453125 82.929688 C 178.453125 83.597656 178.234375 84.140625 177.796875 84.5625 C 177.355469 84.980469 176.734375 85.191406 175.925781 85.191406 Z M 175.925781 85.191406 "/>
 </g>
 <pattern id="pattern50" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface657"/>
+<use xlink:href="#surface647"/>
 </pattern>
 <clipPath id="clip106">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface660" clip-path="url(#clip106)">
+<g id="surface650" clip-path="url(#clip106)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern50);stroke-miterlimit:10;" d="M 165 100 C 165 100 165 130 205 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern49" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface660"/>
+<use xlink:href="#surface650"/>
 </pattern>
 <clipPath id="clip105">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface663" clip-path="url(#clip105)">
+<g id="surface653" clip-path="url(#clip105)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern49);stroke-miterlimit:10;" d="M 205 130 C 241 130 209 130 245 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern48" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface663"/>
+<use xlink:href="#surface653"/>
 </pattern>
 <clipPath id="clip104">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface666" clip-path="url(#clip104)">
+<g id="surface656" clip-path="url(#clip104)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern48);stroke-miterlimit:10;" d="M 245 130 L 285 100 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern47" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface666"/>
+<use xlink:href="#surface656"/>
 </pattern>
 <clipPath id="clip103">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface669" clip-path="url(#clip103)">
+<g id="surface659" clip-path="url(#clip103)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern47);stroke-miterlimit:10;" d="M 285 100 C 325 100 325 70 325 70 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern46" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface669"/>
+<use xlink:href="#surface659"/>
 </pattern>
 <pattern id="pattern57" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface669"/>
+<use xlink:href="#surface659"/>
 </pattern>
 <clipPath id="clip102">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface672" clip-path="url(#clip102)">
+<g id="surface662" clip-path="url(#clip102)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern46);stroke-miterlimit:10;" d="M 325 70 C 397 70 333 40 405 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern57);" d="M 364.769531 53.359375 C 364.796875 53.652344 364.867188 53.875 364.988281 54.03125 C 365.210938 54.316406 365.59375 54.457031 366.140625 54.457031 C 366.464844 54.457031 366.753906 54.386719 367 54.246094 C 367.246094 54.105469 367.371094 53.886719 367.371094 53.589844 C 367.371094 53.363281 367.273438 53.195312 367.074219 53.078125 C 366.945312 53.003906 366.695312 52.921875 366.320312 52.828125 L 365.625 52.652344 C 365.179688 52.539062 364.847656 52.417969 364.636719 52.28125 C 364.257812 52.042969 364.070312 51.714844 364.070312 51.292969 C 364.070312 50.796875 364.25 50.398438 364.605469 50.09375 C 364.960938 49.789062 365.441406 49.632812 366.042969 49.632812 C 366.832031 49.632812 367.398438 49.863281 367.746094 50.328125 C 367.964844 50.621094 368.070312 50.9375 368.0625 51.273438 L 367.234375 51.273438 C 367.21875 51.074219 367.148438 50.894531 367.023438 50.734375 C 366.820312 50.5 366.472656 50.386719 365.976562 50.386719 C 365.644531 50.386719 365.390625 50.449219 365.21875 50.578125 C 365.046875 50.703125 364.964844 50.871094 364.964844 51.078125 C 364.964844 51.304688 365.078125 51.488281 365.300781 51.625 C 365.429688 51.707031 365.625 51.777344 365.875 51.839844 L 366.457031 51.984375 C 367.089844 52.136719 367.511719 52.285156 367.726562 52.425781 C 368.070312 52.652344 368.242188 53.003906 368.242188 53.484375 C 368.242188 53.953125 368.0625 54.355469 367.710938 54.691406 C 367.359375 55.03125 366.820312 55.199219 366.097656 55.199219 C 365.320312 55.199219 364.769531 55.023438 364.445312 54.671875 C 364.121094 54.316406 363.945312 53.878906 363.921875 53.359375 Z M 371.320312 54.433594 C 371.902344 54.433594 372.304688 54.214844 372.519531 53.773438 C 372.734375 53.332031 372.84375 52.839844 372.84375 52.300781 C 372.84375 51.8125 372.765625 51.414062 372.609375 51.109375 C 372.363281 50.625 371.9375 50.386719 371.332031 50.386719 C 370.792969 50.386719 370.402344 50.589844 370.160156 51 C 369.914062 51.410156 369.792969 51.90625 369.792969 52.484375 C 369.792969 53.042969 369.914062 53.507812 370.160156 53.875 C 370.402344 54.246094 370.789062 54.433594 371.320312 54.433594 Z M 371.355469 49.617188 C 372.03125 49.617188 372.597656 49.84375 373.0625 50.292969 C 373.53125 50.742188 373.761719 51.402344 373.761719 52.273438 C 373.761719 53.117188 373.558594 53.816406 373.148438 54.367188 C 372.738281 54.914062 372.101562 55.191406 371.238281 55.191406 C 370.519531 55.191406 369.949219 54.945312 369.523438 54.460938 C 369.101562 53.972656 368.890625 53.320312 368.890625 52.5 C 368.890625 51.621094 369.113281 50.921875 369.558594 50.398438 C 370.003906 49.878906 370.601562 49.617188 371.355469 49.617188 Z M 374.808594 49.769531 L 375.679688 49.769531 L 375.679688 50.511719 C 375.886719 50.253906 376.074219 50.070312 376.242188 49.953125 C 376.53125 49.753906 376.863281 49.652344 377.230469 49.652344 C 377.648438 49.652344 377.984375 49.757812 378.234375 49.960938 C 378.378906 50.078125 378.507812 50.25 378.625 50.476562 C 378.820312 50.199219 379.050781 49.992188 379.316406 49.855469 C 379.578125 49.71875 379.875 49.652344 380.203125 49.652344 C 380.90625 49.652344 381.386719 49.90625 381.640625 50.414062 C 381.777344 50.6875 381.84375 51.054688 381.84375 51.519531 L 381.84375 55 L 380.929688 55 L 380.929688 51.367188 C 380.929688 51.019531 380.84375 50.78125 380.671875 50.648438 C 380.496094 50.519531 380.285156 50.453125 380.03125 50.453125 C 379.6875 50.453125 379.390625 50.570312 379.140625 50.800781 C 378.890625 51.03125 378.769531 51.417969 378.769531 51.957031 L 378.769531 55 L 377.875 55 L 377.875 51.585938 C 377.875 51.230469 377.832031 50.972656 377.75 50.8125 C 377.617188 50.566406 377.367188 50.445312 377 50.445312 C 376.667969 50.445312 376.367188 50.574219 376.09375 50.828125 C 375.824219 51.085938 375.6875 51.554688 375.6875 52.226562 L 375.6875 55 L 374.808594 55 Z M 385.3125 49.652344 C 385.683594 49.652344 386.046875 49.742188 386.394531 49.914062 C 386.742188 50.089844 387.007812 50.3125 387.1875 50.589844 C 387.363281 50.855469 387.484375 51.164062 387.539062 51.515625 C 387.59375 51.753906 387.617188 52.140625 387.617188 52.664062 L 383.785156 52.664062 C 383.800781 53.195312 383.929688 53.621094 384.164062 53.941406 C 384.398438 54.261719 384.757812 54.421875 385.25 54.421875 C 385.710938 54.421875 386.078125 54.273438 386.351562 53.96875 C 386.507812 53.792969 386.617188 53.589844 386.679688 53.359375 L 387.546875 53.359375 C 387.523438 53.550781 387.449219 53.765625 387.320312 54 C 387.191406 54.238281 387.046875 54.429688 386.886719 54.578125 C 386.621094 54.839844 386.289062 55.015625 385.894531 55.109375 C 385.683594 55.160156 385.445312 55.1875 385.179688 55.1875 C 384.527344 55.1875 383.976562 54.949219 383.523438 54.476562 C 383.070312 54 382.84375 53.339844 382.84375 52.484375 C 382.84375 51.644531 383.070312 50.964844 383.527344 50.4375 C 383.984375 49.914062 384.578125 49.652344 385.3125 49.652344 Z M 386.714844 51.96875 C 386.679688 51.585938 386.597656 51.28125 386.46875 51.054688 C 386.226562 50.632812 385.824219 50.421875 385.261719 50.421875 C 384.859375 50.421875 384.519531 50.566406 384.246094 50.855469 C 383.972656 51.148438 383.828125 51.519531 383.8125 51.96875 Z M 391.652344 48.3125 L 392.542969 48.3125 L 392.542969 49.769531 L 393.375 49.769531 L 393.375 50.488281 L 392.542969 50.488281 L 392.542969 53.902344 C 392.542969 54.085938 392.601562 54.207031 392.726562 54.265625 C 392.792969 54.304688 392.910156 54.320312 393.066406 54.320312 C 393.109375 54.320312 393.15625 54.320312 393.207031 54.320312 C 393.253906 54.316406 393.3125 54.3125 393.375 54.304688 L 393.375 55 C 393.273438 55.03125 393.171875 55.050781 393.0625 55.0625 C 392.953125 55.078125 392.832031 55.082031 392.707031 55.082031 C 392.296875 55.082031 392.019531 54.976562 391.871094 54.769531 C 391.726562 54.558594 391.652344 54.285156 391.652344 53.949219 L 391.652344 50.488281 L 390.945312 50.488281 L 390.945312 49.769531 L 391.652344 49.769531 Z M 396.429688 49.652344 C 396.800781 49.652344 397.164062 49.742188 397.511719 49.914062 C 397.859375 50.089844 398.125 50.3125 398.304688 50.589844 C 398.480469 50.855469 398.601562 51.164062 398.65625 51.515625 C 398.710938 51.753906 398.734375 52.140625 398.734375 52.664062 L 394.902344 52.664062 C 394.917969 53.195312 395.046875 53.621094 395.28125 53.941406 C 395.515625 54.261719 395.875 54.421875 396.367188 54.421875 C 396.828125 54.421875 397.195312 54.273438 397.46875 53.96875 C 397.625 53.792969 397.734375 53.589844 397.796875 53.359375 L 398.664062 53.359375 C 398.640625 53.550781 398.566406 53.765625 398.4375 54 C 398.308594 54.238281 398.164062 54.429688 398.003906 54.578125 C 397.738281 54.839844 397.40625 55.015625 397.011719 55.109375 C 396.800781 55.160156 396.5625 55.1875 396.296875 55.1875 C 395.644531 55.1875 395.09375 54.949219 394.640625 54.476562 C 394.1875 54 393.960938 53.339844 393.960938 52.484375 C 393.960938 51.644531 394.1875 50.964844 394.644531 50.4375 C 395.101562 49.914062 395.695312 49.652344 396.429688 49.652344 Z M 397.832031 51.96875 C 397.796875 51.585938 397.714844 51.28125 397.585938 51.054688 C 397.34375 50.632812 396.941406 50.421875 396.378906 50.421875 C 395.976562 50.421875 395.636719 50.566406 395.363281 50.855469 C 395.089844 51.148438 394.945312 51.519531 394.929688 51.96875 Z M 399.320312 49.769531 L 400.457031 49.769531 L 401.65625 51.609375 L 402.875 49.769531 L 403.941406 49.796875 L 402.179688 52.320312 L 404.019531 55 L 402.898438 55 L 401.597656 53.039062 L 400.339844 55 L 399.226562 55 L 401.066406 52.320312 Z M 404.992188 48.3125 L 405.882812 48.3125 L 405.882812 49.769531 L 406.714844 49.769531 L 406.714844 50.488281 L 405.882812 50.488281 L 405.882812 53.902344 C 405.882812 54.085938 405.941406 54.207031 406.066406 54.265625 C 406.132812 54.304688 406.25 54.320312 406.40625 54.320312 C 406.449219 54.320312 406.496094 54.320312 406.546875 54.320312 C 406.59375 54.316406 406.652344 54.3125 406.714844 54.304688 L 406.714844 55 C 406.613281 55.03125 406.511719 55.050781 406.402344 55.0625 C 406.292969 55.078125 406.171875 55.082031 406.046875 55.082031 C 405.636719 55.082031 405.359375 54.976562 405.210938 54.769531 C 405.066406 54.558594 404.992188 54.285156 404.992188 53.949219 L 404.992188 50.488281 L 404.285156 50.488281 L 404.285156 49.769531 L 404.992188 49.769531 Z M 404.992188 48.3125 "/>
 </g>
 <clipPath id="clip129">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip129)">
+<g id="surface615" clip-path="url(#clip129)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -1497,7 +1497,7 @@
 <clipPath id="clip130">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip130)">
+<g id="surface618" clip-path="url(#clip130)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -1509,7 +1509,7 @@
 <clipPath id="clip131">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip131)">
+<g id="surface621" clip-path="url(#clip131)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -1521,7 +1521,7 @@
 <clipPath id="clip132">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip132)">
+<g id="surface624" clip-path="url(#clip132)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -1533,7 +1533,7 @@
 <clipPath id="clip133">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip133)">
+<g id="surface627" clip-path="url(#clip133)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -1545,7 +1545,7 @@
 <clipPath id="clip134">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip134)">
+<g id="surface630" clip-path="url(#clip134)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -1557,7 +1557,7 @@
 <clipPath id="clip135">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip135)">
+<g id="surface633" clip-path="url(#clip135)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -1569,7 +1569,7 @@
 <clipPath id="clip136">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip136)">
+<g id="surface636" clip-path="url(#clip136)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -1589,117 +1589,117 @@
 <clipPath id="clip128">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip128)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip128)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern66" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern67" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip127">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip127)">
+<g id="surface641" clip-path="url(#clip127)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern66);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern67);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <pattern id="pattern65" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <pattern id="pattern68" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <clipPath id="clip126">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface654" clip-path="url(#clip126)">
+<g id="surface644" clip-path="url(#clip126)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern65);stroke-miterlimit:10;" d="M 125 70 C 45 70 45 10 45 10 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern68);" d="M 101.914062 33.3125 L 102.804688 33.3125 L 102.804688 34.769531 L 103.636719 34.769531 L 103.636719 35.488281 L 102.804688 35.488281 L 102.804688 38.902344 C 102.804688 39.085938 102.863281 39.207031 102.988281 39.265625 C 103.054688 39.304688 103.171875 39.320312 103.328125 39.320312 C 103.371094 39.320312 103.417969 39.320312 103.46875 39.320312 C 103.515625 39.316406 103.574219 39.3125 103.636719 39.304688 L 103.636719 40 C 103.535156 40.03125 103.433594 40.050781 103.324219 40.0625 C 103.214844 40.078125 103.09375 40.082031 102.96875 40.082031 C 102.558594 40.082031 102.28125 39.976562 102.132812 39.769531 C 101.988281 39.558594 101.914062 39.285156 101.914062 38.949219 L 101.914062 35.488281 L 101.207031 35.488281 L 101.207031 34.769531 L 101.914062 34.769531 Z M 104.183594 40 C 104.214844 39.398438 104.339844 38.875 104.558594 38.429688 C 104.773438 37.984375 105.195312 37.578125 105.824219 37.210938 L 106.761719 36.671875 C 107.183594 36.425781 107.476562 36.21875 107.644531 36.046875 C 107.910156 35.773438 108.046875 35.464844 108.046875 35.117188 C 108.046875 34.710938 107.925781 34.386719 107.679688 34.148438 C 107.433594 33.910156 107.109375 33.789062 106.703125 33.789062 C 106.101562 33.789062 105.683594 34.015625 105.453125 34.472656 C 105.328125 34.71875 105.261719 35.054688 105.246094 35.488281 L 104.355469 35.488281 C 104.363281 34.878906 104.476562 34.382812 104.691406 34 C 105.074219 33.320312 105.746094 32.984375 106.707031 32.984375 C 107.507812 32.984375 108.09375 33.199219 108.464844 33.632812 C 108.832031 34.066406 109.019531 34.546875 109.019531 35.078125 C 109.019531 35.636719 108.820312 36.117188 108.425781 36.515625 C 108.199219 36.746094 107.789062 37.023438 107.199219 37.351562 L 106.53125 37.726562 C 106.214844 37.902344 105.960938 38.066406 105.78125 38.226562 C 105.457031 38.511719 105.25 38.824219 105.164062 39.171875 L 108.984375 39.171875 L 108.984375 40 Z M 104.183594 40 "/>
 </g>
 <pattern id="pattern64" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <pattern id="pattern69" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <clipPath id="clip125">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface657" clip-path="url(#clip125)">
+<g id="surface647" clip-path="url(#clip125)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern64);stroke-miterlimit:10;" d="M 125 70 C 165 70 165 100 165 100 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern69);" d="M 152.476562 78.3125 L 153.367188 78.3125 L 153.367188 79.769531 L 154.199219 79.769531 L 154.199219 80.488281 L 153.367188 80.488281 L 153.367188 83.902344 C 153.367188 84.085938 153.425781 84.207031 153.550781 84.265625 C 153.617188 84.304688 153.734375 84.320312 153.890625 84.320312 C 153.933594 84.320312 153.980469 84.320312 154.03125 84.320312 C 154.078125 84.316406 154.136719 84.3125 154.199219 84.304688 L 154.199219 85 C 154.097656 85.03125 153.996094 85.050781 153.886719 85.0625 C 153.777344 85.078125 153.65625 85.082031 153.53125 85.082031 C 153.121094 85.082031 152.84375 84.976562 152.695312 84.769531 C 152.550781 84.558594 152.476562 84.285156 152.476562 83.949219 L 152.476562 80.488281 L 151.769531 80.488281 L 151.769531 79.769531 L 152.476562 79.769531 Z M 155.078125 79.796875 L 155.972656 79.796875 L 155.972656 85 L 155.078125 85 Z M 155.078125 77.828125 L 155.972656 77.828125 L 155.972656 78.824219 L 155.078125 78.824219 Z M 157.300781 79.769531 L 158.171875 79.769531 L 158.171875 80.511719 C 158.378906 80.253906 158.566406 80.070312 158.734375 79.953125 C 159.023438 79.753906 159.355469 79.652344 159.722656 79.652344 C 160.140625 79.652344 160.476562 79.757812 160.726562 79.960938 C 160.871094 80.078125 161 80.25 161.117188 80.476562 C 161.3125 80.199219 161.542969 79.992188 161.808594 79.855469 C 162.070312 79.71875 162.367188 79.652344 162.695312 79.652344 C 163.398438 79.652344 163.878906 79.90625 164.132812 80.414062 C 164.269531 80.6875 164.335938 81.054688 164.335938 81.519531 L 164.335938 85 L 163.421875 85 L 163.421875 81.367188 C 163.421875 81.019531 163.335938 80.78125 163.164062 80.648438 C 162.988281 80.519531 162.777344 80.453125 162.523438 80.453125 C 162.179688 80.453125 161.882812 80.570312 161.632812 80.800781 C 161.382812 81.03125 161.261719 81.417969 161.261719 81.957031 L 161.261719 85 L 160.367188 85 L 160.367188 81.585938 C 160.367188 81.230469 160.324219 80.972656 160.242188 80.8125 C 160.109375 80.566406 159.859375 80.445312 159.492188 80.445312 C 159.160156 80.445312 158.859375 80.574219 158.585938 80.828125 C 158.316406 81.085938 158.179688 81.554688 158.179688 82.226562 L 158.179688 85 L 157.300781 85 Z M 167.804688 79.652344 C 168.175781 79.652344 168.539062 79.742188 168.886719 79.914062 C 169.234375 80.089844 169.5 80.3125 169.679688 80.589844 C 169.855469 80.855469 169.976562 81.164062 170.03125 81.515625 C 170.085938 81.753906 170.109375 82.140625 170.109375 82.664062 L 166.277344 82.664062 C 166.292969 83.195312 166.421875 83.621094 166.65625 83.941406 C 166.890625 84.261719 167.25 84.421875 167.742188 84.421875 C 168.203125 84.421875 168.570312 84.273438 168.84375 83.96875 C 169 83.792969 169.109375 83.589844 169.171875 83.359375 L 170.039062 83.359375 C 170.015625 83.550781 169.941406 83.765625 169.8125 84 C 169.683594 84.238281 169.539062 84.429688 169.378906 84.578125 C 169.113281 84.839844 168.78125 85.015625 168.386719 85.109375 C 168.175781 85.160156 167.9375 85.1875 167.671875 85.1875 C 167.019531 85.1875 166.46875 84.949219 166.015625 84.476562 C 165.5625 84 165.335938 83.339844 165.335938 82.484375 C 165.335938 81.644531 165.5625 80.964844 166.019531 80.4375 C 166.476562 79.914062 167.070312 79.652344 167.804688 79.652344 Z M 169.207031 81.96875 C 169.171875 81.585938 169.089844 81.28125 168.960938 81.054688 C 168.71875 80.632812 168.316406 80.421875 167.753906 80.421875 C 167.351562 80.421875 167.011719 80.566406 166.738281 80.855469 C 166.464844 81.148438 166.320312 81.519531 166.304688 81.96875 Z M 175.925781 85.191406 C 175.097656 85.191406 174.5 84.964844 174.125 84.507812 C 173.753906 84.054688 173.566406 83.503906 173.566406 82.851562 L 174.484375 82.851562 C 174.523438 83.304688 174.609375 83.632812 174.738281 83.835938 C 174.96875 84.203125 175.378906 84.390625 175.976562 84.390625 C 176.4375 84.390625 176.808594 84.265625 177.085938 84.019531 C 177.367188 83.773438 177.507812 83.453125 177.507812 83.0625 C 177.507812 82.578125 177.359375 82.242188 177.066406 82.050781 C 176.773438 81.859375 176.363281 81.761719 175.835938 81.761719 C 175.777344 81.761719 175.71875 81.761719 175.660156 81.765625 C 175.601562 81.765625 175.539062 81.769531 175.476562 81.773438 L 175.476562 80.996094 C 175.566406 81.007812 175.644531 81.011719 175.707031 81.015625 C 175.769531 81.019531 175.835938 81.019531 175.90625 81.019531 C 176.234375 81.019531 176.503906 80.96875 176.71875 80.863281 C 177.089844 80.679688 177.273438 80.355469 177.273438 79.886719 C 177.273438 79.539062 177.148438 79.269531 176.902344 79.082031 C 176.65625 78.894531 176.367188 78.796875 176.039062 78.796875 C 175.453125 78.796875 175.046875 78.992188 174.820312 79.382812 C 174.699219 79.597656 174.628906 79.90625 174.613281 80.304688 L 173.742188 80.304688 C 173.742188 79.78125 173.847656 79.339844 174.054688 78.976562 C 174.414062 78.324219 175.042969 78 175.945312 78 C 176.65625 78 177.210938 78.15625 177.601562 78.472656 C 177.992188 78.789062 178.1875 79.25 178.1875 79.851562 C 178.1875 80.28125 178.070312 80.632812 177.839844 80.898438 C 177.695312 81.0625 177.511719 81.195312 177.28125 81.289062 C 177.648438 81.390625 177.9375 81.585938 178.144531 81.871094 C 178.351562 82.160156 178.453125 82.511719 178.453125 82.929688 C 178.453125 83.597656 178.234375 84.140625 177.796875 84.5625 C 177.355469 84.980469 176.734375 85.191406 175.925781 85.191406 Z M 175.925781 85.191406 "/>
 </g>
 <pattern id="pattern63" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface657"/>
+<use xlink:href="#surface647"/>
 </pattern>
 <clipPath id="clip124">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface660" clip-path="url(#clip124)">
+<g id="surface650" clip-path="url(#clip124)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern63);stroke-miterlimit:10;" d="M 165 100 C 165 100 165 130 205 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern62" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface660"/>
+<use xlink:href="#surface650"/>
 </pattern>
 <clipPath id="clip123">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface663" clip-path="url(#clip123)">
+<g id="surface653" clip-path="url(#clip123)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern62);stroke-miterlimit:10;" d="M 205 130 C 241 130 209 130 245 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern61" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface663"/>
+<use xlink:href="#surface653"/>
 </pattern>
 <clipPath id="clip122">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface666" clip-path="url(#clip122)">
+<g id="surface656" clip-path="url(#clip122)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern61);stroke-miterlimit:10;" d="M 245 130 L 285 100 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern60" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface666"/>
+<use xlink:href="#surface656"/>
 </pattern>
 <clipPath id="clip121">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface669" clip-path="url(#clip121)">
+<g id="surface659" clip-path="url(#clip121)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern60);stroke-miterlimit:10;" d="M 285 100 C 325 100 325 70 325 70 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern59" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface669"/>
+<use xlink:href="#surface659"/>
 </pattern>
 <pattern id="pattern70" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface669"/>
+<use xlink:href="#surface659"/>
 </pattern>
 <clipPath id="clip120">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface672" clip-path="url(#clip120)">
+<g id="surface662" clip-path="url(#clip120)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern59);stroke-miterlimit:10;" d="M 325 70 C 397 70 333 40 405 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern70);" d="M 364.769531 53.359375 C 364.796875 53.652344 364.867188 53.875 364.988281 54.03125 C 365.210938 54.316406 365.59375 54.457031 366.140625 54.457031 C 366.464844 54.457031 366.753906 54.386719 367 54.246094 C 367.246094 54.105469 367.371094 53.886719 367.371094 53.589844 C 367.371094 53.363281 367.273438 53.195312 367.074219 53.078125 C 366.945312 53.003906 366.695312 52.921875 366.320312 52.828125 L 365.625 52.652344 C 365.179688 52.539062 364.847656 52.417969 364.636719 52.28125 C 364.257812 52.042969 364.070312 51.714844 364.070312 51.292969 C 364.070312 50.796875 364.25 50.398438 364.605469 50.09375 C 364.960938 49.789062 365.441406 49.632812 366.042969 49.632812 C 366.832031 49.632812 367.398438 49.863281 367.746094 50.328125 C 367.964844 50.621094 368.070312 50.9375 368.0625 51.273438 L 367.234375 51.273438 C 367.21875 51.074219 367.148438 50.894531 367.023438 50.734375 C 366.820312 50.5 366.472656 50.386719 365.976562 50.386719 C 365.644531 50.386719 365.390625 50.449219 365.21875 50.578125 C 365.046875 50.703125 364.964844 50.871094 364.964844 51.078125 C 364.964844 51.304688 365.078125 51.488281 365.300781 51.625 C 365.429688 51.707031 365.625 51.777344 365.875 51.839844 L 366.457031 51.984375 C 367.089844 52.136719 367.511719 52.285156 367.726562 52.425781 C 368.070312 52.652344 368.242188 53.003906 368.242188 53.484375 C 368.242188 53.953125 368.0625 54.355469 367.710938 54.691406 C 367.359375 55.03125 366.820312 55.199219 366.097656 55.199219 C 365.320312 55.199219 364.769531 55.023438 364.445312 54.671875 C 364.121094 54.316406 363.945312 53.878906 363.921875 53.359375 Z M 371.320312 54.433594 C 371.902344 54.433594 372.304688 54.214844 372.519531 53.773438 C 372.734375 53.332031 372.84375 52.839844 372.84375 52.300781 C 372.84375 51.8125 372.765625 51.414062 372.609375 51.109375 C 372.363281 50.625 371.9375 50.386719 371.332031 50.386719 C 370.792969 50.386719 370.402344 50.589844 370.160156 51 C 369.914062 51.410156 369.792969 51.90625 369.792969 52.484375 C 369.792969 53.042969 369.914062 53.507812 370.160156 53.875 C 370.402344 54.246094 370.789062 54.433594 371.320312 54.433594 Z M 371.355469 49.617188 C 372.03125 49.617188 372.597656 49.84375 373.0625 50.292969 C 373.53125 50.742188 373.761719 51.402344 373.761719 52.273438 C 373.761719 53.117188 373.558594 53.816406 373.148438 54.367188 C 372.738281 54.914062 372.101562 55.191406 371.238281 55.191406 C 370.519531 55.191406 369.949219 54.945312 369.523438 54.460938 C 369.101562 53.972656 368.890625 53.320312 368.890625 52.5 C 368.890625 51.621094 369.113281 50.921875 369.558594 50.398438 C 370.003906 49.878906 370.601562 49.617188 371.355469 49.617188 Z M 374.808594 49.769531 L 375.679688 49.769531 L 375.679688 50.511719 C 375.886719 50.253906 376.074219 50.070312 376.242188 49.953125 C 376.53125 49.753906 376.863281 49.652344 377.230469 49.652344 C 377.648438 49.652344 377.984375 49.757812 378.234375 49.960938 C 378.378906 50.078125 378.507812 50.25 378.625 50.476562 C 378.820312 50.199219 379.050781 49.992188 379.316406 49.855469 C 379.578125 49.71875 379.875 49.652344 380.203125 49.652344 C 380.90625 49.652344 381.386719 49.90625 381.640625 50.414062 C 381.777344 50.6875 381.84375 51.054688 381.84375 51.519531 L 381.84375 55 L 380.929688 55 L 380.929688 51.367188 C 380.929688 51.019531 380.84375 50.78125 380.671875 50.648438 C 380.496094 50.519531 380.285156 50.453125 380.03125 50.453125 C 379.6875 50.453125 379.390625 50.570312 379.140625 50.800781 C 378.890625 51.03125 378.769531 51.417969 378.769531 51.957031 L 378.769531 55 L 377.875 55 L 377.875 51.585938 C 377.875 51.230469 377.832031 50.972656 377.75 50.8125 C 377.617188 50.566406 377.367188 50.445312 377 50.445312 C 376.667969 50.445312 376.367188 50.574219 376.09375 50.828125 C 375.824219 51.085938 375.6875 51.554688 375.6875 52.226562 L 375.6875 55 L 374.808594 55 Z M 385.3125 49.652344 C 385.683594 49.652344 386.046875 49.742188 386.394531 49.914062 C 386.742188 50.089844 387.007812 50.3125 387.1875 50.589844 C 387.363281 50.855469 387.484375 51.164062 387.539062 51.515625 C 387.59375 51.753906 387.617188 52.140625 387.617188 52.664062 L 383.785156 52.664062 C 383.800781 53.195312 383.929688 53.621094 384.164062 53.941406 C 384.398438 54.261719 384.757812 54.421875 385.25 54.421875 C 385.710938 54.421875 386.078125 54.273438 386.351562 53.96875 C 386.507812 53.792969 386.617188 53.589844 386.679688 53.359375 L 387.546875 53.359375 C 387.523438 53.550781 387.449219 53.765625 387.320312 54 C 387.191406 54.238281 387.046875 54.429688 386.886719 54.578125 C 386.621094 54.839844 386.289062 55.015625 385.894531 55.109375 C 385.683594 55.160156 385.445312 55.1875 385.179688 55.1875 C 384.527344 55.1875 383.976562 54.949219 383.523438 54.476562 C 383.070312 54 382.84375 53.339844 382.84375 52.484375 C 382.84375 51.644531 383.070312 50.964844 383.527344 50.4375 C 383.984375 49.914062 384.578125 49.652344 385.3125 49.652344 Z M 386.714844 51.96875 C 386.679688 51.585938 386.597656 51.28125 386.46875 51.054688 C 386.226562 50.632812 385.824219 50.421875 385.261719 50.421875 C 384.859375 50.421875 384.519531 50.566406 384.246094 50.855469 C 383.972656 51.148438 383.828125 51.519531 383.8125 51.96875 Z M 391.652344 48.3125 L 392.542969 48.3125 L 392.542969 49.769531 L 393.375 49.769531 L 393.375 50.488281 L 392.542969 50.488281 L 392.542969 53.902344 C 392.542969 54.085938 392.601562 54.207031 392.726562 54.265625 C 392.792969 54.304688 392.910156 54.320312 393.066406 54.320312 C 393.109375 54.320312 393.15625 54.320312 393.207031 54.320312 C 393.253906 54.316406 393.3125 54.3125 393.375 54.304688 L 393.375 55 C 393.273438 55.03125 393.171875 55.050781 393.0625 55.0625 C 392.953125 55.078125 392.832031 55.082031 392.707031 55.082031 C 392.296875 55.082031 392.019531 54.976562 391.871094 54.769531 C 391.726562 54.558594 391.652344 54.285156 391.652344 53.949219 L 391.652344 50.488281 L 390.945312 50.488281 L 390.945312 49.769531 L 391.652344 49.769531 Z M 396.429688 49.652344 C 396.800781 49.652344 397.164062 49.742188 397.511719 49.914062 C 397.859375 50.089844 398.125 50.3125 398.304688 50.589844 C 398.480469 50.855469 398.601562 51.164062 398.65625 51.515625 C 398.710938 51.753906 398.734375 52.140625 398.734375 52.664062 L 394.902344 52.664062 C 394.917969 53.195312 395.046875 53.621094 395.28125 53.941406 C 395.515625 54.261719 395.875 54.421875 396.367188 54.421875 C 396.828125 54.421875 397.195312 54.273438 397.46875 53.96875 C 397.625 53.792969 397.734375 53.589844 397.796875 53.359375 L 398.664062 53.359375 C 398.640625 53.550781 398.566406 53.765625 398.4375 54 C 398.308594 54.238281 398.164062 54.429688 398.003906 54.578125 C 397.738281 54.839844 397.40625 55.015625 397.011719 55.109375 C 396.800781 55.160156 396.5625 55.1875 396.296875 55.1875 C 395.644531 55.1875 395.09375 54.949219 394.640625 54.476562 C 394.1875 54 393.960938 53.339844 393.960938 52.484375 C 393.960938 51.644531 394.1875 50.964844 394.644531 50.4375 C 395.101562 49.914062 395.695312 49.652344 396.429688 49.652344 Z M 397.832031 51.96875 C 397.796875 51.585938 397.714844 51.28125 397.585938 51.054688 C 397.34375 50.632812 396.941406 50.421875 396.378906 50.421875 C 395.976562 50.421875 395.636719 50.566406 395.363281 50.855469 C 395.089844 51.148438 394.945312 51.519531 394.929688 51.96875 Z M 399.320312 49.769531 L 400.457031 49.769531 L 401.65625 51.609375 L 402.875 49.769531 L 403.941406 49.796875 L 402.179688 52.320312 L 404.019531 55 L 402.898438 55 L 401.597656 53.039062 L 400.339844 55 L 399.226562 55 L 401.066406 52.320312 Z M 404.992188 48.3125 L 405.882812 48.3125 L 405.882812 49.769531 L 406.714844 49.769531 L 406.714844 50.488281 L 405.882812 50.488281 L 405.882812 53.902344 C 405.882812 54.085938 405.941406 54.207031 406.066406 54.265625 C 406.132812 54.304688 406.25 54.320312 406.40625 54.320312 C 406.449219 54.320312 406.496094 54.320312 406.546875 54.320312 C 406.59375 54.316406 406.652344 54.3125 406.714844 54.304688 L 406.714844 55 C 406.613281 55.03125 406.511719 55.050781 406.402344 55.0625 C 406.292969 55.078125 406.171875 55.082031 406.046875 55.082031 C 405.636719 55.082031 405.359375 54.976562 405.210938 54.769531 C 405.066406 54.558594 404.992188 54.285156 404.992188 53.949219 L 404.992188 50.488281 L 404.285156 50.488281 L 404.285156 49.769531 L 404.992188 49.769531 Z M 404.992188 48.3125 "/>
 </g>
 <pattern id="pattern58" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface672"/>
+<use xlink:href="#surface662"/>
 </pattern>
 <clipPath id="clip119">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface675" clip-path="url(#clip119)">
+<g id="surface665" clip-path="url(#clip119)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern58);stroke-miterlimit:10;" d="M 325 70 C 325 70 325 10 405 10 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <clipPath id="clip148">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface625" clip-path="url(#clip148)">
+<g id="surface615" clip-path="url(#clip148)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-1" x="1.148438" y="15"/>
 </g>
@@ -1710,7 +1710,7 @@
 <clipPath id="clip149">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface628" clip-path="url(#clip149)">
+<g id="surface618" clip-path="url(#clip149)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-2" x="2.328125" y="45"/>
 </g>
@@ -1722,7 +1722,7 @@
 <clipPath id="clip150">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface631" clip-path="url(#clip150)">
+<g id="surface621" clip-path="url(#clip150)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-3" x="2.335938" y="75"/>
 </g>
@@ -1734,7 +1734,7 @@
 <clipPath id="clip151">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface634" clip-path="url(#clip151)">
+<g id="surface624" clip-path="url(#clip151)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-4" x="2.300781" y="105"/>
 </g>
@@ -1746,7 +1746,7 @@
 <clipPath id="clip152">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface637" clip-path="url(#clip152)">
+<g id="surface627" clip-path="url(#clip152)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-5" x="2.644531" y="135"/>
 </g>
@@ -1758,7 +1758,7 @@
 <clipPath id="clip153">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface640" clip-path="url(#clip153)">
+<g id="surface630" clip-path="url(#clip153)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-6" x="2.644531" y="165"/>
 </g>
@@ -1770,7 +1770,7 @@
 <clipPath id="clip154">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface643" clip-path="url(#clip154)">
+<g id="surface633" clip-path="url(#clip154)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
   <use xlink:href="#glyph0-7" x="1.703125" y="195"/>
 </g>
@@ -1782,7 +1782,7 @@
 <clipPath id="clip155">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface646" clip-path="url(#clip155)">
+<g id="surface636" clip-path="url(#clip155)">
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 40 0 L 40 210 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:1;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 80 0 L 80 210 " transform="matrix(1,0,0,1,20,0)"/>
@@ -1802,144 +1802,144 @@
 <clipPath id="clip147">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface648" clip-path="url(#clip147)">
-<use xlink:href="#surface625"/>
-<use xlink:href="#surface628"/>
-<use xlink:href="#surface631"/>
-<use xlink:href="#surface634"/>
-<use xlink:href="#surface637"/>
-<use xlink:href="#surface640"/>
-<use xlink:href="#surface643"/>
-<use xlink:href="#surface646"/>
+<g id="surface638" clip-path="url(#clip147)">
+<use xlink:href="#surface615"/>
+<use xlink:href="#surface618"/>
+<use xlink:href="#surface621"/>
+<use xlink:href="#surface624"/>
+<use xlink:href="#surface627"/>
+<use xlink:href="#surface630"/>
+<use xlink:href="#surface633"/>
+<use xlink:href="#surface636"/>
 </g>
 <pattern id="pattern80" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <pattern id="pattern81" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface648"/>
+<use xlink:href="#surface638"/>
 </pattern>
 <clipPath id="clip146">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface651" clip-path="url(#clip146)">
+<g id="surface641" clip-path="url(#clip146)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern80);stroke-miterlimit:10;" d="M 45 10 C 81 10 49 40 85 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern81);" d="M 82.71875 18.3125 L 83.609375 18.3125 L 83.609375 19.769531 L 84.441406 19.769531 L 84.441406 20.488281 L 83.609375 20.488281 L 83.609375 23.902344 C 83.609375 24.085938 83.667969 24.207031 83.792969 24.265625 C 83.859375 24.304688 83.976562 24.320312 84.132812 24.320312 C 84.175781 24.320312 84.222656 24.320312 84.273438 24.320312 C 84.320312 24.316406 84.378906 24.3125 84.441406 24.304688 L 84.441406 25 C 84.339844 25.03125 84.238281 25.050781 84.128906 25.0625 C 84.019531 25.078125 83.898438 25.082031 83.773438 25.082031 C 83.363281 25.082031 83.085938 24.976562 82.9375 24.769531 C 82.792969 24.558594 82.71875 24.285156 82.71875 23.949219 L 82.71875 20.488281 L 82.011719 20.488281 L 82.011719 19.769531 L 82.71875 19.769531 Z M 85.632812 20.046875 L 85.632812 19.375 C 86.269531 19.3125 86.710938 19.210938 86.960938 19.066406 C 87.210938 18.921875 87.398438 18.578125 87.523438 18.039062 L 88.214844 18.039062 L 88.214844 25 L 87.277344 25 L 87.277344 20.046875 Z M 85.632812 20.046875 "/>
 </g>
 <pattern id="pattern79" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <pattern id="pattern82" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface651"/>
+<use xlink:href="#surface641"/>
 </pattern>
 <clipPath id="clip145">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface654" clip-path="url(#clip145)">
+<g id="surface644" clip-path="url(#clip145)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern79);stroke-miterlimit:10;" d="M 125 70 C 45 70 45 10 45 10 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern82);" d="M 101.914062 33.3125 L 102.804688 33.3125 L 102.804688 34.769531 L 103.636719 34.769531 L 103.636719 35.488281 L 102.804688 35.488281 L 102.804688 38.902344 C 102.804688 39.085938 102.863281 39.207031 102.988281 39.265625 C 103.054688 39.304688 103.171875 39.320312 103.328125 39.320312 C 103.371094 39.320312 103.417969 39.320312 103.46875 39.320312 C 103.515625 39.316406 103.574219 39.3125 103.636719 39.304688 L 103.636719 40 C 103.535156 40.03125 103.433594 40.050781 103.324219 40.0625 C 103.214844 40.078125 103.09375 40.082031 102.96875 40.082031 C 102.558594 40.082031 102.28125 39.976562 102.132812 39.769531 C 101.988281 39.558594 101.914062 39.285156 101.914062 38.949219 L 101.914062 35.488281 L 101.207031 35.488281 L 101.207031 34.769531 L 101.914062 34.769531 Z M 104.183594 40 C 104.214844 39.398438 104.339844 38.875 104.558594 38.429688 C 104.773438 37.984375 105.195312 37.578125 105.824219 37.210938 L 106.761719 36.671875 C 107.183594 36.425781 107.476562 36.21875 107.644531 36.046875 C 107.910156 35.773438 108.046875 35.464844 108.046875 35.117188 C 108.046875 34.710938 107.925781 34.386719 107.679688 34.148438 C 107.433594 33.910156 107.109375 33.789062 106.703125 33.789062 C 106.101562 33.789062 105.683594 34.015625 105.453125 34.472656 C 105.328125 34.71875 105.261719 35.054688 105.246094 35.488281 L 104.355469 35.488281 C 104.363281 34.878906 104.476562 34.382812 104.691406 34 C 105.074219 33.320312 105.746094 32.984375 106.707031 32.984375 C 107.507812 32.984375 108.09375 33.199219 108.464844 33.632812 C 108.832031 34.066406 109.019531 34.546875 109.019531 35.078125 C 109.019531 35.636719 108.820312 36.117188 108.425781 36.515625 C 108.199219 36.746094 107.789062 37.023438 107.199219 37.351562 L 106.53125 37.726562 C 106.214844 37.902344 105.960938 38.066406 105.78125 38.226562 C 105.457031 38.511719 105.25 38.824219 105.164062 39.171875 L 108.984375 39.171875 L 108.984375 40 Z M 104.183594 40 "/>
 </g>
 <pattern id="pattern78" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <pattern id="pattern83" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface654"/>
+<use xlink:href="#surface644"/>
 </pattern>
 <clipPath id="clip144">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface657" clip-path="url(#clip144)">
+<g id="surface647" clip-path="url(#clip144)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern78);stroke-miterlimit:10;" d="M 125 70 C 165 70 165 100 165 100 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern83);" d="M 152.476562 78.3125 L 153.367188 78.3125 L 153.367188 79.769531 L 154.199219 79.769531 L 154.199219 80.488281 L 153.367188 80.488281 L 153.367188 83.902344 C 153.367188 84.085938 153.425781 84.207031 153.550781 84.265625 C 153.617188 84.304688 153.734375 84.320312 153.890625 84.320312 C 153.933594 84.320312 153.980469 84.320312 154.03125 84.320312 C 154.078125 84.316406 154.136719 84.3125 154.199219 84.304688 L 154.199219 85 C 154.097656 85.03125 153.996094 85.050781 153.886719 85.0625 C 153.777344 85.078125 153.65625 85.082031 153.53125 85.082031 C 153.121094 85.082031 152.84375 84.976562 152.695312 84.769531 C 152.550781 84.558594 152.476562 84.285156 152.476562 83.949219 L 152.476562 80.488281 L 151.769531 80.488281 L 151.769531 79.769531 L 152.476562 79.769531 Z M 155.078125 79.796875 L 155.972656 79.796875 L 155.972656 85 L 155.078125 85 Z M 155.078125 77.828125 L 155.972656 77.828125 L 155.972656 78.824219 L 155.078125 78.824219 Z M 157.300781 79.769531 L 158.171875 79.769531 L 158.171875 80.511719 C 158.378906 80.253906 158.566406 80.070312 158.734375 79.953125 C 159.023438 79.753906 159.355469 79.652344 159.722656 79.652344 C 160.140625 79.652344 160.476562 79.757812 160.726562 79.960938 C 160.871094 80.078125 161 80.25 161.117188 80.476562 C 161.3125 80.199219 161.542969 79.992188 161.808594 79.855469 C 162.070312 79.71875 162.367188 79.652344 162.695312 79.652344 C 163.398438 79.652344 163.878906 79.90625 164.132812 80.414062 C 164.269531 80.6875 164.335938 81.054688 164.335938 81.519531 L 164.335938 85 L 163.421875 85 L 163.421875 81.367188 C 163.421875 81.019531 163.335938 80.78125 163.164062 80.648438 C 162.988281 80.519531 162.777344 80.453125 162.523438 80.453125 C 162.179688 80.453125 161.882812 80.570312 161.632812 80.800781 C 161.382812 81.03125 161.261719 81.417969 161.261719 81.957031 L 161.261719 85 L 160.367188 85 L 160.367188 81.585938 C 160.367188 81.230469 160.324219 80.972656 160.242188 80.8125 C 160.109375 80.566406 159.859375 80.445312 159.492188 80.445312 C 159.160156 80.445312 158.859375 80.574219 158.585938 80.828125 C 158.316406 81.085938 158.179688 81.554688 158.179688 82.226562 L 158.179688 85 L 157.300781 85 Z M 167.804688 79.652344 C 168.175781 79.652344 168.539062 79.742188 168.886719 79.914062 C 169.234375 80.089844 169.5 80.3125 169.679688 80.589844 C 169.855469 80.855469 169.976562 81.164062 170.03125 81.515625 C 170.085938 81.753906 170.109375 82.140625 170.109375 82.664062 L 166.277344 82.664062 C 166.292969 83.195312 166.421875 83.621094 166.65625 83.941406 C 166.890625 84.261719 167.25 84.421875 167.742188 84.421875 C 168.203125 84.421875 168.570312 84.273438 168.84375 83.96875 C 169 83.792969 169.109375 83.589844 169.171875 83.359375 L 170.039062 83.359375 C 170.015625 83.550781 169.941406 83.765625 169.8125 84 C 169.683594 84.238281 169.539062 84.429688 169.378906 84.578125 C 169.113281 84.839844 168.78125 85.015625 168.386719 85.109375 C 168.175781 85.160156 167.9375 85.1875 167.671875 85.1875 C 167.019531 85.1875 166.46875 84.949219 166.015625 84.476562 C 165.5625 84 165.335938 83.339844 165.335938 82.484375 C 165.335938 81.644531 165.5625 80.964844 166.019531 80.4375 C 166.476562 79.914062 167.070312 79.652344 167.804688 79.652344 Z M 169.207031 81.96875 C 169.171875 81.585938 169.089844 81.28125 168.960938 81.054688 C 168.71875 80.632812 168.316406 80.421875 167.753906 80.421875 C 167.351562 80.421875 167.011719 80.566406 166.738281 80.855469 C 166.464844 81.148438 166.320312 81.519531 166.304688 81.96875 Z M 175.925781 85.191406 C 175.097656 85.191406 174.5 84.964844 174.125 84.507812 C 173.753906 84.054688 173.566406 83.503906 173.566406 82.851562 L 174.484375 82.851562 C 174.523438 83.304688 174.609375 83.632812 174.738281 83.835938 C 174.96875 84.203125 175.378906 84.390625 175.976562 84.390625 C 176.4375 84.390625 176.808594 84.265625 177.085938 84.019531 C 177.367188 83.773438 177.507812 83.453125 177.507812 83.0625 C 177.507812 82.578125 177.359375 82.242188 177.066406 82.050781 C 176.773438 81.859375 176.363281 81.761719 175.835938 81.761719 C 175.777344 81.761719 175.71875 81.761719 175.660156 81.765625 C 175.601562 81.765625 175.539062 81.769531 175.476562 81.773438 L 175.476562 80.996094 C 175.566406 81.007812 175.644531 81.011719 175.707031 81.015625 C 175.769531 81.019531 175.835938 81.019531 175.90625 81.019531 C 176.234375 81.019531 176.503906 80.96875 176.71875 80.863281 C 177.089844 80.679688 177.273438 80.355469 177.273438 79.886719 C 177.273438 79.539062 177.148438 79.269531 176.902344 79.082031 C 176.65625 78.894531 176.367188 78.796875 176.039062 78.796875 C 175.453125 78.796875 175.046875 78.992188 174.820312 79.382812 C 174.699219 79.597656 174.628906 79.90625 174.613281 80.304688 L 173.742188 80.304688 C 173.742188 79.78125 173.847656 79.339844 174.054688 78.976562 C 174.414062 78.324219 175.042969 78 175.945312 78 C 176.65625 78 177.210938 78.15625 177.601562 78.472656 C 177.992188 78.789062 178.1875 79.25 178.1875 79.851562 C 178.1875 80.28125 178.070312 80.632812 177.839844 80.898438 C 177.695312 81.0625 177.511719 81.195312 177.28125 81.289062 C 177.648438 81.390625 177.9375 81.585938 178.144531 81.871094 C 178.351562 82.160156 178.453125 82.511719 178.453125 82.929688 C 178.453125 83.597656 178.234375 84.140625 177.796875 84.5625 C 177.355469 84.980469 176.734375 85.191406 175.925781 85.191406 Z M 175.925781 85.191406 "/>
 </g>
 <pattern id="pattern77" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface657"/>
+<use xlink:href="#surface647"/>
 </pattern>
 <clipPath id="clip143">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface660" clip-path="url(#clip143)">
+<g id="surface650" clip-path="url(#clip143)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern77);stroke-miterlimit:10;" d="M 165 100 C 165 100 165 130 205 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern76" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface660"/>
+<use xlink:href="#surface650"/>
 </pattern>
 <clipPath id="clip142">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface663" clip-path="url(#clip142)">
+<g id="surface653" clip-path="url(#clip142)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern76);stroke-miterlimit:10;" d="M 205 130 C 241 130 209 130 245 130 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern75" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface663"/>
+<use xlink:href="#surface653"/>
 </pattern>
 <clipPath id="clip141">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface666" clip-path="url(#clip141)">
+<g id="surface656" clip-path="url(#clip141)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern75);stroke-miterlimit:10;" d="M 245 130 L 285 100 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern74" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface666"/>
+<use xlink:href="#surface656"/>
 </pattern>
 <clipPath id="clip140">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface669" clip-path="url(#clip140)">
+<g id="surface659" clip-path="url(#clip140)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern74);stroke-miterlimit:10;" d="M 285 100 C 325 100 325 70 325 70 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern73" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface669"/>
+<use xlink:href="#surface659"/>
 </pattern>
 <pattern id="pattern84" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface669"/>
+<use xlink:href="#surface659"/>
 </pattern>
 <clipPath id="clip139">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface672" clip-path="url(#clip139)">
+<g id="surface662" clip-path="url(#clip139)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern73);stroke-miterlimit:10;" d="M 325 70 C 397 70 333 40 405 40 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern84);" d="M 364.769531 53.359375 C 364.796875 53.652344 364.867188 53.875 364.988281 54.03125 C 365.210938 54.316406 365.59375 54.457031 366.140625 54.457031 C 366.464844 54.457031 366.753906 54.386719 367 54.246094 C 367.246094 54.105469 367.371094 53.886719 367.371094 53.589844 C 367.371094 53.363281 367.273438 53.195312 367.074219 53.078125 C 366.945312 53.003906 366.695312 52.921875 366.320312 52.828125 L 365.625 52.652344 C 365.179688 52.539062 364.847656 52.417969 364.636719 52.28125 C 364.257812 52.042969 364.070312 51.714844 364.070312 51.292969 C 364.070312 50.796875 364.25 50.398438 364.605469 50.09375 C 364.960938 49.789062 365.441406 49.632812 366.042969 49.632812 C 366.832031 49.632812 367.398438 49.863281 367.746094 50.328125 C 367.964844 50.621094 368.070312 50.9375 368.0625 51.273438 L 367.234375 51.273438 C 367.21875 51.074219 367.148438 50.894531 367.023438 50.734375 C 366.820312 50.5 366.472656 50.386719 365.976562 50.386719 C 365.644531 50.386719 365.390625 50.449219 365.21875 50.578125 C 365.046875 50.703125 364.964844 50.871094 364.964844 51.078125 C 364.964844 51.304688 365.078125 51.488281 365.300781 51.625 C 365.429688 51.707031 365.625 51.777344 365.875 51.839844 L 366.457031 51.984375 C 367.089844 52.136719 367.511719 52.285156 367.726562 52.425781 C 368.070312 52.652344 368.242188 53.003906 368.242188 53.484375 C 368.242188 53.953125 368.0625 54.355469 367.710938 54.691406 C 367.359375 55.03125 366.820312 55.199219 366.097656 55.199219 C 365.320312 55.199219 364.769531 55.023438 364.445312 54.671875 C 364.121094 54.316406 363.945312 53.878906 363.921875 53.359375 Z M 371.320312 54.433594 C 371.902344 54.433594 372.304688 54.214844 372.519531 53.773438 C 372.734375 53.332031 372.84375 52.839844 372.84375 52.300781 C 372.84375 51.8125 372.765625 51.414062 372.609375 51.109375 C 372.363281 50.625 371.9375 50.386719 371.332031 50.386719 C 370.792969 50.386719 370.402344 50.589844 370.160156 51 C 369.914062 51.410156 369.792969 51.90625 369.792969 52.484375 C 369.792969 53.042969 369.914062 53.507812 370.160156 53.875 C 370.402344 54.246094 370.789062 54.433594 371.320312 54.433594 Z M 371.355469 49.617188 C 372.03125 49.617188 372.597656 49.84375 373.0625 50.292969 C 373.53125 50.742188 373.761719 51.402344 373.761719 52.273438 C 373.761719 53.117188 373.558594 53.816406 373.148438 54.367188 C 372.738281 54.914062 372.101562 55.191406 371.238281 55.191406 C 370.519531 55.191406 369.949219 54.945312 369.523438 54.460938 C 369.101562 53.972656 368.890625 53.320312 368.890625 52.5 C 368.890625 51.621094 369.113281 50.921875 369.558594 50.398438 C 370.003906 49.878906 370.601562 49.617188 371.355469 49.617188 Z M 374.808594 49.769531 L 375.679688 49.769531 L 375.679688 50.511719 C 375.886719 50.253906 376.074219 50.070312 376.242188 49.953125 C 376.53125 49.753906 376.863281 49.652344 377.230469 49.652344 C 377.648438 49.652344 377.984375 49.757812 378.234375 49.960938 C 378.378906 50.078125 378.507812 50.25 378.625 50.476562 C 378.820312 50.199219 379.050781 49.992188 379.316406 49.855469 C 379.578125 49.71875 379.875 49.652344 380.203125 49.652344 C 380.90625 49.652344 381.386719 49.90625 381.640625 50.414062 C 381.777344 50.6875 381.84375 51.054688 381.84375 51.519531 L 381.84375 55 L 380.929688 55 L 380.929688 51.367188 C 380.929688 51.019531 380.84375 50.78125 380.671875 50.648438 C 380.496094 50.519531 380.285156 50.453125 380.03125 50.453125 C 379.6875 50.453125 379.390625 50.570312 379.140625 50.800781 C 378.890625 51.03125 378.769531 51.417969 378.769531 51.957031 L 378.769531 55 L 377.875 55 L 377.875 51.585938 C 377.875 51.230469 377.832031 50.972656 377.75 50.8125 C 377.617188 50.566406 377.367188 50.445312 377 50.445312 C 376.667969 50.445312 376.367188 50.574219 376.09375 50.828125 C 375.824219 51.085938 375.6875 51.554688 375.6875 52.226562 L 375.6875 55 L 374.808594 55 Z M 385.3125 49.652344 C 385.683594 49.652344 386.046875 49.742188 386.394531 49.914062 C 386.742188 50.089844 387.007812 50.3125 387.1875 50.589844 C 387.363281 50.855469 387.484375 51.164062 387.539062 51.515625 C 387.59375 51.753906 387.617188 52.140625 387.617188 52.664062 L 383.785156 52.664062 C 383.800781 53.195312 383.929688 53.621094 384.164062 53.941406 C 384.398438 54.261719 384.757812 54.421875 385.25 54.421875 C 385.710938 54.421875 386.078125 54.273438 386.351562 53.96875 C 386.507812 53.792969 386.617188 53.589844 386.679688 53.359375 L 387.546875 53.359375 C 387.523438 53.550781 387.449219 53.765625 387.320312 54 C 387.191406 54.238281 387.046875 54.429688 386.886719 54.578125 C 386.621094 54.839844 386.289062 55.015625 385.894531 55.109375 C 385.683594 55.160156 385.445312 55.1875 385.179688 55.1875 C 384.527344 55.1875 383.976562 54.949219 383.523438 54.476562 C 383.070312 54 382.84375 53.339844 382.84375 52.484375 C 382.84375 51.644531 383.070312 50.964844 383.527344 50.4375 C 383.984375 49.914062 384.578125 49.652344 385.3125 49.652344 Z M 386.714844 51.96875 C 386.679688 51.585938 386.597656 51.28125 386.46875 51.054688 C 386.226562 50.632812 385.824219 50.421875 385.261719 50.421875 C 384.859375 50.421875 384.519531 50.566406 384.246094 50.855469 C 383.972656 51.148438 383.828125 51.519531 383.8125 51.96875 Z M 391.652344 48.3125 L 392.542969 48.3125 L 392.542969 49.769531 L 393.375 49.769531 L 393.375 50.488281 L 392.542969 50.488281 L 392.542969 53.902344 C 392.542969 54.085938 392.601562 54.207031 392.726562 54.265625 C 392.792969 54.304688 392.910156 54.320312 393.066406 54.320312 C 393.109375 54.320312 393.15625 54.320312 393.207031 54.320312 C 393.253906 54.316406 393.3125 54.3125 393.375 54.304688 L 393.375 55 C 393.273438 55.03125 393.171875 55.050781 393.0625 55.0625 C 392.953125 55.078125 392.832031 55.082031 392.707031 55.082031 C 392.296875 55.082031 392.019531 54.976562 391.871094 54.769531 C 391.726562 54.558594 391.652344 54.285156 391.652344 53.949219 L 391.652344 50.488281 L 390.945312 50.488281 L 390.945312 49.769531 L 391.652344 49.769531 Z M 396.429688 49.652344 C 396.800781 49.652344 397.164062 49.742188 397.511719 49.914062 C 397.859375 50.089844 398.125 50.3125 398.304688 50.589844 C 398.480469 50.855469 398.601562 51.164062 398.65625 51.515625 C 398.710938 51.753906 398.734375 52.140625 398.734375 52.664062 L 394.902344 52.664062 C 394.917969 53.195312 395.046875 53.621094 395.28125 53.941406 C 395.515625 54.261719 395.875 54.421875 396.367188 54.421875 C 396.828125 54.421875 397.195312 54.273438 397.46875 53.96875 C 397.625 53.792969 397.734375 53.589844 397.796875 53.359375 L 398.664062 53.359375 C 398.640625 53.550781 398.566406 53.765625 398.4375 54 C 398.308594 54.238281 398.164062 54.429688 398.003906 54.578125 C 397.738281 54.839844 397.40625 55.015625 397.011719 55.109375 C 396.800781 55.160156 396.5625 55.1875 396.296875 55.1875 C 395.644531 55.1875 395.09375 54.949219 394.640625 54.476562 C 394.1875 54 393.960938 53.339844 393.960938 52.484375 C 393.960938 51.644531 394.1875 50.964844 394.644531 50.4375 C 395.101562 49.914062 395.695312 49.652344 396.429688 49.652344 Z M 397.832031 51.96875 C 397.796875 51.585938 397.714844 51.28125 397.585938 51.054688 C 397.34375 50.632812 396.941406 50.421875 396.378906 50.421875 C 395.976562 50.421875 395.636719 50.566406 395.363281 50.855469 C 395.089844 51.148438 394.945312 51.519531 394.929688 51.96875 Z M 399.320312 49.769531 L 400.457031 49.769531 L 401.65625 51.609375 L 402.875 49.769531 L 403.941406 49.796875 L 402.179688 52.320312 L 404.019531 55 L 402.898438 55 L 401.597656 53.039062 L 400.339844 55 L 399.226562 55 L 401.066406 52.320312 Z M 404.992188 48.3125 L 405.882812 48.3125 L 405.882812 49.769531 L 406.714844 49.769531 L 406.714844 50.488281 L 405.882812 50.488281 L 405.882812 53.902344 C 405.882812 54.085938 405.941406 54.207031 406.066406 54.265625 C 406.132812 54.304688 406.25 54.320312 406.40625 54.320312 C 406.449219 54.320312 406.496094 54.320312 406.546875 54.320312 C 406.59375 54.316406 406.652344 54.3125 406.714844 54.304688 L 406.714844 55 C 406.613281 55.03125 406.511719 55.050781 406.402344 55.0625 C 406.292969 55.078125 406.171875 55.082031 406.046875 55.082031 C 405.636719 55.082031 405.359375 54.976562 405.210938 54.769531 C 405.066406 54.558594 404.992188 54.285156 404.992188 53.949219 L 404.992188 50.488281 L 404.285156 50.488281 L 404.285156 49.769531 L 404.992188 49.769531 Z M 404.992188 48.3125 "/>
 </g>
 <pattern id="pattern72" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface672"/>
+<use xlink:href="#surface662"/>
 </pattern>
 <clipPath id="clip138">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface675" clip-path="url(#clip138)">
+<g id="surface665" clip-path="url(#clip138)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern72);stroke-miterlimit:10;" d="M 325 70 C 325 70 325 10 405 10 " transform="matrix(1,0,0,1,20,0)"/>
 </g>
 <pattern id="pattern71" patternUnits="userSpaceOnUse" width="622" height="210" patternTransform="matrix(1,0,0,1,-20,0)">
-<use xlink:href="#surface675"/>
+<use xlink:href="#surface665"/>
 </pattern>
 <pattern id="pattern85" patternUnits="userSpaceOnUse" width="622" height="210">
-<use xlink:href="#surface675"/>
+<use xlink:href="#surface665"/>
 </pattern>
 <clipPath id="clip137">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface678" clip-path="url(#clip137)">
+<g id="surface668" clip-path="url(#clip137)">
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:url(#pattern71);stroke-miterlimit:10;" d="M 205 160 C 277 160 213 190 285 190 " transform="matrix(1,0,0,1,20,0)"/>
 <path style=" stroke:none;fill-rule:nonzero;fill:url(#pattern85);" d="M 247.351562 169.769531 L 248.324219 169.769531 C 248.199219 170.105469 247.925781 170.871094 247.5 172.066406 C 247.179688 172.964844 246.914062 173.695312 246.699219 174.261719 C 246.191406 175.597656 245.832031 176.410156 245.625 176.703125 C 245.417969 176.996094 245.058594 177.144531 244.550781 177.144531 C 244.425781 177.144531 244.332031 177.140625 244.265625 177.128906 C 244.199219 177.117188 244.113281 177.101562 244.019531 177.074219 L 244.019531 176.273438 C 244.171875 176.316406 244.28125 176.34375 244.347656 176.351562 C 244.417969 176.363281 244.476562 176.367188 244.53125 176.367188 C 244.691406 176.367188 244.8125 176.339844 244.890625 176.285156 C 244.964844 176.234375 245.03125 176.167969 245.082031 176.089844 C 245.097656 176.0625 245.15625 175.929688 245.257812 175.6875 C 245.359375 175.445312 245.433594 175.269531 245.476562 175.152344 L 243.542969 169.769531 L 244.539062 169.769531 L 245.941406 174.027344 Z M 251.160156 174.433594 C 251.742188 174.433594 252.144531 174.214844 252.359375 173.773438 C 252.574219 173.332031 252.683594 172.839844 252.683594 172.300781 C 252.683594 171.8125 252.605469 171.414062 252.449219 171.109375 C 252.203125 170.625 251.777344 170.386719 251.171875 170.386719 C 250.632812 170.386719 250.242188 170.589844 250 171 C 249.753906 171.410156 249.632812 171.90625 249.632812 172.484375 C 249.632812 173.042969 249.753906 173.507812 250 173.875 C 250.242188 174.246094 250.628906 174.433594 251.160156 174.433594 Z M 251.195312 169.617188 C 251.871094 169.617188 252.4375 169.84375 252.902344 170.292969 C 253.371094 170.742188 253.601562 171.402344 253.601562 172.273438 C 253.601562 173.117188 253.398438 173.816406 252.988281 174.367188 C 252.578125 174.914062 251.941406 175.191406 251.078125 175.191406 C 250.359375 175.191406 249.789062 174.945312 249.363281 174.460938 C 248.941406 173.972656 248.730469 173.320312 248.730469 172.5 C 248.730469 171.621094 248.953125 170.921875 249.398438 170.398438 C 249.84375 169.878906 250.441406 169.617188 251.195312 169.617188 Z M 255.527344 169.769531 L 255.527344 173.242188 C 255.527344 173.507812 255.570312 173.726562 255.652344 173.898438 C 255.808594 174.210938 256.101562 174.367188 256.527344 174.367188 C 257.140625 174.367188 257.558594 174.09375 257.777344 173.546875 C 257.898438 173.253906 257.957031 172.851562 257.957031 172.339844 L 257.957031 169.769531 L 258.839844 169.769531 L 258.839844 175 L 258.007812 175 L 258.019531 174.226562 C 257.902344 174.425781 257.761719 174.59375 257.59375 174.730469 C 257.257812 175.003906 256.851562 175.140625 256.371094 175.140625 C 255.625 175.140625 255.117188 174.890625 254.847656 174.394531 C 254.703125 174.128906 254.628906 173.769531 254.628906 173.324219 L 254.628906 169.769531 Z M 262.414062 174.410156 C 262.824219 174.410156 263.164062 174.238281 263.4375 173.894531 C 263.710938 173.550781 263.84375 173.039062 263.84375 172.351562 C 263.84375 171.9375 263.785156 171.578125 263.664062 171.28125 C 263.4375 170.703125 263.019531 170.414062 262.414062 170.414062 C 261.804688 170.414062 261.390625 170.71875 261.164062 171.328125 C 261.042969 171.652344 260.984375 172.066406 260.984375 172.570312 C 260.984375 172.972656 261.042969 173.316406 261.164062 173.597656 C 261.390625 174.140625 261.808594 174.410156 262.414062 174.410156 Z M 260.140625 169.796875 L 260.992188 169.796875 L 260.992188 170.488281 C 261.167969 170.25 261.359375 170.066406 261.570312 169.9375 C 261.867188 169.742188 262.214844 169.644531 262.613281 169.644531 C 263.207031 169.644531 263.710938 169.871094 264.125 170.324219 C 264.539062 170.777344 264.742188 171.425781 264.742188 172.269531 C 264.742188 173.410156 264.445312 174.222656 263.851562 174.710938 C 263.472656 175.019531 263.03125 175.175781 262.53125 175.175781 C 262.136719 175.175781 261.808594 175.089844 261.539062 174.917969 C 261.382812 174.820312 261.210938 174.652344 261.015625 174.414062 L 261.015625 177.085938 L 260.140625 177.085938 Z M 265.769531 169.796875 L 266.664062 169.796875 L 266.664062 175 L 265.769531 175 Z M 265.769531 167.828125 L 266.664062 167.828125 L 266.664062 168.824219 L 265.769531 168.824219 Z M 265.769531 167.828125 "/>
 </g>
 <clipPath id="clip10">
   <rect x="0" y="0" width="622" height="210"/>
 </clipPath>
-<g id="surface681" clip-path="url(#clip10)">
-<use xlink:href="#surface651"/>
-<use xlink:href="#surface654"/>
-<use xlink:href="#surface657"/>
-<use xlink:href="#surface660"/>
-<use xlink:href="#surface663"/>
-<use xlink:href="#surface666"/>
-<use xlink:href="#surface669"/>
-<use xlink:href="#surface672"/>
-<use xlink:href="#surface675"/>
-<use xlink:href="#surface678"/>
+<g id="surface671" clip-path="url(#clip10)">
+<use xlink:href="#surface641"/>
+<use xlink:href="#surface644"/>
+<use xlink:href="#surface647"/>
+<use xlink:href="#surface650"/>
+<use xlink:href="#surface653"/>
+<use xlink:href="#surface656"/>
+<use xlink:href="#surface659"/>
+<use xlink:href="#surface662"/>
+<use xlink:href="#surface665"/>
+<use xlink:href="#surface668"/>
 </g>
 </defs>
-<g id="surface620">
-<use xlink:href="#surface648"/>
-<use xlink:href="#surface681"/>
+<g id="surface610">
+<use xlink:href="#surface638"/>
+<use xlink:href="#surface671"/>
 </g>
 </svg>
