@@ -205,6 +205,7 @@ class EpsRenderer(Renderer):
     text    : text to display
     """
     extra      = kwargs.get("extra", "")
+    print(extra)
     ans = ""
     # set font style
     if "bold" in extra:
@@ -224,9 +225,9 @@ class EpsRenderer(Renderer):
     # show text
     if text:
       if "right-justify" in extra:
-        ans += f"{ox} {oy} moveto ({text}) {x} {self._height - y + 9} right-justify"
+        ans += f"{ox} {oy} moveto ({text}) {x} {y - 9} right-justify"
       elif "center-justify" in extra:
-        ans += f"{ox} {oy} moveto ({text}) {x} {self._height - y + 3} center-justify"
+        ans += f"{ox} {oy} moveto ({text}) {x} {y - 3} center-justify"
       else:
         ans += f"{ox} {oy} moveto ({text}) show"
     return f"gsave\n{ans}\ngrestore\n"
