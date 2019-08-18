@@ -178,7 +178,8 @@ class Renderer:
     for i, span in enumerate(b.texts):
       if len(str(span[2])) > 0:
         a = copy.deepcopy(kwargs)
-        a.update({"extra": self._DATA_TEXT})
+        if self._DATA_TEXT:
+          a.update({"extra": self._DATA_TEXT})
         # get style of text
         if len(span) > 3:
           a.update({"style_repr": span[3]})
@@ -272,6 +273,7 @@ class Renderer:
     data_counter, regpos_counter, attr_counter = 0, 0, 0
     symbol, is_first, b_counter, ana_counter = None, 0, 0, 0
     for b, k in _wavelane:
+      # is not a gap
       if b != '|':
         # get the final height of the last brick
         last = -2 if symbol == pywave.BRICKS.gap else -1

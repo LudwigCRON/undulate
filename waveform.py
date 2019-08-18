@@ -28,7 +28,7 @@ SUPPORTED_FORMAT = [
     [".toml"]
 ]
 
-SUPPORTED_RENDER = ["svg", "eps", "cairo-svg"]
+SUPPORTED_RENDER = ["svg", "eps", "cairo-svg", "cairo-ps", "cairo-eps"]
 
 def _number_convert(match):
   base, number = match.group(1).lower(), match.group(2)
@@ -98,7 +98,6 @@ def parse(filepath: str) -> (bool, object):
           ans[n] = wave
       else:
         ans[k] = v
-    pprint(ans)
   elif ext in SUPPORTED_FORMAT[1]:
     print("YAML file")
     with open(filepath, "r+") as fp:
@@ -145,9 +144,15 @@ if __name__ == "__main__":
         elif cli_args.format.startswith("cairo-"):
           renderer = pywave.CairoRenderer(extension=cli_args.format.split('-')[-1])
         try:
-          with open(cli_args.output, "w+") as fp:
-            fp.write(renderer.draw(obj, brick_height=(50 if cli_args.is_reg else 20),
+          if cli_args.format.startswith("cairo-"):
+            renderer.draw(obj, brick_height=(50 if cli_args.is_reg else 20),
                                         brick_width=(28 if cli_args.is_reg else 40),
-                                        is_reg=cli_args.is_reg))
+                                        is_reg=cli_args.is_reg,
+                                        filename=cli_args.output)
+          else:
+            with open(cli_args.output, "w+") as fp:
+              fp.write(renderer.draw(obj, brick_height=(50 if cli_args.is_reg else 20),
+                                          brick_width=(28 if cli_args.is_reg else 40),
+                                          is_reg=cli_args.is_reg))
         except Exception as e:
           traceback.print_tb(e.__traceback__)

@@ -43,7 +43,7 @@ DEFAULT_STYLE = {
         "fill"        : (0, 65, 196, 255),
         "font-weight" : 500,
         "font-size"   : (0.9, SizeUnit.EM),
-        "font-family" : "monospace",
+        "font-family" : "fira mono",
         "text-align"  : TextAlign.RIGHT
     },
     "text": {
@@ -54,7 +54,17 @@ DEFAULT_STYLE = {
         "font-weight" : 500,
         "font-stretch": "normal",
         "text-align"  : TextAlign.CENTER,
-        "font-family" : "monospace"
+        "font-family" : "fira mono"
+    },
+    "attr": {
+        "fill"        : (0, 0, 0, 255),
+        "font-size"   : (9, SizeUnit.PX),
+        "font-style"  : "normal",
+        "font-variant": "normal",
+        "font-weight" : 200,
+        "font-stretch": "normal",
+        "text-align"  : TextAlign.CENTER,
+        "font-family" : "fira mono"
     },
     "path": {
         "fill": None,
@@ -152,42 +162,42 @@ DEFAULT_STYLE = {
         "fill": (0, 0, 0, 255),
         "font-size": (18.31, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "monospace",
+        "font-family" : "fira mono",
         "text-align"  : TextAlign.LEFT
     },
     "h2": {
         "fill": (0, 0, 0, 255),
         "font-size": (14.65, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "monospace",
+        "font-family" : "fira mono",
         "text-align"  : TextAlign.LEFT
     },
     "h3": {
         "fill": (0, 0, 0, 255),
         "font-size": (11.72, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "monospace",
+        "font-family" : "fira mono",
         "text-align"  : TextAlign.LEFT
     },
     "h4": {
         "fill": (0, 0, 0, 255),
         "font-size": (9.38, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "monospace",
+        "font-family" : "fira mono",
         "text-align"  : TextAlign.LEFT
     },
     "h5": {
         "fill": (0, 0, 0, 255),
         "font-size": (7.5, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "monospace",
+        "font-family" : "fira mono",
         "text-align"  : TextAlign.LEFT
     },
     "h6": {
         "fill": (0, 0, 0, 255),
         "font-size": (6, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "monospace",
+        "font-family" : "fira mono",
         "text-align"  : TextAlign.LEFT
     }
 }
@@ -315,6 +325,7 @@ else:
     def cairo_text_align(context, style: dict, text: str):
         text_align = style.get("text-align", TextAlign.CENTER)
         # get text width
+        ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
         xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
         # apply style
         if text_align == TextAlign.LEFT:
@@ -322,7 +333,7 @@ else:
         elif text_align == TextAlign.RIGHT:
             return (width, 0)
         else:
-            return (width/2, 0)
+            return (width/2, -descent)
 
     def apply_cairo_font(context, style: dict):
         # font slant

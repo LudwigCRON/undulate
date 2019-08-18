@@ -183,17 +183,15 @@ class CairoRenderer(Renderer):
     text    : text to display
     """
     extra = kwargs.get("extra", "")
-    style = kwargs.get("style_repr", "")
-    if style is None:
-      style = "text"
+    style = kwargs.get("style_repr", "text")
     self.cr.save()
     if callable(extra):
       extra()
     apply_fill(self.cr, style, Engine.CAIRO)
     apply_font(self.cr, style, Engine.CAIRO)
-    ox, oy = text_align(self.cr, style, text, Engine.CAIRO)
+    ox, oy = text_align(self.cr, style, str(text), Engine.CAIRO)
     self.cr.move_to(x-ox, y-oy)
-    self.cr.show_text(text)
+    self.cr.show_text(str(text))
     self.cr.restore()
     return ""
 
@@ -213,12 +211,17 @@ class CairoRenderer(Renderer):
     if is_reg:
       lkeys = -1
       height += n * 12
+    # select appropriate surface
     if self.extension == "svg":
       self.surface = cairo.SVGSurface(filename, width+lkeys*11+11, height)
     elif self.extension == "png":
-      pass
+      self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width+lkeys*11+11, height)
     elif self.extension == "ps":
-      pass
+      self.surface = cairo.PsSurface(filename, width+lkeys*11+11, height)
+      self.surface.set_eps(False)
+    elif self.extension == "eps":
+      self.surface = cairo.PsSurface(filename, width+lkeys*11+11, height)
+      self.surface.set_eps(True)
     else:
       raise "Not supported format"
     self.cr = cairo.Context(self.surface)
