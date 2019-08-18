@@ -42,11 +42,11 @@ text{font-size:0.9em;
 .s3 > polygon {fill:#ffffb4;fill-opacity:1,stroke:none}
 .s4 > polygon {fill:#ffe0b9;fill-opacity:1,stroke:none}
 .s5 > polygon {fill:#b9e0ff;fill-opacity:1,stroke:none}
-.ticks {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
-.edges {fill:none;stroke:#00F;stroke-width:1}
-.edges.arrowhead {marker-start:url(#arrow); overflow:visible;}
-.edges.arrowtail {marker-end:url(#arrow); overflow:visible;}
-.edges + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
+.tick {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
+.edge {fill:none;stroke:#00F;stroke-width:1}
+.edge-arrowhead {fill:none;stroke:#00F;stroke-width:1;marker-start:url(#arrow); overflow:visible;}
+.edge-arrowtail {fill:none;stroke:#00F;stroke-width:1;marker-end:url(#arrow); overflow:visible;}
+.edge + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
 </style>
 
 <defs>
@@ -65,20 +65,20 @@ text{font-size:0.9em;
 </defs>
 <g id="a"  >
 <g id="ticks_2"  transform="translate(60, 0)"  >
-<path d="M0,0 L0,60.0" class="ticks" />
-<path d="M40,0 L40,60.0" class="ticks" />
-<path d="M80,0 L80,60.0" class="ticks" />
-<path d="M120,0 L120,60.0" class="ticks" />
-<path d="M160,0 L160,60.0" class="ticks" />
-<path d="M200,0 L200,60.0" class="ticks" />
-<path d="M240,0 L240,60.0" class="ticks" />
-<path d="M280,0 L280,60.0" class="ticks" />
-<path d="M320,0 L320,60.0" class="ticks" />
-<path d="M360,0 L360,60.0" class="ticks" />
-<path d="M400,0 L400,60.0" class="ticks" />
-<path d="M440,0 L440,60.0" class="ticks" />
-<path d="M480,0 L480,60.0" class="ticks" />
-<path d="M520,0 L520,60.0" class="ticks" />
+<path d="M0,0 L0,60.0" class="tick" />
+<path d="M40,0 L40,60.0" class="tick" />
+<path d="M80,0 L80,60.0" class="tick" />
+<path d="M120,0 L120,60.0" class="tick" />
+<path d="M160,0 L160,60.0" class="tick" />
+<path d="M200,0 L200,60.0" class="tick" />
+<path d="M240,0 L240,60.0" class="tick" />
+<path d="M280,0 L280,60.0" class="tick" />
+<path d="M320,0 L320,60.0" class="tick" />
+<path d="M360,0 L360,60.0" class="tick" />
+<path d="M400,0 L400,60.0" class="tick" />
+<path d="M440,0 L440,60.0" class="tick" />
+<path d="M480,0 L480,60.0" class="tick" />
+<path d="M520,0 L520,60.0" class="tick" />
 </g>
 
 <g id="Alfa"  transform="translate(60, 0)"  >
@@ -178,7 +178,7 @@ text{font-size:0.9em;
 </g>
 </g>
 </g>
-<g id="edges"  transform="translate(60, 0)"  >
+<g id="edge"  transform="translate(60, 0)"  >
 </g>
 
 </svg>

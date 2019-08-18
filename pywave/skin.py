@@ -131,7 +131,7 @@ DEFAULT_STYLE = {
         "fill": (185, 224, 255, 255),
         "stroke": None
     },
-    "ticks": {
+    "tick": {
         "stroke": (136, 136, 136, 255),
         "stroke-width": 0.5,
         "stroke-dasharray": [1, 3]
@@ -142,10 +142,16 @@ DEFAULT_STYLE = {
         "stroke-width": 1
     },
     "edge-arrowhead": {
+        "fill": None,
+        "stroke": (0, 0, 255, 255),
+        "stroke-width": 1,
         "marker-start": "#arrow",
         "overflow": "visible"
     },
     "edge-arrowtail": {
+        "fill": None,
+        "stroke": (0, 0, 255, 255),
+        "stroke-width": 1,
         "marker-end": "#arrow",
         "overflow": "visible"
     },
@@ -246,11 +252,11 @@ text{font-size:0.9em;
 .s3 > polygon {fill:#ffffb4;fill-opacity:1,stroke:none}
 .s4 > polygon {fill:#ffe0b9;fill-opacity:1,stroke:none}
 .s5 > polygon {fill:#b9e0ff;fill-opacity:1,stroke:none}
-.ticks {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
-.edges {fill:none;stroke:#00F;stroke-width:1}
-.edges.arrowhead {marker-start:url(#arrow); overflow:visible;}
-.edges.arrowtail {marker-end:url(#arrow); overflow:visible;}
-.edges + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
+.tick {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
+.edge {fill:none;stroke:#00F;stroke-width:1}
+.edge-arrowhead {fill:none;stroke:#00F;stroke-width:1;marker-start:url(#arrow); overflow:visible;}
+.edge-arrowtail {fill:none;stroke:#00F;stroke-width:1;marker-end:url(#arrow); overflow:visible;}
+.edge + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
 """
 
 DEFINITION = """

@@ -389,7 +389,7 @@ class Renderer:
       for x in range(0, int(width), step):
         ans += self.path(
           [(x, 0), (x, height-offsety)],
-          style_repr="ticks",
+          style_repr="tick",
           extra="",
           **kwargs)
       return ans
@@ -455,9 +455,9 @@ class Renderer:
               _shape, s, e, text = edge
               s = s[0] + 3 + adj.get("start_x", 0), s[1] + brick_height * 0.5 + adj.get("start_y", 0)
               e = e[0] + 3 + adj.get("end_x", 0), e[1] + brick_height * 0.5 + adj.get("end_y", 0)
-              style = "edges "
-              style += "arrowtail " if _shape[-1] == '>' else ''
-              style += "arrowhead " if _shape[0] == '<' else ''
+              style = "edge"
+              style += "-arrowtail " if _shape[-1] == '>' else ''
+              style += "-arrowhead " if _shape[0] == '<' else ''
               mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
               if _shape in ['<~', '~', '~>', '<~>']:
                 ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], style_repr=style)
@@ -483,7 +483,7 @@ class Renderer:
       return ans
     return self.group(
       _gen,
-      "edges",
+      "edge",
       extra
     )
 

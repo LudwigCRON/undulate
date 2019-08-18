@@ -174,7 +174,7 @@ class EpsRenderer(Renderer):
         if i == 0 or not (cmd[0] == 'r'):
           y += block_height
         # if edges shift them
-        if "edges" in style:
+        if "edge" in style:
           y += self._height
       # gather 3 points to draw a bezier curve
       c = 2 if s in ["C", "c"] else c

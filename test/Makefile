@@ -1,5 +1,7 @@
 TESTPATH=$(shell pwd)
 
+.phony: new legacy internal eps cairo-svg register
+
 %.jsonml:
 	@echo $@
 	../waveform.py -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/legacy/$(subst .jsonml,-jsonml.svg,$@)"
