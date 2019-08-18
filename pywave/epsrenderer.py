@@ -205,7 +205,6 @@ class EpsRenderer(Renderer):
     text    : text to display
     """
     extra      = kwargs.get("extra", "")
-    print(extra)
     ans = ""
     # set font style
     if "bold" in extra:
@@ -216,7 +215,7 @@ class EpsRenderer(Renderer):
       ans = "/Courier findfont 12 scalefont setfont\n"
     # not relative
     if "abs" in extra:
-      ox, oy = 0, 0
+      ox, oy = 0, - 2*y + 20
     else:
       ox, oy = self._ox, self._height - self._oy
     # shift the group name
