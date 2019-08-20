@@ -43,7 +43,7 @@ def _parse_wavelane(wavelane: dict):
   _name = wavelane.get("name", "").strip()
   if "name" in wavelane:
     del wavelane["name"]
-  if _name:
+  if not _name:
     _name = f"spacer_{int(time.time())}"
   return (_name, wavelane)
 

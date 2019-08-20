@@ -256,7 +256,7 @@ text{font-size:0.9em;
 .edge {fill:none;stroke:#00F;stroke-width:1}
 .edge-arrowhead {fill:none;stroke:#00F;stroke-width:1;marker-start:url(#arrow); overflow:visible;}
 .edge-arrowtail {fill:none;stroke:#00F;stroke-width:1;marker-end:url(#arrow); overflow:visible;}
-.edge + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
+.edge + text, .edge-arrowhead + text, .edge-arrowtail + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
 """
 
 DEFINITION = """
