@@ -12,8 +12,8 @@ colors should always be in rgba with value from 0—255
 from enum import Enum
 
 class Engine(Enum):
-    SVG   = 0,
-    EPS   = 1,
+    SVG = (0,)
+    EPS = (1,)
     CAIRO = 2
 
 class SizeUnit(Enum):
@@ -22,49 +22,49 @@ class SizeUnit(Enum):
     PT = 1.333
 
 class LineCap(Enum):
-    BUTT   = 0,
-    ROUND  = 1,
+    BUTT = (0,)
+    ROUND = (1,)
     SQUARE = 2
 
 class LineJoin(Enum):
-    MITER = 0, 
-    ROUND = 1, 
+    MITER = (0,)
+    ROUND = (1,)
     BEVEL = 2
 
 class TextAlign(Enum):
-    LEFT    = 0,
-    CENTER  = 1,
-    RIGHT   = 2,
+    LEFT = (0,)
+    CENTER = (1,)
+    RIGHT = (2,)
     JUSTIFY = 3
 
 # style definition for cairo renderer
 DEFAULT_STYLE = {
     "title": {
-        "fill"        : (0, 65, 196, 255),
-        "font-weight" : 500,
-        "font-size"   : (0.9, SizeUnit.EM),
-        "font-family" : "fira mono",
-        "text-align"  : TextAlign.RIGHT
+        "fill": (0, 65, 196, 255),
+        "font-weight": 500,
+        "font-size": (0.9, SizeUnit.EM),
+        "font-family": "fira mono",
+        "text-align": TextAlign.RIGHT,
     },
     "text": {
-        "fill"        : (0, 0, 0, 255),
-        "font-size"   : (0.9, SizeUnit.EM),
-        "font-style"  : "normal",
+        "fill": (0, 0, 0, 255),
+        "font-size": (0.9, SizeUnit.EM),
+        "font-style": "normal",
         "font-variant": "normal",
-        "font-weight" : 500,
+        "font-weight": 500,
         "font-stretch": "normal",
-        "text-align"  : TextAlign.CENTER,
-        "font-family" : "fira mono"
+        "text-align": TextAlign.CENTER,
+        "font-family": "fira mono",
     },
     "attr": {
-        "fill"        : (0, 0, 0, 255),
-        "font-size"   : (9, SizeUnit.PX),
-        "font-style"  : "normal",
+        "fill": (0, 0, 0, 255),
+        "font-size": (9, SizeUnit.PX),
+        "font-style": "normal",
         "font-variant": "normal",
-        "font-weight" : 200,
+        "font-weight": 200,
         "font-stretch": "normal",
-        "text-align"  : TextAlign.CENTER,
-        "font-family" : "fira mono"
+        "text-align": TextAlign.CENTER,
+        "font-family": "fira mono",
     },
     "path": {
         "fill": None,
@@ -73,7 +73,7 @@ DEFAULT_STYLE = {
         "stroke-linecap": LineCap.ROUND,
         "stroke-linejoin": LineJoin.MITER,
         "stroke-miterlimit": 4,
-        "stroke-dasharray": None
+        "stroke-dasharray": None,
     },
     "stripe": {
         "fill": None,
@@ -82,21 +82,15 @@ DEFAULT_STYLE = {
         "stroke-linecap": LineCap.ROUND,
         "stroke-linejoin": LineJoin.MITER,
         "stroke-miterlimit": 4,
-        "stroke-dasharray": None
+        "stroke-dasharray": None,
     },
     "data": {
         "text-anchor": "middle",
         "dominant-baseline": "middle",
-        "alignment-baseline": "central"
+        "alignment-baseline": "central",
     },
-    "arrow": {
-        "fill": (0, 0, 0, 255),
-        "stroke": None
-    },
-    "hide": {
-        "fill": (255, 255, 255, 255),
-        "stroke-width": 2
-    },
+    "arrow": {"fill": (0, 0, 0, 255), "stroke": None},
+    "hide": {"fill": (255, 255, 255, 255), "stroke-width": 2},
     "s0": {
         "fill": None,
         "stroke": (0, 0, 0, 255),
@@ -104,7 +98,7 @@ DEFAULT_STYLE = {
         "stroke-linecap": LineCap.ROUND,
         "stroke-linejoin": LineJoin.MITER,
         "stroke-miterlimit": 4,
-        "stroke-dasharray": None
+        "stroke-dasharray": None,
     },
     "s1": {
         "fill": None,
@@ -113,99 +107,80 @@ DEFAULT_STYLE = {
         "stroke-linecap": LineCap.ROUND,
         "stroke-linejoin": LineJoin.MITER,
         "stroke-miterlimit": 4,
-        "stroke-dasharray": None
+        "stroke-dasharray": None,
     },
-    "s2 > polygon": {
-        "fill": (0, 0, 0, 0),
-        "stroke": None
-    },
-    "s3 > polygon": {
-        "fill": (255, 255, 176, 255),
-        "stroke": None
-    },
-    "s4 > polygon": {
-        "fill": (255, 224, 185, 255),
-        "stroke":None
-    },
-    "s5 > polygon": {
-        "fill": (185, 224, 255, 255),
-        "stroke": None
-    },
+    "s2 > polygon": {"fill": (0, 0, 0, 0), "stroke": None},
+    "s3 > polygon": {"fill": (255, 255, 176, 255), "stroke": None},
+    "s4 > polygon": {"fill": (255, 224, 185, 255), "stroke": None},
+    "s5 > polygon": {"fill": (185, 224, 255, 255), "stroke": None},
     "tick": {
         "stroke": (136, 136, 136, 255),
         "stroke-width": 0.5,
-        "stroke-dasharray": [1, 3]
+        "stroke-dasharray": [1, 3],
     },
-    "edge": {
-        "fill": None,
-        "stroke": (0, 0, 255, 255),
-        "stroke-width": 1
-    },
+    "edge": {"fill": None, "stroke": (0, 0, 255, 255), "stroke-width": 1},
     "edge-arrowhead": {
         "fill": None,
         "stroke": (0, 0, 255, 255),
         "stroke-width": 1,
         "marker-start": "#arrow",
-        "overflow": "visible"
+        "overflow": "visible",
     },
     "edge-arrowtail": {
         "fill": None,
         "stroke": (0, 0, 255, 255),
         "stroke-width": 1,
         "marker-end": "#arrow",
-        "overflow": "visible"
+        "overflow": "visible",
     },
     "edge-text": {
         "font-size": (0.625, SizeUnit.EM),
         "filter": "#solid",
-        "transform": "translate(0, 2.5px)"
+        "transform": "translate(0, 2.5px)",
     },
-    "border": {
-        "stroke-width": 1.25,
-        "stroke": (0, 0, 0, 255)
-    },
+    "border": {"stroke-width": 1.25, "stroke": (0, 0, 0, 255)},
     "h1": {
         "fill": (0, 0, 0, 255),
         "font-size": (18.31, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "fira mono",
-        "text-align"  : TextAlign.LEFT
+        "font-family": "fira mono",
+        "text-align": TextAlign.LEFT,
     },
     "h2": {
         "fill": (0, 0, 0, 255),
         "font-size": (14.65, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "fira mono",
-        "text-align"  : TextAlign.LEFT
+        "font-family": "fira mono",
+        "text-align": TextAlign.LEFT,
     },
     "h3": {
         "fill": (0, 0, 0, 255),
         "font-size": (11.72, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "fira mono",
-        "text-align"  : TextAlign.LEFT
+        "font-family": "fira mono",
+        "text-align": TextAlign.LEFT,
     },
     "h4": {
         "fill": (0, 0, 0, 255),
         "font-size": (9.38, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "fira mono",
-        "text-align"  : TextAlign.LEFT
+        "font-family": "fira mono",
+        "text-align": TextAlign.LEFT,
     },
     "h5": {
         "fill": (0, 0, 0, 255),
         "font-size": (7.5, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "fira mono",
-        "text-align"  : TextAlign.LEFT
+        "font-family": "fira mono",
+        "text-align": TextAlign.LEFT,
     },
     "h6": {
         "fill": (0, 0, 0, 255),
         "font-size": (6, SizeUnit.PX),
         "font-weight": "bold",
-        "font-family" : "fira mono",
-        "text-align"  : TextAlign.LEFT
-    }
+        "font-family": "fira mono",
+        "text-align": TextAlign.LEFT,
+    },
 }
 
 # default style for the SvgRenderer
@@ -281,25 +256,35 @@ try:
 except ImportError:
     print("Cairo is not installed and cannot be used")
 else:
+
     def apply_cairo_style(context, name: str):
+        """
+        read the style and apply via cairo functions
+        """
         style = get_style(name)
         apply_cairo_font(context, style)
         apply_cairo_fill(context, style)
         apply_cairo_stroke(context, style)
-        
+
     def apply_cairo_fill(context, style: dict):
+        """
+        set the fill color found in the style
+        """
         # color
         t = style.get("fill", None)
         if not t is None:
             r, g, b, a = t
-            context.set_source_rgba(r/255, g/255, b/255, a/255)
-    
+            context.set_source_rgba(r / 255, g / 255, b / 255, a / 255)
+
     def apply_cairo_stroke(context, style: dict):
+        """
+        support width, color, linecap, linejoin, dash
+        """
         # color
         t = style.get("stroke", None)
         if not t is None:
             r, g, b, a = t
-            context.set_source_rgba(r/255, g/255, b/255, a/255)
+            context.set_source_rgba(r / 255, g / 255, b / 255, a / 255)
         # width
         w = style.get("stroke-width", 1.0)
         if not w is None:
@@ -329,21 +314,27 @@ else:
             context.set_dash(da, of)
 
     def cairo_text_align(context, style: dict, text: str):
-        text_align = style.get("text-align", TextAlign.CENTER)
+        """
+        offset calculation for text alignment
+        """
+        ta = style.get("text-align", TextAlign.CENTER)
         # get text width
         ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
         xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
         # apply style
-        if text_align == TextAlign.LEFT:
+        if ta == TextAlign.LEFT:
             return (0, 0)
-        elif text_align == TextAlign.RIGHT:
+        if ta == TextAlign.RIGHT:
             return (width, 0)
-        else:
-            return (width/2, -descent)
+        return (width / 2, -descent)
 
     def apply_cairo_font(context, style: dict):
+        """
+        get font information from the style and apply
+        support font family, bold, italic, normal, size
+        """
         # font slant
-        font_style  = style.get("font-style", "")
+        font_style = style.get("font-style", "")
         if "it" in font_style:
             font_style = cairo.FONT_SLANT_ITALIC
         elif "ob" in font_style:
@@ -366,9 +357,14 @@ else:
         font_size = style.get("font-size", None)
         if not font_size is None:
             s, u = font_size
-            context.set_font_size(s*u.value)
+            context.set_font_size(s * u.value)
+
 
 def apply_style(context, name: str, engine: Engine):
+    """
+    apply style from 'name' of the selector 
+    for the supported engine
+    """
     if engine in [Engine.SVG, Engine.EPS]:
         # not yet implemented for eps and not needed for SVGRenderer
         pass
@@ -377,25 +373,49 @@ def apply_style(context, name: str, engine: Engine):
     else:
         raise "Engine selected is not yet supported"
 
+
 def apply_fill(context, name: str, engine: Engine):
+    """
+    apply fill from 'name' of the selector 
+    for the supported engine
+    """
     if engine == Engine.CAIRO:
         apply_cairo_fill(context, get_style(name))
 
+
 def apply_stroke(context, name: str, engine: Engine):
+    """
+    apply stroke from 'name' of the selector 
+    for the supported engine
+    """
     if engine == Engine.CAIRO:
         apply_cairo_stroke(context, get_style(name))
 
+
 def apply_font(context, name: str, engine: Engine):
+    """
+    apply font from 'name' of the selector 
+    for the supported engine
+    """
     if engine == Engine.CAIRO:
         apply_cairo_font(context, get_style(name))
 
+
 def get_style(name: str) -> dict:
+    """
+    get the style from the selector rules and
+    fallback to a closest match in the default style
+    """
     selectors = DEFAULT_STYLE.keys()
     if name in selectors:
         return DEFAULT_STYLE.get(name, {})
     else:
-        return DEFAULT_STYLE.get(name.split(' ')[0], {})
+        return DEFAULT_STYLE.get(name.split(" ")[0], {})
+
 
 def text_align(context, name: str, text: str, engine: Engine):
+    """
+    calculate the offset to apply for the text alignment
+    """
     if engine == Engine.CAIRO:
         return cairo_text_align(context, get_style(name), text)
