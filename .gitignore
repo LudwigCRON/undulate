@@ -1,5 +1,10 @@
+# remove config of vscode
 .vscode
+# remove tmp file from mac
 .DS_Store
-.antlr
+# remove the python code coverage database
+.coverage
+htmlcov
+# python cache
 __pycache__
 
