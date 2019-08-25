@@ -85,58 +85,60 @@ DEFAULT_STYLE = {
         "stroke-dasharray": None,
     },
     "data": {
+        "fill": (0, 0, 0, 255),
+        "font-size": (0.7, SizeUnit.EM),
+        "font-style": "normal",
+        "font-variant": "normal",
+        "font-weight": 500,
+        "font-stretch": "normal",
+        "text-align": TextAlign.CENTER,
+        "font-family": "fira mono",
         "text-anchor": "middle",
         "dominant-baseline": "middle",
-        "alignment-baseline": "central",
+        "alignment-baseline": "central"
     },
-    "arrow": {"fill": (0, 0, 0, 255), "stroke": None},
-    "hide": {"fill": (255, 255, 255, 255), "stroke-width": 2},
-    "s0": {
-        "fill": None,
-        "stroke": (0, 0, 0, 255),
-        "stroke-width": 1,
-        "stroke-linecap": LineCap.ROUND,
-        "stroke-linejoin": LineJoin.MITER,
-        "stroke-miterlimit": 4,
-        "stroke-dasharray": None,
+    "arrow": {
+        "fill": (0, 0, 0, 255),
+        "stroke": None
     },
-    "s1": {
-        "fill": None,
-        "stroke": (0, 0, 0, 255),
-        "stroke-width": 1,
-        "stroke-linecap": LineCap.ROUND,
-        "stroke-linejoin": LineJoin.MITER,
-        "stroke-miterlimit": 4,
-        "stroke-dasharray": None,
+    "hide": {
+        "fill": (255, 255, 255, 255),
+        "stroke": (255, 255, 255, 255),
+        "stroke-width": 2
     },
-    "s2 > polygon": {"fill": (0, 0, 0, 0), "stroke": None},
-    "s3 > polygon": {"fill": (255, 255, 176, 255), "stroke": None},
-    "s4 > polygon": {"fill": (255, 224, 185, 255), "stroke": None},
-    "s5 > polygon": {"fill": (185, 224, 255, 255), "stroke": None},
+    "hash": {
+        "fill": (200, 200, 200, 255)
+    },
+    "s2-polygon": {"fill": (0, 0, 0, 0), "stroke": None},
+    "s3-polygon": {"fill": (255, 255, 176, 255), "stroke": None},
+    "s4-polygon": {"fill": (255, 224, 185, 255), "stroke": None},
+    "s5-polygon": {"fill": (185, 224, 255, 255), "stroke": None},
     "tick": {
         "stroke": (136, 136, 136, 255),
         "stroke-width": 0.5,
         "stroke-dasharray": [1, 3],
     },
-    "edge": {"fill": None, "stroke": (0, 0, 255, 255), "stroke-width": 1},
-    "edge-arrowhead": {
-        "fill": None,
-        "stroke": (0, 0, 255, 255),
-        "stroke-width": 1,
-        "marker-start": "#arrow",
-        "overflow": "visible",
+    "edge": {
+        "fill": None, 
+        "stroke": (0, 0, 255, 255), 
+        "stroke-width": 1
     },
-    "edge-arrowtail": {
-        "fill": None,
-        "stroke": (0, 0, 255, 255),
-        "stroke-width": 1,
-        "marker-end": "#arrow",
+    "edge-arrow": {
+        "fill": (0, 0, 255, 255),
+        "stroke": None,
         "overflow": "visible",
     },
     "edge-text": {
+        "font-family": "fira mono",
         "font-size": (0.625, SizeUnit.EM),
+        "fill": (0, 0, 0, 255),
         "filter": "#solid",
         "transform": "translate(0, 2.5px)",
+    },
+    "edge-background": {
+        "fill": (255, 255, 255, 255),
+        "stroke": (255, 255, 255, 255),
+        "stroke-width": 2
     },
     "border": {"stroke-width": 1.25, "stroke": (0, 0, 0, 255)},
     "h1": {
@@ -185,7 +187,15 @@ DEFAULT_STYLE = {
 
 # default style for the SvgRenderer
 DEFAULT = """
-text{font-size:0.9em;
+.text, text{font-size:0.9em;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:500;
+    font-stretch:normal;
+    text-align:center;
+    fill-opacity:1;
+    font-family:fira mono, droid sans mono, monospace;}
+.data{font-size:0.7em;
     font-style:normal;
     font-variant:normal;
     font-weight:500;
@@ -206,7 +216,7 @@ text{font-size:0.9em;
 .h4{font-size:9.38px;font-weight:bold}
 .h5{font-size:7.50px;font-weight:bold}
 .h6{font-size:6px;font-weight:bold}
-.s0, .s1, .path{fill:none;
+.path{fill:none;
     stroke:#000;
     stroke-width:1;
     stroke-linecap:round;
@@ -222,16 +232,18 @@ text{font-size:0.9em;
     stroke-miterlimit:4;
     stroke-opacity:1;
     stroke-dasharray:none}
+.hash{fill:url(#diagonalHatch);}
 .arrow{fill:#000000;fill-opacity:1;stroke:none}
 .hide{fill:#ffffff;fill-opacity:1;stroke:2}
-.s3 > polygon {fill:#ffffb4;fill-opacity:1,stroke:none}
-.s4 > polygon {fill:#ffe0b9;fill-opacity:1,stroke:none}
-.s5 > polygon {fill:#b9e0ff;fill-opacity:1,stroke:none}
+.s2-polygon {fill:none;fill-opacity:0;stroke:none}
+.s3-polygon {fill:#ffffb4;fill-opacity:1;stroke:none}
+.s4-polygon {fill:#ffe0b9;fill-opacity:1;stroke:none}
+.s5-polygon {fill:#b9e0ff;fill-opacity:1;stroke:none}
 .tick {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
 .edge {fill:none;stroke:#00F;stroke-width:1}
-.edge-arrowhead {fill:none;stroke:#00F;stroke-width:1;marker-start:url(#arrow); overflow:visible;}
-.edge-arrowtail {fill:none;stroke:#00F;stroke-width:1;marker-end:url(#arrow); overflow:visible;}
-.edge + text, .edge-arrowhead + text, .edge-arrowtail + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
+.edge-background {fill:#ffffff;fill-opacity:1;stroke:2}
+.edge-arrow{fill:#00F;fill-opacity:1;stroke:none}
+.edge ~ text {font-size:0.625em; transform: translate(0, 2.5px);}
 """
 
 DEFINITION = """
@@ -327,6 +339,20 @@ else:
         if ta == TextAlign.RIGHT:
             return (width, 0)
         return (width / 2, -descent)
+    
+    def cairo_text_bbox(context, style: dict, text: str):
+        """
+        return size of the text for a given font
+        """
+        ta = style.get("text-align", TextAlign.CENTER)
+        # get text width
+        ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
+        xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
+        if ta == TextAlign.LEFT:
+            return (0, -height/2, width, _height)
+        if ta == TextAlign.RIGHT:
+            return (-width, -height/2, width, _height)
+        return (-width / 2, -descent-height/2, width, _height)
 
     def apply_cairo_font(context, style: dict):
         """
@@ -419,3 +445,12 @@ def text_align(context, name: str, text: str, engine: Engine):
     """
     if engine == Engine.CAIRO:
         return cairo_text_align(context, get_style(name), text)
+
+def text_bbox(context, name: str, text: str, engine: Engine):
+    """
+    calculate the bounding box of the text
+    """
+    if engine == Engine.CAIRO:
+        apply_cairo_style(context, name)
+        return cairo_text_bbox(context, get_style(name), text)
+    return (-len(text)*6/2, -4.5, len(text)*6, 9)

@@ -9,6 +9,7 @@ into encapsulated postcript file or postscript file
 # TODO fix position of edges --> seems to be only a y=-y
 # TODO fix position of wavelane in group with spacers
 
+from .skin import Engine
 from .renderer import Renderer, SvgCurveConvert
 
 class EpsRenderer(Renderer):
@@ -22,6 +23,7 @@ class EpsRenderer(Renderer):
 
     def __init__(self):
         Renderer.__init__(self)
+        self.engine = Engine.EPS
         self._height = 0
         self._offset_stack = [(0, 0)]
         self._ox = 0
@@ -109,11 +111,13 @@ class EpsRenderer(Renderer):
         vertices: list of of x-y coordinates in a tuple
         [extra] : optional attributes for the svg (eg class)
         """
+        extra = kwargs.get("extra", None)
+        style = kwargs.get("style_repr", None)
         fill = kwargs.get("fill", "1 1 1 setrgbcolor")
         block_height = kwargs.get("block_height", 20)
-        if "Hatch" in fill:
+        if "hash" in style:
             path = ["gsave", "newpath", "0 0 moveto"]
-        elif fill != "none":
+        elif style != "none":
             path = ["gsave", "newpath", fill, "0 0 moveto"]
         else:
             return ""
@@ -128,7 +132,7 @@ class EpsRenderer(Renderer):
             ymax = y if ymax < y else ymax
             path.append(f"{x - px} {y - py} rlineto")
             px, py = x, y
-        if "Hatch" in fill:
+        if "hash" in style:
             path[2] = path[2].replace("rlineto", "rmoveto")
             path.append("closepath")
             path.append("clip")

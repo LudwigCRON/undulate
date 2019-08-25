@@ -6,7 +6,7 @@ svgrenderer.py use the logic of renderer.py to render waveforms
 into scalable vector graphics format
 """
 
-from .skin import DEFAULT, DEFINITION
+from .skin import DEFAULT, DEFINITION, Engine
 from .renderer import Renderer
 
 class SvgRenderer(Renderer):
@@ -21,6 +21,7 @@ class SvgRenderer(Renderer):
 
     def __init__(self):
         Renderer.__init__(self)
+        self.engine = Engine.SVG
 
     def _SYMBOL_TEMP(self, *args, **kwargs):
         symbol, content = args
@@ -47,7 +48,7 @@ class SvgRenderer(Renderer):
         path = "M" + path[1:]
         return f'<path d="{path.strip()}" class="{style_repr}" />\n'
 
-    def arrow(self, x, y, angle, style_repr: str = "", **kwargs) -> str:
+    def arrow(self, x, y, angle, **kwargs) -> str:
         """
         arrow draw an arrow to represent edge trigger on clock signals
         x       : x coordinate of the arrow center
@@ -55,22 +56,29 @@ class SvgRenderer(Renderer):
         angle   : angle in degree to rotate the arrow
         [style_repr] : optional attributes for the svg (eg class)
         """
+        style_repr = kwargs.get("style_repr", "arrow")
         return (
             f'<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" '
             f'transform="translate({x-3.5}, {y-3.5}) rotate({angle-90}, 3.5, 3.5)" '
             f'class="{style_repr}" />\n'
         )
 
-    def polygon(self, vertices: list, fill: str = "", **kwargs) -> str:
+    def polygon(self, vertices: list, **kwargs) -> str:
         """
         polygon draw a closed shape to represent common data
         vertices: list of of x-y coordinates in a tuple
         [extra] : optional attributes for the svg (eg class)
         """
+        extra = kwargs.get("extra", None)
+        style = kwargs.get("style_repr", None)
+        if "hash" in style or "polygon" in style:
+            extra = ""
+        if callable(extra):
+            extra = extra()
         ans = '<polygon points="'
         for x, y in vertices:
             ans += f"{x},{y} "
-        ans += f'" fill="{fill}" />\n'
+        ans += f'" class="{style}" {extra}/>\n'
         return ans
 
     def spline(self, vertices: list, style_repr: str = "", **kwargs) -> str:
@@ -94,7 +102,7 @@ class SvgRenderer(Renderer):
         text    : text to display
         """
         extra = kwargs.get("extra", "")
-        style = kwargs.get("style_repr", "")
+        style = kwargs.get("style_repr", "text")
         if style:
             style = f'class="{style}"'
         return f'<text x="{x}" y="{y}" {extra} {style}>{text}</text>\n'

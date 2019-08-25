@@ -1,6 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="896" height="123.0" viewBox="-1 -1 897 125.0" overflow="hidden">
 <style>
-text{font-size:0.9em;
+.text, text{font-size:0.9em;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:500;
+    font-stretch:normal;
+    text-align:center;
+    fill-opacity:1;
+    font-family:fira mono, droid sans mono, monospace;}
+.data{font-size:0.7em;
     font-style:normal;
     font-variant:normal;
     font-weight:500;
@@ -21,7 +29,7 @@ text{font-size:0.9em;
 .h4{font-size:9.38px;font-weight:bold}
 .h5{font-size:7.50px;font-weight:bold}
 .h6{font-size:6px;font-weight:bold}
-.s0, .s1, .path{fill:none;
+.path{fill:none;
     stroke:#000;
     stroke-width:1;
     stroke-linecap:round;
@@ -37,16 +45,18 @@ text{font-size:0.9em;
     stroke-miterlimit:4;
     stroke-opacity:1;
     stroke-dasharray:none}
+.hash{fill:url(#diagonalHatch);}
 .arrow{fill:#000000;fill-opacity:1;stroke:none}
 .hide{fill:#ffffff;fill-opacity:1;stroke:2}
-.s3 > polygon {fill:#ffffb4;fill-opacity:1,stroke:none}
-.s4 > polygon {fill:#ffe0b9;fill-opacity:1,stroke:none}
-.s5 > polygon {fill:#b9e0ff;fill-opacity:1,stroke:none}
+.s2-polygon {fill:none;fill-opacity:0;stroke:none}
+.s3-polygon {fill:#ffffb4;fill-opacity:1;stroke:none}
+.s4-polygon {fill:#ffe0b9;fill-opacity:1;stroke:none}
+.s5-polygon {fill:#b9e0ff;fill-opacity:1;stroke:none}
 .tick {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
 .edge {fill:none;stroke:#00F;stroke-width:1}
-.edge-arrowhead {fill:none;stroke:#00F;stroke-width:1;marker-start:url(#arrow); overflow:visible;}
-.edge-arrowtail {fill:none;stroke:#00F;stroke-width:1;marker-end:url(#arrow); overflow:visible;}
-.edge + text, .edge-arrowhead + text, .edge-arrowtail + text {font-size:0.625em; filter: url(#solid); transform: translate(0, 2.5px);}
+.edge-background {fill:#ffffff;fill-opacity:1;stroke:2}
+.edge-arrow{fill:#00F;fill-opacity:1;stroke:none}
+.edge ~ text {font-size:0.625em; transform: translate(0, 2.5px);}
 </style>
 
 <defs>
@@ -102,16 +112,16 @@ text{font-size:0.9em;
 <g id="wavelane_1_1"  transform="translate(0, 0)"  >
 <g data-symbol="BRICKS.field_start"  transform="translate(0, 0)"  class="s2">
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" />
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >31</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">31</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(28, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >nf</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">nf</text>
 </g>
 <g data-symbol="BRICKS.field_end"  transform="translate(56, 0)"  class="s2">
 <path d="M0,50 L28,50 L28,12.5 L0,12.5" class="path" />
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >29</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">29</text>
 </g>
 <g data-symbol="BRICKS.field_start"  transform="translate(84, 0)"  class="s2">
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" />
@@ -119,21 +129,21 @@ text{font-size:0.9em;
 <text x="42.0" y="74" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">000</text>
 <text x="42.0" y="86" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">100</text>
 <text x="42.0" y="98" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">100</text>
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >28</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">28</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(112, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >mop</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">mop</text>
 </g>
 <g data-symbol="BRICKS.field_end"  transform="translate(140, 0)"  class="s2">
 <path d="M0,50 L28,50 L28,12.5 L0,12.5" class="path" />
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >26</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">26</text>
 </g>
 <g data-symbol="BRICKS.field_bit"  transform="translate(168, 0)"  class="s2">
 <path d="M0,12.5 L0,50 L28,50 L28,12.5 L0,12.5" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >vm</text>
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >25</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">vm</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">25</text>
 </g>
 <g data-symbol="BRICKS.field_start"  transform="translate(196, 0)"  class="s2">
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" />
@@ -141,7 +151,7 @@ text{font-size:0.9em;
 <text x="70.0" y="74" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">10000</text>
 <text x="70.0" y="86" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">00000</text>
 <text x="70.0" y="98" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">10000</text>
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >24</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">24</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(224, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
@@ -150,7 +160,7 @@ text{font-size:0.9em;
 <g data-symbol="BRICKS.field_mid"  transform="translate(252, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >lumop</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">lumop</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(280, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
@@ -158,12 +168,12 @@ text{font-size:0.9em;
 </g>
 <g data-symbol="BRICKS.field_end"  transform="translate(308, 0)"  class="s2">
 <path d="M0,50 L28,50 L28,12.5 L0,12.5" class="path" />
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >20</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">20</text>
 </g>
 <g data-symbol="BRICKS.field_start"  transform="translate(336, 0)"  class="s2">
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" />
 <text x="70.0" y="62" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">base address</text>
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >19</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">19</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(364, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
@@ -172,7 +182,7 @@ text{font-size:0.9em;
 <g data-symbol="BRICKS.field_mid"  transform="translate(392, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >rs1</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">rs1</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(420, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
@@ -180,25 +190,25 @@ text{font-size:0.9em;
 </g>
 <g data-symbol="BRICKS.field_end"  transform="translate(448, 0)"  class="s2">
 <path d="M0,50 L28,50 L28,12.5 L0,12.5" class="path" />
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >15</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">15</text>
 </g>
 <g data-symbol="BRICKS.field_start"  transform="translate(476, 0)"  class="s2">
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" />
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >14</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">14</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(504, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >width</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">width</text>
 </g>
 <g data-symbol="BRICKS.field_end"  transform="translate(532, 0)"  class="s2">
 <path d="M0,50 L28,50 L28,12.5 L0,12.5" class="path" />
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >12</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">12</text>
 </g>
 <g data-symbol="BRICKS.field_start"  transform="translate(560, 0)"  class="s2">
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" />
 <text x="70.0" y="62" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">destination of load</text>
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >11</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">11</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(588, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
@@ -207,7 +217,7 @@ text{font-size:0.9em;
 <g data-symbol="BRICKS.field_mid"  transform="translate(616, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >vd</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">vd</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(644, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
@@ -215,7 +225,7 @@ text{font-size:0.9em;
 </g>
 <g data-symbol="BRICKS.field_end"  transform="translate(672, 0)"  class="s2">
 <path d="M0,50 L28,50 L28,12.5 L0,12.5" class="path" />
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >7</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">7</text>
 </g>
 <g data-symbol="BRICKS.field_start"  transform="translate(700, 0)"  class="s2">
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" />
@@ -223,38 +233,38 @@ text{font-size:0.9em;
 <text x="98.0" y="74" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">VLxU,VLE zero-extended, fault-only-first</text>
 <text x="98.0" y="86" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">VLxU sign-extended</text>
 <text x="98.0" y="98" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="attr">VLxU sign-extended, fault-only-first</text>
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >6</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">0</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">6</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(728, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(756, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(784, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">0</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(812, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >1</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">1</text>
 </g>
 <g data-symbol="BRICKS.field_mid"  transform="translate(840, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" />
 <path d="M28,18.75 l0,-6.25 l-28,0 l0,6.25" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >1</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">1</text>
 </g>
 <g data-symbol="BRICKS.field_end"  transform="translate(868, 0)"  class="s2">
 <path d="M0,50 L28,50 L28,12.5 L0,12.5" class="path" />
-<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >1</text>
-<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" >0</text>
+<text x="14.0" y="31.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">1</text>
+<text x="14.0" y="6.25" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data">0</text>
 </g>
 </g>
 </g>

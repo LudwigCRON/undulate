@@ -24,14 +24,16 @@ class CairoRenderer(Renderer):
 
     def __init__(self, **kwargs):
         Renderer.__init__(self)
+        self.engine = Engine.CAIRO
         self.cr = None
         self.surface = None
         self.extension = kwargs.get("extension", "svg").lower()
 
-    def group(self, callback, identifier: str, extra: str = "", **kwargs) -> str:
+    def group(self, callback, identifier: str, **kwargs) -> str:
         """
         group define a group
         """
+        extra = kwargs.get("extra", None)
         self.cr.push_group()
         if callable(extra):
             extra()
@@ -88,18 +90,17 @@ class CairoRenderer(Renderer):
         self.cr.restore()
         return ""
 
-    def polygon(self, vertices: list, fill: str = "", **kwargs) -> str:
+    def polygon(self, vertices: list, **kwargs) -> str:
         """
         polygon draw a closed shape to represent common data
         vertices: list of of x-y coordinates in a tuple
         [extra] : optional attributes for the svg (eg class)
         """
         extra = kwargs.get("extra", None)
+        style = kwargs.get("style_repr", None)
         self.cr.save()
         if callable(extra):
             extra()
-        style = kwargs.get("style", None)
-        style = fill if fill != "none" else style + " > polygon"
         apply_fill(self.cr, style, Engine.CAIRO)
         self.cr.new_path()
         for i, v in enumerate(vertices):
@@ -107,8 +108,6 @@ class CairoRenderer(Renderer):
                 self.cr.move_to(*v)
             else:
                 self.cr.line_to(*v)
-        if "Hatch" in fill:
-            self.cr.set_source_rgba(0.75, 0.75, 0.75, 1)
         self.cr.fill_preserve()
         apply_stroke(self.cr, style, Engine.CAIRO)
         self.cr.stroke()

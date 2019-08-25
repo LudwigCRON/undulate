@@ -1,7 +1,7 @@
 TESTPATH=$(shell pwd)
 WAVEFORM=../waveform.py
 
-.PHONY: new legacy internal eps cairo-svg register
+.PHONY: new legacy internal eps cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml internal-eps internal-svg internal-cairo-svg
 
 %.jsonml:
 	@echo $@
@@ -40,8 +40,8 @@ eps: wavetest.yaml
 	$(WAVEFORM) -i ${TESTPATH}/$< -f eps -o ${TESTPATH}/output/$(subst .yaml,-yaml.eps,$<)
 	gs -sDEVICE=jpeg -dJPEGQ=100 -dNOPAUSE -dBATCH -dSAFER -r300 -sOutputFile=${TESTPATH}/output/$(subst .yaml,-yaml.jpg,$<) ${TESTPATH}/output/$(subst .yaml,-yaml.eps,$<)
 
-cairo-svg:
-	$(WAVEFORM) -i ${TESTPATH}/$< -f cairo-svg -o ${TESTPATH}/output/$(subst .yaml,-yaml.eps,$<)
+cairo-svg: wavetest.yaml
+	$(WAVEFORM) -i ${TESTPATH}/$< -f cairo-svg -o ${TESTPATH}/output/$(subst .yaml,-yaml.cairo-svg,$<)
 
 register:
 	$(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f svg -o "${TESTPATH}/legacy/reg-opivi-jsonml.svg"
