@@ -28,7 +28,7 @@ SUPPORTED_FORMAT = [
     [".toml"]
 ]
 
-SUPPORTED_RENDER = ["svg", "eps", "cairo-svg", "cairo-ps", "cairo-eps"]
+SUPPORTED_RENDER = ["svg", "eps", "cairo-svg", "cairo-ps", "cairo-eps", "cairo-pdf", "cairo-png"]
 
 def _number_convert(match):
   base, number = match.group(1).lower(), match.group(2)

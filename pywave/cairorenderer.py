@@ -229,20 +229,25 @@ class CairoRenderer(Renderer):
             height += n * 12
         # select appropriate surface
         if self.extension == "svg":
-            self.surface = cairo.SVGSurface(filename, width + lkeys * 11 + 11, height)
+            self.surface = cairo.SVGSurface(filename, (width + lkeys * 11 + 11), height)
         elif self.extension == "png":
-            self.surface = cairo.ImageSurface(
-                cairo.FORMAT_ARGB32, width + lkeys * 11 + 11, height
-            )
+            self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, int(width + lkeys * 11 + 11), int(height))
         elif self.extension == "ps":
-            self.surface = cairo.PsSurface(filename, width + lkeys * 11 + 11, height)
+            self.surface = cairo.PSSurface(filename, (width + lkeys * 11 + 11), height)
             self.surface.set_eps(False)
         elif self.extension == "eps":
-            self.surface = cairo.PsSurface(filename, width + lkeys * 11 + 11, height)
+            self.surface = cairo.PSSurface(filename, (width + lkeys * 11 + 11), height)
             self.surface.set_eps(True)
+        elif self.extension == "pdf":
+            self.surface = cairo.PDFSurface(filename, (width + lkeys * 11 + 11), height)
         else:
             raise "Not supported format"
         self.cr = cairo.Context(self.surface)
+        # set background for png image
+        if self.extension == "png":
+            self.cr.set_source_rgb(1, 1, 1)
+            self.cr.paint()
+        # paint waveforms
         self.wavegroup(
             _id,
             wavelanes,
@@ -253,6 +258,12 @@ class CairoRenderer(Renderer):
             offsetx=lkeys * 10 + 10,
         )
         self.cr.show_page()
-        self.surface.finish()
+        # write to an external file for png images
+        if self.extension == "png":
+            print(filename)
+            self.surface.write_to_png(filename)
+        # otherwise close the file pointer
+        else:
+            self.surface.finish()
         return ""
 
