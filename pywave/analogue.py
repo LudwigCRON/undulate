@@ -42,10 +42,10 @@ class Meta(pywave.Brick):
             time = range(int(dt), int(self.width * 0.75 + 2))
         _tmp = [("m", 0, self.last_y)]
         if kwargs.get("then_one", False):
-            for t in time:
+            for i, t in enumerate(time):
                 _tmp.append(
                     (
-                        "L" if t == dt else "",
+                        "L" if i == 0 else "",
                         t,
                         (
                             1
@@ -60,10 +60,10 @@ class Meta(pywave.Brick):
             dx = max(y * self.slewing / self.height, y)
             _tmp.extend([("C", x + dx, 0), ("", x + dx, 0), ("", self.width, 0)])
         else:
-            for t in time:
+            for i, t in enumerate(time):
                 _tmp.append(
                     (
-                        "L" if t == dt else "",
+                        "L" if i == 0 else "",
                         t,
                         (
                             1
