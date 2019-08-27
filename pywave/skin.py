@@ -119,8 +119,8 @@ DEFAULT_STYLE = {
         "stroke-dasharray": [1, 3],
     },
     "edge": {
-        "fill": None, 
-        "stroke": (0, 0, 255, 255), 
+        "fill": None,
+        "stroke": (0, 0, 255, 255),
         "stroke-width": 1
     },
     "edge-arrow": {
@@ -273,7 +273,7 @@ DEFINITION = """
 try:
     import cairo
 except ImportError:
-    print("Cairo is not installed and cannot be used")
+    pass
 else:
 
     def apply_cairo_style(context, name: str):
@@ -346,7 +346,7 @@ else:
         if ta == TextAlign.RIGHT:
             return (width, 0)
         return (width / 2, -descent)
-    
+
     def cairo_text_bbox(context, style: dict, text: str):
         """
         return size of the text for a given font
@@ -395,7 +395,7 @@ else:
 
 def apply_style(context, name: str, engine: Engine):
     """
-    apply style from 'name' of the selector 
+    apply style from 'name' of the selector
     for the supported engine
     """
     if engine in [Engine.SVG, Engine.EPS]:
@@ -409,7 +409,7 @@ def apply_style(context, name: str, engine: Engine):
 
 def apply_fill(context, name: str, engine: Engine):
     """
-    apply fill from 'name' of the selector 
+    apply fill from 'name' of the selector
     for the supported engine
     """
     if engine == Engine.CAIRO:
@@ -418,7 +418,7 @@ def apply_fill(context, name: str, engine: Engine):
 
 def apply_stroke(context, name: str, engine: Engine):
     """
-    apply stroke from 'name' of the selector 
+    apply stroke from 'name' of the selector
     for the supported engine
     """
     if engine == Engine.CAIRO:
@@ -427,7 +427,7 @@ def apply_stroke(context, name: str, engine: Engine):
 
 def apply_font(context, name: str, engine: Engine):
     """
-    apply font from 'name' of the selector 
+    apply font from 'name' of the selector
     for the supported engine
     """
     if engine == Engine.CAIRO:

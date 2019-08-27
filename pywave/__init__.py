@@ -9,4 +9,7 @@ from .skin import text_bbox, text_align, apply_fill, apply_font, apply_stroke, a
 from .renderer import Renderer
 from .svgrenderer import SvgRenderer
 from .epsrenderer import EpsRenderer
-from .cairorenderer import CairoRenderer
+try:
+    from .cairorenderer import CairoRenderer
+except ImportError:
+    print("Cairo is not installed and cannot be used")
