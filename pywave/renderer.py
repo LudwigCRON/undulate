@@ -352,7 +352,7 @@ class Renderer:
                 if symbol in [pywave.BRICKS.field_start, pywave.BRICKS.field_bit]:
                     attr_counter += 1
                 # get next data
-                if symbol in [pywave.BRICKS.data, 
+                if symbol in [pywave.BRICKS.data,
                         pywave.BRICKS.field_start, pywave.BRICKS.field_mid,
                         pywave.BRICKS.field_end, pywave.BRICKS.field_bit]:
                     data_counter += 1
@@ -630,7 +630,7 @@ class Renderer:
             ans = self.group(lambda: _gen(offset, width, height, brick_width, brick_height), name, extra=extra)
             offsetx, offsety = offset[0], offset[1]
             # finish the group
-            ans += self.edges(wavelanes, extra=self.translate(offsetx, 0, dont_touch=True), **kwargs)
+            ans += self.edges(wavelanes, extra=self.translate(offsetx, (depth-1)*20, dont_touch=True), **kwargs)
             return (offsety, ans)
         # unknown options
         else:
