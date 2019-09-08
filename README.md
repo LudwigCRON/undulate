@@ -1,4 +1,6 @@
 
+![Code Coverage 94%](https://img.shields.io/badge/coverage-94%-green)
+
 [EDITOR](http://wavedrom.com/editor.html) | [TUTORIAL](http://wavedrom.com/tutorial.html)
 
 ## Introduction
