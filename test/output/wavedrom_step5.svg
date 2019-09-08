@@ -151,7 +151,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(60, 0)"  >
+<g id="edge"  transform="translate(60, 40)"  >
 </g>
 <g id="addr"  transform="translate(60, 100.0)"  >
 <text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">addr</text>
@@ -203,7 +203,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(60, 0)"  >
+<g id="edge"  transform="translate(60, 20)"  >
 </g>
 <g id="Slave"  transform="translate(0, 220.0)"  >
 <text x="0" y="10"  class="h2">Slave</text>
@@ -241,7 +241,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(60, 0)"  >
+<g id="edge"  transform="translate(60, 40)"  >
 </g>
 <g id="rdata"  transform="translate(60, 70.0)"  >
 <text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">rdata</text>
@@ -263,7 +263,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(60, 0)"  >
+<g id="edge"  transform="translate(60, 20)"  >
 </g>
 </g>
 <g id="edge"  transform="translate(60, 0)"  >

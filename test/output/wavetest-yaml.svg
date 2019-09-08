@@ -466,7 +466,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 20)"  >
 </g>
 <g id="test 2"  transform="translate(0, 350.0)"  >
 <text x="0" y="10"  class="h2">test 2</text>
@@ -546,7 +546,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 20)"  >
 </g>
 <g id="test 3"  transform="translate(0, 460.0)"  >
 <text x="0" y="10"  class="h2">test 3</text>
@@ -679,7 +679,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 20)"  >
 </g>
 <g id="test 4"  transform="translate(0, 630.0)"  >
 <text x="0" y="10"  class="h2">test 4</text>
@@ -742,7 +742,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 60)"  >
 </g>
 <g id="addr"  transform="translate(150, 100.0)"  >
 <text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">addr</text>
@@ -828,7 +828,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 80)"  >
 </g>
 <g id="rdata"  transform="translate(150, 70.0)"  >
 <text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">rdata</text>
@@ -850,13 +850,13 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 60)"  >
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 40)"  >
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 20)"  >
 </g>
 <g id="test 5"  transform="translate(0, 970.0)"  >
 <text x="0" y="10"  class="h2">test 5</text>
@@ -1069,7 +1069,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 20)"  >
 </g>
 <g id="test 6"  transform="translate(0, 1140.0)"  >
 <text x="0" y="10"  class="h2">test 6</text>
@@ -1183,7 +1183,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 20)"  >
 </g>
 <g id="test 7"  transform="translate(0, 1280.0)"  >
 <text x="0" y="10"  class="h2">test 7</text>
@@ -1513,7 +1513,7 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(150, 0)"  >
+<g id="edge"  transform="translate(150, 20)"  >
 </g>
 </g>
 <g id="edge"  transform="translate(150, 0)"  >

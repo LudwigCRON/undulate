@@ -144,9 +144,15 @@ def generate_analogue_symbol(symbol: str, **kwargs) -> (bool, object):
         block = Meta(**kwargs)
     # full custom analogue bloc
     elif symbol == pywave.BRICKS.step:
-        block = Step(pywave.BRICKS.transform_y(float(equation), height), **kwargs)
+        if isinstance(equation, str):
+            block = Step(pywave.BRICKS.transform_y(eval(equation, CONTEXT), height), **kwargs)
+        else:
+            block = Step(pywave.BRICKS.transform_y(equation, height), **kwargs)
     elif symbol == pywave.BRICKS.cap:
-        block = Cap(pywave.BRICKS.transform_y(float(equation), height), **kwargs)
+        if isinstance(equation, str):
+            block = Cap(pywave.BRICKS.transform_y(eval(equation, CONTEXT), height), **kwargs)
+        else:
+            block = Cap(pywave.BRICKS.transform_y(equation, height), **kwargs)
     elif symbol == pywave.BRICKS.ana:
         last_y = height if last_y is None else last_y
         try:
