@@ -56,10 +56,15 @@ class SvgRenderer(Renderer):
         angle   : angle in degree to rotate the arrow
         [style_repr] : optional attributes for the svg (eg class)
         """
+        extra = kwargs.get("extra", None)
         style_repr = kwargs.get("style_repr", "arrow")
+        is_edge = kwargs.get("is_edge", False)
+        transform = f'transform="translate({x}, {y}) rotate({angle-90}, 0, 0)" '
+        if is_edge:
+            transform = f'{extra[:-2]} rotate({angle-90}, 0, 0)" '
         return (
-            f'<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" '
-            f'transform="translate({x-3.5}, {y-3.5}) rotate({angle-90}, 3.5, 3.5)" '
+            f'<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" '
+            f'{transform}'
             f'class="{style_repr}" />\n'
         )
 

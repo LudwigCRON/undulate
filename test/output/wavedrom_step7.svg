@@ -21,7 +21,7 @@
 .error{fill:#f60000}
 .info{fill:#0041c4}
 .title{
-    fill: rgba(0, 65, 196, 255);
+    fill: #0041c4;
     font-weight: 500;
     font-size: 0.9em;
     font-family: fira mono;
@@ -215,7 +215,7 @@
 </g>
 <g id="edge_2"  >
 <path d="M125.0,70.0 C165.0,70.0 165.0,100.0 165.0,100.0" class="edge" />
-<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(161.49999535621785, 93.00000000000308) rotate(0, 3.5, 3.5)" class="edge-arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(164.99999535621785, 96.50000000000308) rotate(0, 0, 0)" class="edge-arrow" />
 <polygon points="0,0 0,9 36,9 36,0 0,0 " class="edge-background"  transform="translate(127.0, 80.5)" />
 <text x="145.0" y="85.0" text-anchor="middle" class="edge-text">time 3</text>
 </g>
@@ -224,29 +224,29 @@
 </g>
 <g id="edge_4"  >
 <path d="M205.0,130.0 C241.0,130.0 209.0,130.0 245.0,130.0" class="edge" />
-<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(238.0, 126.5) rotate(-90.0, 3.5, 3.5)" class="edge-arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(241.5, 130.0) rotate(-90.0, 0, 0)" class="edge-arrow" />
 </g>
 <g id="edge_5"  >
 <path d="M245.0,130.0 L285.0,100.0" class="edge" />
-<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(278.7, 98.6) rotate(-126.86992878854058, 3.5, 3.5)" class="edge-arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(282.2, 102.1) rotate(-126.86992878854058, 0, 0)" class="edge-arrow" />
 </g>
 <g id="edge_6"  >
 <path d="M285.0,100.0 C325.0,100.0 325.0,70.0 325.0,70.0" class="edge" />
-<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(321.4999953562179, 69.99999999999692) rotate(-180, 3.5, 3.5)" class="edge-arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(324.9999953562179, 73.49999999999692) rotate(-180, 0, 0)" class="edge-arrow" />
 </g>
 <g id="edge_7"  >
 <path d="M325.0,70.0 C397.0,70.0 333.0,40.0 405.0,40.0" class="edge" />
-<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(398.0, 36.5) rotate(-90.0, 3.5, 3.5)" class="edge-arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(401.5, 40.0) rotate(-90.0, 0, 0)" class="edge-arrow" />
 <polygon points="0,0 0,9 54,9 54,0 0,0 " class="edge-background"  transform="translate(338.0, 50.5)" />
 <text x="365.0" y="55.0" text-anchor="middle" class="edge-text">some text</text>
 </g>
 <g id="edge_8"  >
 <path d="M325.0,70.0 C325.0,70.0 325.0,10.0 405.0,10.0" class="edge" />
-<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(398.0, 6.5) rotate(-90.0, 3.5, 3.5)" class="edge-arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(401.5, 10.0) rotate(-90.0, 0, 0)" class="edge-arrow" />
 </g>
 <g id="edge_9"  >
 <path d="M205.0,160.0 C277.0,160.0 213.0,190.0 285.0,190.0" class="edge" />
-<path d="M 0 0 L 3.5 7 L 7 0 L 3.5 1.5z" transform="translate(278.0, 186.5) rotate(-90.0, 3.5, 3.5)" class="edge-arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(281.5, 190.0) rotate(-90.0, 0, 0)" class="edge-arrow" />
 <polygon points="0,0 0,9 30,9 30,0 0,0 " class="edge-background"  transform="translate(220.0, 170.5)" />
 <text x="235.0" y="175.0" text-anchor="middle" class="edge-text">youpi</text>
 </g>

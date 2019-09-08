@@ -9,6 +9,7 @@ into encapsulated postcript file or postscript file
 # TODO fix position of edges --> seems to be only a y=-y
 # TODO fix position of wavelane in group with spacers
 
+from math import sin
 from .skin import Engine
 from .renderer import Renderer, SvgCurveConvert
 
@@ -83,7 +84,7 @@ class EpsRenderer(Renderer):
             path.append("stroke\n")
         return "\n".join(path)
 
-    def arrow(self, x, y, angle, extra: str = "", **kwargs) -> str:
+    def arrow(self, x, y, angle, **kwargs) -> str:
         """
         arrow draw an arrow to represent edge trigger on clock signals
         x       : x coordinate of the arrow center
@@ -91,9 +92,17 @@ class EpsRenderer(Renderer):
         angle   : angle in degree to rotate the arrow
         [extra] : optional attributes for the svg (eg class)
         """
+        extra = kwargs.get("extra", None)
+        dy = kwargs.get("dy", 0)
+        is_edge = kwargs.get("is_edge", False)
+        transform = extra if is_edge else f"{x} {y} translate"
+        if dy:
+            transform += f"\n0 {dy} translate"
+        color = "0 0 1 setrgbcolor" if is_edge else "0 0 0 setrgbcolor"
         return (
             "gsave\n"
-            f"{x} {y} translate\n"
+            f"{color}\n"
+            f"{transform}\n"
             f"{-angle-90} rotate\n"
             "newpath\n"
             "-3.5 -3.5 moveto\n"
@@ -160,6 +169,8 @@ class EpsRenderer(Renderer):
         """
         style = kwargs.get("style_repr", "")
         block_height = kwargs.get("block_height", 20)
+        is_edge = kwargs.get("is_edge", False)
+        color = "0 0 1 setrgbcolor" if is_edge else "0 0 0 setrgbcolor"
         # debug spline
         vertices = SvgCurveConvert(vertices)
         # ticks are disabled for debug purpose only
@@ -208,7 +219,7 @@ class EpsRenderer(Renderer):
             path.append("1 1 1 setrgbcolor")
             path.append("fill\n")
         else:
-            path.append("0 0 0 setrgbcolor")
+            path.append(color)
             path.append("stroke\n")
         return "\n".join(path)
 
@@ -247,8 +258,10 @@ class EpsRenderer(Renderer):
         return f"gsave\n{ans}\ngrestore\n"
 
     def translate(self, x: float, y: float, **kwargs) -> str:
-        no_acc = kwargs.get("no_acc", False)
-        dont_touch = kwargs.get("dont_touch", False)
+        no_acc       = kwargs.get("no_acc", False)
+        dont_touch   = kwargs.get("dont_touch", False)
+        revert       = kwargs.get("revert", False)
+        brick_height = kwargs.get("brick_height", 20)
         if not dont_touch:
             self._offset_stack.append((self._ox, self._oy))
             if no_acc:
@@ -256,6 +269,8 @@ class EpsRenderer(Renderer):
             else:
                 self._ox, self._oy = self._ox + x, self._oy + y
             return f"{self._ox} {self._height - self._oy} translate 0 0 moveto"
+        elif revert:
+            return f"{self._ox - x} {self._height - self._oy - y + brick_height * 1.25} translate 0 0 moveto"
         else:
             return f"{self._ox + x} {self._height - self._oy - y} translate 0 0 moveto"
 

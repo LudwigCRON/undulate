@@ -3,6 +3,8 @@ WAVEFORM=../waveform.py
 
 .PHONY: new legacy internal eps cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml internal-eps internal-svg internal-cairo-svg
 
+all: new legacy internal eps cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml coverage
+
 %.jsonml:
 	@echo $@
 	$(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/legacy/$(subst .jsonml,-jsonml.svg,$@)"

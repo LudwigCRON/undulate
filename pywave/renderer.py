@@ -434,6 +434,7 @@ class Renderer:
         global _EDGE_COUNT
         brick_width  = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
+        height = kwargs.get("height", 0)
         nodes = []
         def _gen():
             ans, _y = "", 0
@@ -486,37 +487,47 @@ class Renderer:
                             # generate the vertices
                             mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
                             if _shape in ['<~', '~', '~>', '<~>']:
-                                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], style_repr=style)
+                                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
                             elif _shape in ['<-~', '-~', '-~>', '<-~>']:
-                                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], style_repr=style)
+                                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
                                 start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, 0, e[1]-s[1]
                             elif _shape in ['<~-', '~-', '~->', '<~->']:
-                                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], style_repr=style)
+                                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
                                 start_dx, start_dy, end_dx, end_dy = 0, s[1]-e[1], e[0]-s[0], 0
                             elif _shape in ['<-', '-', '->', '<->']:
-                                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], style_repr=style)
+                                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], is_edge=True, style_repr=style)
                                 start_dx, start_dy, end_dx, end_dy = s[0]-e[0], s[1]-e[1], e[0]-s[0], e[1]-s[1]
                             elif _shape in ['<-|', '-|', '-|>', '<-|>']:
-                                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], style_repr=style)
+                                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
                                 start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, 0, e[1]-s[1]
                                 mx, my = e[0], s[1]
                             elif _shape in ['<|-', '|-', '|->', '<|->']:
-                                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], style_repr=style)
+                                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
                                 start_dx, start_dy, end_dx, end_dy = 0, s[1]-e[1], e[0]-s[0], 0
                                 mx, my = s[0], e[1]
                             elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
-                                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], style_repr=style)
+                                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
                                 start_dx, start_dy, end_dx, end_dy = s[0]-mx, 0, e[0]-mx, 0
                                 mx, my = mx, e[1]
                             # add arrows
                             # marker start
                             if _shape[0] == '<':
                                 th = arrow_angle(start_dy, start_dx)
-                                ans += self.arrow(s[0]-3.5*cos(th*3.14159/180), s[1]-3.5*sin(th*3.14159/180), th, style_repr="edge-arrow")
+                                ans += self.arrow(0, 0, th,
+                                        extra=self.translate(s[0]-3.5*cos(th*3.14159/180), s[1]-3.5*sin(th*3.14159/180),
+                                        no_acc=True),
+                                    dy=brick_height,
+                                    is_edge=True,
+                                    style_repr="edge-arrow")
                             # marker end
                             if _shape[-1] == '>':
                                 th = arrow_angle(end_dy, end_dx)
-                                ans += self.arrow(e[0]-3.5*cos(th*3.14159/180), e[1]-3.5*sin(th*3.14159/180), th, style_repr="edge-arrow")
+                                ans += self.arrow(0, 0, th,
+                                        extra=self.translate(e[0]-3.5*cos(th*3.14159/180), e[1]-3.5*sin(th*3.14159/180),
+                                        no_acc=True),
+                                    dy=brick_height,
+                                    is_edge=True,
+                                    style_repr="edge-arrow")
                             if text.strip():
                                 # add white background for the text
                                 ox, oy, w, h = pywave.text_bbox(self.cr, "edge-text", text, self.engine)
@@ -525,7 +536,7 @@ class Renderer:
                                     (0, 0+h),
                                     (0+w, 0+h),
                                     (0+w, 0),
-                                    (0, 0)], extra=self.translate(mx+dx+ox, my+dy+oy), style_repr="edge-background")
+                                    (0, 0)], extra=self.translate(mx+dx+ox, my+dy+oy, no_acc=True), style_repr="edge-background")
                                 # add the text
                                 ans += self.text(mx+dx, my+dy, text, extra="text-anchor=\"middle\"", style_repr="edge-text")
                             return ans
@@ -630,7 +641,7 @@ class Renderer:
             ans = self.group(lambda: _gen(offset, width, height, brick_width, brick_height), name, extra=extra)
             offsetx, offsety = offset[0], offset[1]
             # finish the group
-            ans += self.edges(wavelanes, extra=self.translate(offsetx, 0, dont_touch=True), **kwargs)
+            ans += self.edges(wavelanes, extra=self.translate(offsetx, 0, dont_touch=True, revert=True, **kwargs), **kwargs)
             return (offsety, ans)
         # unknown options
         else:

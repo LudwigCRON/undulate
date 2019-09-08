@@ -19,7 +19,14 @@
 .muted{fill:#aaa}
 .warning{fill:#f6b900}
 .error{fill:#f60000}
-.info, .title{fill:#0041c4}
+.info{fill:#0041c4}
+.title{
+    fill: #0041c4;
+    font-weight: 500;
+    font-size: 0.9em;
+    font-family: fira mono;
+    text-align: right;
+}
 .success{fill:#00ab00}
 .attr{font-size:9px;}
 .h1{font-size:18.31px;font-weight:bold}
