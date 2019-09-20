@@ -126,6 +126,30 @@ class Step(pywave.Brick):
         self.paths.append([(0, self.last_y), (dt, y), (self.width, y)])
 
 
+class Analogue(pywave.Brick):
+    """
+  Slewing behaviour
+  """
+
+    def __init__(self, pts, **kwargs):
+        pywave.Brick.__init__(self, **kwargs)
+        if self.is_first:
+            self.last_y = self.height
+        else:
+            self.last_y = self.height if self.last_y is None else self.last_y
+        # add shape
+        try:
+            self.paths.append(
+                [(0, self.last_y)] # link to the previous block
+                + [
+                    (p[0], pywave.BRICKS.transform_y(p[1], self.height))
+                    for p in pts # evaluation fonctions, complex python code
+                ]
+            )
+        except Exception as err:
+            print(getattr(err, "message", repr(err)))
+
+
 def generate_analogue_symbol(symbol: str, **kwargs) -> (bool, object):
     """
   define the mapping between the symbol and the brick
@@ -154,17 +178,7 @@ def generate_analogue_symbol(symbol: str, **kwargs) -> (bool, object):
         else:
             block = Cap(pywave.BRICKS.transform_y(equation, height), **kwargs)
     elif symbol == pywave.BRICKS.ana:
-        last_y = height if last_y is None else last_y
-        try:
-            block.paths.append(
-                [(0, last_y)] # link to the previous block
-                + [
-                    (p[0], pywave.BRICKS.transform_y(p[1], height))
-                    for p in eval(equation, CONTEXT) # evaluation fonctions, complex python code
-                ]
-            )
-        except Exception as err:
-            print(getattr(err, "message", repr(err)))
+        block = Analogue(eval(equation, CONTEXT), **kwargs)
     else:
         block = None
     return (not block is None, block)

@@ -1,0 +1,33 @@
+clk:
+  wave: "p.........."
+
+signal[0]:
+  wave: "0..1...0..."
+  node: "...a...c..."
+
+signal[1]:
+  wave: "0....1....."
+  node: ".....b....."
+
+signal[2]:
+  wave: "0..h.l....."
+  node: "...#....... edge_detection"
+
+annotations:
+  # hline: -
+  - shape: "-"
+    y: 2.5
+  # vline: |
+  - shape: "|"
+    x: 3
+    color: rgba(0, 0, 255, 0.5)
+  - shape: "|"
+    x: 5.25
+    color: rgba(255, 0, 0, 0.5)
+  # arrows as in wavedrom
+  - shape: "~>"
+    from: "a"
+    to: "b"
+  - shape: "-|>"
+    from: (5.25, 4)
+    to: (6, 2)

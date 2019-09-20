@@ -1,0 +1,8 @@
+a:
+  wave: "a.."
+  repeat: 4
+  analogue:
+    - "[(t, t*VDDA/Tmax) for t in time]"
+    - "[(t, VDDA/2*cos(32*pi*t/Tmax)+VDDA/2) for t in time]"
+    - "[(t, exp(-t/Tmax)*VDDA/2*cos(32*pi*t/Tmax)+VDDA/2) for t in time]"
+    - "[(t, cos(4*pi*t/Tmax)*sin(16*pi*t/Tmax)*VDDA/2+VDDA/2) for t in time]"
