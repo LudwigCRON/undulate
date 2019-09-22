@@ -47,8 +47,11 @@ pywave is compatible with pydrom...
 in json-ml for strict compatibility
 ```json
 { signal : [
+  // clock signal
   { name: "clk",  wave: "p......" },
+  // bus data
   { name: "bus",  wave: "x.34.5x",   data: "head body tail" },
+  // request signal
   { name: "wire", wave: "0.1..0." },
 ]}
 ```

@@ -1,0 +1,5 @@
+gated clock n:
+    wave: "N0...Nl"
+
+gated clock p:
+    wave: "P0...Pl"

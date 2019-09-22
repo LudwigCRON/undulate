@@ -1,0 +1,5 @@
+a:
+  wave: "a.."
+  period: 1.333
+  analogue:
+    - "[(t, cos(4*pi*t/Tmax)*sin(16*pi*t/Tmax)*exp(-t/Tmax)*VDDA/2+VDDA/2) for t in time]"
