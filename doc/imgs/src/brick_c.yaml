@@ -1,5 +1,0 @@
-c:
-  wave: "c"
-  repeat: 4
-  slewing: 12
-  analogue: "[0.4*(3-i%4)+0.1 for i in range(16)]"
