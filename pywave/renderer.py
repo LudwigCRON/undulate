@@ -60,7 +60,7 @@ def arrow_angle(dy: float, dx:float) -> float:
 # TODO autoscale or scaling for analogue
 # TODO add support of T curves in svg
 
-def SvgCurveConvert(vertices: list) -> list:
+def svg_curve_convert(vertices: list) -> list:
     """
     convert svg path definition to simpler s/c/m/l only mode
     to support eps renderer and other output format

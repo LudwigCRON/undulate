@@ -14,7 +14,7 @@ from .skin import (
     text_align,
     Engine,
 )
-from .renderer import Renderer, SvgCurveConvert
+from .renderer import Renderer, svg_curve_convert
 
 
 class CairoRenderer(Renderer):
@@ -125,7 +125,7 @@ class CairoRenderer(Renderer):
         style = kwargs.get("style_repr", "path")
         extra = kwargs.get("extra", "")
 
-        vertices = SvgCurveConvert(vertices)
+        vertices = svg_curve_convert(vertices)
         c, px, py, stack = 0, 0, 0, []
 
         self.cr.save()

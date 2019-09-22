@@ -69,8 +69,8 @@ class BRICKS(Enum):
     @staticmethod
     def ignore_transition(from_symb, to_symb):
         """
-        define special case when transition are skip to prevent
-        glitch by default
+        define special case when transition are skipped to prevent
+        glitches by default
         """
         if (from_symb, to_symb) in [
             (BRICKS.x, BRICKS.low),

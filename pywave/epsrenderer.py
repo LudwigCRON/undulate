@@ -11,7 +11,7 @@ into encapsulated postcript file or postscript file
 
 from math import sin
 from .skin import Engine
-from .renderer import Renderer, SvgCurveConvert
+from .renderer import Renderer, svg_curve_convert
 
 class EpsRenderer(Renderer):
     """
@@ -172,7 +172,7 @@ class EpsRenderer(Renderer):
         is_edge = kwargs.get("is_edge", False)
         color = "0 0 1 setrgbcolor" if is_edge else "0 0 0 setrgbcolor"
         # debug spline
-        vertices = SvgCurveConvert(vertices)
+        vertices = svg_curve_convert(vertices)
         # ticks are disabled for debug purpose only
         path, c, cmd, line = [], 0, "moveto", ""
         path.extend(["newpath", "0 0 moveto"])

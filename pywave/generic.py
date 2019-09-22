@@ -58,8 +58,8 @@ class Brick:
 
     def get_last_y(self):
         """
-    get last position to preserve continuity
-    """
+        get last position to preserve continuity
+        """
         last_y = 0
         if self.paths:
             _, last_y = self.paths[0][-1]
@@ -69,8 +69,8 @@ class Brick:
 
     def alter_end(self, shift: float = 0, next_y: float = -1):
         """
-    alter the last coordinate to preserve continuity
-    """
+        alter the last coordinate to preserve continuity
+        """
         for i, path in enumerate(self.paths):
             x1, y1 = path[-1]
             x2, y2 = path[-2]
@@ -96,8 +96,8 @@ class Brick:
 
 def generate_brick(symbol: str, **kwargs) -> dict:
     """
-  define the mapping between the symbol and the brick
-  """
+    define the mapping between the symbol and the brick
+    """
     # get option supported
     width = kwargs.get("brick_width", 40)
     height = kwargs.get("brick_height", 20)
