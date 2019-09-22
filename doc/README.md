@@ -17,6 +17,14 @@ So without any extra module, one can only export to SVG and EPS (colorless mode)
 
 By adding [Pycairo](https://pypi.org/project/pycairo/), pywave can export to SVG, EPS, PS, PDF, PNG.
 
+For tests the following modules are needed:
+- [coverage](https://pypi.org/project/coverage/)
+- [numpy](https://pypi.org/project/numpy/)
+- [scipy](https://pypi.org/project/scipy/)
+- [scikit-image](https://pypi.org/project/scikit-image/)
+
+The last three are used to compare images between format and check the similarity between them.
+
 ## Installation
 The recommended way to install dependencies is by typing in your shell
 
@@ -255,7 +263,7 @@ Dedicated methods are applied to transform a human textual representation of reg
 |    [   | FieldStart |                      | ![n](./imgs/bricks/field_start.yaml.svg)|
 |    ]   |   FieldEnd |                      | ![n](./imgs/bricks/field_end.yaml.svg)  |
 |    :   |   FieldMid |                      | ![n](./imgs/bricks/field_mid.yaml.svg)  |
-|    b   |   FieldBit |                      | ![n](./imgs/bricks/field_bit.yaml.svg)    |
+|    b   |   FieldBit |                      | ![n](./imgs/bricks/field_bit.yaml.svg)  |
 
 ### Style
 [dev-mode only]
