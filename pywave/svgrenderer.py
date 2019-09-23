@@ -86,7 +86,7 @@ class SvgRenderer(Renderer):
         ans += f'" class="{style}" {extra}/>\n'
         return ans
 
-    def spline(self, vertices: list, style_repr: str = "", **kwargs) -> str:
+    def spline(self, vertices: list, style_repr: str = "path", **kwargs) -> str:
         """
         spline draw a path to represent smooth signals
         vertices: list of of type-x-y coordinates in a tuple of control points

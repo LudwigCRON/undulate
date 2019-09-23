@@ -65,6 +65,9 @@ register:
 	$(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f cairo-svg -o "${TESTPATH}/legacy/reg-opivi-jsonml-cairo.svg"
 	$(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f cairo-svg -o "${TESTPATH}/legacy/reg-vl-jsonml-cairo.svg"
 
+annotation:
+	$(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f cairo-svg -o "${TESTPATH}/output/annotation-cairo.svg"
+
 coverage:
 	coverage run $(WAVEFORM) -i ${TESTPATH}/wavetest.yaml -f eps -o ${TESTPATH}/output/$(subst .yaml,-yaml.eps,wavetest.yaml)
 	coverage run -a $(WAVEFORM) -i ${TESTPATH}/wavetest.yaml -f svg -o ${TESTPATH}/output/$(subst .yaml,-yaml.svg,wavetest.yaml)

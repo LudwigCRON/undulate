@@ -13,21 +13,30 @@ signal[2]:
   wave: "0..h.l....."
   node: "...#....... edge_detection"
 
+spacer_0:
+  wave: ""
+
 annotations:
   # hline: -
   - shape: "-"
     y: 2.5
   # vline: |
   - shape: "|"
-    x: 3
+    x: 3.125
     color: rgba(0, 0, 255, 0.5)
   - shape: "|"
-    x: 5.25
+    x: 5.125
     color: rgba(255, 0, 0, 0.5)
   # arrows as in wavedrom
   - shape: "~>"
     from: "a"
     to: "b"
   - shape: "-|>"
-    from: (5.25, 4)
-    to: (6, 2)
+    from: (5.05, 3)
+    to: (7.125, 1)
+    text: "djs"
+    dx: 0.25
+  - shape: "<->"
+    from: (3.125, 4.05)
+    to: (5.125, 4.05)
+    text: "delay"
