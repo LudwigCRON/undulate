@@ -108,6 +108,14 @@ class Renderer:
             return True
         return False
 
+    @staticmethod
+    def is_clock(name: str) -> bool:
+        clks = [pywave.BRICKS.Pclk,
+                pywave.BRICKS.Nclk,
+                pywave.BRICKS.pclk,
+                pywave.BRICKS.nclk]
+        return name in clks
+
     def group(self, callback, id: str = "", extra: str = "") -> str:
         """
         group define a group
@@ -368,29 +376,53 @@ class Renderer:
         return self.text(-10, 15 * vscale, name, extra=self._WAVE_TITLE, offset=extra, style_repr="title")
 
     def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
-        repeat       = kwargs.get("repeat", 1)
-        _wavelane, previous_brick = [], None
+        data   = kwargs.get("data", "")
+        repeat = kwargs.get("repeat", 1)
+        # in case a string is given reformat it as a list
+        if isinstance(data, str):
+            data = data.split(' ')
+        # prepare output
+        _wavelane, prev_brick, prev_valid_brick = [], None, None
+        data_cnt = 0
         # look for repetition '.' and ignore for '|' time compression
         for i, b in enumerate(wavelane * repeat):
-            if b == '.' and previous_brick in [None, '|'] and i == 0:
+            brick = pywave.BRICKS.from_str(b)
+            if brick == pywave.BRICKS.repeat and prev_brick in [None, pywave.BRICKS.gap] and i == 0:
                 raise f"error in {name}: cannot repeat none or '|', add a valid brick first"
-            # do not simplify for clock signal
-            if b in '.|' and not previous_brick in ['p', 'n', 'N', 'P']:
+            # increment last symbol repetition number if not clock or gap
+            if brick in [pywave.BRICKS.gap, pywave.BRICKS.repeat] and \
+                not Renderer.is_clock(prev_valid_brick) and \
+                not prev_brick == pywave.BRICKS.gap:
                 br, num = _wavelane[-1]
                 _wavelane[-1] = (br, num + 1)
-                if b == '|':
+                # a time compression overlay the previous one
+                if brick == pywave.BRICKS.gap:
                     _wavelane.append((b, 1))
-            elif b in '.|':
-                _wavelane.append((previous_brick, 1))
-                if b == '|':
+            # repeat the symbol before the gap
+            elif brick == pywave.BRICKS.repeat and \
+                 prev_brick == pywave.BRICKS.gap:
+                _wavelane.append((prev_valid_brick.value, 1))
+                # if the last valid symbol was a data
+                if prev_valid_brick == pywave.BRICKS.data:
+                    # duplicate the value
+                    data = data[:data_cnt]+[data[data_cnt-1]]+data[data_cnt:]
+            # repeat previous symbol
+            elif brick in [pywave.BRICKS.gap, pywave.BRICKS.repeat] :
+                br, _ = _wavelane[-1]
+                _wavelane.append((br, 1))
+                if brick == pywave.BRICKS.gap:
                     _wavelane.append((b, 1))
-            elif b == 'x' and previous_brick == 'x':
+            # merge all successive x
+            elif brick == prev_brick and brick == pywave.BRICKS.x:
                 br, num = _wavelane[-1]
                 _wavelane[-1] = (br, num + 1)
-            else:
+            # add the new symbol
+            elif brick != pywave.BRICKS.gap:
                 _wavelane.append((b, 1))
-                previous_brick = b
-        return _wavelane
+                prev_valid_brick = brick
+            prev_brick = brick
+            data_cnt += 1 if brick == pywave.BRICKS.data else 0
+        return (data, _wavelane)
 
     def _get_or_eval(self, name: str, default, **kwargs):
         """
@@ -421,7 +453,6 @@ class Renderer:
         # options
         period       = kwargs.get("period", 1)
         phase        = kwargs.get("phase", 0)
-        data         = kwargs.get("data", "")
         regpos       = kwargs.get("regpos", "")
         attributes   = kwargs.get("attr", [])
         brick_width  = period * kwargs.get("brick_width", 20)
@@ -431,13 +462,10 @@ class Renderer:
         analogue     = self._get_or_eval("analogue", [], **kwargs)
         duty_cycles  = self._get_or_eval("duty_cycles", [], **kwargs)
         periods      = self._get_or_eval("periods", [], **kwargs)
-        # in case a string is given reformat it as a list
-        if isinstance(data, str):
-            data = data.split(' ')
         # generate the waveform
         wave, pos, ignore, last_y = [], 0, False, None
         # look for repetition '.'
-        _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
+        data, _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
         # generate bricks
         data_counter, regpos_counter, attr_counter = 0, 0, 0
         symbol, is_first, b_counter, ana_counter = None, 0, 0, 0

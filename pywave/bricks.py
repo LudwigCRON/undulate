@@ -16,7 +16,7 @@ class BRICKS(Enum):
     BRICKS enumerate the different allowed block
     and symbol to describe a waveform
     """
-
+    repeat = '.'
     nclk = "n"
     pclk = "p"
     Nclk = "N"
