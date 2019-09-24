@@ -16,10 +16,22 @@ signal[2]:
 spacer_0:
   wave: ""
 
-experimental:
+experimental_0:
   wave: "x=...|..|.."
   data:
     - "0x70"
+
+experimental_1:
+  wave: "x1...|..|.."
+
+experimental_2:
+  wave: "xh...|..|.."
+
+experimental_3:
+  wave: "x0...|..|.."
+
+experimental_4:
+  wave: "x1...|..|.."
 
 annotations:
   # hline: -

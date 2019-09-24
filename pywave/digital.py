@@ -219,7 +219,7 @@ class Data(pywave.Brick):
         else:
             self.paths.append(
                 [
-                    (0, self.last_y),
+                    (0, self.last_y if not self.ignore_transition else 0),
                     (self.slewing, 0),
                     (self.width - self.slewing, 0),
                     (self.width, self.height / 2),
@@ -227,7 +227,7 @@ class Data(pywave.Brick):
             )
             self.paths.append(
                 [
-                    (0, self.last_y),
+                    (0, self.last_y if not self.ignore_transition else self.height),
                     (self.slewing, self.height),
                     (self.width - self.slewing, self.height),
                     (self.width, self.height / 2),

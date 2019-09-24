@@ -252,7 +252,6 @@ class Renderer:
             return floor(y)*brick_height*1.5+(y-floor(y))*brick_height
         # list nodes and their name
         nodes = self.__list_nodes__(wavelanes, **kwargs)
-        print(nodes)
         # create annotations
         def __annotate__(a: dict):
             shape = a.get("shape", None)
@@ -479,7 +478,7 @@ class Renderer:
                     last_y = br.get_last_y()
                     symbol = pywave.BRICKS.from_str(b)
                     ignore = pywave.BRICKS.ignore_transition(wave[last] if wave else None, symbol)
-                    # adjust transition from data or x
+                    # adjust transition from data or x to constant
                     if s in [pywave.BRICKS.data, pywave.BRICKS.x] and symbol in [pywave.BRICKS.zero, pywave.BRICKS.one, pywave.BRICKS.low, pywave.BRICKS.high]:
                         if symbol in [pywave.BRICKS.zero, pywave.BRICKS.low]:
                             br.alter_end(3, brick_height)
@@ -487,6 +486,12 @@ class Renderer:
                             br.alter_end(3, 0)
                         wave[last] = (s, br, c, style)
                         ignore = True
+                    # two identical data
+                    if s == pywave.BRICKS.data and symbol == s:
+                        if data_counter >= 1 and data_counter < len(data) and \
+                           data[data_counter] == data[data_counter-1]:
+                            br.alter_end(0, [0, brick_height])
+                            ignore = True
                     # adjust clock symbols
                     if symbol in [pywave.BRICKS.low, pywave.BRICKS.Low] and \
                             s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk, pywave.BRICKS.Nclk, pywave.BRICKS.nclk]:

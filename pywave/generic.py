@@ -74,24 +74,41 @@ class Brick:
         for i, path in enumerate(self.paths):
             x1, y1 = path[-1]
             x2, y2 = path[-2]
-            self.paths[i] = path[:-1] + [
-                (x2 + shift, y2),
-                (x1 + shift, next_y if next_y > -1 else y1),
-            ]
+            if isinstance(next_y, list):
+                self.paths[i] = path[:-1] + [
+                    (x2 + shift, y2),
+                    (x1 + shift, next_y[i] if next_y[i] > -1 else y1),
+                ]
+            else:
+                self.paths[i] = path[:-1] + [
+                    (x2 + shift, y2),
+                    (x1 + shift, next_y if next_y > -1 else y1),
+                ]
         for i, poly in enumerate(self.polygons):
             l = int(len(poly) / 2)
             x1, y1 = poly[l - 1]
             x2, y2 = poly[l]
             x3, y3 = poly[l + 1]
-            self.polygons[i] = (
-                poly[: l - 1]
-                + [
-                    (x1 + shift, y1),
-                    (x2 + shift, next_y if next_y > -1 else y2),
-                    (x3 + shift, y3),
-                ]
-                + poly[l + 1 :]
-            )
+            if isinstance(next_y, list):
+                self.polygons[i] = (
+                    poly[: l - 1]
+                    + [
+                        (x1 + shift, y1),
+                        (x2 + shift, next_y[i] if next_y[i] > -1 else y2),
+                        (x3 + shift, y3),
+                    ]
+                    + poly[l + 1 :]
+                )
+            else:
+                self.polygons[i] = (
+                    poly[: l - 1]
+                    + [
+                        (x1 + shift, y1),
+                        (x2 + shift, next_y if next_y > -1 else y2),
+                        (x3 + shift, y3),
+                    ]
+                    + poly[l + 1 :]
+                )
 
 
 def generate_brick(symbol: str, **kwargs) -> dict:
