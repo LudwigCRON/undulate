@@ -491,6 +491,7 @@ class Renderer:
                         if data_counter >= 1 and data_counter < len(data) and \
                            data[data_counter] == data[data_counter-1]:
                             br.alter_end(0, [0, brick_height])
+                            data_counter += 1
                             ignore = True
                     # adjust clock symbols
                     if symbol in [pywave.BRICKS.low, pywave.BRICKS.Low] and \
