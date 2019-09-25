@@ -28,7 +28,7 @@ SUPPORTED_FORMAT = [
     [".toml"]
 ]
 
-SUPPORTED_RENDER = ["svg", "eps", "cairo-svg", "cairo-ps", "cairo-eps", "cairo-pdf", "cairo-png"]
+SUPPORTED_RENDER = ["svg", "eps", "cairo-svg", "cairo-ps", "cairo-eps", "cairo-pdf", "cairo-png", "json"]
 
 def _number_convert(match):
   base, number = match.group(1).lower(), match.group(2)
@@ -135,6 +135,9 @@ if __name__ == "__main__":
     else:
       if cli_args.is_reg:
         obj = register_to_wavelane(obj)
+      if cli_args.format == "json":
+        pprint(obj)
+        exit(0)
       if cli_args.output:
         renderer = None
         if cli_args.format == "svg":

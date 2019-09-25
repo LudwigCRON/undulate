@@ -13,6 +13,7 @@ from .skin import (
     apply_font,
     text_align,
     Engine,
+    style_in_kwargs
 )
 from .renderer import Renderer, svg_curve_convert
 
@@ -50,10 +51,11 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", "path")
+        overload = style_in_kwargs(**kwargs)
         self.cr.save()
         if callable(extra):
             extra()
-        apply_stroke(self.cr, style, Engine.CAIRO)
+        apply_stroke(self.cr, style, Engine.CAIRO, overload)
         self.cr.new_path()
         for i, v in enumerate(vertices):
             if i == 0:
@@ -98,10 +100,11 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", None)
+        overload = style_in_kwargs(**kwargs)
         self.cr.save()
         if callable(extra):
             extra()
-        apply_fill(self.cr, style, Engine.CAIRO)
+        apply_fill(self.cr, style, Engine.CAIRO, overload)
         self.cr.new_path()
         for i, v in enumerate(vertices):
             if i == 0:
@@ -109,7 +112,7 @@ class CairoRenderer(Renderer):
             else:
                 self.cr.line_to(*v)
         self.cr.fill_preserve()
-        apply_stroke(self.cr, style, Engine.CAIRO)
+        apply_stroke(self.cr, style, Engine.CAIRO, overload)
         self.cr.stroke()
         self.cr.restore()
         return ""
@@ -124,7 +127,7 @@ class CairoRenderer(Renderer):
         """
         style = kwargs.get("style_repr", "path")
         extra = kwargs.get("extra", "")
-
+        overload = style_in_kwargs(**kwargs)
         vertices = svg_curve_convert(vertices)
         c, px, py, stack = 0, 0, 0, []
 
@@ -182,10 +185,10 @@ class CairoRenderer(Renderer):
             # hold last point
             px, py = x, y
         if style == "hide":
-            apply_fill(self.cr, style, Engine.CAIRO)
+            apply_fill(self.cr, style, Engine.CAIRO, overload)
             self.cr.fill()
         else:
-            apply_stroke(self.cr, style, Engine.CAIRO)
+            apply_stroke(self.cr, style, Engine.CAIRO, overload)
             self.cr.stroke()
         self.cr.restore()
         return ""
@@ -199,10 +202,11 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra", "")
         style = kwargs.get("style_repr", "text")
+        overload = style_in_kwargs(**kwargs)
         self.cr.save()
         if callable(extra):
             extra()
-        apply_fill(self.cr, style, Engine.CAIRO)
+        apply_fill(self.cr, style, Engine.CAIRO, overload)
         apply_font(self.cr, style, Engine.CAIRO)
         ox, oy = text_align(self.cr, style, str(text), Engine.CAIRO)
         self.cr.move_to(x - ox, y - oy)

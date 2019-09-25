@@ -365,14 +365,21 @@ class Renderer:
             return ans
         return '\n'.join([__annotate__(a) for a in annotations])
 
-    def wavelane_title(self, name: str, extra: str = "", vscale: float = 1):
+    def wavelane_title(self, name: str, **kwargs):
         """
         wavelane_title generate the title in front of a waveform
         name: name of the waveform print alongside
         """
+        extra        = kwargs.get("extra", "")
+        order        = kwargs.get("order", 0)
+        brick_height = kwargs.get("brick_height", 1)
         if "spacer" in name or not name.strip():
             return ""
-        return self.text(-10, 15 * vscale, name, extra=self._WAVE_TITLE, offset=extra, style_repr="title")
+        if order == 0:
+            y = brick_height / 2
+        else:
+            y = brick_height / 4 * order - brick_height / 8
+        return self.text(-10, y, name, extra=self._WAVE_TITLE, offset=extra, style_repr="title", **kwargs)
 
     def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
         data   = kwargs.get("data", "")
@@ -565,7 +572,7 @@ class Renderer:
             b_counter += 1
         # generate waveform
         def _gen():
-            ans = self.wavelane_title(name, vscale=kwargs.get("vscale", 1)) if name else ""
+            ans = self.wavelane_title(name, **kwargs) if name else ""
             for w in wave:
                 symb, b, e, style = w
                 kwargs.update({"extra": e, "style": style})
@@ -780,21 +787,25 @@ class Renderer:
                     # waveform
                     if "wave" in wavelanes[wavetitle]:
                         wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]
-                        l = len(wave)
-                        width = l * brick_width if l * brick_width > width else width
                         args.update(**kwargs)
+                        overlay = args.get("overlay", False)
                         ans += self.wavelane(
                             wavetitle,
                             wave,
                             "" if translate else self.translate(ox, oy),
                             **args
                         )
-                        dy = brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
+                        l = len(wave)
+                        if not overlay:
+                            dy = brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
+                        else:
+                            dy = 0
+                        width = l * brick_width if l * brick_width > width else width
                     # spacer or only for label nodes
                     elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
                         dy = brick_height * 1.5
                     # named group
-                    elif not wavetitle in ["head", "foot", "config"]:
+                    elif not wavetitle in ["head", "foot", "config", "edges", "annotations"]:
                         self._FIRST_TRANSLATION = False
                         args = kwargs
                         args.update({"offsetx": ox, "offsety": 0, "no_ticks": True})
@@ -862,13 +873,14 @@ class Renderer:
                         _l *= wavelanes[wavetitle].get("period", 1)
                         x.append(_l)
                         # estimate height
-                        y += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
+                        if not wavelanes[wavetitle].get("overlay", False):
+                            y += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
                         keys.append(len(wavetitle))
                     # if it is only spacers allocate space
                     elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
                         y += brick_height * 1.5
                     # otherwise it is a new wavegroup
-                    elif not wavetitle in ["head", "foot", "config"]:
+                    elif not wavetitle in ["head", "foot", "config", "edges", "annotations"]:
                         y += 20
                         lkeys, _x, _y, _n = self.size(wavelanes[wavetitle], brick_width, brick_height, depth+1)
                         x.append(_x)

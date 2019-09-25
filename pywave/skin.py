@@ -276,29 +276,33 @@ except ImportError:
     pass
 else:
 
-    def apply_cairo_style(context, name: str):
+    def apply_cairo_style(context, name: str, overload: dict):
         """
         read the style and apply via cairo functions
         """
         style = get_style(name)
-        apply_cairo_font(context, style)
-        apply_cairo_fill(context, style)
-        apply_cairo_stroke(context, style)
+        apply_cairo_font(context, style, overload)
+        apply_cairo_fill(context, style, overload)
+        apply_cairo_stroke(context, style, overload)
 
-    def apply_cairo_fill(context, style: dict):
+    def apply_cairo_fill(context, style: dict, overload: dict):
         """
         set the fill color found in the style
         """
+        style = dict(style)
+        style.update(overload)
         # color
         t = style.get("fill", None)
         if not t is None:
             r, g, b, a = t
             context.set_source_rgba(r / 255, g / 255, b / 255, a / 255)
 
-    def apply_cairo_stroke(context, style: dict):
+    def apply_cairo_stroke(context, style: dict, overload: dict):
         """
         support width, color, linecap, linejoin, dash
         """
+        style = dict(style)
+        style.update(overload)
         # color
         t = style.get("stroke", None)
         if not t is None:
@@ -361,11 +365,13 @@ else:
             return (-width, -height/2, width, _height)
         return (-width / 2, -descent-height/2, width, _height)
 
-    def apply_cairo_font(context, style: dict):
+    def apply_cairo_font(context, style: dict, overload: dict):
         """
         get font information from the style and apply
         support font family, bold, italic, normal, size
         """
+        style = dict(style)
+        style.update(overload)
         # font slant
         font_style = style.get("font-style", "")
         if "it" in font_style:
@@ -393,7 +399,7 @@ else:
             context.set_font_size(s * u.value)
 
 
-def apply_style(context, name: str, engine: Engine):
+def apply_style(context, name: str, engine: Engine, overload: dict = {}):
     """
     apply style from 'name' of the selector
     for the supported engine
@@ -402,36 +408,36 @@ def apply_style(context, name: str, engine: Engine):
         # not yet implemented for eps and not needed for SVGRenderer
         pass
     elif engine == Engine.CAIRO:
-        apply_cairo_style(context, name)
+        apply_cairo_style(context, name, overload)
     else:
         raise "Engine selected is not yet supported"
 
 
-def apply_fill(context, name: str, engine: Engine):
+def apply_fill(context, name: str, engine: Engine, overload: dict = {}):
     """
     apply fill from 'name' of the selector
     for the supported engine
     """
     if engine == Engine.CAIRO:
-        apply_cairo_fill(context, get_style(name))
+        apply_cairo_fill(context, get_style(name), overload)
 
 
-def apply_stroke(context, name: str, engine: Engine):
+def apply_stroke(context, name: str, engine: Engine, overload: dict = {}):
     """
     apply stroke from 'name' of the selector
     for the supported engine
     """
     if engine == Engine.CAIRO:
-        apply_cairo_stroke(context, get_style(name))
+        apply_cairo_stroke(context, get_style(name), overload)
 
 
-def apply_font(context, name: str, engine: Engine):
+def apply_font(context, name: str, engine: Engine, overload: dict = {}):
     """
     apply font from 'name' of the selector
     for the supported engine
     """
     if engine == Engine.CAIRO:
-        apply_cairo_font(context, get_style(name))
+        apply_cairo_font(context, get_style(name), overload)
 
 
 def get_style(name: str) -> dict:
@@ -461,3 +467,10 @@ def text_bbox(context, name: str, text: str, engine: Engine):
         apply_cairo_style(context, name)
         return cairo_text_bbox(context, get_style(name), text)
     return (-len(text)*6/2, -4.5, len(text)*6, 9)
+
+def style_in_kwargs(**kwargs) -> dict:
+    ans = {}
+    for e in ["fill", "stroke", "stroke-width"]:
+        if e in kwargs:
+            ans[e] = kwargs.get(e)
+    return ans
