@@ -3,4 +3,4 @@ clean:
 	rm -rf build
 
 html:
-	sphinx-build -b html source build
+	sphinx-build -b html source .

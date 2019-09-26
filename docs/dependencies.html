@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. Installation &mdash; Pywave 0.0.2 documentation</title>
+  <title>1. Dependencies &mdash; Pywave 0.0.2 documentation</title>
   
 
   
@@ -35,7 +35,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="1. Dependencies" href="dependencies.html" /> 
+    <link rel="next" title="2. Installation" href="installation.html" />
+    <link rel="prev" title="Pywave" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,8 +82,14 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">pywave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
 </ul>
 
             
@@ -128,13 +135,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>2. Installation</li>
+      <li>1. Dependencies</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/dependencies.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -147,37 +154,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation">
-<h1>2. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>The recommended way to install dependencies is by typing in your shell</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; pip3 install PyYAML
-$&gt; pip3 install toml
-$&gt; pip3 install pycairo
-</pre></div>
-</div>
-<p>To install Pywave, it is recommended the following:</p>
+  <div class="section" id="dependencies">
+<h1>1. Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
+<p>At the origin, pywave only need a python3.5+. By the time, the json/jsonml format as been a tedious part in the documentation process.</p>
+<p>In consequence, pywave also now relies on <a class="reference external" href="https://pypi.org/project/PyYAML/">PyYAML</a> and <a class="reference external" href="https://pypi.org/project/toml/">Toml</a>.</p>
+<p>For the rendering, SVG is the legacy format from <a class="reference external" href="https://wavedrom.com/">Wavedrom</a>. SVG is well-known and simple versatile format for the web. However, the integration into Word/Libreoffice Writer/Latex documents is the bottleneck.</p>
+<p>So without any extra module, one can only export to SVG and EPS (colorless mode) format.</p>
+<p>By adding <a class="reference external" href="https://pypi.org/project/pycairo/">Pycairo</a>, pywave can export to SVG, EPS, PS, PDF, PNG.</p>
+<p>For tests the following modules are needed:</p>
 <ul class="simple">
-<li><p>download a stable release from <a class="reference external" href="https://github.com/LudwigCRON/pywave/releases/latest">github</a></p></li>
-<li><p>unzip it as the desired place</p></li>
-<li><p>add in <cite>$PATH</cite> the pywave folder</p></li>
-<li><p>create an alias of your choice to simplify the call</p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/coverage/">coverage</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/numpy/">numpy</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/scipy/">scipy</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/project/scikit-image/">scikit-image</a></p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://github.com/LudwigCRON/pywave/archive/v0.0.2.tar.gz
-$&gt; tar -xzvf v0.0.2.tar.gz
-</pre></div>
-</div>
-<p>In your <em>.bash_profile</em> add the following line</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;PATH/TO/pywave-0.0.2:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-</pre></div>
-</div>
-<p>As a bonus, you can define an alias in your <em>.bash_aliases</em> file</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> pywave-svg<span class="o">=</span><span class="s2">&quot;waveform.py -f svg&quot;</span>
-<span class="nb">alias</span> pywave-png<span class="o">=</span><span class="s2">&quot;waveform.py -f cairo-svg&quot;</span>
-<span class="nb">alias</span> pywave-eps<span class="o">=</span><span class="s2">&quot;waveform.py -f cairo-eps&quot;</span>
-<span class="nb">alias</span> pywave-pdf<span class="o">=</span><span class="s2">&quot;waveform.py -f cairo-pdf&quot;</span>
-<span class="nb">alias</span> <span class="nv">pywave</span><span class="o">=</span><span class="s2">&quot;waveform.py&quot;</span>
-</pre></div>
-</div>
+<p>The last three are used to compare images between format and check the similarity between them.</p>
 </div>
 
 
@@ -188,8 +179,10 @@ $&gt; tar -xzvf v0.0.2.tar.gz
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="installation.html" class="btn btn-neutral float-right" title="2. Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="dependencies.html" class="btn btn-neutral float-left" title="1. Dependencies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Pywave" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

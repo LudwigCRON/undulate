@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. Dependencies &mdash; Pywave 0.0.2 documentation</title>
+  <title>pywave &mdash; Pywave 0.0.2 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Installation" href="installation.html" />
-    <link rel="prev" title="Pywave" href="index.html" /> 
+    <link rel="next" title="pywave package" href="pywave.html" />
+    <link rel="prev" title="5. Internal Architecture" href="architecture.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,8 +82,17 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">pywave</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html">pywave package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
 </ul>
 
             
@@ -129,13 +138,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>1. Dependencies</li>
+      <li>pywave</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/dependencies.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -148,21 +157,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="dependencies">
-<h1>1. Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
-<p>At the origin, pywave only need a python3.5+. By the time, the json/jsonml format as been a tedious part in the documentation process.</p>
-<p>In consequence, pywave also now relies on <a class="reference external" href="https://pypi.org/project/PyYAML/">PyYAML</a> and <a class="reference external" href="https://pypi.org/project/toml/">Toml</a>.</p>
-<p>For the rendering, SVG is the legacy format from <a class="reference external" href="https://wavedrom.com/">Wavedrom</a>. SVG is well-known and simple versatile format for the web. However, the integration into Word/Libreoffice Writer/Latex documents is the bottleneck.</p>
-<p>So without any extra module, one can only export to SVG and EPS (colorless mode) format.</p>
-<p>By adding <a class="reference external" href="https://pypi.org/project/pycairo/">Pycairo</a>, pywave can export to SVG, EPS, PS, PDF, PNG.</p>
-<p>For tests the following modules are needed:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://pypi.org/project/coverage/">coverage</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/numpy/">numpy</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/scipy/">scipy</a></p></li>
-<li><p><a class="reference external" href="https://pypi.org/project/scikit-image/">scikit-image</a></p></li>
+  <div class="section" id="pywave">
+<h1>pywave<a class="headerlink" href="#pywave" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pywave.html">pywave package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.analogue">pywave.analogue module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.bricks">pywave.bricks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.cairorenderer">pywave.cairorenderer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.digital">pywave.digital module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.epsrenderer">pywave.epsrenderer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.generic">pywave.generic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.register">pywave.register module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.renderer">pywave.renderer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.skin">pywave.skin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave.svgrenderer">pywave.svgrenderer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pywave.html#module-pywave">Module contents</a></li>
 </ul>
-<p>The last three are used to compare images between format and check the similarity between them.</p>
+</li>
+</ul>
+</div>
 </div>
 
 
@@ -173,10 +188,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="installation.html" class="btn btn-neutral float-right" title="2. Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="pywave.html" class="btn btn-neutral float-right" title="pywave package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Pywave" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="architecture.html" class="btn btn-neutral float-left" title="5. Internal Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
