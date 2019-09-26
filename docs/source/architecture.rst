@@ -1,138 +1,3 @@
-======
-Pywave
-======
-
-Textual representations has the benefit of being compatible with git versionning and diff tools. And while an image conveys thousand words, it is difficult to list changes in a specification of an electronic project when it comes to protocoles, handshakes, or impact of a digital signal on an analogue IP block.
-
-To address this challenge, Pywave is an utility to transform textual representations of waveforms into images. The textual representations is stored, and the generated image can be displayed.
-
-> Thanks to the supercalifragilisticexpialidocious work and thoughs of the wavedrom's author, on which this project is based
-
-.. contents:: Table of Contents
-   :depth: 3
-
-1. Dependencies
-===============
-At the origin, pywave only need a python3.5+. By the time, the json/jsonml format as been a tedious part in the documentation process.
-
-In consequence, pywave also now relies on `PyYAML <https://pypi.org/project/PyYAML/>`_ and `Toml <https://pypi.org/project/toml/>`_.
-
-For the rendering, SVG is the legacy format from `Wavedrom <https://wavedrom.com/>`_. SVG is well-known and simple versatile format for the web. However, the integration into Word/Libreoffice Writer/Latex documents is the bottleneck.
-
-So without any extra module, one can only export to SVG and EPS (colorless mode) format.
-
-By adding `Pycairo <https://pypi.org/project/pycairo/>`_, pywave can export to SVG, EPS, PS, PDF, PNG.
-
-For tests the following modules are needed:
-- `coverage <https://pypi.org/project/coverage/>`_
-- `numpy <https://pypi.org/project/numpy/>`_
-- `scipy <https://pypi.org/project/scipy/>`_
-- `scikit-image <https://pypi.org/project/scikit-image/>`_
-
-The last three are used to compare images between format and check the similarity between them.
-
-2. Installation
-===============
-The recommended way to install dependencies is by typing in your shell
-
-.. code-block:: bash
-
-   $> pip3 install PyYAML
-   $> pip3 install toml
-   $> pip3 install pycairo
-
-To install Pywave, it is recommended the following:
-
-- download a stable release from `github <https://github.com/LudwigCRON/pywave/releases/latest>`_
-- unzip it as the desired place
-- add in `$PATH` the pywave folder
-- create an alias of your choice to simplify the call
-
-.. code-block:: bash
-
-   $> wget https://github.com/LudwigCRON/pywave/archive/v0.0.2.tar.gz
-   $> tar -xzvf v0.0.2.tar.gz
-
-In your *.bash_profile* add the following line
-
-.. code-block:: bash
-
-   export PATH="PATH/TO/pywave-0.0.2:$PATH"
-
-As a bonus, you can define an alias in your *.bash_aliases* file
-
-.. code-block:: bash
-
-   alias pywave-svg="waveform.py -f svg"
-   alias pywave-png="waveform.py -f cairo-svg"
-   alias pywave-eps="waveform.py -f cairo-eps"
-   alias pywave-pdf="waveform.py -f cairo-pdf"
-   alias pywave="waveform.py"
-
-3. Usage
-========
-> For the sake of clarity, we do suppose aliases have been define during the installation process
-
-4. Supported Syntax
-===================
-[table to compare options (comments, legacy, annotations, ...)
-
-Json
-----
-
-.. code-block:: json
-
-   { "signal": [
-       { "name": "clk",  "wave": "p......" },
-       { "name": "bus",  "wave": "x.34.5x",   "data": "head body tail" },
-       { "name": "wire", "wave": "0.1..0." },
-   ]}
-
-Jsonml
-------
-in json-ml for strict compatibility with Wavedrom
-
-.. code-block:: c
-
-   { signal : [
-     // clock signal
-     { name: "clk",  wave: "p......" },
-     // bus data
-     { name: "bus",  wave: "x.34.5x",   data: "head body tail" },
-     // request signal
-     { name: "wire", wave: "0.1..0." }
-   ]}
-
-Yaml
-----
-
-.. code-block:: yaml
-
-   clk:
-     wave: p......
-   bus:
-     wave: x.34.5x
-     data: head body tail
-   wire:
-     wave: 0.1..0.
-
-
-> *notice the "signal" vanishes in yaml*
-
-Toml
-----
-
-.. code-block:: toml
-
-   clk.wave = "p......"
-   bus.wave = "x.34.5x"
-   wire.wave= "0.1..0."
-
-   bus.data = "head body tail"
-
-> *notice the "signal" vanishes in toml*
-
-
 5. Internal Architecture
 ========================
 [uml bloc diagram of the architecture]
@@ -242,7 +107,6 @@ A brick is defined as single expression. To simplify the expression, an analogue
 To be more precise, the context is given below.
 
 .. code-block:: python3
-   :linenos:
 
    CONTEXT = {
        "time": [],
@@ -282,10 +146,10 @@ List of bricks
 .. |brick-dig-H| image:: ./imgs/bricks/brick_hmaj.yaml.svg
 .. |brick-dig-0| image:: ./imgs/bricks/brick_0.yaml.svg
 .. |brick-dig-1| image:: ./imgs/bricks/brick_1.yaml.svg
-.. |brick-dig-g| image:: ./imgs/bricks/brick_gap.yaml.svg)
+.. |brick-dig-g| image:: ./imgs/bricks/brick_gap.yaml.svg
 .. |brick-dig-z| image:: ./imgs/bricks/brick_z.yaml.svg
 .. |brick-dig-x| image:: ./imgs/bricks/brick_x.yaml.svg
-.. |brick-dig-2| image:: ./imgs/bricks/brick_data.yaml.svg)
+.. |brick-dig-=| image:: ./imgs/bricks/brick_data.yaml.svg
 .. |brick-dig-u| image:: ./imgs/bricks/brick_u.yaml.svg
 .. |brick-dig-d| image:: ./imgs/bricks/brick_d.yaml.svg
 .. |brick-dig-i| image:: ./imgs/bricks/brick_i.yaml.svg
@@ -320,7 +184,7 @@ List of bricks
 +--------+------------+----------------------+-----------------+
 |    x   |       Data |                      |  |brick-dig-x|  |
 +--------+------------+----------------------+-----------------+
-|    =   |       Data |                      |  |brick-dig-2|  |
+|    =   |       Data |                      |  |brick-dig-=|  |
 +--------+------------+----------------------+-----------------+
 |    u   |         Up |                      |  |brick-dig-u|  |
 +--------+------------+----------------------+-----------------+
@@ -380,39 +244,3 @@ Renderer is base class from which inherit all rendering engine.
 It defines usefull methods
 
 It also define `svg_curve_convert(vertices: list)` method to the svg `path command <https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths>`_ into derivative rendering engine.
-
-6. Roadmap
-==========
-
-For the next release:
-
-- [ ] css loader and parsing for cairo
-- [ ] annotations
-- [ ] edges to annotations transform
-- [ ] analogue signals superposition
-- [ ] analogue context personalization
-
-In long term:
-
-- [ ] verilog sequences generation
-- [ ] sphinx integration
-
-7. Use cases
-============
-
-A great power implies great responsabilities! As each characteres count there combination could lead to an undesired effect.
-
-To avoid an surprise, this section demonstrate several scenarii.
-
-Glitched Clock
---------------
-
-.. code-block:: yaml
-
-   gated clock n:
-       wave: "N0...Nl"
-
-   gated clock p:
-       wave: "P0...Pl"
-
-.. |glitched clock| image:: ./imgs/use-cases/glitched_clock.yaml.svg
