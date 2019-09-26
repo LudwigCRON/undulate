@@ -67,16 +67,18 @@ def parse(filepath: str) -> (bool, object):
   """
   err, ans = False, {}
   # file existence
-  err = not os.path.exists(filepath)
+  err = filepath is None or not os.path.exists(filepath)
   if err:
     print((
         f"ERROR: {cli_args.input} is not found, "
         "please check the existence of your file"), file=sys.stderr)
+    return (err, None)
   _, ext = os.path.splitext(filepath)
   # supported extension
   err = not any([ext in cat for cat in SUPPORTED_FORMAT])
   if err:
     print("ERROR: this filetype is not yet supported", file=sys.stderr)
+    return (err, None)
   # call parser
   if ext in SUPPORTED_FORMAT[0]:
     print("JSON file")
@@ -126,7 +128,9 @@ if __name__ == "__main__":
   cli_args = parser.parse_args()
   # check the input file
   err, obj = parse(cli_args.input)
-  if not err:
+  if err:
+    parser.print_help()
+  else:
     if not cli_args.format in SUPPORTED_RENDER:
       print(f"ERROR: output file format {cli_args.format} is not yet supported", file=sys.stderr)
       print("the format supported are:", file=sys.stderr)
