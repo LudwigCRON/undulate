@@ -1,0 +1,542 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. Internal Architecture &mdash; Pywave 0.0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pywave" href="modules.html" />
+    <link rel="prev" title="4. Supported Syntax" href="supported_syntax.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Pywave
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Internal Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bricks">BRICKS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pywave-brick">pywave.Brick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analogue-bricks">Analogue Bricks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-bricks">List of bricks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#digital-bricks">Digital Bricks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">List of bricks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#register-bricks">Register Bricks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">List of bricks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#style">Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#renderer">Renderer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">pywave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Pywave</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>5. Internal Architecture</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/architecture.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="internal-architecture">
+<h1>5. Internal Architecture<a class="headerlink" href="#internal-architecture" title="Permalink to this headline">¶</a></h1>
+<p>[uml bloc diagram of the architecture]
+[for each presente all bricks with subsection of which parameters are supported]</p>
+<div class="section" id="bricks">
+<h2>BRICKS<a class="headerlink" href="#bricks" title="Permalink to this headline">¶</a></h2>
+<p>BRICKS as defined in <cite>pywave/bricks.py</cite> is an enumeration with common methods to apply on a new brick.</p>
+<p>The Enumeration is a 1-to-1 map between the charactere in the wave representation and brick to create.</p>
+<p>It also define the following methods</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">transform_y</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">20</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    change y coordinate to represente voltage between VSSA and VDDA</span>
+<span class="sd">    if current VSSA &lt;-&gt; ISSA / VDDA &lt;-&gt; IDDA</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">from_str</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    from_str return the corresponding enumeration from a char</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">ignore_transition</span><span class="p">(</span><span class="n">from_symb</span><span class="p">,</span> <span class="n">to_symb</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    define special case when transition are skipped to prevent</span>
+<span class="sd">    glitches by default</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pywave-brick">
+<h2>pywave.Brick<a class="headerlink" href="#pywave-brick" title="Permalink to this headline">¶</a></h2>
+<p>In <cite>pywave/generic.py</cite>, we define the class from which inherit all other bricks.</p>
+<p>A brick is a collection of:</p>
+<ul class="simple">
+<li><p>paths</p></li>
+<li><p>arrows</p></li>
+<li><p>polygons</p></li>
+<li><p>splines</p></li>
+<li><p>texts</p></li>
+</ul>
+<p>within a given box defined by <cite>weight</cite> and <cite>height</cite> properties.</p>
+<p>Two methods have been define to ensure continuity between symbols:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_last_y</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    get last position to preserve continuity</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<span class="k">def</span> <span class="nf">alter_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shift</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">next_y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    alter the last coordinate to preserve continuity</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Then a final method ensure to load the appropriate context to create a brick</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_brick</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    define the mapping between the symbol and the brick</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Until now, only three context are existing: <strong>Analogue</strong>, <strong>Digital</strong>, and <strong>Register</strong>.</p>
+</div>
+<div class="section" id="analogue-bricks">
+<h2>Analogue Bricks<a class="headerlink" href="#analogue-bricks" title="Permalink to this headline">¶</a></h2>
+<p>This section present the available bricks inside the analogue context.</p>
+<div class="section" id="list-of-bricks">
+<h3>List of bricks<a class="headerlink" href="#list-of-bricks" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 21%" />
+<col style="width: 39%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Parameters Supported</p></th>
+<th class="head"><p>Image</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a</p></td>
+<td><p>Analogue</p></td>
+<td></td>
+<td><p><img alt="brick-ana-a" src="_images/brick_a.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>c</p></td>
+<td><p>Capacitive</p></td>
+<td></td>
+<td><p><img alt="brick-ana-c" src="_images/brick_c.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>m</p></td>
+<td><p>Metastable</p></td>
+<td></td>
+<td><p><img alt="brick-ana-m" src="_images/brick_m.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>M</p></td>
+<td><p>Metastable</p></td>
+<td></td>
+<td><p><img alt="brick-ana-M" src="_images/brick_m1.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>s</p></td>
+<td><p>Step</p></td>
+<td></td>
+<td><p><img alt="brick-ana-s" src="_images/brick_s.yaml.svg" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="description">
+<h3>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
+<p>Analogue signal representations are defined in the <code class="docutils literal notranslate"><span class="pre">`analogue.py`</span></code>. An analogue signal being able to go through a multitude of “levels” (voltage,current,charges…), basic assumptions have been considered.</p>
+<p>All signals are considered to be a voltage with a Maximum excursion in $[V_{SSA}-V_{DDA}]$ range. For the sake of clarity, x-y coordinates are respectively the time and the voltage.</p>
+<p>A brick is defined as single expression. To simplify the expression, an analogue context is loaded. This context include the extremum voltage, usual functions, and pi constant.</p>
+<p>To be more precise, the context is given below.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">CONTEXT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;Tmax&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="s2">&quot;VSSA&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;VDDA&quot;</span><span class="p">:</span> <span class="mf">1.8</span><span class="p">,</span>
+    <span class="s2">&quot;atan2&quot;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">,</span>
+    <span class="s2">&quot;pi&quot;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span>
+    <span class="s2">&quot;exp&quot;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">,</span>
+    <span class="s2">&quot;sin&quot;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span>
+    <span class="s2">&quot;cos&quot;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">,</span>
+    <span class="s2">&quot;tan&quot;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">tan</span><span class="p">,</span>
+    <span class="s2">&quot;tanh&quot;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">tanh</span><span class="p">,</span>
+    <span class="s2">&quot;sqrt&quot;</span><span class="p">:</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">,</span>
+    <span class="s2">&quot;rnd&quot;</span><span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This behaviour corresponds to the <a class="reference external" href="#List of bricks">Analogue brick</a> whose symbol is <strong>a</strong>.</p>
+<p>Other analogue bricks are an <em>Analogue brick</em> with a predefined expression.</p>
+</div>
+</div>
+<div class="section" id="digital-bricks">
+<h2>Digital Bricks<a class="headerlink" href="#digital-bricks" title="Permalink to this headline">¶</a></h2>
+<p>This section present the available bricks inside the digital context.</p>
+<div class="section" id="id1">
+<h3>List of bricks<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 20%" />
+<col style="width: 37%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Parameters Supported</p></th>
+<th class="head"><p>Image</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>Nclk</p></td>
+<td></td>
+<td><p><img alt="brick-dig-n" src="_images/brick_n.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>N</p></td>
+<td><p>Nclk</p></td>
+<td></td>
+<td><p><img alt="brick-dig-N" src="_images/brick_nmaj.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>p</p></td>
+<td><p>Pclk</p></td>
+<td></td>
+<td><p><img alt="brick-dig-p" src="_images/brick_p.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>P</p></td>
+<td><p>Pclk</p></td>
+<td></td>
+<td><p><img alt="brick-dig-P" src="_images/brick_pmaj.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>l</p></td>
+<td><p>Low</p></td>
+<td></td>
+<td><p><img alt="brick-dig-l" src="_images/brick_l.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>L</p></td>
+<td><p>Low</p></td>
+<td></td>
+<td><p><img alt="brick-dig-L" src="_images/brick_lmaj.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>h</p></td>
+<td><p>High</p></td>
+<td></td>
+<td><p><img alt="brick-dig-h" src="_images/brick_h.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>H</p></td>
+<td><p>High</p></td>
+<td></td>
+<td><p><img alt="brick-dig-H" src="_images/brick_hmaj.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>Zero</p></td>
+<td></td>
+<td><p><img alt="brick-dig-0" src="_images/brick_0.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>One</p></td>
+<td></td>
+<td><p><img alt="brick-dig-1" src="_images/brick_1.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>|</p></td>
+<td><p>Gap</p></td>
+<td></td>
+<td><p><img alt="brick-dig-g" src="_images/brick_gap.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>z</p></td>
+<td><p>HighZ</p></td>
+<td></td>
+<td><p><img alt="brick-dig-z" src="_images/brick_z.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>x</p></td>
+<td><p>Data</p></td>
+<td></td>
+<td><p><img alt="brick-dig-x" src="_images/brick_x.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>=</p></td>
+<td><p>Data</p></td>
+<td></td>
+<td><p><img alt="brick-dig-=" src="_images/brick_data.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>u</p></td>
+<td><p>Up</p></td>
+<td></td>
+<td><p><img alt="brick-dig-u" src="_images/brick_u.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>d</p></td>
+<td><p>Down</p></td>
+<td></td>
+<td><p><img alt="brick-dig-d" src="_images/brick_d.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>i</p></td>
+<td><p>Impulse</p></td>
+<td></td>
+<td><p><img alt="brick-dig-i" src="_images/brick_i.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>I</p></td>
+<td><p>Impulse</p></td>
+<td></td>
+<td><p><img alt="brick-dig-I" src="_images/brick_imaj.yaml.svg" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>Description<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="register-bricks">
+<h2>Register Bricks<a class="headerlink" href="#register-bricks" title="Permalink to this headline">¶</a></h2>
+<p>This section present the available bricks inside the register context.</p>
+<p>It is assummed that register description and signals description do not serve the same purpose. Therefore, register description shall not be mixed with signal description.</p>
+<p>Dedicated methods are applied to transform a human textual representation of register into a waveform for rendering engines.</p>
+<div class="section" id="id3">
+<h3>List of bricks<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>&gt; <em>For the sake of completeness, the list of bricks are given in this section. However, the end-user do not have to deal with them</em></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 20%" />
+<col style="width: 36%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Symbol</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Parameters Supported</p></th>
+<th class="head"><p>Image</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[</p></td>
+<td><p>FieldStart</p></td>
+<td></td>
+<td><p><img alt="brick-reg-start" src="_images/field_start.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>]</p></td>
+<td><p>FieldEnd</p></td>
+<td></td>
+<td><p><img alt="brick-reg-end" src="_images/field_end.yaml.svg" /></p></td>
+</tr>
+<tr class="row-even"><td><p>:</p></td>
+<td><p>FieldMid</p></td>
+<td></td>
+<td><p><img alt="brick-reg-mid" src="_images/field_mid.yaml.svg" /></p></td>
+</tr>
+<tr class="row-odd"><td><p>b</p></td>
+<td><p>FieldBit</p></td>
+<td></td>
+<td><p><img alt="brick-reg-bit" src="_images/field_bit.yaml.svg" /></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h3>Description<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="style">
+<h2>Style<a class="headerlink" href="#style" title="Permalink to this headline">¶</a></h2>
+<p>[dev-mode only]</p>
+</div>
+<div class="section" id="renderer">
+<h2>Renderer<a class="headerlink" href="#renderer" title="Permalink to this headline">¶</a></h2>
+<p>Renderer is base class from which inherit all rendering engine.</p>
+<p>It defines usefull methods</p>
+<p>It also define <cite>svg_curve_convert(vertices: list)</cite> method to the svg <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths">path command</a> into derivative rendering engine.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="pywave" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="supported_syntax.html" class="btn btn-neutral float-left" title="4. Supported Syntax" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ludwig CRON
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
