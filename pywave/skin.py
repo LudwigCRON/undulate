@@ -86,7 +86,7 @@ DEFAULT_STYLE = {
     },
     "data": {
         "fill": (0, 0, 0, 255),
-        "font-size": (0.7, SizeUnit.EM),
+        "font-size": (0.5, SizeUnit.EM),
         "font-style": "normal",
         "font-variant": "normal",
         "font-weight": 500,
@@ -464,7 +464,7 @@ def text_bbox(context, name: str, text: str, engine: Engine):
     calculate the bounding box of the text
     """
     if engine == Engine.CAIRO:
-        apply_cairo_style(context, name)
+        apply_cairo_style(context, name, {})
         return cairo_text_bbox(context, get_style(name), text)
     return (-len(text)*6/2, -4.5, len(text)*6, 9)
 

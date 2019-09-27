@@ -17,13 +17,6 @@ import pywave
 
 from pprint import pprint
 
-ERROR_MSG = {
-    "YAML_IMPORT": "ERROR: To read yaml file PyYAML is required. Run 'pip install pyyaml'",
-    "TOML_IMPORT": "ERROR: To read toml file toml is required. Run 'pip install toml'",
-    "FILE_NOT_FOUND": "ERROR: %s is not found",
-    "MISSING_GRP_NAME": "ERROR: a group of wave should always have a name property",
-    "UNSUPPORTED_FORMAT": "ERROR: this file format is not yet supported\n"+["\t- %s\n" % f for f in SUPPORTED_FORMAT]
-}
 
 SUPPORTED_FORMAT = {
     "json": [".json", ".js", ".jsonml", ".jsml"],
@@ -32,6 +25,22 @@ SUPPORTED_FORMAT = {
 }
 
 SUPPORTED_RENDER = ["svg", "eps", "cairo-svg", "cairo-ps", "cairo-eps", "cairo-pdf", "cairo-png", "json"]
+
+ERROR_MSG = {
+    "YAML_IMPORT":
+        "ERROR: To read yaml file PyYAML is required. Run 'pip install pyyaml'",
+    "TOML_IMPORT":
+        "ERROR: To read toml file toml is required. Run 'pip install toml'",
+    "FILE_NOT_FOUND":
+        "ERROR: %s is not found",
+    "MISSING_GRP_NAME":
+        "ERROR: a group of wave should always have a name property",
+    "UNSUPPORTED_FORMAT": (
+        "ERROR: this file format is not yet supported\n"
+        "For input:\n %s"
+        "For output:\n %s"
+        ) % (''.join(["\t- %s\n" % f for f in SUPPORTED_FORMAT])  ,''.join(["\t- %s\n" % f for f in SUPPORTED_RENDER]))
+}
 
 # ==== Simple Logging Utility ====
 # this should be used only there
@@ -121,7 +130,7 @@ def parse(filepath: str) -> (bool, object):
         log_Fatal(ERROR_MSG["FILE_NOT_FOUND"] % cli_args.input)
     _, ext = os.path.splitext(filepath)
     # supported extension
-    err = not any([ext in cat for cat in SUPPORTED_FORMAT])
+    err = not any([ext in cat for cat in SUPPORTED_FORMAT.values()])
     if err:
         log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
     # call appropriate parser
@@ -131,7 +140,7 @@ def parse(filepath: str) -> (bool, object):
         try:
             import yaml
             with open(filepath, "r+") as fp:
-                ans = yaml.load(fp)
+                ans = yaml.load(fp, Loader=yaml.FullLoader)
         except ImportError:
             log_Fatal(ERROR_MSG["YAML_IMPORT"])
     else:
@@ -163,7 +172,8 @@ if __name__ == "__main__":
     err, obj = parse(cli_args.input)
     if err:
         parser.print_help()
-    elif not cli_args.format in SUPPORTED_RENDER:
+        exit(2)
+    elif not cli_args.format.lower() in SUPPORTED_RENDER:
         log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
     # for debug pupose
     elif cli_args.format.lower() == "json":
@@ -187,10 +197,10 @@ if __name__ == "__main__":
                                    brick_width=(28 if cli_args.is_reg else 40),
                                    is_reg=cli_args.is_reg,
                                    filename=cli_args.output)
-        else:
-            with open(cli_args.output, "w+") as fp:
-            fp.write(renderer.draw(obj, brick_height=(50 if cli_args.is_reg else 20),
-                                        brick_width=(28 if cli_args.is_reg else 40),
-                                        is_reg=cli_args.is_reg))
+            else:
+                with open(cli_args.output, "w+") as fp:
+                    fp.write(renderer.draw(obj, brick_height=(50 if cli_args.is_reg else 20),
+                                                brick_width=(28 if cli_args.is_reg else 40),
+                                                is_reg=cli_args.is_reg))
         except Exception as e:
             traceback.print_tb(e.__traceback__)

@@ -100,7 +100,7 @@
 </g>
 
 <g id="A"  transform="translate(20, 0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">A</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">A</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
 </g>
@@ -112,7 +112,7 @@
 </g>
 </g>
 <g id="B"  transform="translate(20, 30.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">B</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">B</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L80,20" class="path" />
 </g>
@@ -127,7 +127,7 @@
 </g>
 </g>
 <g id="C"  transform="translate(20, 60.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">C</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">C</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L120,20" class="path" />
 </g>
@@ -142,7 +142,7 @@
 </g>
 </g>
 <g id="D"  transform="translate(20, 90.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">D</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">D</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L160,20" class="path" />
 </g>
@@ -157,7 +157,7 @@
 </g>
 </g>
 <g id="E"  transform="translate(20, 120.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">E</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">E</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L200,20" class="path" />
 </g>
@@ -172,7 +172,7 @@
 </g>
 </g>
 <g id="F"  transform="translate(20, 150.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">F</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">F</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L200,20" class="path" />
 </g>
@@ -187,7 +187,7 @@
 </g>
 </g>
 <g id="G"  transform="translate(20, 180.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">G</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">G</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L280,20" class="path" />
 </g>

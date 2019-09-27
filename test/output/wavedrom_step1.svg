@@ -99,7 +99,7 @@
 </g>
 
 <g id="Alfa"  transform="translate(60, 0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">Alfa</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">Alfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
 </g>
@@ -147,7 +147,7 @@
 </g>
 </g>
 <g id="SAlfa"  transform="translate(60, 30.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">SAlfa</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">SAlfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L11,20 L40,20" class="path" />
 </g>

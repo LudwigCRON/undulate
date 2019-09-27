@@ -93,7 +93,7 @@
 </g>
 
 <g id="clk"  transform="translate(60, 0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">clk</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">clk</text>
 <g data-symbol="BRICKS.pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g>
@@ -127,7 +127,7 @@
 <g id="ctrl"  transform="translate(0, 20)"  >
 <text x="0" y="10"  class="h3">ctrl</text>
 <g id="write"  transform="translate(60, 20)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">write</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">write</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
 </g>
@@ -139,7 +139,7 @@
 </g>
 </g>
 <g id="read"  transform="translate(60, 50.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">read</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">read</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L160,20" class="path" />
 </g>
@@ -154,7 +154,7 @@
 <g id="edge"  transform="translate(60, 40)"  >
 </g>
 <g id="addr"  transform="translate(60, 100.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">addr</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">addr</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,20 " class="hash" />
 <path d="M0,0 L3,0 L37,0 L40,10.0" class="path" />
@@ -184,7 +184,7 @@
 </g>
 </g>
 <g id="wdata"  transform="translate(60, 130.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">wdata</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">wdata</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,20 " class="hash" />
 <path d="M0,0 L3,0 L37,0 L40,10.0" class="path" />
@@ -211,7 +211,7 @@
 <g id="ctrl"  transform="translate(0, 20)"  >
 <text x="0" y="10"  class="h3">ctrl</text>
 <g id="ack"  transform="translate(60, 20)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">ack</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">ack</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 40,0 43,20 40,20 37,20 3,20 0,20 " class="hash" />
 <path d="M0,0 L3,0 L37,0 L40,0 L43,20" class="path" />
@@ -244,7 +244,7 @@
 <g id="edge"  transform="translate(60, 40)"  >
 </g>
 <g id="rdata"  transform="translate(60, 70.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">rdata</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">rdata</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 237,0 240,10.0 237,20 3,20 0,20 " class="hash" />
 <path d="M0,0 L3,0 L237,0 L240,10.0" class="path" />

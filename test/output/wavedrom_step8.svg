@@ -92,7 +92,7 @@
 </g>
 
 <g id="A"  transform="translate(20, 0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">A</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">A</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
 </g>
@@ -104,7 +104,7 @@
 </g>
 </g>
 <g id="B"  transform="translate(20, 30.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">B</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">B</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L60.0,20" class="path" />
 </g>
@@ -116,7 +116,7 @@
 </g>
 </g>
 <g id="C"  transform="translate(20, 60.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">C</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">C</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L120,20" class="path" />
 </g>

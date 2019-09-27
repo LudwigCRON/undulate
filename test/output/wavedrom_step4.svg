@@ -95,7 +95,7 @@
 </g>
 
 <g id="clk"  transform="translate(120, 0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">clk</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">clk</text>
 <g data-symbol="BRICKS.pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 </g>
@@ -133,7 +133,7 @@
 </g>
 </g>
 <g id="Data"  transform="translate(120, 30.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">Data</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">Data</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " class="hash" />
 <path d="M0,0 L3,0 L77,0 L80,10.0" class="path" />
@@ -180,7 +180,7 @@
 </g>
 </g>
 <g id="Request"  transform="translate(120, 60.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">Request</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">Request</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L80,20" class="path" />
 </g>
@@ -203,7 +203,7 @@
 </g>
 </g>
 <g id="Acknowledge"  transform="translate(120, 120.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">Acknowledge</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">Acknowledge</text>
 <g data-symbol="BRICKS.one"  transform="translate(0, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,0 L280,0" class="path" />
 </g>

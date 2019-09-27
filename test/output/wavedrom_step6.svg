@@ -101,7 +101,7 @@
 </g>
 
 <g id="CK"  transform="translate(50, 0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">CK</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">CK</text>
 <g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L38.5,0 L41.5,20 L78.5,20 L80,10.0" class="path" />
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(1.5, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
@@ -136,7 +136,7 @@
 </g>
 </g>
 <g id="CMD"  transform="translate(50, 30.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">CMD</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">CMD</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 57.0,0 60.0,10.0 57.0,20 3,20 0,20 " class="hash" />
 <path d="M0,0 L3,0 L57.0,0 L60.0,10.0" class="path" />
@@ -221,7 +221,7 @@
 </g>
 </g>
 <g id="ADDR"  transform="translate(50, 60.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">ADDR</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">ADDR</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 57.0,0 60.0,10.0 57.0,20 3,20 0,20 " class="hash" />
 <path d="M0,0 L3,0 L57.0,0 L60.0,10.0" class="path" />
@@ -251,7 +251,7 @@
 </g>
 </g>
 <g id="DQS"  transform="translate(50, 90.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">DQS</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">DQS</text>
 <g data-symbol="BRICKS.highz"  transform="translate(0, 0)"  class="s2">
 <path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L320,10.0" class="path" />
 </g>
@@ -275,7 +275,7 @@
 </g>
 </g>
 <g id="DQ"  transform="translate(50, 120.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">DQ</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">DQ</text>
 <g data-symbol="BRICKS.highz"  transform="translate(0, 0)"  class="s2">
 <path d="M0,10.0 C1.5,10.0 1.5,10.0 20,10.0 L400,10.0" class="path" />
 </g>

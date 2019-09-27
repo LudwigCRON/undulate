@@ -97,7 +97,7 @@
 </g>
 
 <g id="F1"  transform="translate(90, 0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">F1</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">F1</text>
 <g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" />
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(1.5, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
@@ -148,7 +148,7 @@
 </g>
 </g>
 <g id="F2"  transform="translate(90, 30.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">F2</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">F2</text>
 <g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L64.5,0 L67.5,20 L130.5,20 L132.0,10.0" class="path" />
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(1.5, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
@@ -167,7 +167,7 @@
 </g>
 </g>
 <g id="BUS"  transform="translate(90, 60.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">BUS</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">BUS</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " class="hash" />
 <path d="M0,0 L3,0 L77,0 L80,10.0" class="path" />
@@ -186,7 +186,7 @@
 </g>
 </g>
 <g id="ENABLE"  transform="translate(90, 90.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">ENABLE</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">ENABLE</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" />
 </g>
@@ -201,7 +201,7 @@
 </g>
 </g>
 <g id="ENABLE_1"  transform="translate(90, 120.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">ENABLE_1</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">ENABLE_1</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L132.0,20" class="path" />
 </g>
@@ -210,7 +210,7 @@
 </g>
 </g>
 <g id="ENABLE_2"  transform="translate(90, 150.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">ENABLE_2</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">ENABLE_2</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L252.0,20" class="path" />
 </g>
@@ -219,7 +219,7 @@
 </g>
 </g>
 <g id="BUS_2"  transform="translate(90, 180.0)"  >
-<text x="-10" y="15" text-anchor="end" xml:space="preserve" class="title">BUS_2</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title">BUS_2</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L396.0,20" class="path" />
 </g>
