@@ -8,7 +8,7 @@
 .data {fill: rgba(0, 0, 0, 255);font-size: 0.500em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .arrow {fill: rgba(0, 0, 0, 255);stroke: none;}
 .hide {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
-.hash {fill: rgba(200, 200, 200, 255);}
+.hash {fill: url(#diagonalHatch);}
 .s2-polygon {fill: rgba(0, 0, 0, 0);stroke: none;}
 .s3-polygon {fill: rgba(255, 255, 176, 255);stroke: none;}
 .s4-polygon {fill: rgba(255, 224, 185, 255);stroke: none;}
@@ -370,17 +370,17 @@
 <g data-symbol="BRICKS.pclk"  transform="translate(280, 0)"  class="s2">
 <path d="M0,0 L0.0,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.high"  transform="translate(320, 0)"  class="s2">
-<path d="M0,20 L3.0,0 L120,0" class="path" style="fill: none;" />
+<g data-symbol="BRICKS.low"  transform="translate(320, 0)"  class="s2">
+<path d="M0,20 L0.0,20 L120,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.nclk"  transform="translate(440, 0)"  class="s2">
-<path d="M0,0 L3.0,20 L18.5,20 L21.5,0 L38.5,0 L38.5,0 L40,0" class="path" style="fill: none;" />
+<path d="M0,20 L0.0,20 L18.5,20 L21.5,0 L38.5,0 L38.5,0 L40,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.low"  transform="translate(480, 0)"  class="s2">
-<path d="M0,0 L3.0,20 L120,20" class="path" style="fill: none;" />
+<g data-symbol="BRICKS.high"  transform="translate(480, 0)"  class="s2">
+<path d="M0,0 L0.0,0 L120,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.pclk"  transform="translate(600, 0)"  class="s2">
-<path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,0 L0.0,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.low"  transform="translate(640, 0)"  class="s2">
 <path d="M0,20 L0.0,20 L120,20" class="path" style="fill: none;" />

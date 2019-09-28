@@ -14,7 +14,7 @@
 </clipPath>
 <g id="surface6" clip-path="url(#clip2)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
-  <use xlink:href="#glyph0-1" x="1.835938" y="14.996094"/>
+  <use xlink:href="#glyph0-1" x="1.835938" y="14.40625"/>
 </g>
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 20 L 40 20 " transform="matrix(1,0,0,1,20,0)"/>
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 20 C 0 10 0 10 20 10 L 40 10 " transform="matrix(1,0,0,1,60,0)"/>
