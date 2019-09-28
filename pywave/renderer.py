@@ -10,7 +10,6 @@ import re
 import copy
 import pywave
 from math import atan2, cos, sin, floor
-from .skin import DEFAULT, DEFINITION
 from itertools import count
 
 # Counter for unique id generation
@@ -484,7 +483,7 @@ class Renderer:
                     s, br, c, style = wave[last]
                     last_y = br.get_last_y()
                     symbol = pywave.BRICKS.from_str(b)
-                    ignore = pywave.BRICKS.ignore_transition(wave[last] if wave else None, symbol)
+                    ignore = pywave.BRICKS.ignore_transition(wave[last][0] if wave else None, symbol)
                     # adjust transition from data or x to constant
                     if s in [pywave.BRICKS.data, pywave.BRICKS.x] and symbol in [pywave.BRICKS.zero, pywave.BRICKS.one, pywave.BRICKS.low, pywave.BRICKS.high]:
                         if symbol in [pywave.BRICKS.zero, pywave.BRICKS.low]:
@@ -503,7 +502,12 @@ class Renderer:
                     # adjust clock symbols
                     if symbol in [pywave.BRICKS.low, pywave.BRICKS.Low] and \
                             s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk, pywave.BRICKS.Nclk, pywave.BRICKS.nclk]:
-                        br.alter_end(0, brick_height)
+                        br.alter_end(0, brick_height if s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk] else 0)
+                        wave[last] = (s, br, c, style)
+                        ignore = True
+                    if symbol in [pywave.BRICKS.high, pywave.BRICKS.High] and \
+                            s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk, pywave.BRICKS.Nclk, pywave.BRICKS.nclk]:
+                        br.alter_end(0, brick_height if s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk] else 0)
                         wave[last] = (s, br, c, style)
                         ignore = True
                     # get y of the previous brick for junction
@@ -774,7 +778,7 @@ class Renderer:
             # return value is ans
             if depth > 1:
                 # add group name
-                ans = self.text(0, oy-10, name, style_repr=f"h{depth}", extra=self._GROUP_NAME, **kwargs)
+                ans = self.text(0, oy-16, name, style_repr=f"h{depth}", extra=self._GROUP_NAME, **kwargs)
                 # add group separator
                 if depth == 2:
                     ans += self.path([(0, dy-6), (width+ox, dy-6)], style_repr="border ctx-y", **kwargs)

@@ -6,7 +6,15 @@ svgrenderer.py use the logic of renderer.py to render waveforms
 into scalable vector graphics format
 """
 
-from .skin import DEFAULT, DEFINITION, Engine
+from .skin import (
+    DEFAULT_STYLE,
+    DEFINITION,
+    Engine,
+    style_in_kwargs,
+    get_style,
+    css_from_rule,
+    css_from_style
+)
 from .renderer import Renderer
 
 class SvgRenderer(Renderer):
@@ -44,9 +52,11 @@ class SvgRenderer(Renderer):
         vertices: list of of x-y coordinates in a tuple
         [style_repr] : optional attributes for the svg (eg class)
         """
+        overload = style_in_kwargs(**kwargs)
+        overload["fill"] = None
         path = "".join([f"L{x},{y} " for x, y in vertices])
         path = "M" + path[1:]
-        return f'<path d="{path.strip()}" class="{style_repr}" />\n'
+        return f'<path d="{path.strip()}" class="{style_repr}" style="{css_from_rule(None, overload, False)}" />\n'
 
     def arrow(self, x, y, angle, **kwargs) -> str:
         """
@@ -94,10 +104,12 @@ class SvgRenderer(Renderer):
                 svg operator
         [style_repr] : optional attributes for the svg (eg class)
         """
+        overload = style_in_kwargs(**kwargs)
+        overload["fill"] = None
         path = "".join(
             [f"{v[0]}{v[1]},{v[2]} " if v[0] is not "z" else "z" for v in vertices]
         )
-        return f'<path d="{path.strip()}" class="{style_repr}" />\n'
+        return f'<path d="{path.strip()}" class="{style_repr}" style="{css_from_rule(None, overload, False)}"/>\n'
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
         """
@@ -107,10 +119,13 @@ class SvgRenderer(Renderer):
         text    : text to display
         """
         extra = kwargs.get("extra", "")
-        style = kwargs.get("style_repr", "text")
-        if style:
-            style = f'class="{style}"'
-        return f'<text x="{x}" y="{y}" {extra} {style}>{text}</text>\n'
+        css = kwargs.get("style_repr", "text")
+        overload = style_in_kwargs(**kwargs)
+        style = get_style(css, overload)
+        style["color"] = style.get("fill", style.get("color"))
+        if css:
+            css = f'class="{css}"'
+        return f'<text x="{x}" y="{y}" {extra} {css} style="{css_from_rule(None, style, False)}" >{text}</text>\n'
 
     def translate(self, x: float, y: float, **kwargs) -> str:
         return f' transform="translate({x}, {y})" '
@@ -128,9 +143,10 @@ class SvgRenderer(Renderer):
         return (
             f'<svg xmlns="http://www.w3.org/2000/svg" width="{width+lkeys*11+11}" height="{height}" '
             f'viewBox="-1 -1 {width+lkeys*11+12} {height+2}" overflow="hidden">\n'
-            f"<style>{DEFAULT}</style>\n"
-            f"{DEFINITION}"
-            ""
+            "<style>\n"
+            + css_from_style(DEFAULT_STYLE)
+            + "</style>\n"
+            + DEFINITION
             + self.wavegroup(
                 _id,
                 wavelanes,

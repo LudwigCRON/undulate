@@ -90,8 +90,12 @@ class FieldStart(pywave.Brick):
                 ]
             )
         # add attributes
-        width, attrs = kwargs.get("attr", None)
-        if attrs:
+        _attrs = kwargs.get("attr", None)
+        attrs = None
+        if not _attrs is None:
+            width, attrs = _attrs
+        if not _attrs is None and not attrs is None:
+            width, attrs = _attrs
             for i, attr in enumerate(attrs):
                 self.texts.append(
                     ((self.width * width) / 2, self.height + 12 * (i + 1), attr, "attr")

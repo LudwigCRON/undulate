@@ -14,10 +14,10 @@
 </clipPath>
 <g id="surface6" clip-path="url(#clip2)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
-  <use xlink:href="#glyph0-1" x="2.84375" y="15"/>
+  <use xlink:href="#glyph0-1" x="2.84375" y="14.996094"/>
 </g>
-<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 0 L 18.5 0 L 21.5 20 L 38.5 20 L 40 10 " transform="matrix(1,0,0,1,20,0)"/>
-<path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;" d="M 36.019531 7.058594 L 40.519531 13.460938 L 42.941406 6.019531 L 39.703125 8.023438 L 36.019531 7.058594 "/>
+<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 0 L 3 20 L 18.5 20 L 21.5 0 L 38.5 0 L 40 10 " transform="matrix(1,0,0,1,20,0)"/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;" d="M 17.519531 7.058594 L 22.019531 13.460938 L 24.441406 6.019531 L 21.203125 8.023438 L 17.519531 7.058594 "/>
 </g>
 <clipPath id="clip3">
   <rect x="0" y="0" width="62" height="30"/>

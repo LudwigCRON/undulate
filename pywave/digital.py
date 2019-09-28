@@ -21,27 +21,26 @@ class Nclk(pywave.Brick):
             self.last_y = 0
         else:
             self.last_y = self.height / 2 if self.last_y is None else self.last_y
-        dt = self.last_y * self.slewing / self.height
+        dt = abs(self.height - self.last_y) * self.slewing / self.height
         # add shape
         self.paths.append(
             [
                 (0, self.last_y),
-                (dt, 0),
-                (self.width * self.duty_cycle - self.slewing / 2, 0),
-                (self.width * self.duty_cycle + self.slewing / 2, self.height),
-                (self.width - self.slewing / 2, self.height),
+                (dt, self.height),
+                (self.width * self.duty_cycle - self.slewing / 2, self.height),
+                (self.width * self.duty_cycle + self.slewing / 2, 0),
+                (self.width - self.slewing / 2, 0),
                 (self.width, self.height / 2),
             ]
         )
-        if self.ignore_transition:
-            self.paths[0] = self.paths[0][0] + self.paths[0][2:]
+        #if self.ignore_transition:
+        #    self.paths[0] = self.paths[0][0] + self.paths[0][2:]
         # add arrow
-        if kwargs.get("add_arrow", False):
+        if kwargs.get("add_arrow", False) and not self.ignore_transition:
             arrow_angle = -math.atan2(-self.height, self.slewing) * 180 / math.pi
             self.arrows.append(
                 (
-                    dt * (self.height / 2 - self.last_y) / self.height
-                    + self.width * self.duty_cycle,
+                    dt * (self.height / 2 - self.last_y) / self.height,
                     self.height / 2,
                     arrow_angle,
                 )
@@ -71,10 +70,10 @@ class Pclk(pywave.Brick):
                 (self.width, self.height / 2),
             ]
         )
-        if self.ignore_transition:
-            self.paths[0] = self.paths[0][0] + self.paths[0][2:]
+        #if self.ignore_transition:
+        #    self.paths[0] = self.paths[0][0] + self.paths[0][2:]
         # add arrow
-        if kwargs.get("add_arrow", False):
+        if kwargs.get("add_arrow", False) and not self.ignore_transition:
             arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
             self.arrows.append((dt / 2, self.height / 2, arrow_angle))
 
@@ -113,14 +112,14 @@ class High(pywave.Brick):
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
         if self.is_first:
-            self.last_y = self.height
+            self.last_y = 0
         else:
-            self.last_y = self.height if self.last_y is None else self.last_y
+            self.last_y = 0 if self.last_y is None else self.last_y
         dt = self.last_y * self.slewing / self.height
         # add shape
         self.paths.append([(0, self.last_y), (dt, 0), (self.width, 0)])
         # add arrow
-        if kwargs.get("add_arrow", False):
+        if kwargs.get("add_arrow", False) and not self.is_first:
             arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
             self.arrows.append((dt / 2, self.height / 2, arrow_angle))
 
@@ -182,7 +181,7 @@ class One(pywave.Brick):
         if self.is_first:
             self.last_y = 0
         else:
-            self.last_y = self.height if self.last_y is None else self.last_y
+            self.last_y = 0 if self.last_y is None else self.last_y
         dt = (self.height - self.last_y) * self.slewing / self.height
         # add shape
         self.paths.append(
@@ -376,7 +375,6 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
     if (
         symbol
         in [pywave.BRICKS.Nclk, pywave.BRICKS.Pclk, pywave.BRICKS.Low, pywave.BRICKS.High]
-        and not ignore_transition
     ):
         kwargs.update({"add_arrow": True})
     # clock signals description (pPnNlLhH)

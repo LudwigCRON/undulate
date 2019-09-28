@@ -2603,12 +2603,12 @@ stroke: color, width, opacity, linecap, linejoin, mitterlimit, dasharray, opacit
 
 <dl class="attribute">
 <dt id="pywave.skin.Engine.EPS">
-<code class="sig-name descname">EPS</code><em class="property"> = (1,)</em><a class="headerlink" href="#pywave.skin.Engine.EPS" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">EPS</code><em class="property"> = 1</em><a class="headerlink" href="#pywave.skin.Engine.EPS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="pywave.skin.Engine.SVG">
-<code class="sig-name descname">SVG</code><em class="property"> = (0,)</em><a class="headerlink" href="#pywave.skin.Engine.SVG" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">SVG</code><em class="property"> = 0</em><a class="headerlink" href="#pywave.skin.Engine.SVG" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2620,12 +2620,12 @@ stroke: color, width, opacity, linecap, linejoin, mitterlimit, dasharray, opacit
 <p>An enumeration.</p>
 <dl class="attribute">
 <dt id="pywave.skin.LineCap.BUTT">
-<code class="sig-name descname">BUTT</code><em class="property"> = (0,)</em><a class="headerlink" href="#pywave.skin.LineCap.BUTT" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">BUTT</code><em class="property"> = 0</em><a class="headerlink" href="#pywave.skin.LineCap.BUTT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="pywave.skin.LineCap.ROUND">
-<code class="sig-name descname">ROUND</code><em class="property"> = (1,)</em><a class="headerlink" href="#pywave.skin.LineCap.ROUND" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ROUND</code><em class="property"> = 1</em><a class="headerlink" href="#pywave.skin.LineCap.ROUND" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2647,12 +2647,12 @@ stroke: color, width, opacity, linecap, linejoin, mitterlimit, dasharray, opacit
 
 <dl class="attribute">
 <dt id="pywave.skin.LineJoin.MITER">
-<code class="sig-name descname">MITER</code><em class="property"> = (0,)</em><a class="headerlink" href="#pywave.skin.LineJoin.MITER" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">MITER</code><em class="property"> = 0</em><a class="headerlink" href="#pywave.skin.LineJoin.MITER" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="pywave.skin.LineJoin.ROUND">
-<code class="sig-name descname">ROUND</code><em class="property"> = (1,)</em><a class="headerlink" href="#pywave.skin.LineJoin.ROUND" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">ROUND</code><em class="property"> = 1</em><a class="headerlink" href="#pywave.skin.LineJoin.ROUND" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2686,7 +2686,7 @@ stroke: color, width, opacity, linecap, linejoin, mitterlimit, dasharray, opacit
 <p>An enumeration.</p>
 <dl class="attribute">
 <dt id="pywave.skin.TextAlign.CENTER">
-<code class="sig-name descname">CENTER</code><em class="property"> = (1,)</em><a class="headerlink" href="#pywave.skin.TextAlign.CENTER" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">CENTER</code><em class="property"> = 1</em><a class="headerlink" href="#pywave.skin.TextAlign.CENTER" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2696,12 +2696,12 @@ stroke: color, width, opacity, linecap, linejoin, mitterlimit, dasharray, opacit
 
 <dl class="attribute">
 <dt id="pywave.skin.TextAlign.LEFT">
-<code class="sig-name descname">LEFT</code><em class="property"> = (0,)</em><a class="headerlink" href="#pywave.skin.TextAlign.LEFT" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">LEFT</code><em class="property"> = 0</em><a class="headerlink" href="#pywave.skin.TextAlign.LEFT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="pywave.skin.TextAlign.RIGHT">
-<code class="sig-name descname">RIGHT</code><em class="property"> = (2,)</em><a class="headerlink" href="#pywave.skin.TextAlign.RIGHT" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">RIGHT</code><em class="property"> = 2</em><a class="headerlink" href="#pywave.skin.TextAlign.RIGHT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2772,8 +2772,22 @@ for the supported engine</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="pywave.skin.css_from_rule">
+<code class="sig-prename descclassname">pywave.skin.</code><code class="sig-name descname">css_from_rule</code><span class="sig-paren">(</span><em class="sig-param">rule: str</em>, <em class="sig-param">style: dict</em>, <em class="sig-param">with_rule: bool = True</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.skin.css_from_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate an equivalent string for only
+one rule of the style</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pywave.skin.css_from_style">
+<code class="sig-prename descclassname">pywave.skin.</code><code class="sig-name descname">css_from_style</code><span class="sig-paren">(</span><em class="sig-param">style: dict</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.skin.css_from_style" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate an equivalent string for only
+one rule of the style</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="pywave.skin.get_style">
-<code class="sig-prename descclassname">pywave.skin.</code><code class="sig-name descname">get_style</code><span class="sig-paren">(</span><em class="sig-param">name: str</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#pywave.skin.get_style" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">pywave.skin.</code><code class="sig-name descname">get_style</code><span class="sig-paren">(</span><em class="sig-param">name: str</em>, <em class="sig-param">overload: dict = {}</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#pywave.skin.get_style" title="Permalink to this definition">¶</a></dt>
 <dd><p>get the style from the selector rules and
 fallback to a closest match in the default style</p>
 </dd></dl>

@@ -12,8 +12,8 @@ colors should always be in rgba with value from 0—255
 from enum import Enum
 
 class Engine(Enum):
-    SVG = (0,)
-    EPS = (1,)
+    SVG = 0
+    EPS = 1
     CAIRO = 2
 
 class SizeUnit(Enum):
@@ -22,19 +22,19 @@ class SizeUnit(Enum):
     PT = 1.333
 
 class LineCap(Enum):
-    BUTT = (0,)
-    ROUND = (1,)
+    BUTT = 0
+    ROUND = 1
     SQUARE = 2
 
 class LineJoin(Enum):
-    MITER = (0,)
-    ROUND = (1,)
+    MITER = 0
+    ROUND = 1
     BEVEL = 2
 
 class TextAlign(Enum):
-    LEFT = (0,)
-    CENTER = (1,)
-    RIGHT = (2,)
+    LEFT = 0
+    CENTER = 1
+    RIGHT = 2
     JUSTIFY = 3
 
 # style definition for cairo renderer
@@ -44,7 +44,7 @@ DEFAULT_STYLE = {
         "font-weight": 500,
         "font-size": (0.9, SizeUnit.EM),
         "font-family": "fira mono",
-        "text-align": TextAlign.RIGHT,
+        "text-align": TextAlign.RIGHT
     },
     "text": {
         "fill": (0, 0, 0, 255),
@@ -185,74 +185,6 @@ DEFAULT_STYLE = {
     },
 }
 
-# default style for the SvgRenderer
-DEFAULT = """
-.text, text{font-size:0.9em;
-    font-style:normal;
-    font-variant:normal;
-    font-weight:500;
-    font-stretch:normal;
-    text-align:center;
-    fill-opacity:1;
-    font-family:fira mono, droid sans mono, monospace;}
-.data{font-size:0.7em;
-    font-style:normal;
-    font-variant:normal;
-    font-weight:500;
-    font-stretch:normal;
-    text-align:center;
-    fill-opacity:1;
-    font-family:fira mono, droid sans mono, monospace;}
-.muted{fill:#aaa}
-.warning{fill:#f6b900}
-.error{fill:#f60000}
-.info{fill:#0041c4}
-.title{
-    fill: #0041c4;
-    font-weight: 500;
-    font-size: 0.9em;
-    font-family: fira mono;
-    text-align: right;
-}
-.success{fill:#00ab00}
-.attr{font-size:9px;}
-.h1{font-size:18.31px;font-weight:bold}
-.border{stroke-width: 1.25px; stroke: #000}
-.h2{font-size:14.65px;font-weight:bold}
-.h3{font-size:11.72px;font-weight:bold}
-.h4{font-size:9.38px;font-weight:bold}
-.h5{font-size:7.50px;font-weight:bold}
-.h6{font-size:6px;font-weight:bold}
-.path{fill:none;
-    stroke:#000;
-    stroke-width:1;
-    stroke-linecap:round;
-    stroke-linejoin:miter;
-    stroke-miterlimit:4;
-    stroke-opacity:1;
-    stroke-dasharray:none}
-.stripe{fill:none;
-    stroke:#000;
-    stroke-width:0.5;
-    stroke-linecap:round;
-    stroke-linejoin:miter;
-    stroke-miterlimit:4;
-    stroke-opacity:1;
-    stroke-dasharray:none}
-.hash{fill:url(#diagonalHatch);}
-.arrow{fill:#000000;fill-opacity:1;stroke:none}
-.hide{fill:#ffffff;fill-opacity:1;stroke:2}
-.s2-polygon {fill:none;fill-opacity:0;stroke:none}
-.s3-polygon {fill:#ffffb4;fill-opacity:1;stroke:none}
-.s4-polygon {fill:#ffe0b9;fill-opacity:1;stroke:none}
-.s5-polygon {fill:#b9e0ff;fill-opacity:1;stroke:none}
-.tick {stroke: rgb(136, 136, 136); stroke-width: 0.5; stroke-dasharray: 1,3;}
-.edge {fill:none;stroke:#00F;stroke-width:1}
-.edge-background {fill:#ffffff;fill-opacity:1;stroke:2}
-.edge-arrow{fill:#00F;fill-opacity:1;stroke:none}
-.edge ~ text {font-size:0.625em; transform: translate(0, 2.5px);}
-"""
-
 DEFINITION = """
 <defs>
     <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
@@ -341,15 +273,17 @@ else:
         offset calculation for text alignment
         """
         ta = style.get("text-align", TextAlign.CENTER)
+        ba = style.get("dominant-baseline", "middle")
         # get text width
         ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
         xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
         # apply style
+        dy = descent/2+height/4 if ba == "middle" else 0
         if ta == TextAlign.LEFT:
-            return (0, 0)
+            return (0,-dy)
         if ta == TextAlign.RIGHT:
-            return (width, 0)
-        return (width / 2, -descent)
+            return (width,-dy)
+        return (width / 2, -dy)
 
     def cairo_text_bbox(context, style: dict, text: str):
         """
@@ -440,16 +374,17 @@ def apply_font(context, name: str, engine: Engine, overload: dict = {}):
         apply_cairo_font(context, get_style(name), overload)
 
 
-def get_style(name: str) -> dict:
+def get_style(name: str, overload: dict = {}) -> dict:
     """
     get the style from the selector rules and
     fallback to a closest match in the default style
     """
     selectors = DEFAULT_STYLE.keys()
-    if name in selectors:
-        return DEFAULT_STYLE.get(name, {})
-    else:
-        return DEFAULT_STYLE.get(name.split(" ")[0], {})
+    rule = name if name in selectors else \
+           name.split(' ')[0] if ' ' in name else ''
+    style = dict(DEFAULT_STYLE.get(rule, {}))
+    style.update(overload)
+    return style
 
 
 def text_align(context, name: str, text: str, engine: Engine):
@@ -474,3 +409,65 @@ def style_in_kwargs(**kwargs) -> dict:
         if e in kwargs:
             ans[e] = kwargs.get(e)
     return ans
+
+def css_from_style(style: dict):
+    """
+    generate an equivalent string for only
+    one rule of the style
+    """
+    return '\n'.join((css_from_rule(*item) for item in style.items()))
+
+def css_from_rule(rule: str, style: dict, with_rule: bool = True):
+    """
+    generate an equivalent string for only
+    one rule of the style
+    """
+    ans = ".%s {" % rule if with_rule else ""
+    # create repr of each property
+    for prop, value in style.items():
+        if value is None:
+            ans += "%s: none;" % prop
+        # fill or stroke are only color
+        elif prop == "fill" and rule == "hash":
+            ans += "fill: url(#diagonalHatch);"
+        elif prop in ["fill", "stroke", "color"]:
+            ans += "%s: rgba(%d, %d, %d, %d);" % (prop, *value)
+        # font size
+        elif prop in ["font-size"]:
+            v, unit = value
+            if unit == SizeUnit.EM:
+                ans += "%s: %.3fem;" % (prop, v)
+            elif unit == SizeUnit.PT:
+                ans += "%s: %.3fpt;" % (prop, v)
+            else:
+                ans += "%s: %.3fpx;" % (prop, v)
+        elif prop in ["text-align"]:
+            if value == TextAlign.LEFT:
+                ans += "%s: left;" % prop
+            elif value == TextAlign.RIGHT:
+                ans += "%s: right;" % prop
+            elif value == TextAlign.CENTER:
+                ans += "%s: center;" % prop
+            else:
+                ans += "%s: justify;" % prop
+        elif prop in ["stroke-dasharray"]:
+            ans += "%s: %s;" % (prop, ', '.join([str(v) for v in value]))
+        elif prop in ["stroke-linecap"]:
+            if value == LineCap.ROUND:
+                ans += "%s: round;" % prop
+            elif value == LineCap.BUTT:
+                ans += "%s: butt;" % prop
+            else:
+                ans += "%s: square;" % prop
+        elif prop in ["stroke-linejoin"]:
+            if value == LineJoin.BEVEL:
+                ans += "%s: bevel;" % prop
+            elif value == LineJoin.MITER:
+                ans += "%s: miter;" % prop
+            else:
+                ans += "%s: round;" % prop
+        else:
+            ans += "%s: %s;" % (prop, value)
+    if not with_rule:
+        return ans
+    return ans + '}'

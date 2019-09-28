@@ -20,10 +20,10 @@
 </clipPath>
 <g id="surface6" clip-path="url(#clip2)">
 <g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
-  <use xlink:href="#glyph0-1" x="9.011719" y="15"/>
-  <use xlink:href="#glyph0-2" x="17.651719" y="15"/>
-  <use xlink:href="#glyph0-3" x="26.291719" y="15"/>
-  <use xlink:href="#glyph0-2" x="34.931719" y="15"/>
+  <use xlink:href="#glyph0-1" x="9.011719" y="16.59375"/>
+  <use xlink:href="#glyph0-2" x="17.651719" y="16.59375"/>
+  <use xlink:href="#glyph0-3" x="26.291719" y="16.59375"/>
+  <use xlink:href="#glyph0-2" x="34.931719" y="16.59375"/>
 </g>
 <path style="fill-rule:nonzero;fill:rgb(78.431373%,78.431373%,78.431373%);fill-opacity:1;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(78.431373%,78.431373%,78.431373%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 0 L 77 0 L 80 10 L 77 20 L 0 20 " transform="matrix(1,0,0,1,50,0)"/>
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 0 L 77 0 L 80 10 " transform="matrix(1,0,0,1,50,0)"/>

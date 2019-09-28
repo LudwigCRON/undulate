@@ -79,10 +79,10 @@ class BRICKS(Enum):
             (BRICKS.x, BRICKS.one),
             (BRICKS.data, BRICKS.zero),
             (BRICKS.data, BRICKS.one),
-            (BRICKS.Nclk, BRICKS.Low),
-            (BRICKS.nclk, BRICKS.Low),
-            (BRICKS.Pclk, BRICKS.Low),
-            (BRICKS.pclk, BRICKS.Low),
+            (BRICKS.low, BRICKS.Low),
+            (BRICKS.high, BRICKS.High),
+            (BRICKS.Low, BRICKS.Low),
+            (BRICKS.High, BRICKS.High)
         ]:
             return True
         return False

@@ -67,9 +67,11 @@ register:
 
 annotation:
 	$(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f cairo-svg -o "${TESTPATH}/output/annotation-cairo.svg"
+	$(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f svg -o "${TESTPATH}/output/annotation.svg"
 
 overlay:
 	$(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f cairo-svg -o "${TESTPATH}/output/overlay-cairo.svg"
+	$(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f svg -o "${TESTPATH}/output/overlay.svg"
 
 coverage:
 	coverage run $(WAVEFORM) -i ${TESTPATH}/wavetest.yaml -f eps -o ${TESTPATH}/output/$(subst .yaml,-yaml.eps,wavetest.yaml)
@@ -84,7 +86,9 @@ coverage:
 	coverage run -a $(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f svg -o "${TESTPATH}/legacy/reg-vl-jsonml.svg"
 	coverage run -a $(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f cairo-ps -o "${TESTPATH}/legacy/reg-opivi-jsonml-cairo.ps"
 	coverage run -a $(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f cairo-png -o "${TESTPATH}/legacy/reg-vl-jsonml-cairo.png"
-	coverage run -a $(WAVEFORM) -i ${TESTPATH}/annotation.yaml -f cairo-svg -o ${TESTPATH}/output/annotation-cairo.svg
-	coverage run -a $(WAVEFORM) -i ${TESTPATH}/overlay.toml -f cairo-svg -o ${TESTPATH}/output/overlay-cairo.svg
+	coverage run -a $(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f cairo-svg -o "${TESTPATH}/output/annotation-cairo.svg"
+	coverage run -a $(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f svg -o "${TESTPATH}/output/annotation.svg"
+	coverage run -a $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f cairo-svg -o "${TESTPATH}/output/overlay-cairo.svg"
+	coverage run -a $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f svg -o "${TESTPATH}/output/overlay.svg"
 	coverage report --include="*pywave/*"
 	coverage html
