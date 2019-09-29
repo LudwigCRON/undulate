@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="626" height="60.0" viewBox="-1 -1 627 62.0" overflow="hidden">
+<svg xmlns="http://www.w3.org/2000/svg" width="626" height="60.0" viewBox="-1 -1 627 62.0">
 <style>
 .title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;}
 .text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;}
@@ -59,7 +59,7 @@
 </g>
 
 <g id="Alfa"  transform="translate(60, 0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;color: rgba(0, 65, 196, 255);" >Alfa</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >Alfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" style="fill: none;" />
 </g>
@@ -70,12 +70,12 @@
 <path d="M0,0 C3.0,10.0 3.0,10.0 20,10.0 L40,10.0" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(160, 0)"  class="s2">
-<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="hash" />
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="hash" style="" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(200, 0)"  class="s2">
-<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s2-polygon" />
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s2-polygon" style="" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" style="fill: none;" />
 </g>
@@ -86,28 +86,28 @@
 <path d="M0,0 L3,0 C6,0 6,20 20,20 L80,20" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(360, 0)"  class="s2">
-<polygon points="0,20 3,0 37,0 40,10.0 37,20 3,20 0,20 " class="s2-polygon" />
+<polygon points="0,20 3,0 37,0 40,10.0 37,20 3,20 0,20 " class="s2-polygon" style="" />
 <path d="M0,20 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,20 L3,20 L37,20 L40,10.0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(400, 0)"  class="s3">
-<polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " class="s3-polygon" />
+<polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " class="s3-polygon" style="" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(480, 0)"  class="s4">
-<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s4-polygon" />
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s4-polygon" style="" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(520, 0)"  class="s5">
-<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s5-polygon" />
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s5-polygon" style="" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="SAlfa"  transform="translate(60, 30.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;color: rgba(0, 65, 196, 255);" >SAlfa</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >SAlfa</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L11,20 L40,20" class="path" style="fill: none;" />
 </g>
@@ -118,12 +118,12 @@
 <path d="M0,0 C8.0,10.0 8.0,10.0 20,10.0 L40,10.0" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(160, 0)"  class="s2">
-<polygon points="0,10.0 8,0 32,0 40,10.0 32,20 8,20 0,10.0 " class="hash" />
+<polygon points="0,10.0 8,0 32,0 40,10.0 32,20 8,20 0,10.0 " class="hash" style="" />
 <path d="M0,10.0 L8,0 L32,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L8,20 L32,20 L40,10.0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(200, 0)"  class="s2">
-<polygon points="0,10.0 8,0 32,0 40,10.0 32,20 8,20 0,10.0 " class="s2-polygon" />
+<polygon points="0,10.0 8,0 32,0 40,10.0 32,20 8,20 0,10.0 " class="s2-polygon" style="" />
 <path d="M0,10.0 L8,0 L32,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L8,20 L32,20 L40,10.0" class="path" style="fill: none;" />
 </g>
@@ -134,22 +134,22 @@
 <path d="M0,0 L3,0 C11,0 11,20 20,20 L80,20" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(360, 0)"  class="s2">
-<polygon points="0,20 8,0 32,0 40,10.0 32,20 8,20 0,20 " class="s2-polygon" />
+<polygon points="0,20 8,0 32,0 40,10.0 32,20 8,20 0,20 " class="s2-polygon" style="" />
 <path d="M0,20 L8,0 L32,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,20 L8,20 L32,20 L40,10.0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(400, 0)"  class="s3">
-<polygon points="0,10.0 8,0 72,0 80,10.0 72,20 8,20 0,10.0 " class="s3-polygon" />
+<polygon points="0,10.0 8,0 72,0 80,10.0 72,20 8,20 0,10.0 " class="s3-polygon" style="" />
 <path d="M0,10.0 L8,0 L72,0 L80,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L8,20 L72,20 L80,10.0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(480, 0)"  class="s4">
-<polygon points="0,10.0 8,0 32,0 40,10.0 32,20 8,20 0,10.0 " class="s4-polygon" />
+<polygon points="0,10.0 8,0 32,0 40,10.0 32,20 8,20 0,10.0 " class="s4-polygon" style="" />
 <path d="M0,10.0 L8,0 L32,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L8,20 L32,20 L40,10.0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(520, 0)"  class="s5">
-<polygon points="0,10.0 8,0 32,0 40,10.0 32,20 8,20 0,10.0 " class="s5-polygon" />
+<polygon points="0,10.0 8,0 32,0 40,10.0 32,20 8,20 0,10.0 " class="s5-polygon" style="" />
 <path d="M0,10.0 L8,0 L32,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L8,20 L32,20 L40,10.0" class="path" style="fill: none;" />
 </g>

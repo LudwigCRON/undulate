@@ -112,12 +112,12 @@
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 1.5 0 L 18.5 0 L 21.5 20 L 38.5 20 L 40 10 " transform="matrix(1,0,0,1,100,0)"/>
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 1.5 0 L 18.5 0 L 21.5 20 L 38.5 20 L 40 10 " transform="matrix(1,0,0,1,140,0)"/>
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 1.5 0 L 18.5 0 L 21.5 20 L 38.5 20 L 40 10 " transform="matrix(1,0,0,1,180,0)"/>
-<path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;" d="M 183.691406 13.980469 L 181.269531 6.539062 L 176.769531 12.941406 L 180.453125 11.976562 L 183.691406 13.980469 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;" d="M 182.941406 13.980469 L 180.519531 6.539062 L 176.019531 12.941406 L 179.703125 11.976562 L 182.941406 13.980469 "/>
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 1.5 0 L 18.5 0 L 21.5 20 L 38.5 20 L 40 10 " transform="matrix(1,0,0,1,220,0)"/>
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 1.5 0 L 18.5 0 L 21.5 20 L 38.5 20 L 40 10 " transform="matrix(1,0,0,1,260,0)"/>
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 1.5 0 L 18.5 0 L 21.5 20 L 38.5 20 L 40 10 " transform="matrix(1,0,0,1,300,0)"/>
 <path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 1.5 0 L 18.5 0 L 21.5 20 L 38.5 20 L 40 10 " transform="matrix(1,0,0,1,340,0)"/>
-<path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;" d="M 343.691406 13.980469 L 341.269531 6.539062 L 336.769531 12.941406 L 340.453125 11.976562 L 343.691406 13.980469 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(0%,0%,0%);fill-opacity:1;" d="M 342.941406 13.980469 L 340.519531 6.539062 L 336.019531 12.941406 L 339.703125 11.976562 L 342.941406 13.980469 "/>
 </g>
 <clipPath id="clip5">
   <rect x="0" y="0" width="386" height="320"/>

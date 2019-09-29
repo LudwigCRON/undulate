@@ -75,7 +75,10 @@ class Pclk(pywave.Brick):
         # add arrow
         if kwargs.get("add_arrow", False) and not self.ignore_transition:
             arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
-            self.arrows.append((dt / 2, self.height / 2, arrow_angle))
+            self.arrows.append((
+                dt * (self.last_y - self.height / 2) / self.height,
+                self.height / 2,
+                arrow_angle))
 
 
 class Low(pywave.Brick):

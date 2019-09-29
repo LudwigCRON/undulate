@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="335" height="90.0" viewBox="-1 -1 336 92.0" overflow="hidden">
+<svg xmlns="http://www.w3.org/2000/svg" width="335" height="90.0" viewBox="-1 -1 336 92.0">
 <style>
 .title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;}
 .text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;}
@@ -52,69 +52,69 @@
 </g>
 
 <g id="clk"  transform="translate(50, 0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;color: rgba(0, 65, 196, 255);" >clk</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >clk</text>
 <g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(1.5, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(1.5, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
 </g>
 <g data-symbol="BRICKS.Pclk"  transform="translate(40, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.75, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
 </g>
 <g data-symbol="BRICKS.Pclk"  transform="translate(80, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.75, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
 </g>
 <g data-symbol="BRICKS.Pclk"  transform="translate(120, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.75, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
 </g>
 <g data-symbol="BRICKS.Pclk"  transform="translate(160, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.75, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
 </g>
 <g data-symbol="BRICKS.Pclk"  transform="translate(200, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.75, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
 </g>
 <g data-symbol="BRICKS.Pclk"  transform="translate(240, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.75, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
 </g>
 </g>
 <g id="bus"  transform="translate(50, 30.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;color: rgba(0, 65, 196, 255);" >bus</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >bus</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
-<polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " class="hash" />
+<polygon points="0,0 3,0 77,0 80,10.0 77,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L77,0 L80,10.0" class="path" style="fill: none;" />
 <path d="M0,20 L3,20 L77,20 L80,10.0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(80, 0)"  class="s2">
-<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s2-polygon" />
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s2-polygon" style="" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" style="fill: none;" />
-<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data" style="fill: rgba(0, 0, 0, 255);font-size: 0.500em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;color: rgba(0, 0, 0, 255);" >head</text>
+<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data" style="stroke: none;" >head</text>
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(120, 0)"  class="s2">
-<polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " class="s2-polygon" />
+<polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " class="s2-polygon" style="" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" style="fill: none;" />
-<text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data" style="fill: rgba(0, 0, 0, 255);font-size: 0.500em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;color: rgba(0, 0, 0, 255);" >body</text>
+<text x="40.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data" style="stroke: none;" >body</text>
 </g>
 <g data-symbol="BRICKS.data"  transform="translate(200, 0)"  class="s2">
-<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s2-polygon" />
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s2-polygon" style="" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" style="fill: none;" />
-<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data" style="fill: rgba(0, 0, 0, 255);font-size: 0.500em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;color: rgba(0, 0, 0, 255);" >tail</text>
+<text x="20.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data" style="stroke: none;" >tail</text>
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(240, 0)"  class="s2">
-<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="hash" />
+<polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="hash" style="" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="wire"  transform="translate(50, 60.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;color: rgba(0, 65, 196, 255);" >wire</text>
+<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >wire</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L80,20" class="path" style="fill: none;" />
 </g>

@@ -801,7 +801,7 @@ class Renderer:
                         )
                         l = len(wave)
                         if not overlay:
-                            dy = brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
+                            dy = brick_height * (wavelanes[wavetitle].get("vscale", 1) + 0.5)
                         else:
                             dy = 0
                         width = l * brick_width if l * brick_width > width else width
@@ -878,7 +878,7 @@ class Renderer:
                         x.append(_l)
                         # estimate height
                         if not wavelanes[wavetitle].get("overlay", False):
-                            y += brick_height * 1.5 * wavelanes[wavetitle].get("vscale", 1)
+                            y += brick_height * (wavelanes[wavetitle].get("vscale", 1) + 0.5)
                         keys.append(len(wavetitle))
                     # if it is only spacers allocate space
                     elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:

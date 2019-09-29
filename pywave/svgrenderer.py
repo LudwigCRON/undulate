@@ -69,13 +69,14 @@ class SvgRenderer(Renderer):
         extra = kwargs.get("extra", None)
         style_repr = kwargs.get("style_repr", "arrow")
         is_edge = kwargs.get("is_edge", False)
+        overload = style_in_kwargs(**kwargs)
         transform = f'transform="translate({x}, {y}) rotate({angle-90}, 0, 0)" '
         if is_edge:
             transform = f'{extra[:-2]} rotate({angle-90}, 0, 0)" '
         return (
             f'<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" '
             f'{transform}'
-            f'class="{style_repr}" />\n'
+            f'class="{style_repr}" style="{css_from_rule(None, overload, False)}"/>\n'
         )
 
     def polygon(self, vertices: list, **kwargs) -> str:
@@ -86,6 +87,7 @@ class SvgRenderer(Renderer):
         """
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", None)
+        overload = style_in_kwargs(**kwargs)
         if "hash" in style or "polygon" in style:
             extra = ""
         if callable(extra):
@@ -93,7 +95,7 @@ class SvgRenderer(Renderer):
         ans = '<polygon points="'
         for x, y in vertices:
             ans += f"{x},{y} "
-        ans += f'" class="{style}" {extra}/>\n'
+        ans += f'" class="{style}" style="{css_from_rule(None, overload, False)}" {extra}/>\n'
         return ans
 
     def spline(self, vertices: list, style_repr: str = "path", **kwargs) -> str:
@@ -121,11 +123,10 @@ class SvgRenderer(Renderer):
         extra = kwargs.get("extra", "")
         css = kwargs.get("style_repr", "text")
         overload = style_in_kwargs(**kwargs)
-        style = get_style(css, overload)
-        style["color"] = style.get("fill", style.get("color"))
+        overload["stroke"] = None
         if css:
             css = f'class="{css}"'
-        return f'<text x="{x}" y="{y}" {extra} {css} style="{css_from_rule(None, style, False)}" >{text}</text>\n'
+        return f'<text x="{x}" y="{y}" {extra} {css} style="{css_from_rule(None, overload, False)}" >{text}</text>\n'
 
     def translate(self, x: float, y: float, **kwargs) -> str:
         return f' transform="translate({x}, {y})" '
@@ -142,7 +143,7 @@ class SvgRenderer(Renderer):
             height += n * 12
         return (
             f'<svg xmlns="http://www.w3.org/2000/svg" width="{width+lkeys*11+11}" height="{height}" '
-            f'viewBox="-1 -1 {width+lkeys*11+12} {height+2}" overflow="hidden">\n'
+            f'viewBox="-1 -1 {width+lkeys*11+12} {height+2}">\n'
             "<style>\n"
             + css_from_style(DEFAULT_STYLE)
             + "</style>\n"

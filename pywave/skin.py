@@ -405,7 +405,7 @@ def text_bbox(context, name: str, text: str, engine: Engine):
 
 def style_in_kwargs(**kwargs) -> dict:
     ans = {}
-    for e in ["fill", "stroke", "stroke-width"]:
+    for e in ["fill", "stroke", "stroke-width", "stroke-dasharray"]:
         if e in kwargs:
             ans[e] = kwargs.get(e)
     return ans
