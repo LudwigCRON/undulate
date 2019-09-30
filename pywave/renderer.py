@@ -225,7 +225,7 @@ class Renderer:
                     [ (s[0] * width - phase + slewing * 0.5 + 3, _y, chain[1+next(j)]) if not s[1].isalpha()
                         else (s[0] * width - phase + slewing * 0.5 + 3, _y, s[1]) for s in list(zip(i, n[::]))]
                     )
-                _y += brick_height * 1.5 * wavelane.get("vscale", 1)
+                _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
         return nodes
 
     def annotations(self, wavelanes:dict, viewport:tuple, **kwargs):
@@ -635,7 +635,7 @@ class Renderer:
                         [ (s[0] * width - phase + slewing * 0.5, _y, chain[1+next(j)]) if not s[1].isalpha()
                             else (s[0] * width - phase + slewing * 0.5, _y, s[1]) for s in list(zip(i, n[::]))]
                         )
-                    _y += brick_height * 1.5 * wavelane.get("vscale", 1)
+                    _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
                 # list edgeds to perform
                 elif name == "edge":
                     # parse edges declaration

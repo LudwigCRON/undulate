@@ -47,7 +47,7 @@ class EpsRenderer(Renderer):
         vertices: list of of x-y coordinates in a tuple
         [extra] : optional attributes for the svg (eg class)
         """
-        style = kwargs.get("style_repr", "")
+        style = kwargs.get("style_repr", "path")
         extra = kwargs.get("extra", "")
         block_height = kwargs.get("block_height", 20)
         height = kwargs.get("height", 20)
@@ -167,12 +167,12 @@ class EpsRenderer(Renderer):
                 svg operator
         [extra] : optional attributes for the svg (eg class)
         """
-        style = vertices[0]
+        style = kwargs.get("style_repr", "path")
         block_height = kwargs.get("block_height", 20)
         is_edge = kwargs.get("is_edge", False)
         color = "0 0 1 setrgbcolor" if is_edge else "0 0 0 setrgbcolor"
         # debug spline
-        vertices = svg_curve_convert(vertices[1:])
+        vertices = svg_curve_convert(vertices)
         # ticks are disabled for debug purpose only
         path, c, cmd, line = [], 0, "moveto", ""
         path.extend(["newpath", "0 0 moveto"])
@@ -230,7 +230,10 @@ class EpsRenderer(Renderer):
         y       : y coordinate of the text
         text    : text to display
         """
-        extra = kwargs.get("extra", "")
+        if kwargs.get("style_repr", "data") == "data":
+            extra = self._DATA_TEXT
+        else:
+            extra = kwargs.get("extra", "")
         ans = ""
         # set font style
         if "bold" in extra:
