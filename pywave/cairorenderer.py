@@ -264,7 +264,6 @@ class CairoRenderer(Renderer):
         self.cr.show_page()
         # write to an external file for png images
         if self.extension == "png":
-            print(filename)
             self.surface.write_to_png(filename)
         # otherwise close the file pointer
         else:

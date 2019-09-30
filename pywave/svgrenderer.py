@@ -22,11 +22,6 @@ class SvgRenderer(Renderer):
     Render the wavelanes as an svg
     """
 
-    _WAVE_TITLE = 'text-anchor="end" xml:space="preserve"'
-    _DATA_TEXT = (
-        'text-anchor="middle" dominant-baseline="middle" alignment-baseline="central"'
-    )
-
     def __init__(self):
         Renderer.__init__(self)
         self.engine = Engine.SVG
@@ -37,11 +32,11 @@ class SvgRenderer(Renderer):
         style = kwargs.get("style", "")
         return f'<g data-symbol="{symbol}" {extra} class="{style}">\n{content}</g>\n'
 
-    def group(self, callback, id: str = "", extra: str = "") -> str:
+    def group(self, callback, identifier: str = "", extra: str = "") -> str:
         """
         group define a group
         """
-        ans = f'<g id="{id}" {extra} >\n'
+        ans = f'<g id="{identifier}" {extra} >\n'
         ans += callback()
         ans += "</g>\n"
         return ans
@@ -120,13 +115,12 @@ class SvgRenderer(Renderer):
         y       : y coordinate of the text
         text    : text to display
         """
-        extra = kwargs.get("extra", "")
         css = kwargs.get("style_repr", "text")
         overload = style_in_kwargs(**kwargs)
         overload["stroke"] = None
         if css:
             css = f'class="{css}"'
-        return f'<text x="{x}" y="{y}" {extra} {css} style="{css_from_rule(None, overload, False)}" >{text}</text>\n'
+        return f'<text x="{x}" y="{y}" {css} style="{css_from_rule(None, overload, False)}" >{text}</text>\n'
 
     def translate(self, x: float, y: float, **kwargs) -> str:
         return f' transform="translate({x}, {y})" '

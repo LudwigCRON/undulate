@@ -167,12 +167,12 @@ class EpsRenderer(Renderer):
                 svg operator
         [extra] : optional attributes for the svg (eg class)
         """
-        style = kwargs.get("style_repr", "")
+        style = vertices[0]
         block_height = kwargs.get("block_height", 20)
         is_edge = kwargs.get("is_edge", False)
         color = "0 0 1 setrgbcolor" if is_edge else "0 0 0 setrgbcolor"
         # debug spline
-        vertices = svg_curve_convert(vertices)
+        vertices = svg_curve_convert(vertices[1:])
         # ticks are disabled for debug purpose only
         path, c, cmd, line = [], 0, "moveto", ""
         path.extend(["newpath", "0 0 moveto"])

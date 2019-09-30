@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="605" height="300.0" viewBox="-1 -1 606 302.0">
 <style>
-.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;}
+.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
 .text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;}
-.attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: fira mono;}
+.attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
 .stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
 .data {fill: rgba(0, 0, 0, 255);font-size: 0.500em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
@@ -16,15 +16,15 @@
 .tick {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: 1, 3;}
 .edge {fill: none;stroke: rgba(0, 0, 255, 255);stroke-width: 1;}
 .edge-arrow {fill: rgba(0, 0, 255, 255);stroke: none;overflow: visible;}
-.edge-text {font-family: fira mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);}
+.edge-text {font-family: fira mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);text-anchor: middle;}
 .edge-background {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
 .border {stroke-width: 1.25;stroke: rgba(0, 0, 0, 255);}
-.h1 {fill: rgba(0, 0, 0, 255);font-size: 18.310px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h2 {fill: rgba(0, 0, 0, 255);font-size: 14.650px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h3 {fill: rgba(0, 0, 0, 255);font-size: 11.720px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h4 {fill: rgba(0, 0, 0, 255);font-size: 9.380px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h5 {fill: rgba(0, 0, 0, 255);font-size: 7.500px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h6 {fill: rgba(0, 0, 0, 255);font-size: 6.000px;font-weight: bold;font-family: fira mono;text-align: left;}</style>
+.h1 {fill: rgba(0, 0, 0, 255);font-size: 18.310px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h2 {fill: rgba(0, 0, 0, 255);font-size: 14.650px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h3 {fill: rgba(0, 0, 0, 255);font-size: 11.720px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h4 {fill: rgba(0, 0, 0, 255);font-size: 9.380px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h5 {fill: rgba(0, 0, 0, 255);font-size: 7.500px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h6 {fill: rgba(0, 0, 0, 255);font-size: 6.000px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}</style>
 
 <defs>
     <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
@@ -56,7 +56,7 @@
 </g>
 
 <g id="clk"  transform="translate(150, 0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >clk</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >clk</text>
 <g data-symbol="BRICKS.pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
 </g>
@@ -92,7 +92,7 @@
 </g>
 </g>
 <g id="signal[0]"  transform="translate(150, 30.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >signal[0]</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >signal[0]</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L120,20" class="path" style="fill: none;" />
 </g>
@@ -104,7 +104,7 @@
 </g>
 </g>
 <g id="signal[1]"  transform="translate(150, 60.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >signal[1]</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >signal[1]</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L200,20" class="path" style="fill: none;" />
 </g>
@@ -113,7 +113,7 @@
 </g>
 </g>
 <g id="signal[2]"  transform="translate(150, 90.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >signal[2]</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >signal[2]</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L120,20" class="path" style="fill: none;" />
 </g>
@@ -127,7 +127,7 @@
 <g id="spacer_0"  transform="translate(150, 120.0)"  >
 </g>
 <g id="experimental_0"  transform="translate(150, 150.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >experimental_0</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >experimental_0</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
@@ -137,9 +137,9 @@
 <polygon points="0,10.0 3,0 197,0 200,0 197,20 197,20 3,20 0,10.0 " class="s2-polygon" style="" />
 <path d="M0,10.0 L3,0 L197,0 L197,0 L200,0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L197,20 L197,20 L200,20" class="path" style="fill: none;" />
-<text x="100.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data" style="stroke: none;" >0x70</text>
+<text x="100.0" y="10.0" class="data" style="stroke: none;" >0x70</text>
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -148,9 +148,9 @@
 <polygon points="0,0 3,0 117,0 120,10.0 117,20 3,20 0,0 " class="s2-polygon" style="" />
 <path d="M0,0 L3,0 L117,0 L120,10.0" class="path" style="fill: none;" />
 <path d="M0,20 L3,20 L117,20 L120,10.0" class="path" style="fill: none;" />
-<text x="60.0" y="10.0" text-anchor="middle" dominant-baseline="middle" alignment-baseline="central" class="data" style="stroke: none;" >0x70</text>
+<text x="60.0" y="10.0" class="data" style="stroke: none;" >0x70</text>
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -159,10 +159,11 @@
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " class="s2-polygon" style="" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" style="fill: none;" />
+<text x="40.0" y="10.0" class="data" style="stroke: none;" ></text>
 </g>
 </g>
 <g id="experimental_1"  transform="translate(150, 180.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >experimental_1</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >experimental_1</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 40,0 43,0 40,20 37,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L37,0 L40,0 L43,0" class="path" style="fill: none;" />
@@ -171,7 +172,7 @@
 <g data-symbol="BRICKS.one"  transform="translate(40, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,0 L200,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -179,7 +180,7 @@
 <g data-symbol="BRICKS.one"  transform="translate(240, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,0 L120,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -189,7 +190,7 @@
 </g>
 </g>
 <g id="experimental_2"  transform="translate(150, 210.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >experimental_2</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >experimental_2</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 40,0 43,0 40,20 37,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L37,0 L40,0 L43,0" class="path" style="fill: none;" />
@@ -198,7 +199,7 @@
 <g data-symbol="BRICKS.high"  transform="translate(40, 0)"  class="s2">
 <path d="M0,0 L0.0,0 L200,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -206,7 +207,7 @@
 <g data-symbol="BRICKS.high"  transform="translate(240, 0)"  class="s2">
 <path d="M0,0 L0.0,0 L120,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -216,7 +217,7 @@
 </g>
 </g>
 <g id="experimental_3"  transform="translate(150, 240.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >experimental_3</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >experimental_3</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 40,0 43,20 40,20 37,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L37,0 L40,0 L43,20" class="path" style="fill: none;" />
@@ -225,7 +226,7 @@
 <g data-symbol="BRICKS.zero"  transform="translate(40, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L200,20" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -233,7 +234,7 @@
 <g data-symbol="BRICKS.zero"  transform="translate(240, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L120,20" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -243,7 +244,7 @@
 </g>
 </g>
 <g id="experimental_4"  transform="translate(150, 270.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >experimental_4</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >experimental_4</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 40,0 43,0 40,20 37,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L37,0 L40,0 L43,0" class="path" style="fill: none;" />
@@ -252,7 +253,7 @@
 <g data-symbol="BRICKS.one"  transform="translate(40, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,0 L200,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(230.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -260,7 +261,7 @@
 <g data-symbol="BRICKS.one"  transform="translate(240, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,0 L120,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="">
+<g data-symbol="BRICKS.gap"  transform="translate(350.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -284,12 +285,12 @@
 <path d="M352.0,100.0 L435.0,100.0 435.0,40.0" class="edge" style="fill: none;"/>
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(434.9999953562179, 43.499999999996916) rotate(-180, 0, 0)" class="edge-arrow" style=""/>
 <polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(436.0, 95.5)" />
-<text x="445.0" y="100.0" text-anchor="middle" class="edge-text" style="stroke: none;" >djs</text>
+<text x="445.0" y="100.0" class="edge-text" style="stroke: none;" >djs</text>
 
 <path d="M275.0,131.0 L355.0,131.0" class="edge" style="fill: none;"/>
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(278.5, 131.0) rotate(90.00015203962414, 0, 0)" class="edge-arrow" style=""/>
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(351.5, 131.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
 <polygon points="0,0 0,9 30,9 30,0 0,0 " class="edge-background" style=""  transform="translate(300.0, 126.5)" />
-<text x="315.0" y="131.0" text-anchor="middle" class="edge-text" style="stroke: none;" >delay</text>
+<text x="315.0" y="131.0" class="edge-text" style="stroke: none;" >delay</text>
 
 </svg>

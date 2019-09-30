@@ -44,7 +44,10 @@ DEFAULT_STYLE = {
         "font-weight": 500,
         "font-size": (0.9, SizeUnit.EM),
         "font-family": "fira mono",
-        "text-align": TextAlign.RIGHT
+        "text-align": TextAlign.RIGHT,
+        "text-anchor": "end",
+        "dominant-baseline": "middle",
+        "alignment-baseline": "central"
     },
     "text": {
         "fill": (0, 0, 0, 255),
@@ -65,6 +68,9 @@ DEFAULT_STYLE = {
         "font-stretch": "normal",
         "text-align": TextAlign.CENTER,
         "font-family": "fira mono",
+        "text-anchor": "middle",
+        "dominant-baseline": "middle",
+        "alignment-baseline": "central"
     },
     "path": {
         "fill": None,
@@ -134,6 +140,7 @@ DEFAULT_STYLE = {
         "fill": (0, 0, 0, 255),
         "filter": "#solid",
         "transform": "translate(0, 2.5px)",
+        "text-anchor": "middle",
     },
     "edge-background": {
         "fill": (255, 255, 255, 255),
@@ -147,6 +154,7 @@ DEFAULT_STYLE = {
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
+        "dominant-baseline": "middle",
     },
     "h2": {
         "fill": (0, 0, 0, 255),
@@ -154,6 +162,7 @@ DEFAULT_STYLE = {
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
+        "dominant-baseline": "middle",
     },
     "h3": {
         "fill": (0, 0, 0, 255),
@@ -161,6 +170,7 @@ DEFAULT_STYLE = {
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
+        "dominant-baseline": "middle",
     },
     "h4": {
         "fill": (0, 0, 0, 255),
@@ -168,6 +178,7 @@ DEFAULT_STYLE = {
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
+        "dominant-baseline": "middle",
     },
     "h5": {
         "fill": (0, 0, 0, 255),
@@ -175,6 +186,7 @@ DEFAULT_STYLE = {
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
+        "dominant-baseline": "middle",
     },
     "h6": {
         "fill": (0, 0, 0, 255),
@@ -182,6 +194,7 @@ DEFAULT_STYLE = {
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
+        "dominant-baseline": "middle",
     },
 }
 
@@ -295,7 +308,7 @@ else:
         xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
         if ta == TextAlign.LEFT:
             return (0, -height/2, width, _height)
-        if ta == TextAlign.RIGHT:
+        elif ta == TextAlign.RIGHT:
             return (-width, -height/2, width, _height)
         return (-width / 2, -descent-height/2, width, _height)
 
@@ -338,10 +351,7 @@ def apply_style(context, name: str, engine: Engine, overload: dict = {}):
     apply style from 'name' of the selector
     for the supported engine
     """
-    if engine in [Engine.SVG, Engine.EPS]:
-        # not yet implemented for eps and not needed for SVGRenderer
-        pass
-    elif engine == Engine.CAIRO:
+    if engine == Engine.CAIRO:
         apply_cairo_style(context, name, overload)
     else:
         raise "Engine selected is not yet supported"

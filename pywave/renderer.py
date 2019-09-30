@@ -55,7 +55,6 @@ def arrow_angle(dy: float, dx:float) -> float:
         return 90 if dy > 0 else -90
     return 180*atan2(dy, dx)/3.14159
 
-# TODO create an abstract parameter for style
 # TODO autoscale or scaling for analogue
 # TODO add support of T curves in svg
 
@@ -183,34 +182,22 @@ class Renderer:
         ans, content = "", ""
         # display polygons (usually background)
         for _, poly in enumerate(b.polygons):
-            style = kwargs.get("style", None)
-            style = "hash" if symbol == pywave.BRICKS.x else style + "-polygon"
-            content += self.polygon(poly, style_repr=style, **kwargs)
+            content += self.polygon(poly[1:], style_repr=poly[0], **kwargs)
         # display path (for borders and edges)
         for _, path in enumerate(b.paths):
-            content += self.path(path, style_repr="path", **kwargs)
+            content += self.path(path[1:], style_repr=path[0], **kwargs)
         # display arrows
         for _, arrow in enumerate(b.arrows):
-            content += self.arrow(*arrow, style_repr="arrow", **kwargs)
+            content += self.arrow(*arrow[1:], style_repr=arrow[0], **kwargs)
         # display borders or edges
         for i, spline in enumerate(b.splines):
-            if i == 0 and symbol == pywave.BRICKS.gap:
-                content += self.spline(spline, style_repr="hide", **kwargs)
-            else:
-                content += self.spline(spline, style_repr="path", **kwargs)
+            content += self.spline(spline[1:], style_repr=spline[0], **kwargs)
         # format text and display them
         for i, span in enumerate(b.texts):
-            if len(str(span[2])) > 0:
-                a = copy.deepcopy(kwargs)
-                if self._DATA_TEXT:
-                    a.update({"extra": self._DATA_TEXT})
-                # get style of text
-                if len(span) > 3:
-                    a.update({"style_repr": span[3]})
-                    span = span[:-1]
-                else:
-                    a.update({"style_repr": "data"})
-                content += self.text(*span, **a)
+            # get style of text
+            a = copy.deepcopy(kwargs)
+            a.update({"style_repr": span[0]})
+            content += self.text(*span[1:], **a)
         # special function to apply at the end depending on the renderer
         if self._SYMBOL_TEMP:
             ans = self._SYMBOL_TEMP(symbol, content, **kwargs)
@@ -360,7 +347,7 @@ class Renderer:
                     (0+w, 0),
                     (0, 0)], extra=self.translate(mx+dx+ox, my+dy+oy, no_acc=True), style_repr="edge-background")
                 # add the text
-                ans += self.text(mx+dx, my+dy, text, extra="text-anchor=\"middle\"", style_repr="edge-text")
+                ans += self.text(mx+dx, my+dy, text, style_repr="edge-text")
             return ans
         return '\n'.join([__annotate__(a) for a in annotations])
 
@@ -480,7 +467,7 @@ class Renderer:
                 # get the final height of the last brick
                 last = -2 if symbol == pywave.BRICKS.gap else -1
                 if wave:
-                    s, br, c, style = wave[last]
+                    s, br, c = wave[last]
                     last_y = br.get_last_y()
                     symbol = pywave.BRICKS.from_str(b)
                     ignore = pywave.BRICKS.ignore_transition(wave[last][0] if wave else None, symbol)
@@ -490,7 +477,7 @@ class Renderer:
                             br.alter_end(3, brick_height)
                         else:
                             br.alter_end(3, 0)
-                        wave[last] = (s, br, c, style)
+                        wave[last] = (s, br, c)
                         ignore = True
                     # two identical data
                     if s == pywave.BRICKS.data and symbol == s:
@@ -503,12 +490,12 @@ class Renderer:
                     if symbol in [pywave.BRICKS.low, pywave.BRICKS.Low] and \
                             s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk, pywave.BRICKS.Nclk, pywave.BRICKS.nclk]:
                         br.alter_end(0, brick_height if s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk] else 0)
-                        wave[last] = (s, br, c, style)
+                        wave[last] = (s, br, c)
                         ignore = True
                     if symbol in [pywave.BRICKS.high, pywave.BRICKS.High] and \
                             s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk, pywave.BRICKS.Nclk, pywave.BRICKS.nclk]:
                         br.alter_end(0, brick_height if s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk] else 0)
-                        wave[last] = (s, br, c, style)
+                        wave[last] = (s, br, c)
                         ignore = True
                     # get y of the previous brick for junction
                     last_y = br.get_last_y()
@@ -533,6 +520,7 @@ class Renderer:
                     "is_first":          is_first == 0,
                     "last_y":            last_y,
                     "slewing":           slewing,
+                    "style":             "s%s" % (b if b.isdigit() and int(b, 10) > 1 else '2'),
                     "duty_cycle":        max(duty_cycles[b_counter], slewing*2/brick_width) if b_counter < len(duty_cycles) else 0.5,
                     "equation":          analogue[ana_counter] if ana_counter < len(analogue) else "0",
                     "data":              data[data_counter] if len(data) > data_counter else "",
@@ -557,8 +545,7 @@ class Renderer:
                     wave.append((
                         symbol,
                         pywave.generate_brick(symbol, **kwargs),
-                        self.translate(max(0, pos), 0, dont_touch=True),
-                        f"s{b if b.isdigit() and int(b, 10) > 1 else '2'}"
+                        self.translate(max(0, pos), 0, dont_touch=True)
                     ))
                 pos += width_with_phase
             else:
@@ -569,7 +556,6 @@ class Renderer:
                     symbol,
                     pywave.generate_brick(symbol, **kwargs),
                     self.translate(pos+gap_offset, 0, dont_touch=True),
-                    ""
                 ))
                 pos += brick_width
             is_first  += 1
@@ -578,8 +564,8 @@ class Renderer:
         def _gen():
             ans = self.wavelane_title(name, **kwargs) if name else ""
             for w in wave:
-                symb, b, e, style = w
-                kwargs.update({"extra": e, "style": style})
+                symb, b, *e = w
+                kwargs.update({"extra": e[0]})
                 ans += self.brick(symb, b, **kwargs)
             return ans
         return self.group(

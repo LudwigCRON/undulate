@@ -7,8 +7,6 @@ to generate a waveform
 """
 import pywave
 
-# TODO: removed styles in favor of skin.py
-
 class Brick:
     """
     define the brick as a composition of paths, arrows, and generic polygons
@@ -24,7 +22,6 @@ class Brick:
         "texts",            # list of texts to be printed
         "width",            # width of the brick
         "height",           # height of th brick
-        "styles",           # display properties: dict --> to be removed
         "slewing",          # slope limitation
         "duty_cycle",       # duty cycle 0 -> 1: float
         "ignore_transition",# prevent glitches in chain: bool
@@ -54,7 +51,6 @@ class Brick:
         self.polygons = []
         self.splines = []
         self.texts = []
-        self.styles = {"background": None, "foreground": "#000000"}
 
     def get_last_y(self):
         """

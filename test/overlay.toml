@@ -51,5 +51,23 @@ vmin.wave             = "l........."
 vmin.vscale           = 4
 vmin.order            = 4
 
-
-
+dac_ref.wave              = "s"
+dac_ref.repeat            = 10
+dac_ref.slewing           = 32
+dac_ref.vscale            = 4
+dac_ref.stroke            = [0, 0, 255, 255]
+dac_ref.stroke-dasharray  = [1, 3]
+dac_ref.fill              = [0, 0, 255, 255]
+dac_ref.order             = 2
+dac_ref.analogue          = [
+  "VDDA*512/1024",
+  "VDDA*256/1024",
+  "VDDA*384/1024",
+  "VDDA*320/1024",
+  "VDDA*352/1024",
+  "VDDA*336/1024",
+  "VDDA*344/1024",
+  "VDDA*340/1024",
+  "VDDA*342/1024",
+  "VDDA*341/1024"
+]

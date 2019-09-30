@@ -40,7 +40,7 @@ class Meta(pywave.Brick):
         time = range(int(dt), int(self.width * 0.75 + 1))
         if (int(0.75 * self.width + 1) - int(dt)) % 2 == 1:
             time = range(int(dt), int(self.width * 0.75 + 2))
-        _tmp = [("m", 0, self.last_y)]
+        _tmp = ["path", ("m", 0, self.last_y)]
         if kwargs.get("then_one", False):
             for i, t in enumerate(time):
                 _tmp.append(
@@ -101,6 +101,7 @@ class Cap(pywave.Brick):
         # add shape
         self.splines.append(
             [
+                "path",
                 ("m", 0, self.last_y),
                 ("C", dt, y),
                 ("", dt, y),
@@ -123,7 +124,7 @@ class Step(pywave.Brick):
             self.last_y = self.height if self.last_y is None else self.last_y
         dt = abs(y - self.last_y) * self.slewing / self.height
         # add shape
-        self.paths.append([(0, self.last_y), (dt, y), (self.width, y)])
+        self.paths.append(["path", (0, self.last_y), (dt, y), (self.width, y)])
 
 
 class Analogue(pywave.Brick):
@@ -140,7 +141,7 @@ class Analogue(pywave.Brick):
         # add shape
         try:
             self.paths.append(
-                [(0, self.last_y)] # link to the previous block
+                ["path", (0, self.last_y)] # link to the previous block
                 + [
                     (p[0], pywave.BRICKS.transform_y(p[1], self.height))
                     for p in pts # evaluation fonctions, complex python code
@@ -155,10 +156,10 @@ def generate_analogue_symbol(symbol: str, **kwargs) -> (bool, object):
   define the mapping between the symbol and the brick
   """
     # get option supported
-    height = kwargs.get("brick_height", 20)
-    last_y = kwargs.get("last_y", None)
+    height   = kwargs.get("brick_height", 20)
+    last_y   = kwargs.get("last_y", None)
     equation = kwargs.get("equation", None)
-    block = pywave.Brick()
+    block    = pywave.Brick()
     # metastability to zero
     if symbol == pywave.BRICKS.meta:
         block = Meta(**kwargs)

@@ -149,7 +149,7 @@ def parse(filepath: str) -> (bool, object):
             with open(filepath, "r+") as fp:
                 ans = toml.load(fp)
         except ImportError:
-            log_Fatal(ERROR_MSG["YAML_IMPORT"])
+            log_Fatal(ERROR_MSG["TOML_IMPORT"])
     return (err, ans if not err else None)
 
 def register_to_wavelane(obj: dict) -> object:

@@ -25,6 +25,7 @@ class Nclk(pywave.Brick):
         # add shape
         self.paths.append(
             [
+                "path",
                 (0, self.last_y),
                 (dt, self.height),
                 (self.width * self.duty_cycle - self.slewing / 2, self.height),
@@ -40,6 +41,7 @@ class Nclk(pywave.Brick):
             arrow_angle = -math.atan2(-self.height, self.slewing) * 180 / math.pi
             self.arrows.append(
                 (
+                    "arrow",
                     dt * (self.height / 2 - self.last_y) / self.height,
                     self.height / 2,
                     arrow_angle,
@@ -62,6 +64,7 @@ class Pclk(pywave.Brick):
         # add shape
         self.paths.append(
             [
+                "path",
                 (0, self.last_y),
                 (dt, 0),
                 (self.width * self.duty_cycle - self.slewing / 2, 0),
@@ -75,10 +78,14 @@ class Pclk(pywave.Brick):
         # add arrow
         if kwargs.get("add_arrow", False) and not self.ignore_transition:
             arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
-            self.arrows.append((
-                dt * (self.last_y - self.height / 2) / self.height,
-                self.height / 2,
-                arrow_angle))
+            self.arrows.append(
+                (
+                    "arrow",
+                    dt * (self.last_y - self.height / 2) / self.height,
+                    self.height / 2,
+                    arrow_angle,
+                )
+            )
 
 
 class Low(pywave.Brick):
@@ -94,12 +101,18 @@ class Low(pywave.Brick):
             self.last_y = self.height if self.last_y is None else self.last_y
         dt = abs(self.height - self.last_y) * self.slewing / self.height
         # add shape
-        self.paths.append([(0, self.last_y), (dt, self.height), (self.width, self.height)])
+        self.paths.append([
+            "path",
+            (0, self.last_y),
+            (dt, self.height),
+            (self.width, self.height),
+        ])
         # add arrow
         if kwargs.get("add_arrow", False) and not self.is_first:
             arrow_angle = -math.atan2(-self.height, self.slewing) * 180 / math.pi
             self.arrows.append(
                 (
+                    "arrow",
                     dt * (self.height / 2 - self.last_y) / self.height,
                     self.height / 2,
                     arrow_angle,
@@ -120,11 +133,23 @@ class High(pywave.Brick):
             self.last_y = 0 if self.last_y is None else self.last_y
         dt = self.last_y * self.slewing / self.height
         # add shape
-        self.paths.append([(0, self.last_y), (dt, 0), (self.width, 0)])
+        self.paths.append([
+            "path",
+            (0, self.last_y),
+            (dt, 0),
+            (self.width, 0),
+        ])
         # add arrow
         if kwargs.get("add_arrow", False) and not self.is_first:
             arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
-            self.arrows.append((dt / 2, self.height / 2, arrow_angle))
+            self.arrows.append(
+                (
+                    "arrow",
+                    dt / 2,
+                    self.height / 2,
+                    arrow_angle,
+                )
+            )
 
 
 class HighZ(pywave.Brick):
@@ -142,6 +167,7 @@ class HighZ(pywave.Brick):
         # add shape
         self.splines.append(
             [
+                "path",
                 ("M", 0, self.last_y),
                 ("C", dt, self.height / 2),
                 ("", dt, self.height / 2),
@@ -166,6 +192,7 @@ class Zero(pywave.Brick):
         # add shape
         self.paths.append(
             [
+                "path",
                 (0, self.last_y),
                 (3, self.last_y),
                 (3 + self.slewing, self.height),
@@ -188,7 +215,13 @@ class One(pywave.Brick):
         dt = (self.height - self.last_y) * self.slewing / self.height
         # add shape
         self.paths.append(
-            [(0, self.last_y), (3, self.last_y), (3 + self.slewing, 0), (self.width, 0)]
+            [
+                "path",
+                (0, self.last_y),
+                (3, self.last_y),
+                (3 + self.slewing, 0),
+                (self.width, 0),
+            ]
         )
 
 
@@ -197,13 +230,14 @@ class Data(pywave.Brick):
     Multibits value such as a Bus
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, unknown: bool = False, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
         self.last_y = self.height / 2 if self.last_y is None else self.last_y
         # add shape
         if self.is_first:
             self.paths.append(
                 [
+                    "path",
                     (0, 0),
                     (self.slewing, 0),
                     (self.width - self.slewing, 0),
@@ -212,6 +246,7 @@ class Data(pywave.Brick):
             )
             self.paths.append(
                 [
+                    "path",
                     (0, self.height),
                     (self.slewing, self.height),
                     (self.width - self.slewing, self.height),
@@ -221,6 +256,7 @@ class Data(pywave.Brick):
         else:
             self.paths.append(
                 [
+                    "path",
                     (0, self.last_y if not self.ignore_transition else 0),
                     (self.slewing, 0),
                     (self.width - self.slewing, 0),
@@ -229,6 +265,7 @@ class Data(pywave.Brick):
             )
             self.paths.append(
                 [
+                    "path",
                     (0, self.last_y if not self.ignore_transition else self.height),
                     (self.slewing, self.height),
                     (self.width - self.slewing, self.height),
@@ -236,9 +273,11 @@ class Data(pywave.Brick):
                 ]
             )
         # add background
+        style = "hash" if unknown else "%s-polygon" % kwargs.get("style", "")
         if self.is_first:
             self.polygons.append(
                 [
+                    style,
                     (0, 0),
                     (self.slewing, 0),
                     (self.width - self.slewing, 0),
@@ -251,6 +290,7 @@ class Data(pywave.Brick):
         else:
             self.polygons.append(
                 [
+                    style,
                     (0, self.last_y),
                     (self.slewing, 0),
                     (self.width - self.slewing, 0),
@@ -261,7 +301,15 @@ class Data(pywave.Brick):
                 ]
             )
         # add text
-        self.texts.append((self.width / 2, self.height / 2, kwargs.get("data", "")))
+        if not unknown:
+            self.texts.append(
+                (
+                    "data",
+                    self.width / 2,
+                    self.height / 2,
+                    kwargs.get("data", ""),
+                )
+            )
 
 
 class Gap(pywave.Brick):
@@ -275,6 +323,7 @@ class Gap(pywave.Brick):
         # raise "a gap cannot be first in a wavelane"
         self.splines.append(
             [
+                "hide",
                 ("M", 0, self.height + 2),
                 ("C", 5, self.height + 2),
                 ("", 5, -4),
@@ -288,6 +337,7 @@ class Gap(pywave.Brick):
         )
         self.splines.append(
             [
+                "path",
                 ("M", 0, self.height + 2),
                 ("C", 5, self.height + 2),
                 ("", 5, -2),
@@ -296,6 +346,7 @@ class Gap(pywave.Brick):
         )
         self.splines.append(
             [
+                "path",
                 ("M", -3, self.height + 2),
                 ("C", 2, self.height + 2),
                 ("", 2, -2),
@@ -314,6 +365,7 @@ class Up(pywave.Brick):
         self.last_y = self.height if self.last_y is None else self.last_y
         self.splines.append(
             [
+                "path",
                 ("M", 0, self.last_y),
                 ("L", 3, self.last_y),
                 ("C", 3 + self.slewing, self.last_y),
@@ -334,6 +386,7 @@ class Down(pywave.Brick):
         self.last_y = self.height if self.last_y is None else self.last_y
         self.splines.append(
             [
+                "path",
                 ("M", 0, self.last_y),
                 ("L", 3, self.last_y),
                 ("C", 3 + self.slewing, self.last_y),
@@ -351,13 +404,11 @@ class Impulse(pywave.Brick):
 
     def __init__(self, y, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
-        if self.is_first:
-            self.last_y = self.height
-        else:
-            self.last_y = self.height if self.last_y is None else self.last_y
+        self.last_y = self.height if self.last_y is None or self.is_first else self.last_y
         # add shape
         self.paths.append(
             [
+                "path",
                 (0, self.height - y),
                 (0, y),
                 (0, self.height - y),
@@ -403,9 +454,7 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
     elif symbol == pywave.BRICKS.data:
         block = Data(**kwargs)
     elif symbol == pywave.BRICKS.x:
-        if "data" in kwargs:
-            kwargs["data"] = ""
-        block = Data(**kwargs)
+        block = Data(unknown=True, **kwargs)
     # time compression symbol
     elif symbol == pywave.BRICKS.gap:
         block = Gap(**kwargs)

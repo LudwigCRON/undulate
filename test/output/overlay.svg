@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="488" height="120.0" viewBox="-1 -1 489 122.0">
+<svg xmlns="http://www.w3.org/2000/svg" width="488" height="210.0" viewBox="-1 -1 489 212.0">
 <style>
-.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;}
+.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
 .text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;}
-.attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: fira mono;}
+.attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
 .stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
 .data {fill: rgba(0, 0, 0, 255);font-size: 0.500em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
@@ -16,15 +16,15 @@
 .tick {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: 1, 3;}
 .edge {fill: none;stroke: rgba(0, 0, 255, 255);stroke-width: 1;}
 .edge-arrow {fill: rgba(0, 0, 255, 255);stroke: none;overflow: visible;}
-.edge-text {font-family: fira mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);}
+.edge-text {font-family: fira mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);text-anchor: middle;}
 .edge-background {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
 .border {stroke-width: 1.25;stroke: rgba(0, 0, 0, 255);}
-.h1 {fill: rgba(0, 0, 0, 255);font-size: 18.310px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h2 {fill: rgba(0, 0, 0, 255);font-size: 14.650px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h3 {fill: rgba(0, 0, 0, 255);font-size: 11.720px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h4 {fill: rgba(0, 0, 0, 255);font-size: 9.380px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h5 {fill: rgba(0, 0, 0, 255);font-size: 7.500px;font-weight: bold;font-family: fira mono;text-align: left;}
-.h6 {fill: rgba(0, 0, 0, 255);font-size: 6.000px;font-weight: bold;font-family: fira mono;text-align: left;}</style>
+.h1 {fill: rgba(0, 0, 0, 255);font-size: 18.310px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h2 {fill: rgba(0, 0, 0, 255);font-size: 14.650px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h3 {fill: rgba(0, 0, 0, 255);font-size: 11.720px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h4 {fill: rgba(0, 0, 0, 255);font-size: 9.380px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h5 {fill: rgba(0, 0, 0, 255);font-size: 7.500px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
+.h6 {fill: rgba(0, 0, 0, 255);font-size: 6.000px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}</style>
 
 <defs>
     <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
@@ -42,20 +42,20 @@
 </defs>
 <g id="a"  >
 <g id="ticks_1"  transform="translate(80, 0)"  >
-<path d="M0,0 L0,120.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,120.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,120.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,120.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,120.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,120.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,120.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,120.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,120.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,120.0" class="tick" style="fill: none;" />
+<path d="M0,0 L0,210.0" class="tick" style="fill: none;" />
+<path d="M40,0 L40,210.0" class="tick" style="fill: none;" />
+<path d="M80,0 L80,210.0" class="tick" style="fill: none;" />
+<path d="M120,0 L120,210.0" class="tick" style="fill: none;" />
+<path d="M160,0 L160,210.0" class="tick" style="fill: none;" />
+<path d="M200,0 L200,210.0" class="tick" style="fill: none;" />
+<path d="M240,0 L240,210.0" class="tick" style="fill: none;" />
+<path d="M280,0 L280,210.0" class="tick" style="fill: none;" />
+<path d="M320,0 L320,210.0" class="tick" style="fill: none;" />
+<path d="M360,0 L360,210.0" class="tick" style="fill: none;" />
 </g>
 
 <g id="mcu_clk"  transform="translate(80, 0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >mcu_clk</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >mcu_clk</text>
 <g data-symbol="BRICKS.Pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(1.5, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
@@ -98,7 +98,7 @@
 </g>
 </g>
 <g id="dac"  transform="translate(80, 30.0)"  >
-<text x="-10" y="30.0" text-anchor="end" xml:space="preserve" class="title" style="fill: rgba(0, 0, 255, 255);stroke: none;stroke-dasharray: 1, 3;" >dac</text>
+<text x="-10" y="30.0" class="title" style="fill: rgba(0, 0, 255, 255);stroke: none;stroke-dasharray: 1, 3;" >dac</text>
 <g data-symbol="BRICKS.cap"  transform="translate(0, 0)"  class="s2">
 <path d="m0,80 C16.0,40.0 16.0,40.0 40,40.0 L40,40.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;"/>
 </g>
@@ -131,7 +131,7 @@
 </g>
 </g>
 <g id="vin"  transform="translate(80, 30.0)"  >
-<text x="-10" y="50.0" text-anchor="end" xml:space="preserve" class="title" style="fill: rgba(255, 0, 0, 255);stroke: none;stroke-width: 1.5;stroke-dasharray: 5, 3, 1, 5;" >vin</text>
+<text x="-10" y="50.0" class="title" style="fill: rgba(255, 0, 0, 255);stroke: none;stroke-width: 1.5;stroke-dasharray: 5, 3, 1, 5;" >vin</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,80 L3,80 L6,80 L40,80" class="path" style="fill: none;stroke: rgba(255, 0, 0, 255);stroke-width: 1.5;stroke-dasharray: 5, 3, 1, 5;" />
 </g>
@@ -140,15 +140,48 @@
 </g>
 </g>
 <g id="vmax"  transform="translate(80, 30.0)"  >
-<text x="-10" y="10.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >vmax</text>
+<text x="-10" y="10.0" class="title" style="stroke: none;" >vmax</text>
 <g data-symbol="BRICKS.one"  transform="translate(0, 0)"  class="s2">
 <path d="M0,0 L3,0 L6,0 L400,0" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="vmin"  transform="translate(80, 30.0)"  >
-<text x="-10" y="70.0" text-anchor="end" xml:space="preserve" class="title" style="stroke: none;" >vmin</text>
+<text x="-10" y="70.0" class="title" style="stroke: none;" >vmin</text>
 <g data-symbol="BRICKS.low"  transform="translate(0, 0)"  class="s2">
 <path d="M0,80 L0.0,80 L400,80" class="path" style="fill: none;" />
+</g>
+</g>
+<g id="dac_ref"  transform="translate(80, 120.0)"  >
+<text x="-10" y="30.0" class="title" style="fill: rgba(0, 0, 255, 255);stroke: none;stroke-dasharray: 1, 3;" >dac_ref</text>
+<g data-symbol="BRICKS.step"  transform="translate(0, 0)"  class="s2">
+<path d="M0,80 L16.0,40.0 L40,40.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="BRICKS.step"  transform="translate(40, 0)"  class="s2">
+<path d="M0,40.0 L8.0,60.0 L40,60.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="BRICKS.step"  transform="translate(80, 0)"  class="s2">
+<path d="M0,60.0 L4.0,50.0 L40,50.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="BRICKS.step"  transform="translate(120, 0)"  class="s2">
+<path d="M0,50.0 L2.0,55.0 L40,55.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="BRICKS.step"  transform="translate(160, 0)"  class="s2">
+<path d="M0,55.0 L1.0,52.5 L40,52.5" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="BRICKS.step"  transform="translate(200, 0)"  class="s2">
+<path d="M0,52.5 L0.5,53.75 L40,53.75" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="BRICKS.step"  transform="translate(240, 0)"  class="s2">
+<path d="M0,53.75 L0.25,53.125 L40,53.125" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="BRICKS.step"  transform="translate(280, 0)"  class="s2">
+<path d="M0,53.125 L0.125,53.4375 L40,53.4375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="BRICKS.step"  transform="translate(320, 0)"  class="s2">
+<path d="M0,53.4375 L0.0625,53.28125 L40,53.28125" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="BRICKS.step"  transform="translate(360, 0)"  class="s2">
+<path d="M0,53.28125 L0.03125,53.359375 L40,53.359375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);stroke-dasharray: 1, 3;" />
 </g>
 </g>
 </g>

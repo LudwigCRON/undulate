@@ -74,15 +74,17 @@ class FieldStart(pywave.Brick):
         pywave.Brick.__init__(self, **kwargs)
         self.paths.append(
             [
+                "path",
                 (self.width, self.height),
                 (0, self.height),
                 (0, self.height / 4),
                 (self.width, self.height / 4),
             ]
         )
-        if not self.styles.get("background", None) is None:
+        if not kwargs.get("fill", None) is None:
             self.polygons.append(
                 [
+                    "%s-polygon" % kwargs.get("style", ""),
                     (self.width, self.height),
                     (0, self.height),
                     (0, self.height / 4),
@@ -97,11 +99,30 @@ class FieldStart(pywave.Brick):
             if not attrs is None:
                 for i, attr in enumerate(attrs):
                     self.texts.append(
-                        ((self.width * width) / 2, self.height + 12 * (i + 1), attr, "attr")
+                        (
+                            "attr", 
+                            (self.width * width) / 2,
+                            self.height + 12 * (i + 1),
+                            attr,
+                        )
                     )
         # add text
-        self.texts.append((self.width / 2, self.height * 0.625, kwargs.get("data", "")))
-        self.texts.append((self.width / 2, self.height * 0.125, kwargs.get("regpos", "")))
+        self.texts.append(
+            (
+                "data",
+                self.width / 2,
+                self.height * 0.625,
+                kwargs.get("data", ""),
+            )
+        )
+        self.texts.append(
+            (
+                "data",
+                self.width / 2,
+                self.height * 0.125,
+                kwargs.get("regpos", ""),
+            )
+        )
 
 
 class FieldMid(pywave.Brick):
@@ -113,6 +134,7 @@ class FieldMid(pywave.Brick):
         pywave.Brick.__init__(self, **kwargs)
         self.splines.append(
             [
+                "path",
                 ("M", self.width, self.height * 0.875),
                 ("l", 0, self.height * 0.125),
                 ("l", -self.width, 0),
@@ -121,15 +143,17 @@ class FieldMid(pywave.Brick):
         )
         self.splines.append(
             [
+                "path",
                 ("M", self.width, self.height * 0.375),
                 ("l", 0, -self.height * 0.125),
                 ("l", -self.width, 0),
                 ("l", 0, self.height * 0.125),
             ]
         )
-        if not self.styles.get("background", None) is None:
+        if not kwargs.get("fill", None) is None:
             self.polygons.append(
                 [
+                    "%s-polygon" % kwargs.get("style", ""),
                     (self.width, self.height),
                     (0, self.height),
                     (0, self.height / 4),
@@ -137,7 +161,14 @@ class FieldMid(pywave.Brick):
                 ]
             )
         # add text
-        self.texts.append((self.width / 2, self.height * 0.625, kwargs.get("data", "")))
+        self.texts.append(
+            (
+                "data",
+                self.width / 2,
+                self.height * 0.625,
+                kwargs.get("data", ""),
+            )
+        )
 
 
 class FieldEnd(pywave.Brick):
@@ -149,15 +180,17 @@ class FieldEnd(pywave.Brick):
         pywave.Brick.__init__(self, **kwargs)
         self.paths.append(
             [
+                "path",
                 (0, self.height),
                 (self.width, self.height),
                 (self.width, self.height / 4),
                 (0, self.height / 4),
             ]
         )
-        if not self.styles.get("background", None) is None:
+        if not kwargs.get("fill", None) is None:
             self.polygons.append(
                 [
+                    "%s-polygon" % kwargs.get("style", ""),
                     (self.width, self.height),
                     (0, self.height),
                     (0, self.height / 4),
@@ -165,8 +198,22 @@ class FieldEnd(pywave.Brick):
                 ]
             )
         # add text
-        self.texts.append((self.width / 2, self.height * 0.625, kwargs.get("data", "")))
-        self.texts.append((self.width / 2, self.height * 0.125, kwargs.get("regpos", "")))
+        self.texts.append(
+            (
+                "data",
+                self.width / 2,
+                self.height * 0.625,
+                kwargs.get("data", ""),
+            )
+        )
+        self.texts.append(
+            (
+                "data",
+                self.width / 2,
+                self.height * 0.125,
+                kwargs.get("regpos", ""),
+            )
+        )
 
 
 class FieldBit(pywave.Brick):
@@ -178,6 +225,7 @@ class FieldBit(pywave.Brick):
         pywave.Brick.__init__(self, **kwargs)
         self.paths.append(
             [
+                "path",
                 (0, self.height / 4),
                 (0, self.height),
                 (self.width, self.height),
@@ -185,9 +233,10 @@ class FieldBit(pywave.Brick):
                 (0, self.height / 4),
             ]
         )
-        if not self.styles.get("background", None) is None:
+        if not kwargs.get("fill", None) is None:
             self.polygons.append(
                 [
+                    "%s-polygon" % kwargs.get("style", ""),
                     (self.width, self.height),
                     (0, self.height),
                     (0, self.height / 4),
@@ -195,8 +244,22 @@ class FieldBit(pywave.Brick):
                 ]
             )
         # add text
-        self.texts.append((self.width / 2, self.height * 0.625, kwargs.get("data", "")))
-        self.texts.append((self.width / 2, self.height * 0.125, kwargs.get("regpos", "")))
+        self.texts.append(
+            (
+                "data",
+                self.width / 2,
+                self.height * 0.625,
+                kwargs.get("data", ""),
+            )
+        )
+        self.texts.append(
+            (
+                "data",
+                self.width / 2,
+                self.height * 0.125,
+                kwargs.get("regpos", ""),
+            )
+        )
 
 
 class Field:

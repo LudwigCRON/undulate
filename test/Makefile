@@ -90,5 +90,10 @@ coverage:
 	coverage run -a $(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f svg -o "${TESTPATH}/output/annotation.svg"
 	coverage run -a $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f cairo-svg -o "${TESTPATH}/output/overlay-cairo.svg"
 	coverage run -a $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f svg -o "${TESTPATH}/output/overlay.svg"
+	coverage run -a $(WAVEFORM) -f doc; test $$? -eq 1
+	coverage run -a $(WAVEFORM) -i "${TESTPATH}/wrong_ext.c" -f json; test $$? -eq 1
+	coverage run -a $(WAVEFORM) -i "${TESTPATH}/missing_grp.jsonml" -f json; test $$? -eq 1
+	coverage run -a $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f json; test $$? -eq 0
+	coverage run -a $(WAVEFORM); test $$? -eq 1
 	coverage report --include="*pywave/*"
 	coverage html
