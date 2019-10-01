@@ -11,7 +11,7 @@ signal[1]:
 
 signal[2]:
   wave: "0..h.l....."
-  node: "...#....... edge_detection"
+  node: "...#.#..... edge_detection low_mode"
 
 spacer_0:
   wave: ""
@@ -33,6 +33,10 @@ experimental_3:
 experimental_4:
   wave: "x1...|..|.."
 
+edges:
+  - "a -> c"
+  - "low_mode ~-> a revert"
+
 annotations:
   # hline: -
   - shape: "-"
@@ -40,10 +44,10 @@ annotations:
   # vline: |
   - shape: "|"
     x: 3.125
-    color: rgba(0, 0, 255, 0.5)
+    stroke: rgba(0, 0, 255, 127)
   - shape: "|"
     x: 5.125
-    color: rgba(255, 0, 0, 0.5)
+    stroke: rgba(255, 0, 0, 127)
   # arrows as in wavedrom
   - shape: "~>"
     from: "a"
@@ -57,3 +61,7 @@ annotations:
     from: (3.125, 4.05)
     to: (5.125, 4.05)
     text: "delay"
+  - text: There is no transition between these data
+    fill: rgba(255, 255, 0, 255)
+    x: 7
+    y: 4.5

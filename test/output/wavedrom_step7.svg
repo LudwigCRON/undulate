@@ -162,54 +162,41 @@
 </g>
 </g>
 </g>
-<g id="edge"  transform="translate(20, 0)"  >
-<g id="edge_0"  >
-<path d="M45.0,10.0 C81.0,10.0 49.0,40.0 85.0,40.0" class="edge" style="fill: none;"/>
-<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(59.0, 20.5)" />
-<text x="65.000000" y="25.000000" class="edge-text" style="stroke: none;">t1</text>
-</g>
-<g id="edge_1"  >
-<path d="M125.0,70.0 C45.0,70.0 45.0,10.0 45.0,10.0" class="edge" style="fill: none;"/>
-<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(79.0, 35.5)" />
-<text x="85.000000" y="40.000000" class="edge-text" style="stroke: none;">t2</text>
-</g>
-<g id="edge_2"  >
-<path d="M125.0,70.0 C165.0,70.0 165.0,100.0 165.0,100.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(164.99999535621785, 96.50000000000308) rotate(0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 36,9 36,0 0,0 " class="edge-background" style=""  transform="translate(127.0, 80.5)" />
-<text x="145.000000" y="85.000000" class="edge-text" style="stroke: none;">time 3</text>
-</g>
-<g id="edge_3"  >
-<path d="M165.0,100.0 C165.0,100.0 165.0,130.0 205.0,130.0" class="edge" style="fill: none;"/>
-</g>
-<g id="edge_4"  >
-<path d="M205.0,130.0 C241.0,130.0 209.0,130.0 245.0,130.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(241.5, 130.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-</g>
-<g id="edge_5"  >
-<path d="M245.0,130.0 L285.0,100.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(282.2, 102.1) rotate(-126.86992878854058, 0, 0)" class="edge-arrow" style=""/>
-</g>
-<g id="edge_6"  >
-<path d="M285.0,100.0 C325.0,100.0 325.0,70.0 325.0,70.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(324.9999953562179, 73.49999999999692) rotate(-180, 0, 0)" class="edge-arrow" style=""/>
-</g>
-<g id="edge_7"  >
-<path d="M325.0,70.0 C397.0,70.0 333.0,40.0 405.0,40.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(401.5, 40.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 54,9 54,0 0,0 " class="edge-background" style=""  transform="translate(338.0, 50.5)" />
-<text x="365.000000" y="55.000000" class="edge-text" style="stroke: none;">some text</text>
-</g>
-<g id="edge_8"  >
-<path d="M325.0,70.0 C325.0,70.0 325.0,10.0 405.0,10.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(401.5, 10.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-</g>
-<g id="edge_9"  >
-<path d="M205.0,160.0 C277.0,160.0 213.0,190.0 285.0,190.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(281.5, 190.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 30,9 30,0 0,0 " class="edge-background" style=""  transform="translate(220.0, 170.5)" />
-<text x="235.000000" y="175.000000" class="edge-text" style="stroke: none;">youpi</text>
-</g>
-</g>
+<path d="M65.0,10.0 C101.0,10.0 69.0,40.0 105.0,40.0" class="edge" style="fill: none;"/>
+<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(76.0, 20.5)" />
+<text x="85.000000" y="25.000000" class="edge-text" style="stroke: none;"> t1</text>
+
+<path d="M145.0,70.0 C65.0,70.0 65.0,10.0 65.0,10.0" class="edge" style="fill: none;"/>
+<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(96.0, 35.5)" />
+<text x="105.000000" y="40.000000" class="edge-text" style="stroke: none;"> t2</text>
+
+<path d="M145.0,70.0 C185.0,70.0 185.0,100.0 185.0,100.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(184.99999535621785, 96.50000000000308) rotate(0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 42,9 42,0 0,0 " class="edge-background" style=""  transform="translate(144.0, 80.5)" />
+<text x="165.000000" y="85.000000" class="edge-text" style="stroke: none;"> time 3</text>
+
+<path d="M185.0,100.0 C185.0,100.0 185.0,130.0 225.0,130.0" class="edge" style="fill: none;"/>
+
+<path d="M225.0,130.0 C261.0,130.0 229.0,130.0 265.0,130.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(261.5, 130.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+
+<path d="M265.0,130.0 L305.0,100.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(302.2, 102.1) rotate(-126.86992878854058, 0, 0)" class="edge-arrow" style=""/>
+
+<path d="M305.0,100.0 C345.0,100.0 345.0,70.0 345.0,70.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(344.9999953562179, 73.49999999999692) rotate(-180, 0, 0)" class="edge-arrow" style=""/>
+
+<path d="M345.0,70.0 C417.0,70.0 353.0,40.0 425.0,40.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(421.5, 40.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 60,9 60,0 0,0 " class="edge-background" style=""  transform="translate(355.0, 50.5)" />
+<text x="385.000000" y="55.000000" class="edge-text" style="stroke: none;"> some text</text>
+
+<path d="M345.0,70.0 C345.0,70.0 345.0,10.0 425.0,10.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(421.5, 10.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+
+<path d="M225.0,160.0 C297.0,160.0 233.0,190.0 305.0,190.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(301.5, 190.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 36,9 36,0 0,0 " class="edge-background" style=""  transform="translate(247.0, 170.5)" />
+<text x="265.000000" y="175.000000" class="edge-text" style="stroke: none;"> youpi</text>
 
 </svg>

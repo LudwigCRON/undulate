@@ -87,7 +87,7 @@ class Renderer:
     Abstract class of all renderer and define the parsing logic
     """
 
-    _EDGE_REGEXP = r"([\w\.\_]+)([~\|\/\-\>\<]+)([\w\.\_]+)"
+    _EDGE_REGEXP = r"([\w\.\_]+)\s*([~\|\/\-\>\<]+)\s*([\w\.\_]+)"
     _WAVE_TITLE  = ""
     _DATA_TEXT   = ""
     _GROUP_NAME  = ""
@@ -206,15 +206,14 @@ class Renderer:
     def __list_nodes__(self, wavelanes: dict, **kwargs):
         brick_width  = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
-        excluded_sections = ["edge", "head", "config", "adjustement", "annotations"]
+        excluded_sections = ["edges", "edge", "head", "config", "adjustements", "annotations"]
         nodes, _y = [], 0
         for name, wavelane in wavelanes.items():
             # read nodes declaration
             if isinstance(wavelane, dict) and not name in excluded_sections:
                 if "node" in wavelane:
                     chain = wavelane["node"].split(' ')
-                    n = chain[0].replace('.', '')
-                    i = [chain[0].find(c) for c in n[::]]
+                    ni = [(i, c) for i, c in enumerate(chain[0]) if c != '.']
                     j = count(0)
                     # brick width of the wavelane
                     width   = brick_width * wavelane.get("period", 1)
@@ -223,12 +222,13 @@ class Renderer:
                     # get identifier
                     nodes.extend(
                     [ (s[0] * width - phase + slewing * 0.5 + 3, _y, chain[1+next(j)]) if not s[1].isalpha()
-                        else (s[0] * width - phase + slewing * 0.5 + 3, _y, s[1]) for s in list(zip(i, n[::]))]
+                        else (s[0] * width - phase + slewing * 0.5 + 3, _y, s[1]) for s in ni]
                     )
                 _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
         return nodes
 
     def annotations(self, wavelanes:dict, viewport:tuple, **kwargs):
+        edges_input = wavelanes.get("edges", wavelanes.get("edge", []))
         annotations = wavelanes.get("annotations", [])
         brick_width = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
@@ -238,17 +238,30 @@ class Renderer:
             return floor(y)*brick_height*1.5+(y-floor(y))*brick_height
         # list nodes and their name
         nodes = self.__list_nodes__(wavelanes, **kwargs)
+        # transform edges into annotations
+        for ei in edges_input:
+            match = re.match(Renderer._EDGE_REGEXP, ei)
+            if not match is None:
+                m = match.group()
+                f, s, t = match.groups()
+                txt = "" if len(m) == len(ei.strip()) else ei.strip()[len(m):]
+                annotations.append({
+                    "shape": s,
+                    "from": f,
+                    "to": t,
+                    "text": txt
+                })
         # create annotations
         def __annotate__(a: dict):
             shape = a.get("shape", None)
+            x     = a.get("x", 0)
+            y     = a.get("y", 0)
             dx    = a.get("dx", 0)*brick_width
             dy    = adjust_y(a.get("dy", 0))
             start = a.get("from", None)
             end   = a.get("to", None)
             text  = a.get("text", "")
-            if shape is None or shape.strip() == "":
-                return ""
-            ans = ""
+            ans   = ""
             # parse from to
             if start and "," in start:
                 start = eval(start)
@@ -283,14 +296,13 @@ class Renderer:
             # draw shape
             # hline
             if shape == "-":
-                y = a.get("y", 0)
                 y_pos = floor(y)*brick_height*1.5+(y-floor(y))*brick_height
                 c = a.get("color", (0, 0, 0, 255))
                 pts = [("M", xmin, y_pos), ("L", xmin+width, y_pos)]
                 ans = self.spline(pts, **kwargs)
             # vline
             elif shape == "|":
-                x = xmin+a.get("x", 0)*brick_width
+                x = xmin+x*brick_width
                 c = a.get("color", (0, 0, 0, 255))
                 pts = [("M", x, 0), ("L", x, height)]
                 ans = self.spline(pts, **kwargs)
@@ -319,35 +331,48 @@ class Renderer:
                 start_dx, start_dy, end_dx, end_dy = s[0]-mx, 0, e[0]-mx, 0
                 mx, my = mx, e[1]
             # add arrows for edges
-            # marker start
-            if shape[0] == '<':
-                th = arrow_angle(start_dy, start_dx)
-                ans += self.arrow(0, 0, th,
-                        extra=self.translate(s[0]-3.5*cos(th*3.14159/180), s[1]-3.5*sin(th*3.14159/180),
-                        no_acc=True),
-                    dy=brick_height,
-                    is_edge=True,
-                    style_repr="edge-arrow")
-            # marker end
-            if shape[-1] == '>':
-                th = arrow_angle(end_dy, end_dx)
-                ans += self.arrow(0, 0, th,
-                        extra=self.translate(e[0]-3.5*cos(th*3.14159/180), e[1]-3.5*sin(th*3.14159/180),
-                        no_acc=True),
-                    dy=brick_height,
-                    is_edge=True,
-                    style_repr="edge-arrow")
-            if text:
-                # add white background for the text
-                ox, oy, w, h = pywave.text_bbox(self.cr, "edge-text", text, self.engine)
-                ans += self.polygon([
-                    (0, 0),
-                    (0, 0+h),
-                    (0+w, 0+h),
-                    (0+w, 0),
-                    (0, 0)], extra=self.translate(mx+dx+ox, my+dy+oy, no_acc=True), style_repr="edge-background")
-                # add the text
-                ans += self.text(mx+dx, my+dy, text, style_repr="edge-text")
+            if not shape is None:
+                # marker start
+                if shape[0] == '<':
+                    th = arrow_angle(start_dy, start_dx)
+                    ans += self.arrow(0, 0, th,
+                            extra=self.translate(s[0]-3.5*cos(th*3.14159/180), s[1]-3.5*sin(th*3.14159/180),
+                            no_acc=True),
+                        dy=brick_height,
+                        is_edge=True,
+                        style_repr="edge-arrow")
+                elif shape[0] == '*':
+                    pass
+                elif shape[0] == '#':
+                    pass
+                # marker end
+                if shape[-1] == '>':
+                    th = arrow_angle(end_dy, end_dx)
+                    ans += self.arrow(0, 0, th,
+                            extra=self.translate(e[0]-3.5*cos(th*3.14159/180), e[1]-3.5*sin(th*3.14159/180),
+                            no_acc=True),
+                        dy=brick_height,
+                        is_edge=True,
+                        style_repr="edge-arrow")
+                elif shape[0] == '*':
+                    pass
+                elif shape[0] == '#':
+                    pass
+                # add text is not empty
+                if text:
+                    # add white background for the text
+                    ox, oy, w, h = pywave.text_bbox(self.cr, "edge-text", text, self.engine)
+                    ans += self.polygon([
+                        (0, 0),
+                        (0, 0+h),
+                        (0+w, 0+h),
+                        (0+w, 0),
+                        (0, 0)], extra=self.translate(mx+dx+ox, my+dy+oy, no_acc=True), style_repr="edge-background")
+                    # add the text
+                    ans += self.text(mx+dx, my+dy, text, style_repr="edge-text")
+            elif text:
+                a.update({"style_repr": "edge-text", "x": xmin+x*brick_width, "y": adjust_y(y)})
+                ans += self.text(**a)
             return ans
         return '\n'.join([__annotate__(a) for a in annotations])
 
@@ -603,135 +628,6 @@ class Renderer:
         f"ticks_{_WAVEGROUP_COUNT}",
         extra=self.translate(offsetx, 0))
 
-    def edges(self, wavelanes, extra: str = "", **kwargs) -> str:
-        """
-        svg_edges generate the connectors between edges
-        wavelanes      : string which describes the waveform
-        [extra]        : optional attributes for the svg (eg class)
-        [period]       : time dilatation factor, default is 1
-        [phase]        : time shift of the waveform, default is 0
-        [slewing]      : current limitation which limit the transition speed of a signal
-                        default is 4
-        [brick_width]  : width of a brick
-        [brick_height] : height of a brick
-        """
-        global _EDGE_COUNT
-        brick_width  = kwargs.get("brick_width", 20)
-        brick_height = kwargs.get("brick_height", 20)
-        height = kwargs.get("height", 0)
-        nodes = []
-        def _gen():
-            ans, _y = "", 0
-            for name, wavelane in wavelanes.items():
-                # read nodes declaration
-                if isinstance(wavelane, dict):
-                    if "node" in wavelane:
-                        chain = wavelane["node"].split(' ')
-                        n = chain[0].replace('.', '')
-                        i = [chain[0].find(c) for c in n[::]]
-                        j = count(0)
-                        # brick width of the wavelane
-                        width   = brick_width * wavelane.get("period", 1)
-                        phase   = width * wavelane.get("phase", 0)
-                        slewing = wavelane.get("slewing", 4)
-                        # get identifier
-                        nodes.extend(
-                        [ (s[0] * width - phase + slewing * 0.5, _y, chain[1+next(j)]) if not s[1].isalpha()
-                            else (s[0] * width - phase + slewing * 0.5, _y, s[1]) for s in list(zip(i, n[::]))]
-                        )
-                    _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
-                # list edgeds to perform
-                elif name == "edge":
-                    # parse edges declaration
-                    matches = [(r[0].groups(), r[1]) for r in [(re.match(Renderer._EDGE_REGEXP, s.split(' ', 1)[0]), s.split(' ', 1)[1] if len(s.split(' ', 1)) > 1 else '') for s in wavelane] if not r is None]
-                    # replace by x position
-                    edges = list(zip([m[0][1] for m in matches],
-                                    [b for m in matches for b in nodes if m[0][0] in b],
-                                    [b for m in matches for b in nodes if m[0][2] in b],
-                                    [m[1] for m in matches]))
-                    for i, edge in enumerate(edges):
-                        adj = {}
-                        if "adjustment" in wavelanes:
-                            adj = [a for a in wavelanes["adjustment"] if "edge" in a and a["edge"]==i+1]
-                            adj = adj[0] if adj else {}
-                        @incr_edge
-                        def _gen(**kwargs):
-                            dx = kwargs.get("dx", 0)
-                            dy = kwargs.get("dy", 0)
-                            ans = ""
-                            _shape, s, e, text = edge
-                            s = s[0] + 3 + adj.get("start_x", 0), s[1] + brick_height * 0.5 + adj.get("start_y", 0)
-                            e = e[0] + 3 + adj.get("end_x", 0), e[1] + brick_height * 0.5 + adj.get("end_y", 0)
-                            # get the style to apply
-                            style = "edge"
-                            #style += "-arrowtail" if _shape[-1] == '>' else ''
-                            #style += "-arrowhead" if _shape[0] == '<' else ''
-                            # derivative of edges for arrows: by default ->
-                            start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, e[0]-s[0], 0
-                            # generate the vertices
-                            mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
-                            if _shape in ['<~', '~', '~>', '<~>']:
-                                ans += self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
-                            elif _shape in ['<-~', '-~', '-~>', '<-~>']:
-                                ans += self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
-                                start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, 0, e[1]-s[1]
-                            elif _shape in ['<~-', '~-', '~->', '<~->']:
-                                ans += self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
-                                start_dx, start_dy, end_dx, end_dy = 0, s[1]-e[1], e[0]-s[0], 0
-                            elif _shape in ['<-', '-', '->', '<->']:
-                                ans += self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], is_edge=True, style_repr=style)
-                                start_dx, start_dy, end_dx, end_dy = s[0]-e[0], s[1]-e[1], e[0]-s[0], e[1]-s[1]
-                            elif _shape in ['<-|', '-|', '-|>', '<-|>']:
-                                ans += self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
-                                start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, 0, e[1]-s[1]
-                                mx, my = e[0], s[1]
-                            elif _shape in ['<|-', '|-', '|->', '<|->']:
-                                ans += self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
-                                start_dx, start_dy, end_dx, end_dy = 0, s[1]-e[1], e[0]-s[0], 0
-                                mx, my = s[0], e[1]
-                            elif _shape in ['<-|-', '-|-', '-|->', '<-|->']:
-                                ans += self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], is_edge=True, style_repr=style)
-                                start_dx, start_dy, end_dx, end_dy = s[0]-mx, 0, e[0]-mx, 0
-                                mx, my = mx, e[1]
-                            # add arrows
-                            # marker start
-                            if _shape[0] == '<':
-                                th = arrow_angle(start_dy, start_dx)
-                                ans += self.arrow(0, 0, th,
-                                        extra=self.translate(s[0]-3.5*cos(th*3.14159/180), s[1]-3.5*sin(th*3.14159/180),
-                                        no_acc=True),
-                                    dy=brick_height,
-                                    is_edge=True,
-                                    style_repr="edge-arrow")
-                            # marker end
-                            if _shape[-1] == '>':
-                                th = arrow_angle(end_dy, end_dx)
-                                ans += self.arrow(0, 0, th,
-                                        extra=self.translate(e[0]-3.5*cos(th*3.14159/180), e[1]-3.5*sin(th*3.14159/180),
-                                        no_acc=True),
-                                    dy=brick_height,
-                                    is_edge=True,
-                                    style_repr="edge-arrow")
-                            if text.strip():
-                                # add white background for the text
-                                ox, oy, w, h = pywave.text_bbox(self.cr, "edge-text", text, self.engine)
-                                ans += self.polygon([
-                                    (0, 0),
-                                    (0, 0+h),
-                                    (0+w, 0+h),
-                                    (0+w, 0),
-                                    (0, 0)], extra=self.translate(mx+dx+ox, my+dy+oy, no_acc=True), style_repr="edge-background")
-                                # add the text
-                                ans += self.text(mx+dx, my+dy, text, extra="text-anchor=\"middle\"", style_repr="edge-text")
-                            return ans
-                        ans += self.group(lambda: _gen(**adj), f"edge_{_EDGE_COUNT}")
-            return ans
-        return self.group(
-            _gen,
-            "edge",
-            extra=extra
-        )
-
     @incr_wavegroup
     def wavegroup(self, name: str, wavelanes, extra: str = "", depth: int = 1, **kwargs):
         """
@@ -829,7 +725,6 @@ class Renderer:
             ans = self.group(lambda: _gen(offset, width, height, brick_width, brick_height), name, extra=extra)
             offsetx, offsety = offset[0], offset[1]
             # finish the group
-            ans += self.edges(wavelanes, extra=self.translate(offsetx, (depth-1)*20, dont_touch=True), **kwargs)
             ans += self.annotations(wavelanes, viewport=(offsetx, 0, width, height), **kwargs)
             return (offsety, ans)
         # unknown options

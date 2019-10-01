@@ -415,7 +415,12 @@ def text_bbox(context, name: str, text: str, engine: Engine):
 
 def style_in_kwargs(**kwargs) -> dict:
     ans = {}
-    for e in ["fill", "stroke", "stroke-width", "stroke-dasharray"]:
+    # parse_color
+    for e in ["fill", "stroke", "color"]:
+        if e in kwargs:
+            ans[e] = parse_css_color(kwargs.get(e))
+    # integer or array
+    for e in ["stroke-width", "stroke-dasharray"]:
         if e in kwargs:
             ans[e] = kwargs.get(e)
     return ans
@@ -481,3 +486,20 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
     if not with_rule:
         return ans
     return ans + '}'
+
+def parse_css_color(S: str) -> tuple:
+    """
+    convert a css valid representation of a color
+    into rgba tuple from 0 to 255
+    """
+    s = S.strip().lower()
+    if s.startswith("rgba"):
+        return [int(i, 10) for i in s[5:-1].split(',')]
+    elif s.startswith("rgb"):
+        return [int(i, 10) for i in s[4:-1].split(',')]
+    elif s.startswith("#"):
+        if len(s) == 3:
+            return [int(i, 16) for i in s.split('', 3)]
+        else:
+            return [int(i, 16) for i in s[1::2]]
+    return s
