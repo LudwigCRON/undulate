@@ -224,6 +224,80 @@ class One(pywave.Brick):
             ]
         )
 
+class Garbage(pywave.Brick):
+    """
+    Unknown state
+    """
+    def __init__(self, **kwargs):
+        pywave.Brick.__init__(self, **kwargs)
+        followed_data = kwargs.get("followed_data", False)
+        self.last_y = self.height / 2 if self.last_y is None else self.last_y
+        # add shape
+        if followed_data:
+            self.paths.append(
+                [
+                    "path",
+                    (0, self.last_y if not self.ignore_transition else 0),
+                    (-self.slewing, 0),
+                    (self.width - self.slewing, 0),
+                    (self.width, self.height / 2),
+                ]
+            )
+            self.paths.append(
+                [
+                    "path",
+                    (0, self.last_y if not self.ignore_transition else self.height),
+                    (-self.slewing, self.height),
+                    (self.width - self.slewing, self.height),
+                    (self.width, self.height / 2),
+                ]
+            )
+        else:
+            self.paths.append(
+                [
+                    "path",
+                    (0, self.last_y if not self.ignore_transition else 0),
+                    (self.slewing, 0),
+                    (self.width + self.slewing, 0),
+                    (self.width, self.height / 2),
+                ]
+            )
+            self.paths.append(
+                [
+                    "path",
+                    (0, self.last_y if not self.ignore_transition else self.height),
+                    (self.slewing, self.height),
+                    (self.width + self.slewing, self.height),
+                    (self.width, self.height / 2),
+                ]
+            )
+        # add background
+        if followed_data:
+            self.polygons.append(
+                [
+                    "hash",
+                    (0, self.last_y),
+                    (-self.slewing, 0),
+                    (self.width - self.slewing, 0),
+                    (self.width, self.height / 2),
+                    (self.width - self.slewing, self.height),
+                    (-self.slewing, self.height),
+                    (0, self.last_y),
+                ]
+            )
+        else:
+            self.polygons.append(
+                [
+                    "hash",
+                    (0, self.last_y),
+                    (self.slewing, 0),
+                    (self.width + self.slewing, 0),
+                    (self.width, self.height / 2),
+                    (self.width + self.slewing, self.height),
+                    (self.slewing, self.height),
+                    (0, self.last_y),
+                ]
+            )
 
 class Data(pywave.Brick):
     """
@@ -455,6 +529,8 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
         block = Data(**kwargs)
     elif symbol == pywave.BRICKS.x:
         block = Data(unknown=True, **kwargs)
+    elif symbol == pywave.BRICKS.X:
+        block = Garbage(**kwargs)
     # time compression symbol
     elif symbol == pywave.BRICKS.gap:
         block = Gap(**kwargs)

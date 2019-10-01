@@ -30,6 +30,7 @@ class BRICKS(Enum):
     gap = "|"
     highz = "z"
     x = "x"
+    X = "X"
     data = "="
     up = "u"
     down = "d"
@@ -77,6 +78,10 @@ class BRICKS(Enum):
             (BRICKS.x, BRICKS.zero),
             (BRICKS.x, BRICKS.high),
             (BRICKS.x, BRICKS.one),
+            (BRICKS.X, BRICKS.low),
+            (BRICKS.X, BRICKS.zero),
+            (BRICKS.X, BRICKS.high),
+            (BRICKS.X, BRICKS.one),
             (BRICKS.data, BRICKS.zero),
             (BRICKS.data, BRICKS.one),
             (BRICKS.low, BRICKS.Low),

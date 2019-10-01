@@ -28,4 +28,7 @@
   {name: "phi_clk",                    wave: "l..nh..pl..nh..pl..nh..pl.."},
   {},
   {},
+
+  // experiment with data and x
+  {name: "arbitrary", wave: "hxlx=xzX=lX=XlzX=Xz", periods: [1.6, 0.1, 0.9, 0.1, 2, 0.1, 2, 0.1, 1, 2, 0.1, 2, 0.1, 1.1, 2, 0.1]},
 ]}

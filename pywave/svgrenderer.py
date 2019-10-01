@@ -6,6 +6,7 @@ svgrenderer.py use the logic of renderer.py to render waveforms
 into scalable vector graphics format
 """
 
+import html
 from .skin import (
     DEFAULT_STYLE,
     DEFINITION,
@@ -120,7 +121,13 @@ class SvgRenderer(Renderer):
         overload["stroke"] = None
         if css:
             css = f'class="{css}"'
-        return f'<text x="{x}" y="{y}" {css} style="{css_from_rule(None, overload, False)}" >{text}</text>\n'
+        return '<text x="%f" y="%f" %s style="%s">%s</text>\n' % (
+            x,
+            y,
+            css,
+            css_from_rule(None, overload, False),
+            html.escape(str(text))
+        )
 
     def translate(self, x: float, y: float, **kwargs) -> str:
         return f' transform="translate({x}, {y})" '

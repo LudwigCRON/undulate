@@ -461,6 +461,7 @@ class Renderer:
         # generate bricks
         data_counter, regpos_counter, attr_counter = 0, 0, 0
         symbol, is_first, b_counter, ana_counter = None, 0, 0, 0
+        followed_data = False
         for b, k in _wavelane:
             # is not a gap
             if b != '|':
@@ -472,7 +473,7 @@ class Renderer:
                     symbol = pywave.BRICKS.from_str(b)
                     ignore = pywave.BRICKS.ignore_transition(wave[last][0] if wave else None, symbol)
                     # adjust transition from data or x to constant
-                    if s in [pywave.BRICKS.data, pywave.BRICKS.x] and symbol in [pywave.BRICKS.zero, pywave.BRICKS.one, pywave.BRICKS.low, pywave.BRICKS.high]:
+                    if s in [pywave.BRICKS.data, pywave.BRICKS.x, pywave.BRICKS.X] and symbol in [pywave.BRICKS.zero, pywave.BRICKS.one, pywave.BRICKS.low, pywave.BRICKS.high]:
                         if symbol in [pywave.BRICKS.zero, pywave.BRICKS.low]:
                             br.alter_end(3, brick_height)
                         else:
@@ -497,6 +498,8 @@ class Renderer:
                         br.alter_end(0, brick_height if s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk] else 0)
                         wave[last] = (s, br, c)
                         ignore = True
+                    # if move from data to something else
+                    followed_data = s == pywave.BRICKS.data and symbol == pywave.BRICKS.X
                     # get y of the previous brick for junction
                     last_y = br.get_last_y()
                 else:
@@ -517,6 +520,7 @@ class Renderer:
                     "brick_width":       width_with_phase + pos if pos < 0 else width_with_phase,
                     "brick_height":      brick_height,
                     "ignore_transition": ignore,
+                    "followed_data":     followed_data,
                     "is_first":          is_first == 0,
                     "last_y":            last_y,
                     "slewing":           slewing,

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="386" height="320.0" viewBox="-1 -1 387 322.0">
 <style>
-.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.900em;font-family: fira mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
+.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.700em;font-family: fira mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
 .text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;}
 .attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
@@ -53,7 +53,7 @@
 </g>
 
 <g id="clk"  transform="translate(60, 0)"  >
-<text x="-10" y="10.0" class="title" style="stroke: none;" >clk</text>
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">clk</text>
 <g data-symbol="BRICKS.pclk"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
 </g>
@@ -82,12 +82,12 @@
 </g>
 </g>
 <g id="Master"  transform="translate(0, 30.0)"  >
-<text x="0" y="4" class="h2" style="stroke: none;" >Master</text>
+<text x="0.000000" y="4.000000" class="h2" style="stroke: none;">Master</text>
 <path d="M0,14 L380,14" class="border ctx-y" style="fill: none;" />
 <g id="ctrl"  transform="translate(0, 20)"  >
-<text x="0" y="4" class="h3" style="stroke: none;" >ctrl</text>
+<text x="0.000000" y="4.000000" class="h3" style="stroke: none;">ctrl</text>
 <g id="write"  transform="translate(60, 20)"  >
-<text x="-10" y="10.0" class="title" style="stroke: none;" >write</text>
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">write</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L40,20" class="path" style="fill: none;" />
 </g>
@@ -99,7 +99,7 @@
 </g>
 </g>
 <g id="read"  transform="translate(60, 50.0)"  >
-<text x="-10" y="10.0" class="title" style="stroke: none;" >read</text>
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">read</text>
 <g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
 <path d="M0,20 L3,20 L6,20 L160,20" class="path" style="fill: none;" />
 </g>
@@ -114,7 +114,7 @@
 <g id="edge"  transform="translate(60, 40)"  >
 </g>
 <g id="addr"  transform="translate(60, 100.0)"  >
-<text x="-10" y="10.0" class="title" style="stroke: none;" >addr</text>
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">addr</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
@@ -124,7 +124,7 @@
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " class="s3-polygon" style="" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" style="fill: none;" />
-<text x="40.0" y="10.0" class="data" style="stroke: none;" >A1</text>
+<text x="40.000000" y="10.000000" class="data" style="stroke: none;">A1</text>
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(120, 0)"  class="s2">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="hash" style="" />
@@ -135,7 +135,7 @@
 <polygon points="0,10.0 3,0 117,0 120,10.0 117,20 3,20 0,10.0 " class="s4-polygon" style="" />
 <path d="M0,10.0 L3,0 L117,0 L120,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L117,20 L120,10.0" class="path" style="fill: none;" />
-<text x="60.0" y="10.0" class="data" style="stroke: none;" >A2</text>
+<text x="60.000000" y="10.000000" class="data" style="stroke: none;">A2</text>
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(280, 0)"  class="s2">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="hash" style="" />
@@ -144,7 +144,7 @@
 </g>
 </g>
 <g id="wdata"  transform="translate(60, 130.0)"  >
-<text x="-10" y="10.0" class="title" style="stroke: none;" >wdata</text>
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">wdata</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
@@ -154,7 +154,7 @@
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " class="s3-polygon" style="" />
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" style="fill: none;" />
-<text x="40.0" y="10.0" class="data" style="stroke: none;" >D1</text>
+<text x="40.000000" y="10.000000" class="data" style="stroke: none;">D1</text>
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(120, 0)"  class="s2">
 <polygon points="0,10.0 3,0 197,0 200,10.0 197,20 3,20 0,10.0 " class="hash" style="" />
@@ -166,12 +166,12 @@
 <g id="edge"  transform="translate(60, 20)"  >
 </g>
 <g id="Slave"  transform="translate(0, 220.0)"  >
-<text x="0" y="4" class="h2" style="stroke: none;" >Slave</text>
+<text x="0.000000" y="4.000000" class="h2" style="stroke: none;">Slave</text>
 <path d="M0,14 L380,14" class="border ctx-y" style="fill: none;" />
 <g id="ctrl"  transform="translate(0, 20)"  >
-<text x="0" y="4" class="h3" style="stroke: none;" >ctrl</text>
+<text x="0.000000" y="4.000000" class="h3" style="stroke: none;">ctrl</text>
 <g id="ack"  transform="translate(60, 20)"  >
-<text x="-10" y="10.0" class="title" style="stroke: none;" >ack</text>
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">ack</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 40,0 43,20 40,20 37,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L37,0 L40,0 L43,20" class="path" style="fill: none;" />
@@ -204,7 +204,7 @@
 <g id="edge"  transform="translate(60, 40)"  >
 </g>
 <g id="rdata"  transform="translate(60, 70.0)"  >
-<text x="-10" y="10.0" class="title" style="stroke: none;" >rdata</text>
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">rdata</text>
 <g data-symbol="BRICKS.x"  transform="translate(0, 0)"  class="s2">
 <polygon points="0,0 3,0 237,0 240,10.0 237,20 3,20 0,20 " class="hash" style="" />
 <path d="M0,0 L3,0 L237,0 L240,10.0" class="path" style="fill: none;" />
@@ -214,7 +214,7 @@
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="s4-polygon" style="" />
 <path d="M0,10.0 L3,0 L37,0 L40,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L37,20 L40,10.0" class="path" style="fill: none;" />
-<text x="20.0" y="10.0" class="data" style="stroke: none;" >Q2</text>
+<text x="20.000000" y="10.000000" class="data" style="stroke: none;">Q2</text>
 </g>
 <g data-symbol="BRICKS.x"  transform="translate(280, 0)"  class="s2">
 <polygon points="0,10.0 3,0 37,0 40,10.0 37,20 3,20 0,10.0 " class="hash" style="" />

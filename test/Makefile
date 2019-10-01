@@ -3,7 +3,7 @@ WAVEFORM=../waveform.py
 
 .PHONY: new legacy internal eps cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml internal-eps internal-svg internal-cairo-svg
 
-all: new legacy internal eps cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml coverage
+all: new legacy internal eps cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml adcec coverage
 
 %.jsonml:
 	@echo $@
@@ -72,6 +72,9 @@ annotation:
 overlay:
 	$(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f cairo-svg -o "${TESTPATH}/output/overlay-cairo.svg"
 	$(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f svg -o "${TESTPATH}/output/overlay.svg"
+
+adcec:
+	$(WAVEFORM) -i "${TESTPATH}/adcec.jsonml" -f svg -o "${TESTPATH}/output/adcec.svg"
 
 coverage:
 	coverage run $(WAVEFORM) -i ${TESTPATH}/wavetest.yaml -f eps -o ${TESTPATH}/output/$(subst .yaml,-yaml.eps,wavetest.yaml)
