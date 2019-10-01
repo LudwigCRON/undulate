@@ -29,6 +29,7 @@ class CairoRenderer(Renderer):
         self.cr = None
         self.surface = None
         self.extension = kwargs.get("extension", "svg").lower()
+        self.dpi = kwargs.get("dpi", 300)
 
     def group(self, callback, identifier: str, **kwargs) -> str:
         """
@@ -232,18 +233,22 @@ class CairoRenderer(Renderer):
             lkeys = -1
             height += n * 12
         # select appropriate surface
+        w, h = (width + lkeys * 11 + 11), height
         if self.extension == "svg":
-            self.surface = cairo.SVGSurface(filename, (width + lkeys * 11 + 11), height)
+            self.surface = cairo.SVGSurface(filename, w, h)
         elif self.extension == "png":
-            self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, int(width + lkeys * 11 + 11), int(height))
+            self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, int(w * self.dpi / 72), int(h * self.dpi / 72))
+            sx, sy = self.surface.get_device_scale()
+            sx, sy = sx * self.dpi/72, sy * self.dpi/72
+            self.surface.set_device_scale(sx, sy)
         elif self.extension == "ps":
-            self.surface = cairo.PSSurface(filename, (width + lkeys * 11 + 11), height)
+            self.surface = cairo.PSSurface(filename, w, h)
             self.surface.set_eps(False)
         elif self.extension == "eps":
-            self.surface = cairo.PSSurface(filename, (width + lkeys * 11 + 11), height)
+            self.surface = cairo.PSSurface(filename, w, h)
             self.surface.set_eps(True)
         elif self.extension == "pdf":
-            self.surface = cairo.PDFSurface(filename, (width + lkeys * 11 + 11), height)
+            self.surface = cairo.PDFSurface(filename, w, h)
         else:
             raise "Not supported format"
         self.cr = cairo.Context(self.surface)

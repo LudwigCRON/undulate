@@ -42,7 +42,7 @@ DEFAULT_STYLE = {
     "title": {
         "fill": (0, 65, 196, 255),
         "font-weight": 500,
-        "font-size": (0.9, SizeUnit.EM),
+        "font-size": (0.7, SizeUnit.EM),
         "font-family": "fira mono",
         "text-align": TextAlign.RIGHT,
         "text-anchor": "end",

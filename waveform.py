@@ -75,7 +75,7 @@ def _parse_wavelane(wavelane: dict):
 
 def _parse_group(wavegroup: list):
     """
-    convert traditionnal group of wavedrom into 
+    convert traditionnal group of wavedrom into
     the new structure
     """
     ans = {}
@@ -166,6 +166,7 @@ if __name__ == "__main__":
     parser.add_argument("-i", "--input", help="path to the input text file", default=None, type=str)
     parser.add_argument("-f", "--format", help="file format of the output", default="svg", type=str)
     parser.add_argument("-r", "--is_reg", help="is register description", action="store_true", default=False)
+    parser.add_argument("-d", "--dpi", help="resolution of the image for png export", default=150.0, type=float)
     parser.add_argument("-o", "--output", help="path to the output file", default=None, type=str)
     cli_args = parser.parse_args()
     # check the input file
@@ -188,7 +189,7 @@ if __name__ == "__main__":
         elif cli_args.format == "eps":
             renderer = pywave.EpsRenderer()
         elif cli_args.format.startswith("cairo-"):
-            renderer = pywave.CairoRenderer(extension=cli_args.format.split('-')[-1])
+            renderer = pywave.CairoRenderer(extension=cli_args.format.split('-')[-1], dpi=cli_args.dpi)
         else:
             renderer = None
         try:
