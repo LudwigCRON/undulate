@@ -10,7 +10,7 @@ import re
 import copy
 import pywave
 from math import atan2, cos, sin, floor
-from itertools import count
+from itertools import count, accumulate
 
 # Counter for unique id generation
 # counter of group of wave
@@ -203,7 +203,7 @@ class Renderer:
             ans = self._SYMBOL_TEMP(symbol, content, **kwargs)
         return ans
 
-    def __list_nodes__(self, wavelanes: dict, **kwargs):
+    def __list_nodes__(self, wavelanes: dict, depth: int = 0, **kwargs):
         brick_width  = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
         excluded_sections = ["edges", "edge", "head", "config", "adjustements", "annotations"]
@@ -211,20 +211,37 @@ class Renderer:
         for name, wavelane in wavelanes.items():
             # read nodes declaration
             if isinstance(wavelane, dict) and not name in excluded_sections:
-                if "node" in wavelane:
-                    chain = wavelane["node"].split(' ')
-                    ni = [(i, c) for i, c in enumerate(chain[0]) if c != '.']
-                    j = count(0)
-                    # brick width of the wavelane
-                    width   = brick_width * wavelane.get("period", 1)
-                    phase   = width * wavelane.get("phase", 0)
-                    slewing = wavelane.get("slewing", 4)
-                    # get identifier
-                    nodes.extend(
-                    [ (s[0] * width - phase + slewing * 0.5 + 3, _y, chain[1+next(j)]) if not s[1].isalpha()
-                        else (s[0] * width - phase + slewing * 0.5 + 3, _y, s[1]) for s in ni]
-                    )
-                _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
+                if "wave" in wavelane or Renderer.is_spacer(name):
+                    if "node" in wavelane:
+                        chain = wavelane["node"].split(' ')
+                        # brick width of the wavelane
+                        if "periods" in wavelane:
+                            width   = [brick_width * p for p in wavelane.get("periods", [1])]
+                        else:
+                            width   = [brick_width * wavelane.get("period", 1)] * len(chain[0])
+                        phase   = brick_width * wavelane.get("phase", 0)
+                        slewing = wavelane.get("slewing", 4)
+                        # calculate the x position
+                        x = list(accumulate(width))
+                        # parse the chain
+                        ni = [(x[i]-width[i], width[i], c) for i, c in enumerate(chain[0]) if c != '.']
+                        j = count(0)
+                        # get identifier
+                        nodes.extend(
+                        [ (s[0] - phase + slewing * 0.5 + 3, _y, chain[1+next(j)]) if not s[2].isalpha()
+                            else (s[0] - phase + slewing * 0.5 + 3, _y, s[2]) for s in ni]
+                        )
+                    _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
+                # it is a wavegroup
+                else:
+                    dy, n = self.__list_nodes__(wavelane, depth+1, **kwargs)
+                    _y += brick_height
+                    for node in n:
+                        x, y, name = node
+                        nodes.append((x, _y + y, name))
+                    _y += dy
+        if depth > 0:
+            return (_y, nodes)
         return nodes
 
     def annotations(self, wavelanes:dict, viewport:tuple, **kwargs):
@@ -233,6 +250,9 @@ class Renderer:
         brick_width = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
         xmin, _, width, height = viewport
+        # if not empty
+        if not annotations and not edges_input:
+            return ''
         # adjust y coordinate
         def adjust_y(y):
             return floor(y)*brick_height*1.5+(y-floor(y))*brick_height

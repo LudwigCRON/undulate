@@ -500,7 +500,6 @@ def parse_css_size(S: str) -> tuple:
     v = float(''.join([c for c in s if c in "0123456789."]))
     u = SizeUnit.EM if "em" in s else \
         SizeUnit.PT if "pt" in s else SizeUnit.PX
-    print(v, u)
     return (v, u)
 
 def parse_css_color(S: str) -> tuple:
