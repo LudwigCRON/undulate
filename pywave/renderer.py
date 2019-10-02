@@ -229,8 +229,8 @@ class Renderer:
                         j = count(0)
                         # get identifier
                         nodes.extend(
-                        [ (s[0] - phase + slewing * 0.5 + 3, _y, chain[1+next(j)]) if not s[2].isalpha()
-                            else (s[0] - phase + slewing * 0.5 + 3, _y, s[2]) for s in ni]
+                        [ (s[0] - phase + slewing * 0.5, _y, chain[1+next(j)]) if not s[2].isalpha()
+                            else (s[0] - phase + slewing * 0.5, _y, s[2]) for s in ni]
                         )
                     _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
                 # it is a wavegroup
@@ -650,7 +650,7 @@ class Renderer:
         phase   = kwargs.get("phase", 0)
         def _gen():
             ans = ""
-            for k in range(0, width//step):
+            for k in range(0, int(width/step)):
                 x = step * k
                 ans += self.path(
                     [(x, 0), (x, height-offsety)],
