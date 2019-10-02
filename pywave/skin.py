@@ -124,6 +124,11 @@ DEFAULT_STYLE = {
         "stroke-width": 0.5,
         "stroke-dasharray": [1, 3],
     },
+    "big_gap": {
+        "stroke": (136, 136, 136, 255),
+        "stroke-width": 0.5,
+        "stroke-dasharray": None,
+    },
     "edge": {
         "fill": None,
         "stroke": (0, 0, 255, 255),

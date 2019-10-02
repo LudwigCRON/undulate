@@ -327,6 +327,28 @@ class Renderer:
                 c = a.get("color", (0, 0, 0, 255))
                 pts = [("M", x, 0), ("L", x, height)]
                 ans = self.spline(pts, **a)
+            # global time compression
+            elif shape == "||":
+                x = xmin+x*brick_width
+                pts_1 = [
+                    ("M", x, 0),            # |
+                    ("L", x, height/2-10),  # |
+                    ("L", x-10, height/2),  # /
+                    ("L", x, height/2+10),  # \
+                    ("L", x, height),       # |
+                ]
+                pts_2 = [
+                    ("M", x+5, 0),            # |
+                    ("L", x+5, height/2-10),  # |
+                    ("L", x-4, height/2),     # /
+                    ("L", x+5, height/2+10),  # \
+                    ("L", x+5, height),       # |
+                ]
+                poly = copy.deepcopy(pts_2)
+                poly.extend(pts_1[::-1])
+                ans = self.polygon([(i, j) for c, i, j in poly], style_repr="hide")
+                ans+= self.spline(pts_1, style_repr="big_gap")
+                ans+= self.spline(pts_2, style_repr="big_gap")
             # edges
             elif shape in ['<~', '~', '~>', '<~>']:
                 ans = self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge")
@@ -729,7 +751,7 @@ class Renderer:
                         width = l * brick_width if l * brick_width > width else width
                     # spacer or only for label nodes
                     elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
-                        dy = brick_height * 1.5
+                        dy = brick_height * (wavelanes[wavetitle].get("vscale", 1) + 0.5)
                     # named group
                     elif not wavetitle in ["head", "foot", "config", "edges", "annotations"]:
                         self._FIRST_TRANSLATION = False
