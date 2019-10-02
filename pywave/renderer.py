@@ -9,6 +9,7 @@ into different format
 import re
 import copy
 import pywave
+from .skin import style_in_kwargs
 from math import atan2, cos, sin, floor
 from itertools import count, accumulate
 
@@ -319,13 +320,13 @@ class Renderer:
                 y_pos = floor(y)*brick_height*1.5+(y-floor(y))*brick_height
                 c = a.get("color", (0, 0, 0, 255))
                 pts = [("M", xmin, y_pos), ("L", xmin+width, y_pos)]
-                ans = self.spline(pts, **kwargs)
+                ans = self.spline(pts, **a)
             # vline
             elif shape == "|":
                 x = xmin+x*brick_width
                 c = a.get("color", (0, 0, 0, 255))
                 pts = [("M", x, 0), ("L", x, height)]
-                ans = self.spline(pts, **kwargs)
+                ans = self.spline(pts, **a)
             # edges
             elif shape in ['<~', '~', '~>', '<~>']:
                 ans = self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge")
@@ -380,19 +381,30 @@ class Renderer:
                     pass
                 # add text is not empty
                 if text:
+                    overload = style_in_kwargs(**a)
                     # add white background for the text
-                    ox, oy, w, h = pywave.text_bbox(self.cr, "edge-text", text, self.engine)
+                    a.update({"style_repr": "edge-text", "x": mx+dx, "y": my+dy})
+                    ox, oy, w, h = pywave.text_bbox(self.cr, "edge-text", text, self.engine, overload)
                     ans += self.polygon([
                         (0, 0),
                         (0, 0+h),
                         (0+w, 0+h),
                         (0+w, 0),
-                        (0, 0)], extra=self.translate(mx+dx+ox, my+dy+oy, no_acc=True), style_repr="edge-background")
+                        (0, 0)], extra=self.translate(a.get("x")+ox, a.get("y")+oy, no_acc=True), style_repr="edge-background")
                     # add the text
-                    a.update({"style_repr": "edge-text", "x": mx+dx, "y": my+dy})
                     ans += self.text(**a)
             elif text:
+                overload = style_in_kwargs(**a)
+                # add white background for the text
                 a.update({"style_repr": "edge-text", "x": xmin+x*brick_width, "y": adjust_y(y)})
+                ox, oy, w, h = pywave.text_bbox(self.cr, "edge-text", text, self.engine, overload)
+                ans += self.polygon([
+                    (0, 0),
+                    (0, 0+h),
+                    (0+w, 0+h),
+                    (0+w, 0),
+                    (0, 0)], extra=self.translate(a.get("x")+ox, a.get("y")+oy, no_acc=True), style_repr="edge-background")
+                # add the text
                 ans += self.text(**a)
             return ans
         return '\n'.join([__annotate__(a) for a in annotations])

@@ -404,12 +404,12 @@ def text_align(context, name: str, text: str, engine: Engine):
     if engine == Engine.CAIRO:
         return cairo_text_align(context, get_style(name), text)
 
-def text_bbox(context, name: str, text: str, engine: Engine):
+def text_bbox(context, name: str, text: str, engine: Engine, overload: dict = {}):
     """
     calculate the bounding box of the text
     """
     if engine == Engine.CAIRO:
-        apply_cairo_style(context, name, {})
+        apply_cairo_style(context, name, overload)
         return cairo_text_bbox(context, get_style(name), text)
     return (-len(text)*6/2, -4.5, len(text)*6, 9)
 
@@ -424,7 +424,7 @@ def style_in_kwargs(**kwargs) -> dict:
         if e in kwargs:
             ans[e] = parse_css_size(kwargs.get(e))
     # integer or array
-    for e in ["stroke-width", "stroke-dasharray"]:
+    for e in ["stroke-width", "stroke-dasharray", "font-weight"]:
         if e in kwargs:
             ans[e] = kwargs.get(e)
     return ans
