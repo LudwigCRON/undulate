@@ -208,7 +208,7 @@ class CairoRenderer(Renderer):
         if callable(extra):
             extra()
         apply_fill(self.cr, style, Engine.CAIRO, overload)
-        apply_font(self.cr, style, Engine.CAIRO)
+        apply_font(self.cr, style, Engine.CAIRO, overload)
         ox, oy = text_align(self.cr, style, str(text), Engine.CAIRO)
         self.cr.move_to(x - ox, y - oy)
         self.cr.show_text(str(text))

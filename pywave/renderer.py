@@ -369,7 +369,8 @@ class Renderer:
                         (0+w, 0),
                         (0, 0)], extra=self.translate(mx+dx+ox, my+dy+oy, no_acc=True), style_repr="edge-background")
                     # add the text
-                    ans += self.text(mx+dx, my+dy, text, style_repr="edge-text")
+                    a.update({"style_repr": "edge-text", "x": mx+dx, "y": my+dy})
+                    ans += self.text(**a)
             elif text:
                 a.update({"style_repr": "edge-text", "x": xmin+x*brick_width, "y": adjust_y(y)})
                 ans += self.text(**a)

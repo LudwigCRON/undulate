@@ -150,7 +150,7 @@ DEFAULT_STYLE = {
     "border": {"stroke-width": 1.25, "stroke": (0, 0, 0, 255)},
     "h1": {
         "fill": (0, 0, 0, 255),
-        "font-size": (18.31, SizeUnit.PX),
+        "font-size": (18.31/1.2, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
@@ -158,7 +158,7 @@ DEFAULT_STYLE = {
     },
     "h2": {
         "fill": (0, 0, 0, 255),
-        "font-size": (14.65, SizeUnit.PX),
+        "font-size": (14.65/1.2, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
@@ -166,7 +166,7 @@ DEFAULT_STYLE = {
     },
     "h3": {
         "fill": (0, 0, 0, 255),
-        "font-size": (11.72, SizeUnit.PX),
+        "font-size": (11.72/1.2, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
@@ -174,7 +174,7 @@ DEFAULT_STYLE = {
     },
     "h4": {
         "fill": (0, 0, 0, 255),
-        "font-size": (9.38, SizeUnit.PX),
+        "font-size": (9.38/1.2, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
@@ -182,7 +182,7 @@ DEFAULT_STYLE = {
     },
     "h5": {
         "fill": (0, 0, 0, 255),
-        "font-size": (7.5, SizeUnit.PX),
+        "font-size": (7.5/1.2, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
@@ -190,7 +190,7 @@ DEFAULT_STYLE = {
     },
     "h6": {
         "fill": (0, 0, 0, 255),
-        "font-size": (6, SizeUnit.PX),
+        "font-size": (6/1.2, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "fira mono",
         "text-align": TextAlign.LEFT,
@@ -419,6 +419,10 @@ def style_in_kwargs(**kwargs) -> dict:
     for e in ["fill", "stroke", "color"]:
         if e in kwargs:
             ans[e] = parse_css_color(kwargs.get(e))
+    # parse size
+    for e in ["font-size"]:
+        if e in kwargs:
+            ans[e] = parse_css_size(kwargs.get(e))
     # integer or array
     for e in ["stroke-width", "stroke-dasharray"]:
         if e in kwargs:
@@ -486,6 +490,18 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
     if not with_rule:
         return ans
     return ans + '}'
+    
+def parse_css_size(S: str) -> tuple:
+    """
+    convert a css valid representation of a size
+    into a value unit tuple
+    """
+    s = S.strip().lower()
+    v = float(''.join([c for c in s if c in "0123456789."]))
+    u = SizeUnit.EM if "em" in s else \
+        SizeUnit.PT if "pt" in s else SizeUnit.PX
+    print(v, u)
+    return (v, u)
 
 def parse_css_color(S: str) -> tuple:
     """
