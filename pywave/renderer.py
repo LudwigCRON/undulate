@@ -636,7 +636,7 @@ class Renderer:
             extra=extra
         )
 
-    def ticks(self, width: int, height: int, step: int, **kwargs) -> str:
+    def ticks(self, width: int, height: int, step: float, **kwargs) -> str:
         """
         svg_ticks generates the dotted lines to see ticks easily
         width     : width of the image
@@ -647,9 +647,11 @@ class Renderer:
         """
         offsetx = kwargs.get("offsetx", 0)
         offsety = kwargs.get("offsety", 0)
+        phase   = kwargs.get("phase", 0)
         def _gen():
             ans = ""
-            for x in range(0, int(width), step):
+            for k in range(0, width//step):
+                x = step * k
                 ans += self.path(
                     [(x, 0), (x, height-offsety)],
                     style_repr="tick",
@@ -659,7 +661,7 @@ class Renderer:
         return self.group(
         _gen,
         f"ticks_{_WAVEGROUP_COUNT}",
-        extra=self.translate(offsetx, 0))
+        extra=self.translate(offsetx + phase * width, 0))
 
     @incr_wavegroup
     def wavegroup(self, name: str, wavelanes, extra: str = "", depth: int = 1, **kwargs):
@@ -687,6 +689,7 @@ class Renderer:
         width        = kwargs.get("width", 0)
         height       = kwargs.get("height", 0)
         no_ticks     = kwargs.get("no_ticks", False)
+        config       = wavelanes.get("config", {})
         def _gen(offset, width, height, brick_width, brick_height):
             ox, oy, dy = offset[0], offset[1], 0
             # some space for group separation
@@ -730,7 +733,7 @@ class Renderer:
                     # named group
                     elif not wavetitle in ["head", "foot", "config", "edges", "annotations"]:
                         self._FIRST_TRANSLATION = False
-                        args = kwargs
+                        args = copy.deepcopy(kwargs)
                         args.update({"offsetx": ox, "offsety": 0, "no_ticks": True})
                         dy, tmp = self.wavegroup(
                             wavetitle,
@@ -748,7 +751,14 @@ class Renderer:
                     pass
             # add ticks only for the principale group
             if not no_ticks:
-                ans = self.ticks(width, height, brick_width, offsetx=ox) + "\n" + ans
+                kw = {
+                    "offsetx": ox,
+                    "step": brick_width,
+                    "width": width,
+                    "height": height,
+                    "phase": config.get("ticks_phase", 0)
+                }
+                ans = "%s\n%s" % (self.ticks(**kw), ans)
             offset[0], offset[1] = ox, oy
             return ans
         # a useful signal is in a dict
