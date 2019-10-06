@@ -217,8 +217,8 @@ class Renderer:
                         j = count(0)
                         # get identifier
                         nodes.extend(
-                        [ (s[0] - phase + slewing * 0.5, _y, chain[1+next(j)]) if not s[2].isalpha()
-                            else (s[0] - phase + slewing * 0.5, _y, s[2]) for s in ni]
+                        [ (s[0] - phase + slewing * 0.5 + 3, _y, chain[1+next(j)]) if not s[2].isalpha()
+                            else (s[0] - phase + slewing * 0.5 + 3, _y, s[2]) for s in ni]
                         )
                     _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
                 # it is a wavegroup
