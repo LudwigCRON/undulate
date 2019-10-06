@@ -5,7 +5,7 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 # imports as in pywave.py
-from pywave import SvgRenderer, EpsRenderer, CairoRenderer
+from pywave import SvgRenderer, CairoRenderer
 import argparse
 import unittest
 
@@ -261,8 +261,6 @@ if __name__ == "__main__":
   cli_args = parser.parse_args()
   if cli_args.format == "svg":
     renderer = SvgRenderer()
-  elif "eps" in cli_args.format:
-    renderer = EpsRenderer()
   elif "cairo-" in cli_args.format:
     renderer = CairoRenderer(extension=cli_args.format.split('-')[-1])
     out_txt = False

@@ -38,6 +38,9 @@ edges:
   - "low_mode ~-> a revert"
 
 annotations:
+  # global compression
+  - shape: "||"
+    x: 9
   # hline: -
   - shape: "-"
     y: 2.5

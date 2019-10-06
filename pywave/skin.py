@@ -112,7 +112,7 @@ DEFAULT_STYLE = {
         "stroke": (255, 255, 255, 255),
         "stroke-width": 2
     },
-    "hash": {
+    "hatch": {
         "fill": (200, 200, 200, 255)
     },
     "s2-polygon": {"fill": (0, 0, 0, 0), "stroke": None},
@@ -200,6 +200,32 @@ DEFAULT_STYLE = {
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
         "dominant-baseline": "middle",
+    },
+    "reg-data": {
+        "fill": (0, 0, 0, 255),
+        "font-size": (0.8, SizeUnit.EM),
+        "font-style": "normal",
+        "font-variant": "normal",
+        "font-weight": 500,
+        "font-stretch": "normal",
+        "text-align": TextAlign.CENTER,
+        "font-family": "Fira Mono",
+        "text-anchor": "middle",
+        "dominant-baseline": "middle",
+        "alignment-baseline": "central"
+    },
+    "reg-pos": {
+        "fill": (0, 0, 0, 255),
+        "font-size": (0.6, SizeUnit.EM),
+        "font-style": "normal",
+        "font-variant": "normal",
+        "font-weight": 500,
+        "font-stretch": "normal",
+        "text-align": TextAlign.CENTER,
+        "font-family": "Fira Mono",
+        "text-anchor": "middle",
+        "dominant-baseline": "middle",
+        "alignment-baseline": "central"
     },
 }
 
@@ -351,17 +377,6 @@ else:
             context.set_font_size(s * u.value)
 
 
-def apply_style(context, name: str, engine: Engine, overload: dict = {}):
-    """
-    apply style from 'name' of the selector
-    for the supported engine
-    """
-    if engine == Engine.CAIRO:
-        apply_cairo_style(context, name, overload)
-    else:
-        raise "Engine selected is not yet supported"
-
-
 def apply_fill(context, name: str, engine: Engine, overload: dict = {}):
     """
     apply fill from 'name' of the selector
@@ -452,7 +467,7 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
         if value is None:
             ans += "%s: none;" % prop
         # fill or stroke are only color
-        elif prop == "fill" and rule == "hash":
+        elif prop == "fill" and rule == "hatch":
             ans += "fill: url(#diagonalHatch);"
         elif prop in ["fill", "stroke", "color"]:
             ans += "%s: rgba(%d, %d, %d, %d);" % (prop, *value)
@@ -512,14 +527,18 @@ def parse_css_color(S: str) -> tuple:
     convert a css valid representation of a color
     into rgba tuple from 0 to 255
     """
+    if isinstance(S, list):
+        return S
     s = S.strip().lower()
     if s.startswith("rgba"):
         return [int(i, 10) for i in s[5:-1].split(',')]
     elif s.startswith("rgb"):
-        return [int(i, 10) for i in s[4:-1].split(',')]
+        return [int(i, 10) for i in s[4:-1].split(',')]+[255]
     elif s.startswith("#"):
-        if len(s) == 3:
-            return [int(i, 16) for i in s.split('', 3)]
+        if len(s) == 4:
+            return [int(i, 16)*17 for i in s[1:4]]+[255]
+        elif len(s) == 7:
+            return [int(s[i:i+2], 16) for i in range(1, 6, 2)]+[255]
         else:
-            return [int(i, 16) for i in s[1::2]]
+            return [int(s[i:i+2], 16) for i in range(1, 8, 2)]
     return s

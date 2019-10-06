@@ -13,6 +13,7 @@ dac.overlay           = true
 dac.stroke            = [0, 0, 255, 255]
 dac.stroke-dasharray  = [1, 3]
 dac.fill              = [0, 0, 255, 255]
+dac.font-size         = '9pt'
 dac.order             = 2
 dac.analogue          = [
   "VDDA*512/1024",
@@ -31,10 +32,11 @@ dac.analogue          = [
 vin.wave              = "0a........"
 vin.vscale            = 4
 vin.overlay           = true
-vin.stroke            = [255, 0, 0, 255]
+vin.stroke            = '#F00'
 vin.stroke-dasharray  = [5, 3, 1, 5]
 vin.stroke-width      = 1.5
-vin.fill              = [255, 0, 0, 255]
+vin.fill              = 'rgb(255, 0, 0)'
+vin.font-size         = '0.4em'
 vin.order             = 3
 vin.analogue          = [
   "[(t, (VDDA/3)*(1-exp(-t/3))) for t in time]"
@@ -55,9 +57,9 @@ dac_ref.wave              = "s"
 dac_ref.repeat            = 10
 dac_ref.slewing           = 32
 dac_ref.vscale            = 4
-dac_ref.stroke            = [0, 0, 255, 255]
+dac_ref.stroke            = '#0000FF0A'
 dac_ref.stroke-dasharray  = [1, 3]
-dac_ref.fill              = [0, 0, 255, 255]
+dac_ref.fill              = '#0000FF'
 dac_ref.order             = 2
 dac_ref.analogue          = [
   "VDDA*512/1024",

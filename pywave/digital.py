@@ -275,7 +275,7 @@ class Garbage(pywave.Brick):
         if followed_data:
             self.polygons.append(
                 [
-                    "hash",
+                    "hatch",
                     (0, self.last_y),
                     (-self.slewing, 0),
                     (self.width - self.slewing, 0),
@@ -288,7 +288,7 @@ class Garbage(pywave.Brick):
         else:
             self.polygons.append(
                 [
-                    "hash",
+                    "hatch",
                     (0, self.last_y),
                     (self.slewing, 0),
                     (self.width + self.slewing, 0),
@@ -347,7 +347,7 @@ class Data(pywave.Brick):
                 ]
             )
         # add background
-        style = "hash" if unknown else "%s-polygon" % kwargs.get("style", "")
+        style = "hatch" if unknown else "%s-polygon" % kwargs.get("style", "")
         if self.is_first:
             self.polygons.append(
                 [

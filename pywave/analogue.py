@@ -139,16 +139,13 @@ class Analogue(pywave.Brick):
         else:
             self.last_y = self.height if self.last_y is None else self.last_y
         # add shape
-        try:
-            self.paths.append(
-                ["path", (0, self.last_y)] # link to the previous block
-                + [
-                    (p[0], pywave.BRICKS.transform_y(p[1], self.height))
-                    for p in pts # evaluation fonctions, complex python code
-                ]
-            )
-        except Exception as err:
-            print(getattr(err, "message", repr(err)))
+        self.paths.append(
+            ["path", (0, self.last_y)] # link to the previous block
+            + [
+                (p[0], pywave.BRICKS.transform_y(p[1], self.height))
+                for p in pts # evaluation fonctions, complex python code
+            ]
+        )
 
 
 def generate_analogue_symbol(symbol: str, **kwargs) -> (bool, object):

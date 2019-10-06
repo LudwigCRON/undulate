@@ -34,14 +34,12 @@ class Register:
         # add to the stack
         if isinstance(field, dict):
             f = Field.from_dict(field)
-            f.start = self.__counter
-            self.fields.append(f)
         elif isinstance(field, Field):
             f = field
-            f.start = self.__counter
-            self.fields.append(f)
         else:
             raise Exception(f"Unsupported {type(field)} of field")
+        f.start = self.__counter
+        self.fields.append(f)
         # increment counter
         if f:
             self.__counter += f.width
@@ -53,6 +51,7 @@ class Register:
         wave = "".join([field.wave for field in self.fields[::-1]])
         data = " ".join([field.data for field in self.fields[::-1]])
         attr = [(field.width, field.attributes) for field in self.fields[::-1]]
+        _type = [field.type for field in self.fields[::-1]] 
         # calculate position of extremities
         pos = [0]
         for f in self.fields:
@@ -61,7 +60,7 @@ class Register:
             pos.append(1)
         pos = list(accumulate(pos[:-1]))[::-1]
         ans = {}
-        ans[self.name] = {"wave": wave, "data": data, "regpos": pos, "attr": attr}
+        ans[self.name] = {"wave": wave, "data": data, "regpos": pos, "attr": attr, "types": _type}
         return ans
 
 
@@ -81,7 +80,7 @@ class FieldStart(pywave.Brick):
                 (self.width, self.height / 4),
             ]
         )
-        if not kwargs.get("fill", None) is None:
+        if not kwargs.get("style", None) is None:
             self.polygons.append(
                 [
                     "%s-polygon" % kwargs.get("style", ""),
@@ -109,7 +108,7 @@ class FieldStart(pywave.Brick):
         # add text
         self.texts.append(
             (
-                "data",
+                "reg-data",
                 self.width / 2,
                 self.height * 0.625,
                 kwargs.get("data", ""),
@@ -117,7 +116,7 @@ class FieldStart(pywave.Brick):
         )
         self.texts.append(
             (
-                "data",
+                "reg-pos",
                 self.width / 2,
                 self.height * 0.125,
                 kwargs.get("regpos", ""),
@@ -150,7 +149,7 @@ class FieldMid(pywave.Brick):
                 ("l", 0, self.height * 0.125),
             ]
         )
-        if not kwargs.get("fill", None) is None:
+        if not kwargs.get("style", None) is None:
             self.polygons.append(
                 [
                     "%s-polygon" % kwargs.get("style", ""),
@@ -163,7 +162,7 @@ class FieldMid(pywave.Brick):
         # add text
         self.texts.append(
             (
-                "data",
+                "reg-data",
                 self.width / 2,
                 self.height * 0.625,
                 kwargs.get("data", ""),
@@ -187,7 +186,7 @@ class FieldEnd(pywave.Brick):
                 (0, self.height / 4),
             ]
         )
-        if not kwargs.get("fill", None) is None:
+        if not kwargs.get("style", None) is None:
             self.polygons.append(
                 [
                     "%s-polygon" % kwargs.get("style", ""),
@@ -200,7 +199,7 @@ class FieldEnd(pywave.Brick):
         # add text
         self.texts.append(
             (
-                "data",
+                "reg-data",
                 self.width / 2,
                 self.height * 0.625,
                 kwargs.get("data", ""),
@@ -208,7 +207,7 @@ class FieldEnd(pywave.Brick):
         )
         self.texts.append(
             (
-                "data",
+                "reg-pos",
                 self.width / 2,
                 self.height * 0.125,
                 kwargs.get("regpos", ""),
@@ -233,7 +232,7 @@ class FieldBit(pywave.Brick):
                 (0, self.height / 4),
             ]
         )
-        if not kwargs.get("fill", None) is None:
+        if not kwargs.get("style", None) is None:
             self.polygons.append(
                 [
                     "%s-polygon" % kwargs.get("style", ""),
@@ -246,7 +245,7 @@ class FieldBit(pywave.Brick):
         # add text
         self.texts.append(
             (
-                "data",
+                "reg-data",
                 self.width / 2,
                 self.height * 0.625,
                 kwargs.get("data", ""),
@@ -254,7 +253,7 @@ class FieldBit(pywave.Brick):
         )
         self.texts.append(
             (
-                "data",
+                "reg-pos",
                 self.width / 2,
                 self.height * 0.125,
                 kwargs.get("regpos", ""),
@@ -268,7 +267,7 @@ class Field:
     from 1-bit to N-bits
     """
 
-    __slots__ = ["name", "description", "start", "width", "attributes", "wave", "data"]
+    __slots__ = ["name", "description", "start", "width", "attributes", "wave", "data", "style", "type"]
 
     def __init__(self):
         # default value
@@ -279,6 +278,7 @@ class Field:
         self.attributes = []
         self.wave = ""
         self.data = ""
+        self.type = ""
 
     @staticmethod
     def from_dict(d: dict):
@@ -291,6 +291,7 @@ class Field:
         f.description = d.get("description", "")
         f.width = d.get("width", d.get("bits", 1))
         f.attributes = d.get("attributes", d.get("attr", None))
+        f.type = d.get("type", None)
         # convert attributes for string and int
         if isinstance(f.attributes, str):
             f.attributes = [f.attributes]

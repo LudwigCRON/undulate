@@ -84,7 +84,7 @@ class SvgRenderer(Renderer):
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", None)
         overload = style_in_kwargs(**kwargs)
-        if "hash" in style or "polygon" in style:
+        if "hatch" in style or "polygon" in style or extra is None:
             extra = ""
         if callable(extra):
             extra = extra()

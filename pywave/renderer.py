@@ -18,8 +18,6 @@ from itertools import count, accumulate
 _WAVEGROUP_COUNT = 0
 # counter of wave
 _WAVE_COUNT = 0
-# counter of edge
-_EDGE_COUNT = 0
 
 def incr_wavelane(f):
     """
@@ -38,16 +36,6 @@ def incr_wavegroup(f):
     def wrapper(*args, **kwargs):
         global _WAVEGROUP_COUNT
         _WAVEGROUP_COUNT += 1
-        return f(*args, **kwargs)
-    return wrapper
-
-def incr_edge(f):
-    """
-    incr_wavegroup is a decorator that increment _WAVEGROUP_COUNT in auto.
-    """
-    def wrapper(*args, **kwargs):
-        global _EDGE_COUNT
-        _EDGE_COUNT += 1
         return f(*args, **kwargs)
     return wrapper
 
@@ -531,6 +519,7 @@ class Renderer:
         brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
         gap_offset   = kwargs.get("gap_offset", brick_width*0.75)
         slewing      = kwargs.get("slewing", 3)
+        reg_types    = kwargs.get("types", [])
         analogue     = self._get_or_eval("analogue", [], **kwargs)
         duty_cycles  = self._get_or_eval("duty_cycles", [], **kwargs)
         periods      = self._get_or_eval("periods", [], **kwargs)
@@ -541,7 +530,7 @@ class Renderer:
         # generate bricks
         data_counter, regpos_counter, attr_counter = 0, 0, 0
         symbol, is_first, b_counter, ana_counter = None, 0, 0, 0
-        followed_data = False
+        followed_data, reg_type_counter = False, 0
         for b, k in _wavelane:
             # is not a gap
             if b != '|':
@@ -604,12 +593,15 @@ class Renderer:
                     "is_first":          is_first == 0,
                     "last_y":            last_y,
                     "slewing":           slewing,
-                    "style":             "s%s" % (b if b.isdigit() and int(b, 10) > 1 else '2'),
+                    "style":             "s%s" % (
+                        b if b.isdigit() and int(b, 10) > 1 else '2' if not reg_types else \
+                        reg_types[reg_type_counter] if not reg_types[reg_type_counter] is None else \
+                        '2'),
                     "duty_cycle":        max(duty_cycles[b_counter], slewing*2/brick_width) if b_counter < len(duty_cycles) else 0.5,
-                    "equation":          analogue[ana_counter] if ana_counter < len(analogue) else "0",
+                    "equation":          analogue[ana_counter] if len(analogue) > ana_counter else "0",
                     "data":              data[data_counter] if len(data) > data_counter else "",
-                    "regpos":            regpos[regpos_counter] if len(regpos) > regpos_counter else "",
-                    "attr":              attributes[attr_counter] if len(attributes) > attr_counter else ""
+                    "regpos":            regpos[regpos_counter] if len(regpos) > regpos_counter  else "",
+                    "attr":              attributes[attr_counter] if len(attributes) > attr_counter  else ""
                 })
                 # get next equation if analogue
                 if symbol in [pywave.BRICKS.ana, pywave.BRICKS.step, pywave.BRICKS.cap]:
@@ -622,8 +614,12 @@ class Renderer:
                         pywave.BRICKS.field_start, pywave.BRICKS.field_mid,
                         pywave.BRICKS.field_end, pywave.BRICKS.field_bit]:
                     data_counter += 1
+                # update register position
                 if symbol in [pywave.BRICKS.field_start, pywave.BRICKS.field_end, pywave.BRICKS.field_bit]:
                     regpos_counter += 1
+                # get the next type for the register
+                if symbol in [pywave.BRICKS.field_end, pywave.BRICKS.field_bit]:
+                    reg_type_counter += 1
                 # create the new brick
                 if pos + width_with_phase > 0:
                     wave.append((

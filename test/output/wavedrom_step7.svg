@@ -1,30 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="622" height="210.0" viewBox="-1 -1 623 212.0">
 <style>
-.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.700em;font-family: fira mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
-.text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;}
-.attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.700em;font-family: Fira Mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
+.text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;}
+.attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
 .stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
-.data {fill: rgba(0, 0, 0, 255);font-size: 0.500em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: fira mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.data {fill: rgba(0, 0, 0, 255);font-size: 0.400em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .arrow {fill: rgba(0, 0, 0, 255);stroke: none;}
 .hide {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
-.hash {fill: url(#diagonalHatch);}
+.hatch {fill: url(#diagonalHatch);}
 .s2-polygon {fill: rgba(0, 0, 0, 0);stroke: none;}
 .s3-polygon {fill: rgba(255, 255, 176, 255);stroke: none;}
 .s4-polygon {fill: rgba(255, 224, 185, 255);stroke: none;}
 .s5-polygon {fill: rgba(185, 224, 255, 255);stroke: none;}
 .tick {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: 1, 3;}
+.big_gap {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: none;}
 .edge {fill: none;stroke: rgba(0, 0, 255, 255);stroke-width: 1;}
 .edge-arrow {fill: rgba(0, 0, 255, 255);stroke: none;overflow: visible;}
-.edge-text {font-family: fira mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);text-anchor: middle;}
+.edge-text {font-family: Fira Mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);text-anchor: middle;}
 .edge-background {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
 .border {stroke-width: 1.25;stroke: rgba(0, 0, 0, 255);}
-.h1 {fill: rgba(0, 0, 0, 255);font-size: 18.310px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
-.h2 {fill: rgba(0, 0, 0, 255);font-size: 14.650px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
-.h3 {fill: rgba(0, 0, 0, 255);font-size: 11.720px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
-.h4 {fill: rgba(0, 0, 0, 255);font-size: 9.380px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
-.h5 {fill: rgba(0, 0, 0, 255);font-size: 7.500px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}
-.h6 {fill: rgba(0, 0, 0, 255);font-size: 6.000px;font-weight: bold;font-family: fira mono;text-align: left;dominant-baseline: middle;}</style>
+.h1 {fill: rgba(0, 0, 0, 255);font-size: 15.258px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h2 {fill: rgba(0, 0, 0, 255);font-size: 12.208px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h3 {fill: rgba(0, 0, 0, 255);font-size: 9.767px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h4 {fill: rgba(0, 0, 0, 255);font-size: 7.817px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h5 {fill: rgba(0, 0, 0, 255);font-size: 6.250px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h6 {fill: rgba(0, 0, 0, 255);font-size: 5.000px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.reg-data {fill: rgba(0, 0, 0, 255);font-size: 0.800em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.reg-pos {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}</style>
 
 <defs>
     <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
@@ -162,41 +165,41 @@
 </g>
 </g>
 </g>
-<path d="M65.0,10.0 C101.0,10.0 69.0,40.0 105.0,40.0" class="edge" style="fill: none;"/>
-<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(76.0, 20.5)" />
-<text x="85.000000" y="25.000000" class="edge-text" style="stroke: none;"> t1</text>
+<path d="M62.0,10.0 C98.0,10.0 66.0,40.0 102.0,40.0" class="edge" style="fill: none;"/>
+<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(73.0, 20.5)" />
+<text x="82.000000" y="25.000000" class="edge-text" style="stroke: none;"> t1</text>
 
-<path d="M145.0,70.0 C65.0,70.0 65.0,10.0 65.0,10.0" class="edge" style="fill: none;"/>
-<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(96.0, 35.5)" />
-<text x="105.000000" y="40.000000" class="edge-text" style="stroke: none;"> t2</text>
+<path d="M142.0,70.0 C62.0,70.0 62.0,10.0 62.0,10.0" class="edge" style="fill: none;"/>
+<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(93.0, 35.5)" />
+<text x="102.000000" y="40.000000" class="edge-text" style="stroke: none;"> t2</text>
 
-<path d="M145.0,70.0 C185.0,70.0 185.0,100.0 185.0,100.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(184.99999535621785, 96.50000000000308) rotate(0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 42,9 42,0 0,0 " class="edge-background" style=""  transform="translate(144.0, 80.5)" />
-<text x="165.000000" y="85.000000" class="edge-text" style="stroke: none;"> time 3</text>
+<path d="M142.0,70.0 C182.0,70.0 182.0,100.0 182.0,100.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(181.99999535621785, 96.50000000000308) rotate(0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 42,9 42,0 0,0 " class="edge-background" style=""  transform="translate(141.0, 80.5)" />
+<text x="162.000000" y="85.000000" class="edge-text" style="stroke: none;"> time 3</text>
 
-<path d="M185.0,100.0 C185.0,100.0 185.0,130.0 225.0,130.0" class="edge" style="fill: none;"/>
+<path d="M182.0,100.0 C182.0,100.0 182.0,130.0 222.0,130.0" class="edge" style="fill: none;"/>
 
-<path d="M225.0,130.0 C261.0,130.0 229.0,130.0 265.0,130.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(261.5, 130.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<path d="M222.0,130.0 C258.0,130.0 226.0,130.0 262.0,130.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(258.5, 130.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
 
-<path d="M265.0,130.0 L305.0,100.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(302.2, 102.1) rotate(-126.86992878854058, 0, 0)" class="edge-arrow" style=""/>
+<path d="M262.0,130.0 L302.0,100.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(299.2, 102.1) rotate(-126.86992878854058, 0, 0)" class="edge-arrow" style=""/>
 
-<path d="M305.0,100.0 C345.0,100.0 345.0,70.0 345.0,70.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(344.9999953562179, 73.49999999999692) rotate(-180, 0, 0)" class="edge-arrow" style=""/>
+<path d="M302.0,100.0 C342.0,100.0 342.0,70.0 342.0,70.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(341.9999953562179, 73.49999999999692) rotate(-180, 0, 0)" class="edge-arrow" style=""/>
 
-<path d="M345.0,70.0 C417.0,70.0 353.0,40.0 425.0,40.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(421.5, 40.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 60,9 60,0 0,0 " class="edge-background" style=""  transform="translate(355.0, 50.5)" />
-<text x="385.000000" y="55.000000" class="edge-text" style="stroke: none;"> some text</text>
+<path d="M342.0,70.0 C414.0,70.0 350.0,40.0 422.0,40.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(418.5, 40.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 60,9 60,0 0,0 " class="edge-background" style=""  transform="translate(352.0, 50.5)" />
+<text x="382.000000" y="55.000000" class="edge-text" style="stroke: none;"> some text</text>
 
-<path d="M345.0,70.0 C345.0,70.0 345.0,10.0 425.0,10.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(421.5, 10.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<path d="M342.0,70.0 C342.0,70.0 342.0,10.0 422.0,10.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(418.5, 10.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
 
-<path d="M225.0,160.0 C297.0,160.0 233.0,190.0 305.0,190.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(301.5, 190.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 36,9 36,0 0,0 " class="edge-background" style=""  transform="translate(247.0, 170.5)" />
-<text x="265.000000" y="175.000000" class="edge-text" style="stroke: none;"> youpi</text>
+<path d="M222.0,160.0 C294.0,160.0 230.0,190.0 302.0,190.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(298.5, 190.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 36,9 36,0 0,0 " class="edge-background" style=""  transform="translate(244.0, 170.5)" />
+<text x="262.000000" y="175.000000" class="edge-text" style="stroke: none;"> youpi</text>
 
 </svg>

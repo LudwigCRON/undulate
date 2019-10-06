@@ -24,7 +24,7 @@ SUPPORTED_FORMAT = {
     "toml": [".toml"]
 }
 
-SUPPORTED_RENDER = ["svg", "eps", "cairo-svg", "cairo-ps", "cairo-eps", "cairo-pdf", "cairo-png", "json"]
+SUPPORTED_RENDER = ["svg", "cairo-svg", "cairo-ps", "cairo-eps", "cairo-pdf", "cairo-png", "json"]
 
 ERROR_MSG = {
     "YAML_IMPORT":
@@ -127,12 +127,14 @@ def parse(filepath: str) -> (bool, object):
     # file existence
     err = filepath is None or not os.path.exists(filepath)
     if err:
-        log_Fatal(ERROR_MSG["FILE_NOT_FOUND"] % cli_args.input)
+        log_Error(ERROR_MSG["FILE_NOT_FOUND"] % cli_args.input)
+        return (err, None)
     _, ext = os.path.splitext(filepath)
     # supported extension
     err = not any([ext in cat for cat in SUPPORTED_FORMAT.values()])
     if err:
-        log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
+        log_Error(ERROR_MSG["UNSUPPORTED_FORMAT"])
+        return (err, None)
     # call appropriate parser
     if ext in SUPPORTED_FORMAT["json"]:
         ans.update(_prune_json(filepath))
@@ -142,14 +144,14 @@ def parse(filepath: str) -> (bool, object):
             with open(filepath, "r+") as fp:
                 ans = yaml.load(fp, Loader=yaml.FullLoader)
         except ImportError:
-            log_Fatal(ERROR_MSG["YAML_IMPORT"])
+            log_Error(ERROR_MSG["YAML_IMPORT"])
     else:
         try:
             import toml
             with open(filepath, "r+") as fp:
                 ans = toml.load(fp)
         except ImportError:
-            log_Fatal(ERROR_MSG["TOML_IMPORT"])
+            log_Error(ERROR_MSG["TOML_IMPORT"])
     return (err, ans if not err else None)
 
 def register_to_wavelane(obj: dict) -> object:
@@ -158,7 +160,7 @@ def register_to_wavelane(obj: dict) -> object:
     """
     reg = pywave.Register()
     for field in obj.get("reg", []):
-        reg.push_field(pywave.Field.from_dict(field))
+        reg.push_field(field)
     return reg.to_wavelane()
 
 if __name__ == "__main__":
@@ -174,10 +176,10 @@ if __name__ == "__main__":
     if err:
         parser.print_help()
         exit(2)
-    elif not cli_args.format.lower() in SUPPORTED_RENDER:
+    if not cli_args.format.lower() in SUPPORTED_RENDER:
         log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
     # for debug pupose
-    elif cli_args.format.lower() == "json":
+    if cli_args.format.lower() == "json":
         pprint(obj)
         exit(0)
     else:
@@ -186,8 +188,6 @@ if __name__ == "__main__":
         # select the renderer engine
         if cli_args.format == "svg":
             renderer = pywave.SvgRenderer()
-        elif cli_args.format == "eps":
-            renderer = pywave.EpsRenderer()
         elif cli_args.format.startswith("cairo-"):
             renderer = pywave.CairoRenderer(extension=cli_args.format.split('-')[-1], dpi=cli_args.dpi)
         else:
