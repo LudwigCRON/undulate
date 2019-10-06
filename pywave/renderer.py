@@ -14,14 +14,15 @@ from math import atan2, cos, sin, floor
 from itertools import count, accumulate
 
 # Counter for unique id generation
-# counter of group of wave
+#: counter of group of wave unique id
 _WAVEGROUP_COUNT = 0
-# counter of wave
+#: counter of wave unique id
 _WAVE_COUNT = 0
 
 def incr_wavelane(f):
     """
     incr_wavelane is a decorator that increment _WAVE_COUNT in auto.
+    This generates a unique id for each wavelane
     """
     def wrapper(*args, **kwargs):
         global _WAVE_COUNT
@@ -32,6 +33,7 @@ def incr_wavelane(f):
 def incr_wavegroup(f):
     """
     incr_wavegroup is a decorator that increment _WAVEGROUP_COUNT in auto.
+    This generates a unique id for each group of wavelanes
     """
     def wrapper(*args, **kwargs):
         global _WAVEGROUP_COUNT
@@ -40,6 +42,16 @@ def incr_wavegroup(f):
     return wrapper
 
 def arrow_angle(dy: float, dx:float) -> float:
+    """
+    calculate the angle to align arrows based on 
+    the derivative of the signal
+
+    Args:
+        dy (float)
+        dx (float)
+    Returns:
+        angle in degree 
+    """
     if dx == 0:
         return 90 if dy > 0 else -90
     return 180*atan2(dy, dx)/3.14159
@@ -51,6 +63,15 @@ def svg_curve_convert(vertices: list) -> list:
     """
     convert svg path definition to simpler s/c/m/l only mode
     to support eps renderer and other output format
+
+    Args:
+        vertices (list): list of (type,x,y) tuples where x,y are coordinates
+            and type is the svg operator
+
+            .. warning::
+                it does not support T curves
+    Returns:
+        list of (type,x,y) tuples where type is only cubic bezier curve
     """
     px, py, pt    =  0, 0, 'm'
     ans, ppx, ppy = [], 0, 0
@@ -103,54 +124,81 @@ class Renderer:
                 pywave.BRICKS.nclk]
         return name in clks
 
-    def group(self, callback, id: str = "", extra: str = "") -> str:
+    def group(self, callback, identifier: str, **kwargs) -> str:
         """
         group define a group
+
+        Args:
+            callback (callable): function which populate what inside the group
+            identifier (str): unique id for the group
+        Returns:
+            group of drawable items invoked by callback
         """
         raise NotImplementedError()
 
-    def path(self, vertices: list, extra: str = "", **kwargs) -> str:
+    def path(self, vertices: list, **kwargs) -> str:
         """
-        path draw a path to represent common signals
-        vertices: list of of x-y coordinates in a tuple
-        [extra] : optional attributes for the svg (eg class)
+        draw a path to represent common signals
+
+        Args:
+            vertices: list of of x-y coordinates in a tuple
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'path'
         """
         raise NotImplementedError()
 
-    def arrow(self, x, y, angle, extra: str = "", **kwargs) -> str:
+    def arrow(self, x, y, angle, **kwargs) -> str:
         """
-        arrow draw an arrow to represent edge trigger on clock signals
-        x       : x coordinate of the arrow center
-        y       : y coordinate of the arrow center
-        angle   : angle in degree to rotate the arrow
-        [extra] : optional attributes for the svg (eg class)
-        """
-        raise NotImplementedError()
-
-    def polygon(self, vertices: list, extra: str = "", **kwargs) -> str:
-        """
-        polygon draw a closed shape to represent common data
-        vertices: list of of x-y coordinates in a tuple
-        [extra] : optional attributes for the svg (eg class)
+        draw an arrow to represent edge trigger on clock signals
+        
+        Args:
+            x      (float) : x coordinate of the arrow center
+            y      (float) : y coordinate of the arrow center
+            angle  (float) : angle in degree to rotate the arrow
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'arrow'
         """
         raise NotImplementedError()
 
-    def spline(self, vertices: list, extra: str = "", **kwargs) -> str:
+    def polygon(self, vertices: list, **kwargs) -> str:
         """
-        spline draw a path to represent smooth signals
-        vertices: list of of type-x-y coordinates in a tuple of control points
-                where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
-                svg operator
-        [extra] : optional attributes for the svg (eg class)
+        draw a closed shape to represent common data
+
+        Args:
+            vertices: list of of (x,y) coordinates in a tuple
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class None
         """
         raise NotImplementedError()
 
-    def text(self, x: float, y: float, text: str = "", extra: str = "", **kwargs) -> str:
+    def spline(self, vertices: list, **kwargs) -> str:
         """
-        text draw a text for data
-        x       : x coordinate of the text
-        y       : y coordinate of the text
-        text    : text to display
+        draw a path to represent smooth signals
+
+        Args:
+            vertices: list of of (type,x,y) coordinates in a tuple of control points
+                    where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
+                    svg operators.
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'path'
+        """
+        raise NotImplementedError()
+
+    def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
+        """
+        draw a text for data
+
+        Args:
+            x      (float) : x coordinate of the text
+            y      (float) : y coordinate of the text
+            text   (str)   : text to display
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'text'
         """
         raise NotImplementedError()
 
@@ -193,6 +241,25 @@ class Renderer:
         return ans
 
     def __list_nodes__(self, wavelanes: dict, depth: int = 0, **kwargs):
+        """
+        list of named nodes in the signal representation
+        and calculate the coordinates
+
+        Args:
+            wavelanes (dict): global signals representation
+            depth (int): indicates if it is a subgroup or the top level
+
+            .. warning::
+                the position is altered by the following parameters:
+                    - brick_width
+                    - brick_height
+                    - period/periods
+                    - phase
+                    - slewing
+                    - vscale
+        Returns:
+            list of nodes in a tuple(x, y, name)
+        """
         brick_width  = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
         excluded_sections = ["edges", "edge", "head", "config", "adjustements", "annotations"]
@@ -234,6 +301,22 @@ class Renderer:
         return nodes
 
     def annotations(self, wavelanes:dict, viewport:tuple, **kwargs):
+        """
+        draw edges, vertical lines, horizontal lines, global time compression, ...
+        defined in the annotations section of the input file
+
+        Example:
+            .. code-block:: json
+
+                {"annotations": [
+                    {"shape": "||", "x": 3.5},
+                    {"shape": "-~>", "from": "trigger", "to": "event", "text": "ready"}
+                ]}
+
+        Args:
+            wavelances (dict): global signals representations
+            viewport (tuple): the drawable zone (excluding signal names)
+        """
         edges_input = wavelanes.get("edges", wavelanes.get("edge", []))
         annotations = wavelanes.get("annotations", [])
         brick_width = kwargs.get("brick_width", 20)
@@ -421,8 +504,18 @@ class Renderer:
 
     def wavelane_title(self, name: str, **kwargs):
         """
-        wavelane_title generate the title in front of a waveform
-        name: name of the waveform print alongside
+        generate the title in front of a waveform
+
+        Args:
+            name: name of the waveform print alongside
+            order: position from 0-4 of the title position along
+                the y-axis. This property is important when overlaying signals
+
+                    - 0   : middle of the wavelane height
+                    - 1-4 : quarter from top to bottom of the wavelane
+            brick_height (float)
+        Returns:
+            renderer.text
         """
         extra        = kwargs.get("extra", "")
         order        = kwargs.get("order", 0)
@@ -530,7 +623,7 @@ class Renderer:
         # generate bricks
         data_counter, regpos_counter, attr_counter = 0, 0, 0
         symbol, is_first, b_counter, ana_counter = None, 0, 0, 0
-        followed_data, reg_type_counter = False, 0
+        follow_data, reg_type_counter = False, 0
         for b, k in _wavelane:
             # is not a gap
             if b != '|':
@@ -568,10 +661,11 @@ class Renderer:
                         wave[last] = (s, br, c)
                         ignore = True
                     # if move from data to something else
-                    followed_data = s == pywave.BRICKS.data and symbol == pywave.BRICKS.X
+                    follow_data = s == pywave.BRICKS.data and symbol == pywave.BRICKS.X
                     # get y of the previous brick for junction
                     last_y = br.get_last_y()
                 else:
+                    follow_data = False
                     last_y = brick_height
                     symbol = pywave.BRICKS.from_str(b)
                 # adjust the width of a brick depending on the phase and periods
@@ -589,7 +683,7 @@ class Renderer:
                     "brick_width":       width_with_phase + pos if pos < 0 else width_with_phase,
                     "brick_height":      brick_height,
                     "ignore_transition": ignore,
-                    "followed_data":     followed_data,
+                    "follow_data":     follow_data,
                     "is_first":          is_first == 0,
                     "last_y":            last_y,
                     "slewing":           slewing,
@@ -656,12 +750,16 @@ class Renderer:
 
     def ticks(self, width: int, height: int, step: float, **kwargs) -> str:
         """
-        svg_ticks generates the dotted lines to see ticks easily
-        width     : width of the image
-        height    : height of the image
-        step      : distance between two ticks
-        [offsetx] : shift all ticks along the x-axis
-        [offsety] : shift to the bottom ticks with exceeding the height
+        generates the dotted lines to see ticks easily
+
+        Args:
+            width    (int) : width of the image
+            height   (int) : height of the image
+            step     (float) : distance between two ticks
+            offsetx (optional): shift all ticks along the x-axis
+            offsety (optional): shift to the bottom ticks with exceeding the height
+            phase (optional): phase of the first signal on the top level
+                this parameter is used to align tick with the rising edges of the first signal
         """
         offsetx = kwargs.get("offsetx", 0)
         offsety = kwargs.get("offsety", 0)
@@ -795,11 +893,15 @@ class Renderer:
 
     def size(self, wavelanes, brick_width: int = 20, brick_height: int = 28, depth: int = 1):
         """
-        svg_size pre-estimate the size of the image
-        wavelanes : data to be parse
-        [brick_width]   : width of a brick, default is 20
-        [brick_height]  : height of a row, default is 20
-        [period]        : time dilatation factor, default is 1
+        size pre-estimate the size of the image
+
+        Args:
+            wavelanes (dict): global signals representation
+            brick_width (int, optional)  : width of a brick, default is 20
+            brick_height (int, optional)  : height of a row, default is 20
+            periods   (int)  : list of time dilatation factor, default is 1
+            repeat    (int)  : brick repetition factor
+            overlay (bool) : overlay the next signal over the current one
         """
         if isinstance(wavelanes, dict):
             x, y, n, keys = [0], 0, 0, [0]
@@ -852,9 +954,15 @@ class Renderer:
 
     def draw(self, wavelanes, **kwargs) -> str:
         """
-        generate an svg file from wavelanes
-        [id]           : identifier for multiple integration
-        [brick_width]  : width of a brick
-        [brick_height] : height of a brick
+        Business function calling all others
+
+        Args:
+            wavelanes (dict): parsed dictionary from the input file
+            filename (str, optional)  : file name of the output generated file
+            brick_width (int): by default 40
+            brick_height (int): by default 20
+            is_reg (bool): 
+                if True `wavelanes` given represents a register
+                otherwise it represents a bunch of signals
         """
         raise NotImplementedError()

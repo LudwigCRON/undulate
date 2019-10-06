@@ -233,6 +233,12 @@ List of bricks
 Description
 ~~~~~~~~~~~
 
+Annotations
+-----------
+
+Edges
+~~~~~
+
 Style
 -----
 [dev-mode only]

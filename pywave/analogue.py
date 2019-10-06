@@ -31,9 +31,25 @@ CONTEXT = {
 class Meta(pywave.Brick):
     """
     Metastable state representation
+
+    This brick is used to depict when a transition as difficulties
+    to settled correctly. Therefore the signal is wavering between 0 and 1
+    before a settled state either to 0 or 1
+
+    To 0 if 'm'
+    To 1 if 'M'
     """
 
     def __init__(self, **kwargs):
+        """
+        Create the brick as a sum of path, polygon, spline, ...
+        
+        Parameters:
+            slewing (float > 0): only for the connection with adjacent bricks
+            then_one (bool): select if settle to one (True) or zero (False)
+        Returns:
+            None
+        """
         pywave.Brick.__init__(self, **kwargs)
         self.last_y = self.height / 2 if self.last_y is None else self.last_y
         dt = abs(self.last_y - self.height / 2) * self.slewing / self.height
@@ -88,10 +104,22 @@ class Meta(pywave.Brick):
 
 class Cap(pywave.Brick):
     """
-  RC charge/discharge behaviour
-  """
+    RC charge/discharge behaviour
+
+    This brick is used to depict a RC charge or discharge to
+    the new level.
+    """
 
     def __init__(self, y, **kwargs):
+        """
+        Args:
+            y: the new level between 0 and height
+                if not the case see pywave.BRICKS.transform_y
+        Parameters:
+            slewing (float > 0): maximum slope of the signal
+        Returns:
+            None
+        """
         pywave.Brick.__init__(self, **kwargs)
         if self.is_first:
             self.last_y = self.height
@@ -113,10 +141,25 @@ class Cap(pywave.Brick):
 
 class Step(pywave.Brick):
     """
-  Slewing behaviour
-  """
+    Slewing behaviour
+
+    This brick represents a slewing transitions until the 
+    desired level is reached. Then the value is locked.
+
+    This behaviour corresponds to a charge-pump or a 
+    comparator-based integrator
+    """
 
     def __init__(self, y, **kwargs):
+        """
+        Args:
+            y: the new level between 0 and height
+                if not the case see pywave.BRICKS.transform_y
+        Parameters:
+            slewing (float > 0): maximum slope of the signal
+        Returns:
+            None
+        """
         pywave.Brick.__init__(self, **kwargs)
         if self.is_first:
             self.last_y = self.height
@@ -129,10 +172,18 @@ class Step(pywave.Brick):
 
 class Analogue(pywave.Brick):
     """
-  Slewing behaviour
-  """
+    Arbitrary analogue signal
 
-    def __init__(self, pts, **kwargs):
+    This brick is intended to depict an time changing signal
+    """
+
+    def __init__(self, pts: list, **kwargs):
+        """
+        Args:
+            pts: list of points (relative time, y-value)
+        Returns:
+            None
+        """
         pywave.Brick.__init__(self, **kwargs)
         if self.is_first:
             self.last_y = self.height
@@ -148,13 +199,31 @@ class Analogue(pywave.Brick):
         )
 
 
-def generate_analogue_symbol(symbol: str, **kwargs) -> (bool, object):
+def generate_analogue_symbol(symbol, **kwargs) -> (bool, object):
     """
-  define the mapping between the symbol and the brick
-  """
+    define the mapping between the symbol and the brick
+
+    It fetches needed parameters for the analogue bricks
+    and evaluate equations with the appropriate CONTEXT
+
+    Args:
+        symbol (pywave.BRICKS): symbol to create
+    Parameters:
+        brick_height (int): height of the brick in display unit
+        equation (str or float): value(s) to be passed to bricks
+            if equation is a str, then it is evaluated
+            if equation is a float, it given to brick as the y value
+    Returns:
+        tuple(bool, brick)
+
+        bool
+            if True the brick generated is an analogue brick
+            if False nothing has been generated
+        brick
+            the brick created or None
+    """
     # get option supported
     height   = kwargs.get("brick_height", 20)
-    last_y   = kwargs.get("last_y", None)
     equation = kwargs.get("equation", None)
     block    = pywave.Brick()
     # metastability to zero

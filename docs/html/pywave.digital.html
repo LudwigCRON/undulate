@@ -1,0 +1,744 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pywave.digital module &mdash; Pywave 0.0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pywave.generic module" href="pywave.generic.html" />
+    <link rel="prev" title="pywave.cairorenderer module" href="pywave.cairorenderer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Pywave
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pywave</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pywave.html">pywave package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pywave.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pywave.analogue.html">pywave.analogue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.bricks.html">pywave.bricks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.cairorenderer.html">pywave.cairorenderer module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pywave.digital module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.generic.html">pywave.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.register.html">pywave.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.renderer.html">pywave.renderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.skin.html">pywave.skin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.svgrenderer.html">pywave.svgrenderer module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pywave.html#module-pywave">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Pywave</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pywave</a> &raquo;</li>
+        
+          <li><a href="pywave.html">pywave package</a> &raquo;</li>
+        
+      <li>pywave.digital module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pywave.digital.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pywave.digital">
+<span id="pywave-digital-module"></span><h1>pywave.digital module<a class="headerlink" href="#module-pywave.digital" title="Permalink to this headline">¶</a></h1>
+<p>digital.py declare the basic building block
+to generate a digital waveform</p>
+<dl class="class">
+<dt id="pywave.digital.Nclk">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Nclk</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Nclk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Falling edge clock with/without arrow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_arrow</strong> (<em>bool</em>) – by default False</p></li>
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float &gt; 0</em>) – between 0 and 1</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Nclk.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Nclk.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Nclk.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Nclk.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Pclk">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Pclk</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Pclk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Rising edge clock with arrow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_arrow</strong> (<em>bool</em>) – by default False</p></li>
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float &gt; 0</em>) – between 0 and 1</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Pclk.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Pclk.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Pclk.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Pclk.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Low">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Low</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Low" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Falling edge clock with arrow and rest at zero</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_arrow</strong> (<em>bool</em>) – by default False</p></li>
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Low.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Low.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Low.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Low.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.High">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">High</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.High" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Rising edge clock with arrow and rest at one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_arrow</strong> (<em>bool</em>) – by default False</p></li>
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.High.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.High.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.High.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.High.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.HighZ">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">HighZ</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.HighZ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>High impedance mode with a reset close to VDD/2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.HighZ.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.HighZ.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.HighZ.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.HighZ.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Zero">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Zero</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Zero level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Zero.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Zero.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Zero.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Zero.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.One">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">One</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.One" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>One level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.One.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.One.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.One.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.One.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Garbage">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Garbage</code><span class="sig-paren">(</span><em class="sig-param">follow_data: bool = False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Garbage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Unknown state for data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>follow_data</strong> (<em>bool</em>) – data ‘=’ occurs before this brick</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Garbage.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Garbage.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Garbage.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Garbage.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Data">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Data</code><span class="sig-paren">(</span><em class="sig-param">unknown: bool = False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Multibits value such as a Bus</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>style</strong> (<em>str</em>) – from 2 to 5, by default s2
+it applies a specific background color</p></li>
+<li><p><strong>unknown</strong> (<em>bool</em>) – if unknown apply specific background
+typical use case if for ‘x’</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Data.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Data.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Data.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Data.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Gap">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Gap</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Gap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>single line time compression</p>
+<dl class="method">
+<dt id="pywave.digital.Gap.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Gap.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Gap.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Gap.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Up">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Up</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>RC charging to VDD</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Up.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Up.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Up.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Up.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Down">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Down</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>RC discharge to GND</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Down.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Down.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Down.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Down.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Impulse">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Impulse</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Impulse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>pulse</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float</em>) – adjust the x position of the impulse
+from 0 to 1, by default 0.5</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Impulse.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Impulse.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Impulse.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Impulse.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pywave.digital.generate_digital_symbol">
+<code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">generate_digital_symbol</code><span class="sig-paren">(</span><em class="sig-param">symbol: str</em>, <em class="sig-param">**kwargs) -&gt; (&lt;class 'bool'&gt;</em>, <em class="sig-param">&lt;class 'object'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.generate_digital_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>define the mapping between the symbol and the brick</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pywave.generic.html" class="btn btn-neutral float-right" title="pywave.generic module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pywave.cairorenderer.html" class="btn btn-neutral float-left" title="pywave.cairorenderer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ludwig CRON
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

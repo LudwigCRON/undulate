@@ -36,6 +36,12 @@ class SvgRenderer(Renderer):
     def group(self, callback, identifier: str = "", extra: str = "") -> str:
         """
         group define a group
+
+        Args:
+            callback (callable): function which populate what inside the group
+            identifier (str): unique id for the group
+        Returns:
+            group of drawable items invoked by callback
         """
         ans = f'<g id="{identifier}" {extra} >\n'
         ans += callback()
@@ -44,9 +50,13 @@ class SvgRenderer(Renderer):
 
     def path(self, vertices: list, style_repr: str = "", **kwargs) -> str:
         """
-        path draw a path to represent common signals
-        vertices: list of of x-y coordinates in a tuple
-        [style_repr] : optional attributes for the svg (eg class)
+        draw a path to represent common signals
+
+        Args:
+            vertices: list of of x-y coordinates in a tuple
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'path'
         """
         overload = style_in_kwargs(**kwargs)
         overload["fill"] = None
@@ -56,11 +66,16 @@ class SvgRenderer(Renderer):
 
     def arrow(self, x, y, angle, **kwargs) -> str:
         """
-        arrow draw an arrow to represent edge trigger on clock signals
-        x       : x coordinate of the arrow center
-        y       : y coordinate of the arrow center
-        angle   : angle in degree to rotate the arrow
-        [style_repr] : optional attributes for the svg (eg class)
+        draw an arrow to represent edge trigger on clock signals
+        
+        Args:
+            x      (float) : x coordinate of the arrow center
+            y      (float) : y coordinate of the arrow center
+            angle  (float) : angle in degree to rotate the arrow
+        Parameters:
+            is_edge (bool)
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'arrow'
         """
         extra = kwargs.get("extra", None)
         style_repr = kwargs.get("style_repr", "arrow")
@@ -77,9 +92,13 @@ class SvgRenderer(Renderer):
 
     def polygon(self, vertices: list, **kwargs) -> str:
         """
-        polygon draw a closed shape to represent common data
-        vertices: list of of x-y coordinates in a tuple
-        [extra] : optional attributes for the svg (eg class)
+        draw a closed shape to represent common data
+
+        Args:
+            vertices: list of of (x,y) coordinates in a tuple
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class None
         """
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", None)
@@ -96,11 +115,15 @@ class SvgRenderer(Renderer):
 
     def spline(self, vertices: list, style_repr: str = "path", **kwargs) -> str:
         """
-        spline draw a path to represent smooth signals
-        vertices: list of of type-x-y coordinates in a tuple of control points
-                where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
-                svg operator
-        [style_repr] : optional attributes for the svg (eg class)
+        draw a path to represent smooth signals
+
+        Args:
+            vertices: list of of (type,x,y) coordinates in a tuple of control points
+                    where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
+                    svg operators.
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'path'
         """
         overload = style_in_kwargs(**kwargs)
         overload["fill"] = None
@@ -111,10 +134,15 @@ class SvgRenderer(Renderer):
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
         """
-        text draw a text for data
-        x       : x coordinate of the text
-        y       : y coordinate of the text
-        text    : text to display
+        draw a text for data
+
+        Args:
+            x      (float) : x coordinate of the text
+            y      (float) : y coordinate of the text
+            text   (str)   : text to display
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'text'
         """
         css = kwargs.get("style_repr", "text")
         overload = style_in_kwargs(**kwargs)
@@ -133,6 +161,18 @@ class SvgRenderer(Renderer):
         return f' transform="translate({x}, {y})" '
 
     def draw(self, wavelanes, **kwargs) -> str:
+        """
+        Business function calling all others
+
+        Args:
+            wavelanes (dict): parsed dictionary from the input file
+            id (str)  : file name of the output generated file
+            brick_width (int): by default 40
+            brick_height (int): by default 20
+            is_reg (bool): 
+                if True `wavelanes` given represents a register
+                otherwise it represents a bunch of signals
+        """
         _id = kwargs.get("id", "a")
         brick_width = kwargs.get("brick_width", 40)
         brick_height = kwargs.get("brick_height", 20)

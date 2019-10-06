@@ -31,11 +31,17 @@ release = '0.0.2'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-  "sphinx.ext.todo",
-  "sphinx.ext.githubpages",
-  "sphinx_rtd_theme",
-  "sphinx.ext.napoleon"
+    "sphinx.ext.todo",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.githubpages",
+    "sphinx_rtd_theme",
+    "sphinx.ext.napoleon"
 ]
+
+autodoc_default_options = {
+    'member-order': 'bysource',
+    'inherited-members': True
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -64,6 +70,19 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'friendly'
 
+# Option for python code docstring
+napoleon_google_docstring = True
+napoleon_numpy_docstring = False
+napoleon_include_init_with_doc = True
+napoleon_include_private_with_doc = False
+napoleon_include_special_with_doc = False
+napoleon_use_admonition_for_examples = False
+napoleon_use_admonition_for_notes = False
+napoleon_use_admonition_for_references = False
+napoleon_use_ivar = True
+napoleon_use_param = True
+napoleon_use_rtype = True
+
 # -- Options for HTML output -------------------------------------------------
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -74,3 +93,8 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ['_static']
 html_theme_path = ["_themes", ]
 todo_include_todos = True
+
+# overload the style
+html_css_files = [
+    './theme_override.css',
+]

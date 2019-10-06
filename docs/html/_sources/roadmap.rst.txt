@@ -3,12 +3,10 @@
 
 For the next release:
 
-- css loader and parsing for cairo
-- annotations
-- edges to annotations transform
-- analogue signals superposition
 - analogue context personalization
 
 In long term:
 
+- text underline or overline rendering
+- text basic equation rendering
 - verilog sequences generation

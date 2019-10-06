@@ -12,7 +12,12 @@ import pywave
 
 class Nclk(pywave.Brick):
     """
-    Falling edge clock with arrow
+    Falling edge clock with/without arrow
+
+    Parameters:
+        add_arrow (bool): by default False
+        slewing (float): limit the slope
+        duty_cycle (float > 0): between 0 and 1
     """
 
     def __init__(self, **kwargs):
@@ -52,6 +57,11 @@ class Nclk(pywave.Brick):
 class Pclk(pywave.Brick):
     """
     Rising edge clock with arrow
+
+    Parameters:
+        add_arrow (bool): by default False
+        slewing (float): limit the slope
+        duty_cycle (float > 0): between 0 and 1
     """
 
     def __init__(self, **kwargs):
@@ -91,6 +101,10 @@ class Pclk(pywave.Brick):
 class Low(pywave.Brick):
     """
     Falling edge clock with arrow and rest at zero
+
+    Parameters:
+        add_arrow (bool): by default False
+        slewing (float): limit the slope
     """
 
     def __init__(self, **kwargs):
@@ -123,6 +137,10 @@ class Low(pywave.Brick):
 class High(pywave.Brick):
     """
     Rising edge clock with arrow and rest at one
+
+    Parameters:
+        add_arrow (bool): by default False
+        slewing (float): limit the slope
     """
 
     def __init__(self, **kwargs):
@@ -155,6 +173,9 @@ class High(pywave.Brick):
 class HighZ(pywave.Brick):
     """
     High impedance mode with a reset close to VDD/2
+
+    Parameters:
+        slewing (float): limit the slope
     """
 
     def __init__(self, **kwargs):
@@ -180,6 +201,9 @@ class HighZ(pywave.Brick):
 class Zero(pywave.Brick):
     """
     Zero level
+
+    Parameters:
+        slewing (float): limit the slope
     """
 
     def __init__(self, **kwargs):
@@ -204,6 +228,9 @@ class Zero(pywave.Brick):
 class One(pywave.Brick):
     """
     One level
+
+    Parameters:
+        slewing (float): limit the slope
     """
 
     def __init__(self, **kwargs):
@@ -226,14 +253,17 @@ class One(pywave.Brick):
 
 class Garbage(pywave.Brick):
     """
-    Unknown state
+    Unknown state for data
+
+    Parameters:
+        slewing (float): limit the slope
+        follow_data (bool): data '=' occurs before this brick
     """
-    def __init__(self, **kwargs):
+    def __init__(self, follow_data: bool = False, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
-        followed_data = kwargs.get("followed_data", False)
         self.last_y = self.height / 2 if self.last_y is None else self.last_y
         # add shape
-        if followed_data:
+        if follow_data:
             self.paths.append(
                 [
                     "path",
@@ -272,7 +302,7 @@ class Garbage(pywave.Brick):
                 ]
             )
         # add background
-        if followed_data:
+        if follow_data:
             self.polygons.append(
                 [
                     "hatch",
@@ -302,6 +332,13 @@ class Garbage(pywave.Brick):
 class Data(pywave.Brick):
     """
     Multibits value such as a Bus
+
+    Parameters:
+        slewing (float): limit the slope
+        style (str): from 2 to 5, by default s2
+            it applies a specific background color
+        unknown (bool): if unknown apply specific background
+            typical use case if for 'x'
     """
 
     def __init__(self, unknown: bool = False, **kwargs):
@@ -388,7 +425,7 @@ class Data(pywave.Brick):
 
 class Gap(pywave.Brick):
     """
-    time compression
+    single line time compression
     """
 
     def __init__(self, **kwargs):
@@ -432,6 +469,9 @@ class Gap(pywave.Brick):
 class Up(pywave.Brick):
     """
     RC charging to VDD
+
+    Parameters:
+        slewing (float): limit the slope
     """
 
     def __init__(self, **kwargs):
@@ -453,6 +493,9 @@ class Up(pywave.Brick):
 class Down(pywave.Brick):
     """
     RC discharge to GND
+
+    Parameters:
+        slewing (float): limit the slope
     """
 
     def __init__(self, **kwargs):
@@ -474,9 +517,14 @@ class Down(pywave.Brick):
 class Impulse(pywave.Brick):
     """
     pulse
+
+    Parameters:
+        slewing (float): limit the slope
+        duty_cycle (float): adjust the x position of the impulse
+            from 0 to 1, by default 0.5
     """
 
-    def __init__(self, y, **kwargs):
+    def __init__(self, x, y, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
         self.last_y = self.height if self.last_y is None or self.is_first else self.last_y
         # add shape
@@ -496,8 +544,10 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
     define the mapping between the symbol and the brick
     """
     # get option supported
-    height = kwargs.get("brick_height", 20)
-    ignore_transition = kwargs.get("ignore_transition", False)
+    height              = kwargs.get("brick_height", 20)
+    ignore_transition   = kwargs.get("ignore_transition", False)
+    duty_cycle          = kwargs.get("duty_cycle", 0.5)
+    follow_data         = kwargs.get("follow_data", False)
     block = None
     # add arrow
     if (
@@ -542,9 +592,9 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
         block = Down(**kwargs)
     # impulse symbol
     elif symbol == pywave.BRICKS.imp:
-        block = Impulse(height, **kwargs)
+        block = Impulse(duty_cycle, height, **kwargs)
     elif symbol == pywave.BRICKS.Imp:
-        block = Impulse(0, **kwargs)
+        block = Impulse(duty_cycle, 0, **kwargs)
     else:
         block = None
     return (not block is None, block)

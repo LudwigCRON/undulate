@@ -20,7 +20,13 @@ from .renderer import Renderer, svg_curve_convert
 
 class CairoRenderer(Renderer):
     """
-    Render the wavelanes as an svg
+    Render the wavelanes as an svg, png, eps, ps, or pdf
+    by using the pycairo module
+
+    .. note::
+        make sure pycairo is installed to use this renderer
+        Not knowing how to install it ? Please refer to the
+        `Installation <./installation.html>`_ section
     """
 
     def __init__(self, **kwargs):
@@ -34,6 +40,12 @@ class CairoRenderer(Renderer):
     def group(self, callback, identifier: str, **kwargs) -> str:
         """
         group define a group
+
+        Args:
+            callback (callable): function which populate what inside the group
+            identifier (str): unique id for the group
+        Returns:
+            group of drawable items invoked by callback
         """
         extra = kwargs.get("extra", None)
         self.cr.push_group()
@@ -46,9 +58,13 @@ class CairoRenderer(Renderer):
 
     def path(self, vertices: list, **kwargs) -> str:
         """
-        path draw a path to represent common signals
-        vertices: list of of x-y coordinates in a tuple
-        [style_repr] : optional attributes for the svg (eg class)
+        draw a path to represent common signals
+
+        Args:
+            vertices: list of of x-y coordinates in a tuple
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'path'
         """
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", "path")
@@ -67,13 +83,17 @@ class CairoRenderer(Renderer):
         self.cr.restore()
         return ""
 
-    def arrow(self, x, y, angle, **kwargs) -> str:
+    def arrow(self, x: float, y: float, angle: float, **kwargs) -> str:
         """
-        arrow draw an arrow to represent edge trigger on clock signals
-        x       : x coordinate of the arrow center
-        y       : y coordinate of the arrow center
-        angle   : angle in degree to rotate the arrow
-        [style_repr] : optional attributes for the svg (eg class)
+        draw an arrow to represent edge trigger on clock signals
+        
+        Args:
+            x      (float) : x coordinate of the arrow center
+            y      (float) : y coordinate of the arrow center
+            angle  (float) : angle in degree to rotate the arrow
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'arrow'
         """
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", "arrow")
@@ -95,9 +115,13 @@ class CairoRenderer(Renderer):
 
     def polygon(self, vertices: list, **kwargs) -> str:
         """
-        polygon draw a closed shape to represent common data
-        vertices: list of of x-y coordinates in a tuple
-        [extra] : optional attributes for the svg (eg class)
+        draw a closed shape to represent common data
+
+        Args:
+            vertices: list of of (x,y) coordinates in a tuple
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class None
         """
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", None)
@@ -120,11 +144,15 @@ class CairoRenderer(Renderer):
 
     def spline(self, vertices: list, **kwargs) -> str:
         """
-        spline draw a path to represent smooth signals
-        vertices: list of of type-x-y coordinates in a tuple of control points
-                where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
-                svg operator
-        [style_repr] : optional attributes for the svg (eg class)
+        draw a path to represent smooth signals
+
+        Args:
+            vertices: list of of (type,x,y) coordinates in a tuple of control points
+                    where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
+                    svg operators.
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'path'
         """
         style = kwargs.get("style_repr", "path")
         extra = kwargs.get("extra", "")
@@ -196,10 +224,15 @@ class CairoRenderer(Renderer):
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
         """
-        text draw a text for data
-        x       : x coordinate of the text
-        y       : y coordinate of the text
-        text    : text to display
+        draw a text for data
+
+        Args:
+            x      (float) : x coordinate of the text
+            y      (float) : y coordinate of the text
+            text   (str)   : text to display
+        Parameters:
+            style_repr (optional) : class of the skin to apply
+                by default apply the class 'text'
         """
         extra = kwargs.get("extra", "")
         style = kwargs.get("style_repr", "text")
@@ -218,10 +251,21 @@ class CairoRenderer(Renderer):
     def translate(self, x: float, y: float, **kwargs) -> str:
         def _():
             self.cr.translate(x, y)
-
         return _
 
-    def draw(self, wavelanes, **kwargs) -> str:
+    def draw(self, wavelanes: dict, **kwargs) -> str:
+        """
+        Business function calling all others
+
+        Args:
+            wavelanes (dict): parsed dictionary from the input file
+            filename (str)  : file name of the output generated file
+            brick_width (int): by default 40
+            brick_height (int): by default 20
+            is_reg (bool): 
+                if True `wavelanes` given represents a register
+                otherwise it represents a bunch of signals
+        """
         filename = kwargs.get("filename", False)
         _id = kwargs.get("id", "a")
         brick_width = kwargs.get("brick_width", 40)
