@@ -5,14 +5,10 @@ branches:
   - master
 # assert ok for the following python versions
 python:
-  - 3.5
   - 3.6
   - 3.7
 matrix:
   include:
-  - name: "3.5 Unit Test"
-    python: "3.5"
-    env: TEST_SUITE=suite_3_5_unit
   - name: "3.6 Unit Test"
     python: "3.6"
     env: TEST_SUITE=suite_3_6_unit
@@ -24,7 +20,7 @@ install:
   - pip install -r requirements.txt
 # execute the tests
 script: 
-  - echo "${TEST_SUITE}\n\n"
-  - cd ./test/; make all
+  - cd ./test/
+  - make all
 # build the doc
 after_script: make html
