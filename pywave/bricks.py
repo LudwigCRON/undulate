@@ -44,6 +44,7 @@ class BRICKS(Enum):
     cap = "c"   #: analogue signal charging (rc)
     imp = "i"   #: impulse down or glitch
     Imp = "I"   #: impulse up or glitch
+    space = ' ' #: make a blank in the wavelane
     field_start = "[" #: new field internal representation of a register
     field_end = "]"   #: end of field internal representation
     field_mid = ":"   #: bit seperation

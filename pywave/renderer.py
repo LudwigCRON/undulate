@@ -355,16 +355,18 @@ class Renderer:
             text  = a.get("text", "")
             ans   = ""
             # parse from to
-            if start and "," in start:
-                start = eval(start)
-                if isinstance(start, tuple):
-                    x, y = start
-                    start = (x*brick_width, adjust_y(y))
-            if end and "," in end:
-                end = eval(end)
-                if isinstance(end, tuple):
-                    x, y = end
-                    end = (x*brick_width, adjust_y(y))
+            if start:
+                if isinstance(start, str) and "," in start:
+                    start = eval(start)
+            if isinstance(start, tuple):
+                x, y = start
+                start = (x*brick_width, adjust_y(y))
+            if end:
+                if isinstance(end, str) and "," in end:
+                    end = eval(end)
+            if isinstance(end, tuple):
+                x, y = end
+                end = (x*brick_width, adjust_y(y))
             # calculate position of start node
             if isinstance(start, str):
                 s = [node for node in nodes if start in node][-1]
@@ -388,15 +390,19 @@ class Renderer:
             # draw shape
             # hline
             if shape == "-":
-                y_pos = floor(y)*brick_height*1.5+(y-floor(y))*brick_height
+                y_pos = adjust_y(y)
+                x1 = xmin+start if isinstance(start, (float, int)) else xmin
+                x2 = xmin+end if isinstance(end, (float, int)) else xmin+width
                 c = a.get("color", (0, 0, 0, 255))
-                pts = [("M", xmin, y_pos), ("L", xmin+width, y_pos)]
+                pts = [("M", x1, y_pos), ("L", x2, y_pos)]
                 ans = self.spline(pts, **a)
             # vline
             elif shape == "|":
                 x = xmin+x*brick_width
+                y1 = adjust_y(start) if isinstance(start, (float, int)) else 0
+                y2 = adjust_y(end) if isinstance(end, (float, int)) else height
                 c = a.get("color", (0, 0, 0, 255))
-                pts = [("M", x, 0), ("L", x, height)]
+                pts = [("M", x, y1), ("L", x, y2)]
                 ans = self.spline(pts, **a)
             # global time compression
             elif shape == "||":

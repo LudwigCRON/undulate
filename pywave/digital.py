@@ -538,6 +538,14 @@ class Impulse(pywave.Brick):
             ]
         )
 
+class Space(pywave.Brick):
+    """
+    blank
+    """
+
+    def __init__(self, **kwargs):
+        pywave.Brick.__init__(self, **kwargs)
+        self.last_y = self.height if self.last_y is None or self.is_first else self.last_y
 
 def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
     """
@@ -595,6 +603,8 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
         block = Impulse(duty_cycle, height, **kwargs)
     elif symbol == pywave.BRICKS.Imp:
         block = Impulse(duty_cycle, 0, **kwargs)
+    elif symbol == pywave.BRICKS.space:
+        block = Space(**kwargs)
     else:
         block = None
     return (not block is None, block)
