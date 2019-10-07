@@ -1,0 +1,23 @@
+language: python
+branches:
+  only:
+  - master
+python:
+  - 3.5
+  - 3.6
+  - 3.7
+matrix:
+  include:
+  - name: "3.5 Unit Test"
+    python: "3.5"
+    env: TEST_SUITE=suite_3_5_unit
+  - name: "3.6 Unit Test"
+    python: "3.6"
+    env: TEST_SUITE=suite_3_6_unit
+  - name: "3.7 Unit Test"
+    python: "3.7"
+    env: TEST_SUITE=suite_3_7_unit
+script: 
+  - echo "${TEST_SUITE}\n\n"
+  - cd ./test/; make all
+after_script: make html
