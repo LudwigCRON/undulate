@@ -1,5 +1,6 @@
 
 ![](https://img.shields.io/badge/coverage-94-green)
+[![Build Status](https://travis-ci.com/LudwigCRON/pywave.svg?branch=master)](https://travis-ci.com/LudwigCRON/pywave)
 
 [New documentation under construction](https://ludwigcron.github.io/pywave/html/)
 
@@ -14,9 +15,11 @@ However, this great tool need either a headless web browser or node to generate 
 This version is not a mere copy of the original one. The goals are to ensure the compatibility and to add new features. To name a few:
 - long name for nodes for creating edges
 - metastability wave
-- analogue waveforms (step, capacitive step, slewing, arbitrary waves)
+- analogue waveforms (step, capacitive step, slewing, arbitrary waves, overlay up to 4 waves)
+- add annotations (global time compression, vertical/horizontal lines)
+- style overloading (font-size, fill color, stroke color, stroke-width, stroke-dasharray, ...)
 
-The inputs could be either json, cson, or yaml while outputs would be svg, postscript, pdf, and png.
+The inputs could be either json, cson, yaml or toml while outputs would be svg, postscript, pdf, and png.
 
 ## License
 
