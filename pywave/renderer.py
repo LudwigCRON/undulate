@@ -340,7 +340,7 @@ class Renderer:
             if not match is None:
                 m = match.group()
                 f, s, t = match.groups()
-                txt = "" if len(m) == len(ei.strip()) else ei.strip()[len(m):]
+                txt = "" if len(m) == len(ei.strip()) else ei.strip()[len(m)+1:]
                 annotations.append({
                     "shape": s,
                     "from": f,

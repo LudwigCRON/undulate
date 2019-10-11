@@ -337,6 +337,7 @@ else:
         # get text width
         ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
         xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
+        width += SizeUnit.EM.value/2
         if ta == TextAlign.LEFT:
             return (0, -height/2, width, _height)
         elif ta == TextAlign.RIGHT:
