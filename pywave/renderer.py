@@ -687,14 +687,8 @@ class Renderer:
         brick_width = kwargs.get("brick_width", 20) * kwargs.get("hscale", 1)
         brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
         gap_offset   = kwargs.get("gap_offset", brick_width*0.75)
-        # generate the waveform
-        wave, pos, ignore, last_y = [], 0, False, None
         # look for repetition '.'
         _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
-        # generate bricks
-        data_counter, regpos_counter, attr_counter = 0, 0, 0
-        symbol, is_first, b_counter, ana_counter = None, 0, 0, 0
-        follow_data, reg_type_counter = False, 0
         # util functions
         def __select_style(b, **k):
             reg_type = k.get("reg_type", None)
@@ -715,42 +709,34 @@ class Renderer:
             #if b_counter == len(_wavelane) - 1:
             #    return max(pmul*brick_width*(k+phase), kwargs.get("width", 0)-pos)
             return pmul*repeat*brick_width
-        # create the wavelane
-        for i, w in enumerate(_wavelane):
-            br, kw = w
-            brick, repeat = br
-            new_width = __new_brick_width(i, brick, repeat, **kw)
-            kw.update({
-                "style":        __select_style(brick, **kw),
-                "last_y":       last_y,
-                "is_first":     i == 0,
-                "brick_width":  new_width,
-                "brick_height": brick_height,
-            })
-            # create the new brick
-            if brick == pywave.BRICKS.gap:
-                pos -= brick_width
-                wave.append((
-                    symbol,
-                    pywave.generate_brick(brick, **kw),
-                    self.translate(pos+gap_offset, 0, dont_touch=True),
-                ))
-                pos += brick_width
-            else:
-                wave.append((
-                    symbol,
-                    pywave.generate_brick(brick, **kw),
-                    self.translate(max(0, pos), 0, dont_touch=True)
-                ))
-                pos += new_width
         # generate waveform
         def _gen():
             ans = self.wavelane_title(name, **kwargs) if name else ""
-            for w in wave:
-                symb, b, *e = w
-                kwargs.update({"extra": e[0]})
-                ans += self.brick(symb, b, **kwargs)
+            pos = 0
+            for i, w in enumerate(_wavelane):
+                br, kw = w
+                brick, repeat = br
+                new_width = __new_brick_width(i, brick, repeat, **kw)
+                x = max(0, pos)
+                if brick == pywave.BRICKS.gap:
+                    x = pos+gap_offset-brick_width
+                kw.update({
+                    "style":        __select_style(brick, **kw),
+                    "last_y":       0,
+                    "is_first":     i == 0,
+                    "brick_width":  new_width,
+                    "brick_height": brick_height,
+                    "extra":        self.translate(x, 0, dont_touch=True)
+                })
+                # create the new brick
+                if brick == pywave.BRICKS.gap:
+                    pos += 0
+                else:
+                    pos += new_width
+                ans += self.brick(brick,
+                                  pywave.generate_brick(brick, **kw), **kw)
             return ans
+        # wrap the wavelane
         return self.group(
             _gen,
             name if name else f"wavelane_{_WAVEGROUP_COUNT}_{_WAVE_COUNT}",
