@@ -22,6 +22,8 @@ _WAVE_COUNT = 0
 ERROR_MSG = {
     "ANNOTATION_MISSING_PTS":
         "ERROR: For annotation check from/to are defined (float,float) or float supported only",
+    "WRONG_WAVE_START":
+        "ERROR: %s : cannot repeat None or '|', add a valid brick first"
 }
 
 def incr_wavelane(f):
@@ -48,14 +50,14 @@ def incr_wavegroup(f):
 
 def arrow_angle(dy: float, dx:float) -> float:
     """
-    calculate the angle to align arrows based on 
+    calculate the angle to align arrows based on
     the derivative of the signal
 
     Args:
         dy (float)
         dx (float)
     Returns:
-        angle in degree 
+        angle in degree
     """
     if dx == 0:
         return 90 if dy > 0 else -90
@@ -120,14 +122,6 @@ class Renderer:
             return True
         return False
 
-    @staticmethod
-    def is_clock(name: str) -> bool:
-        clks = [pywave.BRICKS.Pclk,
-                pywave.BRICKS.Nclk,
-                pywave.BRICKS.pclk,
-                pywave.BRICKS.nclk]
-        return name in clks
-
     def group(self, callback, identifier: str, **kwargs) -> str:
         """
         group define a group
@@ -155,7 +149,7 @@ class Renderer:
     def arrow(self, x, y, angle, **kwargs) -> str:
         """
         draw an arrow to represent edge trigger on clock signals
-        
+
         Args:
             x      (float) : x coordinate of the arrow center
             y      (float) : y coordinate of the arrow center
@@ -546,53 +540,122 @@ class Renderer:
         return self.text(-10, y, name, extra=self._WAVE_TITLE, offset=extra, style_repr="title", **kw)
 
     def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
-        data   = kwargs.get("data", "")
-        repeat = kwargs.get("repeat", 1)
+        """
+        Args:
+            name (str) : name of the wavelane
+            wavelane (str) : list of symbol describing the signal
+        Returns:
+            list of tuple<brick, kwargs> to ease the wavelance generation
+            in kwargs the list of properties are:
+            All
+                periods             (float)
+                phase               (float)
+                duty_cycle          (float)
+                data                (str)
+                slewing             (float)
+                follow_data         (bool)
+                is_first            (bool)
+                ignore_transition   (bool)
+            Analog-Only
+                equation            (float or str)
+            Register-Only
+                attr                (str)
+                type                (str)
+                pos                 (int)
+
+        """
+        # calculate total length of the wavelance
+        repeat      = kwargs.get("repeat", 1)
+        TOTAL_LENGTH= len(wavelane) * int(repeat)
+        # Parameters for all wavelane
+        periods     = [kwargs.get("period", 1)] * TOTAL_LENGTH
+        duty_cycles = [kwargs.get("duty_cycle", 0.5)] * TOTAL_LENGTH
+        phases      = [kwargs.get("phase", 0)]+[0] * (TOTAL_LENGTH-1)
+        slewings    = [kwargs.get("slewing", 3)] * TOTAL_LENGTH
+        # Parameters specific for each bricks
+        periods     = self._get_or_eval("periods", periods, **kwargs)
+        duty_cycles = self._get_or_eval("duty_cycles", [], **kwargs)
+        analogue    = self._get_or_eval("analogue", [], **kwargs)
+        data        = kwargs.get("data", [])
+        attributes  = kwargs.get("attr", [])
+        reg_pos     = kwargs.get("regpos", [])
+        reg_types   = kwargs.get("types", [])
+        # computed properties
+        ign_trans   = []
+        follows_data = []
         # in case a string is given reformat it as a list
         if isinstance(data, str):
             data = data.split(' ')
         # prepare output
-        _wavelane, prev_brick, prev_valid_brick = [], None, None
-        data_cnt = 0
+        _wavelane, prev_brick = [], None
+        last_valid_brick, last_valid_brick_idx = None, 0
         # look for repetition '.' and ignore for '|' time compression
         for i, b in enumerate(wavelane * repeat):
             brick = pywave.BRICKS.from_char(b)
-            if brick == pywave.BRICKS.repeat and prev_brick in [None, pywave.BRICKS.gap] and i == 0:
-                raise f"error in {name}: cannot repeat none or '|', add a valid brick first"
-            # increment last symbol repetition number if not clock or gap
-            if brick in [pywave.BRICKS.gap, pywave.BRICKS.repeat] and \
-                not Renderer.is_clock(prev_valid_brick) and \
-                not prev_brick == pywave.BRICKS.gap:
-                br, num = _wavelane[-1]
-                _wavelane[-1] = (br, num + 1)
+            is_duplicate = False
+            # check validity of the first brick
+            if  i == 0 and brick == pywave.BRICKS.repeat and \
+                prev_brick in [None, pywave.BRICKS.gap]:
+                raise Exception(ERROR_MSG["WRONG_WAVE_START"] % name)
+            # increment last symbol repetition number
+            if pywave.BRICKS.is_repeating_symbol(brick):
+                # always repeat a clock signal
+                if pywave.BRICKS.is_clock(last_valid_brick):
+                    _wavelane.append((last_valid_brick, 1))
+                # after gap repeat the last valid symbol
+                elif prev_brick == pywave.BRICKS.gap:
+                    _wavelane.append((last_valid_brick.value, 1))
+                    is_duplicate = True
+                # extend the width of other symbols
+                else:
+                    br, num = _wavelane[-1]
+                    _wavelane[-1] = (br, num + 1)
                 # a time compression overlay the previous one
                 if brick == pywave.BRICKS.gap:
-                    _wavelane.append((b, 1))
-            # repeat the symbol before the gap
-            elif brick == pywave.BRICKS.repeat and \
-                 prev_brick == pywave.BRICKS.gap:
-                _wavelane.append((prev_valid_brick.value, 1))
-                # if the last valid symbol was a data
-                if prev_valid_brick == pywave.BRICKS.data:
-                    # duplicate the value
-                    data = data[:data_cnt]+[data[data_cnt-1]]+data[data_cnt:]
-            # repeat previous symbol
-            elif brick in [pywave.BRICKS.gap, pywave.BRICKS.repeat] :
-                br, _ = _wavelane[-1]
-                _wavelane.append((br, 1))
-                if brick == pywave.BRICKS.gap:
-                    _wavelane.append((b, 1))
+                    _wavelane.append((brick, 1))
             # merge all successive x
             elif brick == prev_brick and brick in [pywave.BRICKS.x, pywave.BRICKS.X]:
                 br, num = _wavelane[-1]
                 _wavelane[-1] = (br, num + 1)
             # add the new symbol
             elif brick != pywave.BRICKS.gap:
-                _wavelane.append((b, 1))
-                prev_valid_brick = brick
+                _wavelane.append((brick, 1))
+            # update last valid brick
+            if not pywave.BRICKS.is_repeating_symbol(brick):
+                last_valid_brick = brick
+                last_valid_brick_idx = i
             prev_brick = brick
-            data_cnt += 1 if brick == pywave.BRICKS.data else 0
-        return (data, _wavelane)
+            # update parameters
+            if not pywave.BRICKS.need_data(brick):
+                data.insert(
+                    i, None if not is_duplicate else data[last_valid_brick_idx])
+            if not pywave.BRICKS.need_equation(brick):
+                analogue.insert(
+                    i, None if not is_duplicate else analogue[last_valid_brick_idx])
+            if not pywave.BRICKS.need_attribute(brick):
+                attributes.insert(
+                    i, None if not is_duplicate else attributes[last_valid_brick_idx])
+            if not pywave.BRICKS.need_position(brick):
+                reg_pos.insert(
+                    i, None if not is_duplicate else reg_pos[last_valid_brick_idx])
+            if not pywave.BRICKS.need_type(brick):
+                reg_types.insert(
+                    i, None if not is_duplicate else reg_types[last_valid_brick_idx])
+            # pre-processing
+            ign_trans.append(pywave.BRICKS.ignore_transition(brick, last_valid_brick))
+            if brick == pywave.BRICKS.data and last_valid_brick == pywave.BRICKS.X:
+                follows_data.append(True)
+            else:
+                follows_data.append(False)
+        # distribute parameters
+        param_order = ["period", "duty_cycle", "equation", "data", "attribute",
+                       "reg_pos", "reg_type", "phase", "slewing", "ignore_transition",
+                       "follow_data"]
+        params = zip(periods, duty_cycles, analogue, data, attributes,
+                     reg_pos, reg_types, phases, slewings, ign_trans,
+                     follows_data)
+        kws = [dict(zip(param_order, t)) for t in params]
+        return zip(_wavelane, kws)
 
     def _get_or_eval(self, name: str, default, **kwargs):
         """
@@ -621,134 +684,65 @@ class Renderer:
         [periods]    : A list of period for each bricks
         """
         # options
-        period       = kwargs.get("period", 1)
-        phase        = kwargs.get("phase", 0)
-        regpos       = kwargs.get("regpos", "")
-        attributes   = kwargs.get("attr", [])
-        brick_width  = period * kwargs.get("brick_width", 20)
+        brick_width = kwargs.get("brick_width", 20) * kwargs.get("hscale", 1)
         brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
         gap_offset   = kwargs.get("gap_offset", brick_width*0.75)
-        slewing      = kwargs.get("slewing", 3)
-        reg_types    = kwargs.get("types", [])
-        analogue     = self._get_or_eval("analogue", [], **kwargs)
-        duty_cycles  = self._get_or_eval("duty_cycles", [], **kwargs)
-        periods      = self._get_or_eval("periods", [], **kwargs)
         # generate the waveform
         wave, pos, ignore, last_y = [], 0, False, None
         # look for repetition '.'
-        data, _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
+        _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
         # generate bricks
         data_counter, regpos_counter, attr_counter = 0, 0, 0
         symbol, is_first, b_counter, ana_counter = None, 0, 0, 0
         follow_data, reg_type_counter = False, 0
-        for b, k in _wavelane:
-            # is not a gap
-            if b != '|':
-                # get the final height of the last brick
-                last = -2 if symbol == pywave.BRICKS.gap else -1
-                if wave:
-                    s, br, c = wave[last]
-                    last_y = br.get_last_y()
-                    symbol = pywave.BRICKS.from_char(b)
-                    ignore = pywave.BRICKS.ignore_transition(wave[last][0] if wave else None, symbol)
-                    # adjust transition from data or x to constant
-                    if s in [pywave.BRICKS.data, pywave.BRICKS.x, pywave.BRICKS.X] and symbol in [pywave.BRICKS.zero, pywave.BRICKS.one, pywave.BRICKS.low, pywave.BRICKS.high]:
-                        if symbol in [pywave.BRICKS.zero, pywave.BRICKS.low]:
-                            br.alter_end(3, brick_height)
-                        else:
-                            br.alter_end(3, 0)
-                        wave[last] = (s, br, c)
-                        ignore = True
-                    # two identical data
-                    if s == pywave.BRICKS.data and symbol == s:
-                        if data_counter >= 1 and data_counter < len(data) and \
-                           data[data_counter] == data[data_counter-1]:
-                            br.alter_end(0, [0, brick_height])
-                            data_counter += 1
-                            ignore = True
-                    # adjust clock symbols
-                    if symbol in [pywave.BRICKS.low, pywave.BRICKS.Low] and \
-                            s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk, pywave.BRICKS.Nclk, pywave.BRICKS.nclk]:
-                        br.alter_end(0, brick_height if s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk] else 0)
-                        wave[last] = (s, br, c)
-                        ignore = True
-                    if symbol in [pywave.BRICKS.high, pywave.BRICKS.High] and \
-                            s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk, pywave.BRICKS.Nclk, pywave.BRICKS.nclk]:
-                        br.alter_end(0, brick_height if s in [pywave.BRICKS.Pclk, pywave.BRICKS.pclk] else 0)
-                        wave[last] = (s, br, c)
-                        ignore = True
-                    # if move from data to something else
-                    follow_data = s == pywave.BRICKS.data and symbol == pywave.BRICKS.X
-                    # get y of the previous brick for junction
-                    last_y = br.get_last_y()
-                else:
-                    follow_data = False
-                    last_y = brick_height
-                    symbol = pywave.BRICKS.from_char(b)
-                # adjust the width of a brick depending on the phase and periods
-                pmul = max(periods[b_counter], slewing*2/brick_width) if b_counter < len(periods) else 1
-                if is_first == 0:
-                    width_with_phase = pmul*brick_width*(k-phase)
-                elif b_counter == len(_wavelane) - 1:
-                    width_with_phase = max(pmul*brick_width*(k+phase), kwargs.get("width", 0)-pos)
-                else:
-                    width_with_phase = pmul*k*brick_width
-                if pos <= 0:
-                    is_first = 0
-                # update the arguments to be passed for the generation
-                kwargs.update({
-                    "brick_width":       width_with_phase + pos if pos < 0 else width_with_phase,
-                    "brick_height":      brick_height,
-                    "ignore_transition": ignore,
-                    "follow_data":     follow_data,
-                    "is_first":          is_first == 0,
-                    "last_y":            last_y,
-                    "slewing":           slewing,
-                    "style":             "s%s" % (
-                        b if b.isdigit() and int(b, 10) > 1 else '2' if not reg_types else \
-                        reg_types[reg_type_counter] if not reg_types[reg_type_counter] is None else \
-                        '2'),
-                    "duty_cycle":        max(duty_cycles[b_counter], slewing*2/brick_width) if b_counter < len(duty_cycles) else 0.5,
-                    "equation":          analogue[ana_counter] if len(analogue) > ana_counter else "0",
-                    "data":              data[data_counter] if len(data) > data_counter else "",
-                    "regpos":            regpos[regpos_counter] if len(regpos) > regpos_counter  else "",
-                    "attr":              attributes[attr_counter] if len(attributes) > attr_counter  else ""
-                })
-                # get next equation if analogue
-                if pywave.BRICKS.need_equation(symbol):
-                    ana_counter += 1
-                # get next attr
-                if pywave.BRICKS.need_attribute(symbol):
-                    attr_counter += 1
-                # get next data
-                if pywave.BRICKS.need_data(symbol):
-                    data_counter += 1
-                # update register position
-                if pywave.BRICKS.need_position(symbol):
-                    regpos_counter += 1
-                # get the next type for the register
-                if pywave.BRICKS.need_type(symbol):
-                    reg_type_counter += 1
-                # create the new brick
-                if pos + width_with_phase > 0:
-                    wave.append((
-                        symbol,
-                        pywave.generate_brick(symbol, **kwargs),
-                        self.translate(max(0, pos), 0, dont_touch=True)
-                    ))
-                pos += width_with_phase
-            else:
-                # create the gap
-                symbol = pywave.BRICKS.gap
+        # util functions
+        def __select_style(b, **k):
+            reg_type = k.get("reg_type", None)
+            if b is None or not b.value:
+                return 's2'
+            if b.value.isdigit() and int(b.value, 10) > 1:
+                return 's' + b.value
+            if reg_type:
+                return reg_type
+            return 's2'
+        def __new_brick_width(idx, b, repeat, **k):
+            phase = k.get("phase")
+            period = k.get("period")
+            slewing = k.get("slewing")
+            pmul = max(period, slewing*2)
+            if idx == 0:
+                return pmul*brick_width*(repeat-phase)
+            #if b_counter == len(_wavelane) - 1:
+            #    return max(pmul*brick_width*(k+phase), kwargs.get("width", 0)-pos)
+            return pmul*repeat*brick_width
+        # create the wavelane
+        for i, w in enumerate(_wavelane):
+            br, kw = w
+            brick, repeat = br
+            new_width = __new_brick_width(i, brick, repeat, **kw)
+            kw.update({
+                "style":        __select_style(brick, **kw),
+                "last_y":       last_y,
+                "is_first":     i == 0,
+                "brick_width":  new_width,
+                "brick_height": brick_height,
+            })
+            # create the new brick
+            if brick == pywave.BRICKS.gap:
                 pos -= brick_width
                 wave.append((
                     symbol,
-                    pywave.generate_brick(symbol, **kwargs),
+                    pywave.generate_brick(brick, **kw),
                     self.translate(pos+gap_offset, 0, dont_touch=True),
                 ))
                 pos += brick_width
-            is_first  += 1
-            b_counter += 1
+            else:
+                wave.append((
+                    symbol,
+                    pywave.generate_brick(brick, **kw),
+                    self.translate(max(0, pos), 0, dont_touch=True)
+                ))
+                pos += new_width
         # generate waveform
         def _gen():
             ans = self.wavelane_title(name, **kwargs) if name else ""
@@ -975,7 +969,7 @@ class Renderer:
             filename (str, optional)  : file name of the output generated file
             brick_width (int): by default 40
             brick_height (int): by default 20
-            is_reg (bool): 
+            is_reg (bool):
                 if True `wavelanes` given represents a register
                 otherwise it represents a bunch of signals
         """

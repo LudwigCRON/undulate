@@ -5,6 +5,9 @@ SAlfa:
   wave: "01.zx=ud.23.45"
   slewing: 8
 
+compatibility:
+  wave: "p||||......"
+
 test 1:
   pclk:
     wave: "p......."
@@ -30,7 +33,7 @@ test 2:
     wave: "P......"
   bus:
     wave: "x.==.=x"
-    data: 
+    data:
       - head
       - body
       - tail
@@ -57,7 +60,7 @@ test 4:
       ctrl:
         write:
           wave: "01.0...."
-        read: 
+        read:
           wave: "0...1..0"
       addr:
         wave: "x3.x4..x"
@@ -131,6 +134,6 @@ test 7:
   pwm:
     wave: "p...n...P...N..."
     duty_cycles: "[i/16 for i in range(16)]"
-  adaptive_clock: 
+  adaptive_clock:
     wave: "p..............."
     periods: "[i/8 for i in range(16)]"

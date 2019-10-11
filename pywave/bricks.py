@@ -35,7 +35,6 @@ class BRICKS(Enum):
     x = "x"     #: unknown bit
     X = "X"     #: unknown data
     data = "="  #: data
-    data_alias = "2" #: alias for data
     up = "u"    #: rc settling to 1
     down = "d"  #: rc settling to 0
     meta = "m"  #: metastable state settling to 0
@@ -97,16 +96,6 @@ class BRICKS(Enum):
             'transition should be skipped'
         """
         if (from_symb, to_symb) in [
-            (BRICKS.x, BRICKS.low),
-            (BRICKS.x, BRICKS.zero),
-            (BRICKS.x, BRICKS.high),
-            (BRICKS.x, BRICKS.one),
-            (BRICKS.X, BRICKS.low),
-            (BRICKS.X, BRICKS.zero),
-            (BRICKS.X, BRICKS.high),
-            (BRICKS.X, BRICKS.one),
-            (BRICKS.data, BRICKS.zero),
-            (BRICKS.data, BRICKS.one),
             (BRICKS.low, BRICKS.Low),
             (BRICKS.high, BRICKS.High),
             (BRICKS.Low, BRICKS.Low),
@@ -114,6 +103,11 @@ class BRICKS(Enum):
             (BRICKS.one, BRICKS.Pclk),
             (BRICKS.zero, BRICKS.Nclk)
         ]:
+            return True
+        if to_symb in [pywave.BRICKS.zero, pywave.BRICKS.one, pywave.BRICKS.low, pywave.BRICKS.high] and \
+           from_symb in [pywave.BRICKS.data, pywave.BRICKS.x, pywave.BRICKS.X]:
+            return True
+        if BRICKS.is_forced_signal(to_symb) and BRICKS.is_clock(from_symb):
             return True
         return False
 
@@ -173,3 +167,40 @@ class BRICKS(Enum):
                 boolean result asserting the symb need a type
         """
         return symb in [pywave.BRICKS.field_end, pywave.BRICKS.field_bit]
+
+    @staticmethod
+    def is_repeating_symbol(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially repeating the last valid brick
+        Returns:
+            bool
+                boolean result asserting the symb repeat the last valid one
+        """
+        return symb in [BRICKS.repeat, BRICKS.gap]
+
+    @staticmethod
+    def is_clock(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially a clock signal
+        Returns:
+            bool
+                boolean result asserting the symb is a clock signal
+        """
+        return symb in [BRICKS.Pclk,
+                        BRICKS.Nclk,
+                        BRICKS.pclk,
+                        BRICKS.nclk]
+
+    @staticmethod
+    def is_forced_signal(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially forced to a value
+        Returns:
+            bool
+                boolean result asserting the symb is forced
+        """
+        return symb in [pywave.BRICKS.high, pywave.BRICKS.High,
+            pywave.BRICKS.low, pywave.BRICKS.Low]
