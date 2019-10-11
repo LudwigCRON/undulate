@@ -42,6 +42,8 @@ ERROR_MSG = {
         ) % (''.join(["\t- %s\n" % f for f in SUPPORTED_FORMAT])  ,''.join(["\t- %s\n" % f for f in SUPPORTED_RENDER]))
 }
 
+SPACER_COUNT = 0
+
 # ==== Simple Logging Utility ====
 # this should be used only there
 def log_Fatal(msg: str):
@@ -66,11 +68,13 @@ def _parse_wavelane(wavelane: dict):
     normalize the the wavelane name and if no name is given
     the function consider it is a spacer
     """
+    global SPACER_COUNT
     _name = wavelane.get("name", "").strip()
     if "name" in wavelane:
         del wavelane["name"]
     if not _name:
-        _name = f"spacer_{int(time.time())}"
+        SPACER_COUNT += 1
+        _name = f"spacer_{SPACER_COUNT}"
     return (_name, wavelane)
 
 def _parse_group(wavegroup: list):
@@ -104,7 +108,7 @@ def _prune_json(filepath: str):
     # add double quotes around strings
     content = re.sub(r"([{,]?)\s*(\w+)\s*:", r'\1 "\2":', content, flags=re.M)
     # replace single quotes with double quotes
-    content = re.sub(r"'([\w\s\<\-\~\|\>,\.:\[\]\(\)]*)\s*'", r'"\1"', content, flags=re.M)
+    content = re.sub(r"'([\w\s\<\-\~\|\>,*\_\.:\[\]\(\)]*)\s*'", r'"\1"', content, flags=re.M)
     # remove final extra comma of arrays definition
     content = re.sub(r"(,\s*\])", r"]", content, flags=re.M)
     # change hex numbers to int

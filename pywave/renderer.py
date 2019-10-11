@@ -18,6 +18,11 @@ from itertools import count, accumulate
 _WAVEGROUP_COUNT = 0
 #: counter of wave unique id
 _WAVE_COUNT = 0
+# error message
+ERROR_MSG = {
+    "ANNOTATION_MISSING_PTS":
+        "ERROR: For annotation check from/to are defined (float,float) or float supported only",
+}
 
 def incr_wavelane(f):
     """
@@ -102,7 +107,6 @@ class Renderer:
     _DATA_TEXT   = ""
     _GROUP_NAME  = ""
     _SYMBOL_TEMP = None
-    _FIRST_TRANSLATION = True
 
     def __init__(self):
         self.cr = None
@@ -368,15 +372,17 @@ class Renderer:
                 x, y = end
                 end = (x*brick_width, adjust_y(y))
             # calculate position of start node
-            if isinstance(start, str):
-                s = [node for node in nodes if start in node][-1]
+            if isinstance(start, str) and nodes:
+                s = [node for node in nodes if start in node]
+                s = s[-1] if s else (0, 0)
             elif isinstance(start, tuple):
                 s = start
             else:
                 s = (0, 0)
             # calculate position of end node
-            if isinstance(end, str):
-                e = [node for node in nodes if end in node][-1]
+            if isinstance(end, str) and nodes:
+                e = [node for node in nodes if end in node]
+                e = e[-1] if e else (0, 0)
             elif isinstance(end, tuple):
                 e = end
             else:
@@ -384,6 +390,10 @@ class Renderer:
             # add offset for delay of data and middle of brick vertical
             s = s[0]+xmin, s[1]+brick_height*0.5
             e = e[0]+xmin, e[1]+brick_height*0.5
+            #if shape and shape[0] == '<':
+            #    s = s[0]-3.5, s[1]
+            #if shape and shape[-1] == '>':
+            #    e = e[0]-3.5, e[1]
             # derivative of edges for arrows: by default ->
             start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, e[0]-s[0], 0
             mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
@@ -526,13 +536,14 @@ class Renderer:
         extra        = kwargs.get("extra", "")
         order        = kwargs.get("order", 0)
         brick_height = kwargs.get("brick_height", 1)
+        kw           = {k: kwargs.get(k) for k in kwargs.keys() if k in ["fill", "stroke", "font", "font-weight"]}
         if "spacer" in name or not name.strip():
             return ""
         if order == 0:
             y = brick_height / 2
         else:
             y = brick_height / 4 * order - brick_height / 8
-        return self.text(-10, y, name, extra=self._WAVE_TITLE, offset=extra, style_repr="title", **kwargs)
+        return self.text(-10, y, name, extra=self._WAVE_TITLE, offset=extra, style_repr="title", **kw)
 
     def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
         data   = kwargs.get("data", "")
@@ -545,7 +556,7 @@ class Renderer:
         data_cnt = 0
         # look for repetition '.' and ignore for '|' time compression
         for i, b in enumerate(wavelane * repeat):
-            brick = pywave.BRICKS.from_str(b)
+            brick = pywave.BRICKS.from_char(b)
             if brick == pywave.BRICKS.repeat and prev_brick in [None, pywave.BRICKS.gap] and i == 0:
                 raise f"error in {name}: cannot repeat none or '|', add a valid brick first"
             # increment last symbol repetition number if not clock or gap
@@ -572,7 +583,7 @@ class Renderer:
                 if brick == pywave.BRICKS.gap:
                     _wavelane.append((b, 1))
             # merge all successive x
-            elif brick == prev_brick and brick == pywave.BRICKS.x:
+            elif brick == prev_brick and brick in [pywave.BRICKS.x, pywave.BRICKS.X]:
                 br, num = _wavelane[-1]
                 _wavelane[-1] = (br, num + 1)
             # add the new symbol
@@ -638,7 +649,7 @@ class Renderer:
                 if wave:
                     s, br, c = wave[last]
                     last_y = br.get_last_y()
-                    symbol = pywave.BRICKS.from_str(b)
+                    symbol = pywave.BRICKS.from_char(b)
                     ignore = pywave.BRICKS.ignore_transition(wave[last][0] if wave else None, symbol)
                     # adjust transition from data or x to constant
                     if s in [pywave.BRICKS.data, pywave.BRICKS.x, pywave.BRICKS.X] and symbol in [pywave.BRICKS.zero, pywave.BRICKS.one, pywave.BRICKS.low, pywave.BRICKS.high]:
@@ -673,7 +684,7 @@ class Renderer:
                 else:
                     follow_data = False
                     last_y = brick_height
-                    symbol = pywave.BRICKS.from_str(b)
+                    symbol = pywave.BRICKS.from_char(b)
                 # adjust the width of a brick depending on the phase and periods
                 pmul = max(periods[b_counter], slewing*2/brick_width) if b_counter < len(periods) else 1
                 if is_first == 0:
@@ -704,21 +715,19 @@ class Renderer:
                     "attr":              attributes[attr_counter] if len(attributes) > attr_counter  else ""
                 })
                 # get next equation if analogue
-                if symbol in [pywave.BRICKS.ana, pywave.BRICKS.step, pywave.BRICKS.cap]:
+                if pywave.BRICKS.need_equation(symbol):
                     ana_counter += 1
                 # get next attr
-                if symbol in [pywave.BRICKS.field_start, pywave.BRICKS.field_bit]:
+                if pywave.BRICKS.need_attribute(symbol):
                     attr_counter += 1
                 # get next data
-                if symbol in [pywave.BRICKS.data,
-                        pywave.BRICKS.field_start, pywave.BRICKS.field_mid,
-                        pywave.BRICKS.field_end, pywave.BRICKS.field_bit]:
+                if pywave.BRICKS.need_data(symbol):
                     data_counter += 1
                 # update register position
-                if symbol in [pywave.BRICKS.field_start, pywave.BRICKS.field_end, pywave.BRICKS.field_bit]:
+                if pywave.BRICKS.need_position(symbol):
                     regpos_counter += 1
                 # get the next type for the register
-                if symbol in [pywave.BRICKS.field_end, pywave.BRICKS.field_bit]:
+                if pywave.BRICKS.need_type(symbol):
                     reg_type_counter += 1
                 # create the new brick
                 if pos + width_with_phase > 0:
@@ -854,7 +863,6 @@ class Renderer:
                         dy = brick_height * (wavelanes[wavetitle].get("vscale", 1) + 0.5)
                     # named group
                     elif not wavetitle in ["head", "foot", "config", "edges", "annotations"]:
-                        self._FIRST_TRANSLATION = False
                         args = copy.deepcopy(kwargs)
                         args.update({"offsetx": ox, "offsety": 0, "no_ticks": True})
                         dy, tmp = self.wavegroup(

@@ -5,7 +5,7 @@
 .attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
 .stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
-.data {fill: rgba(0, 0, 0, 255);font-size: 0.400em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.data {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .arrow {fill: rgba(0, 0, 0, 255);stroke: none;}
 .hide {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
 .hatch {fill: url(#diagonalHatch);}
@@ -244,14 +244,14 @@
 <path d="M0,0 L0.0,0 L40,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.pclk"  transform="translate(40, 0)"  class="s2">
-<path d="M0,0 L0.0,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.High"  transform="translate(80, 0)"  class="s2">
 <path d="M0,20 L3.0,0 L40,0" class="path" style="fill: none;" />
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(1.5, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
 </g>
 <g data-symbol="BRICKS.pclk"  transform="translate(120, 0)"  class="s2">
-<path d="M0,0 L0.0,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.low"  transform="translate(160, 0)"  class="s2">
 <path d="M0,20 L0.0,20 L40,20" class="path" style="fill: none;" />
@@ -283,7 +283,7 @@
 <path d="M0,0 L0.0,0 L40,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.pclk"  transform="translate(160, 0)"  class="s2">
-<path d="M0,0 L0.0,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.low"  transform="translate(200, 0)"  class="s2">
 <path d="M0,20 L0.0,20 L40,20" class="path" style="fill: none;" />

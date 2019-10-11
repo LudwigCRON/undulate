@@ -35,6 +35,7 @@ class BRICKS(Enum):
     x = "x"     #: unknown bit
     X = "X"     #: unknown data
     data = "="  #: data
+    data_alias = "2" #: alias for data
     up = "u"    #: rc settling to 1
     down = "d"  #: rc settling to 0
     meta = "m"  #: metastable state settling to 0
@@ -68,7 +69,7 @@ class BRICKS(Enum):
         return height - height * scaled_value
 
     @staticmethod
-    def from_str(c: str):
+    def from_char(c: str):
         """
         Give the corresponding enumeration from a char
         Args:
@@ -115,3 +116,60 @@ class BRICKS(Enum):
         ]:
             return True
         return False
+
+    @staticmethod
+    def need_equation(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially needing an equation
+        Returns:
+            bool
+                boolean result asserting the symb need an equation
+        """
+        return symb in [BRICKS.ana, BRICKS.step, BRICKS.cap]
+
+    @staticmethod
+    def need_data(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially needing a data
+        Returns:
+            bool
+                boolean result asserting the symb need a data
+        """
+        return symb in [BRICKS.data,
+                        BRICKS.field_start, BRICKS.field_mid,
+                        BRICKS.field_end, BRICKS.field_bit]
+
+    @staticmethod
+    def need_attribute(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially needing an attribute
+        Returns:
+            bool
+                boolean result asserting the symb need an attribute
+        """
+        return symb in [BRICKS.field_start, BRICKS.field_bit]
+
+    @staticmethod
+    def need_position(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially needing a position
+        Returns:
+            bool
+                boolean result asserting the symb need a position
+        """
+        return symb in [pywave.BRICKS.field_start, pywave.BRICKS.field_end, pywave.BRICKS.field_bit]
+
+    @staticmethod
+    def need_type(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially needing a type
+        Returns:
+            bool
+                boolean result asserting the symb need a type
+        """
+        return symb in [pywave.BRICKS.field_end, pywave.BRICKS.field_bit]

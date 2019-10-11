@@ -69,7 +69,7 @@ class Pclk(pywave.Brick):
         if self.is_first:
             self.last_y = self.height
         else:
-            self.last_y = self.height / 2 if self.last_y is None else self.last_y
+            self.last_y = self.last_y if self.last_y else self.height / 2
         dt = self.last_y * self.slewing / self.height
         # add shape
         self.paths.append(

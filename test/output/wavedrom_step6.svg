@@ -5,7 +5,7 @@
 .attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
 .stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
-.data {fill: rgba(0, 0, 0, 255);font-size: 0.400em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.data {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .arrow {fill: rgba(0, 0, 0, 255);stroke: none;}
 .hide {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
 .hatch {fill: url(#diagonalHatch);}

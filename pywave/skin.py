@@ -92,7 +92,7 @@ DEFAULT_STYLE = {
     },
     "data": {
         "fill": (0, 0, 0, 255),
-        "font-size": (0.4, SizeUnit.EM),
+        "font-size": (0.6, SizeUnit.EM),
         "font-style": "normal",
         "font-variant": "normal",
         "font-weight": 500,

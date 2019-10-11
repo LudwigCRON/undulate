@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1322" height="300.0" viewBox="-1 -1 1323 302.0">
+<svg xmlns="http://www.w3.org/2000/svg" width="1322" height="540.0" viewBox="-1 -1 1323 542.0">
 <style>
 .title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.700em;font-family: Fira Mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
 .text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;}
 .attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
 .stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
-.data {fill: rgba(0, 0, 0, 255);font-size: 0.400em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.data {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .arrow {fill: rgba(0, 0, 0, 255);stroke: none;}
 .hide {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
 .hatch {fill: url(#diagonalHatch);}
@@ -45,33 +45,33 @@
 </defs>
 <g id="a"  >
 <g id="ticks_1"  transform="translate(220, 0)"  >
-<path d="M0,0 L0,300.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,300.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,300.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,300.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,300.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,300.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,300.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,300.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,300.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,300.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,300.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,300.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,300.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,300.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,300.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,300.0" class="tick" style="fill: none;" />
-<path d="M640,0 L640,300.0" class="tick" style="fill: none;" />
-<path d="M680,0 L680,300.0" class="tick" style="fill: none;" />
-<path d="M720,0 L720,300.0" class="tick" style="fill: none;" />
-<path d="M760,0 L760,300.0" class="tick" style="fill: none;" />
-<path d="M800,0 L800,300.0" class="tick" style="fill: none;" />
-<path d="M840,0 L840,300.0" class="tick" style="fill: none;" />
-<path d="M880,0 L880,300.0" class="tick" style="fill: none;" />
-<path d="M920,0 L920,300.0" class="tick" style="fill: none;" />
-<path d="M960,0 L960,300.0" class="tick" style="fill: none;" />
-<path d="M1000,0 L1000,300.0" class="tick" style="fill: none;" />
-<path d="M1040,0 L1040,300.0" class="tick" style="fill: none;" />
+<path d="M0,0 L0,540.0" class="tick" style="fill: none;" />
+<path d="M40,0 L40,540.0" class="tick" style="fill: none;" />
+<path d="M80,0 L80,540.0" class="tick" style="fill: none;" />
+<path d="M120,0 L120,540.0" class="tick" style="fill: none;" />
+<path d="M160,0 L160,540.0" class="tick" style="fill: none;" />
+<path d="M200,0 L200,540.0" class="tick" style="fill: none;" />
+<path d="M240,0 L240,540.0" class="tick" style="fill: none;" />
+<path d="M280,0 L280,540.0" class="tick" style="fill: none;" />
+<path d="M320,0 L320,540.0" class="tick" style="fill: none;" />
+<path d="M360,0 L360,540.0" class="tick" style="fill: none;" />
+<path d="M400,0 L400,540.0" class="tick" style="fill: none;" />
+<path d="M440,0 L440,540.0" class="tick" style="fill: none;" />
+<path d="M480,0 L480,540.0" class="tick" style="fill: none;" />
+<path d="M520,0 L520,540.0" class="tick" style="fill: none;" />
+<path d="M560,0 L560,540.0" class="tick" style="fill: none;" />
+<path d="M600,0 L600,540.0" class="tick" style="fill: none;" />
+<path d="M640,0 L640,540.0" class="tick" style="fill: none;" />
+<path d="M680,0 L680,540.0" class="tick" style="fill: none;" />
+<path d="M720,0 L720,540.0" class="tick" style="fill: none;" />
+<path d="M760,0 L760,540.0" class="tick" style="fill: none;" />
+<path d="M800,0 L800,540.0" class="tick" style="fill: none;" />
+<path d="M840,0 L840,540.0" class="tick" style="fill: none;" />
+<path d="M880,0 L880,540.0" class="tick" style="fill: none;" />
+<path d="M920,0 L920,540.0" class="tick" style="fill: none;" />
+<path d="M960,0 L960,540.0" class="tick" style="fill: none;" />
+<path d="M1000,0 L1000,540.0" class="tick" style="fill: none;" />
+<path d="M1040,0 L1040,540.0" class="tick" style="fill: none;" />
 </g>
 
 <g id="mcu_clk"  transform="translate(220, 0)"  >
@@ -371,7 +371,7 @@
 <path d="M0,0 L0.0,0 L120,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.pclk"  transform="translate(280, 0)"  class="s2">
-<path d="M0,0 L0.0,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.low"  transform="translate(320, 0)"  class="s2">
 <path d="M0,20 L0.0,20 L120,20" class="path" style="fill: none;" />
@@ -383,7 +383,7 @@
 <path d="M0,0 L0.0,0 L120,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.pclk"  transform="translate(600, 0)"  class="s2">
-<path d="M0,0 L0.0,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.low"  transform="translate(640, 0)"  class="s2">
 <path d="M0,20 L0.0,20 L120,20" class="path" style="fill: none;" />
@@ -395,13 +395,13 @@
 <path d="M0,0 L0.0,0 L120,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.pclk"  transform="translate(920, 0)"  class="s2">
-<path d="M0,0 L0.0,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L38.5,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="BRICKS.low"  transform="translate(960, 0)"  class="s2">
 <path d="M0,20 L0.0,20 L120,20" class="path" style="fill: none;" />
 </g>
 </g>
-<g id="clk_ce (CLK_TO_INT=1)"  transform="translate(220, 210.0)"  >
+<g id="clk_ce (CLK_TO_INT=1)"  transform="translate(220, 270.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">clk_ce (CLK_TO_INT=1)</text>
 <g data-symbol="BRICKS.high"  transform="translate(0, 0)"  class="s2">
 <path d="M0,0 L0.0,0 L40,0" class="path" style="fill: none;" />
@@ -446,7 +446,7 @@
 <path d="M0,0 L3.0,20 L80,20" class="path" style="fill: none;" />
 </g>
 </g>
-<g id="clk_ce (CLK_TO_INT=2)"  transform="translate(220, 240.0)"  >
+<g id="clk_ce (CLK_TO_INT=2)"  transform="translate(220, 390.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">clk_ce (CLK_TO_INT=2)</text>
 <g data-symbol="BRICKS.high"  transform="translate(0, 0)"  class="s2">
 <path d="M0,0 L0.0,0 L40,0" class="path" style="fill: none;" />
@@ -491,7 +491,7 @@
 <path d="M0,0 L3.0,20 L80,20" class="path" style="fill: none;" />
 </g>
 </g>
-<g id="arbitrary"  transform="translate(220, 270.0)"  >
+<g id="arbitrary"  transform="translate(220, 510.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">arbitrary</text>
 <g data-symbol="BRICKS.high"  transform="translate(0, 0)"  class="s2">
 <path d="M0,0 L0.0,0 L64.0,0" class="path" style="fill: none;" />

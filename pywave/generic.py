@@ -50,7 +50,6 @@ class Brick:
         "ignore_transition",
         "is_first",
         "last_y",
-        "equation",
     ]
 
     def __init__(self, **kwargs):
@@ -72,9 +71,6 @@ class Brick:
         self.is_first = kwargs.get("is_first", False)
         #: last brick y position: float
         self.last_y = kwargs.get("last_y", None)
-        # is analogue
-        #: equation for analogue brick: str, callable, int, float
-        self.equation = kwargs.get("equation", None)
         # items to keep for drawing
         #: define the char
         self.symbol = None
