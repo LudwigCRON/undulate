@@ -224,7 +224,7 @@ def generate_analogue_symbol(symbol, **kwargs) -> (bool, object):
     """
     # get option supported
     height   = kwargs.get("brick_height", 20)
-    equation = kwargs.get("equation", None)
+    equation = kwargs.get("equation", [])
     block    = pywave.Brick()
     # metastability to zero
     if symbol == pywave.BRICKS.meta:
@@ -245,7 +245,10 @@ def generate_analogue_symbol(symbol, **kwargs) -> (bool, object):
         else:
             block = Cap(pywave.BRICKS.transform_y(equation, height), **kwargs)
     elif symbol == pywave.BRICKS.ana:
-        block = Analogue(eval(equation, CONTEXT), **kwargs)
+        if isinstance(equation, str):
+            block = Analogue(eval(equation, CONTEXT), **kwargs)
+        else:
+            block = Analogue(equation, **kwargs)
     else:
         block = None
     return (not block is None, block)

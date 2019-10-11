@@ -22,6 +22,7 @@ class Nclk(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
         if self.is_first:
             self.last_y = 0
         else:
@@ -39,8 +40,6 @@ class Nclk(pywave.Brick):
                 (self.width, self.height / 2),
             ]
         )
-        #if self.ignore_transition:
-        #    self.paths[0] = self.paths[0][0] + self.paths[0][2:]
         # add arrow
         if kwargs.get("add_arrow", False) and not self.ignore_transition:
             arrow_angle = -math.atan2(-self.height, self.slewing) * 180 / math.pi
@@ -66,6 +65,7 @@ class Pclk(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        self.first_y = 0
         if self.is_first:
             self.last_y = self.height
         else:
@@ -83,8 +83,6 @@ class Pclk(pywave.Brick):
                 (self.width, self.height / 2),
             ]
         )
-        #if self.ignore_transition:
-        #    self.paths[0] = self.paths[0][0] + self.paths[0][2:]
         # add arrow
         if kwargs.get("add_arrow", False) and not self.ignore_transition:
             arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
@@ -109,6 +107,7 @@ class Low(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
         if self.is_first:
             self.last_y = self.height
         else:
@@ -145,6 +144,7 @@ class High(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        self.first_y = 0
         if self.is_first:
             self.last_y = 0
         else:
@@ -180,6 +180,7 @@ class HighZ(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        self.first_y = self.height / 2
         if self.is_first:
             self.last_y = self.height / 2
         else:
@@ -208,6 +209,7 @@ class Zero(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
         if self.is_first:
             self.last_y = self.height
         else:
@@ -235,6 +237,7 @@ class One(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        self.first_y = 0
         if self.is_first:
             self.last_y = 0
         else:
@@ -259,8 +262,9 @@ class Garbage(pywave.Brick):
         slewing (float): limit the slope
         follow_data (bool): data '=' occurs before this brick
     """
-    def __init__(self, follow_data: bool = False, **kwargs):
+    def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        follow_data = kwargs.get("follow_data", False)
         self.last_y = self.height / 2 if self.last_y is None else self.last_y
         # add shape
         if follow_data:
@@ -476,6 +480,7 @@ class Up(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
         self.last_y = self.height if self.last_y is None else self.last_y
         self.splines.append(
             [
@@ -500,6 +505,7 @@ class Down(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
         self.last_y = self.height if self.last_y is None else self.last_y
         self.splines.append(
             [
@@ -526,7 +532,8 @@ class Impulse(pywave.Brick):
 
     def __init__(self, x, y, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
-        self.last_y = self.height if self.last_y is None or self.is_first else self.last_y
+        self.first_y = self.height - y
+        self.last_y = self.height - y if self.last_y is None or self.is_first else self.last_y
         # add shape
         self.paths.append(
             [
@@ -553,9 +560,7 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
     """
     # get option supported
     height              = kwargs.get("brick_height", 20)
-    ignore_transition   = kwargs.get("ignore_transition", False)
     duty_cycle          = kwargs.get("duty_cycle", 0.5)
-    follow_data         = kwargs.get("follow_data", False)
     block = None
     # add arrow
     if (
@@ -571,10 +576,10 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
     elif symbol in [pywave.BRICKS.pclk, pywave.BRICKS.Pclk]:
         block = Pclk(**kwargs)
     # (L|l)ow: falling edge (with|without) arrow and stuck
-    elif symbol == pywave.BRICKS.low or symbol == pywave.BRICKS.Low:
+    elif symbol in [pywave.BRICKS.low, pywave.BRICKS.Low]:
         block = Low(**kwargs)
     # (H|h)igh: rising edge (with|without) arrow and stuck
-    elif symbol == pywave.BRICKS.high or symbol == pywave.BRICKS.High:
+    elif symbol in [pywave.BRICKS.high, pywave.BRICKS.High]:
         block = High(**kwargs)
     # description for data (z01=x)
     elif symbol == pywave.BRICKS.highz:

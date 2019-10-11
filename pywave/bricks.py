@@ -98,13 +98,21 @@ class BRICKS(Enum):
         if (from_symb, to_symb) in [
             (BRICKS.low, BRICKS.Low),
             (BRICKS.high, BRICKS.High),
-            (BRICKS.Low, BRICKS.Low),
-            (BRICKS.High, BRICKS.High),
+            (BRICKS.Low, BRICKS.low),
+            (BRICKS.High, BRICKS.high),
             (BRICKS.one, BRICKS.Pclk),
-            (BRICKS.zero, BRICKS.Nclk)
+            (BRICKS.zero, BRICKS.Nclk),
+            (BRICKS.High, BRICKS.Pclk),
+            (BRICKS.high, BRICKS.Pclk),
+            (BRICKS.high, BRICKS.pclk),
+            (BRICKS.High, BRICKS.pclk),
+            (BRICKS.Low, BRICKS.Nclk),
+            (BRICKS.low, BRICKS.Nclk),
+            (BRICKS.low, BRICKS.nclk),
+            (BRICKS.Low, BRICKS.nclk)
         ]:
             return True
-        if to_symb in [pywave.BRICKS.zero, pywave.BRICKS.one, pywave.BRICKS.low, pywave.BRICKS.high] and \
+        if (to_symb in [pywave.BRICKS.zero, pywave.BRICKS.one] or BRICKS.is_forced_signal(to_symb)) and \
            from_symb in [pywave.BRICKS.data, pywave.BRICKS.x, pywave.BRICKS.X]:
             return True
         if BRICKS.is_forced_signal(to_symb) and BRICKS.is_clock(from_symb):
