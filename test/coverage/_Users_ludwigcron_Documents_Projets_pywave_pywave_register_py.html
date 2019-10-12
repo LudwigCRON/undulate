@@ -484,7 +484,7 @@
 <p id="t60" class="stm run hide_run">            <span class="nam">pos</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="num">1</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t61" class="stm run hide_run">        <span class="nam">pos</span> <span class="op">=</span> <span class="nam">list</span><span class="op">(</span><span class="nam">accumulate</span><span class="op">(</span><span class="nam">pos</span><span class="op">[</span><span class="op">:</span><span class="op">-</span><span class="num">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="op">:</span><span class="op">:</span><span class="op">-</span><span class="num">1</span><span class="op">]</span><span class="strut">&nbsp;</span></p>
 <p id="t62" class="stm run hide_run">        <span class="nam">ans</span> <span class="op">=</span> <span class="op">{</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
-<p id="t63" class="stm run hide_run">        <span class="nam">ans</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">name</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="nam">wave</span><span class="op">,</span> <span class="str">"data"</span><span class="op">:</span> <span class="nam">data</span><span class="op">,</span> <span class="str">"regpos"</span><span class="op">:</span> <span class="nam">pos</span><span class="op">,</span> <span class="str">"attr"</span><span class="op">:</span> <span class="nam">attr</span><span class="op">,</span> <span class="str">"types"</span><span class="op">:</span> <span class="nam">_type</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
+<p id="t63" class="stm run hide_run">        <span class="nam">ans</span><span class="op">[</span><span class="nam">self</span><span class="op">.</span><span class="nam">name</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="nam">wave</span><span class="op">,</span> <span class="str">"data"</span><span class="op">:</span> <span class="nam">data</span><span class="op">,</span> <span class="str">"reg_pos"</span><span class="op">:</span> <span class="nam">pos</span><span class="op">,</span> <span class="str">"attributes"</span><span class="op">:</span> <span class="nam">attr</span><span class="op">,</span> <span class="str">"reg_types"</span><span class="op">:</span> <span class="nam">_type</span><span class="op">}</span><span class="strut">&nbsp;</span></p>
 <p id="t64" class="stm run hide_run">        <span class="key">return</span> <span class="nam">ans</span><span class="strut">&nbsp;</span></p>
 <p id="t65" class="pln"><span class="strut">&nbsp;</span></p>
 <p id="t66" class="pln"><span class="strut">&nbsp;</span></p>
@@ -515,7 +515,7 @@
 <p id="t91" class="pln">                <span class="op">]</span><span class="strut">&nbsp;</span></p>
 <p id="t92" class="pln">            <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t93" class="pln">        <span class="com"># add attributes</span><span class="strut">&nbsp;</span></p>
-<p id="t94" class="stm run hide_run">        <span class="nam">_attrs</span> <span class="op">=</span> <span class="nam">kwargs</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">"attr"</span><span class="op">,</span> <span class="key">None</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t94" class="stm run hide_run">        <span class="nam">_attrs</span> <span class="op">=</span> <span class="nam">kwargs</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">"attribute"</span><span class="op">,</span> <span class="key">None</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t95" class="stm run hide_run">        <span class="nam">attrs</span> <span class="op">=</span> <span class="key">None</span><span class="strut">&nbsp;</span></p>
 <p id="t96" class="stm par run hide_run"><span class="annotate short">96&#x202F;&#x219B;&#x202F;97</span><span class="annotate long">line 96 didn't jump to line 97, because the condition on line 96 was never true</span>        <span class="key">if</span> <span class="key">not</span> <span class="nam">_attrs</span> <span class="key">is</span> <span class="key">None</span> <span class="key">and</span> <span class="nam">isinstance</span><span class="op">(</span><span class="nam">_attrs</span><span class="op">,</span> <span class="nam">tuple</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t97" class="stm mis">            <span class="nam">width</span><span class="op">,</span> <span class="nam">attrs</span> <span class="op">=</span> <span class="nam">_attrs</span><span class="strut">&nbsp;</span></p>
@@ -543,7 +543,7 @@
 <p id="t119" class="pln">                <span class="str">"reg-pos"</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t120" class="pln">                <span class="nam">self</span><span class="op">.</span><span class="nam">width</span> <span class="op">/</span> <span class="num">2</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t121" class="pln">                <span class="nam">self</span><span class="op">.</span><span class="nam">height</span> <span class="op">*</span> <span class="num">0.125</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t122" class="pln">                <span class="nam">kwargs</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">"regpos"</span><span class="op">,</span> <span class="str">""</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t122" class="pln">                <span class="nam">kwargs</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">"reg_pos"</span><span class="op">,</span> <span class="str">""</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t123" class="pln">            <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t124" class="pln">        <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t125" class="pln"><span class="strut">&nbsp;</span></p>
@@ -634,7 +634,7 @@
 <p id="t210" class="pln">                <span class="str">"reg-pos"</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t211" class="pln">                <span class="nam">self</span><span class="op">.</span><span class="nam">width</span> <span class="op">/</span> <span class="num">2</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t212" class="pln">                <span class="nam">self</span><span class="op">.</span><span class="nam">height</span> <span class="op">*</span> <span class="num">0.125</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t213" class="pln">                <span class="nam">kwargs</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">"regpos"</span><span class="op">,</span> <span class="str">""</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t213" class="pln">                <span class="nam">kwargs</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">"reg_pos"</span><span class="op">,</span> <span class="str">""</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t214" class="pln">            <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t215" class="pln">        <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t216" class="pln"><span class="strut">&nbsp;</span></p>
@@ -680,7 +680,7 @@
 <p id="t256" class="pln">                <span class="str">"reg-pos"</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t257" class="pln">                <span class="nam">self</span><span class="op">.</span><span class="nam">width</span> <span class="op">/</span> <span class="num">2</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t258" class="pln">                <span class="nam">self</span><span class="op">.</span><span class="nam">height</span> <span class="op">*</span> <span class="num">0.125</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t259" class="pln">                <span class="nam">kwargs</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">"regpos"</span><span class="op">,</span> <span class="str">""</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t259" class="pln">                <span class="nam">kwargs</span><span class="op">.</span><span class="nam">get</span><span class="op">(</span><span class="str">"reg_pos"</span><span class="op">,</span> <span class="str">""</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t260" class="pln">            <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t261" class="pln">        <span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t262" class="pln"><span class="strut">&nbsp;</span></p>
@@ -782,7 +782,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.4</a>,
-            created at 2019-10-11 23:16
+            created at 2019-10-12 14:12
         </p>
     </div>
 </div>

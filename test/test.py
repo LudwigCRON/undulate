@@ -25,7 +25,8 @@ class TestSvgMethods(unittest.TestCase):
     filename = f"./output/wavedrom_step1.{cli_args.format}"
     wavelanes = {
         "Alfa": {"wave":"01.zx=ud.23.45"},
-        "SAlfa": {"wave":"01.zx=ud.23.45", "slewing":8}
+        "SAlfa": {"wave":"01.zx=ud.23.45", "slewing":8},
+        "compatibility": {"wave":"p||||......"}
     }
     if out_txt: 
       with open(filename, "w+") as fp:

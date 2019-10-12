@@ -116,7 +116,14 @@ class BRICKS(Enum):
            from_symb in [pywave.BRICKS.data, pywave.BRICKS.x, pywave.BRICKS.X]:
             return True
         if BRICKS.is_forced_signal(to_symb) and BRICKS.is_clock(from_symb):
-            return True
+            if from_symb.value.lower() == 'n' and to_symb.value.lower() == 'h':
+                return True
+            if from_symb.value.lower() == 'p' and to_symb.value.lower() == 'l':
+                return True
+            if from_symb.value.lower() == 'h' and to_symb.value.lower() == 'p':
+                return True
+            if from_symb.value.lower() == 'l' and to_symb.value.lower() == 'n':
+                return True
         return False
 
     @staticmethod

@@ -91,7 +91,7 @@ class FieldStart(pywave.Brick):
                 ]
             )
         # add attributes
-        _attrs = kwargs.get("attr", None)
+        _attrs = kwargs.get("attribute", None)
         attrs = None
         if not _attrs is None and isinstance(_attrs, tuple):
             width, attrs = _attrs
@@ -119,7 +119,7 @@ class FieldStart(pywave.Brick):
                 "reg-pos",
                 self.width / 2,
                 self.height * 0.125,
-                kwargs.get("regpos", ""),
+                kwargs.get("reg_pos", ""),
             )
         )
 
@@ -210,7 +210,7 @@ class FieldEnd(pywave.Brick):
                 "reg-pos",
                 self.width / 2,
                 self.height * 0.125,
-                kwargs.get("regpos", ""),
+                kwargs.get("reg_pos", ""),
             )
         )
 
@@ -256,7 +256,7 @@ class FieldBit(pywave.Brick):
                 "reg-pos",
                 self.width / 2,
                 self.height * 0.125,
-                kwargs.get("regpos", ""),
+                kwargs.get("reg_pos", ""),
             )
         )
 

@@ -128,23 +128,24 @@ class Brick:
         for i, path in enumerate(self.paths):
             x1, y1 = path[1]
             py = previous_y[i] if isinstance(previous_y, list) else previous_y
+            dx = self.slewing*(y1-py)/self.height
             self.paths[i] = [
                 path[0],
-                (shift, py if py > -1 else y1),
-                (x1 + shift, py if py > -1 else y1)
+                (x1 + shift + dx, py if py > -1 else y1)
             ] + path[3:]
         for i, poly in enumerate(self.polygons):
             x1, y1 = poly[1]
             x2, y2 = poly[-1]
             py = previous_y[i] if isinstance(previous_y, list) else previous_y
+            dx = self.slewing*(y1-py)/self.height
             self.polygons[i] = (
                 [
                     poly[0],
-                    (shift, py if py > -1 else y1),
-                    (x1 + shift, py if py > -1 else y1)
+                    (shift + dx, py if py > -1 else y1),
+                    (x1 + shift + dx, py if py > -1 else y1)
                 ] + poly[2:-1] +
                 [
-                    (x2 + shift, py if py > -1 else y2)
+                    (x2 + shift + dx, py if py > -1 else y2)
                 ]
             )
 
@@ -159,10 +160,9 @@ class Brick:
         """
         for i, path in enumerate(self.paths):
             x1, y1 = path[-1]
-            x2, y2 = path[-2]
             ny = next_y[i] if isinstance(next_y, list) else next_y
             self.paths[i] = path[:-1] + [
-                (x1 + shift, ny if ny > -1 else y1),
+                (x1 + shift + self.slewing*(y1-ny)/self.height, ny if ny > -1 else y1),
             ]
         for i, poly in enumerate(self.polygons):
             l = int(len(poly) / 2)

@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="488" height="210.0" viewBox="-1 -1 489 212.0">
+<style>
+.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.700em;font-family: Fira Mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
+.text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;}
+.attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
+.stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
+.data {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.arrow {fill: rgba(0, 0, 0, 255);stroke: none;}
+.hide {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
+.hatch {fill: url(#diagonalHatch);}
+.s2-polygon {fill: rgba(0, 0, 0, 0);stroke: none;}
+.s3-polygon {fill: rgba(255, 255, 176, 255);stroke: none;}
+.s4-polygon {fill: rgba(255, 224, 185, 255);stroke: none;}
+.s5-polygon {fill: rgba(185, 224, 255, 255);stroke: none;}
+.tick {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: 1, 3;}
+.big_gap {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: none;}
+.edge {fill: none;stroke: rgba(0, 0, 255, 255);stroke-width: 1;}
+.edge-arrow {fill: rgba(0, 0, 255, 255);stroke: none;overflow: visible;}
+.edge-text {font-family: Fira Mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);text-anchor: middle;}
+.edge-background {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
+.border {stroke-width: 1.25;stroke: rgba(0, 0, 0, 255);}
+.h1 {fill: rgba(0, 0, 0, 255);font-size: 15.258px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h2 {fill: rgba(0, 0, 0, 255);font-size: 12.208px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h3 {fill: rgba(0, 0, 0, 255);font-size: 9.767px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h4 {fill: rgba(0, 0, 0, 255);font-size: 7.817px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h5 {fill: rgba(0, 0, 0, 255);font-size: 6.250px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h6 {fill: rgba(0, 0, 0, 255);font-size: 5.000px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.reg-data {fill: rgba(0, 0, 0, 255);font-size: 0.800em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.reg-pos {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}</style>
+
+<defs>
+    <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="5" style="stroke:black; stroke-width:1" />
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5"
+        markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse"
+        orient="auto-start-reverse" style="fill:#00F;">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <filter x="0" y="0" width="1" height="1" id="solid">
+      <feFlood flood-color="white"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+</defs>
+<g id="a"  >
+<g id="ticks_1"  transform="translate(80, 0)"  >
+<path d="M0,0 L0,210.0" class="tick" style="fill: none;" />
+<path d="M40,0 L40,210.0" class="tick" style="fill: none;" />
+<path d="M80,0 L80,210.0" class="tick" style="fill: none;" />
+<path d="M120,0 L120,210.0" class="tick" style="fill: none;" />
+<path d="M160,0 L160,210.0" class="tick" style="fill: none;" />
+<path d="M200,0 L200,210.0" class="tick" style="fill: none;" />
+<path d="M240,0 L240,210.0" class="tick" style="fill: none;" />
+<path d="M280,0 L280,210.0" class="tick" style="fill: none;" />
+<path d="M320,0 L320,210.0" class="tick" style="fill: none;" />
+<path d="M360,0 L360,210.0" class="tick" style="fill: none;" />
+</g>
+
+<g id="mcu_clk"  transform="translate(80, 0)"  >
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">mcu_clk</text>
+<g data-symbol="P"  transform="translate(0, 0)"  class="s2">
+<path d="M0,20 L3.0,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(1.5, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+<g data-symbol="P"  transform="translate(40, 0)"  class="s2">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+<g data-symbol="P"  transform="translate(80, 0)"  class="s2">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+<g data-symbol="P"  transform="translate(120, 0)"  class="s2">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+<g data-symbol="P"  transform="translate(160, 0)"  class="s2">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+<g data-symbol="P"  transform="translate(200, 0)"  class="s2">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+<g data-symbol="P"  transform="translate(240, 0)"  class="s2">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+<g data-symbol="P"  transform="translate(280, 0)"  class="s2">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+<g data-symbol="P"  transform="translate(320, 0)"  class="s2">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+<g data-symbol="P"  transform="translate(360, 0)"  class="s2">
+<path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.0, 10.0) rotate(-171.4692343900519, 0, 0)" class="arrow" style=""/>
+</g>
+</g>
+<g id="dac"  transform="translate(80, 30.0)"  >
+<text x="-10.000000" y="30.000000" class="title" style="fill: rgba(0, 0, 255, 255);stroke: none;">dac</text>
+<g data-symbol="c"  transform="translate(0, 0)"  class="s2">
+<path d="m0,80 C16.0,40.0 16.0,40.0 64.0,40.0 L64.0,40.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(64.0, 0)"  class="s2">
+<path d="m0,40.0 C8.0,60.0 8.0,60.0 64.0,60.0 L64.0,60.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(128.0, 0)"  class="s2">
+<path d="m0,60.0 C4.0,50.0 4.0,50.0 64.0,50.0 L64.0,50.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(192.0, 0)"  class="s2">
+<path d="m0,50.0 C2.0,55.0 2.0,55.0 64.0,55.0 L64.0,55.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(256.0, 0)"  class="s2">
+<path d="m0,55.0 C1.0,52.5 1.0,52.5 64.0,52.5 L64.0,52.5" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(320.0, 0)"  class="s2">
+<path d="m0,52.5 C0.5,53.75 0.5,53.75 64.0,53.75 L64.0,53.75" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(384.0, 0)"  class="s2">
+<path d="m0,53.75 C0.25,53.125 0.25,53.125 64.0,53.125 L64.0,53.125" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(448.0, 0)"  class="s2">
+<path d="m0,53.125 C0.125,53.4375 0.125,53.4375 64.0,53.4375 L64.0,53.4375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(512.0, 0)"  class="s2">
+<path d="m0,53.4375 C0.0625,53.28125 0.0625,53.28125 64.0,53.28125 L64.0,53.28125" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(576.0, 0)"  class="s2">
+<path d="m0,53.28125 C0.03125,53.359375 0.03125,53.359375 64.0,53.359375 L64.0,53.359375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+</g>
+<g id="vin"  transform="translate(80, 30.0)"  >
+<text x="-10.000000" y="50.000000" class="title" style="fill: rgba(255, 0, 0, 255);stroke: none;">vin</text>
+<g data-symbol="0"  transform="translate(0, 0)"  class="s2">
+<path d="M0,80 L3,80 L6,80 L40,80" class="path" style="fill: none;stroke: rgba(255, 0, 0, 255);font-size: 0.400em;stroke-width: 1.5;stroke-dasharray: 5, 3, 1, 5;" />
+</g>
+<g data-symbol="a"  transform="translate(40, 0)"  class="s2">
+<path d="M0,80 L0,80.0 L1,72.44083494863438 L2,67.02445650753579 L3,63.14345176457179 L4,60.362590349752715 L5,58.37001607566832 L6,56.942274219643004 L7,55.91925247638414 L8,55.186225365941375 L9,54.66098848980971 L10,54.2846398225934 L11,54.0149742188402 L12,53.821750370366246 L13,53.683299432985095 L14,53.58409500137321 L15,53.51301191997561 L16,53.46207866650217 L17,53.425583395639066 L18,53.39943339137777 L19,53.38069609455292 L20,53.367270234702396 L21,53.35765018574811 L22,53.35075711946313 L23,53.34581802164408 L24,53.34227900341074 L25,53.33974318603786 L26,53.337926193492294 L27,53.33662426144231 L28,53.33569138636427 L29,53.33502295216199 L30,53.334543998127 L31,53.33420081256461 L32,53.33395490936381 L33,53.33377871202108 L34,53.33365246110816 L35,53.33356199837607 L36,53.33349717899609 L37,53.3334507338808 L38,53.33341745450147 L39,53.33339360878419 L40,53.33337652258113 L41,53.33336427978166 L42,53.33335550743251 L43,53.33334922176968 L44,53.33334471789546 L45,53.33334149072854 L46,53.33333917836242 L47,53.333337521479685 L48,53.33333633427132 L49,53.33333548359937 L50,53.33333487406627 L51,53.33333443731672 L52,53.333334124372 L53,53.333333900137305 L54,53.33333373946613 L55,53.3333336243402 L56,53.33333354184886 L57,53.33333348274124 L58,53.33333344038877 L59,53.33333341004192 L60,53.33333338829743 L61,53.33333337271682 L62,53.333333361552846 L63,53.3333333535535 L64,53.33333334782171 L65,53.33333334371471 L66,53.333333340771915 L67,53.33333333866331 L68,53.33333333715243 L69,53.33333333606984 L70,53.33333333529413 L71,53.333333334738306 L72,53.33333333434004 L73,53.33333333405467 L74,53.33333333385019 L75,53.33333333370368 L76,53.333333333598695 L77,53.33333333352348 L78,53.333333333469575 L79,53.33333333343096 L80,53.33333333340328 L81,53.33333333338345 L82,53.33333333336925 L83,53.333333333359064 L84,53.333333333351774 L85,53.33333333334655 L86,53.33333333334281 L87,53.33333333334012 L88,53.33333333333819 L89,53.33333333333682 L90,53.33333333333583 L91,53.33333333333512 L92,53.33333333333462 L93,53.33333333333425 L94,53.333333333334 L95,53.333333333333805 L96,53.33333333333367 L97,53.33333333333357 L98,53.333333333333506 L99,53.33333333333346 L100,53.33333333333343 L101,53.3333333333334 L102,53.33333333333338 L103,53.33333333333337 L104,53.33333333333336 L105,53.33333333333336 L106,53.33333333333334 L107,53.33333333333334 L108,53.33333333333334 L109,53.33333333333334 L110,53.33333333333334 L111,53.33333333333334 L112,53.33333333333334 L113,53.333333333333336 L114,53.333333333333336 L115,53.333333333333336 L116,53.333333333333336 L117,53.333333333333336 L118,53.333333333333336 L119,53.333333333333336 L120,53.333333333333336 L121,53.333333333333336 L122,53.333333333333336 L123,53.333333333333336 L124,53.333333333333336 L125,53.333333333333336 L126,53.333333333333336 L127,53.333333333333336 L128,53.333333333333336 L129,53.333333333333336 L130,53.333333333333336 L131,53.333333333333336 L132,53.333333333333336 L133,53.333333333333336 L134,53.333333333333336 L135,53.333333333333336 L136,53.333333333333336 L137,53.333333333333336 L138,53.333333333333336 L139,53.333333333333336 L140,53.333333333333336 L141,53.333333333333336 L142,53.333333333333336 L143,53.333333333333336 L144,53.333333333333336 L145,53.333333333333336 L146,53.333333333333336 L147,53.333333333333336 L148,53.333333333333336 L149,53.333333333333336 L150,53.333333333333336 L151,53.333333333333336 L152,53.333333333333336 L153,53.333333333333336 L154,53.333333333333336 L155,53.333333333333336 L156,53.333333333333336 L157,53.333333333333336 L158,53.333333333333336 L159,53.333333333333336 L160,53.333333333333336 L161,53.333333333333336 L162,53.333333333333336 L163,53.333333333333336 L164,53.333333333333336 L165,53.333333333333336 L166,53.333333333333336 L167,53.333333333333336 L168,53.333333333333336 L169,53.333333333333336 L170,53.333333333333336 L171,53.333333333333336 L172,53.333333333333336 L173,53.333333333333336 L174,53.333333333333336 L175,53.333333333333336 L176,53.333333333333336 L177,53.333333333333336 L178,53.333333333333336 L179,53.333333333333336 L180,53.333333333333336 L181,53.333333333333336 L182,53.333333333333336 L183,53.333333333333336 L184,53.333333333333336 L185,53.333333333333336 L186,53.333333333333336 L187,53.333333333333336 L188,53.333333333333336 L189,53.333333333333336 L190,53.333333333333336 L191,53.333333333333336 L192,53.333333333333336 L193,53.333333333333336 L194,53.333333333333336 L195,53.333333333333336 L196,53.333333333333336 L197,53.333333333333336 L198,53.333333333333336 L199,53.333333333333336 L200,53.333333333333336 L201,53.333333333333336 L202,53.333333333333336 L203,53.333333333333336 L204,53.333333333333336 L205,53.333333333333336 L206,53.333333333333336 L207,53.333333333333336 L208,53.333333333333336 L209,53.333333333333336 L210,53.333333333333336 L211,53.333333333333336 L212,53.333333333333336 L213,53.333333333333336 L214,53.333333333333336 L215,53.333333333333336 L216,53.333333333333336 L217,53.333333333333336 L218,53.333333333333336 L219,53.333333333333336 L220,53.333333333333336 L221,53.333333333333336 L222,53.333333333333336 L223,53.333333333333336 L224,53.333333333333336 L225,53.333333333333336 L226,53.333333333333336 L227,53.333333333333336 L228,53.333333333333336 L229,53.333333333333336 L230,53.333333333333336 L231,53.333333333333336 L232,53.333333333333336 L233,53.333333333333336 L234,53.333333333333336 L235,53.333333333333336 L236,53.333333333333336 L237,53.333333333333336 L238,53.333333333333336 L239,53.333333333333336 L240,53.333333333333336 L241,53.333333333333336 L242,53.333333333333336 L243,53.333333333333336 L244,53.333333333333336 L245,53.333333333333336 L246,53.333333333333336 L247,53.333333333333336 L248,53.333333333333336 L249,53.333333333333336 L250,53.333333333333336 L251,53.333333333333336 L252,53.333333333333336 L253,53.333333333333336 L254,53.333333333333336 L255,53.333333333333336 L256,53.333333333333336 L257,53.333333333333336 L258,53.333333333333336 L259,53.333333333333336 L260,53.333333333333336 L261,53.333333333333336 L262,53.333333333333336 L263,53.333333333333336 L264,53.333333333333336 L265,53.333333333333336 L266,53.333333333333336 L267,53.333333333333336 L268,53.333333333333336 L269,53.333333333333336 L270,53.333333333333336 L271,53.333333333333336 L272,53.333333333333336 L273,53.333333333333336 L274,53.333333333333336 L275,53.333333333333336 L276,53.333333333333336 L277,53.333333333333336 L278,53.333333333333336 L279,53.333333333333336 L280,53.333333333333336 L281,53.333333333333336 L282,53.333333333333336 L283,53.333333333333336 L284,53.333333333333336 L285,53.333333333333336 L286,53.333333333333336 L287,53.333333333333336 L288,53.333333333333336 L289,53.333333333333336 L290,53.333333333333336 L291,53.333333333333336 L292,53.333333333333336 L293,53.333333333333336 L294,53.333333333333336 L295,53.333333333333336 L296,53.333333333333336 L297,53.333333333333336 L298,53.333333333333336 L299,53.333333333333336 L300,53.333333333333336 L301,53.333333333333336 L302,53.333333333333336 L303,53.333333333333336 L304,53.333333333333336 L305,53.333333333333336 L306,53.333333333333336 L307,53.333333333333336 L308,53.333333333333336 L309,53.333333333333336 L310,53.333333333333336 L311,53.333333333333336 L312,53.333333333333336 L313,53.333333333333336 L314,53.333333333333336 L315,53.333333333333336 L316,53.333333333333336 L317,53.333333333333336 L318,53.333333333333336 L319,53.333333333333336 L320,53.333333333333336 L321,53.333333333333336 L322,53.333333333333336 L323,53.333333333333336 L324,53.333333333333336 L325,53.333333333333336 L326,53.333333333333336 L327,53.333333333333336 L328,53.333333333333336 L329,53.333333333333336 L330,53.333333333333336 L331,53.333333333333336 L332,53.333333333333336 L333,53.333333333333336 L334,53.333333333333336 L335,53.333333333333336 L336,53.333333333333336 L337,53.333333333333336 L338,53.333333333333336 L339,53.333333333333336 L340,53.333333333333336 L341,53.333333333333336 L342,53.333333333333336 L343,53.333333333333336 L344,53.333333333333336 L345,53.333333333333336 L346,53.333333333333336 L347,53.333333333333336 L348,53.333333333333336 L349,53.333333333333336 L350,53.333333333333336 L351,53.333333333333336 L352,53.333333333333336 L353,53.333333333333336 L354,53.333333333333336 L355,53.333333333333336 L356,53.333333333333336 L357,53.333333333333336 L358,53.333333333333336 L359,53.333333333333336 L360,53.333333333333336" class="path" style="fill: none;stroke: rgba(255, 0, 0, 255);font-size: 0.400em;stroke-width: 1.5;stroke-dasharray: 5, 3, 1, 5;" />
+</g>
+</g>
+<g id="vmax"  transform="translate(80, 30.0)"  >
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">vmax</text>
+<g data-symbol="1"  transform="translate(0, 0)"  class="s2">
+<path d="M0,0 L3,0 L6,0 L400,0" class="path" style="fill: none;" />
+</g>
+</g>
+<g id="vmin"  transform="translate(80, 30.0)"  >
+<text x="-10.000000" y="70.000000" class="title" style="stroke: none;">vmin</text>
+<g data-symbol="l"  transform="translate(0, 0)"  class="s2">
+<path d="M0,80 L0.0,80 L400,80" class="path" style="fill: none;" />
+</g>
+</g>
+<g id="dac_ref"  transform="translate(80, 120.0)"  >
+<text x="-10.000000" y="30.000000" class="title" style="fill: rgba(0, 0, 255, 255);stroke: none;">dac_ref</text>
+<g data-symbol="s"  transform="translate(0, 0)"  class="s2">
+<path d="M0,80 L16.0,40.0 L64.0,40.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(64.0, 0)"  class="s2">
+<path d="M0,40.0 L8.0,60.0 L64.0,60.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(128.0, 0)"  class="s2">
+<path d="M0,60.0 L4.0,50.0 L64.0,50.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(192.0, 0)"  class="s2">
+<path d="M0,50.0 L2.0,55.0 L64.0,55.0" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(256.0, 0)"  class="s2">
+<path d="M0,55.0 L1.0,52.5 L64.0,52.5" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(320.0, 0)"  class="s2">
+<path d="M0,52.5 L0.5,53.75 L64.0,53.75" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(384.0, 0)"  class="s2">
+<path d="M0,53.75 L0.25,53.125 L64.0,53.125" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(448.0, 0)"  class="s2">
+<path d="M0,53.125 L0.125,53.4375 L64.0,53.4375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(512.0, 0)"  class="s2">
+<path d="M0,53.4375 L0.0625,53.28125 L64.0,53.28125" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(576.0, 0)"  class="s2">
+<path d="M0,53.28125 L0.03125,53.359375 L64.0,53.359375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+</g>
+</g>
+
+</svg>

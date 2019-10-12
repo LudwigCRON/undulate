@@ -140,7 +140,7 @@
 <polygon points="0,10.0 3,0 317,0 320,10.0 317,20 3,20 0,10.0 " class="s2-polygon" style="" />
 <path d="M0,10.0 L3,0 L317,0 L320,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L317,20 L320,10.0" class="path" style="fill: none;" />
-<text x="160.000000" y="10.000000" class="data" style="stroke: none;"></text>
+<text x="160.000000" y="10.000000" class="data" style="stroke: none;">COFFEE</text>
 </g>
 <g data-symbol="x"  transform="translate(400, 0)"  class="s2">
 <polygon points="0,10.0 3,0 77,0 80,10.0 77,20 3,20 0,10.0 " class="hatch" style="" />
@@ -190,7 +190,7 @@
 <polygon points="0,20 3,0 117,0 120,10.0 117,20 3,20 0,20 " class="s2-polygon" style="" />
 <path d="M0,20 L3,0 L117,0 L120,10.0" class="path" style="fill: none;" />
 <path d="M0,20 L3,20 L117,20 L120,10.0" class="path" style="fill: none;" />
-<text x="60.000000" y="10.000000" class="data" style="stroke: none;"></text>
+<text x="60.000000" y="10.000000" class="data" style="stroke: none;">COFFEE</text>
 </g>
 </g>
 </g>
