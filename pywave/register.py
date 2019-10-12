@@ -51,7 +51,9 @@ class Register:
         wave = "".join([field.wave for field in self.fields[::-1]])
         data = " ".join([field.data for field in self.fields[::-1]])
         attr = [(field.width, field.attributes) for field in self.fields[::-1]]
-        _type = [field.type for field in self.fields[::-1]] 
+        _type = []
+        for field in self.fields[::-1]:
+            _type.extend([field.type]*field.width)
         # calculate position of extremities
         pos = [0]
         for f in self.fields:
@@ -71,6 +73,7 @@ class FieldStart(pywave.Brick):
 
     def __init__(self, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
+        _attrs = kwargs.get("attribute", None)
         self.paths.append(
             [
                 "path",
@@ -84,14 +87,13 @@ class FieldStart(pywave.Brick):
             self.polygons.append(
                 [
                     "%s-polygon" % kwargs.get("style", ""),
-                    (self.width, self.height),
+                    (self.width * _attrs[0], self.height),
                     (0, self.height),
                     (0, self.height / 4),
-                    (self.width, self.height / 4),
+                    (self.width * _attrs[0], self.height / 4),
                 ]
             )
         # add attributes
-        _attrs = kwargs.get("attribute", None)
         attrs = None
         if not _attrs is None and isinstance(_attrs, tuple):
             width, attrs = _attrs
@@ -149,16 +151,6 @@ class FieldMid(pywave.Brick):
                 ("l", 0, self.height * 0.125),
             ]
         )
-        if not kwargs.get("style", None) is None:
-            self.polygons.append(
-                [
-                    "%s-polygon" % kwargs.get("style", ""),
-                    (self.width, self.height),
-                    (0, self.height),
-                    (0, self.height / 4),
-                    (self.width, self.height / 4),
-                ]
-            )
         # add text
         self.texts.append(
             (
@@ -186,16 +178,6 @@ class FieldEnd(pywave.Brick):
                 (0, self.height / 4),
             ]
         )
-        if not kwargs.get("style", None) is None:
-            self.polygons.append(
-                [
-                    "%s-polygon" % kwargs.get("style", ""),
-                    (self.width, self.height),
-                    (0, self.height),
-                    (0, self.height / 4),
-                    (self.width, self.height / 4),
-                ]
-            )
         # add text
         self.texts.append(
             (

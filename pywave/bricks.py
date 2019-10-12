@@ -181,7 +181,7 @@ class BRICKS(Enum):
             bool
                 boolean result asserting the symb need a type
         """
-        return symb in [pywave.BRICKS.field_end, pywave.BRICKS.field_bit]
+        return symb in [pywave.BRICKS.field_start, pywave.BRICKS.field_bit]
 
     @staticmethod
     def is_repeating_symbol(symb) -> bool:
