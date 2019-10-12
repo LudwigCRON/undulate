@@ -647,7 +647,7 @@ class Renderer:
                              analogue[last_valid_brick_idx])
                 if not pywave.BRICKS.need_attribute(brick):
                     attributes.insert(i-1 if i > 0 else 0,
-                        attributes[last_valid_brick_idx])
+                        attributes[last_valid_brick_idx] if last_valid_brick_idx < len(attributes) else None)
                 if not pywave.BRICKS.need_position(brick):
                     reg_pos.insert(i-1 if i > 0 else 0,
                         None if not is_duplicate else \
@@ -849,7 +849,6 @@ class Renderer:
         height       = kwargs.get("height", 0)
         config       = wavelanes.get("config", {})
         no_ticks     = config.get("no_ticks", False)
-        print(config)
         def _gen(offset, width, height, brick_width, brick_height):
             ox, oy, dy = offset[0], offset[1], 0
             # some space for group separation

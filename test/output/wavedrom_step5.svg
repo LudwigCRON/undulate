@@ -85,9 +85,31 @@
 </g>
 </g>
 <g id="Master"  transform="translate(0, 30.0)"  >
+<g id="ticks_9"  transform="translate(60, 0)"  >
+<path d="M0,0 L0,320.0" class="tick" style="fill: none;" />
+<path d="M40,0 L40,320.0" class="tick" style="fill: none;" />
+<path d="M80,0 L80,320.0" class="tick" style="fill: none;" />
+<path d="M120,0 L120,320.0" class="tick" style="fill: none;" />
+<path d="M160,0 L160,320.0" class="tick" style="fill: none;" />
+<path d="M200,0 L200,320.0" class="tick" style="fill: none;" />
+<path d="M240,0 L240,320.0" class="tick" style="fill: none;" />
+<path d="M280,0 L280,320.0" class="tick" style="fill: none;" />
+</g>
+
 <text x="0.000000" y="4.000000" class="h2" style="stroke: none;">Master</text>
 <path d="M0,14 L380,14" class="border ctx-y" style="fill: none;" />
 <g id="ctrl"  transform="translate(0, 20)"  >
+<g id="ticks_9"  transform="translate(60, 0)"  >
+<path d="M0,0 L0,320.0" class="tick" style="fill: none;" />
+<path d="M40,0 L40,320.0" class="tick" style="fill: none;" />
+<path d="M80,0 L80,320.0" class="tick" style="fill: none;" />
+<path d="M120,0 L120,320.0" class="tick" style="fill: none;" />
+<path d="M160,0 L160,320.0" class="tick" style="fill: none;" />
+<path d="M200,0 L200,320.0" class="tick" style="fill: none;" />
+<path d="M240,0 L240,320.0" class="tick" style="fill: none;" />
+<path d="M280,0 L280,320.0" class="tick" style="fill: none;" />
+</g>
+
 <text x="0.000000" y="4.000000" class="h3" style="stroke: none;">ctrl</text>
 <g id="write"  transform="translate(60, 20)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">write</text>
@@ -165,9 +187,31 @@
 </g>
 </g>
 <g id="Slave"  transform="translate(0, 220.0)"  >
+<g id="ticks_11"  transform="translate(60, 0)"  >
+<path d="M0,0 L0,320.0" class="tick" style="fill: none;" />
+<path d="M40,0 L40,320.0" class="tick" style="fill: none;" />
+<path d="M80,0 L80,320.0" class="tick" style="fill: none;" />
+<path d="M120,0 L120,320.0" class="tick" style="fill: none;" />
+<path d="M160,0 L160,320.0" class="tick" style="fill: none;" />
+<path d="M200,0 L200,320.0" class="tick" style="fill: none;" />
+<path d="M240,0 L240,320.0" class="tick" style="fill: none;" />
+<path d="M280,0 L280,320.0" class="tick" style="fill: none;" />
+</g>
+
 <text x="0.000000" y="4.000000" class="h2" style="stroke: none;">Slave</text>
 <path d="M0,14 L380,14" class="border ctx-y" style="fill: none;" />
 <g id="ctrl"  transform="translate(0, 20)"  >
+<g id="ticks_11"  transform="translate(60, 0)"  >
+<path d="M0,0 L0,320.0" class="tick" style="fill: none;" />
+<path d="M40,0 L40,320.0" class="tick" style="fill: none;" />
+<path d="M80,0 L80,320.0" class="tick" style="fill: none;" />
+<path d="M120,0 L120,320.0" class="tick" style="fill: none;" />
+<path d="M160,0 L160,320.0" class="tick" style="fill: none;" />
+<path d="M200,0 L200,320.0" class="tick" style="fill: none;" />
+<path d="M240,0 L240,320.0" class="tick" style="fill: none;" />
+<path d="M280,0 L280,320.0" class="tick" style="fill: none;" />
+</g>
+
 <text x="0.000000" y="4.000000" class="h3" style="stroke: none;">ctrl</text>
 <g id="ack"  transform="translate(60, 20)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">ack</text>
