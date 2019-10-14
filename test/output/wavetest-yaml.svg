@@ -226,25 +226,6 @@
 </g>
 </g>
 <g id="test 1"  transform="translate(0, 90.0)"  >
-<g id="ticks_2"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h2" style="stroke: none;">test 1</text>
 <path d="M0,14 L790,14" class="border ctx-y" style="fill: none;" />
 <g id="pclk"  transform="translate(150, 20)"  >
@@ -517,25 +498,6 @@
 </g>
 </g>
 <g id="test 2"  transform="translate(0, 380.0)"  >
-<g id="ticks_3"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h2" style="stroke: none;">test 2</text>
 <path d="M0,14 L790,14" class="border ctx-y" style="fill: none;" />
 <g id="clk"  transform="translate(150, 20)"  >
@@ -614,25 +576,6 @@
 </g>
 </g>
 <g id="test 3"  transform="translate(0, 490.0)"  >
-<g id="ticks_4"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h2" style="stroke: none;">test 3</text>
 <path d="M0,14 L790,14" class="border ctx-y" style="fill: none;" />
 <g id="clk"  transform="translate(150, 20)"  >
@@ -764,25 +707,6 @@
 </g>
 </g>
 <g id="test 4"  transform="translate(0, 660.0)"  >
-<g id="ticks_9"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h2" style="stroke: none;">test 4</text>
 <path d="M0,14 L790,14" class="border ctx-y" style="fill: none;" />
 <g id="clk"  transform="translate(150, 20)"  >
@@ -815,46 +739,8 @@
 </g>
 </g>
 <g id="Master"  transform="translate(0, 50.0)"  >
-<g id="ticks_9"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h3" style="stroke: none;">Master</text>
 <g id="ctrl"  transform="translate(0, 20)"  >
-<g id="ticks_7"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h4" style="stroke: none;">ctrl</text>
 <g id="write"  transform="translate(150, 20)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">write</text>
@@ -931,46 +817,8 @@
 </g>
 </g>
 <g id="Slave"  transform="translate(0, 190.0)"  >
-<g id="ticks_9"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h4" style="stroke: none;">Slave</text>
 <g id="ctrl"  transform="translate(0, 20)"  >
-<g id="ticks_9"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h5" style="stroke: none;">ctrl</text>
 <g id="ack"  transform="translate(150, 20)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">ack</text>
@@ -1026,25 +874,6 @@
 </g>
 </g>
 <g id="test 5"  transform="translate(0, 1000.0)"  >
-<g id="ticks_10"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h2" style="stroke: none;">test 5</text>
 <path d="M0,14 L790,14" class="border ctx-y" style="fill: none;" />
 <g id="CK"  transform="translate(150, 20)"  >
@@ -1256,25 +1085,6 @@
 </g>
 </g>
 <g id="test 6"  transform="translate(0, 1170.0)"  >
-<g id="ticks_11"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h2" style="stroke: none;">test 6</text>
 <path d="M0,14 L790,14" class="border ctx-y" style="fill: none;" />
 <g id="DQS"  transform="translate(150, 20)"  >
@@ -1387,25 +1197,6 @@
 </g>
 </g>
 <g id="test 7"  transform="translate(0, 1310.0)"  >
-<g id="ticks_12"  transform="translate(150, 0)"  >
-<path d="M0,0 L0,1580.0" class="tick" style="fill: none;" />
-<path d="M40,0 L40,1580.0" class="tick" style="fill: none;" />
-<path d="M80,0 L80,1580.0" class="tick" style="fill: none;" />
-<path d="M120,0 L120,1580.0" class="tick" style="fill: none;" />
-<path d="M160,0 L160,1580.0" class="tick" style="fill: none;" />
-<path d="M200,0 L200,1580.0" class="tick" style="fill: none;" />
-<path d="M240,0 L240,1580.0" class="tick" style="fill: none;" />
-<path d="M280,0 L280,1580.0" class="tick" style="fill: none;" />
-<path d="M320,0 L320,1580.0" class="tick" style="fill: none;" />
-<path d="M360,0 L360,1580.0" class="tick" style="fill: none;" />
-<path d="M400,0 L400,1580.0" class="tick" style="fill: none;" />
-<path d="M440,0 L440,1580.0" class="tick" style="fill: none;" />
-<path d="M480,0 L480,1580.0" class="tick" style="fill: none;" />
-<path d="M520,0 L520,1580.0" class="tick" style="fill: none;" />
-<path d="M560,0 L560,1580.0" class="tick" style="fill: none;" />
-<path d="M600,0 L600,1580.0" class="tick" style="fill: none;" />
-</g>
-
 <text x="0.000000" y="4.000000" class="h2" style="stroke: none;">test 7</text>
 <path d="M0,14 L790,14" class="border ctx-y" style="fill: none;" />
 <g id="CK"  transform="translate(150, 20)"  >

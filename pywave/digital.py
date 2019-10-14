@@ -348,6 +348,9 @@ class Data(pywave.Brick):
     def __init__(self, unknown: bool = False, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
         self.last_y = self.height / 2 if self.last_y is None else self.last_y
+        if self.ignore_transition:
+            self.ignore_start_transition = True
+            self.ignore_end_transition = True
         # add shape
         if self.is_first:
             self.paths.append(
@@ -369,24 +372,20 @@ class Data(pywave.Brick):
                 ]
             )
         else:
-            self.paths.append(
-                [
-                    "path",
-                    (0, self.last_y if not self.ignore_transition else 0),
-                    (self.slewing, 0),
-                    (self.width - self.slewing, 0),
-                    (self.width, self.height / 2),
-                ]
-            )
-            self.paths.append(
-                [
-                    "path",
-                    (0, self.last_y if not self.ignore_transition else self.height),
-                    (self.slewing, self.height),
-                    (self.width - self.slewing, self.height),
-                    (self.width, self.height / 2),
-                ]
-            )
+            self.paths.append([
+                "path",
+                (0, self.last_y if not self.ignore_start_transition else 0),
+                (self.slewing, 0),
+                (self.width - self.slewing, 0),
+                (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+            ])
+            self.paths.append([
+                "path",
+                (0, self.last_y if not self.ignore_start_transition else self.height),
+                (self.slewing, self.height),
+                (self.width - self.slewing, self.height),
+                (self.width, self.height / 2 if not self.ignore_end_transition else self.height),
+            ])
         # add background
         style = "hatch" if unknown else "%s-polygon" % kwargs.get("style", "")
         if self.is_first:
@@ -406,17 +405,17 @@ class Data(pywave.Brick):
             self.polygons.append(
                 [
                     style,
-                    (0, self.last_y),
-                    (self.slewing, 0),
-                    (self.width - self.slewing, 0),
-                    (self.width, self.height / 2),
-                    (self.width - self.slewing, self.height),
-                    (self.slewing, self.height),
-                    (0, self.last_y),
+                    (0, self.last_y if not self.ignore_start_transition else 0),
+                    (self.slewing if not self.ignore_start_transition else 0, 0),
+                    (self.width - self.slewing if not self.ignore_end_transition else self.width, 0),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                    (self.width - self.slewing if not self.ignore_end_transition else self.width, self.height),
+                    (self.slewing if not self.ignore_start_transition else 0, self.height),
+                    (0, self.last_y if not self.ignore_start_transition else self.height),
                 ]
             )
         # add text
-        if not unknown:
+        if not unknown and not kwargs.get("hide_data", False):
             self.texts.append(
                 (
                     "data",

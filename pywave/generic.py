@@ -48,6 +48,8 @@ class Brick:
         "slewing",
         "duty_cycle",
         "ignore_transition",
+        "ignore_start_transition",
+        "ignore_end_transition",
         "is_first",
         "last_y",
         "first_y"
@@ -67,6 +69,8 @@ class Brick:
         self.duty_cycle = kwargs.get("duty_cycle", 0.5)
         #: prevent glitches in chain: bool
         self.ignore_transition = kwargs.get("ignore_transition", False)
+        self.ignore_start_transition = kwargs.get("ignore_start_transition", False)
+        self.ignore_end_transition = kwargs.get("ignore_end_transition", False)
         # chaining instance
         #: first brick in wavelane: bool
         self.is_first = kwargs.get("is_first", False)

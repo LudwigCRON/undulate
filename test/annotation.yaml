@@ -16,10 +16,21 @@ signal[2]:
 spacer_0:
   wave: ""
 
+# should have the 3 values
 experimental_0:
-  wave: "x=...|..|.."
+  wave: "x5...|..|4="
   data:
     - "0x70"
+    - "0x71"
+    - "0x72"
+
+# should only be 0x70
+experimental_0b:
+  wave: "x5.|.|..|.."
+  data:
+    - "0x70"
+    - "0x71"
+    - "0x72"
 
 experimental_1:
   wave: "x1...|..|.."

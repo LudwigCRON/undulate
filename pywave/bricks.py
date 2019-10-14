@@ -192,6 +192,8 @@ class BRICKS(Enum):
             bool
                 boolean result asserting the symb repeat the last valid one
         """
+        if isinstance(symb, str):
+            symb = BRICKS.from_char(symb)
         return symb in [BRICKS.repeat, BRICKS.gap]
 
     @staticmethod

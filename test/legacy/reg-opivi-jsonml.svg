@@ -84,7 +84,7 @@
 <polygon points="168,50 0,50 0,12.5 168,12.5 " class="s2-polygon" style="" />
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" style="fill: none;" />
 <text x="14.000000" y="31.250000" class="reg-data" style="stroke: none;"></text>
-<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;"></text>
+<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;">31</text>
 </g>
 <g data-symbol=":"  transform="translate(28, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" style="fill: none;"/>
@@ -121,7 +121,7 @@
 <polygon points="140,50 0,50 0,12.5 140,12.5 " class="s2-polygon" style="" />
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" style="fill: none;" />
 <text x="14.000000" y="31.250000" class="reg-data" style="stroke: none;"></text>
-<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;"></text>
+<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;">24</text>
 </g>
 <g data-symbol=":"  transform="translate(224, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" style="fill: none;"/>
@@ -147,7 +147,7 @@
 <polygon points="140,50 0,50 0,12.5 140,12.5 " class="s5-polygon" style="" />
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" style="fill: none;" />
 <text x="14.000000" y="31.250000" class="reg-data" style="stroke: none;"></text>
-<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;"></text>
+<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;">19</text>
 </g>
 <g data-symbol=":"  transform="translate(364, 0)"  class="s5">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" style="fill: none;"/>
@@ -173,7 +173,7 @@
 <polygon points="84,50 0,50 0,12.5 84,12.5 " class="s2-polygon" style="" />
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" style="fill: none;" />
 <text x="14.000000" y="31.250000" class="reg-data" style="stroke: none;">0</text>
-<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;"></text>
+<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;">14</text>
 </g>
 <g data-symbol=":"  transform="translate(504, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" style="fill: none;"/>
@@ -189,7 +189,7 @@
 <polygon points="140,50 0,50 0,12.5 140,12.5 " class="s2-polygon" style="" />
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" style="fill: none;" />
 <text x="14.000000" y="31.250000" class="reg-data" style="stroke: none;"></text>
-<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;"></text>
+<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;">11</text>
 </g>
 <g data-symbol=":"  transform="translate(588, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" style="fill: none;"/>
@@ -216,7 +216,7 @@
 <path d="M28,50 L0,50 L0,12.5 L28,12.5" class="path" style="fill: none;" />
 <text x="98.000000" y="62.000000" class="attr" style="stroke: none;">OPIVI</text>
 <text x="14.000000" y="31.250000" class="reg-data" style="stroke: none;">0</text>
-<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;"></text>
+<text x="14.000000" y="6.250000" class="reg-pos" style="stroke: none;">6</text>
 </g>
 <g data-symbol=":"  transform="translate(728, 0)"  class="s2">
 <path d="M28,43.75 l0,6.25 l-28,0 l0,-6.25" class="path" style="fill: none;"/>
