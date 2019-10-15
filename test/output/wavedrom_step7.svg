@@ -65,141 +65,141 @@
 <g id="A"  transform="translate(20, 0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">A</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(40, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L360,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L360,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(400, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L200,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L200,20" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="B"  transform="translate(20, 30.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">B</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L80,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L80,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(80, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L320,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L320,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(400, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L80,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L80,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(480, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L120,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L120,0" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="C"  transform="translate(20, 60.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">C</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L120,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L120,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(120, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L200,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L200,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(320, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L160,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L160,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(480, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L120,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L120,0" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="D"  transform="translate(20, 90.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">D</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L160,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L160,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(160, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L120,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L120,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(280, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L240,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L240,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(520, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L80,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L80,0" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="E"  transform="translate(20, 120.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">E</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L200,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L200,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(200, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L40,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L40,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(240, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L320,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L320,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(560, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L40,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L40,0" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="F"  transform="translate(20, 150.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">F</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L200,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L200,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(200, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L40,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L40,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(240, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L320,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L320,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(560, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L40,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L40,0" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="G"  transform="translate(20, 180.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">G</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L280,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L280,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(280, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L40,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L40,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(320, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L240,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L240,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(560, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L40,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L40,0" class="path" style="fill: none;" />
 </g>
 </g>
 </g>
-<path d="M65.0,10.0 C101.0,10.0 69.0,40.0 105.0,40.0" class="edge" style="fill: none;"/>
-<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(79.0, 20.5)" />
-<text x="85.000000" y="25.000000" class="edge-text" style="stroke: none;">t1</text>
+<path d="M61.5,10.0 C97.50000000000001,10.0 65.5,40.0 101.5,40.0" class="edge" style="fill: none;"/>
+<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(75.5, 20.5)" />
+<text x="81.500000" y="25.000000" class="edge-text" style="stroke: none;">t1</text>
 
-<path d="M145.0,70.0 C65.0,70.0 65.0,10.0 65.0,10.0" class="edge" style="fill: none;"/>
-<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(99.0, 35.5)" />
-<text x="105.000000" y="40.000000" class="edge-text" style="stroke: none;">t2</text>
+<path d="M141.5,70.0 C61.5,70.0 61.5,10.0 61.5,10.0" class="edge" style="fill: none;"/>
+<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(95.5, 35.5)" />
+<text x="101.500000" y="40.000000" class="edge-text" style="stroke: none;">t2</text>
 
-<path d="M145.0,70.0 C185.0,70.0 185.0,100.0 185.0,100.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(184.99999535621785, 96.50000000000308) rotate(0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 36,9 36,0 0,0 " class="edge-background" style=""  transform="translate(147.0, 80.5)" />
-<text x="165.000000" y="85.000000" class="edge-text" style="stroke: none;">time 3</text>
+<path d="M141.5,70.0 C181.5,70.0 181.5,100.0 181.5,100.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(181.4999960196153, 97.00000000000264) rotate(0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 36,9 36,0 0,0 " class="edge-background" style=""  transform="translate(143.5, 80.5)" />
+<text x="161.500000" y="85.000000" class="edge-text" style="stroke: none;">time 3</text>
 
-<path d="M185.0,100.0 C185.0,100.0 185.0,130.0 225.0,130.0" class="edge" style="fill: none;"/>
+<path d="M181.5,100.0 C181.5,100.0 181.5,130.0 221.5,130.0" class="edge" style="fill: none;"/>
 
-<path d="M225.0,130.0 C261.0,130.0 229.0,130.0 265.0,130.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(261.5, 130.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<path d="M221.5,130.0 C257.5,130.0 225.5,130.0 261.5,130.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(258.5, 130.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
 
-<path d="M265.0,130.0 L305.0,100.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(302.2, 102.1) rotate(-126.86992878854058, 0, 0)" class="edge-arrow" style=""/>
+<path d="M261.5,130.0 L301.5,100.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(299.1, 101.8) rotate(-126.86992878854058, 0, 0)" class="edge-arrow" style=""/>
 
-<path d="M305.0,100.0 C345.0,100.0 345.0,70.0 345.0,70.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(344.9999953562179, 73.49999999999692) rotate(-180, 0, 0)" class="edge-arrow" style=""/>
+<path d="M301.5,100.0 C341.5,100.0 341.5,70.0 341.5,70.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(341.4999960196153, 72.99999999999736) rotate(-180, 0, 0)" class="edge-arrow" style=""/>
 
-<path d="M345.0,70.0 C417.0,70.0 353.0,40.0 425.0,40.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(421.5, 40.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 54,9 54,0 0,0 " class="edge-background" style=""  transform="translate(358.0, 50.5)" />
-<text x="385.000000" y="55.000000" class="edge-text" style="stroke: none;">some text</text>
+<path d="M341.5,70.0 C413.5,70.0 349.5,40.0 421.5,40.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(418.5, 40.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 54,9 54,0 0,0 " class="edge-background" style=""  transform="translate(354.5, 50.5)" />
+<text x="381.500000" y="55.000000" class="edge-text" style="stroke: none;">some text</text>
 
-<path d="M345.0,70.0 C345.0,70.0 345.0,10.0 425.0,10.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(421.5, 10.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<path d="M341.5,70.0 C341.5,70.0 341.5,10.0 421.5,10.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(418.5, 10.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
 
-<path d="M225.0,160.0 C297.0,160.0 233.0,190.0 305.0,190.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(301.5, 190.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 30,9 30,0 0,0 " class="edge-background" style=""  transform="translate(250.0, 170.5)" />
-<text x="265.000000" y="175.000000" class="edge-text" style="stroke: none;">youpi</text>
+<path d="M221.5,160.0 C293.5,160.0 229.5,190.0 301.5,190.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(298.5, 190.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 30,9 30,0 0,0 " class="edge-background" style=""  transform="translate(246.5, 170.5)" />
+<text x="261.500000" y="175.000000" class="edge-text" style="stroke: none;">youpi</text>
 
 </svg>

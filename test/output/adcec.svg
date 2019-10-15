@@ -362,37 +362,37 @@
 <g id="phi_clk"  transform="translate(220, 180.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">phi_clk</text>
 <g data-symbol="l"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L0.0,20 L120,20" class="path" style="fill: none;" />
+<path d="M0,20 L0.0,20 L120.0,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="n"  transform="translate(120, 0)"  class="s2">
-<path d="M0,20 L0.0,20 L18.5,20 L21.5,0 L38.5,0 L40,10.0" class="path" style="fill: none;" />
+<path d="M0.0,20 L18.5,20 L21.5,0 L38.5,0 L43.0,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="h"  transform="translate(160, 0)"  class="s2">
-<path d="M0,10.0 L1.5,0 L120.0,0" class="path" style="fill: none;" />
+<path d="M3.0,0 L120.0,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="p"  transform="translate(280, 0)"  class="s2">
 <path d="M1.5,0 L18.5,0 L21.5,20 L38.5,20 L40.0,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="l"  transform="translate(320, 0)"  class="s2">
-<path d="M0.0,20 L120,20" class="path" style="fill: none;" />
+<path d="M0.0,20 L120.0,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="n"  transform="translate(440, 0)"  class="s2">
-<path d="M0,20 L0.0,20 L18.5,20 L21.5,0 L38.5,0 L40,10.0" class="path" style="fill: none;" />
+<path d="M0.0,20 L18.5,20 L21.5,0 L38.5,0 L43.0,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="h"  transform="translate(480, 0)"  class="s2">
-<path d="M0,10.0 L1.5,0 L120.0,0" class="path" style="fill: none;" />
+<path d="M3.0,0 L120.0,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="p"  transform="translate(600, 0)"  class="s2">
 <path d="M1.5,0 L18.5,0 L21.5,20 L38.5,20 L40.0,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="l"  transform="translate(640, 0)"  class="s2">
-<path d="M0.0,20 L120,20" class="path" style="fill: none;" />
+<path d="M0.0,20 L120.0,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="n"  transform="translate(760, 0)"  class="s2">
-<path d="M0,20 L0.0,20 L18.5,20 L21.5,0 L38.5,0 L40,10.0" class="path" style="fill: none;" />
+<path d="M0.0,20 L18.5,20 L21.5,0 L38.5,0 L43.0,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="h"  transform="translate(800, 0)"  class="s2">
-<path d="M0,10.0 L1.5,0 L120.0,0" class="path" style="fill: none;" />
+<path d="M3.0,0 L120.0,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="p"  transform="translate(920, 0)"  class="s2">
 <path d="M1.5,0 L18.5,0 L21.5,20 L38.5,20 L40.0,20" class="path" style="fill: none;" />

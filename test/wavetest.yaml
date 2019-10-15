@@ -97,13 +97,13 @@ test 5:
 
 test 6:
   DQS  :
-    wave: "z......m0.1010z."
+    wave: "z......ml.1010z."
   DQS_1:
-    wave: "z.....M.0.1010z."
+    wave: "z.....M.h.1010z."
   DQS_2:
-    wave: "z....m..0.1010z."
+    wave: "z....m..l.1010z."
   DQS_3:
-    wave: "z...M...0.1010z."
+    wave: "z...M...h.1010z."
 
 test 7:
   CK  :

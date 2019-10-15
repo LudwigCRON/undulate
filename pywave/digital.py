@@ -220,8 +220,8 @@ class Zero(pywave.Brick):
             [
                 "path",
                 (0, self.last_y),
-                (3, self.last_y),
-                (3 + self.slewing, self.height),
+                (self.slewing/2, self.last_y if self.is_first else self.height/2),
+                (self.slewing, self.height),
                 (self.width, self.height),
             ]
         )
@@ -248,8 +248,8 @@ class One(pywave.Brick):
             [
                 "path",
                 (0, self.last_y),
-                (3, self.last_y),
-                (3 + self.slewing, 0),
+                (self.slewing/2, self.last_y if self.is_first else self.height/2),
+                (self.slewing, 0),
                 (self.width, 0),
             ]
         )

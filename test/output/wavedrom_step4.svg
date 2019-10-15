@@ -80,7 +80,7 @@
 <g data-symbol="p"  transform="translate(240, 0)"  class="s2">
 <path d="M0,10.0 L1.5,0 L18.5,0 L21.5,20 L38.5,20 L40,10.0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="|"  transform="translate(270.0, 0)"  class="s2">
+<g data-symbol="|"  transform="translate(257.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -125,7 +125,7 @@
 <path d="M0,10.0 L3,0 L77,0 L80,10.0" class="path" style="fill: none;" />
 <path d="M0,10.0 L3,20 L77,20 L80,10.0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="|"  transform="translate(270.0, 0)"  class="s2">
+<g data-symbol="|"  transform="translate(257.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
@@ -145,41 +145,41 @@
 <g id="Request"  transform="translate(120, 60.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">Request</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L80,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L80,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(80, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L120,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L120,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(200, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L80,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L80,20" class="path" style="fill: none;" />
 </g>
-<g data-symbol="|"  transform="translate(270.0, 0)"  class="s2">
+<g data-symbol="|"  transform="translate(257.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="1"  transform="translate(280, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L80,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L80,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(360, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L40,20" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="Acknowledge"  transform="translate(120, 120.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">Acknowledge</text>
 <g data-symbol="1"  transform="translate(0, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,0 L280,0" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,0 L3,0 L280,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="|"  transform="translate(270.0, 0)"  class="s2">
+<g data-symbol="|"  transform="translate(257.0, 0)"  class="s2">
 <path d="M0,22 C5,22 5,-4 10,-4 L7,0 C2,0 2,24 -3,24 z" class="hide" style="fill: none;"/>
 <path d="M0,22 C5,22 5,-2 10,-2" class="path" style="fill: none;"/>
 <path d="M-3,22 C2,22 2,-2 7,-2" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="0"  transform="translate(280, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(320, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L80,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L80,0" class="path" style="fill: none;" />
 </g>
 </g>
 </g>

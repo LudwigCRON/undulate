@@ -92,25 +92,25 @@
 <g id="write"  transform="translate(60, 20)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">write</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(40, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L80,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L80,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(120, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L200,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L200,20" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="read"  transform="translate(60, 50.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">read</text>
 <g data-symbol="0"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L160,20" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,20 L3,20 L160,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(160, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L120,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L120,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(280, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L40,20" class="path" style="fill: none;" />
+<path d="M0,0 L1.5,10.0 L3,20 L40,20" class="path" style="fill: none;" />
 </g>
 </g>
 </g>
@@ -177,10 +177,10 @@
 <path d="M0,20 L3,20 L37,20 L40.0,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(40, 0)"  class="s2">
-<path d="M0.0,20 L6,20 L40,20" class="path" style="fill: none;" />
+<path d="M0.0,20 L3,20 L40,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(80, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L40,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L40,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="x"  transform="translate(120, 0)"  class="s2">
 <polygon points="0,0 3,0 35.5,0 41.5,20 35.5,20 37,20 3,20 0,0 " class="hatch" style="" />
@@ -188,10 +188,10 @@
 <path d="M0,0 L3,20 L37,20 L40.0,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="0"  transform="translate(160, 0)"  class="s2">
-<path d="M0.0,20 L6,20 L80,20" class="path" style="fill: none;" />
+<path d="M0.0,20 L3,20 L80,20" class="path" style="fill: none;" />
 </g>
 <g data-symbol="1"  transform="translate(240, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L40,0" class="path" style="fill: none;" />
+<path d="M0,20 L1.5,10.0 L3,0 L40,0" class="path" style="fill: none;" />
 </g>
 <g data-symbol="x"  transform="translate(280, 0)"  class="s2">
 <polygon points="0,0 3,0 37,0 40,10.0 37,20 3,20 0,0 " class="hatch" style="" />
