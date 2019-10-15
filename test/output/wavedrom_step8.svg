@@ -56,76 +56,76 @@
 
 <g id="A"  transform="translate(20, 0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">A</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L40,20" class="path" style="fill: none;" />
+<g data-symbol="0"  transform="translate(0, 0)"  class="s2">
+<path d="M0,20 L1.5,20 L3,20 L40,20" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.one"  transform="translate(40, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L120,0" class="path" style="fill: none;" />
+<g data-symbol="1"  transform="translate(40, 0)"  class="s2">
+<path d="M0,20 L1.5,10.0 L3,0 L120,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.zero"  transform="translate(160, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L120,20" class="path" style="fill: none;" />
+<g data-symbol="0"  transform="translate(160, 0)"  class="s2">
+<path d="M0,0 L1.5,10.0 L3,20 L120,20" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="B"  transform="translate(20, 30.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">B</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L60.0,20" class="path" style="fill: none;" />
+<g data-symbol="0"  transform="translate(0, 0)"  class="s2">
+<path d="M0,20 L1.5,20 L3,20 L60.0,20" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.one"  transform="translate(60.0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L120,0" class="path" style="fill: none;" />
+<g data-symbol="1"  transform="translate(60.0, 0)"  class="s2">
+<path d="M0,20 L1.5,10.0 L3,0 L120,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.zero"  transform="translate(180.0, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L100.0,20" class="path" style="fill: none;" />
+<g data-symbol="0"  transform="translate(180.0, 0)"  class="s2">
+<path d="M0,0 L1.5,10.0 L3,20 L80,20" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="C"  transform="translate(20, 60.0)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">C</text>
-<g data-symbol="BRICKS.zero"  transform="translate(0, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,20 L120,20" class="path" style="fill: none;" />
+<g data-symbol="0"  transform="translate(0, 0)"  class="s2">
+<path d="M0,20 L1.5,20 L3,20 L120,20" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.one"  transform="translate(120, 0)"  class="s2">
-<path d="M0,20 L3,20 L6,0 L120,0" class="path" style="fill: none;" />
+<g data-symbol="1"  transform="translate(120, 0)"  class="s2">
+<path d="M0,20 L1.5,10.0 L3,0 L120,0" class="path" style="fill: none;" />
 </g>
-<g data-symbol="BRICKS.zero"  transform="translate(240, 0)"  class="s2">
-<path d="M0,0 L3,0 L6,20 L40,20" class="path" style="fill: none;" />
+<g data-symbol="0"  transform="translate(240, 0)"  class="s2">
+<path d="M0,0 L1.5,10.0 L3,20 L40,20" class="path" style="fill: none;" />
 </g>
 </g>
 </g>
-<path d="M85.0,40.0 L65.0,40.0 65.0,10.0" class="edge" style="fill: none;"/>
-<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(56.0, 35.5)" />
-<text x="65.000000" y="40.000000" class="edge-text" style="stroke: none;"> t1</text>
+<path d="M81.5,40.0 L61.5,40.0 61.5,10.0" class="edge" style="fill: none;"/>
+<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(55.5, 35.5)" />
+<text x="61.500000" y="40.000000" class="edge-text" style="stroke: none;">t1</text>
 
-<path d="M65.0,10.0 L145.0,10.0 145.0,70.0" class="edge" style="fill: none;"/>
-<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(136.0, 5.5)" />
-<text x="145.000000" y="10.000000" class="edge-text" style="stroke: none;"> t2</text>
+<path d="M61.5,10.0 L141.5,10.0 141.5,70.0" class="edge" style="fill: none;"/>
+<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(135.5, 5.5)" />
+<text x="141.500000" y="10.000000" class="edge-text" style="stroke: none;">t2</text>
 
-<path d="M85.0,40.0 L115.0,40.0 115.0,70.0 145.0,70.0" class="edge" style="fill: none;"/>
-<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(106.0, 65.5)" />
-<text x="115.000000" y="70.000000" class="edge-text" style="stroke: none;"> t3</text>
+<path d="M81.5,40.0 L111.5,40.0 111.5,70.0 141.5,70.0" class="edge" style="fill: none;"/>
+<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(105.5, 65.5)" />
+<text x="111.500000" y="70.000000" class="edge-text" style="stroke: none;">t3</text>
 
-<path d="M145.0,70.0 L165.0,70.0 165.0,10.0 185.0,10.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(181.5, 10.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(156.0, 5.5)" />
-<text x="165.000000" y="10.000000" class="edge-text" style="stroke: none;"> t4</text>
+<path d="M141.5,70.0 L161.5,70.0 161.5,10.0 181.5,10.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(178.5, 10.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(155.5, 5.5)" />
+<text x="161.500000" y="10.000000" class="edge-text" style="stroke: none;">t4</text>
 
-<path d="M185.0,10.0 L265.0,10.0 265.0,70.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(264.9999953562179, 66.50000000000308) rotate(0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 60,9 60,0 0,0 " class="edge-background" style=""  transform="translate(235.0, 5.5)" />
-<text x="265.000000" y="10.000000" class="edge-text" style="stroke: none;"> more text</text>
+<path d="M181.5,10.0 L261.5,10.0 261.5,70.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(261.4999960196153, 67.00000000000264) rotate(0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 54,9 54,0 0,0 " class="edge-background" style=""  transform="translate(234.5, 5.5)" />
+<text x="261.500000" y="10.000000" class="edge-text" style="stroke: none;">more text</text>
 
-<path d="M185.0,10.0 L185.0,40.0 205.0,40.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(201.5, 40.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 18,9 18,0 0,0 " class="edge-background" style=""  transform="translate(176.0, 35.5)" />
-<text x="185.000000" y="40.000000" class="edge-text" style="stroke: none;"> t6</text>
+<path d="M181.5,10.0 L181.5,40.0 201.5,40.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(198.5, 40.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 12,9 12,0 0,0 " class="edge-background" style=""  transform="translate(175.5, 35.5)" />
+<text x="181.500000" y="40.000000" class="edge-text" style="stroke: none;">t6</text>
 
 <path d="M20,0.0 L300,0.0" class="path" style="fill: none;"/>
 
 <path d="M20,0.0 L300,0.0" class="path" style="fill: none;"/>
 
-<path d="M145.0,100.0 L265.0,100.0" class="edge" style="fill: none;"/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(148.5, 100.0) rotate(90.00015203962414, 0, 0)" class="edge-arrow" style=""/>
-<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(261.5, 100.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
-<polygon points="0,0 0,9 30,9 30,0 0,0 " class="edge-background" style=""  transform="translate(190.0, 95.5)" />
-<text x="205.000000" y="100.000000" class="edge-text" style="stroke: none;"> 3 ms</text>
+<path d="M141.5,100.0 L261.5,100.0" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(144.5, 100.0) rotate(90.00015203962414, 0, 0)" class="edge-arrow" style=""/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(258.5, 100.0) rotate(-90.0, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0,0 0,9 24,9 24,0 0,0 " class="edge-background" style=""  transform="translate(189.5, 95.5)" />
+<text x="201.500000" y="100.000000" class="edge-text" style="stroke: none;">3 ms</text>
 
 </svg>

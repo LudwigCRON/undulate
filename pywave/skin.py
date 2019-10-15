@@ -517,11 +517,13 @@ def parse_css_size(S: str) -> tuple:
     convert a css valid representation of a size
     into a value unit tuple
     """
-    s = S.strip().lower()
-    v = float(''.join([c for c in s if c in "0123456789."]))
-    u = SizeUnit.EM if "em" in s else \
-        SizeUnit.PT if "pt" in s else SizeUnit.PX
-    return (v, u)
+    if isinstance(S, str):
+        s = S.strip().lower()
+        v = float(''.join([c for c in s if c in "0123456789."]))
+        u = SizeUnit.EM if "em" in s else \
+            SizeUnit.PT if "pt" in s else SizeUnit.PX
+        return (v, u)
+    return S
 
 def parse_css_color(S: str) -> tuple:
     """

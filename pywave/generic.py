@@ -48,8 +48,11 @@ class Brick:
         "slewing",
         "duty_cycle",
         "ignore_transition",
+        "ignore_start_transition",
+        "ignore_end_transition",
         "is_first",
         "last_y",
+        "first_y"
     ]
 
     def __init__(self, **kwargs):
@@ -66,11 +69,15 @@ class Brick:
         self.duty_cycle = kwargs.get("duty_cycle", 0.5)
         #: prevent glitches in chain: bool
         self.ignore_transition = kwargs.get("ignore_transition", False)
+        self.ignore_start_transition = kwargs.get("ignore_start_transition", False)
+        self.ignore_end_transition = kwargs.get("ignore_end_transition", False)
         # chaining instance
         #: first brick in wavelane: bool
         self.is_first = kwargs.get("is_first", False)
         #: last brick y position: float
         self.last_y = kwargs.get("last_y", None)
+        #: this brick first y position: float
+        self.first_y = 0
         # items to keep for drawing
         #: define the char
         self.symbol = None
@@ -92,12 +99,60 @@ class Brick:
         Returns:
             last_y (float)
         """
-        last_y = 0
+        ly = 0
         if self.paths:
-            _, last_y = self.paths[0][-1]
+            _, ly = self.paths[0][-1]
         elif self.splines:
-            _, _, last_y = self.splines[0][-1]
-        return last_y
+            _, _, ly = self.splines[0][-1]
+        return ly
+
+    
+    def get_first_y(self):
+        """
+        get first position of the current brick to preserve continuity
+
+        Returns:
+            first_y (float)
+        """
+        return self.first_y
+
+
+    def alter_start(self, shift: float = 0, previous_y: float = -1):
+        """
+        alter the last coordinates to preserve continuity
+
+        Args:
+            shift (float): adjust the x position of the start, by default 0
+            previous_y (float): adjust the y position of the start, by default -1
+
+            .. warning ::
+                the first element of a path or a poly is the style to apply
+                and then get the points
+        """
+        for i, path in enumerate(self.paths):
+            x1, y1 = path[1]
+            py = previous_y[i] if isinstance(previous_y, list) else previous_y
+            dx = self.slewing*(y1-py)/self.height
+            self.paths[i] = [
+                path[0],
+                (x1 + shift + dx, py if py > -1 else y1)
+            ] + path[3:]
+        for i, poly in enumerate(self.polygons):
+            x1, y1 = poly[1]
+            x2, y2 = poly[-1]
+            py = previous_y[i] if isinstance(previous_y, list) else previous_y
+            dx = self.slewing*(y1-py)/self.height
+            self.polygons[i] = (
+                [
+                    poly[0],
+                    (shift + dx, py if py > -1 else y1),
+                    (x1 + shift + dx, py if py > -1 else y1)
+                ] + poly[2:-1] +
+                [
+                    (x2 + shift + dx, py if py > -1 else y2)
+                ]
+            )
+
 
     def alter_end(self, shift: float = 0, next_y: float = -1):
         """
@@ -109,42 +164,25 @@ class Brick:
         """
         for i, path in enumerate(self.paths):
             x1, y1 = path[-1]
-            x2, y2 = path[-2]
-            if isinstance(next_y, list):
-                self.paths[i] = path[:-1] + [
-                    (x2 + shift, y2),
-                    (x1 + shift, next_y[i] if next_y[i] > -1 else y1),
-                ]
-            else:
-                self.paths[i] = path[:-1] + [
-                    (x2 + shift, y2),
-                    (x1 + shift, next_y if next_y > -1 else y1),
-                ]
+            ny = next_y[i] if isinstance(next_y, list) else next_y
+            self.paths[i] = path[:-1] + [
+                (x1 + shift + self.slewing*(y1-ny)/self.height, ny if ny > -1 else y1),
+            ]
         for i, poly in enumerate(self.polygons):
             l = int(len(poly) / 2)
             x1, y1 = poly[l - 1]
             x2, y2 = poly[l]
             x3, y3 = poly[l + 1]
-            if isinstance(next_y, list):
-                self.polygons[i] = (
-                    poly[: l - 1]
-                    + [
-                        (x1 + shift, y1),
-                        (x2 + shift, next_y[i] if next_y[i] > -1 else y2),
-                        (x3 + shift, y3),
-                    ]
-                    + poly[l + 1 :]
-                )
-            else:
-                self.polygons[i] = (
-                    poly[: l - 1]
-                    + [
-                        (x1 + shift, y1),
-                        (x2 + shift, next_y if next_y > -1 else y2),
-                        (x3 + shift, y3),
-                    ]
-                    + poly[l + 1 :]
-                )
+            ny = next_y[i] if isinstance(next_y, list) else next_y
+            self.polygons[i] = (
+                poly[: l - 1]
+                + [
+                    (x1 - shift, y1),
+                    (x2 + shift, ny if ny > -1 else y2),
+                    (x3 - shift, y3),
+                ]
+                + poly[l + 1 :]
+            )
 
 
 def generate_brick(symbol: str, **kwargs) -> dict:

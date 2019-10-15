@@ -1,5 +1,5 @@
 
-![](https://img.shields.io/badge/coverage-94-green)
+![](https://img.shields.io/badge/coverage-95%25-green)
 [![Build Status](https://travis-ci.com/LudwigCRON/pywave.svg?branch=master)](https://travis-ci.com/LudwigCRON/pywave)
 
 [New documentation under construction](https://ludwigcron.github.io/pywave/html/)
@@ -19,7 +19,7 @@ This version is not a mere copy of the original one. The goals are to ensure the
 - add annotations (global time compression, vertical/horizontal lines)
 - style overloading (font-size, fill color, stroke color, stroke-width, stroke-dasharray, ...)
 
-The inputs could be either json, cson, yaml or toml while outputs would be svg, postscript, pdf, and png.
+The inputs could be either json, WaveJSON (cson), yaml or toml while outputs would be svg, postscript, pdf, and png.
 
 ## License
 

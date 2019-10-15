@@ -35,7 +35,6 @@ class BRICKS(Enum):
     x = "x"     #: unknown bit
     X = "X"     #: unknown data
     data = "="  #: data
-    data_alias = "2" #: alias for data
     up = "u"    #: rc settling to 1
     down = "d"  #: rc settling to 0
     meta = "m"  #: metastable state settling to 0
@@ -97,24 +96,34 @@ class BRICKS(Enum):
             'transition should be skipped'
         """
         if (from_symb, to_symb) in [
-            (BRICKS.x, BRICKS.low),
-            (BRICKS.x, BRICKS.zero),
-            (BRICKS.x, BRICKS.high),
-            (BRICKS.x, BRICKS.one),
-            (BRICKS.X, BRICKS.low),
-            (BRICKS.X, BRICKS.zero),
-            (BRICKS.X, BRICKS.high),
-            (BRICKS.X, BRICKS.one),
-            (BRICKS.data, BRICKS.zero),
-            (BRICKS.data, BRICKS.one),
             (BRICKS.low, BRICKS.Low),
             (BRICKS.high, BRICKS.High),
-            (BRICKS.Low, BRICKS.Low),
-            (BRICKS.High, BRICKS.High),
+            (BRICKS.Low, BRICKS.low),
+            (BRICKS.High, BRICKS.high),
             (BRICKS.one, BRICKS.Pclk),
-            (BRICKS.zero, BRICKS.Nclk)
+            (BRICKS.zero, BRICKS.Nclk),
+            (BRICKS.High, BRICKS.Pclk),
+            (BRICKS.high, BRICKS.Pclk),
+            (BRICKS.high, BRICKS.pclk),
+            (BRICKS.High, BRICKS.pclk),
+            (BRICKS.Low, BRICKS.Nclk),
+            (BRICKS.low, BRICKS.Nclk),
+            (BRICKS.low, BRICKS.nclk),
+            (BRICKS.Low, BRICKS.nclk)
         ]:
             return True
+        if (to_symb in [pywave.BRICKS.zero, pywave.BRICKS.one] or BRICKS.is_forced_signal(to_symb)) and \
+           from_symb in [pywave.BRICKS.data, pywave.BRICKS.x, pywave.BRICKS.X]:
+            return True
+        if BRICKS.is_forced_signal(to_symb) and BRICKS.is_clock(from_symb):
+            if from_symb.value.lower() == 'n' and to_symb.value.lower() == 'h':
+                return True
+            if from_symb.value.lower() == 'p' and to_symb.value.lower() == 'l':
+                return True
+            if from_symb.value.lower() == 'h' and to_symb.value.lower() == 'p':
+                return True
+            if from_symb.value.lower() == 'l' and to_symb.value.lower() == 'n':
+                return True
         return False
 
     @staticmethod
@@ -172,4 +181,43 @@ class BRICKS(Enum):
             bool
                 boolean result asserting the symb need a type
         """
-        return symb in [pywave.BRICKS.field_end, pywave.BRICKS.field_bit]
+        return symb in [pywave.BRICKS.field_start, pywave.BRICKS.field_bit]
+
+    @staticmethod
+    def is_repeating_symbol(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially repeating the last valid brick
+        Returns:
+            bool
+                boolean result asserting the symb repeat the last valid one
+        """
+        if isinstance(symb, str):
+            symb = BRICKS.from_char(symb)
+        return symb in [BRICKS.repeat, BRICKS.gap]
+
+    @staticmethod
+    def is_clock(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially a clock signal
+        Returns:
+            bool
+                boolean result asserting the symb is a clock signal
+        """
+        return symb in [BRICKS.Pclk,
+                        BRICKS.Nclk,
+                        BRICKS.pclk,
+                        BRICKS.nclk]
+
+    @staticmethod
+    def is_forced_signal(symb) -> bool:
+        """
+        Args:
+            symb (pywave.BRICKS) : symbol potentially forced to a value
+        Returns:
+            bool
+                boolean result asserting the symb is forced
+        """
+        return symb in [pywave.BRICKS.high, pywave.BRICKS.High,
+            pywave.BRICKS.low, pywave.BRICKS.Low]
