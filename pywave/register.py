@@ -37,7 +37,7 @@ class Register:
         elif isinstance(field, Field):
             f = field
         else:
-            raise Exception(f"Unsupported {type(field)} of field")
+            raise Exception("Unsupported %s of field" % type(field))
         f.start = self.__counter
         self.fields.append(f)
         # increment counter
