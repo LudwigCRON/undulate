@@ -74,7 +74,7 @@ def _parse_wavelane(wavelane: dict):
         del wavelane["name"]
     if not _name:
         SPACER_COUNT += 1
-        _name = f"spacer_{SPACER_COUNT}"
+        _name = "spacer_%f" % SPACER_COUNT
     return (_name, wavelane)
 
 def _parse_group(wavegroup: list):
