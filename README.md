@@ -2,6 +2,8 @@
 ![](https://img.shields.io/badge/coverage-95%25-green)
 [![Build Status](https://travis-ci.com/LudwigCRON/pywave.svg?branch=master)](https://travis-ci.com/LudwigCRON/pywave)
 
+![](https://img.shields.io/badge/python-3.5+-blue)
+
 [New documentation under construction](https://ludwigcron.github.io/pywave/html/)
 
 ## Introduction
