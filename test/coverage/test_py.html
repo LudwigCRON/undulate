@@ -365,7 +365,7 @@
 <p id="t22" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t23" class="pln"><span class="str">    test supported state of a signal</span><span class="strut">&nbsp;</span></p>
 <p id="t24" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t25" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step1.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t25" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step1.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t26" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t27" class="pln">        <span class="str">"Alfa"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span><span class="str">"01.zx=ud.23.45"</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t28" class="pln">        <span class="str">"SAlfa"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span><span class="str">"01.zx=ud.23.45"</span><span class="op">,</span> <span class="str">"slewing"</span><span class="op">:</span><span class="num">8</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -381,7 +381,7 @@
 <p id="t38" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t39" class="pln"><span class="str">    test clock generation</span><span class="strut">&nbsp;</span></p>
 <p id="t40" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t41" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step2.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t41" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step2.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t42" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t43" class="pln">        <span class="str">"pclk"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"p......."</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t44" class="pln">        <span class="str">"Pclk"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"P......."</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -403,7 +403,7 @@
 <p id="t60" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t61" class="pln"><span class="str">    small bus example</span><span class="strut">&nbsp;</span></p>
 <p id="t62" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t63" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step3.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t63" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step3.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t64" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t65" class="pln">        <span class="str">"clk"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"P......"</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t66" class="pln">        <span class="str">"bus"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"x.==.=x"</span><span class="op">,</span> <span class="str">"data"</span><span class="op">:</span> <span class="op">[</span><span class="str">"head"</span><span class="op">,</span> <span class="str">"body"</span><span class="op">,</span> <span class="str">"tail"</span><span class="op">,</span> <span class="str">"data"</span><span class="op">]</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -419,7 +419,7 @@
 <p id="t76" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t77" class="pln"><span class="str">    spacer and gaps</span><span class="strut">&nbsp;</span></p>
 <p id="t78" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t79" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step4.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t79" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step4.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t80" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t81" class="pln">        <span class="str">"clk"</span><span class="op">:</span><span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"p.....|..."</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t82" class="pln">        <span class="str">"Data"</span><span class="op">:</span><span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"x.345x|=.x"</span><span class="op">,</span> <span class="str">"data"</span><span class="op">:</span> <span class="op">[</span><span class="str">"head"</span><span class="op">,</span> <span class="str">"body"</span><span class="op">,</span> <span class="str">"tail"</span><span class="op">,</span> <span class="str">"data"</span><span class="op">]</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -437,7 +437,7 @@
 <p id="t94" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t95" class="pln"><span class="str">    groups support</span><span class="strut">&nbsp;</span></p>
 <p id="t96" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t97" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step5.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t97" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step5.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t98" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t99" class="pln">        <span class="str">"clk"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"p..Pp..P"</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t100" class="pln">        <span class="str">"Master"</span><span class="op">:</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
@@ -466,7 +466,7 @@
 <p id="t123" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t124" class="pln"><span class="str">    phase and period</span><span class="strut">&nbsp;</span></p>
 <p id="t125" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t126" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step6.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t126" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step6.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t127" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t128" class="pln">        <span class="str">"CK"</span>  <span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"P......."</span><span class="op">,</span> <span class="str">"period"</span><span class="op">:</span> <span class="num">2</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t129" class="pln">        <span class="str">"CMD"</span> <span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"x.3x=x4x=x=x=x=x"</span><span class="op">,</span> <span class="str">"data"</span><span class="op">:</span> <span class="str">"RAS NOP CAS NOP NOP NOP NOP"</span><span class="op">,</span> <span class="str">"phase"</span><span class="op">:</span> <span class="num">0.5</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -484,7 +484,7 @@
 <p id="t141" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t142" class="pln"><span class="str">    Arrows</span><span class="strut">&nbsp;</span></p>
 <p id="t143" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t144" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step7.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t144" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step7.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t145" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t146" class="pln">        <span class="str">"A"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"01........0...."</span><span class="op">,</span> <span class="str">"node"</span><span class="op">:</span> <span class="str">".a........j"</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t147" class="pln">        <span class="str">"B"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"0.1.......0.1.."</span><span class="op">,</span> <span class="str">"node"</span><span class="op">:</span> <span class="str">"..b.......i"</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -512,7 +512,7 @@
 <p id="t169" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t170" class="pln"><span class="str">    Sharp edge lines</span><span class="strut">&nbsp;</span></p>
 <p id="t171" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t172" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step8.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t172" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step8.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t173" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t174" class="pln">        <span class="str">"A"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"01..0.."</span><span class="op">,</span> <span class="str">"node"</span><span class="op">:</span> <span class="str">".a..e.."</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t175" class="pln">        <span class="str">"B"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"0.1..0."</span><span class="op">,</span> <span class="str">"node"</span><span class="op">:</span> <span class="str">"..b..d."</span><span class="op">,</span> <span class="str">"phase"</span><span class="op">:</span><span class="num">0.5</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -533,7 +533,7 @@
 <p id="t190" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t191" class="pln"><span class="str">    phase and period</span><span class="strut">&nbsp;</span></p>
 <p id="t192" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t193" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step9.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t193" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step9.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t194" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t195" class="pln">        <span class="str">"CK"</span>   <span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"P......."</span><span class="op">,</span> <span class="str">"period"</span><span class="op">:</span> <span class="num">2</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t196" class="pln">        <span class="str">"CMD"</span>  <span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"x.3x=x4x"</span><span class="op">,</span> <span class="str">"repeat"</span><span class="op">:</span><span class="num">2</span><span class="op">,</span> <span class="str">"data"</span><span class="op">:</span> <span class="str">"RAS NOP CAS NOP NOP NOP NOP"</span><span class="op">,</span> <span class="str">"phase"</span><span class="op">:</span> <span class="num">0.5</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -554,7 +554,7 @@
 <p id="t211" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t212" class="pln"><span class="str">    phase and period</span><span class="strut">&nbsp;</span></p>
 <p id="t213" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t214" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/wavedrom_step10.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t214" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/wavedrom_step10.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t215" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t216" class="pln">        <span class="str">"CK"</span>  <span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"P......."</span><span class="op">,</span> <span class="str">"repeat"</span><span class="op">:</span> <span class="num">2</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t217" class="pln">        <span class="str">"GBF"</span><span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"a..."</span><span class="op">,</span> <span class="str">"repeat"</span><span class="op">:</span> <span class="num">4</span><span class="op">,</span> <span class="str">"analogue"</span><span class="op">:</span> <span class="op">[</span><span class="strut">&nbsp;</span></p>
@@ -581,7 +581,7 @@
 <p id="t238" class="pln">    <span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t239" class="pln"><span class="str">    real phase use case</span><span class="strut">&nbsp;</span></p>
 <p id="t240" class="pln"><span class="str">    """</span><span class="strut">&nbsp;</span></p>
-<p id="t241" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">f"./output/recirc_bus.{cli_args.format}"</span><span class="strut">&nbsp;</span></p>
+<p id="t241" class="stm run hide_run">    <span class="nam">filename</span> <span class="op">=</span> <span class="str">"./output/recirc_bus.%s"</span> <span class="op">%</span> <span class="nam">cli_args</span><span class="op">.</span><span class="nam">format</span><span class="strut">&nbsp;</span></p>
 <p id="t242" class="stm run hide_run">    <span class="nam">wavelanes</span> <span class="op">=</span> <span class="op">{</span><span class="strut">&nbsp;</span></p>
 <p id="t243" class="pln">        <span class="str">"F1"</span>      <span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"P..........."</span><span class="op">,</span> <span class="str">"node"</span><span class="op">:</span> <span class="str">"........."</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t244" class="pln">        <span class="str">"F2"</span>      <span class="op">:</span> <span class="op">{</span><span class="str">"wave"</span><span class="op">:</span> <span class="str">"P..."</span><span class="op">,</span> <span class="str">"node"</span><span class="op">:</span> <span class="str">"........."</span><span class="op">,</span> <span class="str">"period"</span><span class="op">:</span> <span class="num">3</span><span class="op">,</span> <span class="str">"phase"</span><span class="op">:</span> <span class="op">-</span><span class="num">0.1</span><span class="op">}</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
@@ -620,7 +620,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.4</a>,
-            created at 2019-10-12 13:10
+            created at 2019-10-16 22:03
         </p>
     </div>
 </div>

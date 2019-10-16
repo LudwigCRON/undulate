@@ -22,7 +22,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     test supported state of a signal
     """
-    filename = f"./output/wavedrom_step1.{cli_args.format}"
+    filename = "./output/wavedrom_step1.%s" % cli_args.format
     wavelanes = {
         "Alfa": {"wave":"01.zx=ud.23.45"},
         "SAlfa": {"wave":"01.zx=ud.23.45", "slewing":8},
@@ -38,7 +38,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     test clock generation
     """
-    filename = f"./output/wavedrom_step2.{cli_args.format}"
+    filename = "./output/wavedrom_step2.%s" % cli_args.format
     wavelanes = {
         "pclk": {"wave": "p......."},
         "Pclk": {"wave": "P......."},
@@ -60,7 +60,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     small bus example
     """
-    filename = f"./output/wavedrom_step3.{cli_args.format}"
+    filename = "./output/wavedrom_step3.%s" % cli_args.format
     wavelanes = {
         "clk": {"wave": "P......"},
         "bus": {"wave": "x.==.=x", "data": ["head", "body", "tail", "data"]},
@@ -76,7 +76,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     spacer and gaps
     """
-    filename = f"./output/wavedrom_step4.{cli_args.format}"
+    filename = "./output/wavedrom_step4.%s" % cli_args.format
     wavelanes = {
         "clk":{"wave": "p.....|..."},
         "Data":{"wave": "x.345x|=.x", "data": ["head", "body", "tail", "data"]},
@@ -94,7 +94,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     groups support
     """
-    filename = f"./output/wavedrom_step5.{cli_args.format}"
+    filename = "./output/wavedrom_step5.%s" % cli_args.format
     wavelanes = {
         "clk": {"wave": "p..Pp..P"},
         "Master": {
@@ -123,7 +123,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     phase and period
     """
-    filename = f"./output/wavedrom_step6.{cli_args.format}"
+    filename = "./output/wavedrom_step6.%s" % cli_args.format
     wavelanes = {
         "CK"  : {"wave": "P.......", "period": 2},
         "CMD" : {"wave": "x.3x=x4x=x=x=x=x", "data": "RAS NOP CAS NOP NOP NOP NOP", "phase": 0.5},
@@ -141,7 +141,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     Arrows
     """
-    filename = f"./output/wavedrom_step7.{cli_args.format}"
+    filename = "./output/wavedrom_step7.%s" % cli_args.format
     wavelanes = {
         "A": {"wave": "01........0....", "node": ".a........j"},
         "B": {"wave": "0.1.......0.1..", "node": "..b.......i"},
@@ -169,7 +169,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     Sharp edge lines
     """
-    filename = f"./output/wavedrom_step8.{cli_args.format}"
+    filename = "./output/wavedrom_step8.%s" % cli_args.format
     wavelanes = {
         "A": {"wave": "01..0..", "node": ".a..e.."},
         "B": {"wave": "0.1..0.", "node": "..b..d.", "phase":0.5},
@@ -190,7 +190,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     phase and period
     """
-    filename = f"./output/wavedrom_step9.{cli_args.format}"
+    filename = "./output/wavedrom_step9.%s" % cli_args.format
     wavelanes = {
         "CK"   : {"wave": "P.......", "period": 2},
         "CMD"  : {"wave": "x.3x=x4x", "repeat":2, "data": "RAS NOP CAS NOP NOP NOP NOP", "phase": 0.5},
@@ -211,7 +211,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     phase and period
     """
-    filename = f"./output/wavedrom_step10.{cli_args.format}"
+    filename = "./output/wavedrom_step10.%s" % cli_args.format
     wavelanes = {
         "CK"  : {"wave": "P.......", "repeat": 2},
         "GBF": {"wave": "a...", "repeat": 4, "analogue": [
@@ -238,7 +238,7 @@ class TestSvgMethods(unittest.TestCase):
     """
     real phase use case
     """
-    filename = f"./output/recirc_bus.{cli_args.format}"
+    filename = "./output/recirc_bus.%s" % cli_args.format
     wavelanes = {
         "F1"      : {"wave": "P...........", "node": "........."},
         "F2"      : {"wave": "P...", "node": ".........", "period": 3, "phase": -0.1},

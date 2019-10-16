@@ -13,7 +13,7 @@ from skimage.measure import compare_ssim
 
 def generate_tmp_name():
     now = datetime.today()
-    return f"_tmp_{now.strftime('%s')}.jpg"
+    return "_tmp_%s.jpg" % now.strftime('%s')
 
 def check_similarity(ref, img, black_white: bool = False):
     if black_white:
@@ -40,10 +40,9 @@ def normalize_img(path: str, as_gray: bool = False, is_ref: bool = False, width:
     if path.endswith("svg") or path.endswith("eps") or path.endswith("pdf"):
         filename = generate_tmp_name()
         if is_ref:
-            os.popen(f"convert -density 300 -trim -resize {width}x{height} -background white -compose Copy -gravity center {path} {filename}").read()
+            os.popen("convert -density 300 -trim -resize %dx%d -background white -compose Copy -gravity center %s %s" % (width, height, path, filename)).read()
         else:
-            os.popen(f"convert -density 300 -trim -resize {width}x{height} -background white -compose Copy -gravity center -extent {width}x{height} {path} {filename}").read()
-        #    os.popen(f"gs -sDEVICE=jpeg -dJPEGQ=100 -dEPSCrop -dNOPAUSE -dBATCH -dSAFER -dDEVICEWIDTH={width} -dDEVICEHEIGHT={height} -sOutputFile=./{filename} {path}").read()
+            os.popen("convert -density 300 -trim -resize %dx%d -background white -compose Copy -gravity center -extent %dx%d %s %s" % (width, height, width, height, path, filename)).read()
         # create a image object
         return imread(filename, as_gray=as_gray)
     return imread(path, as_gray=as_gray)
@@ -56,7 +55,7 @@ if __name__ == "__main__":
     references = glob.glob("./output/wavedrom_step*.svg")
     try:
         for k, reference in enumerate(references):
-            s = f"[{k}/{len(references)}]\t{reference}: "
+            s = "[%d/%d}]\t%s: " % (k, len(references), reference)
             print(s)
             print(''.join(['-']*len(s)))
             # convert images to PIL readable images
@@ -73,7 +72,7 @@ if __name__ == "__main__":
                 # check the similarity
                 i = check_similarity2(ref, img, True)
                 n_tab = 1+(max_len - len(ext))//4
-                print(f"\t{reference.replace('.svg', ext)}"+''.join(['\t']*n_tab)+f"{i:0.3f} %")
+                print("\t%s" % reference.replace('.svg', ext) + ''.join(['\t']*n_tab)+"%0.3f %" % i)
     finally:
         # remove generated temp files
         os.popen("find . -name '_tmp_*' -exec rm {} +")
