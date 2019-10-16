@@ -909,8 +909,8 @@
 <p id="t220" class="pln">            <span class="op">[</span><span class="strut">&nbsp;</span></p>
 <p id="t221" class="pln">                <span class="str">"path"</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t222" class="pln">                <span class="op">(</span><span class="num">0</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">last_y</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t223" class="pln">                <span class="op">(</span><span class="num">3</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">last_y</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t224" class="pln">                <span class="op">(</span><span class="num">3</span> <span class="op">+</span> <span class="nam">self</span><span class="op">.</span><span class="nam">slewing</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">height</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t223" class="pln">                <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">slewing</span><span class="op">/</span><span class="num">2</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">last_y</span> <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">is_first</span> <span class="key">else</span> <span class="nam">self</span><span class="op">.</span><span class="nam">height</span><span class="op">/</span><span class="num">2</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t224" class="pln">                <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">slewing</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">height</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t225" class="pln">                <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">width</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">height</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t226" class="pln">            <span class="op">]</span><span class="strut">&nbsp;</span></p>
 <p id="t227" class="pln">        <span class="op">)</span><span class="strut">&nbsp;</span></p>
@@ -937,8 +937,8 @@
 <p id="t248" class="pln">            <span class="op">[</span><span class="strut">&nbsp;</span></p>
 <p id="t249" class="pln">                <span class="str">"path"</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t250" class="pln">                <span class="op">(</span><span class="num">0</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">last_y</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t251" class="pln">                <span class="op">(</span><span class="num">3</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">last_y</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
-<p id="t252" class="pln">                <span class="op">(</span><span class="num">3</span> <span class="op">+</span> <span class="nam">self</span><span class="op">.</span><span class="nam">slewing</span><span class="op">,</span> <span class="num">0</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t251" class="pln">                <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">slewing</span><span class="op">/</span><span class="num">2</span><span class="op">,</span> <span class="nam">self</span><span class="op">.</span><span class="nam">last_y</span> <span class="key">if</span> <span class="nam">self</span><span class="op">.</span><span class="nam">is_first</span> <span class="key">else</span> <span class="nam">self</span><span class="op">.</span><span class="nam">height</span><span class="op">/</span><span class="num">2</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
+<p id="t252" class="pln">                <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">slewing</span><span class="op">,</span> <span class="num">0</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t253" class="pln">                <span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">width</span><span class="op">,</span> <span class="num">0</span><span class="op">)</span><span class="op">,</span><span class="strut">&nbsp;</span></p>
 <p id="t254" class="pln">            <span class="op">]</span><span class="strut">&nbsp;</span></p>
 <p id="t255" class="pln">        <span class="op">)</span><span class="strut">&nbsp;</span></p>
@@ -1312,7 +1312,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.4</a>,
-            created at 2019-10-14 23:06
+            created at 2019-10-16 21:50
         </p>
     </div>
 </div>

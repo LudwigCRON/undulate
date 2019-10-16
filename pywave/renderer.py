@@ -814,7 +814,7 @@ class Renderer:
         # wrap the wavelane
         return self.group(
             _gen,
-            name if name else f"wavelane_{_WAVEGROUP_COUNT}_{_WAVE_COUNT}",
+            name if name else "wavelane_%d_%d" % (_WAVEGROUP_COUNT, _WAVE_COUNT),
             extra=extra
         )
 
@@ -846,7 +846,7 @@ class Renderer:
             return ans
         return self.group(
         _gen,
-        f"ticks_{_WAVEGROUP_COUNT}",
+        "ticks_%d" % _WAVEGROUP_COUNT,
         extra=self.translate(offsetx + phase * width, 0))
 
     @incr_wavegroup
@@ -887,7 +887,7 @@ class Renderer:
             # return value is ans
             if depth > 1:
                 # add group name
-                ans = self.text(0, oy-16, name, style_repr=f"h{depth}", extra=self._GROUP_NAME, **kwargs)
+                ans = self.text(0, oy-16, name, style_repr="h%d" % depth, extra=self._GROUP_NAME, **kwargs)
                 # add group separator
                 if depth == 2:
                     ans += self.path([(0, dy-6), (width+ox, dy-6)], style_repr="border ctx-y", **kwargs)
