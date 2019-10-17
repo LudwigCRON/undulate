@@ -167,6 +167,42 @@ def register_to_wavelane(obj: dict) -> object:
         reg.push_field(field)
     return reg.to_wavelane()
 
+def cli_main(input_path: str, output_path: str, file_format: str, is_reg: bool = False, dpi: float = 150.0):
+    # check the input file
+    err, obj = parse(input_path)
+    if err:
+        parser.print_help()
+        exit(2)
+    if not file_format.lower() in SUPPORTED_RENDER:
+        log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
+    # for debug pupose
+    if file_format.lower() == "json":
+        pprint(obj)
+        exit(0)
+    else:
+        if is_reg:
+            obj = register_to_wavelane(obj)
+        # select the renderer engine
+        if file_format == "svg":
+            renderer = pywave.SvgRenderer()
+        elif file_format.startswith("cairo-"):
+            renderer = pywave.CairoRenderer(extension=file_format.split('-')[-1], dpi=dpi)
+        else:
+            renderer = None
+        try:
+            if file_format.startswith("cairo-"):
+                renderer.draw(obj, brick_height=(50 if is_reg else 20),
+                                   brick_width=(28 if is_reg else 40),
+                                   is_reg=is_reg,
+                                   filename=output_path)
+            else:
+                with open(output_path, "w+") as fp:
+                    fp.write(renderer.draw(obj, brick_height=(50 if is_reg else 20),
+                                                brick_width=(28 if is_reg else 40),
+                                                is_reg=is_reg))
+        except Exception as e:
+            traceback.print_tb(e.__traceback__)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='waveform generator from textual format')
     parser.add_argument("-i", "--input", help="path to the input text file", default=None, type=str)
@@ -175,37 +211,4 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--dpi", help="resolution of the image for png export", default=150.0, type=float)
     parser.add_argument("-o", "--output", help="path to the output file", default=None, type=str)
     cli_args = parser.parse_args()
-    # check the input file
-    err, obj = parse(cli_args.input)
-    if err:
-        parser.print_help()
-        exit(2)
-    if not cli_args.format.lower() in SUPPORTED_RENDER:
-        log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
-    # for debug pupose
-    if cli_args.format.lower() == "json":
-        pprint(obj)
-        exit(0)
-    else:
-        if cli_args.is_reg:
-            obj = register_to_wavelane(obj)
-        # select the renderer engine
-        if cli_args.format == "svg":
-            renderer = pywave.SvgRenderer()
-        elif cli_args.format.startswith("cairo-"):
-            renderer = pywave.CairoRenderer(extension=cli_args.format.split('-')[-1], dpi=cli_args.dpi)
-        else:
-            renderer = None
-        try:
-            if cli_args.format.startswith("cairo-"):
-                renderer.draw(obj, brick_height=(50 if cli_args.is_reg else 20),
-                                   brick_width=(28 if cli_args.is_reg else 40),
-                                   is_reg=cli_args.is_reg,
-                                   filename=cli_args.output)
-            else:
-                with open(cli_args.output, "w+") as fp:
-                    fp.write(renderer.draw(obj, brick_height=(50 if cli_args.is_reg else 20),
-                                                brick_width=(28 if cli_args.is_reg else 40),
-                                                is_reg=cli_args.is_reg))
-        except Exception as e:
-            traceback.print_tb(e.__traceback__)
+    cli_main(cli_args.input, cli_args.output, cli_args.format, cli_args.is_reg, cli_args.dpi)
