@@ -181,9 +181,9 @@
   <use xlink:href="#glyph1-5" x="607.057812" y="42.945312"/>
   <use xlink:href="#glyph1-6" x="615.21875" y="42.945312"/>
 </g>
-<path style="fill-rule:nonzero;fill:rgb(78.431373%,78.431373%,78.431373%);fill-opacity:1;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(78.431373%,78.431373%,78.431373%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 0 L 37 0 L 40 10 L 37 20 L 3 20 L 0 10 " transform="matrix(1,0,0,1,630,30)"/>
-<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 0 L 37 0 L 40 10 " transform="matrix(1,0,0,1,630,30)"/>
-<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 20 L 37 20 L 40 10 " transform="matrix(1,0,0,1,630,30)"/>
+<path style="fill-rule:nonzero;fill:rgb(78.431373%,78.431373%,78.431373%);fill-opacity:1;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(78.431373%,78.431373%,78.431373%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 0 L 57 0 L 60 10 L 57 20 L 3 20 L 0 10 " transform="matrix(1,0,0,1,630,30)"/>
+<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 0 L 57 0 L 60 10 " transform="matrix(1,0,0,1,630,30)"/>
+<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 20 L 57 20 L 60 10 " transform="matrix(1,0,0,1,630,30)"/>
 </g>
 <clipPath id="clip4">
   <rect x="0" y="0" width="695" height="150"/>
@@ -215,9 +215,9 @@
   <use xlink:href="#glyph1-5" x="286.752344" y="72.945312"/>
   <use xlink:href="#glyph1-9" x="294.913281" y="72.945312"/>
 </g>
-<path style="fill-rule:nonzero;fill:rgb(78.431373%,78.431373%,78.431373%);fill-opacity:1;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(78.431373%,78.431373%,78.431373%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 0 L 357 0 L 360 10 L 357 20 L 3 20 L 0 10 " transform="matrix(1,0,0,1,310,60)"/>
-<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 0 L 357 0 L 360 10 " transform="matrix(1,0,0,1,310,60)"/>
-<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 20 L 357 20 L 360 10 " transform="matrix(1,0,0,1,310,60)"/>
+<path style="fill-rule:nonzero;fill:rgb(78.431373%,78.431373%,78.431373%);fill-opacity:1;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(78.431373%,78.431373%,78.431373%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 0 L 377 0 L 380 10 L 377 20 L 3 20 L 0 10 " transform="matrix(1,0,0,1,310,60)"/>
+<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 0 L 377 0 L 380 10 " transform="matrix(1,0,0,1,310,60)"/>
+<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 10 L 3 20 L 377 20 L 380 10 " transform="matrix(1,0,0,1,310,60)"/>
 </g>
 <clipPath id="clip5">
   <rect x="0" y="0" width="695" height="150"/>

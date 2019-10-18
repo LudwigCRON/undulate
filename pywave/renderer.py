@@ -683,7 +683,7 @@ class Renderer:
                      rp, reg_types, phases, slewings, ign_trans,
                      follows_data)
         kws = [dict(zip(param_order, t)) for t in params]
-        return zip(_wavelane, kws)
+        return list(zip(_wavelane, kws))
 
     def _get_or_eval(self, name: str, default, **kwargs):
         """
@@ -728,7 +728,7 @@ class Renderer:
             if reg_type:
                 return 's' + str(reg_type)
             return 's2'
-        def __new_brick_width(idx, b, repeat, **k):
+        def __new_brick_width(idx, b, repeat, pos, **k):
             phase = k.get("phase", 0)
             period = k.get("period", 1)
             slewing = k.get("slewing", 3)
@@ -737,8 +737,8 @@ class Renderer:
                 return 0
             if idx == 0:
                 return pmul*brick_width*(repeat-phase)
-            #if b_counter == len(_wavelane) - 1:
-            #    return max(pmul*brick_width*(k+phase), kwargs.get("width", 0)-pos)
+            elif idx == -1:
+                return max(pmul*brick_width*(repeat+phase), kwargs.get("width", 0)-pos)
             return pmul*repeat*brick_width
         # generate waveform
         wave, pos = [], 0
@@ -749,7 +749,7 @@ class Renderer:
             br, repeat, symbol = br
             # prune the properties
             kw = {k: kw.get(k) for k in kw if not kw.get(k) is None}
-            new_width = __new_brick_width(i, symbol, repeat, **kw)
+            new_width = __new_brick_width(i if not i == len(_wavelane)-1 else -1, symbol, repeat, pos, **kw)
             x = max(0, pos)
             if br == pywave.BRICKS.gap:
                 x = pos-brick_width+gap_offset-kw.get("slewing", 3)
