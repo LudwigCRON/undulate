@@ -230,7 +230,7 @@
 <path d="M-3.000000,22.000000 C2.000000,22.000000 2.000000,-2.000000 7.000000,-2.000000" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="1"  transform="translate(240.000000, 0.000000)"  class="s2">
-<path d="M0.000000,0.000000 L1.500000,10.000000 L3.000000,0.000000 L120.000000,0.000000" class="path" style="fill: none;" />
+<path d="M0.000000,0.000000 L3.000000,0.000000 L120.000000,0.000000" class="path" style="fill: none;" />
 </g>
 <g data-symbol="|"  transform="translate(337.000000, 0.000000)"  class="s2">
 <path d="M0.000000,22.000000 C5.000000,22.000000 5.000000,-4.000000 10.000000,-4.000000 L7.000000,0.000000 C2.000000,0.000000 2.000000,24.000000 -3.000000,24.000000 z" class="hide" style="fill: none;"/>
@@ -238,7 +238,7 @@
 <path d="M-3.000000,22.000000 C2.000000,22.000000 2.000000,-2.000000 7.000000,-2.000000" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="1"  transform="translate(360.000000, 0.000000)"  class="s2">
-<path d="M0.000000,0.000000 L1.500000,10.000000 L3.000000,0.000000 L80.000000,0.000000" class="path" style="fill: none;" />
+<path d="M0.000000,0.000000 L3.000000,0.000000 L80.000000,0.000000" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="experimental_2"  transform="translate(160.000000, 240.000000)"  >
@@ -257,7 +257,7 @@
 <path d="M-3.000000,22.000000 C2.000000,22.000000 2.000000,-2.000000 7.000000,-2.000000" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="h"  transform="translate(240.000000, 0.000000)"  class="s2">
-<path d="M0.000000,0.000000 L0.000000,0.000000 L120.000000,0.000000" class="path" style="fill: none;" />
+<path d="M0.000000,0.000000 L120.000000,0.000000" class="path" style="fill: none;" />
 </g>
 <g data-symbol="|"  transform="translate(337.000000, 0.000000)"  class="s2">
 <path d="M0.000000,22.000000 C5.000000,22.000000 5.000000,-4.000000 10.000000,-4.000000 L7.000000,0.000000 C2.000000,0.000000 2.000000,24.000000 -3.000000,24.000000 z" class="hide" style="fill: none;"/>
@@ -265,7 +265,7 @@
 <path d="M-3.000000,22.000000 C2.000000,22.000000 2.000000,-2.000000 7.000000,-2.000000" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="h"  transform="translate(360.000000, 0.000000)"  class="s2">
-<path d="M0.000000,0.000000 L0.000000,0.000000 L80.000000,0.000000" class="path" style="fill: none;" />
+<path d="M0.000000,0.000000 L80.000000,0.000000" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="experimental_3"  transform="translate(160.000000, 270.000000)"  >
@@ -284,7 +284,7 @@
 <path d="M-3.000000,22.000000 C2.000000,22.000000 2.000000,-2.000000 7.000000,-2.000000" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="0"  transform="translate(240.000000, 0.000000)"  class="s2">
-<path d="M0.000000,20.000000 L1.500000,10.000000 L3.000000,20.000000 L120.000000,20.000000" class="path" style="fill: none;" />
+<path d="M0.000000,20.000000 L3.000000,20.000000 L120.000000,20.000000" class="path" style="fill: none;" />
 </g>
 <g data-symbol="|"  transform="translate(337.000000, 0.000000)"  class="s2">
 <path d="M0.000000,22.000000 C5.000000,22.000000 5.000000,-4.000000 10.000000,-4.000000 L7.000000,0.000000 C2.000000,0.000000 2.000000,24.000000 -3.000000,24.000000 z" class="hide" style="fill: none;"/>
@@ -292,7 +292,7 @@
 <path d="M-3.000000,22.000000 C2.000000,22.000000 2.000000,-2.000000 7.000000,-2.000000" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="0"  transform="translate(360.000000, 0.000000)"  class="s2">
-<path d="M0.000000,20.000000 L1.500000,10.000000 L3.000000,20.000000 L80.000000,20.000000" class="path" style="fill: none;" />
+<path d="M0.000000,20.000000 L3.000000,20.000000 L80.000000,20.000000" class="path" style="fill: none;" />
 </g>
 </g>
 <g id="experimental_4"  transform="translate(160.000000, 300.000000)"  >
@@ -311,7 +311,7 @@
 <path d="M-3.000000,22.000000 C2.000000,22.000000 2.000000,-2.000000 7.000000,-2.000000" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="1"  transform="translate(240.000000, 0.000000)"  class="s2">
-<path d="M0.000000,0.000000 L1.500000,10.000000 L3.000000,0.000000 L120.000000,0.000000" class="path" style="fill: none;" />
+<path d="M0.000000,0.000000 L3.000000,0.000000 L120.000000,0.000000" class="path" style="fill: none;" />
 </g>
 <g data-symbol="|"  transform="translate(337.000000, 0.000000)"  class="s2">
 <path d="M0.000000,22.000000 C5.000000,22.000000 5.000000,-4.000000 10.000000,-4.000000 L7.000000,0.000000 C2.000000,0.000000 2.000000,24.000000 -3.000000,24.000000 z" class="hide" style="fill: none;"/>
@@ -319,7 +319,7 @@
 <path d="M-3.000000,22.000000 C2.000000,22.000000 2.000000,-2.000000 7.000000,-2.000000" class="path" style="fill: none;"/>
 </g>
 <g data-symbol="1"  transform="translate(360.000000, 0.000000)"  class="s2">
-<path d="M0.000000,0.000000 L1.500000,10.000000 L3.000000,0.000000 L80.000000,0.000000" class="path" style="fill: none;" />
+<path d="M0.000000,0.000000 L3.000000,0.000000 L80.000000,0.000000" class="path" style="fill: none;" />
 </g>
 </g>
 </g>

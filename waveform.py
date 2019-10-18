@@ -118,6 +118,10 @@ def _prune_json(filepath: str):
         if k == "signal":
             for _, sig in enumerate(v):
                 n, wave = _parse_wavelane(sig) if isinstance(sig, dict) else _parse_group(sig)
+                if n in ans.keys():
+                      print("Signal %s is duplicated" % n)
+                      while n in ans:
+                            n += ' '
                 ans[n] = wave
         else:
             ans[k] = v
@@ -146,7 +150,7 @@ def parse(filepath: str) -> (bool, object):
         try:
             import yaml
             with open(filepath, "r+") as fp:
-                ans = yaml.load(fp, Loader=yaml.FullLoader)
+                ans = yaml.load(fp, Loader=yaml.Loader)
         except ImportError:
             log_Error(ERROR_MSG["YAML_IMPORT"])
     else:

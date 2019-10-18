@@ -262,47 +262,50 @@ class Garbage(pywave.Brick):
         slewing (float): limit the slope
         follow_data (bool): data '=' occurs before this brick
     """
-    def __init__(self, **kwargs):
+    def __init__(self, unknown: bool = True, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
         follow_data = kwargs.get("follow_data", False)
         self.last_y = self.height / 2 if self.last_y is None else self.last_y
+        if self.ignore_transition:
+            self.ignore_start_transition = True
+            self.ignore_end_transition = True
         # add shape
         if follow_data:
             self.paths.append(
                 [
                     "path",
-                    (0, self.last_y if not self.ignore_transition else 0),
+                    (0, self.last_y if not self.ignore_start_transition else 0),
                     (-self.slewing, 0),
                     (self.width - self.slewing, 0),
-                    (self.width, self.height / 2),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
                 ]
             )
             self.paths.append(
                 [
                     "path",
-                    (0, self.last_y if not self.ignore_transition else self.height),
+                    (0, self.last_y if not self.ignore_start_transition else self.height),
                     (-self.slewing, self.height),
                     (self.width - self.slewing, self.height),
-                    (self.width, self.height / 2),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
                 ]
             )
         else:
             self.paths.append(
                 [
                     "path",
-                    (0, self.last_y if not self.ignore_transition else 0),
-                    (self.slewing, 0),
+                    (0, self.last_y if not self.ignore_start_transition else 0),
+                    (self.slewing if not self.ignore_start_transition else 0, 0),
                     (self.width + self.slewing, 0),
-                    (self.width, self.height / 2),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
                 ]
             )
             self.paths.append(
                 [
                     "path",
-                    (0, self.last_y if not self.ignore_transition else self.height),
-                    (self.slewing, self.height),
+                    (0, self.last_y if not self.ignore_start_transition else self.height),
+                    (self.slewing if not self.ignore_start_transition else 0, self.height),
                     (self.width + self.slewing, self.height),
-                    (self.width, self.height / 2),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
                 ]
             )
         # add background
@@ -312,9 +315,9 @@ class Garbage(pywave.Brick):
                     "hatch",
                     (0, self.last_y),
                     (-self.slewing, 0),
-                    (self.width - self.slewing, 0),
-                    (self.width, self.height / 2),
-                    (self.width - self.slewing, self.height),
+                    (self.width - self.slewing if not self.ignore_end_transition else self.width, 0),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                    (self.width - self.slewing if not self.ignore_end_transition else self.width, self.height),
                     (-self.slewing, self.height),
                     (0, self.last_y),
                 ]
@@ -324,11 +327,11 @@ class Garbage(pywave.Brick):
                 [
                     "hatch",
                     (0, self.last_y),
-                    (self.slewing, 0),
-                    (self.width + self.slewing, 0),
-                    (self.width, self.height / 2),
-                    (self.width + self.slewing, self.height),
-                    (self.slewing, self.height),
+                    (self.slewing if not self.ignore_start_transition else 0, 0),
+                    (self.width + self.slewing if not self.ignore_end_transition else self.width, 0),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                    (self.width + self.slewing if not self.ignore_end_transition else self.width, self.height),
+                    (self.slewing if not self.ignore_start_transition else 0, self.height),
                     (0, self.last_y),
                 ]
             )
@@ -359,7 +362,7 @@ class Data(pywave.Brick):
                     (0, 0),
                     (self.slewing, 0),
                     (self.width - self.slewing, 0),
-                    (self.width, self.height / 2),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
                 ]
             )
             self.paths.append(
@@ -368,7 +371,7 @@ class Data(pywave.Brick):
                     (0, self.height),
                     (self.slewing, self.height),
                     (self.width - self.slewing, self.height),
-                    (self.width, self.height / 2),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else self.height),
                 ]
             )
         else:
@@ -395,8 +398,8 @@ class Data(pywave.Brick):
                     (0, 0),
                     (self.slewing, 0),
                     (self.width - self.slewing, 0),
-                    (self.width, self.height / 2),
-                    (self.width - self.slewing, self.height),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                    (self.width - self.slewing if not self.ignore_end_transition else self.width , self.height),
                     (self.slewing, self.height),
                     (0, self.height),
                 ]
