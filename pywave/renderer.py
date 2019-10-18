@@ -777,6 +777,10 @@ class Renderer:
             symbol, brick, kw = w
             ps, pb, pkw = wave[i-1]
             ns, nb, nkw = wave[last_valid_index]
+            # adjust transistion from data to X
+            if ns in "=23456789" and symbol in "X":
+                nkw.update({"brick_width": nkw.get("brick_width")+nkw.get("slewing")});
+                nb.__init__(ns in "xX", **nkw)
             # define how to connect two data block together
             def __update_data_or_garbage():
                 kw.update({"ignore_start_transition": True, "hide_data": True});

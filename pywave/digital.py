@@ -274,8 +274,8 @@ class Garbage(pywave.Brick):
             self.paths.append(
                 [
                     "path",
-                    (0, self.last_y if not self.ignore_start_transition else 0),
-                    (-self.slewing, 0),
+                    (self.slewing, self.last_y if not self.ignore_start_transition else 0),
+                    (0, 0),
                     (self.width - self.slewing, 0),
                     (self.width, self.height / 2 if not self.ignore_end_transition else 0),
                 ]
@@ -283,8 +283,8 @@ class Garbage(pywave.Brick):
             self.paths.append(
                 [
                     "path",
-                    (0, self.last_y if not self.ignore_start_transition else self.height),
-                    (-self.slewing, self.height),
+                    (self.slewing, self.last_y if not self.ignore_start_transition else self.height),
+                    (0, self.height),
                     (self.width - self.slewing, self.height),
                     (self.width, self.height / 2 if not self.ignore_end_transition else 0),
                 ]
@@ -313,13 +313,13 @@ class Garbage(pywave.Brick):
             self.polygons.append(
                 [
                     "hatch",
-                    (0, self.last_y),
-                    (-self.slewing, 0),
+                    (self.slewing, self.last_y),
+                    (0, 0),
                     (self.width - self.slewing if not self.ignore_end_transition else self.width, 0),
                     (self.width, self.height / 2 if not self.ignore_end_transition else 0),
                     (self.width - self.slewing if not self.ignore_end_transition else self.width, self.height),
-                    (-self.slewing, self.height),
-                    (0, self.last_y),
+                    (0, self.height),
+                    (self.slewing, self.last_y),
                 ]
             )
         else:
