@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="695.000000" height="150.000000" viewBox="-1 -1 696.000000 152.000000">
 <style>
-.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.700em;font-family: Fira Mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
+.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.500em;font-family: Fira Mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
 .text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;}
 .attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
 .stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
-.data {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.data {fill: rgba(0, 0, 0, 255);font-size: 0.400em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .arrow {fill: rgba(0, 0, 0, 255);stroke: none;}
 .hide {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
 .hatch {fill: url(#diagonalHatch);}
@@ -20,12 +20,12 @@
 .edge-text {font-family: Fira Mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);text-anchor: middle;}
 .edge-background {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
 .border {stroke-width: 1.25;stroke: rgba(0, 0, 0, 255);}
-.h1 {fill: rgba(0, 0, 0, 255);font-size: 15.258px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
-.h2 {fill: rgba(0, 0, 0, 255);font-size: 12.208px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
-.h3 {fill: rgba(0, 0, 0, 255);font-size: 9.767px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
-.h4 {fill: rgba(0, 0, 0, 255);font-size: 7.817px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
-.h5 {fill: rgba(0, 0, 0, 255);font-size: 6.250px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
-.h6 {fill: rgba(0, 0, 0, 255);font-size: 5.000px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h1 {fill: rgba(0, 0, 0, 255);font-size: 12.046px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h2 {fill: rgba(0, 0, 0, 255);font-size: 9.638px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h3 {fill: rgba(0, 0, 0, 255);font-size: 7.711px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h4 {fill: rgba(0, 0, 0, 255);font-size: 6.171px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h5 {fill: rgba(0, 0, 0, 255);font-size: 4.934px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h6 {fill: rgba(0, 0, 0, 255);font-size: 3.947px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
 .reg-data {fill: rgba(0, 0, 0, 255);font-size: 0.800em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
 .reg-pos {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}</style>
 

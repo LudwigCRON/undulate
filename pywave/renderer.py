@@ -759,6 +759,7 @@ class Renderer:
                 "is_first":     i == 0,
                 "brick_width":  new_width,
                 "brick_height": brick_height,
+                "follow_X":     isinstance(last_valid_brick, pywave.digital.Garbage),
                 "extra":        self.translate(x, 0, dont_touch=True)
             })
             # add style informations
@@ -781,7 +782,7 @@ class Renderer:
                 kw.update({"ignore_start_transition": True, "hide_data": True});
                 nkw.update({"ignore_end_transition": True});
                 brick.__init__(symbol in "xX", **kw)
-                nb.__init__(symbol in "xX", **nkw)
+                nb.__init__(ns in "xX", **nkw)
             # check conditions to apply
             if i > 0 and ns == symbol:
                 # two consecutive data bricks with same value
@@ -799,11 +800,11 @@ class Renderer:
                     # arbitrary other brick
                     else:
                         fy, ly = brick.get_first_y(), nb.get_last_y()
-                        dy = abs(ly - fy)
+                        dy = ly - fy
                         # alter current brick end
-                        nb.alter_end(nb.slewing*dy/brick_height, fy)
+                        nb.alter_end(-nb.slewing*dy/brick_height, fy)
                         # alter next brick start
-                        brick.alter_start(nb.slewing*dy/brick_height, fy)
+                        brick.alter_start(-nb.slewing*dy/brick_height, fy)
                         # update the bricks
                         wave[i] = (symbol, brick, kw)
                         wave[last_valid_index] = (ns, nb, nkw)

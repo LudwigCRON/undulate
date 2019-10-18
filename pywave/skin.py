@@ -42,7 +42,7 @@ DEFAULT_STYLE = {
     "title": {
         "fill": (0, 65, 196, 255),
         "font-weight": 500,
-        "font-size": (0.7, SizeUnit.EM),
+        "font-size": (0.5, SizeUnit.EM),
         "font-family": "Fira Mono",
         "text-align": TextAlign.RIGHT,
         "text-anchor": "end",
@@ -92,7 +92,7 @@ DEFAULT_STYLE = {
     },
     "data": {
         "fill": (0, 0, 0, 255),
-        "font-size": (0.6, SizeUnit.EM),
+        "font-size": (0.4, SizeUnit.EM),
         "font-style": "normal",
         "font-variant": "normal",
         "font-weight": 500,
@@ -155,7 +155,7 @@ DEFAULT_STYLE = {
     "border": {"stroke-width": 1.25, "stroke": (0, 0, 0, 255)},
     "h1": {
         "fill": (0, 0, 0, 255),
-        "font-size": (18.31/1.2, SizeUnit.PX),
+        "font-size": (18.31/1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -163,7 +163,7 @@ DEFAULT_STYLE = {
     },
     "h2": {
         "fill": (0, 0, 0, 255),
-        "font-size": (14.65/1.2, SizeUnit.PX),
+        "font-size": (14.65/1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -171,7 +171,7 @@ DEFAULT_STYLE = {
     },
     "h3": {
         "fill": (0, 0, 0, 255),
-        "font-size": (11.72/1.2, SizeUnit.PX),
+        "font-size": (11.72/1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -179,7 +179,7 @@ DEFAULT_STYLE = {
     },
     "h4": {
         "fill": (0, 0, 0, 255),
-        "font-size": (9.38/1.2, SizeUnit.PX),
+        "font-size": (9.38/1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -187,7 +187,7 @@ DEFAULT_STYLE = {
     },
     "h5": {
         "fill": (0, 0, 0, 255),
-        "font-size": (7.5/1.2, SizeUnit.PX),
+        "font-size": (7.5/1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -195,7 +195,7 @@ DEFAULT_STYLE = {
     },
     "h6": {
         "fill": (0, 0, 0, 255),
-        "font-size": (6/1.2, SizeUnit.PX),
+        "font-size": (6/1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
