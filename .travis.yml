@@ -11,6 +11,7 @@ python:
 # install the environment before
 install:
   - pip install -r requirements.txt
+  - pip install -e .
 # execute the tests
 script: 
   - cd ./test/
