@@ -7,19 +7,19 @@ all: new legacy internal cairo-svg register legacy_1.jsonml legacy_2.jsonml lega
 
 %.jsonml:
 	@echo $@
-	$(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/legacy/$(subst .jsonml,-jsonml.svg,$@)"
+	python3 $(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/legacy/$(subst .jsonml,-jsonml.svg,$@)"
 
 %.json:
 	@echo $@
-	$(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/legacy/$(subst .json,-json.svg,$@)"
+	python3 $(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/legacy/$(subst .json,-json.svg,$@)"
 
 %.yaml:
 	@echo $@
-	$(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/output/$(subst .yaml,-yaml.svg,$@)"
+	python3 $(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/output/$(subst .yaml,-yaml.svg,$@)"
 
 %.toml:
 	@echo $@
-	$(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/output/$(subst .toml,-toml.svg,$@)"
+	python3 $(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/output/$(subst .toml,-toml.svg,$@)"
 
 legacy: legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml
 	@echo "Legacy Done"
@@ -36,36 +36,36 @@ internal-cairo-svg:
 internal: internal-svg internal-cairo-svg
 
 cairo-eps: wavetest.yaml
-	$(WAVEFORM) -i ${TESTPATH}/$< -f cairo-eps -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.eps,$<)
+	python3 $(WAVEFORM) -i ${TESTPATH}/$< -f cairo-eps -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.eps,$<)
 
 cairo-ps: wavetest.yaml
-	$(WAVEFORM) -i ${TESTPATH}/$< -f cairo-ps -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.ps,$<)
+	python3 $(WAVEFORM) -i ${TESTPATH}/$< -f cairo-ps -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.ps,$<)
 
 cairo-png: wavetest.yaml
-	$(WAVEFORM) -i ${TESTPATH}/$< -f cairo-png -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.png,$<)
+	python3 $(WAVEFORM) -i ${TESTPATH}/$< -f cairo-png -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.png,$<)
 
 cairo-pdf: wavetest.yaml
-	$(WAVEFORM) -i ${TESTPATH}/$< -f cairo-pdf -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.pdf,$<)
+	python3 $(WAVEFORM) -i ${TESTPATH}/$< -f cairo-pdf -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.pdf,$<)
 
 cairo-svg: wavetest.yaml
-	$(WAVEFORM) -i ${TESTPATH}/$< -f cairo-svg -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.svg,$<)
+	python3 $(WAVEFORM) -i ${TESTPATH}/$< -f cairo-svg -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.svg,$<)
 
 register:
-	$(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f svg -o "${TESTPATH}/legacy/reg-opivi-jsonml.svg"
-	$(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f svg -o "${TESTPATH}/legacy/reg-vl-jsonml.svg"
-	$(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f cairo-svg -o "${TESTPATH}/legacy/reg-opivi-jsonml-cairo.svg"
-	$(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f cairo-svg -o "${TESTPATH}/legacy/reg-vl-jsonml-cairo.svg"
+	python3 $(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f svg -o "${TESTPATH}/legacy/reg-opivi-jsonml.svg"
+	python3 $(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f svg -o "${TESTPATH}/legacy/reg-vl-jsonml.svg"
+	python3 $(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f cairo-svg -o "${TESTPATH}/legacy/reg-opivi-jsonml-cairo.svg"
+	python3 $(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f cairo-svg -o "${TESTPATH}/legacy/reg-vl-jsonml-cairo.svg"
 
 annotation:
-	$(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f cairo-svg -o "${TESTPATH}/output/annotation-cairo.svg"
-	$(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f svg -o "${TESTPATH}/output/annotation.svg"
+	python3 $(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f cairo-svg -o "${TESTPATH}/output/annotation-cairo.svg"
+	python3 $(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f svg -o "${TESTPATH}/output/annotation.svg"
 
 overlay:
-	$(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f cairo-svg -o "${TESTPATH}/output/overlay-cairo.svg"
-	$(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f svg -o "${TESTPATH}/output/overlay.svg"
+	python3 $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f cairo-svg -o "${TESTPATH}/output/overlay-cairo.svg"
+	python3 $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f svg -o "${TESTPATH}/output/overlay.svg"
 
 adcec:
-	$(WAVEFORM) -i "${TESTPATH}/adcec.jsonml" -f svg -o "${TESTPATH}/output/adcec.svg"
+	python3 $(WAVEFORM) -i "${TESTPATH}/adcec.jsonml" -f svg -o "${TESTPATH}/output/adcec.svg"
 
 coverage:
 	coverage run -a $(WAVEFORM) -i ${TESTPATH}/wavetest.yaml -f svg -o ${TESTPATH}/output/$(subst .yaml,-yaml.svg,wavetest.yaml)
