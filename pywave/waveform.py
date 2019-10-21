@@ -135,7 +135,7 @@ def parse(filepath: str) -> (bool, object):
     # file existence
     err = filepath is None or not os.path.exists(filepath)
     if err:
-        log_Error(ERROR_MSG["FILE_NOT_FOUND"] % cli_args.input)
+        log_Error(ERROR_MSG["FILE_NOT_FOUND"] % filepath)
         return (err, None)
     _, ext = os.path.splitext(filepath)
     # supported extension
@@ -171,11 +171,12 @@ def register_to_wavelane(obj: dict) -> object:
         reg.push_field(field)
     return reg.to_wavelane()
 
-def cli_main(input_path: str, output_path: str, file_format: str, is_reg: bool = False, dpi: float = 150.0):
+def cli_main(input_path: str, output_path: str, file_format: str, is_reg: bool = False, dpi: float = 150.0, cb_help = print):
     # check the input file
+    print(input_path)
     err, obj = parse(input_path)
     if err:
-        parser.print_help()
+        cb_help()
         exit(2)
     if not file_format.lower() in SUPPORTED_RENDER:
         log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
@@ -215,4 +216,4 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--dpi", help="resolution of the image for png export", default=150.0, type=float)
     parser.add_argument("-o", "--output", help="path to the output file", default=None, type=str)
     cli_args = parser.parse_args()
-    cli_main(cli_args.input, cli_args.output, cli_args.format, cli_args.is_reg, cli_args.dpi)
+    cli_main(cli_args.input, cli_args.output, cli_args.format, cli_args.is_reg, cli_args.dpi, parser.print_help)

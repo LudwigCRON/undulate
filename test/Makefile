@@ -1,5 +1,5 @@
 TESTPATH=$(shell pwd)
-WAVEFORM=../waveform.py
+WAVEFORM=../pywave/waveform.py
 
 .PHONY: new legacy internal cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml internal-svg internal-cairo-svg coverage
 

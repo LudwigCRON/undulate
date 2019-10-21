@@ -8,6 +8,7 @@ from .register import Register, Field, generate_register_symbol
 from .skin import text_bbox, text_align, apply_fill, apply_font, apply_stroke, get_style, Engine
 from .renderer import Renderer
 from .svgrenderer import SvgRenderer
+from .waveform import cli_main
 try:
     from .cairorenderer import CairoRenderer
 except ImportError:
