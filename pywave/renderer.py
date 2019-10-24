@@ -260,7 +260,6 @@ class Renderer:
         """
         brick_width  = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
-        repeat       = kwargs.get("repeat", 1)
         # Parameters for all wavelane
         excluded_sections = ["edges", "edge", "head", "config", "adjustements", "annotations"]
         nodes, _y = [], 0
@@ -269,11 +268,12 @@ class Renderer:
             if isinstance(wavelane, dict) and not name in excluded_sections:
                 if "wave" in wavelane or Renderer.is_spacer(name):
                     if "node" in wavelane:
-                        TOTAL_LENGTH = len(wavelane["node"]) * int(repeat)
                         chain = wavelane["node"].split(' ')
                         # brick width of the wavelane
-                        periods = [wavelane.get("period", 1)] * TOTAL_LENGTH
+                        periods = [wavelane.get("period", 1)] * len(chain[0])
                         periods = self._get_or_eval("periods", periods, **wavelane)
+                        if len(periods) < len(chain[0]):
+                            periods = periods + [wavelane.get("period", 1)] * (len(chain[0])-len(periods))
                         width   = [brick_width * p for p in periods]
                         phase   = brick_width * wavelane.get("phase", 0)
                         slewing = wavelane.get("slewing", 3)
@@ -281,10 +281,10 @@ class Renderer:
                         x = list(accumulate(width))
                         # parse the chain
                         ni, j = [], 0
-                        for c in chain[0]:
+                        for i, c in enumerate(chain[0]):
+                            j = i if len(width) > i else -1
                             if c != '.':
                                 ni.append((x[j]-width[j], width[j], c))
-                                j += 1
                         j = count(0)
                         # get identifier
                         nodes.extend(
