@@ -1,0 +1,7 @@
+# testcase to demonstrate the possibility
+# of overlaying several curves
+
+mcu_clk.wave          = "P"
+mcu_clk.repeat        = 10
+
+weirdo.wave           = "z01xvbn"

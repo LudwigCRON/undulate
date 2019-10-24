@@ -7,7 +7,6 @@ Command line interface to draw your waveforms
 import os
 import re
 import sys
-import argparse
 import traceback
 
 import json
@@ -192,8 +191,6 @@ def cli_main(input_path: str, output_path: str, file_format: str, is_reg: bool =
             renderer = pywave.SvgRenderer()
         elif file_format.startswith("cairo-"):
             renderer = pywave.CairoRenderer(extension=file_format.split('-')[-1], dpi=dpi)
-        else:
-            renderer = None
         try:
             if file_format.startswith("cairo-"):
                 renderer.draw(obj, brick_height=(50 if is_reg else 20),
@@ -207,13 +204,4 @@ def cli_main(input_path: str, output_path: str, file_format: str, is_reg: bool =
                                                 is_reg=is_reg))
         except Exception as e:
             traceback.print_tb(e.__traceback__)
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='waveform generator from textual format')
-    parser.add_argument("-i", "--input", help="path to the input text file", default=None, type=str)
-    parser.add_argument("-f", "--format", help="file format of the output", default="svg", type=str)
-    parser.add_argument("-r", "--is_reg", help="is register description", action="store_true", default=False)
-    parser.add_argument("-d", "--dpi", help="resolution of the image for png export", default=150.0, type=float)
-    parser.add_argument("-o", "--output", help="path to the output file", default=None, type=str)
-    cli_args = parser.parse_args()
-    cli_main(cli_args.input, cli_args.output, cli_args.format, cli_args.is_reg, cli_args.dpi, parser.print_help)
+            exit(3)

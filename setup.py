@@ -21,11 +21,16 @@ setup(
     zip_safe=False,
     classifiers=[],
     platforms='any',
-    packages=find_packages(exclude=['example']),
+    packages=["pywave"],
     include_package_data=True,
     install_requires=requires,
     setup_requires=[
         'setuptools_scm',
     ],
+    entry_points={
+        'console_scripts': [
+            'pywave = pywave:main',
+        ],
+    },
     keywords=['pywave'],
 )

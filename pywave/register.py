@@ -34,8 +34,8 @@ class Register:
         # add to the stack
         if isinstance(field, dict):
             f = Field.from_dict(field)
-        elif isinstance(field, Field):
-            f = field
+        #elif isinstance(field, Field):
+        #    f = field
         else:
             raise Exception("Unsupported %s of field" % type(field))
         f.start = self.__counter

@@ -8,6 +8,7 @@ signal[0]:
 signal[1]:
   wave: "0....1....."
   node: ".....b....."
+  periods: "[0.8,7/6]"
 
 signal[2]:
   wave: "0..h.l....."

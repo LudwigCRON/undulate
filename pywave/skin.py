@@ -286,8 +286,7 @@ else:
             context.set_source_rgba(r / 255, g / 255, b / 255, a / 255)
         # width
         w = style.get("stroke-width", 1.0)
-        if not w is None:
-            context.set_line_width(w)
+        context.set_line_width(w)
         # line cap
         lc = style.get("stroke-linecap", LineCap.ROUND)
         if lc == LineCap.SQUARE:
@@ -307,8 +306,6 @@ else:
         # dash array
         da = style.get("stroke-dasharray", [])
         of = style.get("stroke-dasharray-offset", 0)
-        if of is None:
-            of = 0
         if da:
             context.set_dash(da, of)
 
