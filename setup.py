@@ -7,7 +7,7 @@ requires = ['pycairo >= "1.18.1"',
             'python_version>="3.5"']
 
 setup(
-    name='pywave',
+    name='pywaveform',
     use_scm_version={
         "relative_to": __file__,
         "write_to": "pywave/version.py",
