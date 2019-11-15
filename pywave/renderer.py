@@ -401,8 +401,8 @@ class Renderer:
             # hline
             if shape == "-":
                 y_pos = adjust_y(y)
-                x1 = xmin+start if isinstance(start, (float, int)) else xmin
-                x2 = xmin+end if isinstance(end, (float, int)) else xmin+width
+                x1 = xmin+start*brick_width if isinstance(start, (float, int)) else xmin
+                x2 = xmin+end*brick_width if isinstance(end, (float, int)) else xmin+width
                 c = a.get("color", (0, 0, 0, 255))
                 pts = [("M", x1, y_pos), ("L", x2, y_pos)]
                 ans = self.spline(pts, **a)
