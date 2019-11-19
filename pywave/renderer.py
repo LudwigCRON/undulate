@@ -417,19 +417,21 @@ class Renderer:
             # global time compression
             elif shape == "||":
                 x = xmin+x*brick_width
+                y1 = adjust_y(start) if isinstance(start, (float, int)) else 0
+                y2 = adjust_y(end) if isinstance(end, (float, int)) else height
                 pts_1 = [
-                    ("M", x, 0),            # |
-                    ("L", x, height/2-10),  # |
-                    ("L", x-10, height/2),  # /
-                    ("L", x, height/2+10),  # \
-                    ("L", x, height),       # |
+                    ("M", x, y1),            # |
+                    ("L", x, (y2+y1)/2-10),  # |
+                    ("L", x-10, (y2+y1)/2),  # /
+                    ("L", x, (y2+y1)/2+10),  # \
+                    ("L", x, y2),       # |
                 ]
                 pts_2 = [
-                    ("M", x+5, 0),            # |
-                    ("L", x+5, height/2-10),  # |
-                    ("L", x-4, height/2),     # /
-                    ("L", x+5, height/2+10),  # \
-                    ("L", x+5, height),       # |
+                    ("M", x+5, y1),            # |
+                    ("L", x+5, (y2+y1)/2-10),  # |
+                    ("L", x-4, (y2+y1)/2),     # /
+                    ("L", x+5, (y2+y1)/2+10),  # \
+                    ("L", x+5, y2),       # |
                 ]
                 poly = copy.deepcopy(pts_2)
                 poly.extend(pts_1[::-1])
