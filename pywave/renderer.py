@@ -238,7 +238,7 @@ class Renderer:
             ans = self._SYMBOL_TEMP(symbol, content, **kwargs)
         return ans
 
-    def __list_nodes__(self, wavelanes: dict, depth: int = 0, **kwargs):
+    def __list_nodes__(self, wavelanes: dict, depth: int=0, **kwargs):
         """
         list of named nodes in the signal representation
         and calculate the coordinates
@@ -260,9 +260,10 @@ class Renderer:
         """
         brick_width  = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
+        level        = depth
         # Parameters for all wavelane
         excluded_sections = ["edges", "edge", "head", "config", "adjustements", "annotations"]
-        nodes, _y = [], 0
+        nodes, _y = [], (level-1)*wavelanes[next(iter(wavelanes))].get("gap-offset", 0) if wavelanes else 0
         for name, wavelane in wavelanes.items():
             # read nodes declaration
             if isinstance(wavelane, dict) and not name in excluded_sections:
@@ -300,11 +301,11 @@ class Renderer:
                         x, y, name = node
                         nodes.append((x, _y + y, name))
                     _y += dy
-        if depth > 0:
+        if depth > level:
             return (_y, nodes)
         return nodes
 
-    def annotations(self, wavelanes:dict, viewport:tuple, **kwargs):
+    def annotations(self, wavelanes:dict, viewport:tuple, depth:int = 0, **kwargs):
         """
         draw edges, vertical lines, horizontal lines, global time compression, ...
         defined in the annotations section of the input file
@@ -333,7 +334,7 @@ class Renderer:
         def adjust_y(y):
             return floor(y)*brick_height*1.5+(y-floor(y))*brick_height
         # list nodes and their name
-        nodes = self.__list_nodes__(wavelanes, **kwargs)
+        nodes = self.__list_nodes__(wavelanes, depth, **kwargs)
         # transform edges into annotations
         for ei in edges_input:
             match = re.match(Renderer._EDGE_REGEXP, ei)
@@ -986,7 +987,7 @@ class Renderer:
             ans = self.group(lambda: _gen(offset, width, height, brick_width, brick_height), name, extra=extra)
             offsetx, offsety = offset[0], offset[1]
             # finish the group
-            ans += self.annotations(wavelanes, viewport=(offsetx, 0, width, height), **kwargs)
+            ans += self.annotations(wavelanes, viewport=(offsetx, 0, width, height), depth=depth, **kwargs)
             return (offsety, ans)
         # unknown options
         else:
