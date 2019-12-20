@@ -262,7 +262,8 @@ class Renderer:
         brick_height = kwargs.get("brick_height", 20)
         # Parameters for all wavelane
         excluded_sections = ["edges", "edge", "head", "config", "adjustements", "annotations"]
-        nodes, _y = [], (level-1)*wavelanes[next(iter(wavelanes))].get("gap-offset", 0) if isinstance(wavelanes, dict) else 0
+        first_row_of_group = wavelanes[next(iter(wavelanes))]
+        nodes, _y = [], (level-1)*first_row_of_group.get("gap-offset", 0) if isinstance(first_row_of_group, dict) else 0
         for name, wavelane in wavelanes.items():
             # read nodes declaration
             if isinstance(wavelane, dict) and not name in excluded_sections:
