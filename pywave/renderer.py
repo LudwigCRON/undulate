@@ -741,7 +741,8 @@ class Renderer:
             phase = k.get("phase", 0)
             period = k.get("period", 1)
             slewing = k.get("slewing", 3)
-            pmul = max(period, slewing*2/brick_width)
+            # set minimum width
+            pmul = max(period, 0 if b in "csa" else slewing*2/brick_width)
             if b == '|':
                 return 0
             if idx == 0:
