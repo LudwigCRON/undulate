@@ -1,0 +1,2276 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pywave.digital module &mdash; Pywave 0.0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pywave.generic module" href="pywave.generic.html" />
+    <link rel="prev" title="pywave.cairorenderer module" href="pywave.cairorenderer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Pywave
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pywave</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pywave.html">pywave package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pywave.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pywave.analogue.html">pywave.analogue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.bricks.html">pywave.bricks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.cairorenderer.html">pywave.cairorenderer module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pywave.digital module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.generic.html">pywave.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.register.html">pywave.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.renderer.html">pywave.renderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.skin.html">pywave.skin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.svgrenderer.html">pywave.svgrenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.version.html">pywave.version module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.waveform.html">pywave.waveform module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pywave.html#module-pywave">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Pywave</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pywave</a> &raquo;</li>
+        
+          <li><a href="pywave.html">pywave package</a> &raquo;</li>
+        
+      <li>pywave.digital module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pywave.digital.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pywave.digital">
+<span id="pywave-digital-module"></span><h1>pywave.digital module<a class="headerlink" href="#module-pywave.digital" title="Permalink to this headline">¶</a></h1>
+<p>digital.py declare the basic building block
+to generate a digital waveform</p>
+<dl class="class">
+<dt id="pywave.digital.Nclk">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Nclk</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Nclk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Falling edge clock with/without arrow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_arrow</strong> (<em>bool</em>) – by default False</p></li>
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float &gt; 0</em>) – between 0 and 1</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Nclk.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Nclk.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Nclk.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Nclk.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Nclk.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Nclk.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Nclk.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Nclk.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Nclk.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Nclk.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Nclk.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Nclk.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Nclk.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Nclk.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Nclk.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Nclk.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Nclk.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Nclk.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Nclk.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Nclk.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Nclk.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Nclk.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Nclk.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Nclk.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Nclk.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Pclk">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Pclk</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Pclk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Rising edge clock with arrow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_arrow</strong> (<em>bool</em>) – by default False</p></li>
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float &gt; 0</em>) – between 0 and 1</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Pclk.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Pclk.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Pclk.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Pclk.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Pclk.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Pclk.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Pclk.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Pclk.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Pclk.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Pclk.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Pclk.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Pclk.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Pclk.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Pclk.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Pclk.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Pclk.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Pclk.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Pclk.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Pclk.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Pclk.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Pclk.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Pclk.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Pclk.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Pclk.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Pclk.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Low">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Low</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Low" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Falling edge clock with arrow and rest at zero</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_arrow</strong> (<em>bool</em>) – by default False</p></li>
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.Low.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Low.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Low.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Low.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Low.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Low.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Low.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Low.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Low.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Low.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Low.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Low.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Low.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Low.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Low.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Low.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Low.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Low.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Low.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Low.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Low.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Low.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Low.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Low.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Low.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Low.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.High">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">High</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.High" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Rising edge clock with arrow and rest at one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_arrow</strong> (<em>bool</em>) – by default False</p></li>
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.High.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.High.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.High.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.High.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.High.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.High.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.High.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.High.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.High.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.High.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.High.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.High.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.High.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.High.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.High.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.High.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.High.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.High.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.High.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.High.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.High.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.High.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.High.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.High.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.High.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.High.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.HighZ">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">HighZ</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.HighZ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>High impedance mode with a reset close to VDD/2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.HighZ.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.HighZ.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.HighZ.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.HighZ.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.HighZ.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.HighZ.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.HighZ.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.HighZ.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.HighZ.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.HighZ.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.HighZ.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.HighZ.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.HighZ.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.HighZ.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.HighZ.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.HighZ.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.HighZ.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.HighZ.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.HighZ.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.HighZ.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.HighZ.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.HighZ.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.HighZ.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.HighZ.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.HighZ.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Zero">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Zero</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Zero level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.Zero.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Zero.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Zero.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Zero.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Zero.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Zero.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Zero.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Zero.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Zero.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Zero.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Zero.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Zero.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Zero.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Zero.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Zero.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Zero.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Zero.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Zero.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Zero.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Zero.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Zero.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Zero.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Zero.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Zero.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Zero.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Zero.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.One">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">One</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.One" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>One level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.One.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.One.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.One.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.One.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.One.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.One.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.One.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.One.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.One.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.One.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.One.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.One.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.One.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.One.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.One.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.One.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.One.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.One.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.One.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.One.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.One.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.One.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.One.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.One.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.One.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.One.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Garbage">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Garbage</code><span class="sig-paren">(</span><em class="sig-param">unknown: bool = True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Garbage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Unknown state for data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>follow_data</strong> (<em>bool</em>) – data ‘=’ occurs before this brick</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Garbage.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Garbage.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Garbage.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Garbage.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Garbage.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Garbage.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Garbage.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Garbage.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Garbage.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Garbage.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Garbage.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Garbage.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Garbage.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Garbage.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Garbage.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Garbage.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Garbage.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Garbage.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Garbage.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Garbage.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Garbage.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Garbage.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Garbage.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Garbage.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Garbage.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Data">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Data</code><span class="sig-paren">(</span><em class="sig-param">unknown: bool = False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>Multibits value such as a Bus</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>style</strong> (<em>str</em>) – from 2 to 5, by default s2
+it applies a specific background color</p></li>
+<li><p><strong>unknown</strong> (<em>bool</em>) – if unknown apply specific background
+typical use case if for ‘x’</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.Data.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Data.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Data.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Data.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Data.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Data.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Data.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Data.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Data.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Data.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Data.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Data.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Data.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Data.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Data.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Data.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Data.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Data.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Data.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Data.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Data.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Data.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Data.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Data.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Data.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Data.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Gap">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Gap</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Gap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>single line time compression</p>
+<dl class="method">
+<dt id="pywave.digital.Gap.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Gap.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Gap.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Gap.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Gap.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Gap.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Gap.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Gap.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Gap.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Gap.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Gap.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Gap.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Gap.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Gap.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Gap.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Gap.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Gap.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Gap.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Gap.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Gap.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Gap.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Gap.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Gap.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Gap.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Gap.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Up">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Up</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>RC charging to VDD</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.Up.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Up.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Up.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Up.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Up.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Up.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Up.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Up.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Up.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Up.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Up.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Up.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Up.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Up.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Up.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Up.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Up.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Up.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Up.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Up.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Up.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Up.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Up.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Up.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Up.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Up.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Down">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Down</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>RC discharge to GND</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.digital.Down.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Down.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Down.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Down.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Down.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Down.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Down.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Down.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Down.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Down.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Down.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Down.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Down.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Down.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Down.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Down.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Down.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Down.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Down.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Down.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Down.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Down.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Down.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Down.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Down.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Down.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Impulse">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Impulse</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Impulse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>pulse</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float</em>) – adjust the x position of the impulse
+from 0 to 1, by default 0.5</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pywave.digital.Impulse.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Impulse.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Impulse.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Impulse.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Impulse.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Impulse.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Impulse.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Impulse.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Impulse.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Impulse.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Impulse.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Impulse.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Impulse.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Impulse.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Impulse.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Impulse.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Impulse.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Impulse.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Impulse.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Impulse.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Impulse.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Impulse.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Impulse.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Impulse.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Impulse.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pywave.digital.Space">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">Space</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Space" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pywave.generic.html#pywave.generic.Brick" title="pywave.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">pywave.generic.Brick</span></code></a></p>
+<p>blank</p>
+<dl class="method">
+<dt id="pywave.digital.Space.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Space.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Space.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Space.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.digital.Space.arrows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.digital.Space.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.digital.Space.first_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Space.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Space.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.digital.Space.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.Space.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.digital.Space.height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.digital.Space.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.digital.Space.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.digital.Space.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.digital.Space.is_first" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.digital.Space.paths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.digital.Space.polygons" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.digital.Space.slewing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.digital.Space.splines" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.digital.Space.symbol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.digital.Space.texts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.digital.Space.width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.digital.Space.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.digital.Space.last_y" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pywave.digital.generate_digital_symbol">
+<code class="sig-prename descclassname">pywave.digital.</code><code class="sig-name descname">generate_digital_symbol</code><span class="sig-paren">(</span><em class="sig-param">symbol: str</em>, <em class="sig-param">**kwargs) -&gt; (&lt;class 'bool'&gt;</em>, <em class="sig-param">&lt;class 'object'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.digital.generate_digital_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>define the mapping between the symbol and the brick</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pywave.generic.html" class="btn btn-neutral float-right" title="pywave.generic module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pywave.cairorenderer.html" class="btn btn-neutral float-left" title="pywave.cairorenderer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ludwig CRON
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pywave.waveform module &mdash; Pywave 0.0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="6. Roadmap" href="roadmap.html" />
+    <link rel="prev" title="pywave.version module" href="pywave.version.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Pywave
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pywave</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pywave.html">pywave package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pywave.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pywave.analogue.html">pywave.analogue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.bricks.html">pywave.bricks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.cairorenderer.html">pywave.cairorenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.digital.html">pywave.digital module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.generic.html">pywave.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.register.html">pywave.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.renderer.html">pywave.renderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.skin.html">pywave.skin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.svgrenderer.html">pywave.svgrenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.version.html">pywave.version module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pywave.waveform module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pywave.html#module-pywave">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Pywave</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pywave</a> &raquo;</li>
+        
+          <li><a href="pywave.html">pywave package</a> &raquo;</li>
+        
+      <li>pywave.waveform module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pywave.waveform.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pywave.waveform">
+<span id="pywave-waveform-module"></span><h1>pywave.waveform module<a class="headerlink" href="#module-pywave.waveform" title="Permalink to this headline">¶</a></h1>
+<p>Command line interface to draw your waveforms</p>
+<dl class="function">
+<dt id="pywave.waveform.log_Fatal">
+<code class="sig-prename descclassname">pywave.waveform.</code><code class="sig-name descname">log_Fatal</code><span class="sig-paren">(</span><em class="sig-param">msg: str</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.waveform.log_Fatal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pywave.waveform.log_Error">
+<code class="sig-prename descclassname">pywave.waveform.</code><code class="sig-name descname">log_Error</code><span class="sig-paren">(</span><em class="sig-param">msg: str</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.waveform.log_Error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pywave.waveform.parse">
+<code class="sig-prename descclassname">pywave.waveform.</code><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">filepath: str) -&gt; (&lt;class 'bool'&gt;</em>, <em class="sig-param">&lt;class 'object'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.waveform.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse the input file into a compatible dict for processing</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pywave.waveform.register_to_wavelane">
+<code class="sig-prename descclassname">pywave.waveform.</code><code class="sig-name descname">register_to_wavelane</code><span class="sig-paren">(</span><em class="sig-param">obj: dict</em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#pywave.waveform.register_to_wavelane" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert a register definition as a wavelane</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pywave.waveform.cli_main">
+<code class="sig-prename descclassname">pywave.waveform.</code><code class="sig-name descname">cli_main</code><span class="sig-paren">(</span><em class="sig-param">input_path: str</em>, <em class="sig-param">output_path: str</em>, <em class="sig-param">file_format: str</em>, <em class="sig-param">is_reg: bool = False</em>, <em class="sig-param">dpi: float = 150.0</em>, <em class="sig-param">cb_help=&lt;built-in function print&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.waveform.cli_main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="roadmap.html" class="btn btn-neutral float-right" title="6. Roadmap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pywave.version.html" class="btn btn-neutral float-left" title="pywave.version module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ludwig CRON
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

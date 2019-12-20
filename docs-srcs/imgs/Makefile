@@ -1,5 +1,5 @@
 SUBDIRS := $(wildcard *)
-WAVEFORM := ../../waveform.py
+WAVEFORM := pywave
 
 .PHONY: all $(SUBDIRS)
 

@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>pywave.generic module &mdash; Pywave 0.0.2 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pywave.register module" href="pywave.register.html" />
+    <link rel="prev" title="pywave.digital module" href="pywave.digital.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Pywave
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pywave</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="pywave.html">pywave package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="pywave.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="pywave.analogue.html">pywave.analogue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.bricks.html">pywave.bricks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.cairorenderer.html">pywave.cairorenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.digital.html">pywave.digital module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">pywave.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.register.html">pywave.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.renderer.html">pywave.renderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.skin.html">pywave.skin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.svgrenderer.html">pywave.svgrenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.version.html">pywave.version module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pywave.waveform.html">pywave.waveform module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pywave.html#module-pywave">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Pywave</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">pywave</a> &raquo;</li>
+        
+          <li><a href="pywave.html">pywave package</a> &raquo;</li>
+        
+      <li>pywave.generic module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/pywave.generic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pywave.generic">
+<span id="pywave-generic-module"></span><h1>pywave.generic module<a class="headerlink" href="#module-pywave.generic" title="Permalink to this headline">¶</a></h1>
+<p>bricks.py declare the basic building block
+to generate a waveform</p>
+<dl class="class">
+<dt id="pywave.generic.Brick">
+<em class="property">class </em><code class="sig-prename descclassname">pywave.generic.</code><code class="sig-name descname">Brick</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.generic.Brick" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>define the brick as a composition of paths, arrows, and generic polygons
+to fill an area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="#pywave.generic.Brick.width" title="pywave.generic.Brick.width"><strong>width</strong></a> (<em>float &gt; 0</em>) – by default is 40</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.height" title="pywave.generic.Brick.height"><strong>height</strong></a> (<em>float &gt; 0</em>) – by default is 20</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.slewing" title="pywave.generic.Brick.slewing"><strong>slewing</strong></a> (<em>float &gt; 0</em>) – by default 0</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.duty_cycle" title="pywave.generic.Brick.duty_cycle"><strong>duty_cycle</strong></a> (<em>float &gt; 0</em>) – between 0.0 and 1.0 by default 0.5</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.ignore_transition" title="pywave.generic.Brick.ignore_transition"><strong>ignore_transition</strong></a> (<em>bool</em>) – by default False</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.is_first" title="pywave.generic.Brick.is_first"><strong>is_first</strong></a> (<em>bool</em>) – first brick of a wavelance, by default False</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.last_y" title="pywave.generic.Brick.last_y"><strong>last_y</strong></a> (<em>float</em>) – y coordinate of the previous brick
+to make the junction between the two</p></li>
+<li><p><strong>equation</strong> (<em>str</em><em> or </em><em>float</em>) – analogue value(s)</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.paths" title="pywave.generic.Brick.paths"><strong>paths</strong></a> (<em>list</em>) – list of “svg” paths to be drawn</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.arrows" title="pywave.generic.Brick.arrows"><strong>arrows</strong></a> (<em>list</em>) – list of arrows to be drawn</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.polygons" title="pywave.generic.Brick.polygons"><strong>polygons</strong></a> (<em>list</em>) – <p>list of polygons to be drawn</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>polygons are considered to be a list of (x, y) tuples</p>
+</div>
+</p></li>
+<li><p><a class="reference internal" href="#pywave.generic.Brick.splines" title="pywave.generic.Brick.splines"><strong>splines</strong></a> (<em>list</em>) – <p>list of splines to be drawn</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>splines are considered to be a list of (type, x or dx, y or dy) tuples
+for more details please look at <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths">https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths</a></p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="attribute">
+<dt id="pywave.generic.Brick.width">
+<code class="sig-name descname">width</code><a class="headerlink" href="#pywave.generic.Brick.width" title="Permalink to this definition">¶</a></dt>
+<dd><p>width of the brick</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.height">
+<code class="sig-name descname">height</code><a class="headerlink" href="#pywave.generic.Brick.height" title="Permalink to this definition">¶</a></dt>
+<dd><p>height of the brick</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.slewing">
+<code class="sig-name descname">slewing</code><a class="headerlink" href="#pywave.generic.Brick.slewing" title="Permalink to this definition">¶</a></dt>
+<dd><p>slope limitation</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.duty_cycle">
+<code class="sig-name descname">duty_cycle</code><a class="headerlink" href="#pywave.generic.Brick.duty_cycle" title="Permalink to this definition">¶</a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>duty cycle 0 -&gt; 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.ignore_transition">
+<code class="sig-name descname">ignore_transition</code><a class="headerlink" href="#pywave.generic.Brick.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd><p>bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>prevent glitches in chain</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.ignore_start_transition">
+<code class="sig-name descname">ignore_start_transition</code><a class="headerlink" href="#pywave.generic.Brick.ignore_start_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.ignore_end_transition">
+<code class="sig-name descname">ignore_end_transition</code><a class="headerlink" href="#pywave.generic.Brick.ignore_end_transition" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.is_first">
+<code class="sig-name descname">is_first</code><a class="headerlink" href="#pywave.generic.Brick.is_first" title="Permalink to this definition">¶</a></dt>
+<dd><p>bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>first brick in wavelane</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.last_y">
+<code class="sig-name descname">last_y</code><a class="headerlink" href="#pywave.generic.Brick.last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>last brick y position</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.first_y">
+<code class="sig-name descname">first_y</code><a class="headerlink" href="#pywave.generic.Brick.first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>float</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>this brick first y position</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.symbol">
+<code class="sig-name descname">symbol</code><a class="headerlink" href="#pywave.generic.Brick.symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>define the char</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.paths">
+<code class="sig-name descname">paths</code><a class="headerlink" href="#pywave.generic.Brick.paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of paths to be drawn</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.arrows">
+<code class="sig-name descname">arrows</code><a class="headerlink" href="#pywave.generic.Brick.arrows" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of arrows</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.polygons">
+<code class="sig-name descname">polygons</code><a class="headerlink" href="#pywave.generic.Brick.polygons" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of polygons</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.splines">
+<code class="sig-name descname">splines</code><a class="headerlink" href="#pywave.generic.Brick.splines" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of splines</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pywave.generic.Brick.texts">
+<code class="sig-name descname">texts</code><a class="headerlink" href="#pywave.generic.Brick.texts" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of texts to be printed</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.generic.Brick.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.generic.Brick.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.generic.Brick.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pywave.generic.Brick.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.generic.Brick.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">previous_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.generic.Brick.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pywave.generic.Brick.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param">shift: float = 0</em>, <em class="sig-param">next_y: float = -1</em><span class="sig-paren">)</span><a class="headerlink" href="#pywave.generic.Brick.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pywave.generic.generate_brick">
+<code class="sig-prename descclassname">pywave.generic.</code><code class="sig-name descname">generate_brick</code><span class="sig-paren">(</span><em class="sig-param">symbol: str</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#pywave.generic.generate_brick" title="Permalink to this definition">¶</a></dt>
+<dd><p>define the mapping between the symbol and the brick</p>
+<p>It fetches needed parameters for the bricks
+and prepare the analogue CONTEXT</p>
+<p>then ask for each contexts which can interpret the symbol</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> (<em>pywave.BRICKS</em>) – symbol to create</p></li>
+<li><p><strong>brick_width</strong> (<em>int</em>) – height of the brick in display unit</p></li>
+<li><p><strong>brick_height</strong> (<em>int</em>) – height of the brick in display unit</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>brick</dt><dd><p>the brick created</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pywave.register.html" class="btn btn-neutral float-right" title="pywave.register module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pywave.digital.html" class="btn btn-neutral float-left" title="pywave.digital module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ludwig CRON
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
