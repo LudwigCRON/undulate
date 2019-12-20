@@ -238,7 +238,7 @@ class Renderer:
             ans = self._SYMBOL_TEMP(symbol, content, **kwargs)
         return ans
 
-    def __list_nodes__(self, wavelanes: dict, depth: int=0, **kwargs):
+    def __list_nodes__(self, wavelanes: dict, level: int=0, depth: int=0, **kwargs):
         """
         list of named nodes in the signal representation
         and calculate the coordinates
@@ -260,7 +260,6 @@ class Renderer:
         """
         brick_width  = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
-        level        = depth
         # Parameters for all wavelane
         excluded_sections = ["edges", "edge", "head", "config", "adjustements", "annotations"]
         nodes, _y = [], (level-1)*wavelanes[next(iter(wavelanes))].get("gap-offset", 0) if wavelanes else 0
@@ -295,13 +294,13 @@ class Renderer:
                     _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
                 # it is a wavegroup
                 else:
-                    dy, n = self.__list_nodes__(wavelane, depth+1, **kwargs)
+                    dy, n = self.__list_nodes__(wavelane, level, depth+1, **kwargs)
                     _y += brick_height
                     for node in n:
                         x, y, name = node
                         nodes.append((x, _y + y, name))
                     _y += dy
-        if depth > level:
+        if depth > 0:
             return (_y, nodes)
         return nodes
 
