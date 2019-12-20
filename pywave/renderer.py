@@ -814,9 +814,9 @@ class Renderer:
                         fy, ly = brick.get_first_y(), nb.get_last_y()
                         dy = ly - fy
                         # alter current brick end
-                        nb.alter_end(-nb.slewing*dy/brick_height, fy)
+                        nb.alter_end(0, fy)
                         # alter next brick start
-                        brick.alter_start(-nb.slewing*dy/brick_height, fy)
+                        brick.alter_start(0, fy)
                         # update the bricks
                         wave[i] = (symbol, brick, kw)
                         wave[last_valid_index] = (ns, nb, nkw)
@@ -825,9 +825,9 @@ class Renderer:
                 fy, ly = brick.get_first_y(), nb.get_last_y()
                 dy = ly - fy
                 # alter current brick end
-                nb.alter_end(-nb.slewing*dy/brick_height, fy)
+                nb.alter_end(0, fy)
                 # alter next brick start
-                brick.alter_start(-nb.slewing*dy/brick_height, fy)
+                brick.alter_start(0, fy)
                 # update the bricks
                 wave[i] = (symbol, brick, kw)
                 wave[last_valid_index] = (ns, nb, nkw)
