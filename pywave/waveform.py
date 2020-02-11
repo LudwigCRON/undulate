@@ -192,15 +192,21 @@ def cli_main(input_path: str, output_path: str, file_format: str, is_reg: bool =
         elif file_format.startswith("cairo-"):
             renderer = pywave.CairoRenderer(extension=file_format.split('-')[-1], dpi=dpi)
         try:
+            config = obj.get("config", {})
+            vs = config.get("vscale", 1.0)
+            hs = config.get("hscale", 1.0)
             if file_format.startswith("cairo-"):
-                renderer.draw(obj, brick_height=(50 if is_reg else 20),
-                                   brick_width=(28 if is_reg else 40),
+                renderer.draw(obj, brick_height=vs*(50 if is_reg else 20),
+                                   brick_width=hs*(28 if is_reg else 40),
                                    is_reg=is_reg,
                                    filename=output_path)
             else:
+                config = obj.get("config", {})
+                vs = config.get("vscale", 1.0)
+                hs = config.get("hscale", 1.0)
                 with open(output_path, "w+") as fp:
-                    fp.write(renderer.draw(obj, brick_height=(50 if is_reg else 20),
-                                                brick_width=(28 if is_reg else 40),
+                    fp.write(renderer.draw(obj, brick_height=vs*(50 if is_reg else 20),
+                                                brick_width=hs*(28 if is_reg else 40),
                                                 is_reg=is_reg))
         except Exception as e:
             traceback.print_tb(e.__traceback__)
