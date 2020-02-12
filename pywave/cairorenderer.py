@@ -277,7 +277,7 @@ class CairoRenderer(Renderer):
             lkeys = -1
             height += n * 12
         # select appropriate surface
-        w, h = (width + lkeys * 11 + 11), height
+        w, h = (width + lkeys * 5 + 11), height
         if self.extension == "svg":
             self.surface = cairo.SVGSurface(filename, w, h)
         elif self.extension == "png":
@@ -308,7 +308,7 @@ class CairoRenderer(Renderer):
             brick_height=brick_height,
             width=width,
             height=height,
-            offsetx=lkeys * 10 + 10,
+            offsetx=lkeys * 5 + 10,
         )
         self.cr.show_page()
         # write to an external file for png images

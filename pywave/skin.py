@@ -120,7 +120,7 @@ DEFAULT_STYLE = {
     "s4-polygon": {"fill": (255, 224, 185, 255), "stroke": None},
     "s5-polygon": {"fill": (185, 224, 255, 255), "stroke": None},
     "tick": {
-        "stroke": (136, 136, 136, 255),
+        "stroke": (136, 136, 136, 128),
         "stroke-width": 0.5,
         "stroke-dasharray": [1, 3],
     },
