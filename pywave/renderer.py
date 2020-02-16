@@ -319,7 +319,7 @@ class Renderer:
         return None
     
     def adjust_y(y, factor: float = 1.0):
-        return factor+(y-1)*1.5*factor
+        return factor+(y-1)*1.5*factor if y > 1 else y*1.5*factor
     
     def from_to_parser(s: object,
             width: float,

@@ -97,10 +97,11 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", "arrow")
+        overload = style_in_kwargs(**kwargs)
         self.cr.save()
         if callable(extra):
             extra()
-        apply_fill(self.cr, style, Engine.CAIRO)
+        apply_fill(self.cr, style, Engine.CAIRO, overload)
         self.cr.translate(x, y)
         self.cr.rotate((angle - 90) * 3.14159 / 180)
         self.cr.new_path()
