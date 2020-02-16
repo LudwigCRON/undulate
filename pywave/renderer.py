@@ -314,7 +314,7 @@ class Renderer:
         """
         for p in prefixs:
             for s in suffixs:
-                pattern = "%s%s%S" % (p, root, s)
+                pattern = "%s%s%s" % (p, root, s)
                 yield pattern.strip()
         return None
 
