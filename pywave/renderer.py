@@ -317,6 +317,55 @@ class Renderer:
                 pattern = "%s%s%s" % (p, root, s)
                 yield pattern.strip()
         return None
+    
+    def adjust_y(y, factor: float = 1.0):
+        return factor+(y-1)*1.5*factor
+    
+    def from_to_parser(s: object,
+            width: float,
+            height: float,
+            brick_width: float = 40.0,
+            brick_height: float = 20.0):
+        """
+        parse the from and to options of annotations into positions
+        for drawing the specified shape or text
+
+        Exemple:
+            .. code-block:: json
+
+                    {"annotations": [
+                        {"shape": "||", "x": 3.5},
+                        {"shape": "-~>", "from": "1.5, 3%", "to": "2-0.125, 3", "text": "ready"}
+                    ]}
+        
+        Args:
+            s (str): value string of from or to option
+            width (float): width of the image
+            height (float): height of the image
+            brick_width (float, default=40): brick width
+            brick_height (float, default=40): brick height
+        """
+        # None, empty str, ...
+        if  s is None or \
+            isinstance(s, str) and not s.strip():
+            return None
+        # if tuple so pre-estimated
+        if isinstance(s, tuple):
+            return (s[0]*brick_width, Renderer.adjust_y(s[1])*brick_height)
+        # parse (<number>, <number>)
+        matches = list(re.finditer(r"\s*(\d+\.?\d*)\s*(\%|[+-]\s*\d+\.?\d*)?\s*", s))
+        if not matches:
+            return s
+        # % for image based positionning
+        # otherwise row based positionning
+        xunit = width/100.0 if matches[0].group(2) and "%" in matches[0].group(2) else brick_width
+        yunit = height/100.0 if matches[1].group(2) and "%" in matches[1].group(2) else brick_height
+        x = float(matches[0].group(1))
+        y = float(matches[1].group(1))
+        # if row based consider the offset if given
+        if matches[1].group(2) and not "%" in matches[1].group(2):
+            y = Renderer.adjust_y(y) + float(matches[1].group(2))
+        return (x*xunit, y*yunit)
 
     def annotations(self, wavelanes:dict, viewport:tuple, depth:int = 0, **kwargs):
         """
@@ -343,9 +392,6 @@ class Renderer:
         # if not empty
         if not annotations and not edges_input:
             return ''
-        # adjust y coordinate
-        def adjust_y(y):
-            return floor(y)*brick_height*1.5+(y-floor(y))*brick_height
         # list nodes and their name
         nodes = self.__list_nodes__(wavelanes, depth, **kwargs)
         # transform edges into annotations
@@ -367,24 +413,26 @@ class Renderer:
             x     = a.get("x", 0)
             y     = a.get("y", 0)
             dx    = a.get("dx", 0)*brick_width
-            dy    = adjust_y(a.get("dy", 0))
+            dy    = Renderer.adjust_y(a.get("dy", 0), brick_height)
             start = a.get("from", None)
             end   = a.get("to", None)
             text  = a.get("text", "")
             ans   = ""
             # parse from to
-            if start:
-                if isinstance(start, str) and "," in start:
-                    start = eval(start)
-            if isinstance(start, tuple):
-                x, y = start
-                start = (x*brick_width, adjust_y(y))
-            if end:
-                if isinstance(end, str) and "," in end:
-                    end = eval(end)
-            if isinstance(end, tuple):
-                x, y = end
-                end = (x*brick_width, adjust_y(y))
+            # if start:
+            #     if isinstance(start, str) and "," in start:
+            #         start = eval(start)
+            # if isinstance(start, tuple):
+            #     x, y = start
+            #     start = (x*brick_width, Renderer.adjust_y(y, brick_height))
+            # if end:
+            #     if isinstance(end, str) and "," in end:
+            #         end = eval(end)
+            # if isinstance(end, tuple):
+            #     x, y = end
+            #     end = (x*brick_width, Renderer.adjust_y(y, brick_height))
+            start = Renderer.from_to_parser(a.get("from", None), width, height)
+            end = Renderer.from_to_parser(a.get("to", None), width, height)
             # calculate position of start node
             if isinstance(start, str) and nodes:
                 s = [node for node in nodes if start in node]
@@ -411,11 +459,11 @@ class Renderer:
             # derivative of edges for arrows: by default ->
             start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, e[0]-s[0], 0
             mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
-            # draw shape
+            # draw shapes and surcharge styles
             overload = style_in_kwargs(**a)
             # hline
             if shape == "-":
-                y_pos = adjust_y(y)
+                y_pos = Renderer.adjust_y(y, brick_height)
                 x1 = xmin+start*brick_width if isinstance(start, (float, int)) else xmin
                 x2 = xmin+end*brick_width if isinstance(end, (float, int)) else xmin+width
                 c = a.get("color", (0, 0, 0, 255))
@@ -424,16 +472,16 @@ class Renderer:
             # vline
             elif shape == "|":
                 x = xmin+x*brick_width
-                y1 = adjust_y(start) if isinstance(start, (float, int)) else 0
-                y2 = adjust_y(end) if isinstance(end, (float, int)) else height
+                y1 = Renderer.adjust_y(start, brick_height) if isinstance(start, (float, int)) else 0
+                y2 = Renderer.adjust_y(end, brick_height) if isinstance(end, (float, int)) else height
                 c = a.get("color", (0, 0, 0, 255))
                 pts = [("M", x, y1), ("L", x, y2)]
                 ans = self.spline(pts, **a)
             # global time compression
             elif shape == "||":
                 x = xmin+x*brick_width
-                y1 = adjust_y(start) if isinstance(start, (float, int)) else 0
-                y2 = adjust_y(end) if isinstance(end, (float, int)) else height
+                y1 = Renderer.adjust_y(start, brick_height) if isinstance(start, (float, int)) else 0
+                y2 = Renderer.adjust_y(end, brick_height) if isinstance(end, (float, int)) else height
                 pts_1 = [
                     ("M", x, y1),            # |
                     ("L", x, (y2+y1)/2-10),  # |
@@ -521,7 +569,7 @@ class Renderer:
             elif text:
                 overload = style_in_kwargs(**a)
                 # add white background for the text
-                a.update({"style_repr": "edge-text", "x": xmin+x*brick_width, "y": adjust_y(y)})
+                a.update({"style_repr": "edge-text", "x": xmin+x*brick_width, "y": Renderer.adjust_y(y, brick_height)})
                 ox, oy, w, h = pywave.text_bbox(self.cr, "edge-text", text, self.engine, overload)
                 ans += self.polygon([
                     (0, 0),

@@ -58,23 +58,23 @@ annotations:
     y: 2.5
   # vline: |
   - shape: "|"
-    x: 3.125
+    x: 3.025
     stroke: rgba(0, 0, 255, 127)
   - shape: "|"
-    x: 5.125
+    x: 5.025
     stroke: rgba(255, 0, 0, 127)
   # arrows as in wavedrom
   - shape: "~>"
     from: "a"
     to: "b"
   - shape: "-|>"
-    from: (5.05, 3)
-    to: (7.125, 1)
+    from: (5.05, 4.5)
+    to: (7.05, 2)
     text: "djs"
     dx: 0.25
   - shape: "<->"
-    from: (3.125, 4.05)
-    to: (5.125, 4.05)
+    from: (3, 4.5)
+    to: (5, 4.5)
     text: "delay"
     fill: "#6CB1AA"
     stroke: "#6CB1AA"
