@@ -314,7 +314,8 @@ class Renderer:
         """
         for p in prefixs:
             for s in suffixs:
-                yield f"{p}{root}{s}".strip()
+                pattern = "%s%s%S" % (p, root, s)
+                yield pattern.strip()
         return None
 
     def annotations(self, wavelanes:dict, viewport:tuple, depth:int = 0, **kwargs):
