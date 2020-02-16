@@ -13,7 +13,7 @@
 .s3-polygon {fill: rgba(255, 255, 176, 255);stroke: none;}
 .s4-polygon {fill: rgba(255, 224, 185, 255);stroke: none;}
 .s5-polygon {fill: rgba(185, 224, 255, 255);stroke: none;}
-.tick {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: 1, 3;}
+.tick {stroke: rgba(136, 136, 136, 128);stroke-width: 0.5;stroke-dasharray: 1, 3;}
 .big_gap {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: none;}
 .edge {fill: none;stroke: rgba(0, 0, 255, 255);stroke-width: 1;}
 .edge-arrow {fill: rgba(0, 0, 255, 255);stroke: none;overflow: visible;}
@@ -103,34 +103,34 @@
 <g id="dac"  transform="translate(80.000000, 30.000000)"  >
 <text x="-10.000000" y="30.000000" class="title" style="fill: rgba(0, 0, 255, 255);stroke: none;">dac</text>
 <g data-symbol="c"  transform="translate(0.000000, 0.000000)"  class="s2">
-<path d="m0.000000,80.000000 C16.000000,40.000000 16.000000,40.000000 64.000000,40.000000 L64.000000,40.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+<path d="m0.000000,80.000000 C16.000000,40.000000 16.000000,40.000000 40.000000,40.000000 L40.000000,40.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
 </g>
-<g data-symbol="c"  transform="translate(64.000000, 0.000000)"  class="s2">
-<path d="m0.000000,40.000000 C8.000000,60.000000 8.000000,60.000000 64.000000,60.000000 L64.000000,60.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+<g data-symbol="c"  transform="translate(40.000000, 0.000000)"  class="s2">
+<path d="m0.000000,40.000000 C8.000000,60.000000 8.000000,60.000000 40.000000,60.000000 L40.000000,60.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
 </g>
-<g data-symbol="c"  transform="translate(128.000000, 0.000000)"  class="s2">
-<path d="m0.000000,60.000000 C4.000000,50.000000 4.000000,50.000000 64.000000,50.000000 L64.000000,50.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+<g data-symbol="c"  transform="translate(80.000000, 0.000000)"  class="s2">
+<path d="m0.000000,60.000000 C4.000000,50.000000 4.000000,50.000000 40.000000,50.000000 L40.000000,50.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
 </g>
-<g data-symbol="c"  transform="translate(192.000000, 0.000000)"  class="s2">
-<path d="m0.000000,50.000000 C2.000000,55.000000 2.000000,55.000000 64.000000,55.000000 L64.000000,55.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+<g data-symbol="c"  transform="translate(120.000000, 0.000000)"  class="s2">
+<path d="m0.000000,50.000000 C2.000000,55.000000 2.000000,55.000000 40.000000,55.000000 L40.000000,55.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
 </g>
-<g data-symbol="c"  transform="translate(256.000000, 0.000000)"  class="s2">
-<path d="m0.000000,55.000000 C1.000000,52.500000 1.000000,52.500000 64.000000,52.500000 L64.000000,52.500000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+<g data-symbol="c"  transform="translate(160.000000, 0.000000)"  class="s2">
+<path d="m0.000000,55.000000 C1.000000,52.500000 1.000000,52.500000 40.000000,52.500000 L40.000000,52.500000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(200.000000, 0.000000)"  class="s2">
+<path d="m0.000000,52.500000 C0.500000,53.750000 0.500000,53.750000 40.000000,53.750000 L40.000000,53.750000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(240.000000, 0.000000)"  class="s2">
+<path d="m0.000000,53.750000 C0.250000,53.125000 0.250000,53.125000 40.000000,53.125000 L40.000000,53.125000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+</g>
+<g data-symbol="c"  transform="translate(280.000000, 0.000000)"  class="s2">
+<path d="m0.000000,53.125000 C0.125000,53.437500 0.125000,53.437500 40.000000,53.437500 L40.000000,53.437500" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
 </g>
 <g data-symbol="c"  transform="translate(320.000000, 0.000000)"  class="s2">
-<path d="m0.000000,52.500000 C0.500000,53.750000 0.500000,53.750000 64.000000,53.750000 L64.000000,53.750000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+<path d="m0.000000,53.437500 C0.062500,53.281250 0.062500,53.281250 40.000000,53.281250 L40.000000,53.281250" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
 </g>
-<g data-symbol="c"  transform="translate(384.000000, 0.000000)"  class="s2">
-<path d="m0.000000,53.750000 C0.250000,53.125000 0.250000,53.125000 64.000000,53.125000 L64.000000,53.125000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
-</g>
-<g data-symbol="c"  transform="translate(448.000000, 0.000000)"  class="s2">
-<path d="m0.000000,53.125000 C0.125000,53.437500 0.125000,53.437500 64.000000,53.437500 L64.000000,53.437500" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
-</g>
-<g data-symbol="c"  transform="translate(512.000000, 0.000000)"  class="s2">
-<path d="m0.000000,53.437500 C0.062500,53.281250 0.062500,53.281250 64.000000,53.281250 L64.000000,53.281250" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
-</g>
-<g data-symbol="c"  transform="translate(576.000000, 0.000000)"  class="s2">
-<path d="m0.000000,53.281250 C0.031250,53.359375 0.031250,53.359375 64.000000,53.359375 L64.000000,53.359375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
+<g data-symbol="c"  transform="translate(360.000000, 0.000000)"  class="s2">
+<path d="m0.000000,53.281250 C0.031250,53.359375 0.031250,53.359375 40.000000,53.359375 L40.000000,53.359375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 255);font-size: 9.000pt;stroke-dasharray: 1, 3;"/>
 </g>
 </g>
 <g id="vin"  transform="translate(80.000000, 30.000000)"  >
@@ -157,34 +157,34 @@
 <g id="dac_ref"  transform="translate(80.000000, 120.000000)"  >
 <text x="-10.000000" y="30.000000" class="title" style="fill: rgba(0, 0, 255, 255);stroke: none;">dac_ref</text>
 <g data-symbol="s"  transform="translate(0.000000, 0.000000)"  class="s2">
-<path d="M0.000000,80.000000 L16.000000,40.000000 L64.000000,40.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+<path d="M0.000000,80.000000 L16.000000,40.000000 L40.000000,40.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
 </g>
-<g data-symbol="s"  transform="translate(64.000000, 0.000000)"  class="s2">
-<path d="M0.000000,40.000000 L8.000000,60.000000 L64.000000,60.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+<g data-symbol="s"  transform="translate(40.000000, 0.000000)"  class="s2">
+<path d="M0.000000,40.000000 L8.000000,60.000000 L40.000000,60.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
 </g>
-<g data-symbol="s"  transform="translate(128.000000, 0.000000)"  class="s2">
-<path d="M0.000000,60.000000 L4.000000,50.000000 L64.000000,50.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+<g data-symbol="s"  transform="translate(80.000000, 0.000000)"  class="s2">
+<path d="M0.000000,60.000000 L4.000000,50.000000 L40.000000,50.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
 </g>
-<g data-symbol="s"  transform="translate(192.000000, 0.000000)"  class="s2">
-<path d="M0.000000,50.000000 L2.000000,55.000000 L64.000000,55.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+<g data-symbol="s"  transform="translate(120.000000, 0.000000)"  class="s2">
+<path d="M0.000000,50.000000 L2.000000,55.000000 L40.000000,55.000000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
 </g>
-<g data-symbol="s"  transform="translate(256.000000, 0.000000)"  class="s2">
-<path d="M0.000000,55.000000 L1.000000,52.500000 L64.000000,52.500000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+<g data-symbol="s"  transform="translate(160.000000, 0.000000)"  class="s2">
+<path d="M0.000000,55.000000 L1.000000,52.500000 L40.000000,52.500000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(200.000000, 0.000000)"  class="s2">
+<path d="M0.000000,52.500000 L0.500000,53.750000 L40.000000,53.750000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(240.000000, 0.000000)"  class="s2">
+<path d="M0.000000,53.750000 L0.250000,53.125000 L40.000000,53.125000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+</g>
+<g data-symbol="s"  transform="translate(280.000000, 0.000000)"  class="s2">
+<path d="M0.000000,53.125000 L0.125000,53.437500 L40.000000,53.437500" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
 </g>
 <g data-symbol="s"  transform="translate(320.000000, 0.000000)"  class="s2">
-<path d="M0.000000,52.500000 L0.500000,53.750000 L64.000000,53.750000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+<path d="M0.000000,53.437500 L0.062500,53.281250 L40.000000,53.281250" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
 </g>
-<g data-symbol="s"  transform="translate(384.000000, 0.000000)"  class="s2">
-<path d="M0.000000,53.750000 L0.250000,53.125000 L64.000000,53.125000" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
-</g>
-<g data-symbol="s"  transform="translate(448.000000, 0.000000)"  class="s2">
-<path d="M0.000000,53.125000 L0.125000,53.437500 L64.000000,53.437500" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
-</g>
-<g data-symbol="s"  transform="translate(512.000000, 0.000000)"  class="s2">
-<path d="M0.000000,53.437500 L0.062500,53.281250 L64.000000,53.281250" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
-</g>
-<g data-symbol="s"  transform="translate(576.000000, 0.000000)"  class="s2">
-<path d="M0.000000,53.281250 L0.031250,53.359375 L64.000000,53.359375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
+<g data-symbol="s"  transform="translate(360.000000, 0.000000)"  class="s2">
+<path d="M0.000000,53.281250 L0.031250,53.359375 L40.000000,53.359375" class="path" style="fill: none;stroke: rgba(0, 0, 255, 170);stroke-dasharray: 1, 3;" />
 </g>
 </g>
 </g>

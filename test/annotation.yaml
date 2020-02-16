@@ -76,7 +76,9 @@ annotations:
     from: (3.125, 4.05)
     to: (5.125, 4.05)
     text: "delay"
+    fill: "#6CB1AA"
+    stroke: "#6CB1AA"
   - text: There is no transition between these data
     fill: rgba(255, 255, 0, 255)
-    x: 7
-    y: 4.5
+    x: 8
+    y: 4.15

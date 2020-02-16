@@ -26,6 +26,9 @@ ERROR_MSG = {
         "ERROR: %s : cannot repeat None or '|', add a valid brick first"
 }
 
+ARROWS_PREFIX = "<*# "
+ARROWS_SUFFIX = ">*# "
+
 def incr_wavelane(f):
     """
     incr_wavelane is a decorator that increment _WAVE_COUNT in auto.
@@ -305,6 +308,15 @@ class Renderer:
             return (_y, nodes)
         return nodes
 
+    def __gen_patterns__(prefixs: list, root: str, suffixs: list):
+        """
+        generate possible pattern prefixs/root/suffixs
+        """
+        for p in prefixs:
+            for s in suffixs:
+                yield f"{p}{root}{s}".strip()
+        return None
+
     def annotations(self, wavelanes:dict, viewport:tuple, depth:int = 0, **kwargs):
         """
         draw edges, vertical lines, horizontal lines, global time compression, ...
@@ -399,6 +411,7 @@ class Renderer:
             start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, e[0]-s[0], 0
             mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
             # draw shape
+            overload = style_in_kwargs(**a)
             # hline
             if shape == "-":
                 y_pos = adjust_y(y)
@@ -440,27 +453,27 @@ class Renderer:
                 ans+= self.spline(pts_1, style_repr="big_gap")
                 ans+= self.spline(pts_2, style_repr="big_gap")
             # edges
-            elif shape in ['<~', '~', '~>', '<~>']:
-                ans = self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge")
-            elif shape in ['<-~', '-~', '-~>', '<-~>']:
-                ans = self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge")
+            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "~", ARROWS_SUFFIX):
+                ans = self.spline([('M', s[0], s[1]), ('C', s[0]*0.1+e[0]*0.9, s[1]), ('', s[0]*0.9+e[0]*0.1, e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge", **overload)
+            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "-~", ARROWS_SUFFIX):
+                ans = self.spline([('M', s[0], s[1]), ('C', e[0], s[1]), ('', e[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge", **overload)
                 start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, 0, e[1]-s[1]
-            elif shape in ['<~-', '~-', '~->', '<~->']:
-                ans = self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge")
+            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "~-", ARROWS_SUFFIX):
+                ans = self.spline([('M', s[0], s[1]), ('C', s[0], s[1]), ('', s[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge", **overload)
                 start_dx, start_dy, end_dx, end_dy = 0, s[1]-e[1], e[0]-s[0], 0
-            elif shape in ['<-', '-', '->', '<->']:
-                ans = self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], is_edge=True, style_repr="edge")
+            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "-", ARROWS_SUFFIX):
+                ans = self.spline([('M', s[0], s[1]), ('L', e[0], e[1])], is_edge=True, style_repr="edge", **overload)
                 start_dx, start_dy, end_dx, end_dy = s[0]-e[0], s[1]-e[1], e[0]-s[0], e[1]-s[1]
-            elif shape in ['<-|', '-|', '-|>', '<-|>']:
-                ans = self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge")
+            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "-|", ARROWS_SUFFIX):
+                ans = self.spline([('M', s[0], s[1]), ('L', e[0], s[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge", **overload)
                 start_dx, start_dy, end_dx, end_dy = s[0]-e[0], 0, 0, e[1]-s[1]
                 mx, my = e[0], s[1]
-            elif shape in ['<|-', '|-', '|->', '<|->']:
-                ans = self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge")
+            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "|-", ARROWS_SUFFIX):
+                ans = self.spline([('M', s[0], s[1]), ('L', s[0], e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge", **overload)
                 start_dx, start_dy, end_dx, end_dy = 0, s[1]-e[1], e[0]-s[0], 0
                 mx, my = s[0], e[1]
-            elif shape in ['<-|-', '-|-', '-|->', '<-|->']:
-                ans = self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge")
+            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "-|-", ARROWS_SUFFIX):
+                ans = self.spline([('M', s[0], s[1]), ('L', mx, s[1]), ('', mx, e[1]), ('', e[0], e[1])], is_edge=True, style_repr="edge", **overload)
                 start_dx, start_dy, end_dx, end_dy = s[0]-mx, 0, e[0]-mx, 0
                 mx, my = mx, e[1]
             # add arrows for edges
@@ -473,7 +486,7 @@ class Renderer:
                             no_acc=True),
                         dy=brick_height,
                         is_edge=True,
-                        style_repr="edge-arrow")
+                        style_repr="edge-arrow", **overload)
                 elif shape[0] == '*':
                     pass
                 elif shape[0] == '#':
@@ -486,14 +499,13 @@ class Renderer:
                             no_acc=True),
                         dy=brick_height,
                         is_edge=True,
-                        style_repr="edge-arrow")
+                        style_repr="edge-arrow", **overload)
                 elif shape[0] == '*':
                     pass
                 elif shape[0] == '#':
                     pass
                 # add text is not empty
                 if text:
-                    overload = style_in_kwargs(**a)
                     # add white background for the text
                     a.update({"style_repr": "edge-text", "x": mx+dx, "y": my+dy})
                     ox, oy, w, h = pywave.text_bbox(self.cr, "edge-text", text, self.engine, overload)
