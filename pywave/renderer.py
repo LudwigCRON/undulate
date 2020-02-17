@@ -349,12 +349,18 @@ class Renderer:
         if  s is None or \
             isinstance(s, str) and not s.strip():
             return None
+        # if is only a number
+        if isinstance(s, (int, float)):
+            return s
+        # if a string representing a tuple
+        if isinstance(s, str) and "," in s:
+            s = eval(s)
         # if tuple so pre-estimated
         if isinstance(s, tuple):
             return (s[0]*brick_width, Renderer.adjust_y(s[1])*brick_height)
         # parse (<number>, <number>)
         matches = list(re.finditer(r"\s*(\d+\.?\d*)\s*(\%|[+-]\s*\d+\.?\d*)?\s*", s))
-        if not matches:
+        if not matches or len(matches) < 2:
             return s
         # % for image based positionning
         # otherwise row based positionning
