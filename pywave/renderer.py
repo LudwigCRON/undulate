@@ -359,14 +359,17 @@ class Renderer:
         if isinstance(s, tuple):
             return (s[0]*brick_width, Renderer.adjust_y(s[1])*brick_height)
         # parse (<number>, <number>)
-        matches = list(re.finditer(r"\s*(\d+\.?\d*)\s*(\%|[+-]\s*\d+\.?\d*)?\s*", s))
-        if not matches or len(matches) < 2:
+        matches = list(re.finditer(r"\s*(\d+\.?\d*)\s*(\%|[+-]\s*\d+\.?\d*)?\s*", str(s)))
+        if not matches:
             return s
         # % for image based positionning
         # otherwise row based positionning
         xunit = width/100.0 if matches[0].group(2) and "%" in matches[0].group(2) else brick_width
-        yunit = height/100.0 if matches[1].group(2) and "%" in matches[1].group(2) else brick_height
         x = float(matches[0].group(1))
+        # if only one value
+        if len(matches) == 1:
+            return x*xunit
+        yunit = height/100.0 if matches[1].group(2) and "%" in matches[1].group(2) else brick_height
         y = float(matches[1].group(1))
         # if row based consider the offset if given
         if matches[1].group(2) and not "%" in matches[1].group(2):
