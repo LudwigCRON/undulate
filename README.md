@@ -26,3 +26,39 @@ The inputs could be either json, WaveJSON (cson), yaml or toml while outputs wou
 ## License
 
 See [LICENSE](https://github.com/drom/wavedrom/blob/master/LICENSE).
+
+## Installation
+It recommended to create a python environment.
+``` bash
+python3 -m venv <path where to store the environments>
+```
+Activate then the new environment
+```bash
+source <path where to store the environments>/bin/activate
+```
+Then copy the project locally and move inside:
+```bash
+wget https://github.com/LudwigCRON/pywave/archive/master.zip
+unzip master.zip -d <destination folder>
+cd <destination folder>/pywave
+```
+or
+```bash
+git clone git@github.com:LudwigCRON/pywave.git
+cd pywave
+```
+Finally install it
+```bash
+pip3 install .
+```
+
+From now on, in the environment, you can call the script directly wherever you are
+```bash
+cd ${HOME}/projects/my-fancy-thing/documents/
+pywave -f png --dpi 300 -i input.yaml -o output.png
+```
+
+To desactivate your environment call in the terminal
+```bash
+deactivate
+```
