@@ -259,7 +259,7 @@ class Renderer:
                     - slewing
                     - vscale
         Returns:
-            list of nodes in a tuple(x, y, name)
+            list of nodes in a dict(name: tuple(x, y))
         """
         brick_width  = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
@@ -306,7 +306,7 @@ class Renderer:
                     _y += dy
         if depth > 0:
             return (_y, nodes)
-        return nodes
+        return {n:(x, y) for x, y, n in nodes}
 
     def __gen_patterns__(prefixs: list, root: str, suffixs: list):
         """
@@ -325,7 +325,8 @@ class Renderer:
             width: float,
             height: float,
             brick_width: float = 40.0,
-            brick_height: float = 20.0):
+            brick_height: float = 20.0,
+            nodes: dict = {}):
         """
         parse the from and to options of annotations into positions
         for drawing the specified shape or text
@@ -355,6 +356,9 @@ class Renderer:
         # if a string representing a tuple
         if isinstance(s, str) and "," in s:
             s = eval(s)
+        # if a string representing a node
+        if isinstance(s, str) and s in nodes:
+        	return nodes.get(s)
         # if tuple so pre-estimated
         if isinstance(s, tuple):
             return (s[0]*brick_width, Renderer.adjust_y(s[1])*brick_height)
@@ -376,7 +380,7 @@ class Renderer:
             y = Renderer.adjust_y(y) + float(matches[1].group(2))
         return (x*xunit, y*yunit)
 
-    def annotations(self, wavelanes:dict, viewport:tuple, depth:int = 0, **kwargs):
+    def annotate(self, wavelanes:dict, viewport:tuple, depth:int = 0, **kwargs):
         """
         draw edges, vertical lines, horizontal lines, global time compression, ...
         defined in the annotations section of the input file
@@ -440,8 +444,8 @@ class Renderer:
             # if isinstance(end, tuple):
             #     x, y = end
             #     end = (x*brick_width, Renderer.adjust_y(y, brick_height))
-            start = Renderer.from_to_parser(a.get("from", None), width, height)
-            end = Renderer.from_to_parser(a.get("to", None), width, height)
+            start = Renderer.from_to_parser(start, width, height, nodes=nodes)
+            end = Renderer.from_to_parser(end, width, height, nodes=nodes)
             # calculate position of start node
             if isinstance(start, str) and nodes:
                 s = [node for node in nodes if start in node]
@@ -1058,7 +1062,7 @@ class Renderer:
             ans = self.group(lambda: _gen(offset, width, height, brick_width, brick_height), name, extra=extra)
             offsetx, offsety = offset[0], offset[1]
             # finish the group
-            ans += self.annotations(wavelanes, viewport=(offsetx, 0, width, height), depth=depth, **kwargs)
+            ans += self.annotate(wavelanes, viewport=(offsetx, 0, width, height), depth=depth, **kwargs)
             return (offsety, ans)
         # unknown options
         else:
