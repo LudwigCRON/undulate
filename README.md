@@ -1,5 +1,5 @@
 
-![](https://img.shields.io/badge/coverage-96%25-green)
+![](https://img.shields.io/badge/coverage-95%25-green)
 [![Build Status](https://travis-ci.com/LudwigCRON/pywave.svg?branch=master)](https://travis-ci.com/LudwigCRON/pywave)
 
 ![](https://img.shields.io/badge/python-3.5+-blue)
@@ -44,7 +44,7 @@ cd <destination folder>/pywave
 ```
 or
 ```bash
-git clone git@github.com:LudwigCRON/pywave.git
+git clone https://github.com/LudwigCRON/pywave.git
 cd pywave
 ```
 Finally install it
