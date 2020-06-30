@@ -14,9 +14,10 @@ from .skin import (
     style_in_kwargs,
     get_style,
     css_from_rule,
-    css_from_style
+    css_from_style,
 )
 from .renderer import Renderer
+
 
 class SvgRenderer(Renderer):
     """
@@ -32,10 +33,13 @@ class SvgRenderer(Renderer):
         extra = kwargs.get("extra", "")
         style = kwargs.get("style", "")
         return '<g data-symbol="%s" %s class="%s">\n%s</g>\n' % (
-            symbol, extra, style, content
+            symbol,
+            extra,
+            style,
+            content,
         )
 
-    def group(self, callback, identifier: str = "", extra: str = "") -> str:
+    def group(self, callback, identifier: str, **kwargs) -> str:
         """
         group define a group
 
@@ -45,12 +49,12 @@ class SvgRenderer(Renderer):
         Returns:
             group of drawable items invoked by callback
         """
-        ans = '<g id="%s" %s >\n' % (identifier, extra)
+        ans = '<g id="%s" %s >\n' % (identifier, kwargs.get("extra", ""))
         ans += callback()
         ans += "</g>\n"
         return ans
 
-    def path(self, vertices: list, style_repr: str = "", **kwargs) -> str:
+    def path(self, vertices: list, **kwargs) -> str:
         """
         draw a path to represent common signals
 
@@ -65,13 +69,15 @@ class SvgRenderer(Renderer):
         path = "".join(["L%f,%f " % (x, y) for x, y in vertices])
         path = "M" + path[1:]
         return '<path d="%s" class="%s" style="%s" />\n' % (
-            path.strip(), style_repr, css_from_rule(None, overload, False)
+            path.strip(),
+            kwargs.get("style_repr", ""),
+            css_from_rule(None, overload, False),
         )
 
     def arrow(self, x, y, angle, **kwargs) -> str:
         """
         draw an arrow to represent edge trigger on clock signals
-        
+
         Args:
             x      (float) : x coordinate of the arrow center
             y      (float) : y coordinate of the arrow center
@@ -85,15 +91,14 @@ class SvgRenderer(Renderer):
         style_repr = kwargs.get("style_repr", "arrow")
         is_edge = kwargs.get("is_edge", False)
         overload = style_in_kwargs(**kwargs)
-        transform = 'transform="translate(%f, %f) rotate(%f, 0, 0)" ' % (x, y, angle-90)
+        transform = 'transform="translate(%f, %f) rotate(%f, 0, 0)" ' % (x, y, angle - 90)
         if is_edge:
-            transform = '%s rotate(%f, 0, 0)" ' % (extra[:-2], angle-90)
+            transform = '%s rotate(%f, 0, 0)" ' % (extra[:-2], angle - 90)
         return (
             '<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" '
-             + transform
-             + 'class="%s" style="%s"/>\n' % (
-                style_repr, css_from_rule(None, overload, False)
-            )
+            + transform
+            + 'class="%s" style="%s"/>\n'
+            % (style_repr, css_from_rule(None, overload, False))
         )
 
     def polygon(self, vertices: list, **kwargs) -> str:
@@ -117,11 +122,13 @@ class SvgRenderer(Renderer):
         for x, y in vertices:
             ans += "%f, %f " % (x, y)
         ans += '" class="%s" style="%s" %s/>\n' % (
-            style, css_from_rule(None, overload, False), extra
+            style,
+            css_from_rule(None, overload, False),
+            extra,
         )
         return ans
 
-    def spline(self, vertices: list, style_repr: str = "path", **kwargs) -> str:
+    def spline(self, vertices: list, **kwargs) -> str:
         """
         draw a path to represent smooth signals
 
@@ -136,10 +143,12 @@ class SvgRenderer(Renderer):
         overload = style_in_kwargs(**kwargs)
         overload["fill"] = None
         path = "".join(
-            ["%s%f,%f " % (v[0], v[1], v[2]) if v[0] is not "z" else "z" for v in vertices]
+            ["%s%f,%f " % (v[0], v[1], v[2]) if v[0] != "z" else "z" for v in vertices]
         )
         return '<path d="%s" class="%s" style="%s"/>\n' % (
-            path.strip(), style_repr, css_from_rule(None, overload, False)
+            path.strip(),
+            kwargs.get("style_repr", "path"),
+            css_from_rule(None, overload, False),
         )
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
@@ -164,7 +173,7 @@ class SvgRenderer(Renderer):
             y,
             css,
             css_from_rule(None, overload, False),
-            html.escape(str(text))
+            html.escape(str(text)),
         )
 
     def translate(self, x: float, y: float, **kwargs) -> str:
@@ -179,7 +188,7 @@ class SvgRenderer(Renderer):
             id (str)  : file name of the output generated file
             brick_width (int): by default 40
             brick_height (int): by default 20
-            is_reg (bool): 
+            is_reg (bool):
                 if True `wavelanes` given represents a register
                 otherwise it represents a bunch of signals
         """
@@ -193,8 +202,9 @@ class SvgRenderer(Renderer):
             lkeys = -1
             height += n * 12
         return (
-            '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" ' % (width+lkeys*11+11, height)
-            + 'viewBox="-1 -1 %f %f">\n' % (width+lkeys*11+12, height+2)
+            '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
+            % (width + lkeys * 11 + 11, height)
+            + 'viewBox="-1 -1 %f %f">\n' % (width + lkeys * 11 + 12, height + 2)
             + "<style>\n"
             + css_from_style(DEFAULT_STYLE)
             + "</style>\n"

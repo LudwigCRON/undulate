@@ -114,12 +114,9 @@ class Low(pywave.Brick):
             self.last_y = self.height if self.last_y is None else self.last_y
         dt = abs(self.height - self.last_y) * self.slewing / self.height
         # add shape
-        self.paths.append([
-            "path",
-            (0, self.last_y),
-            (dt, self.height),
-            (self.width, self.height),
-        ])
+        self.paths.append(
+            ["path", (0, self.last_y), (dt, self.height), (self.width, self.height)]
+        )
         # add arrow
         if kwargs.get("add_arrow", False) and not self.is_first:
             arrow_angle = -math.atan2(-self.height, self.slewing) * 180 / math.pi
@@ -151,23 +148,11 @@ class High(pywave.Brick):
             self.last_y = 0 if self.last_y is None else self.last_y
         dt = self.last_y * self.slewing / self.height
         # add shape
-        self.paths.append([
-            "path",
-            (0, self.last_y),
-            (dt, 0),
-            (self.width, 0),
-        ])
+        self.paths.append(["path", (0, self.last_y), (dt, 0), (self.width, 0)])
         # add arrow
         if kwargs.get("add_arrow", False) and not self.is_first:
             arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
-            self.arrows.append(
-                (
-                    "arrow",
-                    dt / 2,
-                    self.height / 2,
-                    arrow_angle,
-                )
-            )
+            self.arrows.append(("arrow", dt / 2, self.height / 2, arrow_angle))
 
 
 class HighZ(pywave.Brick):
@@ -214,13 +199,12 @@ class Zero(pywave.Brick):
             self.last_y = self.height
         else:
             self.last_y = self.height if self.last_y is None else self.last_y
-        dt = (self.height - self.last_y) * self.slewing / self.height
         # add shape
         self.paths.append(
             [
                 "path",
                 (0, self.last_y),
-                (self.slewing/2, self.last_y if self.is_first else self.height/2),
+                (self.slewing / 2, self.last_y if self.is_first else self.height / 2),
                 (self.slewing, self.height),
                 (self.width, self.height),
             ]
@@ -242,17 +226,17 @@ class One(pywave.Brick):
             self.last_y = 0
         else:
             self.last_y = 0 if self.last_y is None else self.last_y
-        dt = (self.height - self.last_y) * self.slewing / self.height
         # add shape
         self.paths.append(
             [
                 "path",
                 (0, self.last_y),
-                (self.slewing/2, self.last_y if self.is_first else self.height/2),
+                (self.slewing / 2, self.last_y if self.is_first else self.height / 2),
                 (self.slewing, 0),
                 (self.width, 0),
             ]
         )
+
 
 class Garbage(pywave.Brick):
     """
@@ -262,6 +246,7 @@ class Garbage(pywave.Brick):
         slewing (float): limit the slope
         follow_data (bool): data '=' occurs before this brick
     """
+
     def __init__(self, unknown: bool = True, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
         follow_data = kwargs.get("follow_data", False)
@@ -283,7 +268,10 @@ class Garbage(pywave.Brick):
             self.paths.append(
                 [
                     "path",
-                    (self.slewing, self.last_y if not self.ignore_start_transition else self.height),
+                    (
+                        self.slewing,
+                        self.last_y if not self.ignore_start_transition else self.height,
+                    ),
                     (0, self.height),
                     (self.width - self.slewing, self.height),
                     (self.width, self.height / 2 if not self.ignore_end_transition else 0),
@@ -296,7 +284,10 @@ class Garbage(pywave.Brick):
                     (0, self.last_y if not self.ignore_start_transition else 0),
                     (self.slewing if not self.ignore_start_transition else 0, 0),
                     (self.width, 0),
-                    (self.width-self.slewing, self.height / 2 if not self.ignore_end_transition else 0),
+                    (
+                        self.width - self.slewing,
+                        self.height / 2 if not self.ignore_end_transition else 0,
+                    ),
                 ]
             )
             self.paths.append(
@@ -305,7 +296,10 @@ class Garbage(pywave.Brick):
                     (0, self.last_y if not self.ignore_start_transition else self.height),
                     (self.slewing if not self.ignore_start_transition else 0, self.height),
                     (self.width, self.height),
-                    (self.width - self.slewing, self.height / 2 if not self.ignore_end_transition else 0),
+                    (
+                        self.width - self.slewing,
+                        self.height / 2 if not self.ignore_end_transition else 0,
+                    ),
                 ]
             )
         # add background
@@ -315,9 +309,19 @@ class Garbage(pywave.Brick):
                     "hatch",
                     (self.slewing, self.last_y),
                     (0, 0),
-                    (self.width - self.slewing if not self.ignore_end_transition else self.width, 0),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        0,
+                    ),
                     (self.width, self.height / 2 if not self.ignore_end_transition else 0),
-                    (self.width - self.slewing if not self.ignore_end_transition else self.width, self.height),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        self.height,
+                    ),
                     (0, self.height),
                     (self.slewing, self.last_y),
                 ]
@@ -329,12 +333,19 @@ class Garbage(pywave.Brick):
                     (0, self.last_y),
                     (self.slewing if not self.ignore_start_transition else 0, 0),
                     (self.width if not self.ignore_end_transition else self.width, 0),
-                    (self.width - self.slewing, self.height / 2 if not self.ignore_end_transition else 0),
-                    (self.width if not self.ignore_end_transition else self.width, self.height),
+                    (
+                        self.width - self.slewing,
+                        self.height / 2 if not self.ignore_end_transition else 0,
+                    ),
+                    (
+                        self.width if not self.ignore_end_transition else self.width,
+                        self.height,
+                    ),
                     (self.slewing if not self.ignore_start_transition else 0, self.height),
                     (0, self.last_y),
                 ]
             )
+
 
 class Data(pywave.Brick):
     """
@@ -372,24 +383,40 @@ class Data(pywave.Brick):
                     (0, self.height),
                     (self.slewing, self.height),
                     (self.width - self.slewing, self.height),
-                    (self.width, self.height / 2 if not self.ignore_end_transition else self.height),
+                    (
+                        self.width,
+                        self.height / 2 if not self.ignore_end_transition else self.height,
+                    ),
                 ]
             )
         else:
-            self.paths.append([
-                "path",
-                (-self.slewing if follow_X else 0, self.last_y if not self.ignore_start_transition else 0),
-                (0 if follow_X else self.slewing, 0),
-                (self.width - self.slewing, 0),
-                (self.width, self.height / 2 if not self.ignore_end_transition else 0),
-            ])
-            self.paths.append([
-                "path",
-                (-self.slewing if follow_X else 0, self.last_y if not self.ignore_start_transition else self.height),
-                (0 if follow_X else self.slewing, self.height),
-                (self.width - self.slewing, self.height),
-                (self.width, self.height / 2 if not self.ignore_end_transition else self.height),
-            ])
+            self.paths.append(
+                [
+                    "path",
+                    (
+                        -self.slewing if follow_X else 0,
+                        self.last_y if not self.ignore_start_transition else 0,
+                    ),
+                    (0 if follow_X else self.slewing, 0),
+                    (self.width - self.slewing, 0),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                ]
+            )
+            self.paths.append(
+                [
+                    "path",
+                    (
+                        -self.slewing if follow_X else 0,
+                        self.last_y if not self.ignore_start_transition else self.height,
+                    ),
+                    (0 if follow_X else self.slewing, self.height),
+                    (self.width - self.slewing, self.height),
+                    (
+                        self.width,
+                        self.height / 2 if not self.ignore_end_transition else self.height,
+                    ),
+                ]
+            )
         # add background
         style = "hatch" if unknown else "%s-polygon" % kwargs.get("style", "")
         if self.is_first:
@@ -400,7 +427,12 @@ class Data(pywave.Brick):
                     (self.slewing, 0),
                     (self.width - self.slewing, 0),
                     (self.width, self.height / 2 if not self.ignore_end_transition else 0),
-                    (self.width - self.slewing if not self.ignore_end_transition else self.width , self.height),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        self.height,
+                    ),
                     (self.slewing, self.height),
                     (0, self.height),
                 ]
@@ -409,24 +441,45 @@ class Data(pywave.Brick):
             self.polygons.append(
                 [
                     style,
-                    (-self.slewing if follow_X else 0, self.last_y if not self.ignore_start_transition else 0),
-                    (self.slewing if not self.ignore_start_transition and not follow_X else 0, 0),
-                    (self.width - self.slewing if not self.ignore_end_transition else self.width, 0),
+                    (
+                        -self.slewing if follow_X else 0,
+                        self.last_y if not self.ignore_start_transition else 0,
+                    ),
+                    (
+                        self.slewing
+                        if not self.ignore_start_transition and not follow_X
+                        else 0,
+                        0,
+                    ),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        0,
+                    ),
                     (self.width, self.height / 2 if not self.ignore_end_transition else 0),
-                    (self.width - self.slewing if not self.ignore_end_transition else self.width, self.height),
-                    (self.slewing if not self.ignore_start_transition and not follow_X else 0, self.height),
-                    (-self.slewing if follow_X else 0, self.last_y if not self.ignore_start_transition else self.height),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        self.height,
+                    ),
+                    (
+                        self.slewing
+                        if not self.ignore_start_transition and not follow_X
+                        else 0,
+                        self.height,
+                    ),
+                    (
+                        -self.slewing if follow_X else 0,
+                        self.last_y if not self.ignore_start_transition else self.height,
+                    ),
                 ]
             )
         # add text
         if not unknown and not kwargs.get("hide_data", False):
             self.texts.append(
-                (
-                    "data",
-                    self.width / 2,
-                    self.height / 2,
-                    kwargs.get("data", ""),
-                )
+                ("data", self.width / 2, self.height / 2, kwargs.get("data", ""))
             )
 
 
@@ -536,7 +589,9 @@ class Impulse(pywave.Brick):
     def __init__(self, x, y, **kwargs):
         pywave.Brick.__init__(self, **kwargs)
         self.first_y = self.height - y
-        self.last_y = self.height - y if self.last_y is None or self.is_first else self.last_y
+        self.last_y = (
+            self.height - y if self.last_y is None or self.is_first else self.last_y
+        )
         # add shape
         self.paths.append(
             [
@@ -548,6 +603,7 @@ class Impulse(pywave.Brick):
             ]
         )
 
+
 class Space(pywave.Brick):
     """
     blank
@@ -557,19 +613,22 @@ class Space(pywave.Brick):
         pywave.Brick.__init__(self, **kwargs)
         self.last_y = self.height if self.last_y is None or self.is_first else self.last_y
 
+
 def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
     """
     define the mapping between the symbol and the brick
     """
     # get option supported
-    height              = kwargs.get("brick_height", 20)
-    duty_cycle          = kwargs.get("duty_cycle", 0.5)
+    height = kwargs.get("brick_height", 20)
+    duty_cycle = kwargs.get("duty_cycle", 0.5)
     block = None
     # add arrow
-    if (
-        symbol
-        in [pywave.BRICKS.Nclk, pywave.BRICKS.Pclk, pywave.BRICKS.Low, pywave.BRICKS.High]
-    ):
+    if symbol in [
+        pywave.BRICKS.Nclk,
+        pywave.BRICKS.Pclk,
+        pywave.BRICKS.Low,
+        pywave.BRICKS.High,
+    ]:
         kwargs.update({"add_arrow": True})
     # clock signals description (pPnNlLhH)
     # (N|n)clk: falling edge (with|without) arrow for repeated pattern
@@ -615,5 +674,4 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
         block = Space(**kwargs)
     else:
         block = None
-    return (not block is None, block)
-
+    return (block is not None, block)

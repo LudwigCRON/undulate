@@ -11,31 +11,37 @@ colors should always be in rgba with value from 0—255
 """
 from enum import Enum
 
+
 class Engine(Enum):
     SVG = 0
     EPS = 1
     CAIRO = 2
+
 
 class SizeUnit(Enum):
     EM = 16
     PX = 1
     PT = 1.333
 
+
 class LineCap(Enum):
     BUTT = 0
     ROUND = 1
     SQUARE = 2
+
 
 class LineJoin(Enum):
     MITER = 0
     ROUND = 1
     BEVEL = 2
 
+
 class TextAlign(Enum):
     LEFT = 0
     CENTER = 1
     RIGHT = 2
     JUSTIFY = 3
+
 
 # style definition for cairo renderer
 DEFAULT_STYLE = {
@@ -47,7 +53,7 @@ DEFAULT_STYLE = {
         "text-align": TextAlign.RIGHT,
         "text-anchor": "end",
         "dominant-baseline": "middle",
-        "alignment-baseline": "central"
+        "alignment-baseline": "central",
     },
     "text": {
         "fill": (0, 0, 0, 255),
@@ -70,7 +76,7 @@ DEFAULT_STYLE = {
         "font-family": "Fira Mono",
         "text-anchor": "middle",
         "dominant-baseline": "middle",
-        "alignment-baseline": "central"
+        "alignment-baseline": "central",
     },
     "path": {
         "fill": None,
@@ -101,20 +107,15 @@ DEFAULT_STYLE = {
         "font-family": "Fira Mono",
         "text-anchor": "middle",
         "dominant-baseline": "middle",
-        "alignment-baseline": "central"
+        "alignment-baseline": "central",
     },
-    "arrow": {
-        "fill": (0, 0, 0, 255),
-        "stroke": None
-    },
+    "arrow": {"fill": (0, 0, 0, 255), "stroke": None},
     "hide": {
         "fill": (255, 255, 255, 255),
         "stroke": (255, 255, 255, 255),
-        "stroke-width": 2
+        "stroke-width": 2,
     },
-    "hatch": {
-        "fill": (200, 200, 200, 255)
-    },
+    "hatch": {"fill": (200, 200, 200, 255)},
     "s2-polygon": {"fill": (0, 0, 0, 0), "stroke": None},
     "s3-polygon": {"fill": (255, 255, 176, 255), "stroke": None},
     "s4-polygon": {"fill": (255, 224, 185, 255), "stroke": None},
@@ -129,16 +130,8 @@ DEFAULT_STYLE = {
         "stroke-width": 0.5,
         "stroke-dasharray": None,
     },
-    "edge": {
-        "fill": None,
-        "stroke": (0, 0, 255, 255),
-        "stroke-width": 1
-    },
-    "edge-arrow": {
-        "fill": (0, 0, 255, 255),
-        "stroke": None,
-        "overflow": "visible",
-    },
+    "edge": {"fill": None, "stroke": (0, 0, 255, 255), "stroke-width": 1},
+    "edge-arrow": {"fill": (0, 0, 255, 255), "stroke": None, "overflow": "visible"},
     "edge-text": {
         "font-family": "Fira Mono",
         "font-size": (0.625, SizeUnit.EM),
@@ -150,12 +143,12 @@ DEFAULT_STYLE = {
     "edge-background": {
         "fill": (255, 255, 255, 255),
         "stroke": (255, 255, 255, 255),
-        "stroke-width": 2
+        "stroke-width": 2,
     },
     "border": {"stroke-width": 1.25, "stroke": (0, 0, 0, 255)},
     "h1": {
         "fill": (0, 0, 0, 255),
-        "font-size": (18.31/1.52, SizeUnit.PX),
+        "font-size": (18.31 / 1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -163,7 +156,7 @@ DEFAULT_STYLE = {
     },
     "h2": {
         "fill": (0, 0, 0, 255),
-        "font-size": (14.65/1.52, SizeUnit.PX),
+        "font-size": (14.65 / 1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -171,7 +164,7 @@ DEFAULT_STYLE = {
     },
     "h3": {
         "fill": (0, 0, 0, 255),
-        "font-size": (11.72/1.52, SizeUnit.PX),
+        "font-size": (11.72 / 1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -179,7 +172,7 @@ DEFAULT_STYLE = {
     },
     "h4": {
         "fill": (0, 0, 0, 255),
-        "font-size": (9.38/1.52, SizeUnit.PX),
+        "font-size": (9.38 / 1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -187,7 +180,7 @@ DEFAULT_STYLE = {
     },
     "h5": {
         "fill": (0, 0, 0, 255),
-        "font-size": (7.5/1.52, SizeUnit.PX),
+        "font-size": (7.5 / 1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -195,7 +188,7 @@ DEFAULT_STYLE = {
     },
     "h6": {
         "fill": (0, 0, 0, 255),
-        "font-size": (6/1.52, SizeUnit.PX),
+        "font-size": (6 / 1.52, SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
         "text-align": TextAlign.LEFT,
@@ -212,7 +205,7 @@ DEFAULT_STYLE = {
         "font-family": "Fira Mono",
         "text-anchor": "middle",
         "dominant-baseline": "middle",
-        "alignment-baseline": "central"
+        "alignment-baseline": "central",
     },
     "reg-pos": {
         "fill": (0, 0, 0, 255),
@@ -225,7 +218,7 @@ DEFAULT_STYLE = {
         "font-family": "Fira Mono",
         "text-anchor": "middle",
         "dominant-baseline": "middle",
-        "alignment-baseline": "central"
+        "alignment-baseline": "central",
     },
 }
 
@@ -269,7 +262,7 @@ else:
         style.update(overload)
         # color
         t = style.get("fill", None)
-        if not t is None:
+        if t is not None:
             r, g, b, a = t
             context.set_source_rgba(r / 255, g / 255, b / 255, a / 255)
 
@@ -281,7 +274,7 @@ else:
         style.update(overload)
         # color
         t = style.get("stroke", None)
-        if not t is None:
+        if t is not None:
             r, g, b, a = t
             context.set_source_rgba(r / 255, g / 255, b / 255, a / 255)
         # width
@@ -319,11 +312,11 @@ else:
         ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
         xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
         # apply style
-        dy = descent/2+height/4 if ba == "middle" else 0
+        dy = descent / 2 + height / 4 if ba == "middle" else 0
         if ta == TextAlign.LEFT:
-            return (0,-dy)
+            return (0, -dy)
         if ta == TextAlign.RIGHT:
-            return (width,-dy)
+            return (width, -dy)
         return (width / 2, -dy)
 
     def cairo_text_bbox(context, style: dict, text: str):
@@ -334,12 +327,12 @@ else:
         # get text width
         ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
         xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
-        width += SizeUnit.EM.value/2
+        width += SizeUnit.EM.value / 2
         if ta == TextAlign.LEFT:
-            return (0, -height/2, width, _height)
+            return (0, -height / 2, width, _height)
         elif ta == TextAlign.RIGHT:
-            return (-width, -height/2, width, _height)
-        return (-width / 2, -descent-height/2, width, _height)
+            return (-width, -height / 2, width, _height)
+        return (-width / 2, -descent - height / 2, width, _height)
 
     def apply_cairo_font(context, style: dict, overload: dict):
         """
@@ -366,11 +359,11 @@ else:
             font_weight = cairo.FONT_WEIGHT_NORMAL
         # fetch font family
         font_family = style.get("font-family", None)
-        if not font_family is None and isinstance(font_family, str):
+        if font_family is not None and isinstance(font_family, str):
             context.select_font_face(font_family, font_style, font_weight)
         # font size
         font_size = style.get("font-size", None)
-        if not font_size is None:
+        if font_size is not None:
             s, u = font_size
             context.set_font_size(s * u.value)
 
@@ -408,8 +401,7 @@ def get_style(name: str, overload: dict = {}) -> dict:
     fallback to a closest match in the default style
     """
     selectors = DEFAULT_STYLE.keys()
-    rule = name if name in selectors else \
-           name.split(' ')[0] if ' ' in name else ''
+    rule = name if name in selectors else name.split(" ")[0] if " " in name else ""
     style = dict(DEFAULT_STYLE.get(rule, {}))
     style.update(overload)
     return style
@@ -422,6 +414,7 @@ def text_align(context, name: str, text: str, engine: Engine):
     if engine == Engine.CAIRO:
         return cairo_text_align(context, get_style(name), text)
 
+
 def text_bbox(context, name: str, text: str, engine: Engine, overload: dict = {}):
     """
     calculate the bounding box of the text
@@ -429,7 +422,8 @@ def text_bbox(context, name: str, text: str, engine: Engine, overload: dict = {}
     if engine == Engine.CAIRO:
         apply_cairo_style(context, name, overload)
         return cairo_text_bbox(context, get_style(name), text)
-    return (-len(text)*6/2, -4.5, len(text)*6, 9)
+    return (-len(text) * 6 / 2, -4.5, len(text) * 6, 9)
+
 
 def style_in_kwargs(**kwargs) -> dict:
     ans = {}
@@ -447,12 +441,14 @@ def style_in_kwargs(**kwargs) -> dict:
             ans[e] = kwargs.get(e)
     return ans
 
+
 def css_from_style(style: dict):
     """
     generate an equivalent string for only
     one rule of the style
     """
-    return '\n'.join((css_from_rule(*item) for item in style.items()))
+    return "\n".join((css_from_rule(*item) for item in style.items()))
+
 
 def css_from_rule(rule: str, style: dict, with_rule: bool = True):
     """
@@ -488,7 +484,7 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
             else:
                 ans += "%s: justify;" % prop
         elif prop in ["stroke-dasharray"]:
-            ans += "%s: %s;" % (prop, ', '.join([str(v) for v in value]))
+            ans += "%s: %s;" % (prop, ", ".join([str(v) for v in value]))
         elif prop in ["stroke-linecap"]:
             if value == LineCap.ROUND:
                 ans += "%s: round;" % prop
@@ -507,8 +503,9 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
             ans += "%s: %s;" % (prop, value)
     if not with_rule:
         return ans
-    return ans + '}'
-    
+    return ans + "}"
+
+
 def parse_css_size(S: str) -> tuple:
     """
     convert a css valid representation of a size
@@ -516,11 +513,11 @@ def parse_css_size(S: str) -> tuple:
     """
     if isinstance(S, str):
         s = S.strip().lower()
-        v = float(''.join([c for c in s if c in "0123456789."]))
-        u = SizeUnit.EM if "em" in s else \
-            SizeUnit.PT if "pt" in s else SizeUnit.PX
+        v = float("".join([c for c in s if c in "0123456789."]))
+        u = SizeUnit.EM if "em" in s else SizeUnit.PT if "pt" in s else SizeUnit.PX
         return (v, u)
     return S
+
 
 def parse_css_color(S: str) -> tuple:
     """
@@ -531,14 +528,14 @@ def parse_css_color(S: str) -> tuple:
         return S
     s = S.strip().lower()
     if s.startswith("rgba"):
-        return [int(i, 10) for i in s[5:-1].split(',')]
+        return [int(i, 10) for i in s[5:-1].split(",")]
     elif s.startswith("rgb"):
-        return [int(i, 10) for i in s[4:-1].split(',')]+[255]
+        return [int(i, 10) for i in s[4:-1].split(",")] + [255]
     elif s.startswith("#"):
         if len(s) == 4:
-            return [int(i, 16)*17 for i in s[1:4]]+[255]
+            return [int(i, 16) * 17 for i in s[1:4]] + [255]
         elif len(s) == 7:
-            return [int(s[i:i+2], 16) for i in range(1, 6, 2)]+[255]
+            return [int(s[i : i + 2], 16) for i in range(1, 6, 2)] + [255]
         else:
-            return [int(s[i:i+2], 16) for i in range(1, 8, 2)]
+            return [int(s[i : i + 2], 16) for i in range(1, 8, 2)]
     return s

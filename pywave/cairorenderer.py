@@ -7,14 +7,7 @@ into scalable vector graphics format
 """
 
 import cairo
-from .skin import (
-    apply_fill,
-    apply_stroke,
-    apply_font,
-    text_align,
-    Engine,
-    style_in_kwargs
-)
+from .skin import apply_fill, apply_stroke, apply_font, text_align, Engine, style_in_kwargs
 from .renderer import Renderer, svg_curve_convert
 
 
@@ -86,7 +79,7 @@ class CairoRenderer(Renderer):
     def arrow(self, x: float, y: float, angle: float, **kwargs) -> str:
         """
         draw an arrow to represent edge trigger on clock signals
-        
+
         Args:
             x      (float) : x coordinate of the arrow center
             y      (float) : y coordinate of the arrow center
@@ -166,8 +159,8 @@ class CairoRenderer(Renderer):
             extra()
         self.cr.new_path()
         self.cr.move_to(px, py)
-
-        for i, v in enumerate(vertices):
+        previous_cmd = "moveto"
+        for _, v in enumerate(vertices):
             s, x, y = v
             # check the command
             cmd = (
@@ -185,7 +178,7 @@ class CairoRenderer(Renderer):
                 if s == "M"
                 else "closepath"
                 if s == "z" or s == "Z"
-                else cmd
+                else previous_cmd
             )
             # gather 3 points to draw a bezier curve
             c = 2 if s in ["C", "c"] else c
@@ -214,6 +207,8 @@ class CairoRenderer(Renderer):
                 stack = []
             # hold last point
             px, py = x, y
+            # store last cmd
+            previous_cmd = cmd
         if style == "hide":
             apply_fill(self.cr, style, Engine.CAIRO, overload)
             self.cr.fill()
@@ -252,6 +247,7 @@ class CairoRenderer(Renderer):
     def translate(self, x: float, y: float, **kwargs) -> str:
         def _():
             self.cr.translate(x, y)
+
         return _
 
     def draw(self, wavelanes: dict, **kwargs) -> str:
@@ -263,7 +259,7 @@ class CairoRenderer(Renderer):
             filename (str)  : file name of the output generated file
             brick_width (int): by default 40
             brick_height (int): by default 20
-            is_reg (bool): 
+            is_reg (bool):
                 if True `wavelanes` given represents a register
                 otherwise it represents a bunch of signals
         """
@@ -282,9 +278,11 @@ class CairoRenderer(Renderer):
         if self.extension == "svg":
             self.surface = cairo.SVGSurface(filename, w, h)
         elif self.extension == "png":
-            self.surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, int(w * self.dpi / 72), int(h * self.dpi / 72))
+            self.surface = cairo.ImageSurface(
+                cairo.FORMAT_ARGB32, int(w * self.dpi / 72), int(h * self.dpi / 72)
+            )
             sx, sy = self.surface.get_device_scale()
-            sx, sy = sx * self.dpi/72, sy * self.dpi/72
+            sx, sy = sx * self.dpi / 72, sy * self.dpi / 72
             self.surface.set_device_scale(sx, sy)
         elif self.extension == "ps":
             self.surface = cairo.PSSurface(filename, w, h)
@@ -319,4 +317,3 @@ class CairoRenderer(Renderer):
         else:
             self.surface.finish()
         return ""
-

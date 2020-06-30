@@ -7,6 +7,7 @@ to generate a waveform
 """
 import pywave
 
+
 class Brick:
     """
     define the brick as a composition of paths, arrows, and generic polygons
@@ -19,10 +20,10 @@ class Brick:
         duty_cycle (float > 0): between 0.0 and 1.0 by default 0.5
         ignore_transition (bool): by default False
         is_first (bool): first brick of a wavelance, by default False
-        last_y (float): y coordinate of the previous brick 
+        last_y (float): y coordinate of the previous brick
             to make the junction between the two
         equation (str or float): analogue value(s)
-        
+
         paths (list): list of "svg" paths to be drawn
         arrows (list): list of arrows to be drawn
         polygons (list): list of polygons to be drawn
@@ -52,7 +53,7 @@ class Brick:
         "ignore_end_transition",
         "is_first",
         "last_y",
-        "first_y"
+        "first_y",
     ]
 
     def __init__(self, **kwargs):
@@ -106,7 +107,6 @@ class Brick:
             _, _, ly = self.splines[0][-1]
         return ly
 
-    
     def get_first_y(self):
         """
         get first position of the current brick to preserve continuity
@@ -115,7 +115,6 @@ class Brick:
             first_y (float)
         """
         return self.first_y
-
 
     def alter_start(self, shift: float = 0, previous_y: float = -1):
         """
@@ -133,30 +132,21 @@ class Brick:
             x1, y1 = path[1]
             py = previous_y[i] if isinstance(previous_y, list) else previous_y
             py1 = py if py > -1 else y1
-            dx = self.slewing*(y1-py1)/self.height
-            self.paths[i] = [
-                path[0],
-                (x1 + shift, py1)
-            ] + path[3:]
+            dx = self.slewing * (y1 - py1) / self.height
+            self.paths[i] = [path[0], (x1 + shift, py1)] + path[3:]
         for i, poly in enumerate(self.polygons):
             x1, y1 = poly[1]
             x2, y2 = poly[-1]
             py = previous_y[i] if isinstance(previous_y, list) else previous_y
             py1 = py if py > -1 else y1
             py2 = py if py > -1 else y2
-            dx1 = self.slewing*(y1-py1)/self.height
-            dx2 = self.slewing*(y1-py2)/self.height
+            dx1 = self.slewing * (y1 - py1) / self.height
+            dx2 = self.slewing * (y1 - py2) / self.height
             self.polygons[i] = (
-                [
-                    poly[0],
-                    (shift - dx1, py1),
-                    (x1 + shift - dx1, py1)
-                ] + poly[2:-1] +
-                [
-                    (x2 + shift - dx2, py2)
-                ]
+                [poly[0], (shift - dx1, py1), (x1 + shift - dx1, py1)]
+                + poly[2:-1]
+                + [(x2 + shift - dx2, py2)]
             )
-
 
     def alter_end(self, shift: float = 0, next_y: float = -1):
         """
@@ -169,9 +159,7 @@ class Brick:
         for i, path in enumerate(self.paths):
             x1, y1 = path[-1]
             ny = next_y[i] if isinstance(next_y, list) else next_y
-            self.paths[i] = path[:-1] + [
-                (x1 + shift, ny if ny > -1 else y1),
-            ]
+            self.paths[i] = path[:-1] + [(x1 + shift, ny if ny > -1 else y1)]
         for i, poly in enumerate(self.polygons):
             l = int(len(poly) / 2)
             x1, y1 = poly[l - 1]
@@ -180,11 +168,7 @@ class Brick:
             ny = next_y[i] if isinstance(next_y, list) else next_y
             self.polygons[i] = (
                 poly[: l - 1]
-                + [
-                    (x1 - shift, y1),
-                    (x2 + shift, ny if ny > -1 else y2),
-                    (x3 - shift, y3),
-                ]
+                + [(x1 - shift, y1), (x2 + shift, ny if ny > -1 else y2), (x3 - shift, y3)]
                 + poly[l + 1 :]
             )
 

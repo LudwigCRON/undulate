@@ -34,7 +34,7 @@ class Register:
         # add to the stack
         if isinstance(field, dict):
             f = Field.from_dict(field)
-        #elif isinstance(field, Field):
+        # elif isinstance(field, Field):
         #    f = field
         else:
             raise Exception("Unsupported %s of field" % type(field))
@@ -53,7 +53,7 @@ class Register:
         attr = [(field.width, field.attributes) for field in self.fields[::-1]]
         _type = []
         for field in self.fields[::-1]:
-            _type.extend([field.type]*field.width)
+            _type.extend([field.type] * field.width)
         # calculate position of extremities
         pos = [0]
         for f in self.fields:
@@ -62,7 +62,13 @@ class Register:
             pos.append(1)
         pos = list(accumulate(pos[:-1]))[::-1]
         ans = {}
-        ans[self.name] = {"wave": wave, "data": data, "regpos": pos, "attr": attr, "types": _type}
+        ans[self.name] = {
+            "wave": wave,
+            "data": data,
+            "regpos": pos,
+            "attr": attr,
+            "types": _type,
+        }
         return ans
 
 
@@ -95,34 +101,19 @@ class FieldStart(pywave.Brick):
             )
         # add attributes
         attrs = None
-        if not _attrs is None and isinstance(_attrs, tuple):
+        if _attrs is not None and isinstance(_attrs, tuple):
             width, attrs = _attrs
-            if not attrs is None:
+            if attrs is not None:
                 for i, attr in enumerate(attrs):
                     self.texts.append(
-                        (
-                            "attr", 
-                            (self.width * width) / 2,
-                            self.height + 12 * (i + 1),
-                            attr,
-                        )
+                        ("attr", (self.width * width) / 2, self.height + 12 * (i + 1), attr)
                     )
         # add text
         self.texts.append(
-            (
-                "reg-data",
-                self.width / 2,
-                self.height * 0.625,
-                kwargs.get("data", ""),
-            )
+            ("reg-data", self.width / 2, self.height * 0.625, kwargs.get("data", ""))
         )
         self.texts.append(
-            (
-                "reg-pos",
-                self.width / 2,
-                self.height * 0.125,
-                kwargs.get("reg_pos", ""),
-            )
+            ("reg-pos", self.width / 2, self.height * 0.125, kwargs.get("reg_pos", ""))
         )
 
 
@@ -153,12 +144,7 @@ class FieldMid(pywave.Brick):
         )
         # add text
         self.texts.append(
-            (
-                "reg-data",
-                self.width / 2,
-                self.height * 0.625,
-                kwargs.get("data", ""),
-            )
+            ("reg-data", self.width / 2, self.height * 0.625, kwargs.get("data", ""))
         )
 
 
@@ -180,20 +166,10 @@ class FieldEnd(pywave.Brick):
         )
         # add text
         self.texts.append(
-            (
-                "reg-data",
-                self.width / 2,
-                self.height * 0.625,
-                kwargs.get("data", ""),
-            )
+            ("reg-data", self.width / 2, self.height * 0.625, kwargs.get("data", ""))
         )
         self.texts.append(
-            (
-                "reg-pos",
-                self.width / 2,
-                self.height * 0.125,
-                kwargs.get("reg_pos", ""),
-            )
+            ("reg-pos", self.width / 2, self.height * 0.125, kwargs.get("reg_pos", ""))
         )
 
 
@@ -226,20 +202,10 @@ class FieldBit(pywave.Brick):
             )
         # add text
         self.texts.append(
-            (
-                "reg-data",
-                self.width / 2,
-                self.height * 0.625,
-                kwargs.get("data", ""),
-            )
+            ("reg-data", self.width / 2, self.height * 0.625, kwargs.get("data", ""))
         )
         self.texts.append(
-            (
-                "reg-pos",
-                self.width / 2,
-                self.height * 0.125,
-                kwargs.get("reg_pos", ""),
-            )
+            ("reg-pos", self.width / 2, self.height * 0.125, kwargs.get("reg_pos", ""))
         )
 
 
@@ -249,7 +215,17 @@ class Field:
     from 1-bit to N-bits
     """
 
-    __slots__ = ["name", "description", "start", "width", "attributes", "wave", "data", "style", "type"]
+    __slots__ = [
+        "name",
+        "description",
+        "start",
+        "width",
+        "attributes",
+        "wave",
+        "data",
+        "style",
+        "type",
+    ]
 
     def __init__(self):
         # default value
@@ -328,5 +304,4 @@ def generate_register_symbol(symbol: str, **kwargs) -> (bool, object):
         block = FieldEnd(**kwargs)
     elif symbol == pywave.BRICKS.field_bit:
         block = FieldBit(**kwargs)
-    return (not block is None, block)
-
+    return (block is not None, block)

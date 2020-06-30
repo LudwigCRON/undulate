@@ -19,36 +19,37 @@ class BRICKS(Enum):
     It defines the mapping between symbols and their
     character representation inside the input file
     """
-    repeat = '.'#: repeat the previous character
+
+    repeat = "."  #: repeat the previous character
     nclk = "n"  #: falling edge clock without arrow
     pclk = "p"  #: rising edge clock without arrow
     Nclk = "N"  #: falling edge clock with arrow
     Pclk = "P"  #: rising edge clock with arrow
-    low = "l"   #: forced low value in sync with clock edge
-    Low = "L"   #: forced low value in sync with clock edge and with arrow
+    low = "l"  #: forced low value in sync with clock edge
+    Low = "L"  #: forced low value in sync with clock edge and with arrow
     high = "h"  #: forced high value in sync with clock edge
     High = "H"  #: forced high value in sync with clock edge and arrow
     zero = "0"  #: data set to 0
-    one = "1"   #: data set to 1
-    gap = "|"   #: single line time compression
-    highz = "z" #: high impedance signal
-    x = "x"     #: unknown bit
-    X = "X"     #: unknown data
+    one = "1"  #: data set to 1
+    gap = "|"  #: single line time compression
+    highz = "z"  #: high impedance signal
+    x = "x"  #: unknown bit
+    X = "X"  #: unknown data
     data = "="  #: data
-    up = "u"    #: rc settling to 1
+    up = "u"  #: rc settling to 1
     down = "d"  #: rc settling to 0
     meta = "m"  #: metastable state settling to 0
     Meta = "M"  #: metastable state settling to 1
-    ana = "a"   #: analogue signal based on equation
+    ana = "a"  #: analogue signal based on equation
     step = "s"  #: analogue signal stepping
-    cap = "c"   #: analogue signal charging (rc)
-    imp = "i"   #: impulse down or glitch
-    Imp = "I"   #: impulse up or glitch
-    space = ' ' #: make a blank in the wavelane
-    field_start = "[" #: new field internal representation of a register
-    field_end = "]"   #: end of field internal representation
-    field_mid = ":"   #: bit seperation
-    field_bit = "b"   #: single bit field internal represention
+    cap = "c"  #: analogue signal charging (rc)
+    imp = "i"  #: impulse down or glitch
+    Imp = "I"  #: impulse up or glitch
+    space = " "  #: make a blank in the wavelane
+    field_start = "["  #: new field internal representation of a register
+    field_end = "]"  #: end of field internal representation
+    field_mid = ":"  #: bit seperation
+    field_bit = "b"  #: single bit field internal represention
 
     @staticmethod
     def transform_y(y: float, height: float = 20):
@@ -109,20 +110,22 @@ class BRICKS(Enum):
             (BRICKS.Low, BRICKS.Nclk),
             (BRICKS.low, BRICKS.Nclk),
             (BRICKS.low, BRICKS.nclk),
-            (BRICKS.Low, BRICKS.nclk)
+            (BRICKS.Low, BRICKS.nclk),
         ]:
             return True
-        if (to_symb in [pywave.BRICKS.zero, pywave.BRICKS.one] or BRICKS.is_forced_signal(to_symb)) and \
-           from_symb in [pywave.BRICKS.data, pywave.BRICKS.x, pywave.BRICKS.X]:
+        if (
+            to_symb in [pywave.BRICKS.zero, pywave.BRICKS.one]
+            or BRICKS.is_forced_signal(to_symb)
+        ) and from_symb in [pywave.BRICKS.data, pywave.BRICKS.x, pywave.BRICKS.X]:
             return True
         if BRICKS.is_forced_signal(to_symb) and BRICKS.is_clock(from_symb):
-            if from_symb.value.lower() == 'n' and to_symb.value.lower() == 'h':
+            if from_symb.value.lower() == "n" and to_symb.value.lower() == "h":
                 return True
-            if from_symb.value.lower() == 'p' and to_symb.value.lower() == 'l':
+            if from_symb.value.lower() == "p" and to_symb.value.lower() == "l":
                 return True
-            if from_symb.value.lower() == 'h' and to_symb.value.lower() == 'p':
+            if from_symb.value.lower() == "h" and to_symb.value.lower() == "p":
                 return True
-            if from_symb.value.lower() == 'l' and to_symb.value.lower() == 'n':
+            if from_symb.value.lower() == "l" and to_symb.value.lower() == "n":
                 return True
         return False
 
@@ -146,9 +149,13 @@ class BRICKS(Enum):
             bool
                 boolean result asserting the symb need a data
         """
-        return symb in [BRICKS.data,
-                        BRICKS.field_start, BRICKS.field_mid,
-                        BRICKS.field_end, BRICKS.field_bit]
+        return symb in [
+            BRICKS.data,
+            BRICKS.field_start,
+            BRICKS.field_mid,
+            BRICKS.field_end,
+            BRICKS.field_bit,
+        ]
 
     @staticmethod
     def need_attribute(symb) -> bool:
@@ -170,7 +177,11 @@ class BRICKS(Enum):
             bool
                 boolean result asserting the symb need a position
         """
-        return symb in [pywave.BRICKS.field_start, pywave.BRICKS.field_end, pywave.BRICKS.field_bit]
+        return symb in [
+            pywave.BRICKS.field_start,
+            pywave.BRICKS.field_end,
+            pywave.BRICKS.field_bit,
+        ]
 
     @staticmethod
     def need_type(symb) -> bool:
@@ -205,10 +216,7 @@ class BRICKS(Enum):
             bool
                 boolean result asserting the symb is a clock signal
         """
-        return symb in [BRICKS.Pclk,
-                        BRICKS.Nclk,
-                        BRICKS.pclk,
-                        BRICKS.nclk]
+        return symb in [BRICKS.Pclk, BRICKS.Nclk, BRICKS.pclk, BRICKS.nclk]
 
     @staticmethod
     def is_forced_signal(symb) -> bool:
@@ -219,5 +227,9 @@ class BRICKS(Enum):
             bool
                 boolean result asserting the symb is forced
         """
-        return symb in [pywave.BRICKS.high, pywave.BRICKS.High,
-            pywave.BRICKS.low, pywave.BRICKS.Low]
+        return symb in [
+            pywave.BRICKS.high,
+            pywave.BRICKS.High,
+            pywave.BRICKS.low,
+            pywave.BRICKS.Low,
+        ]

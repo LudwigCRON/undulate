@@ -43,7 +43,7 @@ class Meta(pywave.Brick):
     def __init__(self, **kwargs):
         """
         Create the brick as a sum of path, polygon, spline, ...
-        
+
         Parameters:
             slewing (float > 0): only for the connection with adjacent bricks
             then_one (bool): select if settle to one (True) or zero (False)
@@ -143,10 +143,10 @@ class Step(pywave.Brick):
     """
     Slewing behaviour
 
-    This brick represents a slewing transitions until the 
+    This brick represents a slewing transitions until the
     desired level is reached. Then the value is locked.
 
-    This behaviour corresponds to a charge-pump or a 
+    This behaviour corresponds to a charge-pump or a
     comparator-based integrator
     """
 
@@ -191,10 +191,10 @@ class Analogue(pywave.Brick):
             self.last_y = self.height if self.last_y is None else self.last_y
         # add shape
         self.paths.append(
-            ["path", (0, self.last_y)] # link to the previous block
+            ["path", (0, self.last_y)]  # link to the previous block
             + [
                 (p[0], pywave.BRICKS.transform_y(p[1], self.height))
-                for p in pts # evaluation fonctions, complex python code
+                for p in pts  # evaluation fonctions, complex python code
             ]
         )
 
@@ -223,9 +223,9 @@ def generate_analogue_symbol(symbol, **kwargs) -> (bool, object):
             the brick created or None
     """
     # get option supported
-    height   = kwargs.get("brick_height", 20)
+    height = kwargs.get("brick_height", 20)
     equation = kwargs.get("equation", [])
-    block    = pywave.Brick(**kwargs)
+    block = pywave.Brick(**kwargs)
     # metastability to zero
     if symbol == pywave.BRICKS.meta:
         block = Meta(**kwargs)
@@ -236,12 +236,16 @@ def generate_analogue_symbol(symbol, **kwargs) -> (bool, object):
     # full custom analogue bloc
     elif symbol == pywave.BRICKS.step:
         if isinstance(equation, str):
-            block = Step(pywave.BRICKS.transform_y(eval(equation, CONTEXT), height), **kwargs)
+            block = Step(
+                pywave.BRICKS.transform_y(eval(equation, CONTEXT), height), **kwargs
+            )
         else:
             block = Step(pywave.BRICKS.transform_y(equation, height), **kwargs)
     elif symbol == pywave.BRICKS.cap:
         if isinstance(equation, str):
-            block = Cap(pywave.BRICKS.transform_y(eval(equation, CONTEXT), height), **kwargs)
+            block = Cap(
+                pywave.BRICKS.transform_y(eval(equation, CONTEXT), height), **kwargs
+            )
         else:
             block = Cap(pywave.BRICKS.transform_y(equation, height), **kwargs)
     elif symbol == pywave.BRICKS.ana:
@@ -251,4 +255,4 @@ def generate_analogue_symbol(symbol, **kwargs) -> (bool, object):
             block = Analogue(equation, **kwargs)
     else:
         block = None
-    return (not block is None, block)
+    return (block is not None, block)

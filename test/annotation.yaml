@@ -19,7 +19,7 @@ spacer_0:
 
 # should have the 3 values
 experimental_0:
-  wave: "x5...|..|4="
+  wave: "x5...|05|4="
   data:
     - "0x70"
     - "0x71"
