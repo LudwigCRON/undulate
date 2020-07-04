@@ -5,6 +5,8 @@
 bricks.py declare the basic building block
 to generate a waveform
 """
+
+import ast
 import undulate
 
 
@@ -213,3 +215,20 @@ def generate_brick(symbol: str, **kwargs) -> dict:
         raise Exception(symbol)
     brick.symbol = symbol
     return brick
+
+
+def safe_eval(code: str, ctx: dict):
+    """
+    propose a safer alternative to eval based on ast
+
+    Args:
+        code (str): code to execute
+        ctx (dict): predefined variables and functions
+    Returns:
+        return value of the code
+    """
+    # ast only accept a subset of python instruction
+    # which is safer than eval
+    parse_tree = ast.parse(code)
+    # exec is not safe by itself but filtered by ast
+    return exec(parse_tree, ctx)

@@ -2,7 +2,7 @@
 import argparse
 
 from .bricks import BRICKS
-from .generic import Brick, generate_brick
+from .generic import Brick, generate_brick, safe_eval
 from .analogue import CONTEXT, generate_analogue_symbol
 from .digital import generate_digital_symbol
 from .register import Register, Field, generate_register_symbol

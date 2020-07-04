@@ -384,7 +384,7 @@ class Renderer:
             return s
         # if a string representing a tuple
         if isinstance(s, str) and "," in s:
-            s = eval(s)
+            s = undulate.safe_eval(s)
         # if a string representing a node
         if isinstance(s, str) and s in nodes:
             return nodes.get(s)
@@ -464,19 +464,6 @@ class Renderer:
             end = a.get("to", None)
             text = a.get("text", "")
             ans = ""
-            # parse from to
-            # if start:
-            #     if isinstance(start, str) and "," in start:
-            #         start = eval(start)
-            # if isinstance(start, tuple):
-            #     x, y = start
-            #     start = (x*brick_width, Renderer.adjust_y(y, brick_height))
-            # if end:
-            #     if isinstance(end, str) and "," in end:
-            #         end = eval(end)
-            # if isinstance(end, tuple):
-            #     x, y = end
-            #     end = (x*brick_width, Renderer.adjust_y(y, brick_height))
             start = Renderer.from_to_parser(start, width, height, nodes=nodes)
             end = Renderer.from_to_parser(end, width, height, nodes=nodes)
             # calculate position of start node
@@ -958,7 +945,7 @@ class Renderer:
         if is a str, evaluate the code or get it in a standard way
         """
         if isinstance(kwargs.get(name), str):
-            return eval(kwargs.get(name, ""))
+            return undulate.safe_eval(kwargs.get(name, ""))
         return kwargs.get(name, default)
 
     @incr_wavelane

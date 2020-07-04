@@ -7,6 +7,7 @@ to generate an analogue waveform and define
 common functions in the analogue context
 """
 
+import ast
 import math
 import random
 import undulate
@@ -237,20 +238,22 @@ def generate_analogue_symbol(symbol, **kwargs) -> (bool, object):
     elif symbol == undulate.BRICKS.step:
         if isinstance(equation, str):
             block = Step(
-                undulate.BRICKS.transform_y(eval(equation, CONTEXT), height), **kwargs
+                undulate.BRICKS.transform_y(undulate.safe_eval(equation, CONTEXT), height),
+                **kwargs
             )
         else:
             block = Step(undulate.BRICKS.transform_y(equation, height), **kwargs)
     elif symbol == undulate.BRICKS.cap:
         if isinstance(equation, str):
             block = Cap(
-                undulate.BRICKS.transform_y(eval(equation, CONTEXT), height), **kwargs
+                undulate.BRICKS.transform_y(undulate.safe_eval(equation, CONTEXT), height),
+                **kwargs
             )
         else:
             block = Cap(undulate.BRICKS.transform_y(equation, height), **kwargs)
     elif symbol == undulate.BRICKS.ana:
         if isinstance(equation, str):
-            block = Analogue(eval(equation, CONTEXT), **kwargs)
+            block = Analogue(undulate.safe_eval(equation, CONTEXT), **kwargs)
         else:
             block = Analogue(equation, **kwargs)
     else:
