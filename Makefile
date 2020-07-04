@@ -5,8 +5,8 @@
 # from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = docs-srcs
-BUILDDIR      = docs
+SOURCEDIR     = ./docs-srcs
+BUILDDIR      = ./docs
 
 export SPHINX_APIDOC_OPTIONS := members,show-inheritance
 
@@ -20,4 +20,4 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	sphinx-apidoc -f -e -o $(SOURCEDIR) undulate
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(SPHINXBUILD) -b $@ "$(SOURCEDIR)" "$(BUILDDIR)"

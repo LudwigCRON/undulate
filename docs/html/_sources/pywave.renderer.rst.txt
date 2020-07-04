@@ -1,7 +1,0 @@
-pywave.renderer module
-======================
-
-.. automodule:: pywave.renderer
-   :members:
-   :undoc-members:
-   :show-inheritance:

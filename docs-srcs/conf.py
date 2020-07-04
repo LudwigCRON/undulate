@@ -94,4 +94,3 @@ todo_include_todos = True
 
 # overload the style
 html_css_files = ["./theme_override.css"]
-

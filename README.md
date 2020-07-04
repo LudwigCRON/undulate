@@ -2,7 +2,7 @@
 # Undulate
 ![](https://img.shields.io/badge/license-MIT-blue)
 ![](https://img.shields.io/badge/python-3.5+-blue)
-![](https://img.shields.io/badge/coverage-92%25-yellow)
+![](https://img.shields.io/badge/coverage-93%25-yellow)
 [![Build Status](https://travis-ci.com/LudwigCRON/undulate.svg?branch=master)](https://travis-ci.com/LudwigCRON/undulate)<br/>
 
 ## Introduction
