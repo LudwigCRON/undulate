@@ -247,7 +247,7 @@ class Garbage(undulate.Brick):
         follow_data (bool): data '=' occurs before this brick
     """
 
-    def __init__(self, unknown: bool = True, **kwargs):
+    def __init__(self, **kwargs):
         undulate.Brick.__init__(self, **kwargs)
         follow_data = kwargs.get("follow_data", False)
         self.last_y = self.height / 2 if self.last_y is None else self.last_y
@@ -365,7 +365,7 @@ class Data(undulate.Brick):
         if self.ignore_transition:
             self.ignore_start_transition = True
             self.ignore_end_transition = True
-        follow_X = kwargs.get("follow_X", False)
+        follow_x = kwargs.get("follow_X", False)
         # add shape
         if self.is_first:
             self.paths.append(
@@ -394,10 +394,10 @@ class Data(undulate.Brick):
                 [
                     "path",
                     (
-                        -self.slewing if follow_X else 0,
+                        -self.slewing if follow_x else 0,
                         self.last_y if not self.ignore_start_transition else 0,
                     ),
-                    (0 if follow_X else self.slewing, 0),
+                    (0 if follow_x else self.slewing, 0),
                     (self.width - self.slewing, 0),
                     (self.width, self.height / 2 if not self.ignore_end_transition else 0),
                 ]
@@ -406,10 +406,10 @@ class Data(undulate.Brick):
                 [
                     "path",
                     (
-                        -self.slewing if follow_X else 0,
+                        -self.slewing if follow_x else 0,
                         self.last_y if not self.ignore_start_transition else self.height,
                     ),
-                    (0 if follow_X else self.slewing, self.height),
+                    (0 if follow_x else self.slewing, self.height),
                     (self.width - self.slewing, self.height),
                     (
                         self.width,
@@ -442,12 +442,12 @@ class Data(undulate.Brick):
                 [
                     style,
                     (
-                        -self.slewing if follow_X else 0,
+                        -self.slewing if follow_x else 0,
                         self.last_y if not self.ignore_start_transition else 0,
                     ),
                     (
                         self.slewing
-                        if not self.ignore_start_transition and not follow_X
+                        if not self.ignore_start_transition and not follow_x
                         else 0,
                         0,
                     ),
@@ -466,12 +466,12 @@ class Data(undulate.Brick):
                     ),
                     (
                         self.slewing
-                        if not self.ignore_start_transition and not follow_X
+                        if not self.ignore_start_transition and not follow_x
                         else 0,
                         self.height,
                     ),
                     (
-                        -self.slewing if follow_X else 0,
+                        -self.slewing if follow_x else 0,
                         self.last_y if not self.ignore_start_transition else self.height,
                     ),
                 ]
@@ -581,25 +581,26 @@ class Impulse(undulate.Brick):
     pulse
 
     Parameters:
-        slewing (float): limit the slope
+        up (bool): True for impulse to up and False for impulse down
         duty_cycle (float): adjust the x position of the impulse
             from 0 to 1, by default 0.5
     """
 
-    def __init__(self, x, y, **kwargs):
+    def __init__(self, **kwargs):
         undulate.Brick.__init__(self, **kwargs)
-        self.first_y = self.height - y
-        self.last_y = (
-            self.height - y if self.last_y is None or self.is_first else self.last_y
-        )
+        up_pulse = kwargs.get("up") or True
+        duty_cycle = kwargs.get("duty_cycle") or 0.0
+        self.first_y = 0 if up_pulse else self.height
+        self.last_y = self.first_y if self.last_y is None or self.is_first else self.last_y
         # add shape
         self.paths.append(
             [
                 "path",
-                (0, self.height - y),
-                (0, y),
-                (0, self.height - y),
-                (self.width, self.height - y),
+                (0, self.first_y),
+                (duty_cycle, self.first_y),
+                (duty_cycle, self.height - self.first_y),
+                (duty_cycle, self.first_y),
+                (self.width, self.first_y),
             ]
         )
 
@@ -618,60 +619,48 @@ def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
     """
     define the mapping between the symbol and the brick
     """
-    # get option supported
-    height = kwargs.get("brick_height", 20)
-    duty_cycle = kwargs.get("duty_cycle", 0.5)
-    block = None
-    # add arrow
-    if symbol in [
-        undulate.BRICKS.Nclk,
-        undulate.BRICKS.Pclk,
-        undulate.BRICKS.Low,
-        undulate.BRICKS.High,
-    ]:
+    # mapping
+    map_dict = {
+        # clock signals description (pPnNlLhH)
+        # (N|n)clk: falling edge (with|without) arrow for repeated pattern
+        undulate.BRICKS.nclk: Nclk,
+        undulate.BRICKS.Nclk: Nclk,
+        # (P|p)clk: rising edge (with|without) arrow for repeated pattern
+        undulate.BRICKS.pclk: Pclk,
+        undulate.BRICKS.Pclk: Pclk,
+        # (L|l)ow: falling edge (with|without) arrow and stuck
+        undulate.BRICKS.low: Low,
+        undulate.BRICKS.Low: Low,
+        # (H|h)igh: rising edge (with|without) arrow and stuck
+        undulate.BRICKS.high: High,
+        undulate.BRICKS.High: High,
+        # description for data (z01=x)
+        undulate.BRICKS.highz: HighZ,
+        undulate.BRICKS.zero: Zero,
+        undulate.BRICKS.one: One,
+        undulate.BRICKS.data: Data,
+        undulate.BRICKS.x: lambda **k: Data(unknown=True, **k),
+        undulate.BRICKS.X: Garbage,
+        # time compression symbol
+        undulate.BRICKS.gap: Gap,
+        # capacitive charge to 1 or 0
+        undulate.BRICKS.up: Up,
+        undulate.BRICKS.down: Down,
+        # impulse symbol
+        undulate.BRICKS.imp: Impulse,
+        undulate.BRICKS.Imp: Impulse,
+        # space to skip one step
+        undulate.BRICKS.space: Space,
+    }
+    # add arrow and parameters
+    if undulate.BRICKS.has_arrow_on_edge(symbol):
         kwargs.update({"add_arrow": True})
-    # clock signals description (pPnNlLhH)
-    # (N|n)clk: falling edge (with|without) arrow for repeated pattern
-    if symbol in [undulate.BRICKS.nclk, undulate.BRICKS.Nclk]:
-        block = Nclk(**kwargs)
-    # (P|p)clk: rising edge (with|without) arrow for repeated pattern
-    elif symbol in [undulate.BRICKS.pclk, undulate.BRICKS.Pclk]:
-        block = Pclk(**kwargs)
-    # (L|l)ow: falling edge (with|without) arrow and stuck
-    elif symbol in [undulate.BRICKS.low, undulate.BRICKS.Low]:
-        block = Low(**kwargs)
-    # (H|h)igh: rising edge (with|without) arrow and stuck
-    elif symbol in [undulate.BRICKS.high, undulate.BRICKS.High]:
-        block = High(**kwargs)
-    # description for data (z01=x)
-    elif symbol == undulate.BRICKS.highz:
-        block = HighZ(**kwargs)
-    elif symbol == undulate.BRICKS.zero:
-        block = Zero(**kwargs)
-    elif symbol == undulate.BRICKS.one:
-        block = One(**kwargs)
-    elif symbol == undulate.BRICKS.data:
-        block = Data(**kwargs)
-    elif symbol == undulate.BRICKS.x:
-        block = Data(unknown=True, **kwargs)
-    elif symbol == undulate.BRICKS.X:
-        block = Garbage(**kwargs)
-    # time compression symbol
-    elif symbol == undulate.BRICKS.gap:
-        block = Gap(**kwargs)
-    # capacitive charge to 1
-    elif symbol == undulate.BRICKS.up:
-        block = Up(**kwargs)
-    # capacitive discharge to 0
-    elif symbol == undulate.BRICKS.down:
-        block = Down(**kwargs)
-    # impulse symbol
-    elif symbol == undulate.BRICKS.imp:
-        block = Impulse(duty_cycle, height, **kwargs)
-    elif symbol == undulate.BRICKS.Imp:
-        block = Impulse(duty_cycle, 0, **kwargs)
-    elif symbol == undulate.BRICKS.space:
-        block = Space(**kwargs)
-    else:
-        block = None
-    return (block is not None, block)
+    if symbol == undulate.BRICKS.imp:
+        kwargs.update({"up": False})
+    if symbol == undulate.BRICKS.Imp:
+        kwargs.update({"up": True})
+    # get factory and generate block
+    factory = map_dict.get(symbol, None)
+    if callable(factory):
+        return factory(**kwargs)
+    return None

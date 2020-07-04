@@ -294,14 +294,15 @@ def generate_register_symbol(symbol: str, **kwargs) -> (bool, object):
     """
     define the mapping between the symbol and the brick
     """
-    # get option supported
-    block = None
-    if symbol == undulate.BRICKS.field_start:
-        block = FieldStart(**kwargs)
-    elif symbol == undulate.BRICKS.field_mid:
-        block = FieldMid(**kwargs)
-    elif symbol == undulate.BRICKS.field_end:
-        block = FieldEnd(**kwargs)
-    elif symbol == undulate.BRICKS.field_bit:
-        block = FieldBit(**kwargs)
-    return (block is not None, block)
+    # mapping
+    map_dict = {
+        undulate.BRICKS.field_start: FieldStart,
+        undulate.BRICKS.field_mid: FieldMid,
+        undulate.BRICKS.field_end: FieldEnd,
+        undulate.BRICKS.field_bit: FieldBit,
+    }
+    # get factory and generate block
+    factory = map_dict.get(symbol, None)
+    if callable(factory):
+        return factory(**kwargs)
+    return None

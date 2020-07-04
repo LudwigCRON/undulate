@@ -1,17 +1,13 @@
 #!/usr/bin/env python3
 
-import os
 import sys
-
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-
-# imports as in undulate.py
-from undulate import SvgRenderer, CairoRenderer
 import argparse
 import unittest
 
-renderer = None
-out_txt = True
+# imports as in undulate.py
+from undulate import SvgRenderer, CairoRenderer
+
+RENDERER = None
 
 
 class TestSvgMethods(unittest.TestCase):
@@ -30,11 +26,7 @@ class TestSvgMethods(unittest.TestCase):
             "SAlfa": {"wave": "01.zx=ud.23.45", "slewing": 8},
             "compatibility": {"wave": "p||||......"},
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_wavedrom_step2(self):
         """
@@ -52,11 +44,7 @@ class TestSvgMethods(unittest.TestCase):
             "clk3": {"wave": "nhNhplPl"},
             "clk4": {"wave": "xlh.L.Hx"},
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_wavedrom_step3(self):
         """
@@ -68,11 +56,7 @@ class TestSvgMethods(unittest.TestCase):
             "bus": {"wave": "x.==.=x", "data": ["head", "body", "tail", "data"]},
             "wire": {"wave": "0.1..0."},
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_wavedrom_step4(self):
         """
@@ -86,11 +70,7 @@ class TestSvgMethods(unittest.TestCase):
             "spacer_0": {},
             "Acknowledge": {"wave": "1.....|01."},
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_wavedrom_step5(self):
         """
@@ -110,11 +90,7 @@ class TestSvgMethods(unittest.TestCase):
                 "rdata": {"wave": "x.....4x", "data": "Q2"},
             },
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_wavedrom_step6(self):
         """
@@ -132,11 +108,7 @@ class TestSvgMethods(unittest.TestCase):
             "DQS": {"wave": "z.......0.1010z."},
             "DQ": {"wave": "z.........5555z.", "data": "D0 D1 D2 D3"},
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_wavedrom_step7(self):
         """
@@ -165,11 +137,7 @@ class TestSvgMethods(unittest.TestCase):
             ],
             "adjustment": [{"edge": 10, "dx": -10, "dy": 0}],
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_wavedrom_step8(self):
         """
@@ -193,11 +161,7 @@ class TestSvgMethods(unittest.TestCase):
                 "g<->h 3 ms",
             ],
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_wavedrom_step9(self):
         """
@@ -219,11 +183,7 @@ class TestSvgMethods(unittest.TestCase):
             "DQS_3": {"wave": "z...M...0.1010z."},
             "DQ": {"wave": "z.........5555z.", "data": "D0 D1 D2 D3"},
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_wavedrom_step10(self):
         """
@@ -263,11 +223,7 @@ class TestSvgMethods(unittest.TestCase):
                 "periods": [i / 8 for i in range(16)],
             },
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
     def test_extra_mux_recirc(self):
         """
@@ -284,11 +240,7 @@ class TestSvgMethods(unittest.TestCase):
             "BUS_2": {"wave": "0..=", "data": "COFFEE", "period": 3, "phase": -0.3},
             "edge": [],
         }
-        if out_txt:
-            with open(filename, "w+") as fp:
-                fp.write(renderer.draw(wavelanes, filename=filename))
-        else:
-            renderer.draw(wavelanes, filename=filename)
+        RENDERER.draw(wavelanes, filename=filename)
 
 
 if __name__ == "__main__":
@@ -297,10 +249,8 @@ if __name__ == "__main__":
     parser.add_argument("unittest_args", nargs="*")
     cli_args = parser.parse_args()
     if cli_args.format == "svg":
-        renderer = SvgRenderer()
+        RENDERER = SvgRenderer()
     elif "cairo-" in cli_args.format:
-        renderer = CairoRenderer(extension=cli_args.format.split("-")[-1])
-        out_txt = False
+        RENDERER = CairoRenderer(extension=cli_args.format.split("-")[-1])
     sys.argv[1:] = cli_args.unittest_args
     unittest.main()
-

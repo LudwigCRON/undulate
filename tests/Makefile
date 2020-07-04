@@ -68,6 +68,7 @@ adcec:
 	$(WAVEFORM) -i "${TESTPATH}/adcec.jsonml" -f svg -o "${TESTPATH}/output/adcec.svg"
 
 coverage:
+	coverage erase
 	coverage run -a -m $(WAVEFORM).__init__ -i ${TESTPATH}/wavetest.yaml -f svg -o ${TESTPATH}/output/$(subst .yaml,-yaml.svg,wavetest.yaml)
 	coverage run -a -m $(WAVEFORM).__init__ -i ${TESTPATH}/wavetest.yaml -f cairo-svg -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.svg,wavetest.yaml)
 	coverage run -a -m $(WAVEFORM).__init__ -i ${TESTPATH}/wavetest.json -f cairo-eps -o ${TESTPATH}/output/$(subst .json,-json-cairo.eps,wavetest.json)

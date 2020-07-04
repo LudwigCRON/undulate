@@ -7,7 +7,6 @@ to generate an analogue waveform and define
 common functions in the analogue context
 """
 
-import ast
 import math
 import random
 import undulate
@@ -52,13 +51,16 @@ class Meta(undulate.Brick):
             None
         """
         undulate.Brick.__init__(self, **kwargs)
+        then_one = kwargs.get("then_one", False)
         self.last_y = self.height / 2 if self.last_y is None else self.last_y
         dt = abs(self.last_y - self.height / 2) * self.slewing / self.height
+        # time range
         time = range(int(dt), int(self.width * 0.75 + 1))
         if (int(0.75 * self.width + 1) - int(dt)) % 2 == 1:
             time = range(int(dt), int(self.width * 0.75 + 2))
+        # prepare spline
         _tmp = ["path", ("m", 0, self.last_y)]
-        if kwargs.get("then_one", False):
+        if then_one:
             for i, t in enumerate(time):
                 _tmp.append(
                     (
@@ -111,7 +113,7 @@ class Cap(undulate.Brick):
     the new level.
     """
 
-    def __init__(self, y, **kwargs):
+    def __init__(self, **kwargs):
         """
         Args:
             y: the new level between 0 and height
@@ -122,6 +124,7 @@ class Cap(undulate.Brick):
             None
         """
         undulate.Brick.__init__(self, **kwargs)
+        y = undulate.BRICKS.transform_y(kwargs.get("points"), self.height)
         if self.is_first:
             self.last_y = self.height
         else:
@@ -151,7 +154,7 @@ class Step(undulate.Brick):
     comparator-based integrator
     """
 
-    def __init__(self, y, **kwargs):
+    def __init__(self, **kwargs):
         """
         Args:
             y: the new level between 0 and height
@@ -162,6 +165,7 @@ class Step(undulate.Brick):
             None
         """
         undulate.Brick.__init__(self, **kwargs)
+        y = undulate.BRICKS.transform_y(kwargs.get("points"), self.height)
         if self.is_first:
             self.last_y = self.height
         else:
@@ -178,7 +182,7 @@ class Analogue(undulate.Brick):
     This brick is intended to depict an time changing signal
     """
 
-    def __init__(self, pts: list, **kwargs):
+    def __init__(self, **kwargs):
         """
         Args:
             pts: list of points (relative time, y-value)
@@ -186,6 +190,7 @@ class Analogue(undulate.Brick):
             None
         """
         undulate.Brick.__init__(self, **kwargs)
+        pts = kwargs.get("points") or []
         if self.is_first:
             self.last_y = self.height
         else:
@@ -224,38 +229,32 @@ def generate_analogue_symbol(symbol, **kwargs) -> (bool, object):
             the brick created or None
     """
     # get option supported
-    height = kwargs.get("brick_height", 20)
     equation = kwargs.get("equation", [])
-    block = undulate.Brick(**kwargs)
-    # metastability to zero
-    if symbol == undulate.BRICKS.meta:
-        block = Meta(**kwargs)
-    # metastability to one
-    elif symbol == undulate.BRICKS.Meta:
+    # mapping
+    map_dict = {
+        # metastability to zero
+        undulate.BRICKS.meta: Meta,
+        # metastability to one
+        undulate.BRICKS.Meta: Meta,
+        # slewing analogue bloc
+        undulate.BRICKS.step: Step,
+        # capacitive load
+        undulate.BRICKS.cap: Cap,
+        # full custom analogue bloc
+        undulate.BRICKS.ana: Analogue,
+    }
+    # add parameters
+    if symbol == undulate.BRICKS.Meta:
         kwargs.update({"then_one": True})
-        block = Meta(**kwargs)
-    # full custom analogue bloc
-    elif symbol == undulate.BRICKS.step:
-        if isinstance(equation, str):
-            block = Step(
-                undulate.BRICKS.transform_y(undulate.safe_eval(equation, CONTEXT), height),
-                **kwargs
-            )
-        else:
-            block = Step(undulate.BRICKS.transform_y(equation, height), **kwargs)
-    elif symbol == undulate.BRICKS.cap:
-        if isinstance(equation, str):
-            block = Cap(
-                undulate.BRICKS.transform_y(undulate.safe_eval(equation, CONTEXT), height),
-                **kwargs
-            )
-        else:
-            block = Cap(undulate.BRICKS.transform_y(equation, height), **kwargs)
-    elif symbol == undulate.BRICKS.ana:
-        if isinstance(equation, str):
-            block = Analogue(undulate.safe_eval(equation, CONTEXT), **kwargs)
-        else:
-            block = Analogue(equation, **kwargs)
-    else:
-        block = None
-    return (block is not None, block)
+    kwargs.update(
+        {
+            "points": undulate.safe_eval(equation, CONTEXT)
+            if isinstance(equation, str)
+            else equation
+        }
+    )
+    # get factory and generate block
+    factory = map_dict.get(symbol, None)
+    if callable(factory):
+        return factory(**kwargs)
+    return None

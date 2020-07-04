@@ -36,7 +36,8 @@ class Brick:
 
             .. warning::
                 splines are considered to be a list of (type, x or dx, y or dy) tuples
-                for more details please look at https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+                for more details please look at
+                https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
     """
 
     __slots__ = [
@@ -134,7 +135,6 @@ class Brick:
             x1, y1 = path[1]
             py = previous_y[i] if isinstance(previous_y, list) else previous_y
             py1 = py if py > -1 else y1
-            dx = self.slewing * (y1 - py1) / self.height
             self.paths[i] = [path[0], (x1 + shift, py1)] + path[3:]
         for i, poly in enumerate(self.polygons):
             x1, y1 = poly[1]
@@ -203,21 +203,21 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     # create the brick
     brick = Brick()
     # Digital Context
-    generated, brick = undulate.generate_digital_symbol(symbol, **kwargs)
+    brick = undulate.generate_digital_symbol(symbol, **kwargs)
     # Analogue Context
-    if not generated:
-        generated, brick = undulate.generate_analogue_symbol(symbol, **kwargs)
+    if not brick:
+        brick = undulate.generate_analogue_symbol(symbol, **kwargs)
     # Register Context
-    if not generated:
-        generated, brick = undulate.generate_register_symbol(symbol, **kwargs)
+    if not brick:
+        brick = undulate.generate_register_symbol(symbol, **kwargs)
     # no more context implemented
-    if not generated:
+    if not brick:
         raise Exception(symbol)
     brick.symbol = symbol
     return brick
 
 
-def safe_eval(code: str, ctx: dict):
+def safe_eval(code: str, ctx: dict = {}):
     """
     propose a safer alternative to eval based on ast
 
@@ -229,6 +229,7 @@ def safe_eval(code: str, ctx: dict):
     """
     # ast only accept a subset of python instruction
     # which is safer than eval
-    parse_tree = ast.parse(code)
-    # exec is not safe by itself but filtered by ast
-    return exec(parse_tree, ctx)
+    parse_tree = ast.parse(code, mode="eval")
+    code_object = compile(parse_tree, filename="<string>", mode="eval")
+    # eval is not safe by itself but filtered by ast
+    return eval(code_object, ctx)

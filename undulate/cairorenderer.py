@@ -25,7 +25,7 @@ class CairoRenderer(Renderer):
     def __init__(self, **kwargs):
         Renderer.__init__(self)
         self.engine = Engine.CAIRO
-        self.cr = None
+        self.ctx = None
         self.surface = None
         self.extension = kwargs.get("extension", "svg").lower()
         self.dpi = kwargs.get("dpi", 300)
@@ -41,12 +41,12 @@ class CairoRenderer(Renderer):
             group of drawable items invoked by callback
         """
         extra = kwargs.get("extra", None)
-        self.cr.push_group()
+        self.ctx.push_group()
         if callable(extra):
             extra()
         callback()
-        self.cr.pop_group_to_source()
-        self.cr.paint_with_alpha(1)
+        self.ctx.pop_group_to_source()
+        self.ctx.paint_with_alpha(1)
         return ""
 
     def path(self, vertices: list, **kwargs) -> str:
@@ -62,18 +62,18 @@ class CairoRenderer(Renderer):
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", "path")
         overload = style_in_kwargs(**kwargs)
-        self.cr.save()
+        self.ctx.save()
         if callable(extra):
             extra()
-        apply_stroke(self.cr, style, Engine.CAIRO, overload)
-        self.cr.new_path()
+        apply_stroke(self.ctx, style, Engine.CAIRO, overload)
+        self.ctx.new_path()
         for i, v in enumerate(vertices):
             if i == 0:
-                self.cr.move_to(*v)
+                self.ctx.move_to(*v)
             else:
-                self.cr.line_to(*v)
-        self.cr.stroke()
-        self.cr.restore()
+                self.ctx.line_to(*v)
+        self.ctx.stroke()
+        self.ctx.restore()
         return ""
 
     def arrow(self, x: float, y: float, angle: float, **kwargs) -> str:
@@ -91,20 +91,20 @@ class CairoRenderer(Renderer):
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", "arrow")
         overload = style_in_kwargs(**kwargs)
-        self.cr.save()
+        self.ctx.save()
         if callable(extra):
             extra()
-        apply_fill(self.cr, style, Engine.CAIRO, overload)
-        self.cr.translate(x, y)
-        self.cr.rotate((angle - 90) * 3.14159 / 180)
-        self.cr.new_path()
-        self.cr.move_to(-3.5, -3.5)
-        self.cr.line_to(0, 3.5)
-        self.cr.line_to(3.5, -3.5)
-        self.cr.line_to(0, -2)
-        self.cr.line_to(-3.5, -3.5)
-        self.cr.fill()
-        self.cr.restore()
+        apply_fill(self.ctx, style, Engine.CAIRO, overload)
+        self.ctx.translate(x, y)
+        self.ctx.rotate((angle - 90) * 3.14159 / 180)
+        self.ctx.new_path()
+        self.ctx.move_to(-3.5, -3.5)
+        self.ctx.line_to(0, 3.5)
+        self.ctx.line_to(3.5, -3.5)
+        self.ctx.line_to(0, -2)
+        self.ctx.line_to(-3.5, -3.5)
+        self.ctx.fill()
+        self.ctx.restore()
         return ""
 
     def polygon(self, vertices: list, **kwargs) -> str:
@@ -120,20 +120,20 @@ class CairoRenderer(Renderer):
         extra = kwargs.get("extra", None)
         style = kwargs.get("style_repr", None)
         overload = style_in_kwargs(**kwargs)
-        self.cr.save()
+        self.ctx.save()
         if callable(extra):
             extra()
-        apply_fill(self.cr, style, Engine.CAIRO, overload)
-        self.cr.new_path()
+        apply_fill(self.ctx, style, Engine.CAIRO, overload)
+        self.ctx.new_path()
         for i, v in enumerate(vertices):
             if i == 0:
-                self.cr.move_to(*v)
+                self.ctx.move_to(*v)
             else:
-                self.cr.line_to(*v)
-        self.cr.fill_preserve()
-        apply_stroke(self.cr, style, Engine.CAIRO, overload)
-        self.cr.stroke()
-        self.cr.restore()
+                self.ctx.line_to(*v)
+        self.ctx.fill_preserve()
+        apply_stroke(self.ctx, style, Engine.CAIRO, overload)
+        self.ctx.stroke()
+        self.ctx.restore()
         return ""
 
     def spline(self, vertices: list, **kwargs) -> str:
@@ -154,11 +154,11 @@ class CairoRenderer(Renderer):
         vertices = svg_curve_convert(vertices)
         c, px, py, stack = 0, 0, 0, []
 
-        self.cr.save()
+        self.ctx.save()
         if callable(extra):
             extra()
-        self.cr.new_path()
-        self.cr.move_to(px, py)
+        self.ctx.new_path()
+        self.ctx.move_to(px, py)
         previous_cmd = "moveto"
         for _, v in enumerate(vertices):
             s, x, y = v
@@ -191,31 +191,31 @@ class CairoRenderer(Renderer):
             else:
                 stack.extend([x, y])
                 if cmd.startswith("rc"):
-                    self.cr.rel_curve_to(*stack)
+                    self.ctx.rel_curve_to(*stack)
                 elif cmd.startswith("rl"):
-                    self.cr.rel_line_to(*stack)
+                    self.ctx.rel_line_to(*stack)
                 elif cmd.startswith("rm"):
-                    self.cr.rel_move_to(*stack)
+                    self.ctx.rel_move_to(*stack)
                 elif cmd.startswith("l"):
-                    self.cr.line_to(*stack)
+                    self.ctx.line_to(*stack)
                 elif cmd.startswith("m"):
-                    self.cr.move_to(*stack)
+                    self.ctx.move_to(*stack)
                 elif cmd == "closepath":
-                    self.cr.close_path()
+                    self.ctx.close_path()
                 else:
-                    self.cr.curve_to(*stack)
+                    self.ctx.curve_to(*stack)
                 stack = []
             # hold last point
             px, py = x, y
             # store last cmd
             previous_cmd = cmd
         if style == "hide":
-            apply_fill(self.cr, style, Engine.CAIRO, overload)
-            self.cr.fill()
+            apply_fill(self.ctx, style, Engine.CAIRO, overload)
+            self.ctx.fill()
         else:
-            apply_stroke(self.cr, style, Engine.CAIRO, overload)
-            self.cr.stroke()
-        self.cr.restore()
+            apply_stroke(self.ctx, style, Engine.CAIRO, overload)
+            self.ctx.stroke()
+        self.ctx.restore()
         return ""
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
@@ -233,20 +233,20 @@ class CairoRenderer(Renderer):
         extra = kwargs.get("extra", "")
         style = kwargs.get("style_repr", "text")
         overload = style_in_kwargs(**kwargs)
-        self.cr.save()
+        self.ctx.save()
         if callable(extra):
             extra()
-        apply_fill(self.cr, style, Engine.CAIRO, overload)
-        apply_font(self.cr, style, Engine.CAIRO, overload)
-        ox, oy = text_align(self.cr, style, str(text), Engine.CAIRO)
-        self.cr.move_to(x - ox, y - oy)
-        self.cr.show_text(str(text))
-        self.cr.restore()
+        apply_fill(self.ctx, style, Engine.CAIRO, overload)
+        apply_font(self.ctx, style, Engine.CAIRO, overload)
+        ox, oy = text_align(self.ctx, style, str(text), Engine.CAIRO)
+        self.ctx.move_to(x - ox, y - oy)
+        self.ctx.show_text(str(text))
+        self.ctx.restore()
         return ""
 
     def translate(self, x: float, y: float, **kwargs) -> str:
         def _():
-            self.cr.translate(x, y)
+            self.ctx.translate(x, y)
 
         return _
 
@@ -263,8 +263,8 @@ class CairoRenderer(Renderer):
                 if True `wavelanes` given represents a register
                 otherwise it represents a bunch of signals
         """
-        filename = kwargs.get("filename", False)
         _id = kwargs.get("id", "a")
+        filename = kwargs.get("filename", False)
         brick_width = kwargs.get("brick_width", 40)
         brick_height = kwargs.get("brick_height", 20)
         is_reg = kwargs.get("is_reg", False)
@@ -294,11 +294,11 @@ class CairoRenderer(Renderer):
             self.surface = cairo.PDFSurface(filename, w, h)
         else:
             raise "Not supported format"
-        self.cr = cairo.Context(self.surface)
+        self.ctx = cairo.Context(self.surface)
         # set background for png image
         if self.extension == "png":
-            self.cr.set_source_rgb(1, 1, 1)
-            self.cr.paint()
+            self.ctx.set_source_rgb(1, 1, 1)
+            self.ctx.paint()
         # paint waveforms
         self.wavegroup(
             _id,
@@ -309,7 +309,7 @@ class CairoRenderer(Renderer):
             height=height,
             offsetx=lkeys * 6.5 + 10,
         )
-        self.cr.show_page()
+        self.ctx.show_page()
         # write to an external file for png images
         if self.extension == "png":
             self.surface.write_to_png(filename)

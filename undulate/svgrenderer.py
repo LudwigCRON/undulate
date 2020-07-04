@@ -193,6 +193,7 @@ class SvgRenderer(Renderer):
                 otherwise it represents a bunch of signals
         """
         _id = kwargs.get("id", "a")
+        filename = kwargs.get("filename", False)
         brick_width = kwargs.get("brick_width", 40)
         brick_height = kwargs.get("brick_height", 20)
         is_reg = kwargs.get("is_reg", False)
@@ -201,23 +202,25 @@ class SvgRenderer(Renderer):
         if is_reg:
             lkeys = -1
             height += n * 12
-        return (
-            '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
-            % (width + lkeys * 11 + 11, height)
-            + 'viewBox="-1 -1 %f %f">\n' % (width + lkeys * 11 + 12, height + 2)
-            + "<style>\n"
-            + css_from_style(DEFAULT_STYLE)
-            + "</style>\n"
-            + DEFINITION
-            + self.wavegroup(
-                _id,
-                wavelanes,
-                brick_width=brick_width,
-                brick_height=brick_height,
-                width=width,
-                height=height,
-                offsetx=lkeys * 10 + 10,
-            )[1]
-            + ""
-            "\n</svg>"
-        )
+        with open(filename, "w+") as fp:
+            fp.write(
+                '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
+                % (width + lkeys * 11 + 11, height)
+            )
+            fp.write('viewBox="-1 -1 %f %f">\n' % (width + lkeys * 11 + 12, height + 2))
+            fp.write("<style>\n")
+            fp.write(css_from_style(DEFAULT_STYLE))
+            fp.write("</style>\n")
+            fp.write(DEFINITION)
+            fp.write(
+                self.wavegroup(
+                    _id,
+                    wavelanes,
+                    brick_width=brick_width,
+                    brick_height=brick_height,
+                    width=width,
+                    height=height,
+                    offsetx=lkeys * 10 + 10,
+                )[1]
+            )
+            fp.write("\n</svg>")

@@ -233,3 +233,19 @@ class BRICKS(Enum):
             undulate.BRICKS.low,
             undulate.BRICKS.Low,
         ]
+
+    @staticmethod
+    def has_arrow_on_edge(symb) -> bool:
+        """
+        Args:
+            symb (undulate:BRICKS) : symbol potentially having an arrow
+        Returns:
+            bool
+                boolean result asserting the symb has an arrow on the transition edge
+        """
+        return symb in [
+            undulate.BRICKS.Nclk,
+            undulate.BRICKS.Pclk,
+            undulate.BRICKS.Low,
+            undulate.BRICKS.High,
+        ]

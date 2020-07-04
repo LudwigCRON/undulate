@@ -20,7 +20,10 @@ _WAVEGROUP_COUNT = 0
 _WAVE_COUNT = 0
 # error message
 ERROR_MSG = {
-    "ANNOTATION_MISSING_PTS": "ERROR: For annotation check from/to are defined (float,float) or float supported only",
+    "ANNOTATION_MISSING_PTS": (
+        "ERROR: For annotation check from/to are defined "
+        "(float,float) or float supported only"
+    ),
     "WRONG_WAVE_START": "ERROR: %s : cannot repeat None or '|', add a valid brick first",
 }
 
@@ -72,10 +75,6 @@ def arrow_angle(dy: float, dx: float) -> float:
     return 180 * atan2(dy, dx) / 3.14159
 
 
-# TODO autoscale or scaling for analogue
-# TODO add support of T curves in svg
-
-
 def svg_curve_convert(vertices: list) -> list:
     """
     convert svg path definition to simpler s/c/m/l only mode
@@ -90,6 +89,7 @@ def svg_curve_convert(vertices: list) -> list:
     Returns:
         list of (type,x,y) tuples where type is only cubic bezier curve
     """
+    # TODO add support of T curves in svg
     px, py, pt = 0, 0, "m"
     ans, ppx, ppy = [], 0, 0
     for t, x, y in vertices:
@@ -116,13 +116,10 @@ class Renderer:
     """
 
     _EDGE_REGEXP = r"([\w\.\_]+)\s*([~\|\/\-\>\<]+)\s*([\w\.\_]+)"
-    _WAVE_TITLE = ""
-    _DATA_TEXT = ""
-    _GROUP_NAME = ""
     _SYMBOL_TEMP = None
 
     def __init__(self):
-        self.cr = None
+        self.ctx = None
         self.engine = None
 
     @staticmethod
@@ -217,9 +214,6 @@ class Renderer:
         """
         raise NotImplementedError()
 
-    def untranslate(self):
-        pass
-
     def brick(self, symbol: str, b: undulate.Brick, **kwargs) -> str:
         """
         brick generate the symbol for a undulate.Brick element
@@ -252,7 +246,7 @@ class Renderer:
     def __list_nodes__(self, wavelanes: dict, level: int = 0, depth: int = 0, **kwargs):
         """
         list of named nodes in the signal representation
-        and calculate the coordinates
+        and calculate their coordinates
 
         Args:
             wavelanes (dict): global signals representation
@@ -335,7 +329,7 @@ class Renderer:
         return {n: (x, y) for x, y, n in nodes}
 
     @staticmethod
-    def __gen_patterns__(prefixs: list, root: str, suffixs: list):
+    def generate_patterns(prefixs: list, root: str, suffixs: list):
         """
         generate possible pattern prefixs/root/suffixs
         """
@@ -553,7 +547,7 @@ class Renderer:
                 ans += self.spline(pts_1, style_repr="big_gap")
                 ans += self.spline(pts_2, style_repr="big_gap")
             # edges
-            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "~", ARROWS_SUFFIX):
+            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "~", ARROWS_SUFFIX):
                 ans = self.spline(
                     [
                         ("M", s[0], s[1]),
@@ -565,7 +559,7 @@ class Renderer:
                     style_repr="edge",
                     **overload
                 )
-            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "-~", ARROWS_SUFFIX):
+            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-~", ARROWS_SUFFIX):
                 ans = self.spline(
                     [
                         ("M", s[0], s[1]),
@@ -578,7 +572,7 @@ class Renderer:
                     **overload
                 )
                 start_dx, start_dy, end_dx, end_dy = s[0] - e[0], 0, 0, e[1] - s[1]
-            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "~-", ARROWS_SUFFIX):
+            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "~-", ARROWS_SUFFIX):
                 ans = self.spline(
                     [
                         ("M", s[0], s[1]),
@@ -591,7 +585,7 @@ class Renderer:
                     **overload
                 )
                 start_dx, start_dy, end_dx, end_dy = 0, s[1] - e[1], e[0] - s[0], 0
-            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "-", ARROWS_SUFFIX):
+            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-", ARROWS_SUFFIX):
                 ans = self.spline(
                     [("M", s[0], s[1]), ("L", e[0], e[1])],
                     is_edge=True,
@@ -604,7 +598,7 @@ class Renderer:
                     e[0] - s[0],
                     e[1] - s[1],
                 )
-            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "-|", ARROWS_SUFFIX):
+            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-|", ARROWS_SUFFIX):
                 ans = self.spline(
                     [("M", s[0], s[1]), ("L", e[0], s[1]), ("", e[0], e[1])],
                     is_edge=True,
@@ -613,7 +607,7 @@ class Renderer:
                 )
                 start_dx, start_dy, end_dx, end_dy = s[0] - e[0], 0, 0, e[1] - s[1]
                 mx, my = e[0], s[1]
-            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "|-", ARROWS_SUFFIX):
+            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "|-", ARROWS_SUFFIX):
                 ans = self.spline(
                     [("M", s[0], s[1]), ("L", s[0], e[1]), ("", e[0], e[1])],
                     is_edge=True,
@@ -622,7 +616,7 @@ class Renderer:
                 )
                 start_dx, start_dy, end_dx, end_dy = 0, s[1] - e[1], e[0] - s[0], 0
                 mx, my = s[0], e[1]
-            elif shape in Renderer.__gen_patterns__(ARROWS_PREFIX, "-|-", ARROWS_SUFFIX):
+            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-|-", ARROWS_SUFFIX):
                 ans = self.spline(
                     [("M", s[0], s[1]), ("L", mx, s[1]), ("", mx, e[1]), ("", e[0], e[1])],
                     is_edge=True,
@@ -680,7 +674,7 @@ class Renderer:
                     # add white background for the text
                     a.update({"style_repr": "edge-text", "x": mx + dx, "y": my + dy})
                     ox, oy, w, h = undulate.text_bbox(
-                        self.cr, "edge-text", text, self.engine, overload
+                        self.ctx, "edge-text", text, self.engine, overload
                     )
                     ans += self.polygon(
                         [(0, 0), (0, 0 + h), (0 + w, 0 + h), (0 + w, 0), (0, 0)],
@@ -700,7 +694,7 @@ class Renderer:
                     }
                 )
                 ox, oy, w, h = undulate.text_bbox(
-                    self.cr, "edge-text", text, self.engine, overload
+                    self.ctx, "edge-text", text, self.engine, overload
                 )
                 ans += self.polygon(
                     [(0, 0), (0, 0 + h), (0 + w, 0 + h), (0 + w, 0), (0, 0)],
@@ -736,15 +730,13 @@ class Renderer:
             for k in kwargs.keys()
             if k in ["fill", "stroke", "font", "font-weight"]
         }
-        if "spacer" in name or not name.strip():
+        if Renderer.is_spacer(name):
             return ""
         if order == 0:
             y = brick_height / 2
         else:
             y = brick_height / 4 * order - brick_height / 8
-        return self.text(
-            -10, y, name, extra=self._WAVE_TITLE, offset=extra, style_repr="title", **kw
-        )
+        return self.text(-10, y, name, offset=extra, style_repr="title", **kw)
 
     def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
         """
@@ -763,8 +755,13 @@ class Renderer:
                 follow_data         (bool)
                 is_first            (bool)
                 ignore_transition   (bool)
+            Digital-Only
+                up                  (bool, generated for impulse)
+                add_arrow           (bool, generated)
             Analog-Only
                 equation            (float or str)
+                then_one            (bool, generated)
+                points              (float or list, generated from equation)
             Register-Only
                 attr                (str)
                 type                (str)
@@ -940,13 +937,14 @@ class Renderer:
         kws = [dict(zip(param_order, t)) for t in params]
         return list(zip(_wavelane, kws))
 
-    def _get_or_eval(self, name: str, default, **kwargs):
+    def _get_or_eval(self, name: str, default: str = "", **kwargs):
         """
         if is a str, evaluate the code or get it in a standard way
         """
-        if isinstance(kwargs.get(name), str):
-            return undulate.safe_eval(kwargs.get(name, ""))
-        return kwargs.get(name, default)
+        param = kwargs.get(name) or default
+        if isinstance(param, str):
+            return undulate.safe_eval(param)
+        return param
 
     @incr_wavelane
     def wavelane(self, name: str, wavelane: str, extra: str = "", **kwargs):
@@ -1183,14 +1181,7 @@ class Renderer:
             # return value is ans
             if depth > 1:
                 # add group name
-                ans = self.text(
-                    0,
-                    oy - 16,
-                    name,
-                    style_repr="h%d" % depth,
-                    extra=self._GROUP_NAME,
-                    **kwargs
-                )
+                ans = self.text(0, oy - 16, name, style_repr="h%d" % depth, **kwargs)
                 # add group separator
                 if depth == 2:
                     ans += self.path(
