@@ -457,9 +457,14 @@ class Renderer:
             start = a.get("from", None)
             end = a.get("to", None)
             text = a.get("text", "")
+            text_background = a.get("text_background", True)
             ans = ""
-            start = Renderer.from_to_parser(start, width, height, nodes=nodes)
-            end = Renderer.from_to_parser(end, width, height, nodes=nodes)
+            start = Renderer.from_to_parser(
+                start, width, height, brick_width, brick_height, nodes=nodes
+            )
+            end = Renderer.from_to_parser(
+                end, width, height, brick_width, brick_height, nodes=nodes
+            )
             # calculate position of start node
             if isinstance(start, str) and nodes:
                 s = [node for node in nodes if start in node]
@@ -673,14 +678,17 @@ class Renderer:
                 if text:
                     # add white background for the text
                     a.update({"style_repr": "edge-text", "x": mx + dx, "y": my + dy})
-                    ox, oy, w, h = undulate.text_bbox(
-                        self.ctx, "edge-text", text, self.engine, overload
-                    )
-                    ans += self.polygon(
-                        [(0, 0), (0, 0 + h), (0 + w, 0 + h), (0 + w, 0), (0, 0)],
-                        extra=self.translate(a.get("x") + ox, a.get("y") + oy, no_acc=True),
-                        style_repr="edge-background",
-                    )
+                    if text_background:
+                        ox, oy, w, h = undulate.text_bbox(
+                            self.ctx, "edge-text", text, self.engine, overload
+                        )
+                        ans += self.polygon(
+                            [(0, 0), (0, 0 + h), (0 + w, 0 + h), (0 + w, 0), (0, 0)],
+                            extra=self.translate(
+                                a.get("x") + ox, a.get("y") + oy, no_acc=True
+                            ),
+                            style_repr="edge-background",
+                        )
                     # add the text
                     ans += self.text(**a)
             elif text:
@@ -693,14 +701,15 @@ class Renderer:
                         "y": Renderer.adjust_y(y, brick_height),
                     }
                 )
-                ox, oy, w, h = undulate.text_bbox(
-                    self.ctx, "edge-text", text, self.engine, overload
-                )
-                ans += self.polygon(
-                    [(0, 0), (0, 0 + h), (0 + w, 0 + h), (0 + w, 0), (0, 0)],
-                    extra=self.translate(a.get("x") + ox, a.get("y") + oy, no_acc=True),
-                    style_repr="edge-background",
-                )
+                if text_background:
+                    ox, oy, w, h = undulate.text_bbox(
+                        self.ctx, "edge-text", text, self.engine, overload
+                    )
+                    ans += self.polygon(
+                        [(0, 0), (0, 0 + h), (0 + w, 0 + h), (0 + w, 0), (0, 0)],
+                        extra=self.translate(a.get("x") + ox, a.get("y") + oy, no_acc=True),
+                        style_repr="edge-background",
+                    )
                 # add the text
                 ans += self.text(**a)
             return ans
@@ -1023,7 +1032,7 @@ class Renderer:
                     "is_first": i == 0,
                     "brick_width": new_width,
                     "brick_height": brick_height,
-                    "follow_X": isinstance(last_valid_brick, undulate.digital.Garbage),
+                    "follow_x": isinstance(last_valid_brick, undulate.digital.Garbage),
                     "extra": self.translate(x, 0, dont_touch=True),
                 }
             )
@@ -1160,14 +1169,16 @@ class Renderer:
             if not (Renderer.is_spacer(s) or s in ["edge", "adjustment"])
         ]
         # options
+        config = wavelanes.get("config", {})
+        vscale = config.get("vscale", 1.0)
+        hscale = config.get("hscale", 1.0)
         offsetx = kwargs.get("offsetx", max(_default_offset_x, default=0) * 9)
         offsety = kwargs.get("offsety", 0)
         translate = kwargs.get("translate", False)
-        brick_width = kwargs.get("brick_width", 40)
-        brick_height = kwargs.get("brick_height", 20)
+        brick_width = kwargs.get("brick_width", 40) * hscale
+        brick_height = kwargs.get("brick_height", 20) * vscale
         width = kwargs.get("width", 0)
         height = kwargs.get("height", 0)
-        config = wavelanes.get("config", {})
         no_ticks = config.get("no_ticks", depth > 1)
         gap_offset = config.get("gap-offset", brick_width * 0.5)
 

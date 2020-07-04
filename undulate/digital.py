@@ -365,7 +365,7 @@ class Data(undulate.Brick):
         if self.ignore_transition:
             self.ignore_start_transition = True
             self.ignore_end_transition = True
-        follow_x = kwargs.get("follow_X", False)
+        follow_x = kwargs.get("follow_x", False)
         # add shape
         if self.is_first:
             self.paths.append(

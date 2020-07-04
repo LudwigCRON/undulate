@@ -1,0 +1,38 @@
+cmd:
+  wave: "P"
+  repeat: 8
+
+bus[15:0]:
+  wave: "x=...=.."
+  data:
+    - "0x300"
+    - "0x341"
+
+tada:
+  wave: "01lhllhh"
+
+tada[3]:
+  wave: "01..x1..."
+
+annotations:
+  - shape: "|"
+    x: 2.15
+    stroke-dasharray: [1, 3]
+    stroke: "#db4141"
+  - shape: "|"
+    x: 3.0
+    stroke-dasharray: [1, 3]
+    stroke: "#db4141"
+  - shape: "<->"
+    from: (2.15, 3)
+    to: (3, 3)
+    text: "T   "
+    text_background: False
+    dy: -0.2
+    dx: -0.2
+    fill: "#db4141"
+    stroke: "#db4141"
+    font-size: 0.4em
+
+config:
+  hscale: 0.5
