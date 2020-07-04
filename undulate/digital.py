@@ -588,18 +588,21 @@ class Impulse(undulate.Brick):
 
     def __init__(self, **kwargs):
         undulate.Brick.__init__(self, **kwargs)
-        up_pulse = kwargs.get("up") or True
+        up_pulse = kwargs.get("up", True)
         duty_cycle = kwargs.get("duty_cycle") or 0.0
-        self.first_y = 0 if up_pulse else self.height
+        self.first_y = self.height if up_pulse else 0
         self.last_y = self.first_y if self.last_y is None or self.is_first else self.last_y
+        dt = abs(self.first_y - self.last_y) * self.slewing / self.height
+        dt = min(dt, duty_cycle * self.width)
         # add shape
         self.paths.append(
             [
                 "path",
-                (0, self.first_y),
-                (duty_cycle, self.first_y),
-                (duty_cycle, self.height - self.first_y),
-                (duty_cycle, self.first_y),
+                (0, self.last_y),
+                (dt, self.first_y),
+                (duty_cycle * self.width, self.first_y),
+                (duty_cycle * self.width, self.height - self.first_y),
+                (duty_cycle * self.width, self.first_y),
                 (self.width, self.first_y),
             ]
         )
