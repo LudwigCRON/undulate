@@ -1,6 +1,20 @@
 4. Supported Syntax
 ===================
-[table to compare options (comments, legacy, annotations, ...)
+
+`Undulate` selects the syntax based on the extension of the file
+(at the exception of Json/Jsonml). However, each file has some specificities.
+
++-------------+------+--------+------+------+
+|             | Json | Jsonml | Yaml | Toml |
++=============+======+========+======+======+
+| legacy      |  Yes | Yes    | No   |  No  |
++-------------+------+--------+------+------+
+| comments    |  No  | Yes    | Yes  |  Yes |
++-------------+------+--------+------+------+
+| annotations |  Yes | Yes    | Yes  |  Yes |
++-------------+------+--------+------+------+
+
+In order to let you choose the most appropriate format for you, examples are posted below:
 
 Json
 ----
@@ -42,7 +56,7 @@ Yaml
      wave: 0.1..0.
 
 
-> *notice the "signal" vanishes in yaml*
+> *notice the group "signal" vanishes in yaml*
 
 Toml
 ----
@@ -55,4 +69,4 @@ Toml
 
    bus.data = "head body tail"
 
-> *notice the "signal" vanishes in toml*
+> *notice the group "signal" vanishes in toml*

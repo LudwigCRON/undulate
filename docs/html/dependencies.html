@@ -1,43 +1,44 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. Dependencies &mdash; Pywave 0.0.2 documentation</title>
+  <title>1. Dependencies &mdash; Undulate 0.0.4 documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. Installation" href="installation.html" />
-    <link rel="prev" title="Pywave" href="index.html" /> 
+    <link rel="prev" title="Undulate" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -51,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Pywave
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
           
 
           
@@ -74,6 +75,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -88,7 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">pywave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">undulate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
 </ul>
@@ -96,6 +98,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -105,7 +108,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Pywave</a>
+          <a href="index.html">Undulate</a>
         
       </nav>
 
@@ -134,7 +137,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>1. Dependencies</li>
     
@@ -157,11 +160,22 @@
             
   <div class="section" id="dependencies">
 <h1>1. Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h1>
-<p>At the origin, pywave only need a python3.5+. By the time, the json/jsonml format as been a tedious part in the documentation process.</p>
-<p>In consequence, pywave also now relies on <a class="reference external" href="https://pypi.org/project/PyYAML/">PyYAML</a> and <a class="reference external" href="https://pypi.org/project/toml/">Toml</a>.</p>
-<p>For the rendering, SVG is the legacy format from <a class="reference external" href="https://wavedrom.com/">Wavedrom</a>. SVG is well-known and simple versatile format for the web. However, the integration into Word/Libreoffice Writer/Latex documents is the bottleneck.</p>
-<p>So without any extra module, one can only export to SVG and EPS (colorless mode) format.</p>
-<p>By adding <a class="reference external" href="https://pypi.org/project/pycairo/">Pycairo</a>, pywave can export to SVG, EPS, PS, PDF, PNG.</p>
+<p>At the origin, <cite>Undulate</cite> only need a python3.5+. By the time, the json/jsonml format as been a
+tedious part in the documentation process.</p>
+<p>In consequence, <cite>Undulate</cite> also now relies on <a class="reference external" href="https://pypi.org/project/PyYAML/">PyYAML</a> and
+<a class="reference external" href="https://pypi.org/project/toml/">Toml</a>.</p>
+<p>For the rendering, SVG is the legacy format from <a class="reference external" href="https://wavedrom.com/">Wavedrom</a>.
+SVG is well-known and simple versatile format for the web.
+However, the integration into Word/Libreoffice Writer/Latex documents is the bottleneck.</p>
+<p>So without any extra module, one can only export to the SVG format.</p>
+<p>By adding <a class="reference external" href="https://pypi.org/project/pycairo/">Pycairo</a>, <cite>Undulate</cite> can export to:</p>
+<ul class="simple">
+<li><p>SVG</p></li>
+<li><p>EPS</p></li>
+<li><p>PS</p></li>
+<li><p>PDF</p></li>
+<li><p>PNG</p></li>
+</ul>
 <p>For tests the following modules are needed:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pypi.org/project/coverage/">coverage</a></p></li>
@@ -183,7 +197,7 @@
         <a href="installation.html" class="btn btn-neutral float-right" title="2. Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Pywave" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Undulate" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -192,11 +206,19 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Ludwig CRON
+        
+        &copy; Copyright 2020, Ludwig CRON
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -207,7 +229,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

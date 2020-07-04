@@ -1,0 +1,677 @@
+#!/usr/bin/env python3
+# spell-checker: disable
+
+"""
+digital.py declare the basic building block
+to generate a digital waveform
+"""
+
+import math
+import undulate
+
+
+class Nclk(undulate.Brick):
+    """
+    Falling edge clock with/without arrow
+
+    Parameters:
+        add_arrow (bool): by default False
+        slewing (float): limit the slope
+        duty_cycle (float > 0): between 0 and 1
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
+        if self.is_first:
+            self.last_y = 0
+        else:
+            self.last_y = self.height / 2 if self.last_y is None else self.last_y
+        dt = abs(self.height - self.last_y) * self.slewing / self.height
+        # add shape
+        self.paths.append(
+            [
+                "path",
+                (0, self.last_y),
+                (dt, self.height),
+                (self.width * self.duty_cycle - self.slewing / 2, self.height),
+                (self.width * self.duty_cycle + self.slewing / 2, 0),
+                (self.width - self.slewing / 2, 0),
+                (self.width, self.height / 2),
+            ]
+        )
+        # add arrow
+        if kwargs.get("add_arrow", False) and not self.ignore_transition:
+            arrow_angle = -math.atan2(-self.height, self.slewing) * 180 / math.pi
+            self.arrows.append(
+                (
+                    "arrow",
+                    dt * (self.height / 2 - self.last_y) / self.height,
+                    self.height / 2,
+                    arrow_angle,
+                )
+            )
+
+
+class Pclk(undulate.Brick):
+    """
+    Rising edge clock with arrow
+
+    Parameters:
+        add_arrow (bool): by default False
+        slewing (float): limit the slope
+        duty_cycle (float > 0): between 0 and 1
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = 0
+        if self.is_first:
+            self.last_y = self.height
+        else:
+            self.last_y = self.last_y if self.last_y else self.height / 2
+        dt = self.last_y * self.slewing / self.height
+        # add shape
+        self.paths.append(
+            [
+                "path",
+                (0, self.last_y),
+                (dt, 0),
+                (self.width * self.duty_cycle - self.slewing / 2, 0),
+                (self.width * self.duty_cycle + self.slewing / 2, self.height),
+                (self.width - self.slewing / 2, self.height),
+                (self.width, self.height / 2),
+            ]
+        )
+        # add arrow
+        if kwargs.get("add_arrow", False) and not self.ignore_transition:
+            arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
+            self.arrows.append(
+                (
+                    "arrow",
+                    dt * (self.last_y - self.height / 2) / self.height,
+                    self.height / 2,
+                    arrow_angle,
+                )
+            )
+
+
+class Low(undulate.Brick):
+    """
+    Falling edge clock with arrow and rest at zero
+
+    Parameters:
+        add_arrow (bool): by default False
+        slewing (float): limit the slope
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
+        if self.is_first:
+            self.last_y = self.height
+        else:
+            self.last_y = self.height if self.last_y is None else self.last_y
+        dt = abs(self.height - self.last_y) * self.slewing / self.height
+        # add shape
+        self.paths.append(
+            ["path", (0, self.last_y), (dt, self.height), (self.width, self.height)]
+        )
+        # add arrow
+        if kwargs.get("add_arrow", False) and not self.is_first:
+            arrow_angle = -math.atan2(-self.height, self.slewing) * 180 / math.pi
+            self.arrows.append(
+                (
+                    "arrow",
+                    dt * (self.height / 2 - self.last_y) / self.height,
+                    self.height / 2,
+                    arrow_angle,
+                )
+            )
+
+
+class High(undulate.Brick):
+    """
+    Rising edge clock with arrow and rest at one
+
+    Parameters:
+        add_arrow (bool): by default False
+        slewing (float): limit the slope
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = 0
+        if self.is_first:
+            self.last_y = 0
+        else:
+            self.last_y = 0 if self.last_y is None else self.last_y
+        dt = self.last_y * self.slewing / self.height
+        # add shape
+        self.paths.append(["path", (0, self.last_y), (dt, 0), (self.width, 0)])
+        # add arrow
+        if kwargs.get("add_arrow", False) and not self.is_first:
+            arrow_angle = math.atan2(-self.height, self.slewing) * 180 / math.pi
+            self.arrows.append(("arrow", dt / 2, self.height / 2, arrow_angle))
+
+
+class HighZ(undulate.Brick):
+    """
+    High impedance mode with a reset close to VDD/2
+
+    Parameters:
+        slewing (float): limit the slope
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = self.height / 2
+        if self.is_first:
+            self.last_y = self.height / 2
+        else:
+            self.last_y = self.height / 2 if self.last_y is None else self.last_y
+        dt = abs(self.height - self.last_y) * self.slewing / self.height
+        # add shape
+        self.splines.append(
+            [
+                "path",
+                ("M", 0, self.last_y),
+                ("C", dt, self.height / 2),
+                ("", dt, self.height / 2),
+                ("", min(self.width, 20), self.height / 2),
+                ("L", self.width, self.height / 2),
+            ]
+        )
+
+
+class Zero(undulate.Brick):
+    """
+    Zero level
+
+    Parameters:
+        slewing (float): limit the slope
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
+        if self.is_first:
+            self.last_y = self.height
+        else:
+            self.last_y = self.height if self.last_y is None else self.last_y
+        # add shape
+        self.paths.append(
+            [
+                "path",
+                (0, self.last_y),
+                (self.slewing / 2, self.last_y if self.is_first else self.height / 2),
+                (self.slewing, self.height),
+                (self.width, self.height),
+            ]
+        )
+
+
+class One(undulate.Brick):
+    """
+    One level
+
+    Parameters:
+        slewing (float): limit the slope
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = 0
+        if self.is_first:
+            self.last_y = 0
+        else:
+            self.last_y = 0 if self.last_y is None else self.last_y
+        # add shape
+        self.paths.append(
+            [
+                "path",
+                (0, self.last_y),
+                (self.slewing / 2, self.last_y if self.is_first else self.height / 2),
+                (self.slewing, 0),
+                (self.width, 0),
+            ]
+        )
+
+
+class Garbage(undulate.Brick):
+    """
+    Unknown state for data
+
+    Parameters:
+        slewing (float): limit the slope
+        follow_data (bool): data '=' occurs before this brick
+    """
+
+    def __init__(self, unknown: bool = True, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        follow_data = kwargs.get("follow_data", False)
+        self.last_y = self.height / 2 if self.last_y is None else self.last_y
+        if self.ignore_transition:
+            self.ignore_start_transition = True
+            self.ignore_end_transition = True
+        # add shape
+        if follow_data:
+            self.paths.append(
+                [
+                    "path",
+                    (self.slewing, self.last_y if not self.ignore_start_transition else 0),
+                    (0, 0),
+                    (self.width - self.slewing, 0),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                ]
+            )
+            self.paths.append(
+                [
+                    "path",
+                    (
+                        self.slewing,
+                        self.last_y if not self.ignore_start_transition else self.height,
+                    ),
+                    (0, self.height),
+                    (self.width - self.slewing, self.height),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                ]
+            )
+        else:
+            self.paths.append(
+                [
+                    "path",
+                    (0, self.last_y if not self.ignore_start_transition else 0),
+                    (self.slewing if not self.ignore_start_transition else 0, 0),
+                    (self.width, 0),
+                    (
+                        self.width - self.slewing,
+                        self.height / 2 if not self.ignore_end_transition else 0,
+                    ),
+                ]
+            )
+            self.paths.append(
+                [
+                    "path",
+                    (0, self.last_y if not self.ignore_start_transition else self.height),
+                    (self.slewing if not self.ignore_start_transition else 0, self.height),
+                    (self.width, self.height),
+                    (
+                        self.width - self.slewing,
+                        self.height / 2 if not self.ignore_end_transition else 0,
+                    ),
+                ]
+            )
+        # add background
+        if follow_data:
+            self.polygons.append(
+                [
+                    "hatch",
+                    (self.slewing, self.last_y),
+                    (0, 0),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        0,
+                    ),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        self.height,
+                    ),
+                    (0, self.height),
+                    (self.slewing, self.last_y),
+                ]
+            )
+        else:
+            self.polygons.append(
+                [
+                    "hatch",
+                    (0, self.last_y),
+                    (self.slewing if not self.ignore_start_transition else 0, 0),
+                    (self.width if not self.ignore_end_transition else self.width, 0),
+                    (
+                        self.width - self.slewing,
+                        self.height / 2 if not self.ignore_end_transition else 0,
+                    ),
+                    (
+                        self.width if not self.ignore_end_transition else self.width,
+                        self.height,
+                    ),
+                    (self.slewing if not self.ignore_start_transition else 0, self.height),
+                    (0, self.last_y),
+                ]
+            )
+
+
+class Data(undulate.Brick):
+    """
+    Multibits value such as a Bus
+
+    Parameters:
+        slewing (float): limit the slope
+        style (str): from 2 to 5, by default s2
+            it applies a specific background color
+        unknown (bool): if unknown apply specific background
+            typical use case if for 'x'
+    """
+
+    def __init__(self, unknown: bool = False, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.last_y = self.height / 2 if self.last_y is None else self.last_y
+        if self.ignore_transition:
+            self.ignore_start_transition = True
+            self.ignore_end_transition = True
+        follow_X = kwargs.get("follow_X", False)
+        # add shape
+        if self.is_first:
+            self.paths.append(
+                [
+                    "path",
+                    (0, 0),
+                    (self.slewing, 0),
+                    (self.width - self.slewing, 0),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                ]
+            )
+            self.paths.append(
+                [
+                    "path",
+                    (0, self.height),
+                    (self.slewing, self.height),
+                    (self.width - self.slewing, self.height),
+                    (
+                        self.width,
+                        self.height / 2 if not self.ignore_end_transition else self.height,
+                    ),
+                ]
+            )
+        else:
+            self.paths.append(
+                [
+                    "path",
+                    (
+                        -self.slewing if follow_X else 0,
+                        self.last_y if not self.ignore_start_transition else 0,
+                    ),
+                    (0 if follow_X else self.slewing, 0),
+                    (self.width - self.slewing, 0),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                ]
+            )
+            self.paths.append(
+                [
+                    "path",
+                    (
+                        -self.slewing if follow_X else 0,
+                        self.last_y if not self.ignore_start_transition else self.height,
+                    ),
+                    (0 if follow_X else self.slewing, self.height),
+                    (self.width - self.slewing, self.height),
+                    (
+                        self.width,
+                        self.height / 2 if not self.ignore_end_transition else self.height,
+                    ),
+                ]
+            )
+        # add background
+        style = "hatch" if unknown else "%s-polygon" % kwargs.get("style", "")
+        if self.is_first:
+            self.polygons.append(
+                [
+                    style,
+                    (0, 0),
+                    (self.slewing, 0),
+                    (self.width - self.slewing, 0),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        self.height,
+                    ),
+                    (self.slewing, self.height),
+                    (0, self.height),
+                ]
+            )
+        else:
+            self.polygons.append(
+                [
+                    style,
+                    (
+                        -self.slewing if follow_X else 0,
+                        self.last_y if not self.ignore_start_transition else 0,
+                    ),
+                    (
+                        self.slewing
+                        if not self.ignore_start_transition and not follow_X
+                        else 0,
+                        0,
+                    ),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        0,
+                    ),
+                    (self.width, self.height / 2 if not self.ignore_end_transition else 0),
+                    (
+                        self.width - self.slewing
+                        if not self.ignore_end_transition
+                        else self.width,
+                        self.height,
+                    ),
+                    (
+                        self.slewing
+                        if not self.ignore_start_transition and not follow_X
+                        else 0,
+                        self.height,
+                    ),
+                    (
+                        -self.slewing if follow_X else 0,
+                        self.last_y if not self.ignore_start_transition else self.height,
+                    ),
+                ]
+            )
+        # add text
+        if not unknown and not kwargs.get("hide_data", False):
+            self.texts.append(
+                ("data", self.width / 2, self.height / 2, kwargs.get("data", ""))
+            )
+
+
+class Gap(undulate.Brick):
+    """
+    single line time compression
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        # if self.is_first:
+        # raise "a gap cannot be first in a wavelane"
+        self.splines.append(
+            [
+                "hide",
+                ("M", 0, self.height + 2),
+                ("C", 5, self.height + 2),
+                ("", 5, -4),
+                ("", 10, -4),
+                ("L", 7, 0),
+                ("C", 2, 0),
+                ("", 2, self.height + 4),
+                ("", -3, self.height + 4),
+                ("z", "", ""),
+            ]
+        )
+        self.splines.append(
+            [
+                "path",
+                ("M", 0, self.height + 2),
+                ("C", 5, self.height + 2),
+                ("", 5, -2),
+                ("", 10, -2),
+            ]
+        )
+        self.splines.append(
+            [
+                "path",
+                ("M", -3, self.height + 2),
+                ("C", 2, self.height + 2),
+                ("", 2, -2),
+                ("", 7, -2),
+            ]
+        )
+
+
+class Up(undulate.Brick):
+    """
+    RC charging to VDD
+
+    Parameters:
+        slewing (float): limit the slope
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
+        self.last_y = self.height if self.last_y is None else self.last_y
+        self.splines.append(
+            [
+                "path",
+                ("M", 0, self.last_y),
+                ("L", 3, self.last_y),
+                ("C", 3 + self.slewing, self.last_y),
+                ("", 3 + self.slewing, 0),
+                ("", min(self.width, 20), 0),
+                ("L", self.width, 0),
+            ]
+        )
+
+
+class Down(undulate.Brick):
+    """
+    RC discharge to GND
+
+    Parameters:
+        slewing (float): limit the slope
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = self.height
+        self.last_y = self.height if self.last_y is None else self.last_y
+        self.splines.append(
+            [
+                "path",
+                ("M", 0, self.last_y),
+                ("L", 3, self.last_y),
+                ("C", 3 + self.slewing, self.last_y),
+                ("", 3 + self.slewing, self.height - self.last_y),
+                ("", min(self.width, 20), self.height),
+                ("L", self.width, self.height),
+            ]
+        )
+
+
+class Impulse(undulate.Brick):
+    """
+    pulse
+
+    Parameters:
+        slewing (float): limit the slope
+        duty_cycle (float): adjust the x position of the impulse
+            from 0 to 1, by default 0.5
+    """
+
+    def __init__(self, x, y, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.first_y = self.height - y
+        self.last_y = (
+            self.height - y if self.last_y is None or self.is_first else self.last_y
+        )
+        # add shape
+        self.paths.append(
+            [
+                "path",
+                (0, self.height - y),
+                (0, y),
+                (0, self.height - y),
+                (self.width, self.height - y),
+            ]
+        )
+
+
+class Space(undulate.Brick):
+    """
+    blank
+    """
+
+    def __init__(self, **kwargs):
+        undulate.Brick.__init__(self, **kwargs)
+        self.last_y = self.height if self.last_y is None or self.is_first else self.last_y
+
+
+def generate_digital_symbol(symbol: str, **kwargs) -> (bool, object):
+    """
+    define the mapping between the symbol and the brick
+    """
+    # get option supported
+    height = kwargs.get("brick_height", 20)
+    duty_cycle = kwargs.get("duty_cycle", 0.5)
+    block = None
+    # add arrow
+    if symbol in [
+        undulate.BRICKS.Nclk,
+        undulate.BRICKS.Pclk,
+        undulate.BRICKS.Low,
+        undulate.BRICKS.High,
+    ]:
+        kwargs.update({"add_arrow": True})
+    # clock signals description (pPnNlLhH)
+    # (N|n)clk: falling edge (with|without) arrow for repeated pattern
+    if symbol in [undulate.BRICKS.nclk, undulate.BRICKS.Nclk]:
+        block = Nclk(**kwargs)
+    # (P|p)clk: rising edge (with|without) arrow for repeated pattern
+    elif symbol in [undulate.BRICKS.pclk, undulate.BRICKS.Pclk]:
+        block = Pclk(**kwargs)
+    # (L|l)ow: falling edge (with|without) arrow and stuck
+    elif symbol in [undulate.BRICKS.low, undulate.BRICKS.Low]:
+        block = Low(**kwargs)
+    # (H|h)igh: rising edge (with|without) arrow and stuck
+    elif symbol in [undulate.BRICKS.high, undulate.BRICKS.High]:
+        block = High(**kwargs)
+    # description for data (z01=x)
+    elif symbol == undulate.BRICKS.highz:
+        block = HighZ(**kwargs)
+    elif symbol == undulate.BRICKS.zero:
+        block = Zero(**kwargs)
+    elif symbol == undulate.BRICKS.one:
+        block = One(**kwargs)
+    elif symbol == undulate.BRICKS.data:
+        block = Data(**kwargs)
+    elif symbol == undulate.BRICKS.x:
+        block = Data(unknown=True, **kwargs)
+    elif symbol == undulate.BRICKS.X:
+        block = Garbage(**kwargs)
+    # time compression symbol
+    elif symbol == undulate.BRICKS.gap:
+        block = Gap(**kwargs)
+    # capacitive charge to 1
+    elif symbol == undulate.BRICKS.up:
+        block = Up(**kwargs)
+    # capacitive discharge to 0
+    elif symbol == undulate.BRICKS.down:
+        block = Down(**kwargs)
+    # impulse symbol
+    elif symbol == undulate.BRICKS.imp:
+        block = Impulse(duty_cycle, height, **kwargs)
+    elif symbol == undulate.BRICKS.Imp:
+        block = Impulse(duty_cycle, 0, **kwargs)
+    elif symbol == undulate.BRICKS.space:
+        block = Space(**kwargs)
+    else:
+        block = None
+    return (block is not None, block)

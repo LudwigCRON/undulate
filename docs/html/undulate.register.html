@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>undulate.register module &mdash; Undulate 0.0.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="undulate.renderer module" href="undulate.renderer.html" />
+    <link rel="prev" title="undulate.generic module" href="undulate.generic.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">undulate</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="undulate.html">undulate package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="undulate.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="undulate.analogue.html">undulate.analogue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.html">undulate.bricks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.cairorenderer.html">undulate.cairorenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.digital.html">undulate.digital module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.from_to_parser.html">undulate.from_to_parser module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.generic.html">undulate.generic module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">undulate.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.renderer.html">undulate.renderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.skin.html">undulate.skin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.svgrenderer.html">undulate.svgrenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.version.html">undulate.version module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.waveform.html">undulate.waveform module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.html#module-undulate">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">undulate</a> &raquo;</li>
+        
+          <li><a href="undulate.html">undulate package</a> &raquo;</li>
+        
+      <li>undulate.register module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/undulate.register.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-undulate.register">
+<span id="undulate-register-module"></span><h1>undulate.register module<a class="headerlink" href="#module-undulate.register" title="Permalink to this headline">¶</a></h1>
+<p>register.py declare the basic building block
+to represent a register</p>
+<dl class="py class">
+<dt id="undulate.register.Register">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.register.</code><code class="sig-name descname">Register</code><a class="headerlink" href="#undulate.register.Register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>define the register as a composition of new kind of bricks
+with field informations</p>
+<dl class="py method">
+<dt id="undulate.register.Register.push_field">
+<code class="sig-name descname">push_field</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">field</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.Register.push_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>add a new field to the fields stack</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.Register.to_wavelane">
+<code class="sig-name descname">to_wavelane</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.Register.to_wavelane" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert the description of a register into a wavelane</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.register.FieldStart">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.register.</code><code class="sig-name descname">FieldStart</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldStart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.generic.html#undulate.generic.Brick" title="undulate.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.generic.Brick</span></code></a></p>
+<p>[</p>
+<dl class="py method">
+<dt id="undulate.register.FieldStart.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shift</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">next_y</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldStart.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldStart.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shift</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">previous_y</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldStart.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldStart.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldStart.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldStart.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldStart.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.register.FieldMid">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.register.</code><code class="sig-name descname">FieldMid</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldMid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.generic.html#undulate.generic.Brick" title="undulate.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.generic.Brick</span></code></a></p>
+<p>:</p>
+<dl class="py method">
+<dt id="undulate.register.FieldMid.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shift</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">next_y</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldMid.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldMid.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shift</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">previous_y</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldMid.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldMid.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldMid.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldMid.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldMid.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.register.FieldEnd">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.register.</code><code class="sig-name descname">FieldEnd</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldEnd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.generic.html#undulate.generic.Brick" title="undulate.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.generic.Brick</span></code></a></p>
+<p>]</p>
+<dl class="py method">
+<dt id="undulate.register.FieldEnd.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shift</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">next_y</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldEnd.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldEnd.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shift</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">previous_y</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldEnd.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldEnd.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldEnd.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldEnd.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldEnd.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.register.FieldBit">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.register.</code><code class="sig-name descname">FieldBit</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldBit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.generic.html#undulate.generic.Brick" title="undulate.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.generic.Brick</span></code></a></p>
+<p>b</p>
+<dl class="py method">
+<dt id="undulate.register.FieldBit.alter_end">
+<code class="sig-name descname">alter_end</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shift</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">next_y</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldBit.alter_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the end, by default 0</p></li>
+<li><p><strong>next_y</strong> (<em>float</em>) – adjust the y position of the end, by default -1</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldBit.alter_start">
+<code class="sig-name descname">alter_start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shift</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">previous_y</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldBit.alter_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>alter the last coordinates to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shift</strong> (<em>float</em>) – adjust the x position of the start, by default 0</p></li>
+<li><p><strong>previous_y</strong> (<em>float</em>) – adjust the y position of the start, by default -1</p></li>
+<li><p><strong>warning ::</strong> (<em>.</em>) – the first element of a path or a poly is the style to apply
+and then get the points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldBit.get_first_y">
+<code class="sig-name descname">get_first_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldBit.get_first_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get first position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>first_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.FieldBit.get_last_y">
+<code class="sig-name descname">get_last_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.FieldBit.get_last_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>get last position of the current brick to preserve continuity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>last_y (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.register.Field">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.register.</code><code class="sig-name descname">Field</code><a class="headerlink" href="#undulate.register.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>define what is a field inside a register
+from 1-bit to N-bits</p>
+<dl class="py method">
+<dt id="undulate.register.Field.from_dict">
+<em class="property">static </em><code class="sig-name descname">from_dict</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">d</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.Field.from_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a field from a dict
+given after parsing</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.register.Field.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.Field.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allow one field per line representation</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.register.generate_register_symbol">
+<code class="sig-prename descclassname">undulate.register.</code><code class="sig-name descname">generate_register_symbol</code><span class="sig-paren">(</span><em class="sig-param">symbol: str</em>, <em class="sig-param">**kwargs) -&gt; (&lt;class 'bool'&gt;</em>, <em class="sig-param">&lt;class 'object'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.register.generate_register_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>define the mapping between the symbol and the brick</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="undulate.renderer.html" class="btn btn-neutral float-right" title="undulate.renderer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="undulate.generic.html" class="btn btn-neutral float-left" title="undulate.generic module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ludwig CRON
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

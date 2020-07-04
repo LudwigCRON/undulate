@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>undulate.renderer module &mdash; Undulate 0.0.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="undulate.skin module" href="undulate.skin.html" />
+    <link rel="prev" title="undulate.register module" href="undulate.register.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">undulate</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="undulate.html">undulate package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="undulate.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="undulate.analogue.html">undulate.analogue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.html">undulate.bricks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.cairorenderer.html">undulate.cairorenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.digital.html">undulate.digital module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.from_to_parser.html">undulate.from_to_parser module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.generic.html">undulate.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.register.html">undulate.register module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">undulate.renderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.skin.html">undulate.skin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.svgrenderer.html">undulate.svgrenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.version.html">undulate.version module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.waveform.html">undulate.waveform module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.html#module-undulate">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">undulate</a> &raquo;</li>
+        
+          <li><a href="undulate.html">undulate package</a> &raquo;</li>
+        
+      <li>undulate.renderer module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/undulate.renderer.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-undulate.renderer">
+<span id="undulate-renderer-module"></span><h1>undulate.renderer module<a class="headerlink" href="#module-undulate.renderer" title="Permalink to this headline">¶</a></h1>
+<p>renderer.py declare the logic to render waveforms
+into different format</p>
+<dl class="py function">
+<dt id="undulate.renderer.incr_wavelane">
+<code class="sig-prename descclassname">undulate.renderer.</code><code class="sig-name descname">incr_wavelane</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.renderer.incr_wavelane" title="Permalink to this definition">¶</a></dt>
+<dd><p>incr_wavelane is a decorator that increment _WAVE_COUNT in auto.
+This generates a unique id for each wavelane</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.renderer.incr_wavegroup">
+<code class="sig-prename descclassname">undulate.renderer.</code><code class="sig-name descname">incr_wavegroup</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.renderer.incr_wavegroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>incr_wavegroup is a decorator that increment _WAVEGROUP_COUNT in auto.
+This generates a unique id for each group of wavelanes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.renderer.arrow_angle">
+<code class="sig-prename descclassname">undulate.renderer.</code><code class="sig-name descname">arrow_angle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dy</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">dx</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#undulate.renderer.arrow_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate the angle to align arrows based on
+the derivative of the signal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dy</strong> (<em>float</em>) – </p></li>
+<li><p><strong>dx</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>angle in degree</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.renderer.svg_curve_convert">
+<code class="sig-prename descclassname">undulate.renderer.</code><code class="sig-name descname">svg_curve_convert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vertices</span><span class="p">:</span> <span class="n">list</span></em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#undulate.renderer.svg_curve_convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert svg path definition to simpler s/c/m/l only mode
+to support eps renderer and other output format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vertices</strong> (<em>list</em>) – <p>list of (type,x,y) tuples where x,y are coordinates
+and type is the svg operator</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>it does not support T curves</p>
+</div>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of (type,x,y) tuples where type is only cubic bezier curve</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.renderer.Renderer">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.renderer.</code><code class="sig-name descname">Renderer</code><a class="headerlink" href="#undulate.renderer.Renderer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract class of all renderer and define the parsing logic</p>
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.group">
+<code class="sig-name descname">group</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">callback</span></em>, <em class="sig-param"><span class="n">identifier</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.group" title="Permalink to this definition">¶</a></dt>
+<dd><p>group define a group</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>callable</em>) – function which populate what inside the group</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – unique id for the group</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>group of drawable items invoked by callback</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.path">
+<code class="sig-name descname">path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vertices</span><span class="p">:</span> <span class="n">list</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw a path to represent common signals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> – list of of x-y coordinates in a tuple</p></li>
+<li><p><strong>style_repr</strong> (<em>optional</em>) – class of the skin to apply
+by default apply the class ‘path’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.arrow">
+<code class="sig-name descname">arrow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">angle</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.arrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw an arrow to represent edge trigger on clock signals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – x coordinate of the arrow center</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y coordinate of the arrow center</p></li>
+<li><p><strong>angle</strong> (<em>float</em>) – angle in degree to rotate the arrow</p></li>
+<li><p><strong>style_repr</strong> (<em>optional</em>) – class of the skin to apply
+by default apply the class ‘arrow’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.polygon">
+<code class="sig-name descname">polygon</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vertices</span><span class="p">:</span> <span class="n">list</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw a closed shape to represent common data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> – list of of (x,y) coordinates in a tuple</p></li>
+<li><p><strong>style_repr</strong> (<em>optional</em>) – class of the skin to apply
+by default apply the class None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.spline">
+<code class="sig-name descname">spline</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vertices</span><span class="p">:</span> <span class="n">list</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.spline" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw a path to represent smooth signals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> – list of of (type,x,y) coordinates in a tuple of control points
+where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
+svg operators.</p></li>
+<li><p><strong>style_repr</strong> (<em>optional</em>) – class of the skin to apply
+by default apply the class ‘path’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.text">
+<code class="sig-name descname">text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">''</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw a text for data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – x coordinate of the text</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y coordinate of the text</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – text to display</p></li>
+<li><p><strong>style_repr</strong> (<em>optional</em>) – class of the skin to apply
+by default apply the class ‘text’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.translate">
+<code class="sig-name descname">translate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>translation function that is inherited for svg and eps</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.brick">
+<code class="sig-name descname">brick</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symbol</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n"><a class="reference internal" href="undulate.generic.html#undulate.generic.Brick" title="undulate.generic.Brick">undulate.generic.Brick</a></span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.brick" title="Permalink to this definition">¶</a></dt>
+<dd><p>brick generate the symbol for a undulate.Brick element
+(collection of paths, splines, arrows, polygons, text)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.from_to_parser">
+<em class="property">static </em><code class="sig-name descname">from_to_parser</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span><span class="p">:</span> <span class="n">object</span></em>, <em class="sig-param"><span class="n">width</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">brick_width</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">40.0</span></em>, <em class="sig-param"><span class="n">brick_height</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">20.0</span></em>, <em class="sig-param"><span class="n">nodes</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.renderer.Renderer.from_to_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse the from and to options of annotations into positions
+for drawing the specified shape or text</p>
+<dl>
+<dt>Exemple:</dt><dd><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nt">&quot;shape&quot;</span><span class="p">:</span> <span class="s2">&quot;||&quot;</span><span class="p">,</span> <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">},</span>
+    <span class="p">{</span><span class="nt">&quot;shape&quot;</span><span class="p">:</span> <span class="s2">&quot;-~&gt;&quot;</span><span class="p">,</span> <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;1.5, 3%&quot;</span><span class="p">,</span> <span class="nt">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;2-0.125, 3&quot;</span><span class="p">,</span> <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">}</span>
+<span class="p">]}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<em>str</em>) – value string of from or to option</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – width of the image</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – height of the image</p></li>
+<li><p><strong>brick_width</strong> (<em>float</em><em>, </em><em>default=40</em>) – brick width</p></li>
+<li><p><strong>brick_height</strong> (<em>float</em><em>, </em><em>default=40</em>) – brick height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.annotate">
+<code class="sig-name descname">annotate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelanes</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="n">viewport</span><span class="p">:</span> <span class="n">tuple</span></em>, <em class="sig-param"><span class="n">depth</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.renderer.Renderer.annotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>draw edges, vertical lines, horizontal lines, global time compression, …
+defined in the annotations section of the input file</p>
+<p class="rubric">Example</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nt">&quot;shape&quot;</span><span class="p">:</span> <span class="s2">&quot;||&quot;</span><span class="p">,</span> <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">},</span>
+    <span class="p">{</span><span class="nt">&quot;shape&quot;</span><span class="p">:</span> <span class="s2">&quot;-~&gt;&quot;</span><span class="p">,</span> <span class="nt">&quot;from&quot;</span><span class="p">:</span> <span class="s2">&quot;trigger&quot;</span><span class="p">,</span> <span class="nt">&quot;to&quot;</span><span class="p">:</span> <span class="s2">&quot;event&quot;</span><span class="p">,</span> <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;ready&quot;</span><span class="p">}</span>
+<span class="p">]}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelances</strong> (<em>dict</em>) – global signals representations</p></li>
+<li><p><strong>viewport</strong> (<em>tuple</em>) – the drawable zone (excluding signal names)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.wavelane_title">
+<code class="sig-name descname">wavelane_title</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.renderer.Renderer.wavelane_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate the title in front of a waveform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – name of the waveform print alongside</p></li>
+<li><p><strong>order</strong> – <p>position from 0-4 of the title position along
+the y-axis. This property is important when overlaying signals</p>
+<blockquote>
+<div><ul>
+<li><p>0   : middle of the wavelane height</p></li>
+<li><p>1-4 : quarter from top to bottom of the wavelane</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>brick_height</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>renderer.text</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.ticks">
+<code class="sig-name descname">ticks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">step</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.ticks" title="Permalink to this definition">¶</a></dt>
+<dd><p>generates the dotted lines to see ticks easily</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – width of the image</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – height of the image</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – distance between two ticks</p></li>
+<li><p><strong>offsetx</strong> (<em>optional</em>) – shift all ticks along the x-axis</p></li>
+<li><p><strong>offsety</strong> (<em>optional</em>) – shift to the bottom ticks with exceeding the height</p></li>
+<li><p><strong>phase</strong> (<em>optional</em>) – phase of the first signal on the top level
+this parameter is used to align tick with the rising edges of the first signal</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.size">
+<code class="sig-name descname">size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelanes</span></em>, <em class="sig-param"><span class="n">brick_width</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">20</span></em>, <em class="sig-param"><span class="n">brick_height</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">28</span></em>, <em class="sig-param"><span class="n">depth</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.renderer.Renderer.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>size pre-estimate the size of the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelanes</strong> (<em>dict</em>) – global signals representation</p></li>
+<li><p><strong>brick_width</strong> (<em>int</em><em>, </em><em>optional</em>) – width of a brick, default is 20</p></li>
+<li><p><strong>brick_height</strong> (<em>int</em><em>, </em><em>optional</em>) – height of a row, default is 20</p></li>
+<li><p><strong>periods</strong> (<em>int</em>) – list of time dilatation factor, default is 1</p></li>
+<li><p><strong>repeat</strong> (<em>int</em>) – brick repetition factor</p></li>
+<li><p><strong>overlay</strong> (<em>bool</em>) – overlay the next signal over the current one</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.renderer.Renderer.draw">
+<code class="sig-name descname">draw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelanes</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#undulate.renderer.Renderer.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Business function calling all others</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelanes</strong> (<em>dict</em>) – parsed dictionary from the input file</p></li>
+<li><p><strong>filename</strong> (<em>str</em><em>, </em><em>optional</em>) – file name of the output generated file</p></li>
+<li><p><strong>brick_width</strong> (<em>int</em>) – by default 40</p></li>
+<li><p><strong>brick_height</strong> (<em>int</em>) – by default 20</p></li>
+<li><p><strong>is_reg</strong> (<em>bool</em>) – if True <cite>wavelanes</cite> given represents a register
+otherwise it represents a bunch of signals</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="undulate.skin.html" class="btn btn-neutral float-right" title="undulate.skin module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="undulate.register.html" class="btn btn-neutral float-left" title="undulate.register module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ludwig CRON
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

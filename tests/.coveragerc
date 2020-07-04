@@ -1,0 +1,27 @@
+[run]
+branch = True
+include =
+    */site-packages/undulate/*
+omit = 
+    */site-packages/toml/*.py
+    */site-packages/yaml/*.py
+    */site-packages/cairo/*.py
+
+[report]
+ignore_errors = True
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    if self.debug:
+    if settings.DEBUG
+    raise AssertionError
+    raise NotImplementedError
+    pass
+    except ImportError:
+    raise Exception(symbol)
+    if 0:
+    is_edge=True,
+
+[html]
+directory = coverage
+title = Undulate coverage report

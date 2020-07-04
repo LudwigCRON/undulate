@@ -1,7 +1,0 @@
-pywave.bricks module
-====================
-
-.. automodule:: pywave.bricks
-   :members:
-   :undoc-members:
-   :show-inheritance:

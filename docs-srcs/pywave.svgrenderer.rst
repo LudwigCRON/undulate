@@ -1,7 +1,0 @@
-pywave.svgrenderer module
-=========================
-
-.. automodule:: pywave.svgrenderer
-   :members:
-   :undoc-members:
-   :show-inheritance:

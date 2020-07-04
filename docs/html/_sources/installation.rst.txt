@@ -1,38 +1,43 @@
 2. Installation
 ===============
 
-The recommended way to install dependencies is by typing in your shell
+To install `Undulate`, it is recommended the following:
 
-.. code-block:: bash
+1. download a stable release from `github <https://github.com/LudwigCRON/undulate/releases/latest>`_
 
-   $> pip3 install PyYAML
-   $> pip3 install toml
-   $> pip3 install pycairo
+   .. code-block:: bash
 
-To install Pywave, it is recommended the following:
+      $> wget https://github.com/LudwigCRON/undulate/archive/v0.0.4.tar.gz
 
-- download a stable release from `github <https://github.com/LudwigCRON/pywave/releases/latest>`_
-- unzip it as the desired place
-- add in `$PATH` the pywave folder
-- create an alias of your choice to simplify the call
+2. unzip it at the desired place
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   $> wget https://github.com/LudwigCRON/pywave/archive/v0.0.2.tar.gz
-   $> tar -xzvf v0.0.2.tar.gz
+      $> tar -xzvf v0.0.4.tar.gz
 
-In your *.bash_profile* add the following line
+3. install via pip
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   export PATH="PATH/TO/pywave-0.0.2:$PATH"
+      $> python3 -m pip install -r requirements.txt
+      $> python3 -m pip install .
 
 As a bonus, you can define an alias in your *.bash_aliases* file
 
 .. code-block:: bash
 
-   alias pywave-svg="waveform.py -f svg"
-   alias pywave-png="waveform.py -f cairo-svg"
-   alias pywave-eps="waveform.py -f cairo-eps"
-   alias pywave-pdf="waveform.py -f cairo-pdf"
-   alias pywave="waveform.py"
+   alias undulate-svg="undulate -f svg"
+   alias undulate-csvg="undulate -f cairo-svg"
+   alias undulate-cpng="undulate -f cairo-png -d 300"
+   alias undulate-ceps="undulate -f cairo-eps"
+   alias undulate-cpdf="undulate -f cairo-pdf"
+
+.. note::
+
+   The project has been renamed to `Undulate` for the sake of unicity on pypi.
+   It is planned to publish the package to make the installation simpler with
+   a simple
+
+   .. code-block:: bash
+
+      $ pip install undulate

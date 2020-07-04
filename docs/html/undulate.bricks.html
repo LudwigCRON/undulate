@@ -1,0 +1,624 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>undulate.bricks module &mdash; Undulate 0.0.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="undulate.cairorenderer module" href="undulate.cairorenderer.html" />
+    <link rel="prev" title="undulate.analogue module" href="undulate.analogue.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">undulate</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="undulate.html">undulate package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="undulate.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="undulate.analogue.html">undulate.analogue module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">undulate.bricks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.cairorenderer.html">undulate.cairorenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.digital.html">undulate.digital module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.from_to_parser.html">undulate.from_to_parser module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.generic.html">undulate.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.register.html">undulate.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.renderer.html">undulate.renderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.skin.html">undulate.skin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.svgrenderer.html">undulate.svgrenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.version.html">undulate.version module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.waveform.html">undulate.waveform module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.html#module-undulate">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">undulate</a> &raquo;</li>
+        
+          <li><a href="undulate.html">undulate package</a> &raquo;</li>
+        
+      <li>undulate.bricks module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/undulate.bricks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-undulate.bricks">
+<span id="undulate-bricks-module"></span><h1>undulate.bricks module<a class="headerlink" href="#module-undulate.bricks" title="Permalink to this headline">¶</a></h1>
+<p>bricks.py declare the basic building block
+to generate a waveform</p>
+<dl class="py class">
+<dt id="undulate.bricks.BRICKS">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.bricks.</code><code class="sig-name descname">BRICKS</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.BRICKS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>BRICKS enumerate the different allowed block
+and symbol to describe a waveform</p>
+<p>It defines the mapping between symbols and their
+character representation inside the input file</p>
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.repeat">
+<code class="sig-name descname">repeat</code><em class="property"> = '.'</em><a class="headerlink" href="#undulate.bricks.BRICKS.repeat" title="Permalink to this definition">¶</a></dt>
+<dd><p>repeat the previous character</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.nclk">
+<code class="sig-name descname">nclk</code><em class="property"> = 'n'</em><a class="headerlink" href="#undulate.bricks.BRICKS.nclk" title="Permalink to this definition">¶</a></dt>
+<dd><p>falling edge clock without arrow</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.pclk">
+<code class="sig-name descname">pclk</code><em class="property"> = 'p'</em><a class="headerlink" href="#undulate.bricks.BRICKS.pclk" title="Permalink to this definition">¶</a></dt>
+<dd><p>rising edge clock without arrow</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.Nclk">
+<code class="sig-name descname">Nclk</code><em class="property"> = 'N'</em><a class="headerlink" href="#undulate.bricks.BRICKS.Nclk" title="Permalink to this definition">¶</a></dt>
+<dd><p>falling edge clock with arrow</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.Pclk">
+<code class="sig-name descname">Pclk</code><em class="property"> = 'P'</em><a class="headerlink" href="#undulate.bricks.BRICKS.Pclk" title="Permalink to this definition">¶</a></dt>
+<dd><p>rising edge clock with arrow</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.low">
+<code class="sig-name descname">low</code><em class="property"> = 'l'</em><a class="headerlink" href="#undulate.bricks.BRICKS.low" title="Permalink to this definition">¶</a></dt>
+<dd><p>forced low value in sync with clock edge</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.Low">
+<code class="sig-name descname">Low</code><em class="property"> = 'L'</em><a class="headerlink" href="#undulate.bricks.BRICKS.Low" title="Permalink to this definition">¶</a></dt>
+<dd><p>forced low value in sync with clock edge and with arrow</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.high">
+<code class="sig-name descname">high</code><em class="property"> = 'h'</em><a class="headerlink" href="#undulate.bricks.BRICKS.high" title="Permalink to this definition">¶</a></dt>
+<dd><p>forced high value in sync with clock edge</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.High">
+<code class="sig-name descname">High</code><em class="property"> = 'H'</em><a class="headerlink" href="#undulate.bricks.BRICKS.High" title="Permalink to this definition">¶</a></dt>
+<dd><p>forced high value in sync with clock edge and arrow</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.zero">
+<code class="sig-name descname">zero</code><em class="property"> = '0'</em><a class="headerlink" href="#undulate.bricks.BRICKS.zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>data set to 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.one">
+<code class="sig-name descname">one</code><em class="property"> = '1'</em><a class="headerlink" href="#undulate.bricks.BRICKS.one" title="Permalink to this definition">¶</a></dt>
+<dd><p>data set to 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.gap">
+<code class="sig-name descname">gap</code><em class="property"> = '|'</em><a class="headerlink" href="#undulate.bricks.BRICKS.gap" title="Permalink to this definition">¶</a></dt>
+<dd><p>single line time compression</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.highz">
+<code class="sig-name descname">highz</code><em class="property"> = 'z'</em><a class="headerlink" href="#undulate.bricks.BRICKS.highz" title="Permalink to this definition">¶</a></dt>
+<dd><p>high impedance signal</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.x">
+<code class="sig-name descname">x</code><em class="property"> = 'x'</em><a class="headerlink" href="#undulate.bricks.BRICKS.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>unknown bit</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.X">
+<code class="sig-name descname">X</code><em class="property"> = 'X'</em><a class="headerlink" href="#undulate.bricks.BRICKS.X" title="Permalink to this definition">¶</a></dt>
+<dd><p>unknown data</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.data">
+<code class="sig-name descname">data</code><em class="property"> = '='</em><a class="headerlink" href="#undulate.bricks.BRICKS.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>data</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.up">
+<code class="sig-name descname">up</code><em class="property"> = 'u'</em><a class="headerlink" href="#undulate.bricks.BRICKS.up" title="Permalink to this definition">¶</a></dt>
+<dd><p>rc settling to 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.down">
+<code class="sig-name descname">down</code><em class="property"> = 'd'</em><a class="headerlink" href="#undulate.bricks.BRICKS.down" title="Permalink to this definition">¶</a></dt>
+<dd><p>rc settling to 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.meta">
+<code class="sig-name descname">meta</code><em class="property"> = 'm'</em><a class="headerlink" href="#undulate.bricks.BRICKS.meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>metastable state settling to 0</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.Meta">
+<code class="sig-name descname">Meta</code><em class="property"> = 'M'</em><a class="headerlink" href="#undulate.bricks.BRICKS.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>metastable state settling to 1</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.ana">
+<code class="sig-name descname">ana</code><em class="property"> = 'a'</em><a class="headerlink" href="#undulate.bricks.BRICKS.ana" title="Permalink to this definition">¶</a></dt>
+<dd><p>analogue signal based on equation</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.step">
+<code class="sig-name descname">step</code><em class="property"> = 's'</em><a class="headerlink" href="#undulate.bricks.BRICKS.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>analogue signal stepping</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.cap">
+<code class="sig-name descname">cap</code><em class="property"> = 'c'</em><a class="headerlink" href="#undulate.bricks.BRICKS.cap" title="Permalink to this definition">¶</a></dt>
+<dd><p>analogue signal charging (rc)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.imp">
+<code class="sig-name descname">imp</code><em class="property"> = 'i'</em><a class="headerlink" href="#undulate.bricks.BRICKS.imp" title="Permalink to this definition">¶</a></dt>
+<dd><p>impulse down or glitch</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.Imp">
+<code class="sig-name descname">Imp</code><em class="property"> = 'I'</em><a class="headerlink" href="#undulate.bricks.BRICKS.Imp" title="Permalink to this definition">¶</a></dt>
+<dd><p>impulse up or glitch</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.space">
+<code class="sig-name descname">space</code><em class="property"> = ' '</em><a class="headerlink" href="#undulate.bricks.BRICKS.space" title="Permalink to this definition">¶</a></dt>
+<dd><p>make a blank in the wavelane</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.field_start">
+<code class="sig-name descname">field_start</code><em class="property"> = '['</em><a class="headerlink" href="#undulate.bricks.BRICKS.field_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>new field internal representation of a register</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.field_end">
+<code class="sig-name descname">field_end</code><em class="property"> = ']'</em><a class="headerlink" href="#undulate.bricks.BRICKS.field_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>end of field internal representation</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.field_mid">
+<code class="sig-name descname">field_mid</code><em class="property"> = ':'</em><a class="headerlink" href="#undulate.bricks.BRICKS.field_mid" title="Permalink to this definition">¶</a></dt>
+<dd><p>bit seperation</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="undulate.bricks.BRICKS.field_bit">
+<code class="sig-name descname">field_bit</code><em class="property"> = 'b'</em><a class="headerlink" href="#undulate.bricks.BRICKS.field_bit" title="Permalink to this definition">¶</a></dt>
+<dd><p>single bit field internal represention</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.transform_y">
+<em class="property">static </em><code class="sig-name descname">transform_y</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.BRICKS.transform_y" title="Permalink to this definition">¶</a></dt>
+<dd><p>change y coordinate to represente voltage between VSSA and VDDA
+if current VSSA &lt;-&gt; ISSA / VDDA &lt;-&gt; IDDA</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> – y-coordinate between VSSA and VDDA</p></li>
+<li><p><strong>height</strong> – height of a brick in the wavelane</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the new y-coordinate between 0 and height</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.from_char">
+<em class="property">static </em><code class="sig-name descname">from_char</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">c</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.BRICKS.from_char" title="Permalink to this definition">¶</a></dt>
+<dd><p>Give the corresponding enumeration from a char
+:param c: character representing the symbol</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the enumeration corresponding to c
+or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.ignore_transition">
+<em class="property">static </em><code class="sig-name descname">ignore_transition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">from_symb</span></em>, <em class="sig-param"><span class="n">to_symb</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#undulate.bricks.BRICKS.ignore_transition" title="Permalink to this definition">¶</a></dt>
+<dd><p>define special case when transition are skipped to prevent
+glitches by default</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>from_symb</strong> (<em>undulate.BRICKS</em>) – symbol from which start the transition</p></li>
+<li><p><strong>to_symb</strong> (<em>undulate.BRICKS</em>) – target symbol of the transition</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>boolean result corresponding to the statement
+‘transition should be skipped’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.need_equation">
+<em class="property">static </em><code class="sig-name descname">need_equation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symb</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#undulate.bricks.BRICKS.need_equation" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symb</strong> (<em>undulate.BRICKS</em>) – symbol potentially needing an equation</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>bool</dt><dd><p>boolean result asserting the symb need an equation</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.need_data">
+<em class="property">static </em><code class="sig-name descname">need_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symb</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#undulate.bricks.BRICKS.need_data" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symb</strong> (<em>undulate.BRICKS</em>) – symbol potentially needing a data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>bool</dt><dd><p>boolean result asserting the symb need a data</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.need_attribute">
+<em class="property">static </em><code class="sig-name descname">need_attribute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symb</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#undulate.bricks.BRICKS.need_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symb</strong> (<em>undulate.BRICKS</em>) – symbol potentially needing an attribute</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>bool</dt><dd><p>boolean result asserting the symb need an attribute</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.need_position">
+<em class="property">static </em><code class="sig-name descname">need_position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symb</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#undulate.bricks.BRICKS.need_position" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symb</strong> (<em>undulate.BRICKS</em>) – symbol potentially needing a position</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>bool</dt><dd><p>boolean result asserting the symb need a position</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.need_type">
+<em class="property">static </em><code class="sig-name descname">need_type</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symb</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#undulate.bricks.BRICKS.need_type" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symb</strong> (<em>undulate.BRICKS</em>) – symbol potentially needing a type</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>bool</dt><dd><p>boolean result asserting the symb need a type</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.is_repeating_symbol">
+<em class="property">static </em><code class="sig-name descname">is_repeating_symbol</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symb</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#undulate.bricks.BRICKS.is_repeating_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symb</strong> (<em>undulate.BRICKS</em>) – symbol potentially repeating the last valid brick</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>bool</dt><dd><p>boolean result asserting the symb repeat the last valid one</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.is_clock">
+<em class="property">static </em><code class="sig-name descname">is_clock</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symb</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#undulate.bricks.BRICKS.is_clock" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symb</strong> (<em>undulate.BRICKS</em>) – symbol potentially a clock signal</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>bool</dt><dd><p>boolean result asserting the symb is a clock signal</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="undulate.bricks.BRICKS.is_forced_signal">
+<em class="property">static </em><code class="sig-name descname">is_forced_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symb</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#undulate.bricks.BRICKS.is_forced_signal" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symb</strong> (<em>undulate.BRICKS</em>) – symbol potentially forced to a value</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>bool</dt><dd><p>boolean result asserting the symb is forced</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="undulate.cairorenderer.html" class="btn btn-neutral float-right" title="undulate.cairorenderer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="undulate.analogue.html" class="btn btn-neutral float-left" title="undulate.analogue module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ludwig CRON
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

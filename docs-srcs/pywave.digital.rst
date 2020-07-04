@@ -1,7 +1,0 @@
-pywave.digital module
-=====================
-
-.. automodule:: pywave.digital
-   :members:
-   :undoc-members:
-   :show-inheritance:

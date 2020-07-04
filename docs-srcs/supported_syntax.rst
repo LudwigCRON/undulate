@@ -1,7 +1,8 @@
 4. Supported Syntax
 ===================
 
-pywave selects the syntax based on the extension of the file (at the exception of Json/Jsonml). However, each file has some specificities.
+`Undulate` selects the syntax based on the extension of the file
+(at the exception of Json/Jsonml). However, each file has some specificities.
 
 +-------------+------+--------+------+------+
 |             | Json | Jsonml | Yaml | Toml |
@@ -55,7 +56,7 @@ Yaml
      wave: 0.1..0.
 
 
-> *notice the "signal" vanishes in yaml*
+> *notice the group "signal" vanishes in yaml*
 
 Toml
 ----
@@ -68,4 +69,4 @@ Toml
 
    bus.data = "head body tail"
 
-> *notice the "signal" vanishes in toml*
+> *notice the group "signal" vanishes in toml*

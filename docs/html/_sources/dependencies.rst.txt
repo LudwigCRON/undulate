@@ -1,14 +1,24 @@
 1. Dependencies
 ===============
-At the origin, pywave only need a python3.5+. By the time, the json/jsonml format as been a tedious part in the documentation process.
+At the origin, `Undulate` only need a python3.5+. By the time, the json/jsonml format as been a
+tedious part in the documentation process.
 
-In consequence, pywave also now relies on `PyYAML <https://pypi.org/project/PyYAML/>`_ and `Toml <https://pypi.org/project/toml/>`_.
+In consequence, `Undulate` also now relies on `PyYAML <https://pypi.org/project/PyYAML/>`_ and
+`Toml <https://pypi.org/project/toml/>`_.
 
-For the rendering, SVG is the legacy format from `Wavedrom <https://wavedrom.com/>`_. SVG is well-known and simple versatile format for the web. However, the integration into Word/Libreoffice Writer/Latex documents is the bottleneck.
+For the rendering, SVG is the legacy format from `Wavedrom <https://wavedrom.com/>`_.
+SVG is well-known and simple versatile format for the web.
+However, the integration into Word/Libreoffice Writer/Latex documents is the bottleneck.
 
-So without any extra module, one can only export to SVG and EPS (colorless mode) format.
+So without any extra module, one can only export to the SVG format.
 
-By adding `Pycairo <https://pypi.org/project/pycairo/>`_, pywave can export to SVG, EPS, PS, PDF, PNG.
+By adding `Pycairo <https://pypi.org/project/pycairo/>`_, `Undulate` can export to:
+
+- SVG
+- EPS
+- PS
+- PDF
+- PNG
 
 For tests the following modules are needed:
 

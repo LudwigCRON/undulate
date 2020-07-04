@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>undulate.skin module &mdash; Undulate 0.0.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="undulate.svgrenderer module" href="undulate.svgrenderer.html" />
+    <link rel="prev" title="undulate.renderer module" href="undulate.renderer.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">undulate</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="undulate.html">undulate package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="undulate.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="undulate.analogue.html">undulate.analogue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.html">undulate.bricks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.cairorenderer.html">undulate.cairorenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.digital.html">undulate.digital module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.from_to_parser.html">undulate.from_to_parser module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.generic.html">undulate.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.register.html">undulate.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.renderer.html">undulate.renderer module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">undulate.skin module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.svgrenderer.html">undulate.svgrenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.version.html">undulate.version module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.waveform.html">undulate.waveform module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.html#module-undulate">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="modules.html">undulate</a> &raquo;</li>
+        
+          <li><a href="undulate.html">undulate package</a> &raquo;</li>
+        
+      <li>undulate.skin module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/undulate.skin.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-undulate.skin">
+<span id="undulate-skin-module"></span><h1>undulate.skin module<a class="headerlink" href="#module-undulate.skin" title="Permalink to this headline">¶</a></h1>
+<p>This define the style of the drawing
+it follows the principle of the css but accept only a subset:
+font: size, style, variant, weight, stretch, align, family
+fill: color, opacity
+stroke: color, width, opacity, linecap, linejoin, mitterlimit, dasharray, opacity</p>
+<p>colors should always be in rgba with value from 0—255</p>
+<dl class="py class">
+<dt id="undulate.skin.Engine">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">Engine</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.Engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.skin.SizeUnit">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">SizeUnit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.SizeUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.skin.LineCap">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">LineCap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.LineCap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.skin.LineJoin">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">LineJoin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.LineJoin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="undulate.skin.TextAlign">
+<em class="property">class </em><code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">TextAlign</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.TextAlign" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>An enumeration.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.apply_cairo_style">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">apply_cairo_style</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">overload</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.apply_cairo_style" title="Permalink to this definition">¶</a></dt>
+<dd><p>read the style and apply via cairo functions</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.apply_cairo_fill">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">apply_cairo_fill</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">style</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="n">overload</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.apply_cairo_fill" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the fill color found in the style</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.apply_cairo_stroke">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">apply_cairo_stroke</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">style</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="n">overload</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.apply_cairo_stroke" title="Permalink to this definition">¶</a></dt>
+<dd><p>support width, color, linecap, linejoin, dash</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.cairo_text_align">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">cairo_text_align</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">style</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.cairo_text_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>offset calculation for text alignment</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.cairo_text_bbox">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">cairo_text_bbox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">style</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.cairo_text_bbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>return size of the text for a given font</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.apply_cairo_font">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">apply_cairo_font</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">style</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="n">overload</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.apply_cairo_font" title="Permalink to this definition">¶</a></dt>
+<dd><p>get font information from the style and apply
+support font family, bold, italic, normal, size</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.apply_fill">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">apply_fill</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">engine</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#undulate.skin.Engine" title="undulate.skin.Engine">undulate.skin.Engine</a></span></em>, <em class="sig-param"><span class="n">overload</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.apply_fill" title="Permalink to this definition">¶</a></dt>
+<dd><p>apply fill from ‘name’ of the selector
+for the supported engine</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.apply_stroke">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">apply_stroke</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">engine</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#undulate.skin.Engine" title="undulate.skin.Engine">undulate.skin.Engine</a></span></em>, <em class="sig-param"><span class="n">overload</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.apply_stroke" title="Permalink to this definition">¶</a></dt>
+<dd><p>apply stroke from ‘name’ of the selector
+for the supported engine</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.apply_font">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">apply_font</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">engine</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#undulate.skin.Engine" title="undulate.skin.Engine">undulate.skin.Engine</a></span></em>, <em class="sig-param"><span class="n">overload</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.apply_font" title="Permalink to this definition">¶</a></dt>
+<dd><p>apply font from ‘name’ of the selector
+for the supported engine</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.get_style">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">get_style</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">overload</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#undulate.skin.get_style" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the style from the selector rules and
+fallback to a closest match in the default style</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.text_align">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">text_align</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">engine</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#undulate.skin.Engine" title="undulate.skin.Engine">undulate.skin.Engine</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.text_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate the offset to apply for the text alignment</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.text_bbox">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">text_bbox</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">engine</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#undulate.skin.Engine" title="undulate.skin.Engine">undulate.skin.Engine</a></span></em>, <em class="sig-param"><span class="n">overload</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.text_bbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculate the bounding box of the text</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.css_from_style">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">css_from_style</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">style</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.css_from_style" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate an equivalent string for only
+one rule of the style</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.css_from_rule">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">css_from_rule</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rule</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">style</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="n">with_rule</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.skin.css_from_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>generate an equivalent string for only
+one rule of the style</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.parse_css_size">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">parse_css_size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#undulate.skin.parse_css_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert a css valid representation of a size
+into a value unit tuple</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="undulate.skin.parse_css_color">
+<code class="sig-prename descclassname">undulate.skin.</code><code class="sig-name descname">parse_css_color</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">S</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#undulate.skin.parse_css_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert a css valid representation of a color
+into rgba tuple from 0 to 255</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="undulate.svgrenderer.html" class="btn btn-neutral float-right" title="undulate.svgrenderer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="undulate.renderer.html" class="btn btn-neutral float-left" title="undulate.renderer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ludwig CRON
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
