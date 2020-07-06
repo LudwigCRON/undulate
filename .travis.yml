@@ -15,7 +15,7 @@ install:
   - pip install .
 # execute the tests
 script: 
-  - cd ./test/
+  - cd ./tests/
   - make all
 # build the doc
 after_script: make html
