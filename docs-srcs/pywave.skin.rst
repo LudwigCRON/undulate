@@ -1,7 +1,0 @@
-pywave.skin module
-==================
-
-.. automodule:: pywave.skin
-   :members:
-   :undoc-members:
-   :show-inheritance:

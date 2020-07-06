@@ -1,36 +1,24 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
-project_url = 'https://github.com/LudwigCRON/pywave'
-
-requires = ['pycairo >= "1.18.1"',
-            'PyYAML >= "5.1.2"',
-            'python_version>="3.5"']
+PROJECT_URL = "https://github.com/LudwigCRON/undulate"
+REQUIRES = ['pycairo >= "1.18.1"', 'PyYAML >= "5.1.2"', 'python_version>="3.5"']
 
 setup(
-    name='pywaveform',
-    use_scm_version={
-        "relative_to": __file__,
-        "write_to": "pywave/version.py",
-    },
-    url=project_url,
-    license='MIT license',
-    author='Ludwig CRON',
-    author_email='ludwig.cron@gmail.com',
-    description='pywave diagrams based on their textual representation',
+    name="undulate",
+    use_scm_version={"relative_to": __file__, "write_to": "undulate/version.py"},
+    url=PROJECT_URL,
+    license="MIT license",
+    author="Ludwig CRON",
+    author_email="ludwig.cron@gmail.com",
+    description="generate waveform diagrams of signals based on their textual representation",
     long_description=open("README.md").read(),
     zip_safe=False,
     classifiers=[],
-    platforms='any',
-    packages=["pywave"],
+    platforms="any",
+    packages=["undulate"],
     include_package_data=True,
-    install_requires=requires,
-    setup_requires=[
-        'setuptools_scm',
-    ],
-    entry_points={
-        'console_scripts': [
-            'pywave = pywave:main',
-        ],
-    },
-    keywords=['pywave'],
+    install_requires=REQUIRES,
+    setup_requires=["setuptools_scm"],
+    entry_points={"console_scripts": ["undulate = undulate:main"]},
+    keywords=["undulate"],
 )

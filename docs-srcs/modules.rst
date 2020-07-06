@@ -1,7 +1,7 @@
-pywave
-======
+undulate
+========
 
 .. toctree::
    :maxdepth: 4
 
-   pywave
+   undulate

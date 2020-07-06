@@ -1,39 +1,40 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>2. Installation &mdash; Pywave 0.0.2 documentation</title>
+  <title>2. Installation &mdash; Undulate 0.0.4 documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3. Usage" href="usage.html" />
@@ -51,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Pywave
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
           
 
           
@@ -74,6 +75,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -88,7 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">pywave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">undulate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
 </ul>
@@ -96,6 +98,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -105,7 +108,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Pywave</a>
+          <a href="index.html">Undulate</a>
         
       </nav>
 
@@ -134,7 +137,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>2. Installation</li>
     
@@ -157,30 +160,41 @@
             
   <div class="section" id="installation">
 <h1>2. Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>The recommended way to install dependencies is by typing in your shell</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; pip3 install PyYAML
-$&gt; pip3 install toml
-$&gt; pip3 install pycairo
+<p>To install <cite>Undulate</cite>, it is recommended the following:</p>
+<ol class="arabic">
+<li><p>download a stable release from <a class="reference external" href="https://github.com/LudwigCRON/undulate/releases/latest">github</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://github.com/LudwigCRON/undulate/archive/v0.0.4.tar.gz
 </pre></div>
 </div>
-<p>To install Pywave, it is recommended the following:</p>
-<ul class="simple">
-<li><p>download a stable release from <a class="reference external" href="https://github.com/LudwigCRON/pywave/releases/latest">github</a></p></li>
-<li><p>unzip it as the desired place</p></li>
-<li><p>install via pip</p></li>
-<li><p>create an alias of your choice to simplify the call</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; wget https://github.com/LudwigCRON/pywave/archive/v0.0.2.tar.gz
-$&gt; tar -xzvf v0.0.2.tar.gz
-$&gt; pip install .
+</li>
+<li><p>unzip it at the desired place</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; tar -xzvf v0.0.4.tar.gz
 </pre></div>
 </div>
+</li>
+<li><p>install via pip</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; python3 -m pip install -r requirements.txt
+$&gt; python3 -m pip install .
+</pre></div>
+</div>
+</li>
+</ol>
 <p>As a bonus, you can define an alias in your <em>.bash_aliases</em> file</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> pywave-svg<span class="o">=</span><span class="s2">&quot;pywave -f svg&quot;</span>
-<span class="nb">alias</span> pywave-png<span class="o">=</span><span class="s2">&quot;pywave -f cairo-svg&quot;</span>
-<span class="nb">alias</span> pywave-eps<span class="o">=</span><span class="s2">&quot;pywave -f cairo-eps&quot;</span>
-<span class="nb">alias</span> pywave-pdf<span class="o">=</span><span class="s2">&quot;pywave -f cairo-pdf&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> undulate-svg<span class="o">=</span><span class="s2">&quot;undulate -f svg&quot;</span>
+<span class="nb">alias</span> undulate-csvg<span class="o">=</span><span class="s2">&quot;undulate -f cairo-svg&quot;</span>
+<span class="nb">alias</span> undulate-cpng<span class="o">=</span><span class="s2">&quot;undulate -f cairo-png -d 300&quot;</span>
+<span class="nb">alias</span> undulate-ceps<span class="o">=</span><span class="s2">&quot;undulate -f cairo-eps&quot;</span>
+<span class="nb">alias</span> undulate-cpdf<span class="o">=</span><span class="s2">&quot;undulate -f cairo-pdf&quot;</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The project has been renamed to <cite>Undulate</cite> for the sake of unicity on pypi.
+It is planned to publish the package to make the installation simpler with
+a simple</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install undulate
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -204,11 +218,19 @@ $&gt; pip install .
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Ludwig CRON
+        
+        &copy; Copyright 2020, Ludwig CRON
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -219,7 +241,6 @@ $&gt; pip install .
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

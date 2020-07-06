@@ -1,0 +1,56 @@
+cmd:
+  wave: "P"
+  slewing: 1
+  repeat: 16
+
+bus[15:0]:
+  wave: "x=...=.."
+  node: ".#...b.. youpi"
+  repeat: 2
+  data:
+    - "0x300"
+    - "0x341"
+
+tada:
+  tada[2]:
+    wave: "01lhllhh"
+    node: ".t.j..k."
+    vscale: 1.25
+
+  tada[3]:
+    wave: "01..x1.."
+    node: ".....g.."
+  
+  config:
+    hscale: 2.0
+    vscale: 0.8
+
+edges:
+  - "youpi -> j"
+  - "b |-> k"
+  - "j ~-> g"
+
+annotations:
+  - shape: "|"
+    x: 2.15
+    stroke-dasharray: [1, 3]
+    stroke: "#db4141"
+  - shape: "|"
+    x: 3.0
+    stroke-dasharray: [1, 3]
+    stroke: "#db4141"
+  - shape: "<->"
+    from: (2.15, 3)
+    to: (3, 3)
+    text: "T   "
+    text_background: False
+    dy: -0.2
+    dx: -0.2
+    fill: "#db4141"
+    stroke: "#db4141"
+    font-size: 0.4em
+
+config:
+  hscale: 0.5
+  vscale: 1.25
+  separation: 0.25

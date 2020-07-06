@@ -5,8 +5,8 @@
 # from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = docs-srcs
-BUILDDIR      = docs
+SOURCEDIR     = ./docs-srcs
+BUILDDIR      = ./docs
 
 export SPHINX_APIDOC_OPTIONS := members,show-inheritance
 
@@ -19,5 +19,5 @@ help:
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	sphinx-apidoc -f -e -o $(SOURCEDIR) pywave
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	sphinx-apidoc -f -e -o $(SOURCEDIR) undulate
+	@$(SPHINXBUILD) -b $@ "$(SOURCEDIR)" "$(BUILDDIR)"
