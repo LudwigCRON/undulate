@@ -197,7 +197,7 @@ class SvgRenderer(Renderer):
         brick_width = kwargs.get("brick_width", 40)
         brick_height = kwargs.get("brick_height", 20)
         is_reg = kwargs.get("is_reg", False)
-        lkeys, width, height, n = self.size(wavelanes, brick_width, brick_height)
+        lkeys, width, height, n = self.size(wavelanes, **kwargs)
         # remove offset for the name in register
         if is_reg:
             lkeys = -1

@@ -1,18 +1,34 @@
 cmd:
   wave: "P"
-  repeat: 8
+  slewing: 1
+  repeat: 16
 
 bus[15:0]:
   wave: "x=...=.."
+  node: ".#...b.. youpi"
+  repeat: 2
   data:
     - "0x300"
     - "0x341"
 
 tada:
-  wave: "01lhllhh"
+  tada[2]:
+    wave: "01lhllhh"
+    node: ".t.j..k."
+    vscale: 1.25
 
-tada[3]:
-  wave: "01..x1..."
+  tada[3]:
+    wave: "01..x1.."
+    node: ".....g.."
+  
+  config:
+    hscale: 2.0
+    vscale: 0.8
+
+edges:
+  - "youpi -> j"
+  - "b |-> k"
+  - "j ~-> g"
 
 annotations:
   - shape: "|"
@@ -36,3 +52,5 @@ annotations:
 
 config:
   hscale: 0.5
+  vscale: 1.25
+  separation: 0.25

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="579.000000" height="210.000000" viewBox="-1 -1 580.000000 212.000000">
+<svg xmlns="http://www.w3.org/2000/svg" width="579.000000" height="175.000000" viewBox="-1 -1 580.000000 177.000000">
 <style>
 .title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.500em;font-family: Fira Mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
 .text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;}
@@ -45,18 +45,18 @@
 </defs>
 <g id="a"  >
 <g id="ticks_1"  transform="translate(90.000000, 0.000000)"  >
-<path d="M0.000000,0.000000 L0.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M40.000000,0.000000 L40.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M80.000000,0.000000 L80.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M120.000000,0.000000 L120.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M160.000000,0.000000 L160.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M200.000000,0.000000 L200.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M240.000000,0.000000 L240.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M280.000000,0.000000 L280.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M320.000000,0.000000 L320.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M360.000000,0.000000 L360.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M400.000000,0.000000 L400.000000,210.000000" class="tick" style="fill: none;" />
-<path d="M440.000000,0.000000 L440.000000,210.000000" class="tick" style="fill: none;" />
+<path d="M0.000000,0.000000 L0.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M40.000000,0.000000 L40.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M80.000000,0.000000 L80.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M120.000000,0.000000 L120.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M160.000000,0.000000 L160.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M200.000000,0.000000 L200.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M240.000000,0.000000 L240.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M280.000000,0.000000 L280.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M320.000000,0.000000 L320.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M360.000000,0.000000 L360.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M400.000000,0.000000 L400.000000,175.000000" class="tick" style="fill: none;" />
+<path d="M440.000000,0.000000 L440.000000,175.000000" class="tick" style="fill: none;" />
 </g>
 
 <g id="F1"  transform="translate(90.000000, 0.000000)"  >
@@ -110,7 +110,7 @@
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.000000, 10.000000) rotate(-171.469234, 0, 0)" class="arrow" style=""/>
 </g>
 </g>
-<g id="F2"  transform="translate(90.000000, 30.000000)"  >
+<g id="F2"  transform="translate(90.000000, 25.000000)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">F2</text>
 <g data-symbol="P"  transform="translate(0.000000, 0.000000)"  class="s2">
 <path d="M0.000000,20.000000 L3.000000,0.000000 L64.500000,0.000000 L67.500000,20.000000 L130.500000,20.000000 L132.000000,10.000000" class="path" style="fill: none;" />
@@ -129,7 +129,7 @@
 <path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" transform="translate(0.000000, 10.000000) rotate(-171.469234, 0, 0)" class="arrow" style=""/>
 </g>
 </g>
-<g id="BUS"  transform="translate(90.000000, 60.000000)"  >
+<g id="BUS"  transform="translate(90.000000, 50.000000)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">BUS</text>
 <g data-symbol="x"  transform="translate(0.000000, 0.000000)"  class="s2">
 <polygon points="0.000000, 0.000000 3.000000, 0.000000 77.000000, 0.000000 80.000000, 10.000000 77.000000, 20.000000 3.000000, 20.000000 0.000000, 20.000000 " class="hatch" style="" />
@@ -148,7 +148,7 @@
 <path d="M0.000000,10.000000 L3.000000,20.000000 L77.000000,20.000000 L80.000000,10.000000" class="path" style="fill: none;" />
 </g>
 </g>
-<g id="ENABLE"  transform="translate(90.000000, 90.000000)"  >
+<g id="ENABLE"  transform="translate(90.000000, 75.000000)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">ENABLE</text>
 <g data-symbol="0"  transform="translate(0.000000, 0.000000)"  class="s2">
 <path d="M0.000000,20.000000 L1.500000,20.000000 L3.000000,20.000000 L40.000000,20.000000" class="path" style="fill: none;" />
@@ -163,7 +163,7 @@
 <path d="M0.000000,0.000000 L1.500000,10.000000 L3.000000,0.000000 L360.000000,0.000000" class="path" style="fill: none;" />
 </g>
 </g>
-<g id="ENABLE_1"  transform="translate(90.000000, 120.000000)"  >
+<g id="ENABLE_1"  transform="translate(90.000000, 100.000000)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">ENABLE_1</text>
 <g data-symbol="0"  transform="translate(0.000000, 0.000000)"  class="s2">
 <path d="M0.000000,20.000000 L1.500000,20.000000 L3.000000,20.000000 L132.000000,20.000000" class="path" style="fill: none;" />
@@ -172,7 +172,7 @@
 <path d="M0.000000,20.000000 L1.500000,10.000000 L3.000000,0.000000 L360.000000,0.000000" class="path" style="fill: none;" />
 </g>
 </g>
-<g id="ENABLE_2"  transform="translate(90.000000, 150.000000)"  >
+<g id="ENABLE_2"  transform="translate(90.000000, 125.000000)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">ENABLE_2</text>
 <g data-symbol="0"  transform="translate(0.000000, 0.000000)"  class="s2">
 <path d="M0.000000,20.000000 L1.500000,20.000000 L3.000000,20.000000 L252.000000,20.000000" class="path" style="fill: none;" />
@@ -181,7 +181,7 @@
 <path d="M0.000000,20.000000 L1.500000,10.000000 L3.000000,0.000000 L240.000000,0.000000" class="path" style="fill: none;" />
 </g>
 </g>
-<g id="BUS_2"  transform="translate(90.000000, 180.000000)"  >
+<g id="BUS_2"  transform="translate(90.000000, 150.000000)"  >
 <text x="-10.000000" y="10.000000" class="title" style="stroke: none;">BUS_2</text>
 <g data-symbol="0"  transform="translate(0.000000, 0.000000)"  class="s2">
 <path d="M0.000000,20.000000 L1.500000,20.000000 L3.000000,20.000000 L396.000000,20.000000" class="path" style="fill: none;" />

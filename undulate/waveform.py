@@ -225,13 +225,10 @@ def cli_main(
         elif file_format.startswith("cairo-"):
             renderer = undulate.CairoRenderer(extension=file_format.split("-")[-1], dpi=dpi)
         try:
-            config = obj.get("config", {})
-            vs = config.get("vscale", 1.0)
-            hs = config.get("hscale", 1.0)
             renderer.draw(
                 obj,
-                brick_height=vs * (50 if is_reg else 20),
-                brick_width=hs * (28 if is_reg else 40),
+                brick_height=(50 if is_reg else 20),
+                brick_width=(28 if is_reg else 40),
                 is_reg=is_reg,
                 filename=output_path,
             )

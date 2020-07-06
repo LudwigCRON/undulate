@@ -9,8 +9,8 @@ into different format
 import re
 import copy
 import undulate
-from .skin import style_in_kwargs
-from math import atan2, cos, sin
+from .skin import style_in_kwargs, get_style, SizeUnit
+from math import atan2, cos, sin, floor
 from itertools import count, accumulate, zip_longest
 
 # Counter for unique id generation
@@ -29,6 +29,7 @@ ERROR_MSG = {
 
 ARROWS_PREFIX = "<*# "
 ARROWS_SUFFIX = ">*# "
+EXCLUDED_NAMED_GROUPS = ["head", "foot", "config", "edges", "annotations"]
 
 
 def incr_wavelane(f):
@@ -117,6 +118,7 @@ class Renderer:
 
     _EDGE_REGEXP = r"([\w\.\_]+)\s*([~\|\/\-\>\<]+)\s*([\w\.\_]+)"
     _SYMBOL_TEMP = None
+    y_steps = []
 
     def __init__(self):
         self.ctx = None
@@ -263,17 +265,14 @@ class Renderer:
         Returns:
             list of nodes in a dict(name: tuple(x, y))
         """
-        brick_width = kwargs.get("brick_width", 20)
-        brick_height = kwargs.get("brick_height", 20)
+        # options for size of bricks
+        config = wavelanes.get("config", {})
+        vscale = config.get("vscale", 1.0) if depth > 0 else 1.0
+        hscale = config.get("hscale", 1.0) if depth > 0 else 1.0
+        brick_width = kwargs.get("brick_width", 40) * hscale
+        brick_height = kwargs.get("brick_height", 20) * vscale
+        separation = kwargs.get("separation")
         # Parameters for all wavelane
-        excluded_sections = [
-            "edges",
-            "edge",
-            "head",
-            "config",
-            "adjustements",
-            "annotations",
-        ]
         first_row_of_group = wavelanes[next(iter(wavelanes))]
         nodes, _y = (
             [],
@@ -283,7 +282,7 @@ class Renderer:
         )
         for name, wavelane in wavelanes.items():
             # read nodes declaration
-            if isinstance(wavelane, dict) and name not in excluded_sections:
+            if isinstance(wavelane, dict) and name not in EXCLUDED_NAMED_GROUPS:
                 if "wave" in wavelane or Renderer.is_spacer(name):
                     if "node" in wavelane:
                         chain = wavelane["node"].split(" ")
@@ -315,14 +314,16 @@ class Renderer:
                                 for s in ni
                             ]
                         )
-                    _y += brick_height * (wavelane.get("vscale", 1) + 0.5)
+                    _y += brick_height * wavelane.get("vscale", 1) + separation
                 # it is a wavegroup
                 else:
+                    # add group name spacing
+                    _y += brick_height + separation
                     dy, n = self.__list_nodes__(wavelane, level, depth + 1, **kwargs)
-                    _y += brick_height
                     for node in n:
                         x, y, name = node
                         nodes.append((x, _y + y, name))
+                    # add size of the group
                     _y += dy
         if depth > 0:
             return (_y, nodes)
@@ -339,8 +340,18 @@ class Renderer:
                 yield pattern.strip()
 
     @staticmethod
-    def adjust_y(y, factor: float = 1.0):
-        return factor + (y - 1) * 1.5 * factor if y > 1 else y * 1.5 * factor
+    def adjust_y(y, factor: float = 1.0, separation: float = 0.25):
+        total_y, k = 0, 0
+        for dy in Renderer.y_steps:
+            if dy == "t":
+                k -= 1
+                continue
+            if k + 1 >= floor(y - 1 if y > 1 else 0):
+                break
+            k += 1
+            total_y += dy
+        scale = factor + separation
+        return total_y + (y - k) * scale
 
     @staticmethod
     def from_to_parser(
@@ -349,6 +360,7 @@ class Renderer:
         height: float,
         brick_width: float = 40.0,
         brick_height: float = 20.0,
+        separation: float = 0.25,
         nodes: dict = {},
     ):
         """
@@ -384,7 +396,7 @@ class Renderer:
             return nodes.get(s)
         # if tuple so pre-estimated
         if isinstance(s, tuple):
-            return (s[0] * brick_width, Renderer.adjust_y(s[1]) * brick_height)
+            return (s[0] * brick_width, Renderer.adjust_y(s[1], brick_height, separation))
         # parse (<number>, <number>)
         matches = list(re.finditer(r"\s*(\d+\.?\d*)\s*(\%|[+-]\s*\d+\.?\d*)?\s*", str(s)))
         if not matches:
@@ -408,8 +420,14 @@ class Renderer:
         y = float(matches[1].group(1))
         # if row based consider the offset if given
         if matches[1].group(2) and "%" not in matches[1].group(2):
-            y = Renderer.adjust_y(y) + float(matches[1].group(2))
+            y = Renderer.adjust_y(y, brick_height, separation) + float(matches[1].group(2))
         return (x * xunit, y * yunit)
+
+    @staticmethod
+    def register_y_step(dy, is_title: bool = False):
+        if is_title:
+            Renderer.y_steps.append("t")
+        Renderer.y_steps.append(dy)
 
     def annotate(self, wavelanes: dict, viewport: tuple, depth: int = 0, **kwargs):
         """
@@ -432,6 +450,7 @@ class Renderer:
         annotations = wavelanes.get("annotations", [])
         brick_width = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
+        separation = kwargs.get("separation", 0.25)
         xmin, _, width, height = viewport
         # if not empty
         if not annotations and not edges_input:
@@ -453,17 +472,17 @@ class Renderer:
             x = a.get("x", 0)
             y = a.get("y", 0)
             dx = a.get("dx", 0) * brick_width
-            dy = Renderer.adjust_y(a.get("dy", 0), brick_height)
+            dy = Renderer.adjust_y(a.get("dy", 0), brick_height, separation)
             start = a.get("from", None)
             end = a.get("to", None)
             text = a.get("text", "")
             text_background = a.get("text_background", True)
             ans = ""
             start = Renderer.from_to_parser(
-                start, width, height, brick_width, brick_height, nodes=nodes
+                start, width, height, brick_width, brick_height, separation, nodes=nodes
             )
             end = Renderer.from_to_parser(
-                end, width, height, brick_width, brick_height, nodes=nodes
+                end, width, height, brick_width, brick_height, separation, nodes=nodes
             )
             # calculate position of start node
             if isinstance(start, str) and nodes:
@@ -495,7 +514,7 @@ class Renderer:
             overload = style_in_kwargs(**a)
             # hline
             if shape == "-":
-                y_pos = Renderer.adjust_y(y, brick_height)
+                y_pos = Renderer.adjust_y(y, brick_height, separation)
                 x1 = xmin + start * brick_width if isinstance(start, (float, int)) else xmin
                 x2 = (
                     xmin + end * brick_width
@@ -508,12 +527,12 @@ class Renderer:
             elif shape == "|":
                 x = xmin + x * brick_width
                 y1 = (
-                    Renderer.adjust_y(start, brick_height)
+                    Renderer.adjust_y(start, brick_height, separation)
                     if isinstance(start, (float, int))
                     else 0
                 )
                 y2 = (
-                    Renderer.adjust_y(end, brick_height)
+                    Renderer.adjust_y(end, brick_height, separation)
                     if isinstance(end, (float, int))
                     else height
                 )
@@ -523,12 +542,12 @@ class Renderer:
             elif shape == "||":
                 x = xmin + x * brick_width
                 y1 = (
-                    Renderer.adjust_y(start, brick_height)
+                    Renderer.adjust_y(start, brick_height, separation)
                     if isinstance(start, (float, int))
                     else 0
                 )
                 y2 = (
-                    Renderer.adjust_y(end, brick_height)
+                    Renderer.adjust_y(end, brick_height, separation)
                     if isinstance(end, (float, int))
                     else height
                 )
@@ -698,7 +717,7 @@ class Renderer:
                     {
                         "style_repr": "edge-text",
                         "x": xmin + x * brick_width,
-                        "y": Renderer.adjust_y(y, brick_height),
+                        "y": Renderer.adjust_y(y, brick_height, separation),
                     }
                 )
                 if text_background:
@@ -1166,100 +1185,115 @@ class Renderer:
         _default_offset_x = [
             len(s) + 1
             for s in wavelanes.keys()
-            if not (Renderer.is_spacer(s) or s in ["edge", "adjustment"])
+            if not (Renderer.is_spacer(s) or s in EXCLUDED_NAMED_GROUPS)
         ]
-        # options
+        # options for size of bricks
         config = wavelanes.get("config", {})
         vscale = config.get("vscale", 1.0)
         hscale = config.get("hscale", 1.0)
-        offsetx = kwargs.get("offsetx", max(_default_offset_x, default=0) * 9)
-        offsety = kwargs.get("offsety", 0)
-        translate = kwargs.get("translate", False)
         brick_width = kwargs.get("brick_width", 40) * hscale
         brick_height = kwargs.get("brick_height", 20) * vscale
+        separation = config.get("separation", kwargs.get("separation")) or 0.25
+        if depth == 1:
+            separation *= brick_height
+        # update kwargs
+        kwargs.update(
+            {
+                "brick_width": brick_width,
+                "brick_height": brick_height,
+                "separation": separation,
+            }
+        )
+        # options for reserved space for signal names
+        name_font_size = get_style("text").get("font-size") or (1.0, SizeUnit.EM)
+        name_font_size = name_font_size[0] * name_font_size[1].value
+        offsetx = kwargs.get("offsetx", max(_default_offset_x, default=0) * name_font_size)
+        offsety = kwargs.get("offsety", 0)
+        # options for appearance
+        # group delimiter (image size)
         width = kwargs.get("width", 0)
         height = kwargs.get("height", 0)
+        # ticks
         no_ticks = config.get("no_ticks", depth > 1)
+        # position of | symbol
         gap_offset = config.get("gap-offset", brick_width * 0.5)
 
         def _gen(offset, width, height, brick_width, brick_height):
             ox, oy, dy = offset[0], offset[1], 0
-            # some space for group separation
-            dy = 20 if depth > 1 else 0
-            oy += dy
-            if translate:
-                self.translate(ox if translate and depth == 1 else 0, dy)
+            # some space for group separation if not the root
+            oy += (brick_height + separation) if depth > 1 else 0
             # return value is ans
+            ans = ""
             if depth > 1:
+                # get font size for position estimation
+                grp_font_size = get_style("h%d" % depth).get("font-size") or (
+                    1.0,
+                    SizeUnit.EM,
+                )
+                grp_font_size = grp_font_size[0] * grp_font_size[1].value
                 # add group name
-                ans = self.text(0, oy - 16, name, style_repr="h%d" % depth, **kwargs)
+                ans = self.text(
+                    0,
+                    oy - 0.65 * grp_font_size - separation,
+                    name,
+                    style_repr="h%d" % depth,
+                    **kwargs
+                )
                 # add group separator
                 if depth == 2:
                     ans += self.path(
-                        [(0, dy - 6), (width + ox, dy - 6)],
+                        [(0, oy - separation), (width + ox, oy - separation)],
                         style_repr="border ctx-y",
                         **kwargs
                     )
-            else:
-                ans = ""
+                Renderer.register_y_step(brick_height + separation, is_title=True)
             # look through waveforms data
             for _, wavetitle in enumerate(wavelanes.keys()):
-                # signal in a dict
-                if isinstance(wavelanes[wavetitle], dict):
-                    # waveform
-                    if "wave" in wavelanes[wavetitle]:
-                        wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]
-                        args.update(**kwargs)
-                        args.update({"gap-offset": gap_offset})
-                        overlay = args.get("overlay", False)
-                        ans += self.wavelane(
-                            wavetitle,
-                            wave,
-                            "" if translate else self.translate(ox, oy),
-                            **args
-                        )
-                        l = len(wave)
-                        if not overlay:
-                            dy = brick_height * (
-                                wavelanes[wavetitle].get("vscale", 1) + 0.5
-                            )
-                        else:
-                            dy = 0
-                        width = l * brick_width if l * brick_width > width else width
-                    # spacer or only for label nodes
-                    elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
-                        dy = brick_height * (wavelanes[wavetitle].get("vscale", 1) + 0.5)
-                    # named group
-                    elif wavetitle not in [
-                        "head",
-                        "foot",
-                        "config",
-                        "edges",
-                        "annotations",
-                    ]:
-                        args = copy.deepcopy(kwargs)
-                        args.update(
-                            {
-                                "offsetx": ox,
-                                "offsety": 0,
-                                "no_ticks": True,
-                                "gap-offset": gap_offset,
-                            }
-                        )
-                        dy, tmp = self.wavegroup(
-                            wavetitle,
-                            wavelanes[wavetitle],
-                            "" if translate else self.translate(0, oy, dont_touch=True),
-                            depth + 1,
-                            **args
-                        )
-                        ans += tmp
-                    oy += dy
-                    if translate:
-                        self.translate(0, dy)
-                # extra config
-                else:
-                    pass
+                # annotations, config, edges, ... are list
+                # and not parsed on the fly
+                if not isinstance(wavelanes[wavetitle], dict):
+                    continue
+                # signals and registers are in a dict
+                # height of a single waveform
+                dy = brick_height * wavelanes[wavetitle].get("vscale", 1) + separation
+                # waveform generation
+                if "wave" in wavelanes[wavetitle]:
+                    wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]
+                    # propagate information from hierarchy
+                    args.update(**kwargs)
+                    args.update({"gap-offset": gap_offset})
+                    # generate the waveform of this signal
+                    ans += self.wavelane(wavetitle, wave, self.translate(ox, oy), **args)
+                    # if the waveform of this signal will be overlayed
+                    # do not increment the position
+                    overlay = args.get("overlay", False)
+                    if overlay:
+                        dy = 0
+                    width = max(len(wave) * brick_width, width)
+                    Renderer.register_y_step(dy)
+                # spacer or only for label nodes
+                elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
+                    Renderer.register_y_step(dy)
+                # named group
+                elif wavetitle not in EXCLUDED_NAMED_GROUPS:
+                    args = copy.deepcopy(kwargs)
+                    args.update(
+                        {
+                            "offsetx": ox,
+                            "offsety": 0,
+                            "no_ticks": True,
+                            "gap-offset": gap_offset,
+                        }
+                    )
+                    dy, tmp = self.wavegroup(
+                        wavetitle,
+                        wavelanes[wavetitle],
+                        self.translate(0, oy, dont_touch=True),
+                        depth + 1,
+                        **args
+                    )
+                    ans += tmp
+                oy += dy
             # add ticks only for the principale group
             if not no_ticks:
                 kw = {
@@ -1273,29 +1307,21 @@ class Renderer:
             offset[0], offset[1] = ox, oy
             return ans
 
-        # a useful signal is in a dict
-        if isinstance(wavelanes, dict):
-            # room for displaying names
-            offset = [offsetx, offsety]
-            ans = self.group(
-                lambda: _gen(offset, width, height, brick_width, brick_height),
-                name,
-                extra=extra,
-            )
-            offsetx, offsety = offset[0], offset[1]
-            # finish the group
-            ans += self.annotate(
-                wavelanes, viewport=(offsetx, 0, width, height), depth=depth, **kwargs
-            )
-            return (offsety, ans)
-        # unknown options
-        else:
-            raise Exception("Unkown wavelane type or option")
-        return (0, "")
+        # room for displaying names
+        offset = [offsetx, offsety]
+        ans = self.group(
+            lambda: _gen(offset, width, height, brick_width, brick_height),
+            name,
+            extra=extra,
+        )
+        offsetx, offsety = offset[0], offset[1]
+        # finish the group with local annotations
+        ans += self.annotate(
+            wavelanes, viewport=(offsetx, 0, width, height), depth=depth, **kwargs
+        )
+        return (offsety, ans)
 
-    def size(
-        self, wavelanes, brick_width: int = 20, brick_height: int = 28, depth: int = 1
-    ):
+    def size(self, wavelanes, depth: int = 1, **kwargs):
         """
         size pre-estimate the size of the image
 
@@ -1307,73 +1333,71 @@ class Renderer:
             repeat    (int)  : brick repetition factor
             overlay (bool) : overlay the next signal over the current one
         """
-        if isinstance(wavelanes, dict):
-            x, y, n, keys = [0], 0, 0, [0]
-            for wavetitle in wavelanes.keys():
-                if isinstance(wavelanes[wavetitle], dict):
-                    # add some extra for attr in registers
-                    _attr = wavelanes[wavetitle].get("attr", [(0, None)])
-                    if isinstance(_attr, list):
-                        _n = [
-                            len(_a[1])
-                            for _a in _attr
-                            if not _a[1] is None and isinstance(_a[1], list)
-                        ]
-                        n += max(_n) if _n else 0
-                    # handle a wavelane
-                    if "wave" in wavelanes[wavetitle]:
-                        # estimate length of the wavelane
-                        if "periods" not in wavelanes[wavetitle]:
-                            _l = len(wavelanes[wavetitle]["wave"])
-                        else:
-                            periods = self._get_or_eval(
-                                "periods", [], **wavelanes[wavetitle]
-                            )
-                            _l = sum(periods)
-                        _l *= brick_width
-                        _l *= wavelanes[wavetitle].get("repeat", 1)
-                        _l *= wavelanes[wavetitle].get("period", 1)
-                        x.append(_l)
-                        # estimate height
-                        if not wavelanes[wavetitle].get("overlay", False):
-                            y += brick_height * (
-                                wavelanes[wavetitle].get("vscale", 1) + 0.5
-                            )
-                        keys.append(len(wavetitle))
-                    # if it is only spacers allocate space
-                    elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
-                        y += brick_height * 1.5
-                    # otherwise it is a new wavegroup
-                    elif wavetitle not in [
-                        "head",
-                        "foot",
-                        "config",
-                        "edges",
-                        "annotations",
-                    ]:
-                        y += 20
-                        lkeys, _x, _y, _n = self.size(
-                            wavelanes[wavetitle], brick_width, brick_height, depth + 1
-                        )
-                        x.append(_x)
-                        y += _y
-                        n += _n
-                        keys.append(lkeys)
-                    # or an old wavegroup
-                    elif isinstance(wavelanes[wavetitle], list):
-                        if (
-                            len(wavelanes[wavetitle]) > 0
-                            and isinstance(wavelanes[wavetitle][0], dict)
-                            and "wave" in wavelanes[wavetitle][0]
-                        ):
-                            y += 20
-                            lkeys, _x, _y, _n = self.size(
-                                wavelanes[wavetitle], brick_width, brick_height, depth + 1
-                            )
-                            x.append(_x)
-                            y += _y
-                            n += _n
-                            keys.append(lkeys)
+        if not isinstance(wavelanes, dict):
+            return (0, 0, 0, 0)
+        # options for size of bricks
+        config = wavelanes.get("config", {})
+        vscale = config.get("vscale", 1.0)
+        hscale = config.get("hscale", 1.0)
+        brick_width = kwargs.get("brick_width", 40) * hscale
+        brick_height = kwargs.get("brick_height", 20) * vscale
+        separation = config.get("separation", kwargs.get("separation")) or 0.25
+        if depth == 1:
+            separation *= brick_height
+        # update kwargs
+        kwargs.update(
+            {
+                "brick_width": brick_width,
+                "brick_height": brick_height,
+                "separation": separation,
+            }
+        )
+        # return kind of a viewport
+        x, y, n, keys = [0], (brick_height + separation) if depth > 1 else 0, 0, [0]
+        # look through all wavelanes
+        for wavetitle in wavelanes.keys():
+            if not isinstance(wavelanes[wavetitle], dict):
+                continue
+            # add some extra for attr in registers
+            _attr = wavelanes[wavetitle].get("attr", [(0, None)])
+            if isinstance(_attr, list):
+                _n = [
+                    len(_a[1])
+                    for _a in _attr
+                    if not _a[1] is None and isinstance(_a[1], list)
+                ]
+                n += max(_n) if _n else 0
+            # handle a wavelane
+            dy = brick_height * wavelanes[wavetitle].get("vscale", 1) + separation
+            if "wave" in wavelanes[wavetitle]:
+                # estimate length of the wavelane
+                # TODO create a wavelane_size function
+                if "periods" not in wavelanes[wavetitle]:
+                    _l = len(wavelanes[wavetitle]["wave"])
+                else:
+                    periods = self._get_or_eval("periods", [], **wavelanes[wavetitle])
+                    _l = sum(periods)
+                _l *= brick_width
+                _l *= wavelanes[wavetitle].get("repeat", 1)
+                _l *= wavelanes[wavetitle].get("period", 1)
+                x.append(_l)
+                # estimate height
+                if wavelanes[wavetitle].get("overlay", False):
+                    dy = 0
+                keys.append(len(wavetitle))
+            # if it is only spacers allocate space
+            elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
+                pass
+            # otherwise it is a new wavegroup
+            # or an old wavegroup
+            elif wavetitle not in EXCLUDED_NAMED_GROUPS:
+                lkeys, _x, dy, _n = self.size(wavelanes[wavetitle], depth + 1, **kwargs)
+                x.append(_x)
+                n += _n
+                keys.append(lkeys)
+            else:
+                dy = 0
+            y += dy
         return (max(keys), max(x), y, n)
 
     def draw(self, wavelanes, **kwargs) -> str:
