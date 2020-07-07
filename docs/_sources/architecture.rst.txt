@@ -6,7 +6,7 @@
 BRICKS
 ------
 
-BRICKS as defined in `pywave/bricks.py` is an enumeration with common methods to apply on a new brick.
+BRICKS as defined in `undulate/bricks.py` is an enumeration with common methods to apply on a new brick.
 
 The Enumeration is a 1-to-1 map between the charactere in the wave representation and brick to create.
 
@@ -31,9 +31,9 @@ It also define the following methods
        glitches by default
        """
 
-pywave.Brick
-------------
-In `pywave/generic.py`, we define the class from which inherit all other bricks.
+undulate.Brick
+--------------
+In `undulate/generic.py`, we define the class from which inherit all other bricks.
 
 A brick is a collection of:
 

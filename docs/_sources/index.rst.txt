@@ -2,6 +2,9 @@
 Undulate
 ========
 
+.. image:: ./imgs/logo.svg
+   :height: 200
+
 .. toctree::
    :maxdepth: 3
    :caption: Contents:

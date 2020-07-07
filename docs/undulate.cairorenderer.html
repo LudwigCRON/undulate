@@ -97,13 +97,11 @@
 <li class="toctree-l4"><a class="reference internal" href="undulate.bricks.html">undulate.bricks module</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">undulate.cairorenderer module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="undulate.digital.html">undulate.digital module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="undulate.from_to_parser.html">undulate.from_to_parser module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="undulate.generic.html">undulate.generic module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="undulate.register.html">undulate.register module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="undulate.renderer.html">undulate.renderer module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="undulate.skin.html">undulate.skin module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="undulate.svgrenderer.html">undulate.svgrenderer module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="undulate.version.html">undulate.version module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="undulate.waveform.html">undulate.waveform module</a></li>
 </ul>
 </li>
@@ -352,7 +350,7 @@ defined in the annotations section of the input file</p>
 
 <dl class="py method">
 <dt id="undulate.cairorenderer.CairoRenderer.from_to_parser">
-<em class="property">static </em><code class="sig-name descname">from_to_parser</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span><span class="p">:</span> <span class="n">object</span></em>, <em class="sig-param"><span class="n">width</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">brick_width</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">40.0</span></em>, <em class="sig-param"><span class="n">brick_height</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">20.0</span></em>, <em class="sig-param"><span class="n">nodes</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.cairorenderer.CairoRenderer.from_to_parser" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="sig-name descname">from_to_parser</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span><span class="p">:</span> <span class="n">object</span></em>, <em class="sig-param"><span class="n">width</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">height</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">brick_width</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">40.0</span></em>, <em class="sig-param"><span class="n">brick_height</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">20.0</span></em>, <em class="sig-param"><span class="n">separation</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">0.25</span></em>, <em class="sig-param"><span class="n">nodes</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.cairorenderer.CairoRenderer.from_to_parser" title="Permalink to this definition">¶</a></dt>
 <dd><p>parse the from and to options of annotations into positions
 for drawing the specified shape or text</p>
 <dl>
@@ -385,7 +383,7 @@ for drawing the specified shape or text</p>
 
 <dl class="py method">
 <dt id="undulate.cairorenderer.CairoRenderer.size">
-<code class="sig-name descname">size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelanes</span></em>, <em class="sig-param"><span class="n">brick_width</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">20</span></em>, <em class="sig-param"><span class="n">brick_height</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">28</span></em>, <em class="sig-param"><span class="n">depth</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.cairorenderer.CairoRenderer.size" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">size</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wavelanes</span></em>, <em class="sig-param"><span class="n">depth</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.cairorenderer.CairoRenderer.size" title="Permalink to this definition">¶</a></dt>
 <dd><p>size pre-estimate the size of the image</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

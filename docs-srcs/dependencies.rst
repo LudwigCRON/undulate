@@ -8,11 +8,12 @@ In consequence, `Undulate` also now relies on `PyYAML <https://pypi.org/project/
 
 For the rendering, SVG is the legacy format from `Wavedrom <https://wavedrom.com/>`_.
 SVG is well-known and simple versatile format for the web.
-However, the integration into Word/Libreoffice Writer/Latex documents is the bottleneck.
+However, the integration into Word/Libreoffice Writer/Latex documents is the limiting factor.
 
 So without any extra module, one can only export to the SVG format.
 
-By adding `Pycairo <https://pypi.org/project/pycairo/>`_, `Undulate` can export to:
+By adding `Pycairo <https://pypi.org/project/pycairo/>`_ (the source of the egyptian style),
+`Undulate` can export to:
 
 - SVG
 - EPS

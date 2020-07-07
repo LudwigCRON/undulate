@@ -41,3 +41,9 @@ As a bonus, you can define an alias in your *.bash_aliases* file
    .. code-block:: bash
 
       $ pip install undulate
+   
+   For now, Adventurer can install `Undulate` in fraction of sec
+
+   .. code-block:: bash
+
+      $ pip install git+https://github.com/LudwigCRON/undulate.git

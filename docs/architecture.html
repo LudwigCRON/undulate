@@ -91,7 +91,7 @@
 <li class="toctree-l1"><a class="reference internal" href="supported_syntax.html">4. Supported Syntax</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">5. Internal Architecture</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#bricks">BRICKS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pywave-brick">pywave.Brick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#undulate-brick">undulate.Brick</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#analogue-bricks">Analogue Bricks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#list-of-bricks">List of bricks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#description">Description</a></li>
@@ -189,7 +189,7 @@
 [for each presente all bricks with subsection of which parameters are supported]</p>
 <div class="section" id="bricks">
 <h2>BRICKS<a class="headerlink" href="#bricks" title="Permalink to this headline">¶</a></h2>
-<p>BRICKS as defined in <cite>pywave/bricks.py</cite> is an enumeration with common methods to apply on a new brick.</p>
+<p>BRICKS as defined in <cite>undulate/bricks.py</cite> is an enumeration with common methods to apply on a new brick.</p>
 <p>The Enumeration is a 1-to-1 map between the charactere in the wave representation and brick to create.</p>
 <p>It also define the following methods</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">transform_y</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">20</span><span class="p">):</span>
@@ -211,9 +211,9 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="pywave-brick">
-<h2>pywave.Brick<a class="headerlink" href="#pywave-brick" title="Permalink to this headline">¶</a></h2>
-<p>In <cite>pywave/generic.py</cite>, we define the class from which inherit all other bricks.</p>
+<div class="section" id="undulate-brick">
+<h2>undulate.Brick<a class="headerlink" href="#undulate-brick" title="Permalink to this headline">¶</a></h2>
+<p>In <cite>undulate/generic.py</cite>, we define the class from which inherit all other bricks.</p>
 <p>A brick is a collection of:</p>
 <ul class="simple">
 <li><p>paths</p></li>

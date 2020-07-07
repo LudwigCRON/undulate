@@ -160,6 +160,59 @@
             
   <div class="section" id="usage">
 <h1>3. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p><cite>Undulate</cite> is command-line utility. By default, without any arguments, usage information
+is presented as below:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ undulate
+ERROR: None is not found
+usage: undulate <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-i INPUT<span class="o">]</span> <span class="o">[</span>-f FORMAT<span class="o">]</span> <span class="o">[</span>-r<span class="o">]</span> <span class="o">[</span>-d DPI<span class="o">]</span> <span class="o">[</span>-o OUTPUT<span class="o">]</span>
+
+waveform generator from textual format
+
+optional arguments:
+-h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+-i INPUT, --input INPUT
+                        path to the input text file
+-f FORMAT, --format FORMAT
+                        file format of the output
+-r, --is_reg          is register description
+-d DPI, --dpi DPI     resolution of the image <span class="k">for</span> png <span class="nb">export</span>
+-o OUTPUT, --output OUTPUT
+                        path to the output file
+</pre></div>
+</div>
+<p>It expect at least:</p>
+<ul class="simple">
+<li><p>an input file,</p></li>
+<li><p>the format of the output,</p></li>
+<li><p>and the output path of generated file.</p></li>
+</ul>
+<p>The input file of the textual description is provided by the <code class="docutils literal notranslate"><span class="pre">-i</span></code> or <code class="docutils literal notranslate"><span class="pre">--input</span></code>.
+The format of the output is given by the <code class="docutils literal notranslate"><span class="pre">-f</span></code> or <code class="docutils literal notranslate"><span class="pre">--format</span></code>.
+The supported format is:</p>
+<ul class="simple">
+<li><p>svg</p></li>
+<li><p>cairo-svg</p></li>
+<li><p>cairo-ps</p></li>
+<li><p>cairo-eps</p></li>
+<li><p>cairo-pdf</p></li>
+<li><p>cairo-png</p></li>
+<li><p>json</p></li>
+</ul>
+<p>The output path of the generated file is provided by the <code class="docutils literal notranslate"><span class="pre">-o</span></code> or <code class="docutils literal notranslate"><span class="pre">--output</span></code>:</p>
+<p>For instance, converting a file whose path is <code class="docutils literal notranslate"><span class="pre">~/project/doc/wavetest.yaml</span></code> into an svg
+image in <code class="docutils literal notranslate"><span class="pre">~/project/doc/wavetest.svg</span></code> can be done with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ undulate -f svg -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.svg
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For png images, it is useful to precise the resolution of the image for
+high-quality documentations.</p>
+<p>The resolution is given by <code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">--dpi</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ undulate -f cairo-png -d <span class="m">300</span> -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.png
+</pre></div>
+</div>
+</div>
 </div>
 
 
