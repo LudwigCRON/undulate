@@ -362,4 +362,9 @@
 <polygon points="0.000000, 0.000000 0.000000, 9.000000 36.000000, 9.000000 36.000000, 0.000000 0.000000, 0.000000 " class="edge-background" style=""  transform="translate(303.500000, 55.500000)" />
 <text x="321.500000" y="60.000000" class="edge-text" style="stroke: none;">revert</text>
 
+<path d="M261.500000,35.000000 L281.500000,35.000000" class="edge" style="fill: none;"/>
+<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5"  transform="translate(278.500000, 35.000000) rotate(-90.000000, 0, 0)" class="edge-arrow" style=""/>
+<polygon points="0.000000, 0.000000 0.000000, 9.000000 42.000000, 9.000000 42.000000, 0.000000 0.000000, 0.000000 " class="edge-background" style=""  transform="translate(215.500000, 30.500000)" />
+<text x="236.500000" y="35.000000" class="edge-text" style="stroke: none;">RX_DATA</text>
+
 </svg>

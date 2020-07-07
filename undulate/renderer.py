@@ -116,7 +116,12 @@ class Renderer:
     Abstract class of all renderer and define the parsing logic
     """
 
-    _EDGE_REGEXP = r"([\w\.\_]+)\s*([~\|\/\-\>\<]+)\s*([\w\.\_]+)"
+    _EDGE_REGEXP = (
+        r"(?:(?P<from>[\w.#]+)[\t ]*"
+        r"(?P<shape>[<*\[#]?[-|\\\/~]+[*\]#>]?)[\t ]*)?"
+        r"(?P<to>[\w.#]+)[\t ]*"
+        r"(?P<text>[\w \t.]*)$"
+    )
     _SYMBOL_TEMP = None
     y_steps = []
 
@@ -461,10 +466,8 @@ class Renderer:
         for ei in edges_input:
             match = re.match(Renderer._EDGE_REGEXP, ei)
             if match is not None:
-                m = match.group()
-                f, s, t = match.groups()
-                txt = "" if len(m) == len(ei.strip()) else ei.strip()[len(m) + 1 :]
-                annotations.append({"shape": s, "from": f, "to": t, "text": txt})
+                m = match.groupdict()
+                annotations.append(m)
 
         # create annotations
         def __annotate__(a: dict):
@@ -500,6 +503,16 @@ class Renderer:
                 e = end
             else:
                 e = (0, 0)
+            # compatibility support of issue #17
+            if s == (0, 0) and e != (0, 0):
+                s = (e[0] - brick_width / 2, e[-1])
+                txt_font_size = get_style("edge-text").get("font-size") or (
+                    1.0,
+                    SizeUnit.EM,
+                )
+                txt_font_size = txt_font_size[0] * txt_font_size[1].value
+                dx = -len(text) / 2 * txt_font_size
+                shape = "->"
             # add offset for delay of data and middle of brick vertical
             s = s[0] + xmin, s[1] + brick_height * 0.5
             e = e[0] + xmin, e[1] + brick_height * 0.5

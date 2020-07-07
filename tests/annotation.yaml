@@ -48,6 +48,7 @@ experimental_4:
 edges:
   - "a -> c"
   - "low_mode ~-> a revert"
+  - "a RX_DATA"
 
 annotations:
   # global compression
