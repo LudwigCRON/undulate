@@ -40,7 +40,7 @@ while outputs would be:
 - png _for word, libreoffice, ..._
 
 ## Documentation
-The complete documentation is available [here](https://ludwigcron.github.io/undulate/html/)
+The complete documentation is available [here](https://ludwigcron.github.io/undulate/)
 
 ## License
 
