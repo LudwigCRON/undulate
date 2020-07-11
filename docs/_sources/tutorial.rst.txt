@@ -8,3 +8,4 @@
     usage
     supported_syntax
     list_of_bricks
+    use_cases
