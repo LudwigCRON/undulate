@@ -9,8 +9,8 @@ Undulate
    :caption: Contents:
 
    getting_started
-   changelog
    tutorial
+   changelog
    module
 
 .. raw:: html

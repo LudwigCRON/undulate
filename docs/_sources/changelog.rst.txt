@@ -1,5 +1,12 @@
-2. Changelog
+3. Changelog
 ===================
+
+For next release:
+
+    - css file parser for global style
+    - text underline or overline rendering
+    - multiline text support
+    - verilog sequences generation
 
 v0.0.4:
 *******
@@ -8,7 +15,7 @@ v0.0.4:
         - wavedrom single node edge for text position
         - arrows, lines, ... and color overloading
         - add from / to properties to delimit global time compression
-        - remove background behind text in annotations zith text-background: False
+        - remove background behind text in annotations with text-background: False
 
 
     **Change:**
@@ -77,7 +84,7 @@ v0.0.1:
             * svg renderer
             * eps renderer
         - comment support in json
-        - analogue waveforms: a (any) / c (capacitive) / s (slew)
+        - analogue waveforms: a (any) / c (capacitive) / s (step with slew)
         - toml support
         - yaml support
         - black & white eps renderer
