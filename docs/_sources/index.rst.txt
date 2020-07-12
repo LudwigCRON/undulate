@@ -6,6 +6,7 @@ Undulate
    :maxdepth: 3
    :titlesonly:
    :hidden:
+   :numbered:
    :caption: Contents:
 
    getting_started
@@ -21,7 +22,7 @@ Undulate
             <img src="./_images/logo.svg" style="height: 200px!important" />
          </td>
          <td>
-            <img src="./_images/exemple.svg" style="height: 200px!important"/>
+            <img src="./_images/example.svg" style="height: 200px!important"/>
          </td>
          <td>
             <img src="./_images/logo.svg" style="height: 200px!important"/>

@@ -1,5 +1,5 @@
-3. Changelog
-===================
+Changelog
+=========
 
 For next release:
 
@@ -10,7 +10,6 @@ For next release:
 
 v0.0.4:
 *******
-
     **New:**
         - wavedrom single node edge for text position
         - arrows, lines, ... and color overloading

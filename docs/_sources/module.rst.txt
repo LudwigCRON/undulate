@@ -1,5 +1,5 @@
-4. Undulate
-================
+Undulate
+========
 
 .. toctree::
    :maxdepth: 4

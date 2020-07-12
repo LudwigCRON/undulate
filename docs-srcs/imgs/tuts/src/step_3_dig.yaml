@@ -1,0 +1,11 @@
+clk:
+    wave: "p.....|..."
+data:
+    wave: "x.345x|=.x"
+    data: "head body tail data"
+"":
+    wave: ""
+request:
+    wave: "0.1..0|1.0"
+acknowledge:
+    wave: "1.....|01."

@@ -1,5 +1,5 @@
-2.1 Usage
-==========
+Usage
+=====
 
 Undulate is command-line utility. By default, without any arguments, usage information
 is presented as below:

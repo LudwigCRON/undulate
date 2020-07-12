@@ -1,5 +1,5 @@
-2.3 List of bricks
-====================
+List of bricks
+==============
 
 A brick is a collection of:
 

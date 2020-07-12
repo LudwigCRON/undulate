@@ -1,4 +1,4 @@
-1.1 Dependencies
+Dependencies
 ****************
 
 At the origin, Undulate only need a python3.5+. By the time, the json/jsonml format is not

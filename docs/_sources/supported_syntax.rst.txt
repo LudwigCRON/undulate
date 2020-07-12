@@ -1,5 +1,5 @@
-2.2 Supported Syntax
-====================
+Supported Syntax
+================
 
 Undulate selects the syntax based on the extension of the file
 (at the exception of Json/Jsonml). However, each file has some specificities.

@@ -1,4 +1,4 @@
-1.2 Installation
+Installation
 ****************
 
 To install Undulate, the global procedure is the following:
