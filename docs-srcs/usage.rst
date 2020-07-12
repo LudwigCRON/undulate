@@ -1,7 +1,7 @@
-3. Usage
-========
+Usage
+=====
 
-`Undulate` is command-line utility. By default, without any arguments, usage information
+Undulate is command-line utility. By default, without any arguments, usage information
 is presented as below:
 
 .. code-block:: bash

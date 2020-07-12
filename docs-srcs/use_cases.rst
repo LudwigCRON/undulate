@@ -1,5 +1,5 @@
-7. Use cases
-============
+Use cases
+=========
 
 A great power implies great responsabilities! As each characteres count there combination
 could lead to an undesired effect.

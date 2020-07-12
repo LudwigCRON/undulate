@@ -1,0 +1,20 @@
+pclk:
+  wave: "p......."
+Pclk:
+  wave: "P......."
+nclk:
+  wave: "n......."
+Nclk:
+  wave: "N......."
+spacer:
+  wave: ""
+clk0:
+  wave: "phnlPHNL"
+clk1:
+  wave: "xhlhLHl."
+clk2:
+  wave: "hpHplnLn"
+clk3:
+  wave: "nhNhplPl"
+clk4:
+  wave: "xlh.L.Hx"

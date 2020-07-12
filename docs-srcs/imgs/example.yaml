@@ -1,0 +1,39 @@
+clk:
+  wave: "P......."
+  repeat: 2
+cmd:
+  wave: "x.3x=x4x=x=x=x=x"
+  data: "RAS NOP CAS NOP NOP NOP NOP"
+  phase: 0.5
+addr:
+  wave: "x.=x..=x........"
+  data: "ROW COL"
+  phase: 0.5
+gbf:
+  wave: "a..."
+  repeat: 4
+  analogue:
+    - "[(t, t*VDDA/Tmax) for t in time]"
+    - "[(t, VDDA/2*cos(32*pi*t/Tmax)+VDDA/2) for t in time]"
+    - "[(t, exp(-t/Tmax)*VDDA/2*cos(32*pi*t/Tmax)+VDDA/2) for t in time]"
+    - "[(t, cos(4*pi*t/Tmax)*sin(16*pi*t/Tmax)*VDDA/2+VDDA/2) for t in time]"
+int_s:
+  wave: "ssss"
+  repeat: 4
+  vscale: 2
+  slewing: 12
+  analogue: "[0.4 * (i % 4) + 0.1 for i in range(16)]"
+int_c:
+  wave: "cccc"
+  repeat: 4
+  vscale: 2
+  slewing: 12
+  analogue: "[0.4 * (3 - i % 4) + 0.1 for i in range(16)]"
+pwm:
+  wave: "p...n...P...N..."
+  slewing: 0
+  duty_cycles: "[(i % 4) / 6 for i in range(16)]"
+adaptive clock:
+  wave: "p..............."
+  slewing: 2
+  periods: "[max(0.2, i / 8) for i in range(16)]"

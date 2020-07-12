@@ -2,37 +2,50 @@
 Undulate
 ========
 
-.. image:: ./imgs/logo.svg
-   :height: 200
-
 .. toctree::
    :maxdepth: 3
+   :titlesonly:
+   :hidden:
+   :numbered:
    :caption: Contents:
 
-   dependencies
-   installation
-   usage
-   supported_syntax
-   architecture
-   modules
-   roadmap
-   use-cases
+   getting_started
+   tutorial
+   changelog
+   module
 
-Indices and tables
-==================
+.. raw:: html
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   <table align="center">
+      <tr>
+         <td>
+            <img src="./_images/logo.svg" style="height: 200px!important" />
+         </td>
+         <td>
+            <img src="./_images/example.svg" style="height: 200px!important"/>
+         </td>
+         <td>
+            <img src="./_images/logo.svg" style="height: 200px!important"/>
+         </td>
+         <td>
+      <tr>
+   </table>
+   <br/>
 
 Textual representations has the benefit of being compatible with git versionning
 and diff tools. And while an image conveys thousand words, it is difficult to list changes
 in a specification of an electronic project when it comes to protocoles, handshakes, or
 impact of a digital signal on an analogue IP block.
 
-To address this challenge, `Undulate` is an utility to transform textual representations
-of waveforms into images. The textual representations is stored, and the generated image
-can be displayed.
+Undulate is a python module providing waveforms drawing capability from a textual
+representation of them. In addition a command-line interface is binded to the module
+to render waveforms in any of your projects. Undulate, including this documentation,
+is licensed under the MPL-2.0 OR MIT.
 
-> Thanks to the supercalifragilisticexpialidocious work and ideas of the wavedrom's author,
-on which this project is based
+.. note::
+
+   Thanks to the supercalifragilisticexpialidocious work and ideas of the wavedrom's author,
+   and contributors on which this project is based.
+
+   Undulate is designed to match as closely as possible wavedrom's output, and deviate
+   only in cases which allows greater flexibility and possibilities.

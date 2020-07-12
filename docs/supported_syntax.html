@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>4. Supported Syntax &mdash; Undulate 0.0.4 documentation</title>
+  <title>2.2. Supported Syntax &mdash; Undulate 0.0.4 documentation</title>
   
 
   
@@ -31,14 +31,15 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="5. Internal Architecture" href="architecture.html" />
-    <link rel="prev" title="3. Usage" href="usage.html" /> 
+    <link rel="next" title="2.3. List of bricks" href="list_of_bricks.html" />
+    <link rel="prev" title="2.1. Usage" href="usage.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,20 +86,20 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="dependencies.html">1. Dependencies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">3. Usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Supported Syntax</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#json">Json</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#jsonml">Jsonml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#yaml">Yaml</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#toml">Toml</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tutorial.html">2. Tutorial</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="usage.html">2.1. Usage</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.2. Supported Syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list_of_bricks.html">2.3. List of bricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_digital.html">2.4. digital tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_analogue.html">2.5. analogue tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_register.html">2.6. register tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_annotations.html">2.7. annotations tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_cases.html">2.8. Use cases</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="architecture.html">5. Internal Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">undulate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="roadmap.html">6. Roadmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="use-cases.html">7. Use cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">4. Undulate</a></li>
 </ul>
 
             
@@ -145,7 +146,9 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>4. Supported Syntax</li>
+          <li><a href="tutorial.html"><span class="section-number">2. </span>Tutorial</a> &raquo;</li>
+        
+      <li><span class="section-number">2.2. </span>Supported Syntax</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -165,8 +168,8 @@
            <div itemprop="articleBody">
             
   <div class="section" id="supported-syntax">
-<h1>4. Supported Syntax<a class="headerlink" href="#supported-syntax" title="Permalink to this headline">¶</a></h1>
-<p><cite>Undulate</cite> selects the syntax based on the extension of the file
+<h1><span class="section-number">2.2. </span>Supported Syntax<a class="headerlink" href="#supported-syntax" title="Permalink to this headline">¶</a></h1>
+<p>Undulate selects the syntax based on the extension of the file
 (at the exception of Json/Jsonml). However, each file has some specificities.</p>
 <table class="docutils align-default">
 <colgroup>
@@ -207,44 +210,43 @@
 </table>
 <p>In order to let you choose the most appropriate format for you, examples are posted below:</p>
 <div class="section" id="json">
-<h2>Json<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.1. </span>Json<a class="headerlink" href="#json" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nt">&quot;signal&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span>  <span class="nt">&quot;wave&quot;</span><span class="p">:</span> <span class="s2">&quot;p......&quot;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bus&quot;</span><span class="p">,</span>  <span class="nt">&quot;wave&quot;</span><span class="p">:</span> <span class="s2">&quot;x.34.5x&quot;</span><span class="p">,</span>   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;head body tail&quot;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;wire&quot;</span><span class="p">,</span> <span class="nt">&quot;wave&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1..0.&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span>  <span class="nt">&quot;wave&quot;</span><span class="p">:</span> <span class="s2">&quot;p......&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;bus&quot;</span><span class="p">,</span>  <span class="nt">&quot;wave&quot;</span><span class="p">:</span> <span class="s2">&quot;x.34.5x&quot;</span><span class="p">,</span>   <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;head body tail&quot;</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;wire&quot;</span><span class="p">,</span> <span class="nt">&quot;wave&quot;</span><span class="p">:</span> <span class="s2">&quot;0.1..0.&quot;</span> <span class="p">},</span>
 <span class="p">]}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="jsonml">
-<h2>Jsonml<a class="headerlink" href="#jsonml" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.2. </span>Jsonml<a class="headerlink" href="#jsonml" title="Permalink to this headline">¶</a></h2>
 <p>in json-ml for strict compatibility with Wavedrom</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nl">signal</span> <span class="p">:</span> <span class="p">[</span>
-  <span class="c1">// clock signal</span>
-  <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="s">&quot;clk&quot;</span><span class="p">,</span>  <span class="nl">wave</span><span class="p">:</span> <span class="s">&quot;p......&quot;</span> <span class="p">},</span>
-  <span class="c1">// bus data</span>
-  <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="s">&quot;bus&quot;</span><span class="p">,</span>  <span class="nl">wave</span><span class="p">:</span> <span class="s">&quot;x.34.5x&quot;</span><span class="p">,</span>   <span class="nl">data</span><span class="p">:</span> <span class="s">&quot;head body tail&quot;</span> <span class="p">},</span>
-  <span class="c1">// request signal</span>
-  <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="s">&quot;wire&quot;</span><span class="p">,</span> <span class="nl">wave</span><span class="p">:</span> <span class="s">&quot;0.1..0.&quot;</span> <span class="p">}</span>
+    <span class="c1">// clock signal</span>
+    <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="s">&quot;clk&quot;</span><span class="p">,</span>  <span class="nl">wave</span><span class="p">:</span> <span class="s">&quot;p......&quot;</span> <span class="p">},</span>
+    <span class="c1">// bus data</span>
+    <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="s">&quot;bus&quot;</span><span class="p">,</span>  <span class="nl">wave</span><span class="p">:</span> <span class="s">&quot;x.34.5x&quot;</span><span class="p">,</span>   <span class="nl">data</span><span class="p">:</span> <span class="s">&quot;head body tail&quot;</span> <span class="p">},</span>
+    <span class="c1">// request signal</span>
+    <span class="p">{</span> <span class="nl">name</span><span class="p">:</span> <span class="s">&quot;wire&quot;</span><span class="p">,</span> <span class="nl">wave</span><span class="p">:</span> <span class="s">&quot;0.1..0.&quot;</span> <span class="p">}</span>
 <span class="p">]}</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="yaml">
-<h2>Yaml<a class="headerlink" href="#yaml" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.3. </span>Yaml<a class="headerlink" href="#yaml" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">clk</span><span class="p">:</span>
-  <span class="nt">wave</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">p......</span>
+    <span class="nt">wave</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">p......</span>
 <span class="nt">bus</span><span class="p">:</span>
-  <span class="nt">wave</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">x.34.5x</span>
-  <span class="nt">data</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">head body tail</span>
+    <span class="nt">wave</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">x.34.5x</span>
+    <span class="nt">data</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">head body tail</span>
 <span class="nt">wire</span><span class="p">:</span>
-  <span class="nt">wave</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1..0.</span>
+    <span class="nt">wave</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1..0.</span>
 </pre></div>
 </div>
-<p>&gt; <em>notice the group “signal” vanishes in yaml</em></p>
 </div>
 <div class="section" id="toml">
-<h2>Toml<a class="headerlink" href="#toml" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2.4. </span>Toml<a class="headerlink" href="#toml" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">clk</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;p......&quot;</span>
 <span class="n">bus</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;x.34.5x&quot;</span>
 <span class="n">wire</span><span class="p">.</span><span class="n">wave</span><span class="o">=</span> <span class="s">&quot;0.1..0.&quot;</span>
@@ -252,7 +254,17 @@
 <span class="n">bus</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">&quot;head body tail&quot;</span>
 </pre></div>
 </div>
-<p>&gt; <em>notice the group “signal” vanishes in toml</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice the group “signal” vanishes in yaml and toml syntax.
+Wavedrom used a primary group telling if this is a waveforms of signals,
+or registers, or logic.</p>
+<p>However, this increase the indentation level,
+and is prone to error in yaml file format.</p>
+<p>In toml file format, it increase the notation length as
+<code class="docutils literal notranslate"><span class="pre">signal.&lt;name</span> <span class="pre">of</span> <span class="pre">my</span> <span class="pre">signal&gt;.wave</span></code>, or using <code class="docutils literal notranslate"><span class="pre">[signal]</span></code> section
+without adding any advantages.</p>
+</div>
 </div>
 </div>
 
@@ -264,10 +276,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="architecture.html" class="btn btn-neutral float-right" title="5. Internal Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="list_of_bricks.html" class="btn btn-neutral float-right" title="2.3. List of bricks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="usage.html" class="btn btn-neutral float-left" title="3. Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-left" title="2.1. Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
