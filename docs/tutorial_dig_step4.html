@@ -155,12 +155,30 @@
             
   <div class="section" id="groups">
 <h1>groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h1>
+<p>In order to gather signals in a given context, or of a same protocol, groups can be nested.</p>
 <div class="tabs docutils container">
 <a class="tab-button" href="#step_4_jsonml">jsonml</a>
 <a class="tab-button" href="#step_4_yaml">yaml</a>
 <a class="tab-button" href="#step_4_toml">toml</a><div class="tab-content docutils container" id="step-4-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p..Pp..P&quot;</span><span class="p">,</span> <span class="nx">slewing</span><span class="o">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">[</span><span class="s2">&quot;Master&quot;</span><span class="p">,</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_address&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x3.x4..x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;A1 A2&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_wdata&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x3.x....&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;D1&quot;</span><span class="p">},</span>
+        <span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_write&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;01.0....&quot;</span><span class="p">},</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_read&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;0...1..0&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">],</span>
+    <span class="p">{},</span>
+    <span class="p">[</span><span class="s2">&quot;Slave&quot;</span><span class="p">,</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_rdata&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x.....4x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;Q2&quot;</span><span class="p">},</span>
+        <span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span>
+            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_valid&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x01x0.1x&quot;</span><span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">]}</span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -170,7 +188,32 @@
 <img alt="./_images/step4_dig-json.svg" src="./_images/step4_dig-json.svg" /></div>
 <div class="tab-content docutils container" id="step-4-yaml">
 <p>set the content of the file to</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">clk</span><span class="p">:</span>
+    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;p..Pp..P&quot;</span>
+    <span class="nt">slewing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">Master</span><span class="p">:</span>
+    <span class="nt">io_address</span><span class="p">:</span>
+        <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;x3.x4..x&quot;</span>
+        <span class="nt">data</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="s">&quot;A1&quot;</span>
+            <span class="p p-Indicator">-</span> <span class="s">&quot;A2&quot;</span>
+    <span class="nt">io_wdata</span><span class="p">:</span>
+        <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;x3.x....&quot;</span>
+        <span class="nt">data</span><span class="p">:</span> <span class="s">&quot;D1&quot;</span>
+    <span class="nt">control</span><span class="p">:</span>
+        <span class="nt">io_write</span><span class="p">:</span>
+            <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;01.0....&quot;</span>
+        <span class="nt">io_read</span><span class="p">:</span>
+            <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;0...1..0&quot;</span>
+<span class="nt">spacer</span><span class="p">:</span>
+    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+<span class="nt">Slave</span><span class="p">:</span>
+    <span class="nt">io_rdata</span><span class="p">:</span>
+        <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;x.....4x&quot;</span>
+        <span class="nt">data</span><span class="p">:</span> <span class="s">&quot;Q2&quot;</span>
+    <span class="nt">control</span><span class="p">:</span>
+        <span class="nt">io_valid</span><span class="p">:</span>
+        <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;x01x0.1x&quot;</span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -180,7 +223,25 @@
 <img alt="./_images/step4_dig-yaml.svg" src="./_images/step4_dig-yaml.svg" /></div>
 <div class="tab-content docutils container" id="step-4-toml">
 <p>set the content of the file to</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">clk</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;p..Pp..P&quot;</span>
+<span class="n">clk</span><span class="p">.</span><span class="n">slewing</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">[Master]</span>
+<span class="n">io_address</span><span class="p">.</span><span class="n">wave</span>       <span class="o">=</span> <span class="s">&quot;x3.x4..x&quot;</span>
+<span class="n">io_wdata</span><span class="p">.</span><span class="n">wave</span>         <span class="o">=</span> <span class="s">&quot;x3.x....&quot;</span>
+<span class="n">control</span><span class="p">.</span><span class="n">io_write</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;01.0....&quot;</span>
+<span class="n">control</span><span class="p">.</span><span class="n">io_read</span><span class="p">.</span><span class="n">wave</span>  <span class="o">=</span> <span class="s">&quot;0...1..0&quot;</span>
+
+<span class="n">io_address</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">&quot;A1 A2&quot;</span>
+<span class="n">io_wdata</span><span class="p">.</span><span class="n">data</span>   <span class="o">=</span> <span class="s">&quot;D1&quot;</span>
+
+<span class="n">spacer</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+
+<span class="k">[Slave]</span>
+<span class="n">io_rdata</span><span class="p">.</span><span class="n">wave</span>         <span class="o">=</span> <span class="s">&quot;x.....4x&quot;</span>
+<span class="n">control</span><span class="p">.</span><span class="n">io_valid</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;x01x0.1x&quot;</span>
+
+<span class="n">io_rdata</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">&quot;Q2&quot;</span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -188,6 +249,24 @@
 </pre></div>
 </div>
 <img alt="./_images/step4_dig-toml.svg" src="./_images/step4_dig-toml.svg" /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice the conciseness of new languages such as toml or yaml. These languages have
+been designed to be less verbose than json and natively support comments.</p>
+<p>Also notice the difference of implementation in jsonml compare to yaml/toml of groups:
+while in jsonml the name of the group is the first item of an array, in yaml and toml,
+a group is a key:value pair of an HashMap. The key is the name of the group, and the
+value is the content of the group.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>With nested group, the name of the group take one extra row in height instead of
+adding a name beside an accolade delimiting signals of a same group (wavedrom).
+Thus the image grows vertically rather than horizontally.</p>
+<p>Growing horizontally make the image look smaller when integrated inside a document.
+However, signals not being in a group being placed after a group will look as if they
+belong to it.</p>
 </div>
 </div>
 

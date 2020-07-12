@@ -1,0 +1,30 @@
+{signal: [
+        {name: "clk", wave: "p..Pp..P", slewing: 0
+        },
+        [
+            "Master",
+            {name: "io_address", wave: "x3.x4..x", data: "A1 A2"
+            },
+            {name: "io_wdata", wave: "x3.x....", data: "D1"
+            },
+            [
+                "control",
+                {name: "io_write", wave: "01.0...."
+                },
+                {name: "io_read", wave: "0...1..0"
+                }
+            ]
+        ],
+        {},
+        [
+            "Slave",
+            {name: "io_rdata", wave: "x.....4x", data: "Q2"
+            },
+            [
+                "control",
+                {name: "io_valid", wave: "x01x0.1x"
+                }
+            ]
+        ]
+    ]
+}

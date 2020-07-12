@@ -3,11 +3,8 @@ analogue tutorial
 
 Let's try some analogue features
 
-.. include:: tutorial_step6.rst
-.. include:: tutorial_step7.rst
-.. include:: tutorial_step8.rst
-.. include:: tutorial_step9.rst
-.. include:: tutorial_step10.rst
+.. include:: tutorial_ana_step1.rst
+.. include:: tutorial_ana_step2.rst
 
 
 .. raw:: html

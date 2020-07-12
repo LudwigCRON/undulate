@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="684.000000" height="25.000000" viewBox="-1 -1 685.000000 27.000000">
+<style>
+.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.500em;font-family: Fira Mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
+.text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;}
+.attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
+.stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
+.data {fill: rgba(0, 0, 0, 255);font-size: 0.400em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.arrow {fill: rgba(0, 0, 0, 255);stroke: none;}
+.hide {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
+.hatch {fill: url(#diagonalHatch);}
+.s2-polygon {fill: rgba(0, 0, 0, 0);stroke: none;}
+.s3-polygon {fill: rgba(255, 255, 176, 255);stroke: none;}
+.s4-polygon {fill: rgba(255, 224, 185, 255);stroke: none;}
+.s5-polygon {fill: rgba(185, 224, 255, 255);stroke: none;}
+.tick {stroke: rgba(136, 136, 136, 128);stroke-width: 0.5;stroke-dasharray: 1, 3;}
+.big_gap {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: none;}
+.edge {fill: none;stroke: rgba(0, 0, 255, 255);stroke-width: 1;}
+.edge-arrow {fill: rgba(0, 0, 255, 255);stroke: none;overflow: visible;}
+.edge-text {font-family: Fira Mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);text-anchor: middle;}
+.edge-background {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
+.border {stroke-width: 1.25;stroke: rgba(0, 0, 0, 255);}
+.h1 {fill: rgba(0, 0, 0, 255);font-size: 12.046px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h2 {fill: rgba(0, 0, 0, 255);font-size: 9.638px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h3 {fill: rgba(0, 0, 0, 255);font-size: 7.711px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h4 {fill: rgba(0, 0, 0, 255);font-size: 6.171px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h5 {fill: rgba(0, 0, 0, 255);font-size: 4.934px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h6 {fill: rgba(0, 0, 0, 255);font-size: 3.947px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.reg-data {fill: rgba(0, 0, 0, 255);font-size: 0.800em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.reg-pos {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}</style>
+
+<defs>
+    <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="5" style="stroke:black; stroke-width:1" />
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5"
+        markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse"
+        orient="auto-start-reverse" style="fill:#00F;">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <filter x="0" y="0" width="1" height="1" id="solid">
+      <feFlood flood-color="white"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+</defs>
+<g id="a"  >
+<g id="ticks_1"  transform="translate(40.000000, 0.000000)"  >
+<path d="M0.000000,0.000000 L0.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M40.000000,0.000000 L40.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M80.000000,0.000000 L80.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M120.000000,0.000000 L120.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M160.000000,0.000000 L160.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M200.000000,0.000000 L200.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M240.000000,0.000000 L240.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M280.000000,0.000000 L280.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M320.000000,0.000000 L320.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M360.000000,0.000000 L360.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M400.000000,0.000000 L400.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M440.000000,0.000000 L440.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M480.000000,0.000000 L480.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M520.000000,0.000000 L520.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M560.000000,0.000000 L560.000000,25.000000" class="tick" style="fill: none;" />
+<path d="M600.000000,0.000000 L600.000000,25.000000" class="tick" style="fill: none;" />
+</g>
+
+<g id="gbf"  transform="translate(40.000000, 0.000000)"  >
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">gbf</text>
+<g data-symbol="0"  transform="translate(0.000000, 0.000000)"  class="s2">
+<path d="M0.000000,20.000000 L10.000000,20.000000 L20.000000,20.000000 L40.000000,20.000000" class="path" style="fill: none;" />
+</g>
+<g data-symbol="s"  transform="translate(40.000000, 0.000000)"  class="s2">
+<path d="M0.000000,20.000000 L10.000000,10.000000 L40.000000,10.000000" class="path" style="fill: none;" />
+</g>
+<g data-symbol="s"  transform="translate(80.000000, 0.000000)"  class="s2">
+<path d="M0.000000,10.000000 L2.000000,8.000000 L40.000000,8.000000" class="path" style="fill: none;" />
+</g>
+<g data-symbol="s"  transform="translate(120.000000, 0.000000)"  class="s2">
+<path d="M0.000000,8.000000 L2.000000,6.000000 L40.000000,6.000000" class="path" style="fill: none;" />
+</g>
+<g data-symbol="s"  transform="translate(160.000000, 0.000000)"  class="s2">
+<path d="M0.000000,6.000000 L4.000000,2.000000 L40.000000,2.000000" class="path" style="fill: none;" />
+</g>
+<g data-symbol="c"  transform="translate(200.000000, 0.000000)"  class="s2">
+<path d="m0.000000,2.000000 C14.000000,16.000000 14.000000,16.000000 40.000000,16.000000 L40.000000,16.000000" class="path" style="fill: none;"/>
+</g>
+<g data-symbol="c"  transform="translate(240.000000, 0.000000)"  class="s2">
+<path d="m0.000000,16.000000 C12.000000,4.000000 12.000000,4.000000 40.000000,4.000000 L40.000000,4.000000" class="path" style="fill: none;"/>
+</g>
+<g data-symbol="c"  transform="translate(280.000000, 0.000000)"  class="s2">
+<path d="m0.000000,4.000000 C10.000000,14.000000 10.000000,14.000000 40.000000,14.000000 L40.000000,14.000000" class="path" style="fill: none;"/>
+</g>
+<g data-symbol="a"  transform="translate(320.000000, 0.000000)"  class="s2">
+<path d="M0.000000,14.000000 L0.000000,10.000000 L1.000000,8.629877 L2.000000,7.285596 L3.000000,5.992512 L4.000000,4.775014 L5.000000,3.656067 L6.000000,2.656775 L7.000000,1.795986 L8.000000,1.089935 L9.000000,0.551940 L10.000000,0.192147 L11.000000,0.017344 L12.000000,0.030827 L13.000000,0.232341 L14.000000,0.618087 L15.000000,1.180787 L16.000000,1.909830 L17.000000,2.791464 L18.000000,3.809061 L19.000000,4.943426 L20.000000,6.173166 L21.000000,7.475084 L22.000000,8.824626 L23.000000,10.196337 L24.000000,11.564345 L25.000000,12.902847 L26.000000,14.186597 L27.000000,15.391383 L28.000000,16.494480 L29.000000,17.475083 L30.000000,18.314696 L31.000000,18.997483 L32.000000,19.510565 L33.000000,19.844266 L34.000000,19.992290 L35.000000,19.951847 L36.000000,19.723699 L37.000000,19.312149 L38.000000,18.724960 L39.000000,17.973207 L40.000000,17.071068 L41.000000,16.035559 L42.000000,14.886212 L43.000000,13.644705 L44.000000,12.334454 L45.000000,10.980171 L46.000000,9.607402 L47.000000,8.242037 L48.000000,6.909830 L49.000000,5.635908 L50.000000,4.444298 L51.000000,3.357476 L52.000000,2.395940 L53.000000,1.577828 L54.000000,0.918568 L55.000000,0.430597 L56.000000,0.123117 L57.000000,0.001928 L58.000000,0.069315 L59.000000,0.324009 L60.000000,0.761205 L61.000000,1.372656 L62.000000,2.146831 L63.000000,3.069126 L64.000000,4.122147 L65.000000,5.286033 L66.000000,6.538829 L67.000000,7.856908 L68.000000,9.215409 L69.000000,10.588708 L70.000000,11.950903 L71.000000,13.276302 L72.000000,14.539905 L73.000000,15.717880 L74.000000,16.788007 L75.000000,17.730105 L76.000000,18.526402 L77.000000,19.161880 L78.000000,19.624552 L79.000000,19.905693 L80.000000,20.000000 L81.000000,19.905693 L82.000000,19.624552 L83.000000,19.161880 L84.000000,18.526402 L85.000000,17.730105 L86.000000,16.788007 L87.000000,15.717880 L88.000000,14.539905 L89.000000,13.276302 L90.000000,11.950903 L91.000000,10.588708 L92.000000,9.215409 L93.000000,7.856908 L94.000000,6.538829 L95.000000,5.286033 L96.000000,4.122147 L97.000000,3.069126 L98.000000,2.146831 L99.000000,1.372656 L100.000000,0.761205 L101.000000,0.324009 L102.000000,0.069315 L103.000000,0.001928 L104.000000,0.123117 L105.000000,0.430597 L106.000000,0.918568 L107.000000,1.577828 L108.000000,2.395940 L109.000000,3.357476 L110.000000,4.444298 L111.000000,5.635908 L112.000000,6.909830 L113.000000,8.242037 L114.000000,9.607402 L115.000000,10.980171 L116.000000,12.334454 L117.000000,13.644705 L118.000000,14.886212 L119.000000,16.035559 L120.000000,17.071068 L121.000000,17.973207 L122.000000,18.724960 L123.000000,19.312149 L124.000000,19.723699 L125.000000,19.951847 L126.000000,19.992290 L127.000000,19.844266 L128.000000,19.510565 L129.000000,18.997483 L130.000000,18.314696 L131.000000,17.475083 L132.000000,16.494480 L133.000000,15.391383 L134.000000,14.186597 L135.000000,12.902847 L136.000000,11.564345 L137.000000,10.196337 L138.000000,8.824626 L139.000000,7.475084 L140.000000,6.173166 L141.000000,4.943426 L142.000000,3.809061 L143.000000,2.791464 L144.000000,1.909830 L145.000000,1.180787 L146.000000,0.618087 L147.000000,0.232341 L148.000000,0.030827 L149.000000,0.017344 L150.000000,0.192147 L151.000000,0.551940 L152.000000,1.089935 L153.000000,1.795986 L154.000000,2.656775 L155.000000,3.656067 L156.000000,4.775014 L157.000000,5.992512 L158.000000,7.285596 L159.000000,8.629877 L160.000000,10.000000" class="path" style="fill: none;" />
+</g>
+<g data-symbol="m"  transform="translate(480.000000, 0.000000)"  class="s2">
+<path d="m0.000000,10.000000 L0.000000,10.000000 1.000000,10.836266 2.000000,11.422482 3.000000,11.495414 4.000000,10.971602 5.000000,10.000000 6.000000,8.926213 7.000000,8.173497 8.000000,8.079850 9.000000,8.752438 10.000000,10.000000 11.000000,11.378770 12.000000,12.345276 13.000000,12.465521 14.000000,11.601902 15.000000,10.000000 16.000000,8.229625 17.000000,6.988605 18.000000,6.834208 19.000000,7.943118 20.000000,10.000000 21.000000,12.273207 22.000000,13.866707 23.000000,14.064958 24.000000,12.641089 25.000000,10.000000 26.000000,7.081145 27.000000,5.035050 28.000000,4.780491 29.000000,6.608774 30.000000,10.000000 31.000000,13.747884 C37.252116,20.000000 37.252116,20.000000 40.000000,20.000000" class="path" style="fill: none;"/>
+</g>
+<g data-symbol="s"  transform="translate(520.000000, 0.000000)"  class="s2">
+<path d="M0.000000,20.000000 L5.000000,15.000000 L40.000000,15.000000" class="path" style="fill: none;" />
+</g>
+<g data-symbol="M"  transform="translate(560.000000, 0.000000)"  class="s2">
+<path d="m0.000000,15.000000 L5.000000,10.000000 6.000000,11.073787 7.000000,11.826503 8.000000,11.920150 9.000000,11.247562 10.000000,10.000000 11.000000,8.621230 12.000000,7.654724 13.000000,7.534479 14.000000,8.398098 15.000000,10.000000 16.000000,11.770375 17.000000,13.011395 18.000000,13.165792 19.000000,12.056882 20.000000,10.000000 21.000000,7.726793 22.000000,6.133293 23.000000,5.935042 24.000000,7.358911 25.000000,10.000000 26.000000,12.918855 27.000000,14.964950 28.000000,15.219509 29.000000,13.391226 30.000000,10.000000 C40.000000,0.000000 40.000000,0.000000 40.000000,0.000000" class="path" style="fill: none;"/>
+</g>
+<g data-symbol="s"  transform="translate(600.000000, 0.000000)"  class="s2">
+<path d="M0.000000,0.000000 L0.000000,0.000000 L40.000000,0.000000" class="path" style="fill: none;" />
+</g>
+</g>
+</g>
+
+</svg>
