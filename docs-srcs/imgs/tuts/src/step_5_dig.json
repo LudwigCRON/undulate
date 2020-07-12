@@ -1,0 +1,18 @@
+{signal: [
+        {name: "clk", wave: "P", repeat: 8, period: 2
+        },
+        {name: "data", wave: "x.3x=x4x5x=x5x=x", data: "RST NOP CAS INC NOP INC NOP", phase: 0.5
+        },
+        {name: "Q", wave: "p", repeat: 8, period: 2, duty_cycles: [
+                0.5,
+                0.5,
+                0.5,
+                0.25,
+                0.35,
+                0.35,
+                0.45,
+                0.45
+            ]
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+clk.wave   = "P"
+clk.repeat = 8
+clk.period = 2
+
+data.wave  = "x.3x=x4x=x=x=x=x"
+data.data  = "RST NOP CAS INC NOP NOP NOP"
+data.phase = 0.5
+
+Q.wave     = "p"
+Q.repeat   = 8
+Q.period   = 2
+Q.duty_cycles = [0.5, 0.5, 0.25, 0.35, 0.35, 0.35, 0.35]

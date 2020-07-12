@@ -1,10 +1,9 @@
 register tutorial
 =================
 
-Let's describe register
+Let's describe some register
 
-.. include:: tutorial_step11.rst
-.. include:: tutorial_step12.rst
+
 
 
 .. raw:: html

@@ -1,0 +1,26 @@
+clk:
+    wave: "p..Pp..P"
+    slewing: 0
+Master:
+    io_address:
+        wave: "x3.x4..x"
+        data:
+            - "A1"
+            - "A2"
+    io_wdata:
+        wave: "x3.x...."
+        data: "D1"
+    control:
+        io_write:
+            wave: "01.0...."
+        io_read:
+            wave: "0...1..0"
+spacer:
+    wave: ""
+Slave:
+    io_rdata:
+        wave: "x.....4x"
+        data: "Q2"
+    control:
+        io_valid:
+          wave: "x01x0.1x"

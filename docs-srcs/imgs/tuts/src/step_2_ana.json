@@ -1,0 +1,72 @@
+{signal: [
+        {name: "mcu_clk", wave: "P", repeat: 10
+        },
+        {name: "dac", wave: "c", repeat: 10, slewing: 32, vscale: 4, overlay: true,
+    stroke: [
+                0,
+                0,
+                255,
+                255
+            ],
+            "stroke-dasharray": [
+                1,
+                3
+            ], 
+    fill: [
+                0,
+                0,
+                255,
+                255
+            ],
+            "font-size": "9pt", order: 2, analogue: [
+                "VDDA*512/1024",
+                "VDDA*256/1024",
+                "VDDA*384/1024",
+                "VDDA*320/1024",
+                "VDDA*352/1024",
+                "VDDA*336/1024",
+                "VDDA*344/1024",
+                "VDDA*340/1024",
+                "VDDA*342/1024",
+                "VDDA*341/1024"
+            ]
+        },
+        {name: "vin", wave: "0a........", vscale: 4, overlay: true,
+    stroke: "#F00",
+            "stroke-dasharray": [
+                5,
+                3,
+                1,
+                5
+            ],
+            "stroke-width": 1.5,
+    fill: "rgb(255, 0, 0)",
+            "font-size": "0.4em", order: 3, analogue: [
+                "[(t, (VDDA/3)*(1-exp(-t/3))) for t in time]"
+            ]
+        },
+        {name: "vmax", wave: "1.........", vscale: 4, order: 1, overlay: true
+        },
+        {name: "vmin", wave: "l.........", vscale: 4, order: 4
+        },
+        {name: "dac_ref", wave: "s", repeat: 10, slewing: 32, vscale: 4,
+    stroke: "#0000FFAA",
+            "stroke-dasharray": [
+                1,
+                3
+            ],
+    fill: "#0000FF", order: 2, analogue: [
+                "VDDA*512/1024",
+                "VDDA*256/1024",
+                "VDDA*384/1024",
+                "VDDA*320/1024",
+                "VDDA*352/1024",
+                "VDDA*336/1024",
+                "VDDA*344/1024",
+                "VDDA*340/1024",
+                "VDDA*342/1024",
+                "VDDA*341/1024"
+            ]
+        }
+    ]
+}

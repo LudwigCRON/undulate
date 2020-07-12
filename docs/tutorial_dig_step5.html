@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>periods and phase &mdash; Undulate 0.0.4 documentation</title>
+  <title>periods, duty cycle, and phase &mdash; Undulate 0.0.4 documentation</title>
   
 
   
@@ -134,7 +134,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>periods and phase</li>
+      <li>periods, duty cycle, and phase</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -153,14 +153,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="periods-and-phase">
-<h1>periods and phase<a class="headerlink" href="#periods-and-phase" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="periods-duty-cycle-and-phase">
+<h1>periods, duty cycle, and phase<a class="headerlink" href="#periods-duty-cycle-and-phase" title="Permalink to this headline">¶</a></h1>
+<p>Let’s suppose you have a frequency divider in your circuits. The description of its signals
+can tremendously expand as the frequency ratio grows. The only variation is the <code class="docutils literal notranslate"><span class="pre">period</span></code>.</p>
+<p>For a pwm signal, the duty cycle will change from one cycle to another. It is somehow
+convenient to tell the list of <code class="docutils literal notranslate"><span class="pre">duty_cycles</span></code>.</p>
+<p>And for inter-chip communication it is interresting to delay the clock with respect to the
+data sent. In other term, it is the <code class="docutils literal notranslate"><span class="pre">phase</span></code> of the signal which need to be changed.</p>
 <div class="tabs docutils container">
 <a class="tab-button" href="#step_5_jsonml">jsonml</a>
 <a class="tab-button" href="#step_5_yaml">yaml</a>
 <a class="tab-button" href="#step_5_toml">toml</a><div class="tab-content docutils container" id="step-5-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span> <span class="nx">period</span><span class="o">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x.3x=x4x5x=x5x=x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;RST NOP CAS INC NOP NOP NOP&quot;</span><span class="p">,</span> <span class="nx">phase</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mi">8</span><span class="p">,</span> <span class="nx">period</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">duty_cycles</span><span class="o">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]}</span>
+<span class="p">]}</span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -170,7 +180,19 @@
 <img alt="./_images/step5_dig-json.svg" src="./_images/step5_dig-json.svg" /></div>
 <div class="tab-content docutils container" id="step-5-yaml">
 <p>set the content of the file to</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">clk</span><span class="p">:</span>
+    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;P&quot;</span>
+    <span class="nt">repeat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
+    <span class="nt">period</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">data</span><span class="p">:</span>
+    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;x.3x=x4x=x=x=x=x&quot;</span>
+    <span class="nt">data</span><span class="p">:</span> <span class="s">&quot;RST</span><span class="nv"> </span><span class="s">NOP</span><span class="nv"> </span><span class="s">CAS</span><span class="nv"> </span><span class="s">INC</span><span class="nv"> </span><span class="s">NOP</span><span class="nv"> </span><span class="s">NOP</span><span class="nv"> </span><span class="s">NOP&quot;</span>
+    <span class="nt">phase</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+<span class="nt">Q</span><span class="p">:</span>
+    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;p&quot;</span>
+    <span class="nt">repeat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
+    <span class="nt">period</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+    <span class="nt">duty_cycles</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0.5</span><span class="p p-Indicator">,</span> <span class="nv">0.5</span><span class="p p-Indicator">,</span> <span class="nv">0.25</span><span class="p p-Indicator">,</span> <span class="nv">0.35</span><span class="p p-Indicator">,</span> <span class="nv">0.35</span><span class="p p-Indicator">,</span> <span class="nv">0.35</span><span class="p p-Indicator">,</span> <span class="nv">0.35</span><span class="p p-Indicator">]</span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -180,7 +202,18 @@
 <img alt="./_images/step5_dig-yaml.svg" src="./_images/step5_dig-yaml.svg" /></div>
 <div class="tab-content docutils container" id="step-5-toml">
 <p>set the content of the file to</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">clk</span><span class="p">.</span><span class="n">wave</span>   <span class="o">=</span> <span class="s">&quot;P&quot;</span>
+<span class="n">clk</span><span class="p">.</span><span class="n">repeat</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">clk</span><span class="p">.</span><span class="n">period</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">data</span><span class="p">.</span><span class="n">wave</span>  <span class="o">=</span> <span class="s">&quot;x.3x=x4x=x=x=x=x&quot;</span>
+<span class="n">data</span><span class="p">.</span><span class="n">data</span>  <span class="o">=</span> <span class="s">&quot;RST NOP CAS INC NOP NOP NOP&quot;</span>
+<span class="n">data</span><span class="p">.</span><span class="n">phase</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">Q</span><span class="p">.</span><span class="n">wave</span>     <span class="o">=</span> <span class="s">&quot;p&quot;</span>
+<span class="n">Q</span><span class="p">.</span><span class="n">repeat</span>   <span class="o">=</span> <span class="mi">8</span>
+<span class="n">Q</span><span class="p">.</span><span class="n">period</span>   <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Q</span><span class="p">.</span><span class="n">duty_cycles</span> <span class="o">=</span> <span class="k">[0.5, 0.5, 0.25, 0.35, 0.35, 0.35, 0.35]</span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -188,6 +221,27 @@
 </pre></div>
 </div>
 <img alt="./_images/step5_dig-toml.svg" src="./_images/step5_dig-toml.svg" /></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For repetitive patterns, use <code class="docutils literal notranslate"><span class="pre">repeat</span></code> with the number of repetition you desire.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>you desire to change the period from one cycle to another, use <code class="docutils literal notranslate"><span class="pre">periods</span></code> with
+a list of scaling factor as done for <code class="docutils literal notranslate"><span class="pre">duty_cycles</span></code>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">my_signal</span><span class="p">:</span>
+    <span class="nt">periods</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0.25</span><span class="p p-Indicator">,</span> <span class="nv">0.5</span><span class="p p-Indicator">,</span> <span class="nv">0.75</span><span class="p p-Indicator">,</span> <span class="nv">1</span><span class="p p-Indicator">,</span> <span class="nv">1.25</span><span class="p p-Indicator">,</span> <span class="nv">1.5</span><span class="p p-Indicator">,</span> <span class="nv">2</span><span class="p p-Indicator">]</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you need to advance a signal rather than delaying it, use a negative value for <code class="docutils literal notranslate"><span class="pre">phase</span></code>.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">my_signal</span><span class="p">:</span>
+    <span class="nt">phase</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-0.2</span>
+</pre></div>
+</div>
 </div>
 </div>
 

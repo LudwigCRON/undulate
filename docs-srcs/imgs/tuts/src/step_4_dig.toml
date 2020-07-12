@@ -1,0 +1,19 @@
+clk.wave = "p..Pp..P"
+clk.slewing = 0
+
+[Master]
+io_address.wave       = "x3.x4..x"
+io_wdata.wave         = "x3.x...."
+control.io_write.wave = "01.0...."
+control.io_read.wave  = "0...1..0"
+
+io_address.data = "A1 A2"
+io_wdata.data   = "D1"
+
+spacer.wave = ""
+
+[Slave]
+io_rdata.wave         = "x.....4x"
+control.io_valid.wave = "x01x0.1x"
+
+io_rdata.data = "Q2"
