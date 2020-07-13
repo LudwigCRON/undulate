@@ -18,7 +18,7 @@
             scale="3" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
     <def>
-        <path id="vertical-path" fill="none" stroke="red" d="M48,48 L48,420" />
+        <path id="vertical-path" fill="none" stroke="red" d="M48,128 L48,420" />
     </def>
     <g style="filter: url(#displacementFilter)">
         <path class="cartouche" d="M0,48 Q0,0 48,0 96,0 96,48 L96,450 Q96,498 48,498 0,498 0,450z" />
@@ -35,7 +35,7 @@
         <rect class="cartouche-jonction" x="60" y="494" width="4" height="20" rx="2" ry="2" />
         <rect class="cartouche-jonction" x="64" y="492" width="4" height="22" rx="2" ry="2" />
         <rect class="cartouche-jonction" x="68" y="490" width="4" height="24" rx="2" ry="2" />
-        <text class="cartouche-text" x="48" y="64">
+        <text class="cartouche-text">
             <textPath href="#vertical-path" method="strech" spacing="auto">
                 Undulate
             </textPath>
