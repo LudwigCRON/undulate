@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>&lt;no title&gt; &mdash; Undulate 0.0.4 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module.html">4. Undulate</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>&lt;no title&gt;</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_reg_step1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>A register is a combination of flip-flops storing configurations,
+flags, or triggers. A particular value in a register is called a field,
+and a register is the concatenation of several field.</p>
+<p>A common file format for exchange of information
+between digital and software teams is needed. Wavedrom made a
+proposal by generating an image from a textual representation.</p>
+<p>In this section we present the implementation of the Wavedrom proposal.
+Each field is described by the following information:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>a name</p></li>
+<li><p>the number of bits of this field</p></li>
+<li><p>an attribute giving extra information to it</p></li>
+<li><p>a type</p></li>
+</ul>
+</div></blockquote>
+<p>And a register is an ordered array of fields as represented below.</p>
+<div class="tabs docutils container">
+<a class="tab-button" href="#step_1_jsonml">jsonml</a>
+<a class="tab-button" href="#step_1_yaml">yaml</a>
+<a class="tab-button" href="#step_1_toml">toml</a><div class="tab-content docutils container" id="step-1-jsonml">
+<p>set the content of the file to</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">reg</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="mh">0x37</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;OPIVI&#39;</span><span class="p">]},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;vd&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;simm5&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mi">5</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;vs2&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mi">2</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;vm&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">6</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;funct6&#39;</span><span class="p">},</span>
+<span class="p">]}</span>
+</pre></div>
+</div>
+<p>then generate an image with undulate</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -r -i step_1_reg.json -o step_1_reg.svg
+</pre></div>
+</div>
+<img alt="./_images/step1_reg-json.svg" src="./_images/step1_reg-json.svg" /></div>
+<div class="tab-content docutils container" id="step-1-yaml">
+<p>set the content of the file to</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">reg</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">7</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0x37</span>
+      <span class="nt">attr</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;OPIVI&#39;</span><span class="p p-Indicator">]</span>
+    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;vd&#39;</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;simm5&#39;</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;vs2&#39;</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;vm&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">6</span>
+      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;funct6&#39;</span>
+</pre></div>
+</div>
+<p>then generate an image with undulate</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -r -i step_1_reg.yaml -o step_1_reg.svg
+</pre></div>
+</div>
+<img alt="./_images/step1_reg-yaml.svg" src="./_images/step1_reg-yaml.svg" /></div>
+<div class="tab-content docutils container" id="step-1-toml">
+<p>set the content of the file to</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[[reg]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="mi">0</span><span class="n">x37</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">attr</span> <span class="o">=</span> <span class="k">[&#39;OPIVI&#39;]</span>
+
+<span class="k">[[reg]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;vd&#39;</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">type</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">[[reg]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="k">[[reg]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;simm5&#39;</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">type</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">[[reg]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;vs2&#39;</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">type</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">[[reg]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;vm&#39;</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">[[reg]]</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;funct6&#39;</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>then generate an image with undulate</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -r -i step_1_reg.toml -o step_1_reg.svg
+</pre></div>
+</div>
+<img alt="./_images/step1_reg-toml.svg" src="./_images/step1_reg-toml.svg" /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that a name set to a number is converted into binary to zero
+padded if necessary to fit the size of a bus.</p>
+<p>However, the use of number as a name is only useful to illustrate
+a specific configuration or state.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the coloration of a specific field, it is definied by <code class="docutils literal notranslate"><span class="pre">type</span></code>.
+The number of type and the color used is identical to the data
+representation for a signal (signal.wave = “=23456789”).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you desire to remove the dashed lines in the background, add a
+config section at the end like as underneath. Note this is also true
+for previous section of the tutorial.</p>
+<div class="tabs docutils container">
+<a class="tab-button" href="#tip_1_jsonml">jsonml</a>
+<a class="tab-button" href="#tip_1_yaml">yaml</a>
+<a class="tab-button" href="#tip_1_toml">toml</a><div class="tab-content docutils container" id="tip-1-jsonml">
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">config</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">no_ticks</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tip-1-yaml">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">config</span><span class="p">:</span>
+  <span class="nt">no_ticks</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</div>
+<div class="tab-content docutils container" id="tip-1-toml">
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="p">.</span><span class="n">no_ticks</span> <span class="o">=</span> <span class="kc">true</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Ludwig CRON
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -3,7 +3,8 @@ register tutorial
 
 Let's describe some register
 
-
+.. include:: tutorial_reg_step1.rst
+.. include:: tutorial_reg_step2.rst
 
 
 .. raw:: html

@@ -1,0 +1,48 @@
+[[control]]
+bits = 7
+name = 0x07
+attr = [
+  'VLxU,VLE zero-extended',
+  'VLxU,VLE zero-extended, fault-only-first',
+  'VLxU sign-extended',
+  'VLxU sign-extended, fault-only-first'
+]
+
+[[control]]
+bits = 5
+name = 'vd'
+attr = 'destination of load'
+type = 5
+regpos = 8
+
+[[control]]
+bits = 3
+name = 'width'
+
+[[control]]
+bits = 5
+name = 'rs1'
+attr = 'base address'
+type = 4
+
+[[control]]
+bits = 5
+name = 'lumop'
+attr = [0, 16, 0, 16]
+type = 3
+
+[[control]]
+bits = 1
+name = 'vm'
+
+[[control]]
+bits = 3
+name = 'mop'
+attr = [0, 0, 4, 4]
+
+[[control]]
+bits = 3
+name = 'nf'
+regpos = 32
+
+config.no_ticks = true

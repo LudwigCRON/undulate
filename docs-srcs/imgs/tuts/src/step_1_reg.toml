@@ -1,0 +1,31 @@
+[[reg]]
+name = 0x37
+bits = 7
+attr = ['OPIVI']
+
+[[reg]]
+name = 'vd'
+bits = 5
+type = 2
+
+[[reg]]
+name = 3
+bits = 3
+
+[[reg]]
+name = 'simm5'
+bits = 5
+type = 5
+
+[[reg]]
+name = 'vs2'
+bits = 5
+type = 2
+
+[[reg]]
+name = 'vm'
+bits = 1
+
+[[reg]]
+name = 'funct6'
+bits = 6
