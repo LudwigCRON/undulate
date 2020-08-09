@@ -537,14 +537,14 @@ class Up(undulate.Brick):
     def __init__(self, **kwargs):
         undulate.Brick.__init__(self, **kwargs)
         self.first_y = self.height
-        self.last_y = self.height if self.last_y is None else self.last_y
+        self.last_y = 0.0 if self.last_y is None else self.last_y
         self.splines.append(
             [
                 "path",
                 ("M", 0, self.last_y),
                 ("L", 3, self.last_y),
                 ("C", 3 + self.slewing, self.last_y),
-                ("", 3 + self.slewing, 0),
+                ("", 3 + self.slewing, self.height - self.last_y),
                 ("", min(self.width, 20), 0),
                 ("L", self.width, 0),
             ]

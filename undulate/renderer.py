@@ -313,9 +313,17 @@ class Renderer:
                         # get identifier
                         nodes.extend(
                             [
-                                (s[0] - phase + slewing * 0.5, _y, chain[1 + next(j)])
+                                (
+                                    s[0] - phase + slewing * 0.5,
+                                    _y + brick_height / 2,
+                                    chain[1 + next(j)],
+                                )
                                 if not s[2].isalpha()
-                                else (s[0] - phase + slewing * 0.5, _y, s[2])
+                                else (
+                                    s[0] - phase + slewing * 0.5,
+                                    _y + brick_height / 2,
+                                    s[2],
+                                )
                                 for s in ni
                             ]
                         )
@@ -346,16 +354,17 @@ class Renderer:
 
     @staticmethod
     def adjust_y(y, factor: float = 1.0, separation: float = 0.25):
-        total_y, k = 0, 0
+        total_y, k, s = 0, 0, 0
         for dy in Renderer.y_steps:
             if dy == "t":
                 k -= 1
-                continue
-            if k + 1 >= floor(y - 1 if y > 1 else 0):
+                s += 1
+            elif k + 1 > floor(y):
                 break
-            k += 1
-            total_y += dy
-        scale = factor + separation
+            else:
+                k += 1
+                total_y += dy
+        scale = factor + separation * 0
         return total_y + (y - k) * scale
 
     @staticmethod
@@ -514,8 +523,8 @@ class Renderer:
                 dx = -len(text) / 2 * txt_font_size
                 shape = "->"
             # add offset for delay of data and middle of brick vertical
-            s = s[0] + xmin, s[1] + brick_height * 0.5
-            e = e[0] + xmin, e[1] + brick_height * 0.5
+            s = s[0] + xmin, s[1]
+            e = e[0] + xmin, e[1]
             # if shape and shape[0] == '<':
             #    s = s[0]-3.5, s[1]
             # if shape and shape[-1] == '>':
