@@ -192,8 +192,14 @@ def register_to_wavelane(obj: dict) -> object:
     convert a register definition as a wavelane
     """
     reg = undulate.Register()
-    for field in obj.get("reg", []):
+    # name of the register
+    reg.name = [name for name in obj.keys() if name not in ["config", "head", "foot"]][-1]
+    for field in obj.get(reg.name, []):
         reg.push_field(field)
+    # default value from wavedrom format
+    if reg.name == "reg":
+        reg.name = ""
+    reg.config = obj.get("config", {})
     return reg.to_wavelane()
 
 

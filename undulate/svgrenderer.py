@@ -200,7 +200,6 @@ class SvgRenderer(Renderer):
         lkeys, width, height, n = self.size(wavelanes, **kwargs)
         # remove offset for the name in register
         if is_reg:
-            lkeys = -1
             height += n * 12
         with open(filename, "w+") as fp:
             fp.write(

@@ -271,7 +271,6 @@ class CairoRenderer(Renderer):
         lkeys, width, height, n = self.size(wavelanes, **kwargs)
         # remove offset for the name in register
         if is_reg:
-            lkeys = -1
             height += n * 12
         # select appropriate surface
         w, h = (width + lkeys * 6.5 + 11), height

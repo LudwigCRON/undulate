@@ -94,5 +94,8 @@ coverage:
 	coverage run -a -m $(WAVEFORM).__init__ -h
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/adcec.jsonml" -f svg -o "${TESTPATH}/output/adcec.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/local_config_nodes.yaml" -f svg -o "${TESTPATH}/output/local_config_nodes.svg"
+	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/reg_control.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg"
+	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/reg_err5.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg"; test $$? -eq 5
+	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/reg_err6.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg"; test $$? -eq 6
 	coverage report
 	coverage html

@@ -816,6 +816,7 @@ class Renderer:
                 attr                (str)
                 type                (str)
                 pos                 (int)
+                styles              (str)
 
         """
         # calculate total length of the wavelance
@@ -834,6 +835,7 @@ class Renderer:
         attributes = kwargs.get("attr", [])
         reg_pos = kwargs.get("regpos", [])
         reg_types = kwargs.get("types", [])
+        reg_styles = kwargs.get("styles", [])
         # computed properties
         ign_trans = []
         follows_data = []
@@ -843,6 +845,8 @@ class Renderer:
             data = data.split(" ")
         if isinstance(reg_pos, str):
             reg_pos = reg_pos.split(" ")
+        if isinstance(reg_styles, str):
+            reg_styles = reg_styles.split(" ")
         # prepare output
         _wavelane, prev_brick = [], None
         last_valid_brick, last_valid_brick_idx = None, 0
@@ -966,6 +970,7 @@ class Renderer:
             "attribute",
             "reg_pos",
             "reg_type",
+            "reg_style",
             "phase",
             "slewing",
             "ignore_transition",
@@ -979,6 +984,7 @@ class Renderer:
             att,
             rp,
             reg_types,
+            reg_styles,
             phases,
             slewings,
             ign_trans,
@@ -1274,6 +1280,8 @@ class Renderer:
                 # annotations, config, edges, ... are list
                 # and not parsed on the fly
                 if not isinstance(wavelanes[wavetitle], dict):
+                    continue
+                if wavetitle in EXCLUDED_NAMED_GROUPS:
                     continue
                 # signals and registers are in a dict
                 # height of a single waveform

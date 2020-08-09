@@ -16,15 +16,14 @@ class Register:
     with field informations
     """
 
-    __slots__ = ["name", "description", "fields", "__counter"]
+    __slots__ = ["name", "description", "fields", "config"]
 
     def __init__(self):
         # default value
         self.name = ""
         self.description = ""
         self.fields = []
-        # for auto increment field start position
-        self.__counter = 0
+        self.config = {}
 
     def push_field(self, field):
         """
@@ -34,40 +33,56 @@ class Register:
         # add to the stack
         if isinstance(field, dict):
             f = Field.from_dict(field)
-        # elif isinstance(field, Field):
-        #    f = field
         else:
-            raise Exception("Unsupported %s of field" % type(field))
-        f.start = self.__counter
+            print("Unsupported %s of field" % type(field))
+            exit(5)
         self.fields.append(f)
-        # increment counter
-        if f:
-            self.__counter += f.width
 
     def to_wavelane(self):
         """
         convert the description of a register into a wavelane
         """
+        # look for unused field and position
+        unuseds, pos = [], 0
+        for i, f in enumerate(self.fields):
+            # start position is given and overwrite
+            if f.start and pos > f.start:
+                print("check position of %s as overlap occurs" % f.name)
+                exit(6)
+            # start position and no overlap -> unused field
+            if f.start and f.start > 0 and pos < f.start:
+                width = f.start - pos
+                unuseds.append((i, pos, width))
+                pos += width
+            # default behaviour
+            if not f.start:
+                f.start = pos if i > 0 else 0
+            pos += f.width
+        # insert unused field in fields
+        for i, pos, width in unuseds[::-1]:
+            self.fields.insert(
+                i, Field.from_dict({"description": "unused", "width": width, "regpos": pos})
+            )
+        # generate wavelane
         wave = "".join([field.wave for field in self.fields[::-1]])
         data = " ".join([field.data for field in self.fields[::-1]])
         attr = [(field.width, field.attributes) for field in self.fields[::-1]]
-        _type = []
+        type, pos, styles = [], [], []
         for field in self.fields[::-1]:
-            _type.extend([field.type] * field.width)
-        # calculate position of extremities
-        pos = [0]
-        for f in self.fields:
-            if f.width > 1:
-                pos.append(f.width - 1)
-            pos.append(1)
-        pos = list(accumulate(pos[:-1]))[::-1]
-        ans = {}
+            type.extend([field.type] * field.width)
+            if field.width > 1:
+                pos.extend([field.start + field.width - 1, field.start])
+            else:
+                pos.append(field.start)
+            styles.extend([field.style] * field.width)
+        ans = {"config": self.config}
         ans[self.name] = {
             "wave": wave,
             "data": data,
             "regpos": pos,
             "attr": attr,
-            "types": _type,
+            "types": type,
+            "styles": styles,
         }
         return ans
 
@@ -89,10 +104,10 @@ class FieldStart(undulate.Brick):
                 (self.width, self.height / 4),
             ]
         )
-        if not kwargs.get("style", None) is None:
+        if kwargs.get("reg_style") is not None:
             self.polygons.append(
                 [
-                    "%s-polygon" % kwargs.get("style", ""),
+                    kwargs.get("reg_style") or "s2-polygon",
                     (self.width * _attrs[0], self.height),
                     (0, self.height),
                     (0, self.height / 4),
@@ -190,10 +205,10 @@ class FieldBit(undulate.Brick):
                 (0, self.height / 4),
             ]
         )
-        if not kwargs.get("style", None) is None:
+        if kwargs.get("reg_style") is not None:
             self.polygons.append(
                 [
-                    "%s-polygon" % kwargs.get("style", ""),
+                    kwargs.get("reg_style") or "s2-polygon",
                     (self.width, self.height),
                     (0, self.height),
                     (0, self.height / 4),
@@ -231,7 +246,7 @@ class Field:
         # default value
         self.name = ""
         self.description = ""
-        self.start = 0
+        self.start = -1
         self.width = 1
         self.attributes = []
         self.wave = ""
@@ -250,6 +265,14 @@ class Field:
         f.width = d.get("width", d.get("bits", 1))
         f.attributes = d.get("attributes", d.get("attr", None))
         f.type = d.get("type", None)
+        f.style = (
+            "s%s-polygon" % f.type
+            if f.type
+            else "hatch"
+            if f.description == "unused"
+            else ""
+        )
+        f.start = d.get("regpos", None)
         # convert attributes for string and int
         if isinstance(f.attributes, str):
             f.attributes = [f.attributes]
