@@ -36,16 +36,17 @@ ERROR_MSG = {
     "YAML_IMPORT": "ERROR: To read yaml file PyYAML is required. Run 'pip install pyyaml'",
     "TOML_IMPORT": "ERROR: To read toml file toml is required. Run 'pip install toml'",
     "FILE_NOT_FOUND": "ERROR: %s is not found",
+    "NO_FILE": "ERROR: an input file shall be given",
     "MISSING_GRP_NAME": "ERROR: a group of wave should always have a name property",
     "UNSUPPORTED_FORMAT": (
-        "ERROR: this file format is not yet supported\n"
-        "For input:\n %s"
-        "For output:\n %s"
+        "ERROR: this file format is not yet supported\n" "choose one of the following:\n %s"
     )
-    % (
-        "".join(["\t- %s\n" % f for f in SUPPORTED_FORMAT]),
-        "".join(["\t- %s\n" % f for f in SUPPORTED_RENDER]),
-    ),
+    % ("".join(["\t- %s\n" % f for f in SUPPORTED_FORMAT]),),
+    "UNSUPPORTED_ENGINE": (
+        "ERROR: this rendering engine is not yet supported\n"
+        "choose one of the following:\n %s"
+    )
+    % ("".join(["\t- %s\n" % f for f in SUPPORTED_RENDER]),),
 }
 
 SPACER_COUNT = 0
@@ -140,7 +141,7 @@ def _prune_json(filepath: str):
                     _parse_wavelane(sig) if isinstance(sig, dict) else _parse_group(sig)
                 )
                 if n in ans.keys():
-                    print("Signal %s is duplicated" % n)
+                    print("Signal %s is duplicated" % n, file=sys.stderr)
                     while n in ans:
                         n += " "
                 ans[n] = wave
@@ -155,16 +156,14 @@ def parse(filepath: str) -> (bool, object):
     """
     err, ans = False, {}
     # file existence
-    err = filepath is None or not os.path.exists(filepath)
-    if err:
-        log_Error(ERROR_MSG["FILE_NOT_FOUND"] % filepath)
-        return (err, None)
+    if filepath is None:
+        log_Fatal(ERROR_MSG["NO_FILE"])
+    if not os.path.exists(filepath):
+        log_Fatal(ERROR_MSG["FILE_NOT_FOUND"] % filepath)
     _, ext = os.path.splitext(filepath)
     # supported extension
-    err = not any([ext in cat for cat in SUPPORTED_FORMAT.values()])
-    if err:
-        log_Error(ERROR_MSG["UNSUPPORTED_FORMAT"])
-        return (err, None)
+    if not any([ext in cat for cat in SUPPORTED_FORMAT.values()]):
+        log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
     # call appropriate parser
     if ext in SUPPORTED_FORMAT["json"]:
         ans.update(_prune_json(filepath))
@@ -175,7 +174,7 @@ def parse(filepath: str) -> (bool, object):
             with open(filepath, "r+") as fp:
                 ans = yaml.load(fp, Loader=yaml.Loader)
         except ImportError:
-            log_Error(ERROR_MSG["YAML_IMPORT"])
+            log_Fatal(ERROR_MSG["YAML_IMPORT"])
     else:
         try:
             import toml
@@ -183,7 +182,7 @@ def parse(filepath: str) -> (bool, object):
             with open(filepath, "r+") as fp:
                 ans = toml.load(fp)
         except ImportError:
-            log_Error(ERROR_MSG["TOML_IMPORT"])
+            log_Fatal(ERROR_MSG["TOML_IMPORT"])
     return (err, ans if not err else None)
 
 
@@ -211,13 +210,14 @@ def cli_main(
     dpi: float = 150.0,
     cb_help=print,
 ):
+    # supported rendering engine
+    if not file_format.lower() in SUPPORTED_RENDER:
+        log_Fatal(ERROR_MSG["UNSUPPORTED_ENGINE"])
     # check the input file
     err, obj = parse(input_path)
     if err:
         cb_help()
         exit(2)
-    if not file_format.lower() in SUPPORTED_RENDER:
-        log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
     # for debug pupose
     if file_format.lower() == "json":
         pprint(obj)
@@ -225,6 +225,16 @@ def cli_main(
     else:
         if is_reg:
             obj = register_to_wavelane(obj)
+        # default output file
+        if output_path is None:
+            file_name, ext = os.path.splitext(input_path)
+            file_name = os.path.basename(file_name)
+            ext = ext if file_format == "svg" else file_format.split("-")[-1]
+            output_path = "./%s.%s" % (file_name, ext)
+            print(
+                "WARNING: not output file given. Generated at %s" % output_path,
+                file=sys.stderr,
+            )
         # select the renderer engine
         if file_format == "svg":
             renderer = undulate.SvgRenderer()
@@ -240,4 +250,5 @@ def cli_main(
             )
         except Exception as e:
             traceback.print_tb(e.__traceback__)
+            print(e)
             exit(3)

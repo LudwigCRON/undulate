@@ -31,7 +31,7 @@ def main():
         "-i", "--input", help="path to the input text file", default=None, type=str
     )
     parser.add_argument(
-        "-f", "--format", help="file format of the output", default="svg", type=str
+        "-f", "--format", help="file format of the output", default="cairo-png", type=str
     )
     parser.add_argument(
         "-r", "--is_reg", help="is register description", action="store_true", default=False
@@ -46,9 +46,10 @@ def main():
     parser.add_argument(
         "-o", "--output", help="path to the output file", default=None, type=str
     )
+    parser.add_argument("mangled_input", nargs="?", default=None, type=str)
     cli_args = parser.parse_args()
     cli_main(
-        cli_args.input,
+        cli_args.input or cli_args.mangled_input,
         cli_args.output,
         cli_args.format,
         cli_args.is_reg,

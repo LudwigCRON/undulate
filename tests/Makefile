@@ -1,4 +1,4 @@
-TESTPATH=$(shell pwd)
+TESTPATH=.
 WAVEFORM=undulate
 
 .PHONY: new legacy internal cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml internal-svg internal-cairo-svg coverage
@@ -28,10 +28,10 @@ new: wavetest.json wavetest.yaml
 	@echo "New Done"
 
 internal-svg:
-	./test.py -f svg
+	python ./test.py -f svg
 
 internal-cairo-svg:
-	./test.py -f cairo-svg
+	python ./test.py -f cairo-svg
 
 internal: internal-svg internal-cairo-svg
 
