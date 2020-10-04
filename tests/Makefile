@@ -83,14 +83,14 @@ coverage:
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/annotation.yaml" -f svg -o "${TESTPATH}/output/annotation.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/overlay.toml" -f cairo-svg -o "${TESTPATH}/output/overlay-cairo.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/overlay.toml" -f svg -o "${TESTPATH}/output/overlay.svg"
-	coverage run -a -m $(WAVEFORM).__init__ -f doc; test $$? -eq 2
+	coverage run -a -m $(WAVEFORM).__init__ -f doc; test $$? -eq 1
 	coverage run -a -m $(WAVEFORM).__init__ -f svg -i "${TESTPATH}/inexisting_symbol.toml" -o "${TESTPATH}/inexisting_symbol.svg"; test $$? -eq 3
 	coverage run -a -m $(WAVEFORM).__init__ -f doc -i "${TESTPATH}/overlay.toml"; test $$? -eq 1
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/wrong_ext.c" -f json; test $$? -eq 2
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/missing_grp.jsonml" -f json; test $$? -eq 1
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/overlay.toml" -f json; test $$? -eq 0
-	coverage run -a -m $(WAVEFORM).__init__; test $$? -eq 2
-	coverage run -a -m $(WAVEFORM).__init__ -i; test $$? -eq 2
+	coverage run -a -m $(WAVEFORM).__init__; test $$? -eq 1
+	coverage run -a -m $(WAVEFORM).__init__ -i; test $$? -eq 1
 	coverage run -a -m $(WAVEFORM).__init__ -h
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/adcec.jsonml" -f svg -o "${TESTPATH}/output/adcec.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/local_config_nodes.yaml" -f svg -o "${TESTPATH}/output/local_config_nodes.svg"
