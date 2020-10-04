@@ -90,7 +90,7 @@ coverage:
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/missing_grp.jsonml" -f json; test $$? -eq 1
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/overlay.toml" -f json; test $$? -eq 0
 	coverage run -a -m $(WAVEFORM).__init__; test $$? -eq 1
-	coverage run -a -m $(WAVEFORM).__init__ -i; test $$? -eq 1
+	coverage run -a -m $(WAVEFORM).__init__ -i; test $$? -eq 2
 	coverage run -a -m $(WAVEFORM).__init__ -h
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/adcec.jsonml" -f svg -o "${TESTPATH}/output/adcec.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/local_config_nodes.yaml" -f svg -o "${TESTPATH}/output/local_config_nodes.svg"
