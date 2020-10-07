@@ -211,8 +211,6 @@ def generate_brick(symbol: str, **kwargs) -> dict:
     if not brick:
         brick = undulate.generate_register_symbol(symbol, **kwargs)
     # no more context implemented
-    if not brick:
-        raise Exception(symbol)
     brick.symbol = symbol
     return brick
 

@@ -7,6 +7,7 @@ into different format
 """
 
 import re
+import sys
 import copy
 import undulate
 from .skin import style_in_kwargs, get_style, SizeUnit
@@ -854,6 +855,9 @@ class Renderer:
         # look for repetition '.' and for '|' time compression
         for i, b in enumerate(wavelane * repeat):
             brick = undulate.BRICKS.from_char(b)
+            if brick is None:
+                print("ERROR: unknown symbol '%s' used" % b, file=sys.stderr)
+                exit(3)
             is_duplicate = False
             new_brick = 0
             # check validity of the first brick

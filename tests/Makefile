@@ -28,10 +28,10 @@ new: wavetest.json wavetest.yaml
 	@echo "New Done"
 
 internal-svg:
-	python ./test.py -f svg
+	python ./test_wavedrom.py -f svg
 
 internal-cairo-svg:
-	python ./test.py -f cairo-svg
+	python ./test_wavedrom.py -f cairo-svg
 
 internal: internal-svg internal-cairo-svg
 
@@ -74,8 +74,8 @@ coverage:
 	coverage run -a -m $(WAVEFORM).__init__ -i ${TESTPATH}/wavetest.json -f cairo-eps -o ${TESTPATH}/output/$(subst .json,-json-cairo.eps,wavetest.json)
 	coverage run -a -m $(WAVEFORM).__init__ -i ${TESTPATH}/wavetest.json -f cairo-png -o ${TESTPATH}/output/$(subst .json,-json-cairo.png,wavetest.json)
 	coverage run -a -m $(WAVEFORM).__init__ -i ${TESTPATH}/wavetest.yaml -f cairo-pdf -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.pdf,wavetest.yaml)
-	coverage run -a ./test.py -f svg
-	coverage run -a ./test.py -f cairo-svg
+	coverage run -a ./test_wavedrom.py -f svg
+	coverage run -a ./test_wavedrom.py -f cairo-svg
 	coverage run -a -m $(WAVEFORM).__init__ -r -i "${TESTPATH}/reg-vl.jsonml" -f svg -o "${TESTPATH}/legacy/reg-vl-jsonml.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -r -i "${TESTPATH}/reg-opivi.jsonml" -f cairo-ps -o "${TESTPATH}/legacy/reg-opivi-jsonml-cairo.ps"
 	coverage run -a -m $(WAVEFORM).__init__ -r -i "${TESTPATH}/reg-vl.jsonml" -f cairo-png -o "${TESTPATH}/legacy/reg-vl-jsonml-cairo.png"
@@ -83,6 +83,16 @@ coverage:
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/annotation.yaml" -f svg -o "${TESTPATH}/output/annotation.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/overlay.toml" -f cairo-svg -o "${TESTPATH}/output/overlay-cairo.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/overlay.toml" -f svg -o "${TESTPATH}/output/overlay.svg"
+ifeq (${ISPWSH}, 1)
+	coverage run -a -m $(WAVEFORM).__init__ -f doc & python ./test.py $$LASTEXITCODE -eq 1
+	coverage run -a -m $(WAVEFORM).__init__ -f svg -i "${TESTPATH}/inexisting_symbol.toml" -o "${TESTPATH}/inexisting_symbol.svg" & python ./test.py $$LASTEXITCODE -eq 3
+	coverage run -a -m $(WAVEFORM).__init__ -f doc -i "${TESTPATH}/overlay.toml" & python ./test.py $$LASTEXITCODE -eq 1
+	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/wrong_ext.c" -f json & python ./test.py $$LASTEXITCODE -eq 1
+	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/missing_grp.jsonml" -f json &  python ./test.py $$LASTEXITCODE -eq 1
+	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/overlay.toml" -f json & python ./test.py $$LASTEXITCODE -eq 0
+	coverage run -a -m $(WAVEFORM).__init__ & python ./test.py $$LASTEXITCODE -eq 1
+	coverage run -a -m $(WAVEFORM).__init__ -i & python ./test.py $$LASTEXITCODE -eq 2
+else
 	coverage run -a -m $(WAVEFORM).__init__ -f doc; test $$? -eq 1
 	coverage run -a -m $(WAVEFORM).__init__ -f svg -i "${TESTPATH}/inexisting_symbol.toml" -o "${TESTPATH}/inexisting_symbol.svg"; test $$? -eq 3
 	coverage run -a -m $(WAVEFORM).__init__ -f doc -i "${TESTPATH}/overlay.toml"; test $$? -eq 1
@@ -91,11 +101,17 @@ coverage:
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/overlay.toml" -f json; test $$? -eq 0
 	coverage run -a -m $(WAVEFORM).__init__; test $$? -eq 1
 	coverage run -a -m $(WAVEFORM).__init__ -i; test $$? -eq 2
+endif
 	coverage run -a -m $(WAVEFORM).__init__ -h
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/adcec.jsonml" -f svg -o "${TESTPATH}/output/adcec.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/local_config_nodes.yaml" -f svg -o "${TESTPATH}/output/local_config_nodes.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/reg_control.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg"
+ifeq (${ISPWSH}, 1)
+	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/reg_err5.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg" & python ./test.py $$LASTEXITCODE -eq 5
+	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/reg_err6.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg" & python ./test.py $$LASTEXITCODE -eq 6
+else
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/reg_err5.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg"; test $$? -eq 5
 	coverage run -a -m $(WAVEFORM).__init__ -i "${TESTPATH}/reg_err6.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg"; test $$? -eq 6
+endif
 	coverage report
 	coverage html
