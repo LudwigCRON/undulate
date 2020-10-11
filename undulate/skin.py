@@ -9,6 +9,7 @@ stroke: color, width, opacity, linecap, linejoin, mitterlimit, dasharray, opacit
 
 colors should always be in rgba with value from 0—255
 """
+import sys
 from enum import Enum
 
 
@@ -41,6 +42,158 @@ class TextAlign(Enum):
     CENTER = 1
     RIGHT = 2
     JUSTIFY = 3
+
+
+class CSSTokenType(Enum):
+    RULES = 0
+    STRING = 1
+    SEP = 2
+    END_PROPERTY = 3
+    BLOCK_START = 4
+    BLOCK_END = 5
+    IGNORE = 6
+    UNKNOWN = 7
+    EOF = 8
+
+
+def css_tokenizer(stream):
+    """
+    read a character stream and gather them
+    to provide a token to the css parser
+    Args:
+        character line stream (FileStream/StringIO)
+
+    Returns:
+        Tuple(int,CSSTokenType,str):
+            line_number (int)
+            token_type (CSSTokenType)
+            token (str)
+    """
+    buf = []
+    in_string = False
+    in_block = False
+    mapping_table = {
+        " ": CSSTokenType.IGNORE,
+        "\t": CSSTokenType.IGNORE,
+        "\n": CSSTokenType.IGNORE,
+        ",": CSSTokenType.SEP,
+        ":": CSSTokenType.SEP,
+        "{": CSSTokenType.BLOCK_START,
+        "}": CSSTokenType.BLOCK_END,
+        ";": CSSTokenType.END_PROPERTY,
+    }
+    for i, line in enumerate(stream):
+        for c in line:
+            token = "".join(buf)
+            token_type = CSSTokenType.STRING if in_block else CSSTokenType.RULES
+            mc = mapping_table.get(c, CSSTokenType.UNKNOWN)
+            if c in "'\"":
+                in_string = not in_string
+            elif mc not in [CSSTokenType.IGNORE, CSSTokenType.UNKNOWN]:
+                if token:
+                    yield (i, token_type, token)
+                    buf = []
+                if mc == CSSTokenType.BLOCK_START:
+                    in_block = True
+                elif mc == CSSTokenType.BLOCK_END:
+                    in_block = False
+                yield (i, mapping_table.get(c), c)
+            elif not in_string and mc == CSSTokenType.IGNORE:
+                if token:
+                    yield (
+                        i,
+                        token_type,
+                        token,
+                    )
+                    buf = []
+            else:
+                buf.append(c)
+        if buf:
+            yield (i, CSSTokenType.STRING if in_block else CSSTokenType.RULES, "".join(buf))
+            buf = []
+    yield (-1, CSSTokenType.EOF, None)
+
+
+def css_parser(token_iter):
+    """
+    construct the style dictionnary from
+    an iterator of tokens
+    """
+
+    def expect(it, types):
+        try:
+            line_number, type, token = next(it)
+            if type not in types:
+                print(
+                    "ERROR: unexpected token '%s' at Line %d" % (token, line_number),
+                    file=sys.stderr,
+                )
+                exit(6)
+            return token
+        except StopIteration:
+            return None
+
+    def expect_multiple(it, types, until_types):
+        ans = []
+        try:
+            line_number, type, token = next(it)
+            while type in types:
+                ans.append(token)
+                line_number, type, token = next(it)
+            if type not in until_types:
+                print(
+                    "ERROR: unexpected token '%s' at Line %d" % (token, line_number),
+                    file=sys.stderr,
+                )
+                exit(7)
+            return ans, (line_number, type, token)
+        except StopIteration:
+            return None, None
+
+    def expect_property(it):
+        property_name = expect(it, [CSSTokenType.STRING, CSSTokenType.BLOCK_END])
+        if property_name is None:
+            return None, (-1, CSSTokenType.EOF, "")
+        if property_name == "}":
+            return None, (-1, CSSTokenType.BLOCK_END, "}")
+        expect(it, [CSSTokenType.SEP])
+        property_value, b = expect_multiple(
+            token_iter,
+            [CSSTokenType.STRING, CSSTokenType.SEP],
+            [CSSTokenType.END_PROPERTY],
+        )
+        return (property_name, property_value), b
+
+    def expect_rule(it):
+        style = {}
+        rule, _ = expect_multiple(
+            it,
+            [CSSTokenType.RULES, CSSTokenType.SEP],
+            [CSSTokenType.BLOCK_START, CSSTokenType.EOF],
+        )
+        if rule:
+            rule = [r for r in rule if r != ","]
+        else:
+            return None, None
+        end_type = CSSTokenType.UNKNOWN
+        while end_type != CSSTokenType.BLOCK_END:
+            property_or_empty, end_block = expect_property(it)
+            if property_or_empty:
+                property, value = property_or_empty
+                style[property] = value
+            if end_block:
+                end_type = end_block[1]
+        return rule, style
+
+    stylesheet = {}
+    rule = ""
+    while rule is not None:
+        rule, style = expect_rule(token_iter)
+        if rule:
+            for r in rule:
+                print(r, rule)
+                stylesheet[r] = style
+    return stylesheet
 
 
 # style definition for cairo renderer

@@ -1,0 +1,37 @@
+.data {
+    fill: rgba(0, 0, 0, 255);
+    font-size: 0.4em;
+    font-style: "normal";
+    font-variant: "normal";
+    font-weight: 500;
+    font-stretch: normal;
+    text-align: center;
+    font-family: "Fira Mono";
+    text-anchor: "middle";
+    dominant-baseline: "middle";
+    alignment-baseline: "central";
+}
+
+.arrow {fill: #000; stroke: none;}
+
+.tick {
+    stroke: #88888888;
+    stroke-width: 0.5;
+    stroke-dasharray: 1, 3;
+}
+
+.edge-arrow {fill: hsla(270 100% 100%)
+    ;
+    stroke: none
+    ; 
+    overflow: visible;
+}
+
+.edge, .edge-text {
+    font-family: "Fira Mono";
+    font-size: 0.625rem;
+    fill: rgb(0, 0, 0);
+    filter: "#solid";
+    transform: "translate(0, 2.5px)";
+    text-anchor: "middle";
+}
