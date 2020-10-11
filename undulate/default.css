@@ -1,7 +1,7 @@
 .title {
     fill: rgba(0, 65, 196, 255);
     font-weight: 500;
-    font-size: 0.5 em;
+    font-size: 0.5em;
     font-family: "Fira Mono";
     text-align: right;
     text-anchor: end;
@@ -11,7 +11,7 @@
 
 .text {
     fill: #000;
-    font-size: 0.9 em;
+    font-size: 0.9em;
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
@@ -22,7 +22,7 @@
 
 .attr {
     fill: #000;
-    font-size: 9 px;
+    font-size: 9px;
     font-style: normal;
     font-variant: normal;
     font-weight: 200;
@@ -56,7 +56,7 @@
 
 .data {
     fill: #000;
-    font-size: 0.4 em;
+    font-size: 0.4em;
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
@@ -111,8 +111,8 @@
 }
 
 .hide {
-    fill: (255, 255, 255, 255);
-    stroke: (255, 255, 255, 255);
+    fill: #fff;
+    stroke: #fff;
     stroke-width: 2;
 }
 
@@ -132,7 +132,7 @@
 
 .edge-text {
     font-family: "Fira Mono";
-    font-size: 0.625 em;
+    font-size: 0.625em;
     fill: #000;
     filter: "#solid";
     transform: "translate(0, 2.5px)";
@@ -210,7 +210,7 @@
 /**** registers specific ****/
 .reg-data {
     fill: #000;
-    font-size: 0.8 em;
+    font-size: 0.8em;
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
@@ -224,7 +224,7 @@
 
 .reg-pos {
     fill: #000;
-    font-size: 0.6 em;
+    font-size: 0.6em;
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
