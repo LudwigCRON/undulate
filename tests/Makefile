@@ -76,6 +76,8 @@ coverage:
 	coverage run -a -m $(WAVEFORM).__init__ -i ${TESTPATH}/wavetest.yaml -f cairo-pdf -o ${TESTPATH}/output/$(subst .yaml,-yaml-cairo.pdf,wavetest.yaml)
 	coverage run -a ./test_wavedrom.py -f svg
 	coverage run -a ./test_wavedrom.py -f cairo-svg
+	coverage run -a ./test_css.py
+	coverage run -a -m $(WAVEFORM).__init__ -i ${TESTPATH}/wavetest_alt.json -f cairo-png -s ${TESTPATH}/ut_css/overload.css -o ${TESTPATH}/output/$(subst .json,-json-cairo.png,wavetest_alt.json)
 	coverage run -a -m $(WAVEFORM).__init__ -r -i "${TESTPATH}/reg-vl.jsonml" -f svg -o "${TESTPATH}/legacy/reg-vl-jsonml.svg"
 	coverage run -a -m $(WAVEFORM).__init__ -r -i "${TESTPATH}/reg-opivi.jsonml" -f cairo-ps -o "${TESTPATH}/legacy/reg-opivi-jsonml-cairo.ps"
 	coverage run -a -m $(WAVEFORM).__init__ -r -i "${TESTPATH}/reg-vl.jsonml" -f cairo-png -o "${TESTPATH}/legacy/reg-vl-jsonml-cairo.png"
