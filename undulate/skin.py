@@ -573,7 +573,7 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
     generate an equivalent string for only
     one rule of the style
     """
-    ans = ".%s {" % rule if with_rule else ""
+    ans = ":root {" if rule == "root" else ".%s {" % rule if with_rule else ""
     # create repr of each property
     for prop, value in style.items():
         if value is None:
@@ -584,7 +584,7 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
         elif prop in ["fill", "stroke", "color"]:
             ans += "%s: rgba(%d, %d, %d, %d);" % (prop, *value)
         # font size
-        elif prop in ["font-size"]:
+        elif prop in ["font-size", "padding-top", "padding-bottom"]:
             v, unit = value
             if unit == SizeUnit.EM:
                 ans += "%s: %.3fem;" % (prop, v)
