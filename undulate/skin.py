@@ -99,14 +99,15 @@ def css_tokenizer(stream):
             elif prev_c == "*" and c == "/":
                 in_comment = False
             elif not in_comment and mc not in [CSSTokenType.IGNORE, CSSTokenType.UNKNOWN]:
-                if token:
+                if token and not (c == ":" and not in_block):
                     yield (i, token_type, token)
                     buf = []
                 if mc == CSSTokenType.BLOCK_START:
                     in_block = True
                 elif mc == CSSTokenType.BLOCK_END:
                     in_block = False
-                yield (i, mapping_table.get(c), c)
+                if not (c == ":" and not in_block):
+                    yield (i, mapping_table.get(c), c)
             elif not in_comment and not in_string and mc == CSSTokenType.IGNORE:
                 if token:
                     yield (
@@ -254,7 +255,11 @@ def css_parser(token_iter):
         elif property_value[0].startswith("hsl"):
             property_value = tuple(parse_css_color(value))
         # parse size
-        elif "size" in property_name:
+        elif (
+            "size" in property_name
+            or "padding" in property_name
+            or "width" in property_name
+        ):
             property_value = parse_css_size(value)
         # align
         elif property_name == "text-align":
@@ -617,3 +622,12 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
     if not with_rule:
         return ans
     return ans + "}"
+
+
+def update_style(filepath: str):
+    if not os.path.exists(filepath):
+        print("ERROR: cannot read '%s' as a valid stylesheet" % filepath, file=sys.stderr)
+        exit(8)
+    with open(filepath, "r+") as fp:
+        style = css_load(filepath)
+    DEFAULT_STYLE.update(style)

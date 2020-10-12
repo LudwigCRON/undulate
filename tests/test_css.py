@@ -7,6 +7,10 @@ import undulate.skin as us
 
 UT_CSS_DIR = os.path.join(os.path.dirname(__file__), "./ut_css")
 DEFAULT_STYLE = {
+    "root": {
+        "padding-top": (1.0, us.SizeUnit.EM),
+        "padding-bottom": (1.0, us.SizeUnit.EM),
+    },
     "title": {
         "fill": (0, 65, 196, 255),
         "font-weight": 500,
@@ -195,11 +199,6 @@ class TestCss(unittest.TestCase):
         with open(f"{UT_CSS_DIR}/../../undulate/default.css", "r+") as fp:
             css = us.css_parser(us.css_tokenizer(fp))
         self.assertEqual(DEFAULT_STYLE, css)
-
-    def test_tokenizer(self):
-        with open(f"{UT_CSS_DIR}/supported.css", "r+") as fp:
-            for token in us.css_tokenizer(fp):
-                print(token)
 
     def test_rules(self):
         pass

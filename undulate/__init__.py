@@ -14,6 +14,7 @@ from .skin import (
     apply_stroke,
     get_style,
     Engine,
+    update_style,
 )
 from .renderer import Renderer
 from .svgrenderer import SvgRenderer
@@ -22,7 +23,7 @@ from .waveform import cli_main
 try:
     from .cairorenderer import CairoRenderer
 except ImportError:
-    print("Cairo is not installed and cannot be used")
+    print("ERROR: Cairo is not installed and cannot be used")
 
 
 def main():
@@ -46,8 +47,15 @@ def main():
     parser.add_argument(
         "-o", "--output", help="path to the output file", default=None, type=str
     )
+    parser.add_argument(
+        "-s", "--style", help="path to custom css file", default=None, type=str
+    )
     parser.add_argument("mangled_input", nargs="?", default=None, type=str)
     cli_args = parser.parse_args()
+    # update default style
+    if cli_args.style is not None:
+        update_style(cli_args.style)
+    # process following data
     cli_main(
         cli_args.input or cli_args.mangled_input,
         cli_args.output,
