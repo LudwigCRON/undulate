@@ -1,0 +1,78 @@
+/* 
+  3 becomes 4
+  4 becomes 5
+  5 becomes 3
+
+  so wavetest_alt.json with overload.css
+  shall be identical to default style with wavetest.json
+  with bigger text
+*/
+.s4-polygon {
+    fill: rgba(255, 255, 176, 255); 
+    stroke: none;
+}
+
+.s5-polygon {
+    fill: rgba(255, 224, 185, 255); 
+    stroke: none;
+}
+
+.s3-polygon {
+    fill: rgba(185, 224, 255, 255); 
+    stroke: none;
+}
+
+/**** nested group hierarchy ****/
+.h1 {
+    fill: #000;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Fira Mono";
+    text-align: left;
+    dominant-baseline: middle;
+}
+
+.h2 {
+    fill: #000;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Fira Mono";
+    text-align: left;
+    dominant-baseline: middle;
+}
+
+.h3 {
+    fill: #000;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: "Fira Mono";
+    text-align: left;
+    dominant-baseline: middle;
+}
+
+.h4 {
+    fill: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: "Fira Mono";
+    text-align: left;
+    dominant-baseline: middle;
+}
+
+.h5 {
+    fill: #000;
+    font-size: 8px;
+    font-weight: bold;
+    font-family: "Fira Mono";
+    text-align: left;
+    dominant-baseline: middle;
+}
+
+.h6 {
+    fill: #000;
+    font-size: 6px;
+    font-weight: bold;
+    font-family: "Fira Mono";
+    text-align: left;
+    dominant-baseline: middle;
+}

@@ -7,7 +7,16 @@ into scalable vector graphics format
 """
 
 import cairo
-from .skin import apply_fill, apply_stroke, apply_font, text_align, Engine, style_in_kwargs
+from .skin import (
+    SizeUnit,
+    apply_fill,
+    apply_stroke,
+    apply_font,
+    text_align,
+    Engine,
+    style_in_kwargs,
+    get_style,
+)
 from .renderer import Renderer, svg_curve_convert
 
 
@@ -272,6 +281,11 @@ class CairoRenderer(Renderer):
         # remove offset for the name in register
         if is_reg:
             height += n * 12
+        # consider padding of root
+        root_style = get_style("root")
+        val_top, unit_top = root_style.get("padding-top", (0.0, SizeUnit.PX))
+        val_bot, unit_bot = root_style.get("padding-bottom", (0.0, SizeUnit.PX))
+        height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
         # select appropriate surface
         w, h = (width + lkeys * 6.5 + 11), height
         if self.extension == "svg":
@@ -293,6 +307,8 @@ class CairoRenderer(Renderer):
             self.surface = cairo.PDFSurface(filename, w, h)
         else:
             raise "Not supported format"
+        # offset painting for padding emulation
+        self.surface.set_device_offset(0.0, val_top * unit_top.value)
         self.ctx = cairo.Context(self.surface)
         # set background for png image
         if self.extension == "png":
