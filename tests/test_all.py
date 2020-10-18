@@ -2,6 +2,7 @@
 # coding: utf-8
 
 import os
+import json
 import shlex
 import unittest
 import subprocess
@@ -165,6 +166,11 @@ class TestUndulate(unittest.TestCase):
         assert rc == 1, "missing input file should be exit(1)"
         rc, _ = sh_exec("coverage run -a -m undulate.__init__ -i")
         assert rc == 2, "missing input args should be exit(2)"
+        rc, o = sh_exec("coverage run -a -m undulate.__init__ -f svg wavetest.yaml")
+        assert rc == 0, "should generate a defaut output"
+        assert (
+            os.stat("%s/wavetest.svg" % TEST_DIR).st_size > 20
+        ), "default output should not be empty"
 
     def test_get_help(self):
         rc, o = sh_exec("coverage run -a -m undulate.__init__ -h")
@@ -200,6 +206,24 @@ class TestUndulate(unittest.TestCase):
             % (TEST_DIR, output_file)
         )
         assert rc == 8, "Field overlapping should be exit(8)"
+
+    def test_json_dbg(self):
+        output_file = "%s/output/wavetest.json" % TEST_DIR
+        rc, _ = sh_exec(
+            "coverage run -a -m undulate.__init__ -i '%s/wavetest.json' -f json -o '%s'"
+            % (TEST_DIR, output_file)
+        )
+        assert rc == 0, "wavetest.json should execute without error"
+        assert os.stat(output_file).st_size > 20, "'%s' should not be empty" % output_file
+        with open("%s/wavetest.json" % TEST_DIR, "r+") as fp:
+            db_a = json.load(fp)
+        with open("%s/output/wavetest.json" % TEST_DIR, "r+") as fp:
+            db_b = json.load(fp)
+        self.assertEqual(db_a, db_b)
+
+    def test_filenotfound(self):
+        rc, _ = sh_exec("coverage run -a -m undulate.__init__ -f verilog youpi.json")
+        assert rc == 2, "file youpi.json should not be found"
 
 
 if __name__ == "__main__":

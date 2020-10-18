@@ -220,9 +220,9 @@ def cli_main(
             obj = register_to_wavelane(obj)
         # default output file
         if output_path is None:
-            file_name, ext = os.path.splitext(input_path)
+            file_name, _ = os.path.splitext(input_path)
             file_name = os.path.basename(file_name)
-            ext = ext if file_format == "svg" else file_format.split("-")[-1]
+            ext = file_format if file_format == "svg" else file_format.split("-")[-1]
             output_path = "./%s.%s" % (file_name, ext)
             logging.warning("No output file given. Generated at %s" % output_path)
         # select the renderer engine
