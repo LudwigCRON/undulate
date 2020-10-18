@@ -4,7 +4,7 @@
         "basic": {
             "class": "logging.Formatter",
             "datefmt": "%I:%M:%S",
-            "format": "%(levelname)-8s; %(name)-15s; %(message)s"
+            "format": "%(levelname)-8s: %(message)s"
         }
     },
     "handlers": {
@@ -13,14 +13,6 @@
             "class": "logging.StreamHandler",
             "formatter": "basic",
             "stream": "ext://sys.stdout"
-        },
-        "file_handler": {
-            "level": "DEBUG",
-            "class": "logging.handlers.WatchedFileHandler",
-            "formatter": "basic",
-            "filename": "/tmp/undulate.log",
-            "mode": "a",
-            "encoding": "utf-8"
         }
     },
     "loggers": {},

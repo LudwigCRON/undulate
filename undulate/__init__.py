@@ -2,7 +2,7 @@
 import os
 import json
 import argparse
-import logging
+import logging.config
 
 # ==== configure log utility ====
 conf_path = os.path.join(os.path.dirname(__file__), "logging.json")
