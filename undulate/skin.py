@@ -12,6 +12,7 @@ colors should always be in rgba with value from 0—255
 import os
 import re
 import sys
+import logging
 from enum import Enum
 
 
@@ -203,8 +204,8 @@ def css_parser(token_iter):
         try:
             line_number, type, token = next(it)
             if type not in types:
-                print(
-                    "ERROR: unexpected token '%s' at Line %d" % (token, line_number),
+                logging.error(
+                    "Unexpected token '%s' at Line %d" % (token, line_number),
                     file=sys.stderr,
                 )
                 exit(6)
@@ -220,8 +221,8 @@ def css_parser(token_iter):
                 ans.append(token)
                 line_number, type, token = next(it)
             if type not in until_types:
-                print(
-                    "ERROR: unexpected token '%s' at Line %d" % (token, line_number),
+                logging.error(
+                    "Unexpected token '%s' at Line %d" % (token, line_number),
                     file=sys.stderr,
                 )
                 exit(7)
@@ -626,7 +627,7 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
 
 def update_style(filepath: str):
     if not os.path.exists(filepath):
-        print("ERROR: cannot read '%s' as a valid stylesheet" % filepath, file=sys.stderr)
+        logging.error("Cannot read '%s' as a valid stylesheet" % filepath, file=sys.stderr)
         exit(8)
     with open(filepath, "r+") as fp:
         style = css_load(filepath)

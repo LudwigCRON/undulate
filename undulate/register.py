@@ -5,7 +5,7 @@
 register.py declare the basic building block
 to represent a register
 """
-
+import logging
 import undulate
 from itertools import accumulate
 
@@ -34,7 +34,7 @@ class Register:
         if isinstance(field, dict):
             f = Field.from_dict(field)
         else:
-            print("Unsupported %s of field" % type(field))
+            logging.error("Unsupported %s of field" % type(field))
             exit(5)
         self.fields.append(f)
 
@@ -47,7 +47,7 @@ class Register:
         for i, f in enumerate(self.fields):
             # start position is given and overwrite
             if f.start and pos > f.start:
-                print("check position of %s as overlap occurs" % f.name)
+                logging.error("Check position of %s as overlap occurs" % f.name)
                 exit(6)
             # start position and no overlap -> unused field
             if f.start and f.start > 0 and pos < f.start:

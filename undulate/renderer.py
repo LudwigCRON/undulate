@@ -9,6 +9,7 @@ into different format
 import re
 import sys
 import copy
+import logging
 import undulate
 from .skin import style_in_kwargs, get_style, SizeUnit
 from math import atan2, cos, sin, floor
@@ -856,7 +857,7 @@ class Renderer:
         for i, b in enumerate(wavelane * repeat):
             brick = undulate.BRICKS.from_char(b)
             if brick is None:
-                print("ERROR: unknown symbol '%s' used" % b, file=sys.stderr)
+                logging.error("Unknown symbol '%s' used" % b)
                 exit(3)
             is_duplicate = False
             new_brick = 0

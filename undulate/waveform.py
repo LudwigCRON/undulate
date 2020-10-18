@@ -10,7 +10,7 @@ import sys
 import traceback
 
 import json
-
+import logging
 import undulate
 
 from pprint import pprint
@@ -33,34 +33,22 @@ SUPPORTED_RENDER = [
 ]
 
 ERROR_MSG = {
-    "YAML_IMPORT": "ERROR: To read yaml file PyYAML is required. Run 'pip install pyyaml'",
-    "TOML_IMPORT": "ERROR: To read toml file toml is required. Run 'pip install toml'",
-    "FILE_NOT_FOUND": "ERROR: %s is not found",
-    "NO_FILE": "ERROR: an input file shall be given",
-    "MISSING_GRP_NAME": "ERROR: a group of wave should always have a name property",
+    "YAML_IMPORT": "To read yaml file PyYAML is required. Run 'pip install pyyaml'",
+    "TOML_IMPORT": "To read toml file toml is required. Run 'pip install toml'",
+    "FILE_NOT_FOUND": "%s is not found",
+    "NO_FILE": "An input file shall be given",
+    "MISSING_GRP_NAME": "A group of wave should always have a name property",
     "UNSUPPORTED_FORMAT": (
-        "ERROR: this file format is not yet supported\n" "choose one of the following:\n %s"
+        "This file format is not yet supported\n" "choose one of the following:\n %s"
     )
     % ("".join(["\t- %s\n" % f for f in SUPPORTED_FORMAT]),),
     "UNSUPPORTED_ENGINE": (
-        "ERROR: this rendering engine is not yet supported\n"
-        "choose one of the following:\n %s"
+        "This rendering engine is not yet supported\n" "choose one of the following:\n %s"
     )
     % ("".join(["\t- %s\n" % f for f in SUPPORTED_RENDER]),),
 }
 
 SPACER_COUNT = 0
-
-
-# ==== Simple Logging Utility ====
-# this should be used only there
-def log_Fatal(msg: str):
-    print(msg, file=sys.stderr)
-    exit(1)
-
-
-def log_Error(msg: str):
-    print(msg, file=sys.stderr)
 
 
 # ==== Normalization ====
@@ -97,7 +85,7 @@ def _parse_group(wavegroup: list):
     ans = {}
     _name = wavegroup[0] if isinstance(wavegroup[0], str) else None
     if not _name:
-        log_Fatal(ERROR_MSG["MISSING_GRP_NAME"])
+        logging.fatal(ERROR_MSG["MISSING_GRP_NAME"])
     for _, wavelane in enumerate(wavegroup[1:]):
         if isinstance(wavelane, dict):
             n, wave = _parse_wavelane(wavelane)
@@ -141,7 +129,7 @@ def _prune_json(filepath: str):
                     _parse_wavelane(sig) if isinstance(sig, dict) else _parse_group(sig)
                 )
                 if n in ans.keys():
-                    print("Signal %s is duplicated" % n, file=sys.stderr)
+                    logging.info("Signal %s is duplicated" % n)
                     while n in ans:
                         n += " "
                 ans[n] = wave
@@ -157,13 +145,15 @@ def parse(filepath: str) -> (bool, object):
     err, ans = False, {}
     # file existence
     if filepath is None:
-        log_Fatal(ERROR_MSG["NO_FILE"])
+        logging.fatal(ERROR_MSG["NO_FILE"])
+        exit(1)
     if not os.path.exists(filepath):
-        log_Fatal(ERROR_MSG["FILE_NOT_FOUND"] % filepath)
+        logging.fatal(ERROR_MSG["FILE_NOT_FOUND"] % filepath)
+        exit(2)
     _, ext = os.path.splitext(filepath)
     # supported extension
     if not any([ext in cat for cat in SUPPORTED_FORMAT.values()]):
-        log_Fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
+        logging.fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
     # call appropriate parser
     if ext in SUPPORTED_FORMAT["json"]:
         ans.update(_prune_json(filepath))
@@ -174,7 +164,7 @@ def parse(filepath: str) -> (bool, object):
             with open(filepath, "r+") as fp:
                 ans = yaml.load(fp, Loader=yaml.Loader)
         except ImportError:
-            log_Fatal(ERROR_MSG["YAML_IMPORT"])
+            logging.fatal(ERROR_MSG["YAML_IMPORT"])
     else:
         try:
             import toml
@@ -182,7 +172,7 @@ def parse(filepath: str) -> (bool, object):
             with open(filepath, "r+") as fp:
                 ans = toml.load(fp)
         except ImportError:
-            log_Fatal(ERROR_MSG["TOML_IMPORT"])
+            logging.fatal(ERROR_MSG["TOML_IMPORT"])
     return (err, ans if not err else None)
 
 
@@ -212,7 +202,7 @@ def cli_main(
 ):
     # supported rendering engine
     if not file_format.lower() in SUPPORTED_RENDER:
-        log_Fatal(ERROR_MSG["UNSUPPORTED_ENGINE"])
+        logging.fatal(ERROR_MSG["UNSUPPORTED_ENGINE"])
     # check the input file
     err, obj = parse(input_path)
     if err:
@@ -231,10 +221,7 @@ def cli_main(
             file_name = os.path.basename(file_name)
             ext = ext if file_format == "svg" else file_format.split("-")[-1]
             output_path = "./%s.%s" % (file_name, ext)
-            print(
-                "WARNING: not output file given. Generated at %s" % output_path,
-                file=sys.stderr,
-            )
+            logging.warning("No output file given. Generated at %s" % output_path)
         # select the renderer engine
         if file_format == "svg":
             renderer = undulate.SvgRenderer()
@@ -250,5 +237,5 @@ def cli_main(
             )
         except Exception as e:
             traceback.print_tb(e.__traceback__)
-            print(e)
+            logging.error(e)
             exit(3)

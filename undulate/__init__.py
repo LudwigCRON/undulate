@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
+import os
+import json
 import argparse
+import logging
+
+# ==== configure log utility ====
+conf_path = os.path.join(os.path.dirname(__file__), "logging.json")
+conf_path = conf_path.replace("\\", "/")
+with open(conf_path, "r+") as fp:
+    logging.config.dictConfig(json.load(fp))
 
 from .bricks import BRICKS
 from .generic import Brick, generate_brick, safe_eval
@@ -23,7 +32,7 @@ from .waveform import cli_main
 try:
     from .cairorenderer import CairoRenderer
 except ImportError:
-    print("ERROR: Cairo is not installed and cannot be used")
+    logging.error("Cairo is not installed and cannot be used")
 
 
 def main():

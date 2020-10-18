@@ -1,0 +1,33 @@
+{
+    "version": 1.0,
+    "formatters": {
+        "basic": {
+            "class": "logging.Formatter",
+            "datefmt": "%I:%M:%S",
+            "format": "%(levelname)-8s; %(name)-15s; %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "basic",
+            "stream": "ext://sys.stdout"
+        },
+        "file_handler": {
+            "level": "DEBUG",
+            "class": "logging.handlers.WatchedFileHandler",
+            "formatter": "basic",
+            "filename": "/tmp/undulate.log",
+            "mode": "a",
+            "encoding": "utf-8"
+        }
+    },
+    "loggers": {},
+    "root": {
+        "handlers": [
+            "console"
+        ],
+        "level": "INFO"
+    }
+}
