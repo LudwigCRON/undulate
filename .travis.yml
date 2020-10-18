@@ -16,6 +16,6 @@ install:
 # execute the tests
 script: 
   - cd ./tests/
-  - make all
+  - make coverage
 # build the doc
 after_script: make html

@@ -30,6 +30,7 @@ SUPPORTED_RENDER = [
     "cairo-pdf",
     "cairo-png",
     "json",
+    "verilog",
 ]
 
 ERROR_MSG = {
@@ -86,6 +87,7 @@ def _parse_group(wavegroup: list):
     _name = wavegroup[0] if isinstance(wavegroup[0], str) else None
     if not _name:
         logging.fatal(ERROR_MSG["MISSING_GRP_NAME"])
+        exit(12)
     for _, wavelane in enumerate(wavegroup[1:]):
         if isinstance(wavelane, dict):
             n, wave = _parse_wavelane(wavelane)
@@ -142,7 +144,7 @@ def parse(filepath: str) -> (bool, object):
     """
     parse the input file into a compatible dict for processing
     """
-    err, ans = False, {}
+    ans = {}
     # file existence
     if filepath is None:
         logging.fatal(ERROR_MSG["NO_FILE"])
@@ -154,6 +156,7 @@ def parse(filepath: str) -> (bool, object):
     # supported extension
     if not any([ext in cat for cat in SUPPORTED_FORMAT.values()]):
         logging.fatal(ERROR_MSG["UNSUPPORTED_FORMAT"])
+        exit(3)
     # call appropriate parser
     if ext in SUPPORTED_FORMAT["json"]:
         ans.update(_prune_json(filepath))
@@ -165,6 +168,7 @@ def parse(filepath: str) -> (bool, object):
                 ans = yaml.load(fp, Loader=yaml.Loader)
         except ImportError:
             logging.fatal(ERROR_MSG["YAML_IMPORT"])
+            exit(4)
     else:
         try:
             import toml
@@ -173,7 +177,8 @@ def parse(filepath: str) -> (bool, object):
                 ans = toml.load(fp)
         except ImportError:
             logging.fatal(ERROR_MSG["TOML_IMPORT"])
-    return (err, ans if not err else None)
+            exit(4)
+    return ans
 
 
 def register_to_wavelane(obj: dict) -> object:
@@ -203,11 +208,9 @@ def cli_main(
     # supported rendering engine
     if not file_format.lower() in SUPPORTED_RENDER:
         logging.fatal(ERROR_MSG["UNSUPPORTED_ENGINE"])
+        exit(5)
     # check the input file
-    err, obj = parse(input_path)
-    if err:
-        cb_help()
-        exit(2)
+    obj = parse(input_path)
     # for debug pupose
     if file_format.lower() == "json":
         pprint(obj)
@@ -227,6 +230,8 @@ def cli_main(
             renderer = undulate.SvgRenderer()
         elif file_format.startswith("cairo-"):
             renderer = undulate.CairoRenderer(extension=file_format.split("-")[-1], dpi=dpi)
+        elif file_format == "verilog":
+            renderer = undulate.VerilogRenderer()
         try:
             renderer.draw(
                 obj,
@@ -238,4 +243,4 @@ def cli_main(
         except Exception as e:
             traceback.print_tb(e.__traceback__)
             logging.error(e)
-            exit(3)
+            exit(6)

@@ -35,7 +35,7 @@ class Register:
             f = Field.from_dict(field)
         else:
             logging.error("Unsupported %s of field" % type(field))
-            exit(5)
+            exit(7)
         self.fields.append(f)
 
     def to_wavelane(self):
@@ -48,7 +48,7 @@ class Register:
             # start position is given and overwrite
             if f.start and pos > f.start:
                 logging.error("Check position of %s as overlap occurs" % f.name)
-                exit(6)
+                exit(8)
             # start position and no overlap -> unused field
             if f.start and f.start > 0 and pos < f.start:
                 width = f.start - pos

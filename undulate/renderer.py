@@ -858,7 +858,7 @@ class Renderer:
             brick = undulate.BRICKS.from_char(b)
             if brick is None:
                 logging.error("Unknown symbol '%s' used" % b)
-                exit(3)
+                exit(9)
             is_duplicate = False
             new_brick = 0
             # check validity of the first brick

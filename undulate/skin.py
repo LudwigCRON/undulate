@@ -208,7 +208,7 @@ def css_parser(token_iter):
                     "Unexpected token '%s' at Line %d" % (token, line_number),
                     file=sys.stderr,
                 )
-                exit(6)
+                exit(10)
             return token
         except StopIteration:
             return None
@@ -225,7 +225,7 @@ def css_parser(token_iter):
                     "Unexpected token '%s' at Line %d" % (token, line_number),
                     file=sys.stderr,
                 )
-                exit(7)
+                exit(10)
             return ans, (line_number, type, token)
         except StopIteration:
             return None, None
@@ -628,7 +628,7 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
 def update_style(filepath: str):
     if not os.path.exists(filepath):
         logging.error("Cannot read '%s' as a valid stylesheet" % filepath, file=sys.stderr)
-        exit(8)
+        exit(11)
     with open(filepath, "r+") as fp:
         style = css_load(filepath)
     DEFAULT_STYLE.update(style)
