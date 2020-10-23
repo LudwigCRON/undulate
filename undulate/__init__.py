@@ -27,6 +27,7 @@ from .skin import (
 )
 from .renderer import Renderer
 from .svgrenderer import SvgRenderer
+from .verilogrenderer import VerilogRenderer
 from .waveform import cli_main
 
 try:

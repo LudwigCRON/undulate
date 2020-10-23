@@ -238,7 +238,7 @@ class BRICKS(Enum):
     def has_arrow_on_edge(symb) -> bool:
         """
         Args:
-            symb (undulate:BRICKS) : symbol potentially having an arrow
+            symb (undulate.BRICKS) : symbol potentially having an arrow
         Returns:
             bool
                 boolean result asserting the symb has an arrow on the transition edge
@@ -248,4 +248,53 @@ class BRICKS(Enum):
             undulate.BRICKS.Pclk,
             undulate.BRICKS.Low,
             undulate.BRICKS.High,
+        ]
+
+    def is_digital_signal(symb) -> bool:
+        """
+        Args:
+            symb (undulate.BRICKS) : symbol of the brick to render
+        Returns:
+            bool
+                boolean result asserting the symb correspond to a digital signal
+        """
+        return symb in [
+            undulate.BRICKS.Nclk,
+            undulate.BRICKS.Pclk,
+            undulate.BRICKS.nclk,
+            undulate.BRICKS.pclk,
+            undulate.BRICKS.low,
+            undulate.BRICKS.Low,
+            undulate.BRICKS.high,
+            undulate.BRICKS.High,
+            undulate.BRICKS.zero,
+            undulate.BRICKS.one,
+            undulate.BRICKS.highz,
+            undulate.BRICKS.x,
+        ]
+
+    def is_digital_bus(symb) -> bool:
+        """
+        Args:
+            symb (undulate.BRICKS) : symbol of the brick to render
+        Returns:
+            bool
+                boolean result asserting the symb correspond to a digital bus
+        """
+        return symb in [undulate.BRICKS.x, undulate.BRICKS.X, undulate.BRICKS.data]
+
+    def is_analog_signal(symb) -> bool:
+        """
+        Args:
+            symb (undulate.BRICKS) : symbol of the brick to render
+        Returns:
+            bool
+                boolean result asserting the symb correspond to an analog signal
+        """
+        return symb in [
+            undulate.BRICKS.up,
+            undulate.BRICKS.down,
+            undulate.BRICKS.ana,
+            undulate.BRICKS.step,
+            undulate.BRICKS.cap,
         ]
