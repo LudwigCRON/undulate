@@ -3,6 +3,7 @@ language: python
 branches:
   only:
   - master
+  - verilog
 # assert ok for the following python versions
 python:
   - 3.5
