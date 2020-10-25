@@ -27,7 +27,7 @@ class VerilogRenderer(undulate.Renderer):
         self.buffer = []
 
     @staticmethod
-    def _get_signal_width(s: str) -> int:
+    def _get_signal_width(s: str = "") -> int:
         """
         get width of bus signal in the form
         signal_name[max:min] or
@@ -37,6 +37,8 @@ class VerilogRenderer(undulate.Renderer):
         Returns:
             int: max-min+1
         """
+        if not s or s is None:
+            return 0
         if "[" not in s:
             return 1
         i = s.index("[")
@@ -79,19 +81,25 @@ class VerilogRenderer(undulate.Renderer):
         if not s or s is None:
             return width, data
         if "'b" in s:
-            start, base = s.find("'b"), 2
+            start, base = s.find("'b") + 2, 2
         elif "'h" in s:
-            start, base = s.find("'h"), 16
+            start, base = s.find("'h") + 2, 16
         elif "'d" in s:
-            start, base = s.find("'d"), 10
+            start, base = s.find("'d") + 2, 10
         elif s[-1] == "d":
             end, base = -1, 10
         elif s[-1] == "b":
             end, base = -1, 2
         elif s[-1] == "h":
             end, base = -1, 16
+        if "0b" in s[:2]:
+            start, base = 2, 2
+        elif "0h" in s[:2] or "0x" in s[:2]:
+            start, base = 2, 16
+        elif "0d" in s[:2]:
+            start, base = 2, 10
         data = int(s[start:end], base) if end != 0 else int(s[start:], base)
-        width = int(s[:start], 10) if start else VerilogRenderer._nb_bits(data)
+        width = int(s[: start - 2], 10) if start > 2 else VerilogRenderer._nb_bits(data)
         return width, data
 
     def group(self, callback, identifier: str, **kwargs) -> str:
