@@ -23,7 +23,7 @@ class VerilogRenderer(undulate.Renderer):
 
     def __init__(self, **kwargs):
         undulate.Renderer.__init__(self)
-        self.signals = []
+        self.signals = {}
         self.buffer = []
 
     @staticmethod
@@ -57,7 +57,7 @@ class VerilogRenderer(undulate.Renderer):
         return k
 
     @staticmethod
-    def _get_data_width(s: str) -> (int, int):
+    def _get_data_width(s: str) -> object:
         """
         parse number in the following form:
         - 0x[A-Fa-f0-9]+
@@ -144,16 +144,18 @@ class VerilogRenderer(undulate.Renderer):
         signal["width"] = width
         signal["is_dig_bus"] = signal["is_dig_bus"] or (width > 1)
         # generate the needed task
-        task = ["\ttask gen_chk_%s ();\n\tbegin\n" % identifier]
+        task = ["\ttask gen_chk_%s;\n\tbegin\n" % identifier]
         task.append("\t\tif (chk_%s) #1;\n" % identifier)
         for block in self.buffer:
-            task.append("\t\tif (gen_%s) begin\n" % identifier)
+            task.append("\t\tif (gen_%s)\n\t\tbegin\n" % identifier)
             _, steps = VerilogRenderer.render_bricks(block, generate=True, indent_level=3)
             for step in steps:
                 l = step.count("%s")
                 task.append(step % tuple(identifier for _ in range(l)))
-            task.append("\t\tend\n")
-            task.append("\t\tif (chk_%s && %s != 1'bX) begin\n" % (identifier, identifier))
+            task.append("\t\tend")
+            task.append(
+                " else if (chk_%s && %s != 1'bX)\n\t\tbegin\n" % (identifier, identifier)
+            )
             dx, steps = VerilogRenderer.render_bricks(block, generate=False, indent_level=3)
             for step in steps:
                 l = step.count("%s")
@@ -166,7 +168,7 @@ class VerilogRenderer(undulate.Renderer):
         # if analog follow splines and path
         # if digital follow brick_width and type update at each ticks
         # need a VDDA and VSSA real signals if analog detected
-        self.signals.append(signal)
+        self.signals[signal["name"]] = signal
         return ""
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
@@ -362,44 +364,45 @@ class VerilogRenderer(undulate.Renderer):
             # header
             file_name, _ = os.path.splitext(filename)
             file_name = os.path.basename(file_name)
-            fp.write("module %s (\n" % file_name)
-            l = len(self.signals)
-            for i, signal in enumerate(self.signals):
+            fp.write("module %s #(\n" % file_name)
+            fp.write("\tparameter realtime TICK_PERIOD = 16ns\n")
+            fp.write(") (\n")
+            l = len(self.signals.keys())
+            for i, signal_name in enumerate(self.signals.keys()):
                 is_last = i >= l - 1
-                fp.write("\tinout\twire\t\t\t%s,\n" % signal.get("name"))
-                fp.write("\tinput\twire\t\t\tgen_%s,\n" % signal.get("name"))
+                fp.write("\tinout\twire\t\t\t%s,\n" % signal_name)
+                fp.write("\tinput\twire\t\t\tgen_%s,\n" % signal_name)
                 fp.write(
-                    "\tinput\twire\t\t\tchk_%s%s\n"
-                    % (signal.get("name"), "" if is_last else ",")
+                    "\tinput\twire\t\t\tchk_%s%s\n" % (signal_name, "" if is_last else ",")
                 )
             fp.write(");\n")
 
             # output definition
             fp.write("\n\t//==== output register ====\n")
-            for signal in self.signals:
-                fp.write("\treg %s_o;\n" % signal.get("name"))
+            for signal_name in self.signals.keys():
+                fp.write("\treg %s_o;\n" % signal_name)
 
             # inout connection
             fp.write("\n\t//==== inout connections ====\n")
-            for signal in self.signals:
+            for signal_name in self.signals.keys():
                 fp.write(
                     "\tassign %s = (gen_%s) ? %s_o : 'z;\n"
-                    % (signal.get("name"), signal.get("name"), signal.get("name"))
+                    % (signal_name, signal_name, signal_name)
                 )
 
             # task definitions
             fp.write("\n\t//==== tasks ====\n")
-            for signal in self.signals:
+            for signal in self.signals.values():
                 fp.writelines(signal.get("task"))
 
             # triggers
             fp.write("\n\t//==== triggers ====\n")
-            for signal in self.signals:
-                fp.write("\twire new_op_%s;\n" % signal["name"])
+            for signal_name in self.signals.keys():
+                fp.write("\twire new_op_%s;\n" % signal_name)
                 fp.write(
                     "\tassign new_op_%s = gen_%s | chk_%s;\n"
-                    % (signal["name"], signal["name"], signal["name"])
+                    % (signal_name, signal_name, signal_name)
                 )
-                fp.write("\talways @(posedge new_op_%s)\n" % signal["name"])
-                fp.write("\t\tgen_chk_%s();\n\n" % signal["name"])
+                fp.write("\talways @(posedge new_op_%s)\n" % signal_name)
+                fp.write("\t\tgen_chk_%s();\n\n" % signal_name)
             fp.write("endmodule")
