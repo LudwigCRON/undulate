@@ -21,8 +21,11 @@ def sh_exec(cmd):
 
 
 class TestVerilog(unittest.TestCase):
-    def test_dbg(self):
-        rc, o = sh_exec("undulate -f verilog -i '%s/adcec.jsonml'" % TEST_DIR)
+    def test_verilog_multiple_def(self):
+        rc, o = sh_exec(
+            "coverage run -a -m undulate.__init__ -f verilog -i '%s/adcec.jsonml'"
+            % TEST_DIR
+        )
         print(rc)
         for line in o.split(b"\r\n"):
             print(line.decode("utf-8"))

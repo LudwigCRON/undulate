@@ -24,6 +24,7 @@ all: coverage
 coverage:
 	coverage erase
 	python -m unittest test_all -v
+	python -m unittest test_verilog -v
 	coverage run -a ${TESTPATH}/test_css.py -v
 	coverage report
 	coverage html
