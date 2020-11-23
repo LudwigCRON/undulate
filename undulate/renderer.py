@@ -833,6 +833,7 @@ class Renderer:
         periods = self._get_or_eval("periods", periods, **kwargs)
         duty_cycles = self._get_or_eval("duty_cycles", duty_cycles, **kwargs)
         analogue = self._get_or_eval("analogue", [], **kwargs)
+        slewings = self._get_or_eval("slewings", slewings, **kwargs)
         data = kwargs.get("data", [])
         attributes = kwargs.get("attr", [])
         reg_pos = kwargs.get("regpos", [])
@@ -943,8 +944,6 @@ class Renderer:
                     attributes = attributes[1:]
                 if undulate.BRICKS.need_position(brick):
                     reg_pos = reg_pos[1:]
-                # print(brick, last_valid_brick, is_duplicate,
-                #      data, last_valid_brick_idx, sep='\t')
                 for k in range(1, new_brick):
                     periods.insert(
                         last_valid_brick_idx,
@@ -958,7 +957,6 @@ class Renderer:
                         last_valid_brick_idx,
                         None if not is_duplicate else slewings[last_valid_brick_idx],
                     )
-                # print(new_brick, last_valid_brick_idx, data)
             # update last valid brick
             if not undulate.BRICKS.is_repeating_symbol(brick):
                 last_valid_brick = brick
@@ -1049,7 +1047,7 @@ class Renderer:
             period = k.get("period", 1)
             slewing = k.get("slewing", 3)
             # set minimum width
-            pmul = max(period, 0 if b in "csa" else slewing * 2 / brick_width)
+            pmul = max(period, 0 if b in "csahl01" else slewing * 2 / brick_width)
             if b == "|":
                 return 0
             if idx == 0:

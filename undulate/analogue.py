@@ -130,15 +130,17 @@ class Cap(undulate.Brick):
         else:
             self.last_y = self.height if self.last_y is None else self.last_y
         dt = abs(y - self.last_y) * self.slewing / self.height
+        dy = (self.last_y - y) if dt < self.width else (self.last_y - y) * self.width/dt
+        dt = min(dt, self.width)
         # add shape
         self.splines.append(
             [
                 "path",
                 ("m", 0, self.last_y),
-                ("C", dt, y),
-                ("", dt, y),
-                ("", self.width, y),
-                ("L", self.width, y),
+                ("C", dt, self.last_y - dy),
+                ("", dt, self.last_y - dy),
+                ("", self.width, self.last_y - dy),
+                ("L", self.width, self.last_y - dy),
             ]
         )
 
@@ -171,8 +173,15 @@ class Step(undulate.Brick):
         else:
             self.last_y = self.height if self.last_y is None else self.last_y
         dt = abs(y - self.last_y) * self.slewing / self.height
+        dy = (self.last_y - y) if dt < self.width else (self.last_y - y) * self.width/dt
+        dt = min(dt, self.width)
         # add shape
-        self.paths.append(["path", (0, self.last_y), (dt, y), (self.width, y)])
+        self.paths.append([
+        	"path",
+        	(0, self.last_y),
+        	(dt, self.last_y - dy),
+        	(self.width, self.last_y - dy)
+        ])
 
 
 class Analogue(undulate.Brick):

@@ -110,9 +110,11 @@ class Low(undulate.Brick):
         self.first_y = self.height
         if self.is_first:
             self.last_y = self.height
+            self.slewing = 0
         else:
             self.last_y = self.height if self.last_y is None else self.last_y
         dt = abs(self.height - self.last_y) * self.slewing / self.height
+        self.width = max(self.width, dt)
         # add shape
         self.paths.append(
             ["path", (0, self.last_y), (dt, self.height), (self.width, self.height)]
@@ -144,9 +146,11 @@ class High(undulate.Brick):
         self.first_y = 0
         if self.is_first:
             self.last_y = 0
+            self.slewing = 0
         else:
             self.last_y = 0 if self.last_y is None else self.last_y
         dt = self.last_y * self.slewing / self.height
+        self.width = max(self.width, dt)
         # add shape
         self.paths.append(["path", (0, self.last_y), (dt, 0), (self.width, 0)])
         # add arrow
