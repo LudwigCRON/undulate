@@ -65,14 +65,14 @@ def log_Error(msg: str):
 
 # ==== Normalization ====
 def _number_convert(match):
-    base, number = match.group(1).lower(), match.group(2)
+    prefix, base, number = match.groups()
+    if prefix is not None:
+        return str(match.group(0))
     if base in "xh":
         return str(int(number, 16))
-    elif base == "b":
+    if base == "b":
         return str(int(number, 2))
-    else:
-        return str(int(number, 10))
-
+    return str(int(number, 10))
 
 def _parse_wavelane(wavelane: dict):
     """
@@ -131,8 +131,8 @@ def _prune_json(filepath: str):
     )
     # remove final extra comma of arrays definition
     content = re.sub(r"(,\s*\])", r"]", content, flags=re.M)
-    # change hex numbers to int
-    content = re.sub("0'?([xbhdXBHD])([0-9ABCDEF]+)", _number_convert, content, flags=re.M)
+    # change hex numbers to int but not CSS hexa colors
+    content = re.sub("(#[0-9abcdedABCDEF]*)?0'?([xbhdXBHD])([0-9abcdefABCDEF]+)", _number_convert, content, flags=re.M)
     tmp = json.loads(content)
     for k, v in tmp.items():
         if k == "signal":
