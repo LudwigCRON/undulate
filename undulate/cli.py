@@ -50,7 +50,7 @@ def parse(filepath: str) -> tuple[bool, object]:
     elif ext in SUPPORTED_FORMAT["toml"]:
         import undulate.parsers.toml as parser
     else:
-        log.fatal(log.UNSUPPORTED_FORMAT, log.list_vars(SUPPORTED_FORMAT))
+        log.fatal(log.UNSUPPORTED_FORMAT % log.list_vars(SUPPORTED_FORMAT))
     return parser.parse(filepath)
 
 

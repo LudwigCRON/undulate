@@ -19,6 +19,6 @@ setup(
     include_package_data=True,
     install_requires=REQUIRES,
     setup_requires=["setuptools_scm"],
-    entry_points={"console_scripts": ["undulate = undulate:main"]},
+    entry_points={"console_scripts": ["undulate = undulate.cli:main"]},
     keywords=["undulate"],
 )

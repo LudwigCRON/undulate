@@ -21,7 +21,7 @@ NO_OUTPUT_FILE = "No output file given. Generated at %s"
 
 
 def list_vars(values: Iterable) -> str:
-    return "".join(("\t- %s\n" for value in values))
+    return "".join(("\t- %s\n" % value for value in values))
 
 
 def note(msg):

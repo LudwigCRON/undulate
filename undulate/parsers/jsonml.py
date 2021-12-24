@@ -91,6 +91,7 @@ def _prune_json(filepath: str) -> str:
         content,
         flags=re.M,
     )
+    return content
 
 
 def parse(filepath: str) -> tuple[bool, dict]:
