@@ -1,15 +1,3 @@
-#!/usr/bin/env python3
-# spell-checker: disable
-
-"""
-register.py declare the basic building block
-to represent a register
-"""
-
-import undulate
-from itertools import accumulate
-
-
 class Register:
     """
     define the register as a composition of new kind of bricks
@@ -85,143 +73,6 @@ class Register:
             "styles": styles,
         }
         return ans
-
-
-class FieldStart(undulate.Brick):
-    """
-    [
-    """
-
-    def __init__(self, **kwargs):
-        undulate.Brick.__init__(self, **kwargs)
-        _attrs = kwargs.get("attribute", None)
-        self.paths.append(
-            [
-                "path",
-                (self.width, self.height),
-                (0, self.height),
-                (0, self.height / 4),
-                (self.width, self.height / 4),
-            ]
-        )
-        if kwargs.get("reg_style") is not None:
-            self.polygons.append(
-                [
-                    kwargs.get("reg_style") or "s2-polygon",
-                    (self.width * _attrs[0], self.height),
-                    (0, self.height),
-                    (0, self.height / 4),
-                    (self.width * _attrs[0], self.height / 4),
-                ]
-            )
-        # add attributes
-        attrs = None
-        if _attrs is not None and isinstance(_attrs, tuple):
-            width, attrs = _attrs
-            if attrs is not None:
-                for i, attr in enumerate(attrs):
-                    self.texts.append(
-                        ("attr", (self.width * width) / 2, self.height + 12 * (i + 1), attr)
-                    )
-        # add text
-        self.texts.append(
-            ("reg-data", self.width / 2, self.height * 0.625, kwargs.get("data", ""))
-        )
-        self.texts.append(
-            ("reg-pos", self.width / 2, self.height * 0.125, kwargs.get("reg_pos", ""))
-        )
-
-
-class FieldMid(undulate.Brick):
-    """
-    :
-    """
-
-    def __init__(self, **kwargs):
-        undulate.Brick.__init__(self, **kwargs)
-        self.splines.append(
-            [
-                "path",
-                ("M", self.width, self.height * 0.875),
-                ("l", 0, self.height * 0.125),
-                ("l", -self.width, 0),
-                ("l", 0, -self.height * 0.125),
-            ]
-        )
-        self.splines.append(
-            [
-                "path",
-                ("M", self.width, self.height * 0.375),
-                ("l", 0, -self.height * 0.125),
-                ("l", -self.width, 0),
-                ("l", 0, self.height * 0.125),
-            ]
-        )
-        # add text
-        self.texts.append(
-            ("reg-data", self.width / 2, self.height * 0.625, kwargs.get("data", ""))
-        )
-
-
-class FieldEnd(undulate.Brick):
-    """
-    ]
-    """
-
-    def __init__(self, **kwargs):
-        undulate.Brick.__init__(self, **kwargs)
-        self.paths.append(
-            [
-                "path",
-                (0, self.height),
-                (self.width, self.height),
-                (self.width, self.height / 4),
-                (0, self.height / 4),
-            ]
-        )
-        # add text
-        self.texts.append(
-            ("reg-data", self.width / 2, self.height * 0.625, kwargs.get("data", ""))
-        )
-        self.texts.append(
-            ("reg-pos", self.width / 2, self.height * 0.125, kwargs.get("reg_pos", ""))
-        )
-
-
-class FieldBit(undulate.Brick):
-    """
-    b
-    """
-
-    def __init__(self, **kwargs):
-        undulate.Brick.__init__(self, **kwargs)
-        self.paths.append(
-            [
-                "path",
-                (0, self.height / 4),
-                (0, self.height),
-                (self.width, self.height),
-                (self.width, self.height / 4),
-                (0, self.height / 4),
-            ]
-        )
-        if kwargs.get("reg_style") is not None:
-            self.polygons.append(
-                [
-                    kwargs.get("reg_style") or "s2-polygon",
-                    (self.width, self.height),
-                    (0, self.height),
-                    (0, self.height / 4),
-                    (self.width, self.height / 4),
-                ]
-            )
-        # add text
-        self.texts.append(
-            ("reg-data", self.width / 2, self.height * 0.625, kwargs.get("data", ""))
-        )
-        self.texts.append(
-            ("reg-pos", self.width / 2, self.height * 0.125, kwargs.get("reg_pos", ""))
-        )
 
 
 class Field:
@@ -313,19 +164,17 @@ class Field:
         return {s: getattr(self, s, None) for s in self.__slots__}
 
 
-def generate_register_symbol(symbol: str, **kwargs) -> (bool, object):
+def convert(obj: dict) -> tuple[bool, dict]:
     """
-    define the mapping between the symbol and the brick
+    convert a register definition as a wavelane
     """
-    # mapping
-    map_dict = {
-        undulate.BRICKS.field_start: FieldStart,
-        undulate.BRICKS.field_mid: FieldMid,
-        undulate.BRICKS.field_end: FieldEnd,
-        undulate.BRICKS.field_bit: FieldBit,
-    }
-    # get factory and generate block
-    factory = map_dict.get(symbol, None)
-    if callable(factory):
-        return factory(**kwargs)
-    return None
+    reg = Register()
+    # name of the register
+    reg.name = [name for name in obj.keys() if name not in ["config", "head", "foot"]][-1]
+    for field in obj.get(reg.name, []):
+        reg.push_field(field)
+    # default value from wavedrom format
+    if reg.name == "reg":
+        reg.name = ""
+    reg.config = obj.get("config", {})
+    return (0, reg.to_wavelane())

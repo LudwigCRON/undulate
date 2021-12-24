@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# spell-checker: disable
 
 """
 cairorenderer.py use the logic of renderer.py to render waveforms
@@ -7,7 +6,7 @@ into scalable vector graphics format
 """
 
 import cairo
-from .skin import (
+from ..skin import (
     SizeUnit,
     apply_fill,
     apply_stroke,

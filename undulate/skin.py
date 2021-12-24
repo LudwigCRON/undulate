@@ -361,6 +361,8 @@ try:
     import cairo
 except ImportError:
     pass
+except ModuleNotFoundError:
+    pass
 else:
 
     def apply_cairo_style(context, name: str, overload: dict):

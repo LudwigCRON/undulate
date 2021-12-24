@@ -7,7 +7,7 @@ into scalable vector graphics format
 """
 
 import html
-from .skin import (
+from ..skin import (
     DEFAULT_STYLE,
     DEFINITION,
     Engine,

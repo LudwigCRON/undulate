@@ -10,7 +10,7 @@ import re
 import sys
 import copy
 import undulate
-from .skin import style_in_kwargs, get_style, SizeUnit
+from ..skin import style_in_kwargs, get_style, SizeUnit
 from math import atan2, cos, sin, floor
 from itertools import count, accumulate, zip_longest
 
