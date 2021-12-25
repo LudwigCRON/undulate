@@ -168,17 +168,15 @@ class FieldBit(Brick):
 def initialize() -> None:
     BrickFactory.register(
         "[",
-        FieldStart.__init__,
+        FieldStart,
         tags=["reg"],
         params={"data": "", "position": 0, "attributes": ""},
     )
-    BrickFactory.register(":", FieldMid.__init__, tags=["reg"], params={"data": ""})
-    BrickFactory.register(
-        "]", FieldEnd.__init__, tags=["reg"], params={"data": "", "position": 0}
-    )
+    BrickFactory.register(":", FieldMid, tags=["reg"], params={"data": ""})
+    BrickFactory.register("]", FieldEnd, tags=["reg"], params={"data": "", "position": 0})
     BrickFactory.register(
         "b",
-        FieldBit.__init__,
+        FieldBit,
         tags=["reg"],
         params={"data": "", "position": 0, "attributes": ""},
     )

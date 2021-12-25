@@ -6,10 +6,11 @@ bricks.py declare the basic building block
 to generate a waveform
 """
 
+import copy
 from math import nan
 from typing import Callable, Any
 from dataclasses import dataclass
-import logging
+import undulate.logger as log
 
 
 @dataclass
@@ -49,10 +50,9 @@ class Drawable:
 class BrickFactory:
     """create a brick from its symbol once registered"""
 
-    funcs = dict()
-    tags = dict()
-    params = dict()
-    filters = dict()
+    funcs = {}
+    tags = {}
+    params = {}
 
     @staticmethod
     def register(
@@ -64,11 +64,7 @@ class BrickFactory:
         """register a new brick called {name} mapped to {symbol}"""
         BrickFactory.funcs[symbol] = initializer
         # symbol can be tagged to later ease filtering on type
-        for tag in tags:
-            if tag not in BrickFactory.tags:
-                BrickFactory.tags[tag] = [symbol]
-            else:
-                BrickFactory.tags[tag].append(symbol)
+        BrickFactory.tags[symbol] = tags
         # register list of needed parameters
         BrickFactory.params[symbol] = params
 
@@ -76,9 +72,18 @@ class BrickFactory:
     def create(symbol: str, **kwargs):
         """create a brick from its symbol"""
         if symbol not in BrickFactory.funcs:
-            logging.critical("The symbol '%s' is not defined", symbol)
+            log.fatal("The symbol '%s' is not defined" % symbol)
         init = BrickFactory.funcs[symbol]
-        return init(**kwargs)
+        brick = init(**kwargs)
+        brick.symbol = symbol
+        return brick
+
+    @staticmethod
+    def get_parameters() -> dict[str, Any]:
+        ans = {}
+        for params in BrickFactory.params.values():
+            ans.update(params)
+        return ans
 
 
 @dataclass
@@ -117,8 +122,10 @@ class Brick:
     polygons: list[Drawable]
     splines: list[Drawable]
     texts: list[Drawable]
+    args: dict
     width: float = 40.0
     height: float = 20.0
+    repeat: int = 1
     slewing: float = 0.0
     ignore_start_transition: bool = False
     ignore_end_transition: bool = False
@@ -134,6 +141,7 @@ class Brick:
         self.ignore_start_transition = bool(kwargs.get("ignore_start_transition", False))
         self.ignore_end_transition = bool(kwargs.get("ignore_end_transition", False))
         self.is_first = bool(kwargs.get("is_first", False))
+        self.args = copy.deepcopy(kwargs)
         self.symbol = None
         self.paths = []
         self.arrows = []
@@ -186,3 +194,21 @@ class Brick:
 #            if from_symb.value.lower() == "l" and to_symb.value.lower() == "n":
 #                return True
 #        return False
+
+
+class FilterBank:
+    """list of filters to apply process a waveform"""
+
+    filters = []
+
+    @staticmethod
+    def register(filter: Callable):
+        FilterBank.filters.append(filter)
+
+    @staticmethod
+    def apply(waveform: list[Brick]) -> list[Brick]:
+        """apply registered filters on the wavelane"""
+        ans = copy.deepcopy(waveform)
+        for filter in FilterBank.filters:
+            ans = filter(ans)
+        return ans

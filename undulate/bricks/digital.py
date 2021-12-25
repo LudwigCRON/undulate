@@ -7,14 +7,18 @@ to generate a digital waveform
 # TODO: migrate is_first to ignore_start_transition ?
 
 import math
+import undulate.logger as log
 from undulate.bricks.generic import (
     ArrowDescription,
     Brick,
     BrickFactory,
     Drawable,
+    FilterBank,
     Point,
     SplineSegment,
 )
+
+# ======== Brick Definition ========
 
 
 class Nclk(Brick):
@@ -717,8 +721,8 @@ class Unknown(Data):
     Variant of Data with hatch
     """
 
-    def __init__(self, hide_data: bool = False, **kwargs):
-        Data.__init__(self, style="hatch", hide_data=hide_data, **kwargs)
+    def __init__(self, **kwargs):
+        Data.__init__(self, style="hatch", hide_data=True, **kwargs)
 
 
 class Gap(Brick):
@@ -902,38 +906,164 @@ class Space(Brick):
             self.last_y = self.height
 
 
+class Empty(Brick):
+    """
+    empty brick with zero width
+    """
+
+    def __init__(self, **kwargs) -> None:
+        Brick.__init__(self, **kwargs)
+        self.width = 0
+        if self.is_first or math.isnan(self.last_y):
+            self.last_y = self.height
+
+
+# ======== Filtering Functions ========
+def filter_width(waveform: list[Brick]) -> list[Brick]:
+    ans = []
+    for brick in waveform:
+        brick_width = brick.args.get("brick_width", 20) * brick.args.get("hscale", 1)
+        brick_height = brick.args.get("brick_height", 20) * brick.args.get("vscale", 1)
+        brick.args["brick_width"] = brick_width
+        brick.args["brick_height"] = brick_height
+        ans.append(BrickFactory.create(brick.symbol, **brick.args))
+    return ans
+
+
+def filter_repeat(waveform: list[Brick]) -> list[Brick]:
+    ans = []
+    previous_brick = BrickFactory.create(" ")
+    for i, brick in enumerate(waveform):
+        # check validity of the first brick
+        if i == 0 and "repeat" in BrickFactory.tags.get(brick.symbol, []):
+            log.fatal(log.WRONG_WAVE_START % brick.symbol)
+        if "repeat" not in BrickFactory.tags.get(brick.symbol, []):
+            ans.append(brick)
+            previous_brick = brick
+            continue
+        # always repeat a clock signal and after gap repeat the last valid symbol
+        if (
+            "clock" in BrickFactory.tags.get(previous_brick.symbol, [])
+            or previous_brick.symbol == "|"
+        ):
+            ans.append(BrickFactory.create(previous_brick.symbol, **previous_brick.args))
+        # extend the width of other symbols
+        else:
+            ans[-1].repeat += 1
+        # a gap symbol overlay the previous one
+        if brick.symbol == "|":
+            ans.append(brick)
+        if "repeat" not in BrickFactory.tags.get(brick.symbol, []):
+            previous_brick = brick
+    # make repeat info propagate
+    for b in ans:
+        b.args["repeat"] = b.repeat
+    return ans
+
+
+def filter_phase_pos(waveform: list[Brick]) -> list[Brick]:
+    ans = []
+    for i, brick in enumerate(waveform):
+        phase = brick.args.get("phase", 0.0)
+        period = brick.args.get("period", 1.0)
+        repeat = brick.args.get("repeat", 1.0)
+        slewing = brick.args.get("slewing", 3.0)
+        brick_width = brick.args["brick_width"]
+        lane_width = brick.args["width"]
+        # global scaling of the x-axis
+        if brick.symbol == "|":
+            pmul = 0
+        if "analogue" in BrickFactory.tags[brick.symbol]:
+            pmul = period
+        else:
+            pmul = max(period, slewing * 2 / brick_width)
+        # adjust width depending on the brick's index in the the lane
+        if i == 0:
+            brick.args["brick_width"] = pmul * brick_width * (repeat - phase)
+        elif i == len(waveform) - 1:
+            position = sum(b.width for b in waveform[:-1])
+            brick.args["brick_width"] = max(
+                pmul * brick_width * (repeat + phase), lane_width - position
+            )
+        else:
+            brick.args["brick_width"] = pmul * repeat * brick_width
+        ans.append(BrickFactory.create(brick.symbol, **brick.args))
+    return ans
+
+
+def filter_transition(waveform: list[Brick]) -> list[Brick]:
+    ans = []
+    previous_brick = BrickFactory.create(" ")
+    for brick in waveform:
+        # adjust transistion from data to X
+        if "data" in BrickFactory.tags[previous_brick.symbol] and brick.symbol == "X":
+            previous_brick.args["brick_width"] += previous_brick.args.get("slewing", 0)
+            previous_brick = BrickFactory.create(
+                previous_brick.symbol, **previous_brick.args
+            )
+        # identic consecutive block
+        if brick.symbol == previous_brick.symbol:
+            # two data brick with same data
+            if "data" in BrickFactory.tags[brick.symbol]:
+                current_data = str(brick.args.get("data") or "").strip()
+                previous_data = str(previous_brick.args.get("data") or "").strip()
+                if current_data == previous_data:
+                    brick.args["ignore_start_transition"] = True
+                    brick.args["hide_data"] = True
+                    previous_brick.args["ignore_end_transition"] = True
+                    previous_brick = BrickFactory.create(
+                        previous_brick.symbol, **previous_brick.args
+                    )
+            # otherwise join path
+            else:
+                # fy = brick.get_first_y()
+                # alter current brick end
+                # nb.alter_end(0, fy)
+                # alter next brick start
+                # brick.alter_start(0, fy)
+                pass
+        ans.append(BrickFactory.create(brick.symbol, **brick.args))
+        if "repeat" not in BrickFactory.tags[brick.symbol]:
+            previous_brick = ans[-1]
+    return ans
+
+
+# ======== Plugin Loading ========
+
+
 def initialize() -> None:
     """register defined digital blocks in the rendering system"""
-    BrickFactory.register("n", Nclk.__init__, tags=["clock"], params={"duty_cycle": 0.5})
-    BrickFactory.register(
-        "N", NclkArrow.__init__, tags=["clock"], params={"duty_cycle": 0.5}
-    )
-    BrickFactory.register("p", Pclk.__init__, tags=["clock"], params={"duty_cycle": 0.5})
-    BrickFactory.register(
-        "P", PclkArrow.__init__, tags=["clock"], params={"duty_cycle": 0.5}
-    )
-    BrickFactory.register("l", Low.__init__, tags=["clock"])
-    BrickFactory.register("L", LowArrow.__init__, tags=["clock"])
-    BrickFactory.register("h", High.__init__, tags=["clock"])
-    BrickFactory.register("H", HighArrow.__init__, tags=["clock"])
-    BrickFactory.register("z", HighZ.__init__)
-    BrickFactory.register("0", Zero.__init__)
-    BrickFactory.register("1", One.__init__)
-    BrickFactory.register("2", Two.__init__, params={"data": ""})
-    BrickFactory.register("3", Three.__init__, params={"data": ""})
-    BrickFactory.register("4", Four.__init__, params={"data": ""})
-    BrickFactory.register("5", Five.__init__, params={"data": ""})
-    BrickFactory.register("6", Six.__init__, params={"data": ""})
-    BrickFactory.register("7", Seven.__init__, params={"data": ""})
-    BrickFactory.register("8", Eight.__init__, params={"data": ""})
-    BrickFactory.register("9", Nine.__init__, params={"data": ""})
-    BrickFactory.register("x", Unknown.__init__)
-    BrickFactory.register("X", Garbage.__init__)
-    BrickFactory.register("=", Two.__init__, params={"data": ""})
-    BrickFactory.register("|", Gap.__init__, tags=["repeat"])
-    BrickFactory.register("u", Up.__init__)
-    BrickFactory.register("d", Down.__init__)
-    BrickFactory.register("i", ImpulseUp.__init__, params={"duty_cycle": 0.5})
-    BrickFactory.register("I", ImpulseDown.__init__, params={"duty_cycle": 0.5})
-    BrickFactory.register(" ", Space.__init__)
-    BrickFactory.register(".", None, tags=["repeat"])
+    BrickFactory.register("n", Nclk, tags=["clock"], params={"duty_cycle": 0.5})
+    BrickFactory.register("N", NclkArrow, tags=["clock"], params={"duty_cycle": 0.5})
+    BrickFactory.register("p", Pclk, tags=["clock"], params={"duty_cycle": 0.5})
+    BrickFactory.register("P", PclkArrow, tags=["clock"], params={"duty_cycle": 0.5})
+    BrickFactory.register("l", Low, tags=["clock"])
+    BrickFactory.register("L", LowArrow, tags=["clock"])
+    BrickFactory.register("h", High, tags=["clock"])
+    BrickFactory.register("H", HighArrow, tags=["clock"])
+    BrickFactory.register("z", HighZ)
+    BrickFactory.register("0", Zero)
+    BrickFactory.register("1", One)
+    BrickFactory.register("2", Two, params={"data": "", "slewing": 3})
+    BrickFactory.register("3", Three, params={"data": "", "slewing": 3})
+    BrickFactory.register("4", Four, params={"data": "", "slewing": 3})
+    BrickFactory.register("5", Five, params={"data": "", "slewing": 3})
+    BrickFactory.register("6", Six, params={"data": "", "slewing": 3})
+    BrickFactory.register("7", Seven, params={"data": "", "slewing": 3})
+    BrickFactory.register("8", Eight, params={"data": "", "slewing": 3})
+    BrickFactory.register("9", Nine, params={"data": "", "slewing": 3})
+    BrickFactory.register("x", Unknown, params={"slewing": 3})
+    BrickFactory.register("X", Garbage, params={"slewing": 3})
+    BrickFactory.register("=", Two, params={"data": "", "slewing": 3})
+    BrickFactory.register("|", Gap, tags=["repeat"])
+    BrickFactory.register("u", Up)
+    BrickFactory.register("d", Down)
+    BrickFactory.register("i", ImpulseUp, params={"duty_cycle": 0.5})
+    BrickFactory.register("I", ImpulseDown, params={"duty_cycle": 0.5})
+    BrickFactory.register(" ", Space)
+    BrickFactory.register(".", Empty, tags=["repeat"])
+
+    FilterBank.register(filter_repeat)
+    FilterBank.register(filter_width)
+    FilterBank.register(filter_phase_pos)
+    FilterBank.register(filter_transition)

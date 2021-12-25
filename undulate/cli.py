@@ -7,6 +7,7 @@ Command line interface to draw your waveforms
 import os
 import argparse
 import traceback
+import importlib
 
 import undulate.logger as log
 import undulate.skin as skin
@@ -86,6 +87,14 @@ def process(
             ext = rendering_engine.split("-")[-1]
         output_path = "./%s.%s" % (file_name, ext)
         log.warning(log.NO_OUTPUT_FILE % output_path)
+    # load the bricks
+    for brick_module in [
+        "undulate.bricks.analogue",
+        "undulate.bricks.digital",
+        "undulate.bricks.register",
+    ]:
+        mod = importlib.import_module(brick_module)
+        mod.initialize()
     # load the renderering engine
     if rendering_engine == "svg":
         import undulate.renderers.svgrenderer as engine

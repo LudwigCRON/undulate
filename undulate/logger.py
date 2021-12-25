@@ -18,6 +18,8 @@ UNSUPPORTED_ENGINE = (
 )
 DUPLICATED_SIGNAL = "Signal %s is duplicated"
 NO_OUTPUT_FILE = "No output file given. Generated at %s"
+UNKNOWN_SYMBOL = "Unknown symbol '%s' in signal '%s' used"
+WRONG_WAVE_START = "A waveform cannot start with '%s'"
 
 
 def list_vars(values: Iterable) -> str:

@@ -7,12 +7,14 @@ into different format
 """
 
 import re
-import sys
 import copy
 import undulate
 from ..skin import style_in_kwargs, get_style, SizeUnit
 from math import atan2, cos, sin, floor
-from itertools import count, accumulate, zip_longest
+from itertools import count, accumulate
+from undulate.bricks.generic import Brick, BrickFactory, FilterBank, Point
+from undulate.generic import safe_eval
+import undulate.logger as log
 
 # Counter for unique id generation
 #: counter of group of wave unique id
@@ -94,7 +96,8 @@ def svg_curve_convert(vertices: list) -> list:
     # TODO add support of T curves in svg
     px, py, pt = 0, 0, "m"
     ans, ppx, ppy = [], 0, 0
-    for t, x, y in vertices:
+    for vertice in vertices:
+        t, x, y = vertice.order, vertice.x, vertice.y
         # translate S into C
         if (t in ["s", "S"]) and (pt in ["s", "S", "c", "C"]):
             ans.append(("c" if t == "s" else "C", px + (px - ppx), py + (py - ppy)))
@@ -222,7 +225,7 @@ class Renderer:
         """
         raise NotImplementedError()
 
-    def brick(self, symbol: str, b: undulate.Brick, **kwargs) -> str:
+    def brick(self, symbol: str, b: Brick, **kwargs) -> str:
         """
         brick generate the symbol for a undulate.Brick element
         (collection of paths, splines, arrows, polygons, text)
@@ -230,22 +233,28 @@ class Renderer:
         ans, content = "", ""
         # display polygons (usually background)
         for _, poly in enumerate(b.polygons):
-            content += self.polygon(poly[1:], style_repr=poly[0], **kwargs)
+            content += self.polygon(poly.object, style_repr=poly.style, **kwargs)
         # display path (for borders and edges)
         for _, path in enumerate(b.paths):
-            content += self.path(path[1:], style_repr=path[0], **kwargs)
+            content += self.path(path.object, style_repr=path.style, **kwargs)
         # display arrows
         for _, arrow in enumerate(b.arrows):
-            content += self.arrow(*arrow[1:], style_repr=arrow[0], **kwargs)
+            content += self.arrow(
+                arrow.object.x,
+                arrow.object.y,
+                arrow.object.angle,
+                style_repr=arrow.style,
+                **kwargs,
+            )
         # display borders or edges
         for _, spline in enumerate(b.splines):
-            content += self.spline(spline[1:], style_repr=spline[0], **kwargs)
+            content += self.spline(spline.object, style_repr=spline.style, **kwargs)
         # format text and display them
         for _, span in enumerate(b.texts):
             # get style of text
             a = copy.deepcopy(kwargs)
-            a.update({"style_repr": span[0]})
-            content += self.text(*span[1:], **a)
+            a.update({"style_repr": span.style})
+            content += self.text(*span.object, **a)
         # special function to apply at the end depending on the renderer
         if callable(self._SYMBOL_TEMP):
             ans = self._SYMBOL_TEMP(symbol, content, **kwargs)
@@ -604,7 +613,7 @@ class Renderer:
                     ],
                     is_edge=True,
                     style_repr="edge",
-                    **overload
+                    **overload,
                 )
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-~", ARROWS_SUFFIX):
                 ans = self.spline(
@@ -616,7 +625,7 @@ class Renderer:
                     ],
                     is_edge=True,
                     style_repr="edge",
-                    **overload
+                    **overload,
                 )
                 start_dx, start_dy, end_dx, end_dy = s[0] - e[0], 0, 0, e[1] - s[1]
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "~-", ARROWS_SUFFIX):
@@ -629,7 +638,7 @@ class Renderer:
                     ],
                     is_edge=True,
                     style_repr="edge",
-                    **overload
+                    **overload,
                 )
                 start_dx, start_dy, end_dx, end_dy = 0, s[1] - e[1], e[0] - s[0], 0
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-", ARROWS_SUFFIX):
@@ -637,7 +646,7 @@ class Renderer:
                     [("M", s[0], s[1]), ("L", e[0], e[1])],
                     is_edge=True,
                     style_repr="edge",
-                    **overload
+                    **overload,
                 )
                 start_dx, start_dy, end_dx, end_dy = (
                     s[0] - e[0],
@@ -650,7 +659,7 @@ class Renderer:
                     [("M", s[0], s[1]), ("L", e[0], s[1]), ("", e[0], e[1])],
                     is_edge=True,
                     style_repr="edge",
-                    **overload
+                    **overload,
                 )
                 start_dx, start_dy, end_dx, end_dy = s[0] - e[0], 0, 0, e[1] - s[1]
                 mx, my = e[0], s[1]
@@ -659,7 +668,7 @@ class Renderer:
                     [("M", s[0], s[1]), ("L", s[0], e[1]), ("", e[0], e[1])],
                     is_edge=True,
                     style_repr="edge",
-                    **overload
+                    **overload,
                 )
                 start_dx, start_dy, end_dx, end_dy = 0, s[1] - e[1], e[0] - s[0], 0
                 mx, my = s[0], e[1]
@@ -668,7 +677,7 @@ class Renderer:
                     [("M", s[0], s[1]), ("L", mx, s[1]), ("", mx, e[1]), ("", e[0], e[1])],
                     is_edge=True,
                     style_repr="edge",
-                    **overload
+                    **overload,
                 )
                 start_dx, start_dy, end_dx, end_dy = s[0] - mx, 0, e[0] - mx, 0
                 mx, my = mx, e[1]
@@ -689,7 +698,7 @@ class Renderer:
                         dy=brick_height,
                         is_edge=True,
                         style_repr="edge-arrow",
-                        **overload
+                        **overload,
                     )
                 elif shape[0] == "*":
                     pass
@@ -710,7 +719,7 @@ class Renderer:
                         dy=brick_height,
                         is_edge=True,
                         style_repr="edge-arrow",
-                        **overload
+                        **overload,
                     )
                 elif shape[0] == "*":
                     pass
@@ -820,182 +829,43 @@ class Renderer:
                 styles              (str)
 
         """
-        # calculate total length of the wavelance
         repeat = kwargs.get("repeat", 1)
+        # calculate total length of the wavelance
         TOTAL_LENGTH = len(wavelane) * int(repeat)
-        # Parameters for all wavelane
-        periods = [kwargs.get("period", 1)] * TOTAL_LENGTH
-        duty_cycles = [kwargs.get("duty_cycle", 0.5)] * TOTAL_LENGTH
-        phases = [kwargs.get("phase", 0)] + [0] * (TOTAL_LENGTH - 1)
-        slewings = [kwargs.get("slewing", 3)] * TOTAL_LENGTH
-        # Parameters specific for each bricks
-        periods = self._get_or_eval("periods", periods, **kwargs)
-        duty_cycles = self._get_or_eval("duty_cycles", duty_cycles, **kwargs)
-        analogue = self._get_or_eval("analogue", [], **kwargs)
-        data = kwargs.get("data", [])
-        attributes = kwargs.get("attr", [])
-        reg_pos = kwargs.get("regpos", [])
-        reg_types = kwargs.get("types", [])
-        reg_styles = kwargs.get("styles", [])
+        # calculate parameters for each brick of a given wavelane
+        needed_params = BrickFactory.get_parameters()
+        for param in list(needed_params.keys()):
+            params = param + "s" if param != "data" else param
+            needed_params[params] = [
+                kwargs.get(param) or needed_params[param]
+            ] * TOTAL_LENGTH
+            if params in kwargs:
+                needed_params[params] = kwargs.get(params) or needed_params[params]
+            if isinstance(needed_params[params], str) and params == "data":
+                needed_params[params] = needed_params[params].split(" ")
+            elif isinstance(needed_params[params], str):
+                needed_params[params] = safe_eval(needed_params[params], {})
         # computed properties
-        ign_trans = []
-        follows_data = []
-        da, ana, att, rp = [], [], [], []
-        # in case a string is given reformat it as a list
-        if isinstance(data, str):
-            data = data.split(" ")
-        if isinstance(reg_pos, str):
-            reg_pos = reg_pos.split(" ")
-        if isinstance(reg_styles, str):
-            reg_styles = reg_styles.split(" ")
-        # prepare output
-        _wavelane, prev_brick = [], None
-        last_valid_brick, last_valid_brick_idx = None, 0
-        last_valid_symbol = " "
-        # look for repetition '.' and for '|' time compression
+        follow_data = False
+        follow_x = False
+        previous_symbol = " "
+        _wavelane = []
+        # initialize the waveform
         for i, b in enumerate(wavelane * repeat):
-            brick = undulate.BRICKS.from_char(b)
-            if brick is None:
-                print("ERROR: unknown symbol '%s' used" % b, file=sys.stderr)
-                exit(3)
-            is_duplicate = False
-            new_brick = 0
-            # check validity of the first brick
-            if (
-                i == 0
-                and brick == undulate.BRICKS.repeat
-                and prev_brick in [None, undulate.BRICKS.gap]
-            ):
-                raise Exception(ERROR_MSG["WRONG_WAVE_START"] % name)
-            # increment last symbol repetition number
-            if undulate.BRICKS.is_repeating_symbol(brick):
-                # always repeat a clock signal and after gap repeat the last valid symbol
-                if (
-                    undulate.BRICKS.is_clock(last_valid_brick)
-                    or prev_brick == undulate.BRICKS.gap
-                ):
-                    _wavelane.append((last_valid_brick, 1, last_valid_symbol))
-                    new_brick += 1
-                    is_duplicate = True
-                # extend the width of other symbols
-                else:
-                    br, num, c = _wavelane[-1]
-                    _wavelane[-1] = (br, num + 1, c)
-                # a time compression overlay the previous one
-                if brick == undulate.BRICKS.gap:
-                    _wavelane.append((brick, 1, b))
-                    new_brick += 1
-            # merge all successive x
-            elif brick == prev_brick and brick in [undulate.BRICKS.x, undulate.BRICKS.X]:
-                br, num, c = _wavelane[-1]
-                _wavelane[-1] = (br, num + 1, c)
-            # add the new symbol
-            else:
-                _wavelane.append((brick, 1, b))
-                new_brick += 1
-            # update parameters
-            if new_brick > 0:
-                # pre-processing
-                ign_trans.append(undulate.BRICKS.ignore_transition(last_valid_brick, brick))
-                if last_valid_brick == undulate.BRICKS.data:
-                    follows_data.append(True)
-                else:
-                    follows_data.append(False)
-                # get data if needed
-                da.append(
-                    data[0]
-                    if data and undulate.BRICKS.need_data(brick)
-                    else da[-2]
-                    if is_duplicate and len(da) > 2
-                    else None
-                )
-                # get equation if needed
-                ana.append(
-                    analogue[0]
-                    if analogue and undulate.BRICKS.need_equation(brick)
-                    else ana[-2]
-                    if is_duplicate and len(ana) > 2
-                    else None
-                )
-                # get attribute if needed
-                att.append(
-                    attributes[0]
-                    if attributes and undulate.BRICKS.need_attribute(brick)
-                    else att[-2]
-                    if is_duplicate and len(att) > 2
-                    else None
-                )
-                # get position if needed
-                rp.append(
-                    reg_pos[0]
-                    if reg_pos and undulate.BRICKS.need_position(brick)
-                    else rp[-2]
-                    if is_duplicate and len(rp) > 2
-                    else None
-                )
-                # remove values consummed
-                if undulate.BRICKS.need_data(brick):
-                    data = data[1:]
-                if undulate.BRICKS.need_equation(brick):
-                    analogue = analogue[1:]
-                if undulate.BRICKS.need_attribute(brick):
-                    attributes = attributes[1:]
-                if undulate.BRICKS.need_position(brick):
-                    reg_pos = reg_pos[1:]
-                # print(brick, last_valid_brick, is_duplicate,
-                #      data, last_valid_brick_idx, sep='\t')
-                for k in range(1, new_brick):
-                    periods.insert(
-                        last_valid_brick_idx,
-                        None if not is_duplicate else periods[last_valid_brick_idx],
-                    )
-                    duty_cycles.insert(
-                        last_valid_brick_idx,
-                        None if not is_duplicate else duty_cycles[last_valid_brick_idx],
-                    )
-                    slewings.insert(
-                        last_valid_brick_idx,
-                        None if not is_duplicate else slewings[last_valid_brick_idx],
-                    )
-                # print(new_brick, last_valid_brick_idx, data)
-            # update last valid brick
-            if not undulate.BRICKS.is_repeating_symbol(brick):
-                last_valid_brick = brick
-                last_valid_brick_idx += 1
-                last_valid_symbol = b
-            # update last brick
-            prev_brick = brick
-        # distribute parameters
-        param_order = [
-            "period",
-            "duty_cycle",
-            "equation",
-            "data",
-            "attribute",
-            "reg_pos",
-            "reg_type",
-            "reg_style",
-            "phase",
-            "slewing",
-            "ignore_transition",
-            "follow_data",
-        ]
-        params = zip_longest(
-            periods,
-            duty_cycles,
-            ana,
-            da,
-            att,
-            rp,
-            reg_types,
-            reg_styles,
-            phases,
-            slewings,
-            ign_trans,
-            follows_data,
-        )
-        kws = [dict(zip(param_order, t)) for t in params]
-        return list(zip(_wavelane, kws))
+            brick_args = copy.deepcopy(kwargs)
+            for param in BrickFactory.params.get(b, []):
+                params = param + "s" if param != "data" else param
+                brick_args[param] = needed_params[params].pop(0)
+            brick_args["follow_data"] = follow_data
+            brick_args["follow_x"] = follow_x
+            brick_args["is_first"] = i == 0
+            # generate the brick
+            _wavelane.append(BrickFactory.create(b, **brick_args))
+            follow_data = "data" in BrickFactory.tags[previous_symbol]
+            follow_x = previous_symbol == "X"
+            previous_symbol = b
+        # apply all registered filters
+        return FilterBank.apply(_wavelane)
 
     def _get_or_eval(self, name: str, default: str = "", **kwargs):
         """
@@ -1003,7 +873,7 @@ class Renderer:
         """
         param = kwargs.get(name) or default
         if isinstance(param, str):
-            return undulate.safe_eval(param)
+            return safe_eval(param)
         return param
 
     @incr_wavelane
@@ -1029,134 +899,39 @@ class Renderer:
         brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
         gap_offset = kwargs.get("gap_offset", brick_width * 0.5)
 
-        # look for repetition '.'
+        # preprocess waveform to simplify it
         _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
-
-        # util functions
-        def __select_style(b, **k):
-            reg_type = k.get("reg_type", None)
-            if b is None:
-                return "s2"
-            if b.isdigit() and int(b, 10) > 1:
-                return "s" + b
-            if reg_type:
-                return "s" + str(reg_type)
-            return "s2"
-
-        def __new_brick_width(idx, b, repeat, pos, **k):
-            phase = k.get("phase", 0)
-            period = k.get("period", 1)
-            slewing = k.get("slewing", 3)
-            # set minimum width
-            pmul = max(period, 0 if b in "csa" else slewing * 2 / brick_width)
-            if b == "|":
-                return 0
-            if idx == 0:
-                return pmul * brick_width * (repeat - phase)
-            elif idx == -1:
-                return max(
-                    pmul * brick_width * (repeat + phase), kwargs.get("width", 0) - pos
-                )
-            return pmul * repeat * brick_width
 
         # generate waveform
         wave, pos = [], 0
         last_valid_brick = None
-        last_valid_index = 0
-        for i, w in enumerate(_wavelane):
-            br, kw = w
-            br, repeat, symbol = br
+        for brick in _wavelane:
             # prune the properties
-            kw = {k: kw.get(k) for k in kw if not kw.get(k) is None}
-            new_width = __new_brick_width(
-                i if not i == len(_wavelane) - 1 else -1, symbol, repeat, pos, **kw
-            )
             x = max(0, pos)
-            if br == undulate.BRICKS.gap:
-                x = pos - brick_width + gap_offset - kw.get("slewing", 3)
-            kw.update(
+            if brick.symbol == "|":
+                x = pos - brick_width + gap_offset - brick.slewing
+            brick.args.update(
                 {
-                    "style": __select_style(symbol, **kw),
                     "last_y": brick_height
                     if last_valid_brick is None
-                    else last_valid_brick.get_last_y(),
-                    "is_first": i == 0,
-                    "brick_width": new_width,
-                    "brick_height": brick_height,
-                    "follow_x": isinstance(last_valid_brick, undulate.digital.Garbage),
+                    else last_valid_brick.last_y,
                     "extra": self.translate(x, 0, dont_touch=True),
                 }
             )
             # add style informations
-            kw.update(style_in_kwargs(**kwargs))
-            # create the new brick
-            pos += new_width
+            brick.args.update(style_in_kwargs(**kwargs))
             # generate the brick
-            brick = undulate.generate_brick(br, **kw)
-            wave.append((symbol, brick, kw))
-            if not undulate.BRICKS.is_repeating_symbol(br):
+            wave.append(BrickFactory.create(brick.symbol, **brick.args))
+            # create the new brick
+            pos += wave[-1].width
+            if "repeat" not in BrickFactory.tags[brick.symbol]:
                 last_valid_brick = brick
-        # post-process
-        last_valid_index = 0
-        for i, w in enumerate(wave):
-            symbol, brick, kw = w
-            ps, pb, pkw = wave[i - 1]
-            ns, nb, nkw = wave[last_valid_index]
-            # adjust transistion from data to X
-            if ns in "=23456789" and symbol in "X":
-                nkw.update({"brick_width": nkw.get("brick_width") + nkw.get("slewing")})
-                nb.__init__(ns in "xX", **nkw)
-
-            # define how to connect two data block together
-            def __update_data_or_garbage():
-                kw.update({"ignore_start_transition": True, "hide_data": True})
-                nkw.update({"ignore_end_transition": True})
-                brick.__init__(symbol in "xX", **kw)
-                nb.__init__(ns in "xX", **nkw)
-
-            # check conditions to apply
-            if i > 0 and ns == symbol:
-                # two consecutive data bricks with same value
-                if symbol in "=23456789xX":
-                    txt1, txt2 = nkw.get("data", "").strip(), kw.get("data", "").strip()
-                    if txt1 == txt2:
-                        __update_data_or_garbage()
-                # brick before and after a gap of the same type
-                elif brick.ignore_transition or isinstance(pb, undulate.digital.Gap):
-                    # when it is data or unknown data
-                    if symbol in "=23456789xX":
-                        txt1, txt2 = nkw.get("data", "").strip(), kw.get("data", "").strip()
-                        if txt1 == txt2:
-                            __update_data_or_garbage()
-                    # arbitrary other brick
-                    else:
-                        fy = brick.get_first_y()
-                        # alter current brick end
-                        nb.alter_end(0, fy)
-                        # alter next brick start
-                        brick.alter_start(0, fy)
-                        # update the bricks
-                        wave[i] = (symbol, brick, kw)
-                        wave[last_valid_index] = (ns, nb, nkw)
-            # arbitrary other brick
-            elif i > 0 and brick.ignore_transition:
-                fy = brick.get_first_y()
-                # alter current brick end
-                nb.alter_end(0, fy)
-                # alter next brick start
-                brick.alter_start(0, fy)
-                # update the bricks
-                wave[i] = (symbol, brick, kw)
-                wave[last_valid_index] = (ns, nb, nkw)
-            if not undulate.BRICKS.is_repeating_symbol(symbol):
-                last_valid_index = i
 
         # rendering
         def _gen():
             ans = self.wavelane_title(name, **kwargs) if name else ""
-            for _, w in enumerate(wave):
-                s, b, kw = w
-                ans += self.brick(s, b, **kw)
+            for brick in wave:
+                ans += self.brick(brick.symbol, brick, **brick.args)
             return ans
 
         # wrap the wavelane
@@ -1188,7 +963,10 @@ class Renderer:
             for k in range(0, int(width / step)):
                 x = step * k
                 ans += self.path(
-                    [(x, 0), (x, height - offsety)], style_repr="tick", extra="", **kwargs
+                    [Point(x, 0), Point(x, height - offsety)],
+                    style_repr="tick",
+                    extra="",
+                    **kwargs,
                 )
             return ans
 
@@ -1269,14 +1047,14 @@ class Renderer:
                     oy - 0.65 * grp_font_size - separation,
                     name,
                     style_repr="h%d" % depth,
-                    **kwargs
+                    **kwargs,
                 )
                 # add group separator
                 if depth == 2:
                     ans += self.path(
-                        [(0, oy - separation), (width + ox, oy - separation)],
+                        [Point(0, oy - separation), Point(width + ox, oy - separation)],
                         style_repr="border ctx-y",
-                        **kwargs
+                        **kwargs,
                     )
                 Renderer.register_y_step(brick_height + separation, is_title=True)
             # look through waveforms data
@@ -1324,7 +1102,7 @@ class Renderer:
                         wavelanes[wavetitle],
                         self.translate(0, oy, dont_touch=True),
                         depth + 1,
-                        **args
+                        **args,
                     )
                     ans += tmp
                 oy += dy

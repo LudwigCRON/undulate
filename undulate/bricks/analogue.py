@@ -261,8 +261,8 @@ class Analogue(Brick):
 
 def initialize() -> None:
     """register defined digital blocks in the rendering system"""
-    BrickFactory.register("m", MetaToZero.__init__)
-    BrickFactory.register("M", MetaToOne.__init__)
-    BrickFactory.register("s", Step.__init__, params={"equation": 0.0})
-    BrickFactory.register("c", Cap.__init__, params={"equation": 0.0})
-    BrickFactory.register("a", Analogue.__init__, params={"equation": [(0.0, 0.0)]})
+    BrickFactory.register("m", MetaToZero)
+    BrickFactory.register("M", MetaToOne)
+    BrickFactory.register("s", Step, tags=["analogue"], params={"equation": 0.0})
+    BrickFactory.register("c", Cap, tags=["analogue"], params={"equation": 0.0})
+    BrickFactory.register("a", Analogue, tags=["analogue"], params={"equation": [(0, 0)]})
