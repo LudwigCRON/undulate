@@ -1,10 +1,15 @@
 import os
 import sys
+import json
 import logging
+import logging.config
 from typing import Iterable
 
-LOGLEVEL = os.environ.get("LOGLEVEL", "WARNING").upper()
-logging.basicConfig(level=LOGLEVEL)
+# ==== configure log utility ====
+conf_path = os.path.join(os.path.dirname(__file__), "logging.json")
+conf_path = conf_path.replace("\\", "/")
+with open(conf_path, "r+") as fp:
+    logging.config.dictConfig(json.load(fp))
 
 YAML_IMPORT = "To read yaml file PyYAML is required. Run 'pip install pyyaml'"
 TOML_IMPORT = "To read toml file toml is required. Run 'pip install toml'"

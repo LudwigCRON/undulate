@@ -1,0 +1,25 @@
+{
+    "version": 1.0,
+    "formatters": {
+        "basic": {
+            "class": "logging.Formatter",
+            "datefmt": "%I:%M:%S",
+            "format": "%(levelname)-8s: %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "basic",
+            "stream": "ext://sys.stdout"
+        }
+    },
+    "loggers": {},
+    "root": {
+        "handlers": [
+            "console"
+        ],
+        "level": "WARNING"
+    }
+}

@@ -218,6 +218,7 @@ class FilterBank:
         """apply registered filters on the wavelane"""
         ans = copy.deepcopy(waveform)
         for filter in FilterBank.filters:
-            log.note(f"Apply {filter.__name__} on {ans[-1].args.get('name', '')}")
+            if ans:
+                log.note(f"Apply {filter.__name__} on {ans[-1].args.get('name', '')}")
             ans = filter(ans)
         return ans

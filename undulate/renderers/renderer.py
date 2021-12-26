@@ -8,12 +8,19 @@ into different format
 
 import re
 import copy
-import undulate
-from ..skin import style_in_kwargs, get_style, SizeUnit
+import undulate.skin
+import undulate.logger as log
+from undulate.skin import style_in_kwargs, get_style, SizeUnit
 from math import atan2, cos, sin, floor
 from itertools import count, accumulate
-from undulate.bricks.generic import Brick, BrickFactory, FilterBank, Point, safe_eval
-import undulate.logger as log
+from undulate.bricks.generic import (
+    Brick,
+    BrickFactory,
+    FilterBank,
+    Point,
+    SplineSegment,
+    safe_eval,
+)
 
 # Counter for unique id generation
 #: counter of group of wave unique id
@@ -544,7 +551,7 @@ class Renderer:
                     if isinstance(end, (float, int))
                     else xmin + width
                 )
-                pts = [("M", x1, y_pos), ("L", x2, y_pos)]
+                pts = [SplineSegment("M", x1, y_pos), SplineSegment("L", x2, y_pos)]
                 ans = self.spline(pts, **a)
             # vline
             elif shape == "|":
@@ -559,7 +566,7 @@ class Renderer:
                     if isinstance(end, (float, int))
                     else height
                 )
-                pts = [("M", x, y1), ("L", x, y2)]
+                pts = [SplineSegment("M", x, y1), SplineSegment("L", x, y2)]
                 ans = self.spline(pts, **a)
             # global time compression
             elif shape == "||":
@@ -575,32 +582,32 @@ class Renderer:
                     else height
                 )
                 pts_1 = [
-                    ("M", x, y1),  # |
-                    ("L", x, (y2 + y1) / 2 - 10),  # |
-                    ("L", x - 10, (y2 + y1) / 2),  # /
-                    ("L", x, (y2 + y1) / 2 + 10),  # \
-                    ("L", x, y2),  # |
+                    SplineSegment("M", x, y1),  # |
+                    SplineSegment("L", x, (y2 + y1) / 2 - 10),  # |
+                    SplineSegment("L", x - 10, (y2 + y1) / 2),  # /
+                    SplineSegment("L", x, (y2 + y1) / 2 + 10),  # \
+                    SplineSegment("L", x, y2),  # |
                 ]
                 pts_2 = [
-                    ("M", x + 5, y1),  # |
-                    ("L", x + 5, (y2 + y1) / 2 - 10),  # |
-                    ("L", x - 4, (y2 + y1) / 2),  # /
-                    ("L", x + 5, (y2 + y1) / 2 + 10),  # \
-                    ("L", x + 5, y2),  # |
+                    SplineSegment("M", x + 5, y1),  # |
+                    SplineSegment("L", x + 5, (y2 + y1) / 2 - 10),  # |
+                    SplineSegment("L", x - 4, (y2 + y1) / 2),  # /
+                    SplineSegment("L", x + 5, (y2 + y1) / 2 + 10),  # \
+                    SplineSegment("L", x + 5, y2),  # |
                 ]
                 poly = copy.deepcopy(pts_2)
                 poly.extend(pts_1[::-1])
-                ans = self.polygon([(i, j) for c, i, j in poly], style_repr="hide")
+                ans = self.polygon(poly, style_repr="hide")
                 ans += self.spline(pts_1, style_repr="big_gap")
                 ans += self.spline(pts_2, style_repr="big_gap")
             # edges
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "~", ARROWS_SUFFIX):
                 ans = self.spline(
                     [
-                        ("M", s[0], s[1]),
-                        ("C", s[0] * 0.1 + e[0] * 0.9, s[1]),
-                        ("", s[0] * 0.9 + e[0] * 0.1, e[1]),
-                        ("", e[0], e[1]),
+                        SplineSegment("M", s[0], s[1]),
+                        SplineSegment("C", s[0] * 0.1 + e[0] * 0.9, s[1]),
+                        SplineSegment("", s[0] * 0.9 + e[0] * 0.1, e[1]),
+                        SplineSegment("", e[0], e[1]),
                     ],
                     is_edge=True,
                     style_repr="edge",
@@ -609,10 +616,10 @@ class Renderer:
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-~", ARROWS_SUFFIX):
                 ans = self.spline(
                     [
-                        ("M", s[0], s[1]),
-                        ("C", e[0], s[1]),
-                        ("", e[0], e[1]),
-                        ("", e[0], e[1]),
+                        SplineSegment("M", s[0], s[1]),
+                        SplineSegment("C", e[0], s[1]),
+                        SplineSegment("", e[0], e[1]),
+                        SplineSegment("", e[0], e[1]),
                     ],
                     is_edge=True,
                     style_repr="edge",
@@ -622,10 +629,10 @@ class Renderer:
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "~-", ARROWS_SUFFIX):
                 ans = self.spline(
                     [
-                        ("M", s[0], s[1]),
-                        ("C", s[0], s[1]),
-                        ("", s[0], e[1]),
-                        ("", e[0], e[1]),
+                        SplineSegment("M", s[0], s[1]),
+                        SplineSegment("C", s[0], s[1]),
+                        SplineSegment("", s[0], e[1]),
+                        SplineSegment("", e[0], e[1]),
                     ],
                     is_edge=True,
                     style_repr="edge",
@@ -634,7 +641,7 @@ class Renderer:
                 start_dx, start_dy, end_dx, end_dy = 0, s[1] - e[1], e[0] - s[0], 0
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-", ARROWS_SUFFIX):
                 ans = self.spline(
-                    [("M", s[0], s[1]), ("L", e[0], e[1])],
+                    [SplineSegment("M", s[0], s[1]), SplineSegment("L", e[0], e[1])],
                     is_edge=True,
                     style_repr="edge",
                     **overload,
@@ -647,7 +654,11 @@ class Renderer:
                 )
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-|", ARROWS_SUFFIX):
                 ans = self.spline(
-                    [("M", s[0], s[1]), ("L", e[0], s[1]), ("", e[0], e[1])],
+                    [
+                        SplineSegment("M", s[0], s[1]),
+                        SplineSegment("L", e[0], s[1]),
+                        SplineSegment("", e[0], e[1]),
+                    ],
                     is_edge=True,
                     style_repr="edge",
                     **overload,
@@ -656,7 +667,11 @@ class Renderer:
                 mx, my = e[0], s[1]
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "|-", ARROWS_SUFFIX):
                 ans = self.spline(
-                    [("M", s[0], s[1]), ("L", s[0], e[1]), ("", e[0], e[1])],
+                    [
+                        SplineSegment("M", s[0], s[1]),
+                        SplineSegment("L", s[0], e[1]),
+                        SplineSegment("", e[0], e[1]),
+                    ],
                     is_edge=True,
                     style_repr="edge",
                     **overload,
@@ -665,7 +680,12 @@ class Renderer:
                 mx, my = s[0], e[1]
             elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-|-", ARROWS_SUFFIX):
                 ans = self.spline(
-                    [("M", s[0], s[1]), ("L", mx, s[1]), ("", mx, e[1]), ("", e[0], e[1])],
+                    [
+                        SplineSegment("M", s[0], s[1]),
+                        SplineSegment("L", mx, s[1]),
+                        SplineSegment("", mx, e[1]),
+                        SplineSegment("", e[0], e[1]),
+                    ],
                     is_edge=True,
                     style_repr="edge",
                     **overload,
@@ -721,11 +741,17 @@ class Renderer:
                     # add white background for the text
                     a.update({"style_repr": "edge-text", "x": mx + dx, "y": my + dy})
                     if text_background:
-                        ox, oy, w, h = undulate.text_bbox(
+                        ox, oy, w, h = undulate.skin.text_bbox(
                             self.ctx, "edge-text", text, self.engine, overload
                         )
                         ans += self.polygon(
-                            [(0, 0), (0, 0 + h), (0 + w, 0 + h), (0 + w, 0), (0, 0)],
+                            [
+                                Point(0, 0),
+                                Point(0, 0 + h),
+                                Point(0 + w, 0 + h),
+                                Point(0 + w, 0),
+                                Point(0, 0),
+                            ],
                             extra=self.translate(
                                 a.get("x") + ox, a.get("y") + oy, no_acc=True
                             ),
@@ -744,11 +770,17 @@ class Renderer:
                     }
                 )
                 if text_background:
-                    ox, oy, w, h = undulate.text_bbox(
+                    ox, oy, w, h = undulate.skin.text_bbox(
                         self.ctx, "edge-text", text, self.engine, overload
                     )
                     ans += self.polygon(
-                        [(0, 0), (0, 0 + h), (0 + w, 0 + h), (0 + w, 0), (0, 0)],
+                        [
+                            Point(0, 0),
+                            Point(0, 0 + h),
+                            Point(0 + w, 0 + h),
+                            Point(0 + w, 0),
+                            Point(0, 0),
+                        ],
                         extra=self.translate(a.get("x") + ox, a.get("y") + oy, no_acc=True),
                         style_repr="edge-background",
                     )
@@ -846,9 +878,10 @@ class Renderer:
             brick_args = copy.deepcopy(kwargs)
             for param in BrickFactory.params.get(b, []):
                 params = param + "s" if param not in ["data", "analogue"] else param
-                brick_args[param] = needed_params[params].pop(0) or BrickFactory.params.get(
-                    b, {}
-                ).get(param)
+                if needed_params[params]:
+                    brick_args[param] = needed_params[params].pop(
+                        0
+                    ) or BrickFactory.params.get(b, {}).get(param)
             brick_args["follow_data"] = follow_data
             brick_args["follow_x"] = follow_x
             brick_args["is_first"] = i == 0

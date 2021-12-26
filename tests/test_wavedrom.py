@@ -5,21 +5,29 @@ import argparse
 import unittest
 
 # imports as in undulate.py
-from undulate import SvgRenderer, CairoRenderer
+import importlib
+from undulate.renderers.svgrenderer import SvgRenderer
+from undulate.renderers.cairorenderer import CairoRenderer
 
 RENDERER = None
 
 
 class TestSvgMethods(unittest.TestCase):
     """
-  perform some test on the rendering with the internal
-  dict format of data
-  """
+    perform some test on the rendering with the internal
+    dict format of data
+    """
+
+    def setUp(self) -> None:
+        modules = ["undulate.bricks.digital", "undulate.bricks.analogue"]
+        for module in modules:
+            mod = importlib.import_module(module)
+            mod.initialize()
 
     def test_wavedrom_step1(self):
         """
-    test supported state of a signal
-    """
+        test supported state of a signal
+        """
         filename = "./output/wavedrom_step1.%s" % cli_args.format
         wavelanes = {
             "Alfa": {"wave": "01.zx=ud.23.45"},
@@ -30,8 +38,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step2(self):
         """
-    test clock generation
-    """
+        test clock generation
+        """
         filename = "./output/wavedrom_step2.%s" % cli_args.format
         wavelanes = {
             "pclk": {"wave": "p......."},
@@ -48,8 +56,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step3(self):
         """
-    small bus example
-    """
+        small bus example
+        """
         filename = "./output/wavedrom_step3.%s" % cli_args.format
         wavelanes = {
             "clk": {"wave": "P......"},
@@ -60,8 +68,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step4(self):
         """
-    spacer and gaps
-    """
+        spacer and gaps
+        """
         filename = "./output/wavedrom_step4.%s" % cli_args.format
         wavelanes = {
             "clk": {"wave": "p.....|..."},
@@ -74,8 +82,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step5(self):
         """
-    groups support
-    """
+        groups support
+        """
         filename = "./output/wavedrom_step5.%s" % cli_args.format
         wavelanes = {
             "clk": {"wave": "p..Pp..P"},
@@ -94,8 +102,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step6(self):
         """
-    phase and period
-    """
+        phase and period
+        """
         filename = "./output/wavedrom_step6.%s" % cli_args.format
         wavelanes = {
             "CK": {"wave": "P.......", "period": 2},
@@ -112,8 +120,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step7(self):
         """
-    Arrows
-    """
+        Arrows
+        """
         filename = "./output/wavedrom_step7.%s" % cli_args.format
         wavelanes = {
             "A": {"wave": "01........0....", "node": ".a........j"},
@@ -141,8 +149,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step8(self):
         """
-    Sharp edge lines
-    """
+        Sharp edge lines
+        """
         filename = "./output/wavedrom_step8.%s" % cli_args.format
         wavelanes = {
             "A": {"wave": "01..0..", "node": ".a..e.."},
@@ -165,8 +173,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step9(self):
         """
-    phase and period
-    """
+        phase and period
+        """
         filename = "./output/wavedrom_step9.%s" % cli_args.format
         wavelanes = {
             "CK": {"wave": "P.......", "period": 2},
@@ -187,8 +195,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step10(self):
         """
-    phase and period
-    """
+        phase and period
+        """
         filename = "./output/wavedrom_step10.%s" % cli_args.format
         wavelanes = {
             "CK": {"wave": "P.......", "repeat": 2},
@@ -227,8 +235,8 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_extra_mux_recirc(self):
         """
-    real phase use case
-    """
+        real phase use case
+        """
         filename = "./output/recirc_bus.%s" % cli_args.format
         wavelanes = {
             "F1": {"wave": "P...........", "node": "........."},
