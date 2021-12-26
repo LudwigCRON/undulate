@@ -1,6 +1,10 @@
+import os
 import sys
 import logging
 from typing import Iterable
+
+LOGLEVEL = os.environ.get("LOGLEVEL", "WARNING").upper()
+logging.basicConfig(level=LOGLEVEL)
 
 YAML_IMPORT = "To read yaml file PyYAML is required. Run 'pip install pyyaml'"
 TOML_IMPORT = "To read toml file toml is required. Run 'pip install toml'"
@@ -24,6 +28,10 @@ WRONG_WAVE_START = "A waveform cannot start with '%s'"
 
 def list_vars(values: Iterable) -> str:
     return "".join(("\t- %s\n" % value for value in values))
+
+
+def debug(msg):
+    logging.debug(msg)
 
 
 def note(msg):

@@ -6,6 +6,7 @@ bricks.py declare the basic building block
 to generate a waveform
 """
 
+import ast
 import copy
 from math import nan
 from typing import Callable, Any
@@ -45,6 +46,28 @@ class Drawable:
 
     style: str
     object: Any
+
+
+def safe_eval(code: str, ctx: dict = {}):
+    """
+    propose a safer alternative to eval based on ast
+
+    Args:
+        code (str): code to execute
+        ctx (dict): predefined variables and functions
+    Returns:
+        return value of the code
+    """
+    try:
+        # ast only accept a subset of python instruction
+        # which is safer than eval
+        parse_tree = ast.parse(code, mode="eval")
+        code_object = compile(parse_tree, filename="<string>", mode="eval")
+        # eval is not safe by itself but filtered by ast
+        return eval(code_object, ctx)
+    except Exception:
+        log.note(f"Failed to parse '{code}' consider as normal string")
+        return code
 
 
 class BrickFactory:
@@ -130,13 +153,14 @@ class Brick:
     ignore_start_transition: bool = False
     ignore_end_transition: bool = False
     is_first: bool = False
-    first_y: float = 0.0
+    first_y: float = nan
     last_y: float = nan
 
     def __init__(self, **kwargs) -> None:
         self.width = float(kwargs.get("brick_width", 40.0))
         self.height = float(kwargs.get("brick_height", 20.0))
         self.slewing = float(kwargs.get("slewing", 0.0))
+        self.first_y = float(kwargs.get("first_y", nan))
         self.last_y = float(kwargs.get("last_y", nan))
         self.ignore_start_transition = bool(kwargs.get("ignore_start_transition", False))
         self.ignore_end_transition = bool(kwargs.get("ignore_end_transition", False))
@@ -149,51 +173,35 @@ class Brick:
         self.splines = []
         self.texts = []
 
+    def get_last_y(self) -> float:
+        last_point_path = max(
+            (point for drawable in self.paths for point in drawable.object),
+            key=lambda p: p.x,
+            default=Point(self.width / 8, self.height),
+        )
+        last_point_spline = max(
+            (point for drawable in self.splines for point in drawable.object),
+            key=lambda p: p.x,
+            default=Point(self.width / 8, self.height),
+        )
+        if last_point_path.x >= last_point_spline.x:
+            return last_point_path.y
+        return last_point_spline.y
 
-# def ignore_transition(from_symb, to_symb) -> bool:
-#        """
-#        define special case when transition are skipped to prevent
-#        glitches by default
-#
-#        Args:
-#            from_symb (undulate.BRICKS): symbol from which start the transition
-#            to_symb (undulate.BRICKS): target symbol of the transition
-#        Returns:
-#            boolean result corresponding to the statement
-#            'transition should be skipped'
-#        """
-#        if (from_symb, to_symb) in [
-#            (BRICKS.low, BRICKS.Low),
-#            (BRICKS.high, BRICKS.High),
-#            (BRICKS.Low, BRICKS.low),
-#            (BRICKS.High, BRICKS.high),
-#            (BRICKS.one, BRICKS.Pclk),
-#            (BRICKS.zero, BRICKS.Nclk),
-#            (BRICKS.High, BRICKS.Pclk),
-#            (BRICKS.high, BRICKS.Pclk),
-#            (BRICKS.high, BRICKS.pclk),
-#            (BRICKS.High, BRICKS.pclk),
-#            (BRICKS.Low, BRICKS.Nclk),
-#            (BRICKS.low, BRICKS.Nclk),
-#            (BRICKS.low, BRICKS.nclk),
-#            (BRICKS.Low, BRICKS.nclk),
-#        ]:
-#            return True
-#        if (
-#            to_symb in [undulate.BRICKS.zero, undulate.BRICKS.one]
-#            or BRICKS.is_forced_signal(to_symb)
-#        ) and from_symb in [undulate.BRICKS.data, undulate.BRICKS.x, undulate.BRICKS.X]:
-#            return True
-#        if BRICKS.is_forced_signal(to_symb) and BRICKS.is_clock(from_symb):
-#            if from_symb.value.lower() == "n" and to_symb.value.lower() == "h":
-#                return True
-#            if from_symb.value.lower() == "p" and to_symb.value.lower() == "l":
-#                return True
-#            if from_symb.value.lower() == "h" and to_symb.value.lower() == "p":
-#                return True
-#            if from_symb.value.lower() == "l" and to_symb.value.lower() == "n":
-#                return True
-#        return False
+    def get_first_y(self) -> float:
+        last_point_path = min(
+            (point for drawable in self.paths for point in drawable.object),
+            key=lambda p: p.x,
+            default=Point(self.width / 2, self.height),
+        )
+        last_point_spline = min(
+            (point for drawable in self.splines for point in drawable.object),
+            key=lambda p: p.x,
+            default=Point(self.width / 2, self.height),
+        )
+        if last_point_path.x <= last_point_spline.x:
+            return last_point_path.y
+        return last_point_spline.y
 
 
 class FilterBank:
@@ -210,5 +218,6 @@ class FilterBank:
         """apply registered filters on the wavelane"""
         ans = copy.deepcopy(waveform)
         for filter in FilterBank.filters:
+            log.note(f"Apply {filter.__name__} on {ans[-1].args.get('name', '')}")
             ans = filter(ans)
         return ans

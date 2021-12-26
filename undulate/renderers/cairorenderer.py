@@ -6,6 +6,8 @@ into scalable vector graphics format
 """
 
 import cairo
+
+from undulate.bricks.generic import SplineSegment, Point
 from ..skin import (
     SizeUnit,
     apply_fill,
@@ -57,7 +59,7 @@ class CairoRenderer(Renderer):
         self.ctx.paint_with_alpha(1)
         return ""
 
-    def path(self, vertices: list, **kwargs) -> str:
+    def path(self, vertices: list[Point], **kwargs) -> str:
         """
         draw a path to represent common signals
 
@@ -77,9 +79,9 @@ class CairoRenderer(Renderer):
         self.ctx.new_path()
         for i, v in enumerate(vertices):
             if i == 0:
-                self.ctx.move_to(*v)
+                self.ctx.move_to(v.x, v.y)
             else:
-                self.ctx.line_to(*v)
+                self.ctx.line_to(v.x, v.y)
         self.ctx.stroke()
         self.ctx.restore()
         return ""
@@ -115,7 +117,7 @@ class CairoRenderer(Renderer):
         self.ctx.restore()
         return ""
 
-    def polygon(self, vertices: list, **kwargs) -> str:
+    def polygon(self, vertices: list[Point], **kwargs) -> str:
         """
         draw a closed shape to represent common data
 
@@ -135,16 +137,16 @@ class CairoRenderer(Renderer):
         self.ctx.new_path()
         for i, v in enumerate(vertices):
             if i == 0:
-                self.ctx.move_to(*v)
+                self.ctx.move_to(v.x, v.y)
             else:
-                self.ctx.line_to(*v)
+                self.ctx.line_to(v.x, v.y)
         self.ctx.fill_preserve()
         apply_stroke(self.ctx, style, Engine.CAIRO, overload)
         self.ctx.stroke()
         self.ctx.restore()
         return ""
 
-    def spline(self, vertices: list, **kwargs) -> str:
+    def spline(self, vertices: list[SplineSegment], **kwargs) -> str:
         """
         draw a path to represent smooth signals
 
@@ -160,61 +162,40 @@ class CairoRenderer(Renderer):
         extra = kwargs.get("extra", "")
         overload = style_in_kwargs(**kwargs)
         vertices = svg_curve_convert(vertices)
-        c, px, py, stack = 0, 0, 0, []
+        c, stack = 0, []
 
         self.ctx.save()
         if callable(extra):
             extra()
         self.ctx.new_path()
-        self.ctx.move_to(px, py)
-        previous_cmd = "moveto"
-        for _, v in enumerate(vertices):
-            s, x, y = v
+        self.ctx.move_to(0, 0)
+        previous_cmd = self.ctx.move_to
+        map_cmd = {
+            "c": self.ctx.rel_curve_to,
+            "C": self.ctx.curve_to,
+            "l": self.ctx.rel_line_to,
+            "L": self.ctx.line_to,
+            "m": self.ctx.rel_move_to,
+            "M": self.ctx.move_to,
+            "z": self.ctx.close_path,
+            "Z": self.ctx.close_path,
+        }
+        for v in vertices:
+            t, x, y = v
             # check the command
-            cmd = (
-                "rcurveto"
-                if s == "c"
-                else "curveto"
-                if s == "C"
-                else "rlineto"
-                if s == "l"
-                else "lineto"
-                if s == "L"
-                else "rmoveto"
-                if s == "m"
-                else "moveto"
-                if s == "M"
-                else "closepath"
-                if s == "z" or s == "Z"
-                else previous_cmd
-            )
+            cmd = map_cmd.get(t, previous_cmd)
             # gather 3 points to draw a bezier curve
-            c = 2 if s in ["C", "c"] else c
-            if c == 2:
-                stack.extend([x, y])
-                c = 1
-            elif c > 0:
+            c = 2 if t in ["c", "C"] else c
+            if c > 0:
                 stack.extend([x, y])
                 c -= 1
             else:
                 stack.extend([x, y])
-                if cmd.startswith("rc"):
-                    self.ctx.rel_curve_to(*stack)
-                elif cmd.startswith("rl"):
-                    self.ctx.rel_line_to(*stack)
-                elif cmd.startswith("rm"):
-                    self.ctx.rel_move_to(*stack)
-                elif cmd.startswith("l"):
-                    self.ctx.line_to(*stack)
-                elif cmd.startswith("m"):
-                    self.ctx.move_to(*stack)
-                elif cmd == "closepath":
-                    self.ctx.close_path()
+                if t in ["z", "Z"]:
+                    cmd()
                 else:
-                    self.ctx.curve_to(*stack)
+                    cmd(*stack)
                 stack = []
-            # hold last point
-            px, py = x, y
             # store last cmd
             previous_cmd = cmd
         if style == "hide":

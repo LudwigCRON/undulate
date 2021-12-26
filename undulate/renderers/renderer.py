@@ -12,8 +12,7 @@ import undulate
 from ..skin import style_in_kwargs, get_style, SizeUnit
 from math import atan2, cos, sin, floor
 from itertools import count, accumulate
-from undulate.bricks.generic import Brick, BrickFactory, FilterBank, Point
-from undulate.generic import safe_eval
+from undulate.bricks.generic import Brick, BrickFactory, FilterBank, Point, safe_eval
 import undulate.logger as log
 
 # Counter for unique id generation
@@ -21,14 +20,6 @@ import undulate.logger as log
 _WAVEGROUP_COUNT = 0
 #: counter of wave unique id
 _WAVE_COUNT = 0
-# error message
-ERROR_MSG = {
-    "ANNOTATION_MISSING_PTS": (
-        "ERROR: For annotation check from/to are defined "
-        "(float,float) or float supported only"
-    ),
-    "WRONG_WAVE_START": "ERROR: %s : cannot repeat None or '|', add a valid brick first",
-}
 
 ARROWS_PREFIX = "<*# "
 ARROWS_SUFFIX = ">*# "
@@ -835,16 +826,16 @@ class Renderer:
         # calculate parameters for each brick of a given wavelane
         needed_params = BrickFactory.get_parameters()
         for param in list(needed_params.keys()):
-            params = param + "s" if param != "data" else param
-            needed_params[params] = [
-                kwargs.get(param) or needed_params[param]
-            ] * TOTAL_LENGTH
+            if isinstance(kwargs.get(param), str):
+                kwargs[param] = safe_eval(kwargs[param])
+            params = param + "s" if param not in ["data", "analogue"] else param
+            needed_params[params] = [kwargs.get(param)] * TOTAL_LENGTH
             if params in kwargs:
                 needed_params[params] = kwargs.get(params) or needed_params[params]
             if isinstance(needed_params[params], str) and params == "data":
                 needed_params[params] = needed_params[params].split(" ")
             elif isinstance(needed_params[params], str):
-                needed_params[params] = safe_eval(needed_params[params], {})
+                needed_params[params] = safe_eval(needed_params[params])
         # computed properties
         follow_data = False
         follow_x = False
@@ -854,13 +845,18 @@ class Renderer:
         for i, b in enumerate(wavelane * repeat):
             brick_args = copy.deepcopy(kwargs)
             for param in BrickFactory.params.get(b, []):
-                params = param + "s" if param != "data" else param
-                brick_args[param] = needed_params[params].pop(0)
+                params = param + "s" if param not in ["data", "analogue"] else param
+                brick_args[param] = needed_params[params].pop(0) or BrickFactory.params.get(
+                    b, {}
+                ).get(param)
             brick_args["follow_data"] = follow_data
             brick_args["follow_x"] = follow_x
             brick_args["is_first"] = i == 0
+            brick_args["repeat"] = 1
+            brick_args["name"] = name
             # generate the brick
             _wavelane.append(BrickFactory.create(b, **brick_args))
+            log.debug(f"{name} {b} {_wavelane[-1]!r} {_wavelane[-1].get_last_y()}")
             follow_data = "data" in BrickFactory.tags[previous_symbol]
             follow_x = previous_symbol == "X"
             previous_symbol = b
@@ -896,7 +892,6 @@ class Renderer:
         """
         # options
         brick_width = kwargs.get("brick_width", 20) * kwargs.get("hscale", 1)
-        brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
         gap_offset = kwargs.get("gap_offset", brick_width * 0.5)
 
         # preprocess waveform to simplify it
@@ -904,28 +899,18 @@ class Renderer:
 
         # generate waveform
         wave, pos = [], 0
-        last_valid_brick = None
         for brick in _wavelane:
             # prune the properties
             x = max(0, pos)
             if brick.symbol == "|":
                 x = pos - brick_width + gap_offset - brick.slewing
-            brick.args.update(
-                {
-                    "last_y": brick_height
-                    if last_valid_brick is None
-                    else last_valid_brick.last_y,
-                    "extra": self.translate(x, 0, dont_touch=True),
-                }
-            )
+            brick.args.update({"extra": self.translate(x, 0, dont_touch=True)})
             # add style informations
             brick.args.update(style_in_kwargs(**kwargs))
             # generate the brick
             wave.append(BrickFactory.create(brick.symbol, **brick.args))
             # create the new brick
             pos += wave[-1].width
-            if "repeat" not in BrickFactory.tags[brick.symbol]:
-                last_valid_brick = brick
 
         # rendering
         def _gen():

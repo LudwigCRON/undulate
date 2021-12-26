@@ -7,9 +7,14 @@ common functions in the analogue context
 import math
 import random
 from typing import Any
-from undulate.bricks.generic import Brick, BrickFactory, Drawable, Point, SplineSegment
-from undulate.generic import safe_eval
-
+from undulate.bricks.generic import (
+    Brick,
+    BrickFactory,
+    Drawable,
+    Point,
+    SplineSegment,
+    safe_eval,
+)
 
 CONTEXT = {
     "time": [],
@@ -74,7 +79,7 @@ class MetaToZero(Brick):
         for i, t in enumerate(time):
             _tmp.append(
                 SplineSegment(
-                    "L" if i == 0 else "",
+                    "L",
                     t,
                     (
                         1
@@ -85,15 +90,15 @@ class MetaToZero(Brick):
                     * self.height,
                 )
             )
-            x, y = _tmp[-1].x, _tmp[-1].y
-            dx = max((self.height - y) * self.slewing / self.height, (self.height - y))
-            _tmp.extend(
-                [
-                    SplineSegment("C", x + dx, self.height),
-                    SplineSegment("", x + dx, self.height),
-                    SplineSegment("", self.width, self.height),
-                ]
-            )
+        x, y = _tmp[-1].x, _tmp[-1].y
+        dx = max((self.height - y) * self.slewing / self.height, (self.height - y))
+        _tmp.extend(
+            [
+                SplineSegment("C", x + dx, self.height),
+                SplineSegment("", x + dx, self.height),
+                SplineSegment("", self.width, self.height),
+            ]
+        )
         self.splines.append(Drawable("path", _tmp))
 
 
@@ -128,7 +133,7 @@ class MetaToOne(Brick):
         for i, t in enumerate(time):
             _tmp.append(
                 SplineSegment(
-                    "L" if i == 0 else "",
+                    "L",
                     t,
                     (
                         1
@@ -159,7 +164,7 @@ class Cap(Brick):
     the new level.
     """
 
-    def __init__(self, equation: Any, **kwargs):
+    def __init__(self, **kwargs):
         """
         Args:
             points: the new level between 0 and height
@@ -169,8 +174,11 @@ class Cap(Brick):
             None
         """
         Brick.__init__(self, **kwargs)
-        # pre-process equation
-        value = safe_eval(equation, CONTEXT) if isinstance(equation, str) else equation
+        # pre-process analogue
+        CONTEXT["Tmax"] = self.width
+        CONTEXT["time"] = range(int(self.width + 1))
+        analogue = kwargs["analogue"]
+        value = safe_eval(analogue, CONTEXT) if isinstance(analogue, str) else analogue
         y = transform_y(value, self.height)
         # set final value if necessary
         if self.is_first or math.isnan(self.last_y):
@@ -202,18 +210,21 @@ class Step(Brick):
     comparator-based integrator
     """
 
-    def __init__(self, equation: Any, **kwargs):
+    def __init__(self, **kwargs):
         """
         Args:
-            equation: the new level between 0 and height
+            analogue: the new level between 0 and height
         Parameters:
             slewing (float > 0): maximum slope of the signal
         Returns:
             None
         """
         Brick.__init__(self, **kwargs)
-        # pre-process equation
-        value = safe_eval(equation, CONTEXT) if isinstance(equation, str) else equation
+        # pre-process analogue
+        CONTEXT["Tmax"] = self.width
+        CONTEXT["time"] = range(int(self.width + 1))
+        analogue = kwargs["analogue"]
+        value = safe_eval(analogue, CONTEXT) if isinstance(analogue, str) else analogue
         y = transform_y(value, self.height)
         # set final value if necessary
         if self.is_first or math.isnan(self.last_y):
@@ -224,9 +235,9 @@ class Step(Brick):
             Drawable(
                 "path",
                 [
-                    SplineSegment(0, self.last_y),
-                    SplineSegment(self.dt, y),
-                    SplineSegment(self.width, y),
+                    Point(0, self.last_y),
+                    Point(self.dt, y),
+                    Point(self.width, y),
                 ],
             )
         )
@@ -239,7 +250,7 @@ class Analogue(Brick):
     This brick is intended to depict an time changing signal
     """
 
-    def __init__(self, equation: Any, **kwargs):
+    def __init__(self, **kwargs):
         """
         Args:
             points: list of points (relative time, y-value)
@@ -247,15 +258,18 @@ class Analogue(Brick):
             None
         """
         Brick.__init__(self, **kwargs)
-        # pre-process equation
-        points = safe_eval(equation, CONTEXT) if isinstance(equation, str) else equation
+        # pre-process analogue
+        CONTEXT["Tmax"] = self.width
+        CONTEXT["time"] = range(int(self.width + 1))
+        analogue = kwargs["analogue"]
+        points = safe_eval(analogue, CONTEXT) if isinstance(analogue, str) else analogue
+        # set final point if necessary
+        if self.is_first or math.isnan(self.last_y):
+            self.last_y = self.height
         # add shape
         _tmp = [Point(0.0, self.last_y)]
         for point in points:
             _tmp.append(Point(point[0], transform_y(point[1], self.height)))
-        # set final point if necessary
-        if self.is_first or math.isnan(self.last_y):
-            self.last_y = _tmp[-1].y
         self.paths.append(Drawable("path", _tmp))
 
 
@@ -263,6 +277,6 @@ def initialize() -> None:
     """register defined digital blocks in the rendering system"""
     BrickFactory.register("m", MetaToZero)
     BrickFactory.register("M", MetaToOne)
-    BrickFactory.register("s", Step, tags=["analogue"], params={"equation": 0.0})
-    BrickFactory.register("c", Cap, tags=["analogue"], params={"equation": 0.0})
-    BrickFactory.register("a", Analogue, tags=["analogue"], params={"equation": [(0, 0)]})
+    BrickFactory.register("s", Step, tags=["analogue"], params={"analogue": 0.0})
+    BrickFactory.register("c", Cap, tags=["analogue"], params={"analogue": 0.0})
+    BrickFactory.register("a", Analogue, tags=["analogue"], params={"analogue": [(0, 0)]})

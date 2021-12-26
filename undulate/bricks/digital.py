@@ -30,9 +30,13 @@ class Nclk(Brick):
         duty_cycle (float > 0): between 0 and 1
     """
 
-    def __init__(self, duty_cycle: float = 0.5, **kwargs) -> None:
+    def __init__(self, **kwargs) -> None:
         Brick.__init__(self, **kwargs)
-        self.first_y = self.height
+        duty_cycle = kwargs.get("duty_cycle", 0.5)
+        if self.ignore_end_transition:
+            self.first_y = 0.0
+        elif math.isnan(self.first_y):
+            self.first_y = self.height / 2
         if self.is_first:
             self.last_y = 0.0
         elif math.isnan(self.last_y):
@@ -48,7 +52,7 @@ class Nclk(Brick):
                     Point(self.width * duty_cycle - self.slewing / 2, self.height),
                     Point(self.width * duty_cycle + self.slewing / 2, 0.0),
                     Point(self.width - self.slewing / 2, 0),
-                    Point(self.width, self.height / 2),
+                    Point(self.width, self.first_y),
                 ],
             )
         )
@@ -90,9 +94,13 @@ class Pclk(Brick):
         duty_cycle (float > 0): between 0 and 1
     """
 
-    def __init__(self, duty_cycle: float = 0.5, **kwargs):
+    def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
-        self.first_y = 0.0
+        duty_cycle = kwargs.get("duty_cycle", 0.5)
+        if self.ignore_end_transition:
+            self.first_y = self.height
+        elif math.isnan(self.first_y):
+            self.first_y = self.height / 2
         if self.is_first:
             self.last_y = self.height
         elif math.isnan(self.last_y):
@@ -108,7 +116,7 @@ class Pclk(Brick):
                     Point(self.width * duty_cycle - self.slewing / 2, 0.0),
                     Point(self.width * duty_cycle + self.slewing / 2, self.height),
                     Point(self.width - self.slewing / 2, self.height),
-                    Point(self.width, self.height / 2),
+                    Point(self.width, self.first_y),
                 ],
             )
         )
@@ -153,6 +161,8 @@ class Low(Brick):
         Brick.__init__(self, **kwargs)
         self.first_y = self.height
         if self.is_first:
+            self.last_y = self.height
+        elif self.ignore_start_transition:
             self.last_y = self.height
         elif math.isnan(self.last_y):
             self.last_y = self.height
@@ -208,6 +218,8 @@ class High(Brick):
         Brick.__init__(self, **kwargs)
         self.first_y = 0.0
         if self.is_first:
+            self.last_y = 0.0
+        elif self.ignore_start_transition:
             self.last_y = 0.0
         elif math.isnan(self.last_y):
             self.last_y = 0.0
@@ -280,17 +292,19 @@ class Zero(Brick):
     def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
         self.first_y = self.height
-        if self.is_first or math.isnan(self.last_y):
+        if self.is_first:
             self.last_y = self.height
+        elif self.ignore_start_transition:
+            self.last_y = self.height
+        elif math.isnan(self.last_y):
+            self.last_y = self.height / 2
         # add shape
         self.paths.append(
             Drawable(
                 "path",
                 [
                     Point(0.0, self.last_y),
-                    Point(
-                        self.slewing / 2, self.last_y if self.is_first else self.height / 2
-                    ),
+                    Point(self.slewing / 2, self.last_y),
                     Point(self.slewing, self.height),
                     Point(self.width, self.height),
                 ],
@@ -311,17 +325,17 @@ class One(Brick):
         self.first_y = 0.0
         if self.is_first:
             self.last_y = 0.0
-        elif math.isnan(self.last_y):
+        elif self.ignore_start_transition:
             self.last_y = 0.0
+        elif math.isnan(self.last_y):
+            self.last_y = self.height / 2
         # add shape
         self.paths.append(
             Drawable(
                 "path",
                 [
                     Point(0.0, self.last_y),
-                    Point(
-                        self.slewing / 2, self.last_y if self.is_first else self.height / 2
-                    ),
+                    Point(self.slewing / 2, self.last_y),
                     Point(self.slewing, 0.0),
                     Point(self.width, 0.0),
                 ],
@@ -491,152 +505,49 @@ class Data(Brick):
         style (str): from s2 to s9-polygon or hatch, by default s2-polygon
     """
 
-    def __init__(self, style: str = "s2-polygon", hide_data: bool = False, **kwargs):
+    def __init__(self, style: str = "s2-polygon", **kwargs):
         Brick.__init__(self, **kwargs)
+        hide_data = kwargs.get("hide_data", False)
+        if math.isnan(self.first_y):
+            self.first_y = self.height / 2
         if math.isnan(self.last_y):
             self.last_y = self.height / 2
         follow_x = kwargs.get("follow_x", False)
         # add shape
+        _tmp = []
         if self.is_first:
-            self.paths.append(
-                Drawable(
-                    "path",
-                    [
-                        Point(0.0, 0.0),
-                        Point(self.slewing, 0.0),
-                        Point(self.width - self.slewing, 0.0),
-                        Point(
-                            self.width,
-                            self.height / 2 if not self.ignore_end_transition else 0.0,
-                        ),
-                    ],
-                )
-            )
-            self.paths.append(
-                Drawable(
-                    "path",
-                    [
-                        Point(0.0, self.height),
-                        Point(self.slewing, self.height),
-                        Point(self.width - self.slewing, self.height),
-                        Point(
-                            self.width,
-                            self.height / 2
-                            if not self.ignore_end_transition
-                            else self.height,
-                        ),
-                    ],
-                )
-            )
+            _tmp = [
+                Point(0.0, 0.0),
+                Point(self.width - self.slewing, 0.0),
+                Point(
+                    self.width,
+                    0.0 if self.ignore_end_transition else self.first_y,
+                ),
+                Point(self.width - self.slewing, self.height),
+                Point(0.0, self.height),
+            ]
         else:
-            self.paths.append(
-                Drawable(
-                    "path",
-                    [
-                        Point(
-                            -self.slewing if follow_x else 0.0,
-                            self.last_y if not self.ignore_start_transition else 0.0,
-                        ),
-                        Point(0.0 if follow_x else self.slewing, 0.0),
-                        Point(self.width - self.slewing, 0.0),
-                        Point(
-                            self.width,
-                            self.height / 2 if not self.ignore_end_transition else 0.0,
-                        ),
-                    ],
-                )
-            )
-            self.paths.append(
-                Drawable(
-                    "path",
-                    [
-                        Point(
-                            -self.slewing if follow_x else 0,
-                            self.last_y
-                            if not self.ignore_start_transition
-                            else self.height,
-                        ),
-                        Point(0 if follow_x else self.slewing, self.height),
-                        Point(self.width - self.slewing, self.height),
-                        Point(
-                            self.width,
-                            self.height / 2
-                            if not self.ignore_end_transition
-                            else self.height,
-                        ),
-                    ],
-                )
-            )
+            _tmp = [
+                Point(
+                    -self.slewing if follow_x else 0.0,
+                    self.last_y if not self.ignore_start_transition else 0.0,
+                ),
+                Point(0.0 if follow_x else self.slewing, 0.0),
+                Point(self.width - self.slewing, 0.0),
+                Point(
+                    self.width,
+                    0.0 if self.ignore_end_transition else self.first_y,
+                ),
+                Point(self.width - self.slewing, self.height),
+                Point(0.0 if follow_x else self.slewing, self.height),
+                Point(
+                    -self.slewing if follow_x else 0,
+                    self.last_y if not self.ignore_start_transition else self.height,
+                ),
+            ]
+        self.paths.append(Drawable("path", _tmp))
         # add background
-        if self.is_first:
-            self.polygons.append(
-                Drawable(
-                    style,
-                    [
-                        Point(0.0, 0.0),
-                        Point(self.slewing, 0.0),
-                        Point(self.width - self.slewing, 0.0),
-                        Point(
-                            self.width,
-                            self.height / 2 if not self.ignore_end_transition else 0.0,
-                        ),
-                        Point(
-                            self.width - self.slewing
-                            if not self.ignore_end_transition
-                            else self.width,
-                            self.height,
-                        ),
-                        Point(self.slewing, self.height),
-                        Point(0.0, self.height),
-                    ],
-                )
-            )
-        else:
-            self.polygons.append(
-                Drawable(
-                    style,
-                    [
-                        Point(
-                            -self.slewing if follow_x else 0,
-                            self.last_y if not self.ignore_start_transition else 0,
-                        ),
-                        Point(
-                            self.slewing
-                            if not self.ignore_start_transition and not follow_x
-                            else 0,
-                            0,
-                        ),
-                        Point(
-                            self.width - self.slewing
-                            if not self.ignore_end_transition
-                            else self.width,
-                            0,
-                        ),
-                        Point(
-                            self.width,
-                            self.height / 2 if not self.ignore_end_transition else 0,
-                        ),
-                        Point(
-                            self.width - self.slewing
-                            if not self.ignore_end_transition
-                            else self.width,
-                            self.height,
-                        ),
-                        Point(
-                            self.slewing
-                            if not self.ignore_start_transition and not follow_x
-                            else 0,
-                            self.height,
-                        ),
-                        Point(
-                            -self.slewing if follow_x else 0,
-                            self.last_y
-                            if not self.ignore_start_transition
-                            else self.height,
-                        ),
-                    ],
-                )
-            )
+        self.polygons.append(Drawable(style, _tmp))
         # add text
         if not hide_data:
             self.texts.append(
@@ -649,8 +560,8 @@ class Two(Data):
     Variant of Data with s2-polygon
     """
 
-    def __init__(self, hide_data: bool = False, **kwargs):
-        Data.__init__(self, style="s2-polygon", hide_data=hide_data, **kwargs)
+    def __init__(self, **kwargs):
+        Data.__init__(self, style="s2-polygon", **kwargs)
 
 
 class Three(Data):
@@ -658,8 +569,8 @@ class Three(Data):
     Variant of Data with s3-polygon
     """
 
-    def __init__(self, hide_data: bool = False, **kwargs):
-        Data.__init__(self, style="s3-polygon", hide_data=hide_data, **kwargs)
+    def __init__(self, **kwargs):
+        Data.__init__(self, style="s3-polygon", **kwargs)
 
 
 class Four(Data):
@@ -667,8 +578,8 @@ class Four(Data):
     Variant of Data with s4-polygon
     """
 
-    def __init__(self, hide_data: bool = False, **kwargs):
-        Data.__init__(self, style="s4-polygon", hide_data=hide_data, **kwargs)
+    def __init__(self, **kwargs):
+        Data.__init__(self, style="s4-polygon", **kwargs)
 
 
 class Five(Data):
@@ -676,8 +587,8 @@ class Five(Data):
     Variant of Data with s5-polygon
     """
 
-    def __init__(self, hide_data: bool = False, **kwargs):
-        Data.__init__(self, style="s5-polygon", hide_data=hide_data, **kwargs)
+    def __init__(self, **kwargs):
+        Data.__init__(self, style="s5-polygon", **kwargs)
 
 
 class Six(Data):
@@ -685,8 +596,8 @@ class Six(Data):
     Variant of Data with s6-polygon
     """
 
-    def __init__(self, hide_data: bool = False, **kwargs):
-        Data.__init__(self, style="s6-polygon", hide_data=hide_data, **kwargs)
+    def __init__(self, **kwargs):
+        Data.__init__(self, style="s6-polygon", **kwargs)
 
 
 class Seven(Data):
@@ -694,8 +605,8 @@ class Seven(Data):
     Variant of Data with s7-polygon
     """
 
-    def __init__(self, hide_data: bool = False, **kwargs):
-        Data.__init__(self, style="s7-polygon", hide_data=hide_data, **kwargs)
+    def __init__(self, **kwargs):
+        Data.__init__(self, style="s7-polygon", **kwargs)
 
 
 class Eight(Data):
@@ -703,8 +614,8 @@ class Eight(Data):
     Variant of Data with s8-polygon
     """
 
-    def __init__(self, hide_data: bool = False, **kwargs):
-        Data.__init__(self, style="s8-polygon", hide_data=hide_data, **kwargs)
+    def __init__(self, **kwargs):
+        Data.__init__(self, style="s8-polygon", **kwargs)
 
 
 class Nine(Data):
@@ -712,8 +623,8 @@ class Nine(Data):
     Variant of Data with s9-polygon
     """
 
-    def __init__(self, hide_data: bool = False, **kwargs):
-        Data.__init__(self, style="s9-polygon", hide_data=hide_data, **kwargs)
+    def __init__(self, **kwargs):
+        Data.__init__(self, style="s9-polygon", **kwargs)
 
 
 class Unknown(Data):
@@ -722,7 +633,8 @@ class Unknown(Data):
     """
 
     def __init__(self, **kwargs):
-        Data.__init__(self, style="hatch", hide_data=True, **kwargs)
+        kwargs.update({"hide_data": True})
+        Data.__init__(self, style="hatch", **kwargs)
 
 
 class Gap(Brick):
@@ -738,37 +650,49 @@ class Gap(Brick):
             Drawable(
                 "hide",
                 [
-                    SplineSegment("M", 0, self.height + 2),
-                    SplineSegment("C", 5, self.height + 2),
-                    SplineSegment("", 5, -4),
-                    SplineSegment("", 10, -4),
-                    SplineSegment("L", 7, 0),
-                    SplineSegment("C", 2, 0),
-                    SplineSegment("", 2, self.height + 4),
-                    SplineSegment("", -3, self.height + 4),
-                    SplineSegment("z", "", ""),
-                ],
-            )
-        )
-        self.splines.append(
-            Drawable(
-                "path",
-                [
-                    SplineSegment("M", 0, self.height + 2),
-                    SplineSegment("C", 5, self.height + 2),
-                    SplineSegment("", 5, -2),
-                    SplineSegment("", 10, -2),
-                ],
-            )
-        )
-        self.splines.append(
-            Drawable(
-                "path",
-                [
-                    SplineSegment("M", -3, self.height + 2),
-                    SplineSegment("C", 2, self.height + 2),
+                    SplineSegment("M", -4, self.height + 2),
+                    SplineSegment("C", -4, self.height + 2),
+                    SplineSegment("", -2, self.height + 2),
+                    SplineSegment("", -2, self.height / 2),
+                    SplineSegment("C", -2, self.height / 2),
+                    SplineSegment("", -2, -2),
+                    SplineSegment("", 0, -2),
+                    SplineSegment("L", 4, -2),
+                    SplineSegment("C", 4, -2),
                     SplineSegment("", 2, -2),
-                    SplineSegment("", 7, -2),
+                    SplineSegment("", 2, self.height / 2),
+                    SplineSegment("C", 2, self.height / 2),
+                    SplineSegment("", 2, self.height + 2),
+                    SplineSegment("", 0, self.height + 2),
+                    SplineSegment("z", 0, 0),
+                ],
+            )
+        )
+        self.splines.append(
+            Drawable(
+                "path",
+                [
+                    SplineSegment("M", -4, self.height + 2),
+                    SplineSegment("C", -4, self.height + 2),
+                    SplineSegment("", -2, self.height + 2),
+                    SplineSegment("", -2, self.height / 2),
+                    SplineSegment("C", -2, self.height / 2),
+                    SplineSegment("", -2, -2),
+                    SplineSegment("", 0, -2),
+                ],
+            )
+        )
+        self.splines.append(
+            Drawable(
+                "path",
+                [
+                    SplineSegment("M", 0, self.height + 2),
+                    SplineSegment("C", 0, self.height + 2),
+                    SplineSegment("", 2, self.height + 2),
+                    SplineSegment("", 2, self.height / 2),
+                    SplineSegment("C", 2, self.height / 2),
+                    SplineSegment("", 2, -2),
+                    SplineSegment("", 4, -2),
                 ],
             )
         )
@@ -786,15 +710,15 @@ class Up(Brick):
         Brick.__init__(self, **kwargs)
         self.first_y = self.height
         if math.isnan(self.last_y):
-            self.last_y = 0.0
+            self.last_y = self.height / 2
+        self.dt = abs(self.first_y - self.last_y) * self.slewing / self.height
         self.splines.append(
             Drawable(
                 "path",
                 [
                     SplineSegment("M", 0, self.last_y),
-                    SplineSegment("L", 3, self.last_y),
-                    SplineSegment("C", 3 + self.slewing, self.last_y),
-                    SplineSegment("", 3 + self.slewing, self.height - self.last_y),
+                    SplineSegment("C", 0, self.last_y),
+                    SplineSegment("", self.dt, 0),
                     SplineSegment("", min(self.width, 20), 0),
                     SplineSegment("L", self.width, 0),
                 ],
@@ -814,15 +738,15 @@ class Down(Brick):
         Brick.__init__(self, **kwargs)
         self.first_y = self.height
         if math.isnan(self.last_y):
-            self.last_y = self.height
+            self.last_y = self.height / 2
+        self.dt = abs(self.first_y - self.last_y) * self.slewing / self.height
         self.splines.append(
             Drawable(
                 "path",
                 [
                     SplineSegment("M", 0, self.last_y),
-                    SplineSegment("L", 3, self.last_y),
-                    SplineSegment("C", 3 + self.slewing, self.last_y),
-                    SplineSegment("", 3 + self.slewing, self.height - self.last_y),
+                    SplineSegment("C", 0, self.last_y),
+                    SplineSegment("", self.dt, self.height),
                     SplineSegment("", min(self.width, 20), self.height),
                     SplineSegment("L", self.width, self.height),
                 ],
@@ -839,8 +763,9 @@ class ImpulseUp(Brick):
             from 0 to 1, by default 0.5
     """
 
-    def __init__(self, duty_cycle: float = 0.5, **kwargs):
+    def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
+        duty_cycle = kwargs.get("duty_cycle", 0.5)
         self.first_y = 0.0
         if self.is_first or math.isnan(self.last_y):
             self.last_y = self.first_y
@@ -872,8 +797,9 @@ class ImpulseDown(Brick):
             from 0 to 1, by default 0.5
     """
 
-    def __init__(self, duty_cycle: float = 0.5, **kwargs):
+    def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
+        duty_cycle = kwargs.get("duty_cycle", 0.5)
         self.first_y = self.height
         if self.is_first or math.isnan(self.last_y):
             self.last_y = self.first_y
@@ -922,8 +848,12 @@ class Empty(Brick):
 def filter_width(waveform: list[Brick]) -> list[Brick]:
     ans = []
     for brick in waveform:
-        brick_width = brick.args.get("brick_width", 20) * brick.args.get("hscale", 1)
-        brick_height = brick.args.get("brick_height", 20) * brick.args.get("vscale", 1)
+        brick_width = (
+            brick.args.get("brick_width", 20.0)
+            * brick.args.get("hscale", 1.0)
+            * brick.args.get("period", 1.0)
+        )
+        brick_height = brick.args.get("brick_height", 20.0) * brick.args.get("vscale", 1.0)
         brick.args["brick_width"] = brick_width
         brick.args["brick_height"] = brick_height
         ans.append(BrickFactory.create(brick.symbol, **brick.args))
@@ -946,7 +876,7 @@ def filter_repeat(waveform: list[Brick]) -> list[Brick]:
             "clock" in BrickFactory.tags.get(previous_brick.symbol, [])
             or previous_brick.symbol == "|"
         ):
-            ans.append(BrickFactory.create(previous_brick.symbol, **previous_brick.args))
+            ans.append(BrickFactory.create(previous_brick.symbol, **brick.args))
         # extend the width of other symbols
         else:
             ans[-1].repeat += 1
@@ -965,7 +895,6 @@ def filter_phase_pos(waveform: list[Brick]) -> list[Brick]:
     ans = []
     for i, brick in enumerate(waveform):
         phase = brick.args.get("phase", 0.0)
-        period = brick.args.get("period", 1.0)
         repeat = brick.args.get("repeat", 1.0)
         slewing = brick.args.get("slewing", 3.0)
         brick_width = brick.args["brick_width"]
@@ -973,15 +902,15 @@ def filter_phase_pos(waveform: list[Brick]) -> list[Brick]:
         # global scaling of the x-axis
         if brick.symbol == "|":
             pmul = 0
-        if "analogue" in BrickFactory.tags[brick.symbol]:
-            pmul = period
+        elif "analogue" in BrickFactory.tags[brick.symbol]:
+            pmul = 1
         else:
-            pmul = max(period, slewing * 2 / brick_width)
+            pmul = max(1, slewing * 2 / max(brick_width, 1))
         # adjust width depending on the brick's index in the the lane
         if i == 0:
             brick.args["brick_width"] = pmul * brick_width * (repeat - phase)
         elif i == len(waveform) - 1:
-            position = sum(b.width for b in waveform[:-1])
+            position = sum((b.width for b in ans))
             brick.args["brick_width"] = max(
                 pmul * brick_width * (repeat + phase), lane_width - position
             )
@@ -995,12 +924,31 @@ def filter_transition(waveform: list[Brick]) -> list[Brick]:
     ans = []
     previous_brick = BrickFactory.create(" ")
     for brick in waveform:
-        # adjust transistion from data to X
-        if "data" in BrickFactory.tags[previous_brick.symbol] and brick.symbol == "X":
-            previous_brick.args["brick_width"] += previous_brick.args.get("slewing", 0)
+        # clocks combination
+        if previous_brick.symbol.lower() + brick.symbol.lower() in [
+            "ll",
+            "hh",
+            "hp",
+            "hn",
+            "nh",
+            "ln",
+            "pl",
+            "pn",
+            "np",
+        ]:
+            brick.args["ignore_start_transition"] = True
+            previous_brick.args["ignore_end_transition"] = True
             previous_brick = BrickFactory.create(
                 previous_brick.symbol, **previous_brick.args
             )
+        # join consecutive brick
+        brick.args["last_y"] = previous_brick.get_last_y()
+        # adjust transistion from data to non-data
+        if (
+            "data" in BrickFactory.tags[previous_brick.symbol]
+            and "data" not in BrickFactory.tags[brick.symbol]
+        ):
+            brick.args["ignore_start_transition"] = True
         # identic consecutive block
         if brick.symbol == previous_brick.symbol:
             # two data brick with same data
@@ -1014,16 +962,16 @@ def filter_transition(waveform: list[Brick]) -> list[Brick]:
                     previous_brick = BrickFactory.create(
                         previous_brick.symbol, **previous_brick.args
                     )
-            # otherwise join path
-            else:
-                # fy = brick.get_first_y()
-                # alter current brick end
-                # nb.alter_end(0, fy)
-                # alter next brick start
-                # brick.alter_start(0, fy)
-                pass
         ans.append(BrickFactory.create(brick.symbol, **brick.args))
         if "repeat" not in BrickFactory.tags[brick.symbol]:
+            if (
+                "data" in BrickFactory.tags[previous_brick.symbol]
+                and "data" not in BrickFactory.tags[brick.symbol]
+            ):
+                previous_brick.args["first_y"] = ans[-1].get_first_y()
+                previous_brick = BrickFactory.create(
+                    previous_brick.symbol, **previous_brick.args
+                )
             previous_brick = ans[-1]
     return ans
 
@@ -1033,35 +981,71 @@ def filter_transition(waveform: list[Brick]) -> list[Brick]:
 
 def initialize() -> None:
     """register defined digital blocks in the rendering system"""
-    BrickFactory.register("n", Nclk, tags=["clock"], params={"duty_cycle": 0.5})
-    BrickFactory.register("N", NclkArrow, tags=["clock"], params={"duty_cycle": 0.5})
-    BrickFactory.register("p", Pclk, tags=["clock"], params={"duty_cycle": 0.5})
-    BrickFactory.register("P", PclkArrow, tags=["clock"], params={"duty_cycle": 0.5})
-    BrickFactory.register("l", Low, tags=["clock"])
-    BrickFactory.register("L", LowArrow, tags=["clock"])
-    BrickFactory.register("h", High, tags=["clock"])
-    BrickFactory.register("H", HighArrow, tags=["clock"])
+    BrickFactory.register(
+        "n", Nclk, tags=["clock"], params={"duty_cycle": 0.5, "slewing": 0, "period": 1}
+    )
+    BrickFactory.register(
+        "N",
+        NclkArrow,
+        tags=["clock"],
+        params={"duty_cycle": 0.5, "slewing": 0, "period": 1},
+    )
+    BrickFactory.register(
+        "p", Pclk, tags=["clock"], params={"duty_cycle": 0.5, "slewing": 0, "period": 1}
+    )
+    BrickFactory.register(
+        "P",
+        PclkArrow,
+        tags=["clock"],
+        params={"duty_cycle": 0.5, "slewing": 0, "period": 1},
+    )
+    BrickFactory.register("l", Low, tags=["clock"], params={"slewing": 0, "period": 1})
+    BrickFactory.register("L", LowArrow, tags=["clock"], params={"slewing": 0, "period": 1})
+    BrickFactory.register("h", High, tags=["clock"], params={"slewing": 0, "period": 1})
+    BrickFactory.register(
+        "H", HighArrow, tags=["clock"], params={"slewing": 0, "period": 1}
+    )
     BrickFactory.register("z", HighZ)
-    BrickFactory.register("0", Zero)
-    BrickFactory.register("1", One)
-    BrickFactory.register("2", Two, params={"data": "", "slewing": 3})
-    BrickFactory.register("3", Three, params={"data": "", "slewing": 3})
-    BrickFactory.register("4", Four, params={"data": "", "slewing": 3})
-    BrickFactory.register("5", Five, params={"data": "", "slewing": 3})
-    BrickFactory.register("6", Six, params={"data": "", "slewing": 3})
-    BrickFactory.register("7", Seven, params={"data": "", "slewing": 3})
-    BrickFactory.register("8", Eight, params={"data": "", "slewing": 3})
-    BrickFactory.register("9", Nine, params={"data": "", "slewing": 3})
-    BrickFactory.register("x", Unknown, params={"slewing": 3})
-    BrickFactory.register("X", Garbage, params={"slewing": 3})
-    BrickFactory.register("=", Two, params={"data": "", "slewing": 3})
+    BrickFactory.register("0", Zero, params={"slewing": 0, "period": 1})
+    BrickFactory.register("1", One, params={"slewing": 0, "period": 1})
+    BrickFactory.register(
+        "2", Two, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
+    )
+    BrickFactory.register(
+        "3", Three, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
+    )
+    BrickFactory.register(
+        "4", Four, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
+    )
+    BrickFactory.register(
+        "5", Five, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
+    )
+    BrickFactory.register(
+        "6", Six, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
+    )
+    BrickFactory.register(
+        "7", Seven, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
+    )
+    BrickFactory.register(
+        "8", Eight, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
+    )
+    BrickFactory.register(
+        "9", Nine, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
+    )
+    BrickFactory.register("x", Unknown, tags=["data"], params={"slewing": 3, "period": 1})
+    BrickFactory.register("X", Garbage, tags=["data"], params={"slewing": 3, "period": 1})
+    BrickFactory.register(
+        "=", Two, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
+    )
     BrickFactory.register("|", Gap, tags=["repeat"])
-    BrickFactory.register("u", Up)
-    BrickFactory.register("d", Down)
-    BrickFactory.register("i", ImpulseUp, params={"duty_cycle": 0.5})
-    BrickFactory.register("I", ImpulseDown, params={"duty_cycle": 0.5})
+    BrickFactory.register("u", Up, params={"slewing": 0})
+    BrickFactory.register("d", Down, params={"slewing": 0})
+    BrickFactory.register("i", ImpulseUp, params={"duty_cycle": 0.5, "period": 1})
+    BrickFactory.register("I", ImpulseDown, params={"duty_cycle": 0.5, "period": 1})
     BrickFactory.register(" ", Space)
-    BrickFactory.register(".", Empty, tags=["repeat"])
+    BrickFactory.register(
+        ".", Empty, tags=["repeat"], params={"duty_cycle": 0.5, "slewing": 0, "period": 1}
+    )
 
     FilterBank.register(filter_repeat)
     FilterBank.register(filter_width)
