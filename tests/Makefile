@@ -21,7 +21,13 @@ all: new legacy internal cairo-svg register legacy_1.jsonml legacy_2.jsonml lega
 	@echo $@
 	$(WAVEFORM) -i "${TESTPATH}/$@" -f svg -o "${TESTPATH}/output/$(subst .toml,-toml.svg,$@)"
 
-legacy: legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml
+legacy:
+	$(WAVEFORM) -i "${TESTPATH}/legacy_1.jsonml" -f svg -o "${TESTPATH}/legacy/legacy_1.jsonml.svg"
+	$(WAVEFORM) -i "${TESTPATH}/legacy_2.jsonml" -f svg -o "${TESTPATH}/legacy/legacy_2.jsonml.svg"
+	$(WAVEFORM) -i "${TESTPATH}/legacy_3.jsonml" -f svg -o "${TESTPATH}/legacy/legacy_3.jsonml.svg"
+	$(WAVEFORM) -i "${TESTPATH}/legacy_1.jsonml" -f cairo-svg -o "${TESTPATH}/legacy/legacy_1.jsonml.cairo.svg"
+	$(WAVEFORM) -i "${TESTPATH}/legacy_2.jsonml" -f cairo-svg -o "${TESTPATH}/legacy/legacy_2.jsonml.cairo.svg"
+	$(WAVEFORM) -i "${TESTPATH}/legacy_3.jsonml" -f cairo-svg -o "${TESTPATH}/legacy/legacy_3.jsonml.cairo.svg"
 	@echo "Legacy Done"
 
 new: wavetest.json wavetest.yaml

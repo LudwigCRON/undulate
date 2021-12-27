@@ -897,6 +897,7 @@ def filter_repeat(waveform: list[Brick]) -> list[Brick]:
 
 def filter_phase_pos(waveform: list[Brick]) -> list[Brick]:
     ans = []
+    position, offset_x = 0, 0
     for i, brick in enumerate(waveform):
         phase = brick.args.get("phase", 0.0)
         repeat = brick.args.get("repeat", 1.0)
@@ -910,17 +911,24 @@ def filter_phase_pos(waveform: list[Brick]) -> list[Brick]:
             pmul = 1
         else:
             pmul = max(1, slewing * 2 / max(brick_width, 1))
-        # adjust width depending on the brick's index in the the lane
+        # consider phase at the beginning
         if i == 0:
-            brick.args["brick_width"] = pmul * brick_width * (repeat - phase)
-        elif i == len(waveform) - 1:
-            position = sum((b.width for b in ans))
+            position = -pmul * brick_width * phase
+        # adjust width depending on the brick's index in the the lane
+        if i == len(waveform) - 1:
             brick.args["brick_width"] = max(
                 pmul * brick_width * (repeat + phase), lane_width - position
             )
         else:
             brick.args["brick_width"] = pmul * repeat * brick_width
-        ans.append(BrickFactory.create(brick.symbol, **brick.args))
+        position += brick.args["brick_width"]
+        # update size of the first visible brick
+        if position > 0 and not ans:
+            brick.args["brick_width"] = position
+            brick.args["is_first"] = True
+        # prevent monstruosity with phase larger than several block width
+        if position > 0:
+            ans.append(BrickFactory.create(brick.symbol, **brick.args))
     return ans
 
 
