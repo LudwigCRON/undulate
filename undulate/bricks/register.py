@@ -18,11 +18,10 @@ class FieldStart(Brick):
 
     def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
-        print(kwargs)
-        scale_width = float(kwargs.get("scale_width", 1.0))
         position = int(kwargs.get("position", 0))
         data = kwargs.get("data", "")
-        attributes = kwargs.get("attribute", None)
+        attributes = kwargs.get("attribute")
+        scale_width = kwargs.get("scale_width", 1.0)
         style = kwargs.get("style", None)
         self.paths.append(
             Drawable(
@@ -48,15 +47,16 @@ class FieldStart(Brick):
                 )
             )
         # add attributes
-        if isinstance(attributes, str):
-            attributes = [attributes]
-        for i, attr in enumerate(attributes):
-            self.texts.append(
-                Drawable(
-                    "attr",
-                    ((self.width * scale_width) / 2, self.height + 12 * (i + 1), attr),
+        if attributes:
+            if isinstance(attributes, str):
+                attributes = [attributes]
+            for i, attr in enumerate(attributes):
+                self.texts.append(
+                    Drawable(
+                        "attr",
+                        ((self.width * scale_width) / 2, self.height + 12 * (i + 1), attr),
+                    )
                 )
-            )
         # add centered text
         center_x = self.width / 2
         top_y = self.height * 0.125
@@ -136,7 +136,7 @@ class FieldBit(Brick):
         Brick.__init__(self, **kwargs)
         position = int(kwargs.get("position", 0))
         data = kwargs.get("data", "")
-        style = kwargs.get("style")
+        style = kwargs.get("style", "s2-polygon")
         self.paths.append(
             Drawable(
                 "path",
@@ -174,7 +174,14 @@ def initialize() -> None:
         "[",
         FieldStart,
         tags=["reg"],
-        params={"data": "", "position": 0, "attribute": "", "style": "", "type": None},
+        params={
+            "data": "",
+            "position": 0,
+            "attribute": "",
+            "style": "",
+            "type": None,
+            "scale_width": 1.0,
+        },
     )
     BrickFactory.register(
         ":", FieldMid, tags=["reg"], params={"data": "", "style": "", "type": None}
@@ -189,5 +196,12 @@ def initialize() -> None:
         "b",
         FieldBit,
         tags=["reg"],
-        params={"data": "", "position": 0, "attribute": "", "style": "", "type": None},
+        params={
+            "data": "",
+            "position": 0,
+            "attribute": "",
+            "style": "",
+            "type": None,
+            "scale_width": 1.0,
+        },
     )

@@ -55,23 +55,25 @@ class Register:
         # generate wavelane
         wave = "".join([field.wave for field in self.fields[::-1]])
         data = " ".join([field.data for field in self.fields[::-1]])
-        attr = [(field.width, field.attributes) for field in self.fields[::-1]]
-        type, pos, styles = [], [], []
+        attributes = [field.attributes for field in self.fields[::-1]]
+        widths = [field.width for field in self.fields[::-1]]
+        types, positions, styles = [], [], []
         for field in self.fields[::-1]:
-            type.extend([field.type] * field.width)
+            types.extend([field.type] * field.width)
             if field.width > 1:
-                pos.extend([field.start + field.width - 1, field.start])
+                positions.extend([field.start + field.width - 1, field.start])
             else:
-                pos.append(field.start)
+                positions.append(field.start)
             styles.extend([field.style] * field.width)
         ans = {"config": self.config}
         ans[self.name] = {
             "wave": wave,
             "data": data,
-            "positions": pos,
-            "attributes": attr,
-            "types": type,
+            "positions": positions,
+            "attributes": attributes,
+            "types": types,
             "styles": styles,
+            "scale_widths": widths,
         }
         return ans
 
@@ -116,7 +118,7 @@ class Field:
         f.description = d.get("description", "")
         f.width = int(d.get("width", d.get("bits", 1)))
         f.attributes = d.get("attributes", d.get("attr", None))
-        f.type = d.get("type", None)
+        f.type = d.get("type", 2)
         f.style = (
             "s%s-polygon" % f.type
             if f.type
