@@ -95,7 +95,7 @@ class BrickFactory:
     def create(symbol: str, **kwargs):
         """create a brick from its symbol"""
         if symbol not in BrickFactory.funcs:
-            log.fatal("The symbol '%s' is not defined" % symbol)
+            log.fatal(log.BRICK_SYMBOL_UNDEFINED % symbol, 3)
         init = BrickFactory.funcs[symbol]
         brick = init(**kwargs)
         brick.symbol = symbol
@@ -216,7 +216,7 @@ class FilterBank:
     @staticmethod
     def apply(waveform: list[Brick]) -> list[Brick]:
         """apply registered filters on the wavelane"""
-        ans = copy.deepcopy(waveform)
+        ans = waveform
         for filter in FilterBank.filters:
             if ans:
                 log.note(f"Apply {filter.__name__} on {ans[-1].args.get('name', '')}")

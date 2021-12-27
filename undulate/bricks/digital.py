@@ -512,7 +512,6 @@ class Data(Brick):
             self.first_y = self.height / 2
         if math.isnan(self.last_y):
             self.last_y = self.height / 2
-        follow_x = kwargs.get("follow_x", False)
         # add shape
         _tmp = []
         if self.is_first:
@@ -529,23 +528,31 @@ class Data(Brick):
         else:
             _tmp = [
                 Point(
-                    -self.slewing if follow_x else 0.0,
+                    0.0,
                     self.last_y if not self.ignore_start_transition else 0.0,
                 ),
-                Point(0.0 if follow_x else self.slewing, 0.0),
+                Point(self.slewing, 0.0),
                 Point(self.width - self.slewing, 0.0),
                 Point(
                     self.width,
                     0.0 if self.ignore_end_transition else self.first_y,
                 ),
-                Point(self.width - self.slewing, self.height),
-                Point(0.0 if follow_x else self.slewing, self.height),
                 Point(
-                    -self.slewing if follow_x else 0,
+                    self.width,
+                    self.height if self.ignore_end_transition else self.first_y,
+                ),
+                Point(self.width - self.slewing, self.height),
+                Point(self.slewing, self.height),
+                Point(
+                    0.0,
                     self.last_y if not self.ignore_start_transition else self.height,
                 ),
             ]
-        self.paths.append(Drawable("path", _tmp))
+        if self.ignore_end_transition:
+            self.paths.append(Drawable("path", _tmp[: len(_tmp) // 2]))
+            self.paths.append(Drawable("path", _tmp[len(_tmp) // 2 :]))
+        else:
+            self.paths.append(Drawable("path", _tmp))
         # add background
         self.polygons.append(Drawable(style, _tmp))
         # add text
@@ -862,21 +869,18 @@ def filter_width(waveform: list[Brick]) -> list[Brick]:
 
 def filter_repeat(waveform: list[Brick]) -> list[Brick]:
     ans = []
-    previous_brick = BrickFactory.create(" ")
+    previous_symbol = " "
     for i, brick in enumerate(waveform):
         # check validity of the first brick
         if i == 0 and "repeat" in BrickFactory.tags.get(brick.symbol, []):
-            log.fatal(log.WRONG_WAVE_START % brick.symbol)
+            log.fatal(log.SIGNAL_WRONG_START % brick.symbol)
         if "repeat" not in BrickFactory.tags.get(brick.symbol, []):
             ans.append(brick)
-            previous_brick = brick
+            previous_symbol = brick.symbol
             continue
         # always repeat a clock signal and after gap repeat the last valid symbol
-        if (
-            "clock" in BrickFactory.tags.get(previous_brick.symbol, [])
-            or previous_brick.symbol == "|"
-        ):
-            ans.append(BrickFactory.create(previous_brick.symbol, **brick.args))
+        if "clock" in BrickFactory.tags.get(previous_symbol, []) or previous_symbol == "|":
+            ans.append(BrickFactory.create(previous_symbol, **brick.args))
         # extend the width of other symbols
         else:
             ans[-1].repeat += 1
@@ -884,7 +888,7 @@ def filter_repeat(waveform: list[Brick]) -> list[Brick]:
         if brick.symbol == "|":
             ans.append(brick)
         if "repeat" not in BrickFactory.tags.get(brick.symbol, []):
-            previous_brick = brick
+            previous_symbol = brick.symbol
     # make repeat info propagate
     for b in ans:
         b.args["repeat"] = b.repeat
@@ -955,7 +959,7 @@ def filter_transition(waveform: list[Brick]) -> list[Brick]:
             if "data" in BrickFactory.tags[brick.symbol]:
                 current_data = str(brick.args.get("data") or "").strip()
                 previous_data = str(previous_brick.args.get("data") or "").strip()
-                if current_data == previous_data:
+                if brick.symbol in "xX" or current_data == previous_data:
                     brick.args["ignore_start_transition"] = True
                     brick.args["hide_data"] = True
                     previous_brick.args["ignore_end_transition"] = True

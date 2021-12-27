@@ -6,9 +6,9 @@ into scalable vector graphics format
 """
 
 import cairo
-
+import undulate.logger as log
 from undulate.bricks.generic import SplineSegment, Point
-from ..skin import (
+from undulate.skin import (
     SizeUnit,
     apply_fill,
     apply_stroke,
@@ -18,7 +18,7 @@ from ..skin import (
     style_in_kwargs,
     get_style,
 )
-from .renderer import Renderer, svg_curve_convert
+from undulate.renderers.renderer import Renderer, svg_curve_convert
 
 
 class CairoRenderer(Renderer):
@@ -286,7 +286,7 @@ class CairoRenderer(Renderer):
         elif self.extension == "pdf":
             self.surface = cairo.PDFSurface(filename, w, h)
         else:
-            raise "Not supported format"
+            log.critical(log.CAIRO_FORMAT % self.extension)
         # offset painting for padding emulation
         self.surface.set_device_offset(0.0, val_top * unit_top.value)
         self.ctx = cairo.Context(self.surface)

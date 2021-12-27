@@ -16,16 +16,14 @@ class FieldStart(Brick):
     [
     """
 
-    def __init__(
-        self,
-        scale_width: float = 1.0,
-        position: int = 0,
-        data: str = "",
-        attributes: Any = None,
-        reg_style: str = None,
-        **kwargs
-    ):
+    def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
+        print(kwargs)
+        scale_width = float(kwargs.get("scale_width", 1.0))
+        position = int(kwargs.get("position", 0))
+        data = kwargs.get("data", "")
+        attributes = kwargs.get("attribute", None)
+        style = kwargs.get("style", None)
         self.paths.append(
             Drawable(
                 "path",
@@ -37,10 +35,10 @@ class FieldStart(Brick):
                 ],
             )
         )
-        if reg_style is not None:
+        if style is not None:
             self.polygons.append(
                 Drawable(
-                    reg_style,
+                    style,
                     [
                         Point(self.width * scale_width, self.height),
                         Point(0, self.height),
@@ -72,8 +70,9 @@ class FieldMid(Brick):
     :
     """
 
-    def __init__(self, data: str = "", **kwargs):
+    def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
+        data = kwargs.get("data", "")
         self.splines.append(
             Drawable(
                 "path",
@@ -105,8 +104,10 @@ class FieldEnd(Brick):
     ]
     """
 
-    def __init__(self, position: int = 0, data: str = "", **kwargs):
+    def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
+        position = int(kwargs.get("position", 0))
+        data = kwargs.get("data", "")
         self.paths.append(
             Drawable(
                 "path",
@@ -131,8 +132,11 @@ class FieldBit(Brick):
     b
     """
 
-    def __init__(self, position: int = 0, data: str = "", reg_style: str = None, **kwargs):
+    def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
+        position = int(kwargs.get("position", 0))
+        data = kwargs.get("data", "")
+        style = kwargs.get("style")
         self.paths.append(
             Drawable(
                 "path",
@@ -145,10 +149,10 @@ class FieldBit(Brick):
                 ],
             )
         )
-        if reg_style is not None:
+        if style is not None:
             self.polygons.append(
                 Drawable(
-                    reg_style,
+                    style,
                     [
                         Point(self.width, self.height),
                         Point(0.0, self.height),
@@ -170,13 +174,20 @@ def initialize() -> None:
         "[",
         FieldStart,
         tags=["reg"],
-        params={"data": "", "position": 0, "attributes": ""},
+        params={"data": "", "position": 0, "attribute": "", "style": "", "type": None},
     )
-    BrickFactory.register(":", FieldMid, tags=["reg"], params={"data": ""})
-    BrickFactory.register("]", FieldEnd, tags=["reg"], params={"data": "", "position": 0})
+    BrickFactory.register(
+        ":", FieldMid, tags=["reg"], params={"data": "", "style": "", "type": None}
+    )
+    BrickFactory.register(
+        "]",
+        FieldEnd,
+        tags=["reg"],
+        params={"data": "", "position": 0, "style": "", "type": None},
+    )
     BrickFactory.register(
         "b",
         FieldBit,
         tags=["reg"],
-        params={"data": "", "position": 0, "attributes": ""},
+        params={"data": "", "position": 0, "attribute": "", "style": "", "type": None},
     )

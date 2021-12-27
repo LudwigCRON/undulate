@@ -39,7 +39,7 @@ def parse(filepath: str) -> tuple[bool, object]:
     err, ans = False, {}
     # file existence
     if filepath is None:
-        log.fatal(log.NO_INPUT_FILE)
+        log.fatal(log.FILE_NOT_GIVEN)
     if not os.path.exists(filepath):
         log.fatal(log.FILE_NOT_FOUND % filepath)
     _, ext = os.path.splitext(filepath)
@@ -86,7 +86,7 @@ def process(
         if "-" in rendering_engine:
             ext = rendering_engine.split("-")[-1]
         output_path = "./%s.%s" % (file_name, ext)
-        log.warning(log.NO_OUTPUT_FILE % output_path)
+        log.warning(log.FILE_NO_OUTPUT % output_path)
     # load the bricks
     for brick_module in [
         "undulate.bricks.analogue",
@@ -97,12 +97,10 @@ def process(
         mod.initialize()
     # load the renderering engine
     if rendering_engine == "svg":
-        import undulate.renderers.svgrenderer as engine
-
+        engine = importlib.import_module("undulate.renderers.svgrenderer")
         renderer = engine.SvgRenderer()
     elif rendering_engine.startswith("cairo-"):
-        import undulate.renderers.cairorenderer as engine
-
+        engine = importlib.import_module("undulate.renderers.cairorenderer")
         renderer = engine.CairoRenderer(extension=rendering_engine.split("-")[-1], dpi=dpi)
     try:
         renderer.draw(

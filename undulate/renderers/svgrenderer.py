@@ -7,16 +7,15 @@ into scalable vector graphics format
 """
 
 import html
-from ..skin import (
+from undulate.skin import (
     DEFAULT_STYLE,
     DEFINITION,
     Engine,
     style_in_kwargs,
-    get_style,
     css_from_rule,
     css_from_style,
 )
-from .renderer import Renderer
+from undulate.renderers.renderer import Renderer
 
 
 class SvgRenderer(Renderer):
@@ -66,7 +65,7 @@ class SvgRenderer(Renderer):
         """
         overload = style_in_kwargs(**kwargs)
         overload["fill"] = None
-        path = "".join(["L%f,%f " % (x, y) for x, y in vertices])
+        path = "".join(["L%f,%f " % (v.x, v.y) for v in vertices])
         path = "M" + path[1:]
         return '<path d="%s" class="%s" style="%s" />\n' % (
             path.strip(),
@@ -119,8 +118,8 @@ class SvgRenderer(Renderer):
         if callable(extra):
             extra = extra()
         ans = '<polygon points="'
-        for x, y in vertices:
-            ans += "%f, %f " % (x, y)
+        for v in vertices:
+            ans += "%f, %f " % (v.x, v.y)
         ans += '" class="%s" style="%s" %s/>\n' % (
             style,
             css_from_rule(None, overload, False),
@@ -141,9 +140,10 @@ class SvgRenderer(Renderer):
                 by default apply the class 'path'
         """
         overload = style_in_kwargs(**kwargs)
-        overload["fill"] = None
+        if kwargs.get("style_repr") != "hide":
+            overload["fill"] = None
         path = "".join(
-            ["%s%f,%f " % (v[0], v[1], v[2]) if v[0] != "z" else "z" for v in vertices]
+            ["%s%f,%f " % (v.order, v.x, v.y) if v.order != "z" else "z" for v in vertices]
         )
         return '<path d="%s" class="%s" style="%s"/>\n' % (
             path.strip(),

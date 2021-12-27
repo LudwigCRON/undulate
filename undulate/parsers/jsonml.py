@@ -50,7 +50,7 @@ def _parse_group(wavegroup: list):
     ans = {}
     _name = wavegroup[0] if isinstance(wavegroup[0], str) else None
     if not _name:
-        log.fatal(log.MISSING_GRP_NAME)
+        log.fatal(log.GROUP_MISSING_NAME)
     for _, wavelane in enumerate(wavegroup[1:]):
         if isinstance(wavelane, dict):
             n, wave = _parse_wavelane(wavelane)
@@ -76,7 +76,7 @@ def _prune_json(filepath: str) -> str:
             ]
         )
     if not content:
-        log.fatal(log.EMPTY_FILE)
+        log.fatal(log.FILE_EMPTY)
     # add double quotes around strings
     content = re.sub(r"([{,]?)\s*(\w+)\s*:", r'\1 "\2":', content, flags=re.M)
     # replace single quotes with double quotes
@@ -117,7 +117,7 @@ def parse(filepath: str) -> tuple[bool, dict]:
                     else _parse_group(signal)
                 )
                 if signal_name in ans.keys():
-                    log.warning(log.DUPLICATED_SIGNAL % signal_name)
+                    log.warning(log.SIGNAL_DUPLICATED % signal_name)
                     signal_name = _make_signal_unique(signal_name, ans)
                 ans[signal_name] = wave
         else:

@@ -412,7 +412,7 @@ class Renderer:
             return s
         # if a string representing a tuple
         if isinstance(s, str) and "," in s:
-            s = undulate.safe_eval(s)
+            s = safe_eval(s)
         # if a string representing a node
         if isinstance(s, str) and s in nodes:
             return nodes.get(s)
@@ -861,16 +861,21 @@ class Renderer:
             if isinstance(kwargs.get(param), str):
                 kwargs[param] = safe_eval(kwargs[param])
             params = param + "s" if param not in ["data", "analogue"] else param
-            needed_params[params] = [kwargs.get(param)] * TOTAL_LENGTH
+            # for specific data attribute allow split of space separated string
+            if isinstance(kwargs.get(param), str) and param == "data":
+                kwargs[param] = kwargs.get(param).split(" ")
+            # multiply singular value to create 1 value per brick
+            if isinstance(kwargs.get(param), list):
+                needed_params[params] = kwargs.get(param) * TOTAL_LENGTH
+            else:
+                needed_params[params] = [kwargs.get(param)] * TOTAL_LENGTH
+            # select if available multiple values variant over repeat singular one
             if params in kwargs:
                 needed_params[params] = kwargs.get(params) or needed_params[params]
-            if isinstance(needed_params[params], str) and params == "data":
-                needed_params[params] = needed_params[params].split(" ")
-            elif isinstance(needed_params[params], str):
+            if isinstance(needed_params[params], str):
                 needed_params[params] = safe_eval(needed_params[params])
         # computed properties
         follow_data = False
-        follow_x = False
         previous_symbol = " "
         _wavelane = []
         # initialize the waveform
@@ -883,7 +888,6 @@ class Renderer:
                         0
                     ) or BrickFactory.params.get(b, {}).get(param)
             brick_args["follow_data"] = follow_data
-            brick_args["follow_x"] = follow_x
             brick_args["is_first"] = i == 0
             brick_args["repeat"] = 1
             brick_args["name"] = name

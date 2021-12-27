@@ -1,3 +1,6 @@
+import undulate.logger as log
+
+
 class Register:
     """
     define the register as a composition of new kind of bricks
@@ -22,8 +25,7 @@ class Register:
         if isinstance(field, dict):
             f = Field.from_dict(field)
         else:
-            print("Unsupported %s of field" % type(field))
-            exit(5)
+            log.fatal(log.FIELD_UNSUPPORTED_TYPE % type(field), 5)
         self.fields.append(f)
 
     def to_wavelane(self):
@@ -35,8 +37,7 @@ class Register:
         for i, f in enumerate(self.fields):
             # start position is given and overwrite
             if f.start and pos > f.start:
-                print("check position of %s as overlap occurs" % f.name)
-                exit(6)
+                log.fatal(log.FIELD_OVERLAP % f.name, 6)
             # start position and no overlap -> unused field
             if f.start and f.start > 0 and pos < f.start:
                 width = f.start - pos
@@ -67,8 +68,8 @@ class Register:
         ans[self.name] = {
             "wave": wave,
             "data": data,
-            "regpos": pos,
-            "attr": attr,
+            "positions": pos,
+            "attributes": attr,
             "types": type,
             "styles": styles,
         }
@@ -113,7 +114,7 @@ class Field:
         f = Field()
         f.name = str(d.get("name", ""))
         f.description = d.get("description", "")
-        f.width = d.get("width", d.get("bits", 1))
+        f.width = int(d.get("width", d.get("bits", 1)))
         f.attributes = d.get("attributes", d.get("attr", None))
         f.type = d.get("type", None)
         f.style = (
@@ -146,15 +147,11 @@ class Field:
             f.data += "".join([" "] * l)
         else:
             # skip the field
-            f.data = " ".join([""] * f.width)
+            f.data = " " * (f.width - 1)
         if f.width > 1:
-            f.wave = (
-                undulate.BRICKS.field_start.value
-                + "".join([undulate.BRICKS.field_mid.value] * (f.width - 2))
-                + undulate.BRICKS.field_end.value
-            )
+            f.wave = f"[{':'*(f.width-2)}]"
         else:
-            f.wave = undulate.BRICKS.field_bit.value
+            f.wave = "b"
         return f
 
     def to_dict(self):
