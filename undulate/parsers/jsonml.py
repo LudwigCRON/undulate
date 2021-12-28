@@ -3,8 +3,6 @@ import json
 
 import undulate.logger as log
 
-# TODO: split data set as string into list of string
-
 # counter to have distinct spacer id
 SPACER_COUNT = 0
 

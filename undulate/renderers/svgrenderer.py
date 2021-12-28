@@ -23,7 +23,7 @@ class SvgRenderer(Renderer):
     Render the wavelanes as an svg
     """
 
-    def __init__(self):
+    def __init__(self, **kwargs):
         Renderer.__init__(self)
         self.engine = Engine.SVG
 

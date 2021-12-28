@@ -895,7 +895,6 @@ class Renderer:
             _wavelane.append(BrickFactory.create(b, **brick_args))
             log.debug(f"{name} {b} {_wavelane[-1]!r} {_wavelane[-1].get_last_y()}")
             follow_data = "data" in BrickFactory.tags[previous_symbol]
-            follow_x = previous_symbol == "X"
             previous_symbol = b
         # apply all registered filters
         return FilterBank.apply(_wavelane)

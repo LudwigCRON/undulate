@@ -85,7 +85,7 @@ coverage:
 	coverage run -a ./test_css.py
 	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/wavetest_alt.json -f cairo-png -s ${TESTPATH}/ut_css/overload.css -o ${TESTPATH}/output/$(subst .json,-json-cairo.png,wavetest_alt.json)
 	python3 ./covrun.py $(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f svg -o "${TESTPATH}/legacy/reg-vl-jsonml.svg"
-	python3 ./covrun.py $(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f cairo-ps -o "${TESTPATH}/legacy/reg-opivi-jsonml-cairo.ps"
+	python3 ./covrun.py $(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f cairo-eps -o "${TESTPATH}/legacy/reg-opivi-jsonml-cairo.eps"
 	python3 ./covrun.py $(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f cairo-png -o "${TESTPATH}/legacy/reg-vl-jsonml-cairo.png"
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f cairo-svg -o "${TESTPATH}/output/annotation-cairo.svg"
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f svg -o "${TESTPATH}/output/annotation.svg"

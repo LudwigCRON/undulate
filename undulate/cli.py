@@ -5,6 +5,7 @@ Command line interface to draw your waveforms
 """
 
 import os
+import json
 import argparse
 import traceback
 import importlib
@@ -15,93 +16,76 @@ import undulate.parsers.register as register
 
 from pprint import pprint
 
-SUPPORTED_FORMAT = {
-    "json": [".json", ".js", ".jsonml", ".jsml"],
-    "yaml": [".yaml", ".yml"],
-    "toml": [".toml"],
-}
 
-SUPPORTED_RENDERER = [
-    "svg",
-    "cairo-svg",
-    "cairo-ps",
-    "cairo-eps",
-    "cairo-pdf",
-    "cairo-png",
-    "json",
-]
+CONFIG_FILE = os.path.join(os.path.dirname(__file__), "plugins.json")
 
 # ==== Parser Selection ====
 def parse(filepath: str) -> tuple[bool, object]:
     """
     parse the input file into a compatible dict for processing
     """
-    err, ans = False, {}
     # file existence
     if filepath is None:
         log.fatal(log.FILE_NOT_GIVEN)
     if not os.path.exists(filepath):
         log.fatal(log.FILE_NOT_FOUND % filepath)
     _, ext = os.path.splitext(filepath)
+    # load config file
+    with open(CONFIG_FILE, "rt+") as fp:
+        config = json.load(fp)
+        allowed_extensions = config.get("extensions", {})
     # call appropriate parser
-    if ext in SUPPORTED_FORMAT["json"]:
-        import undulate.parsers.jsonml as parser
-    elif ext in SUPPORTED_FORMAT["yaml"]:
-        import undulate.parsers.yaml as parser
-    elif ext in SUPPORTED_FORMAT["toml"]:
-        import undulate.parsers.toml as parser
-    else:
-        log.fatal(log.UNSUPPORTED_FORMAT % log.list_vars(SUPPORTED_FORMAT))
+    if ext[1:] not in allowed_extensions:
+        log.fatal(log.UNSUPPORTED_FORMAT % log.list_vars(allowed_extensions))
+    parser = importlib.import_module(allowed_extensions.get(ext[1:]))
     return parser.parse(filepath)
 
 
 def process(
-    input_path: str,
-    output_path: str,
-    rendering_engine: str,
-    is_reg: bool = False,
-    dpi: float = 150.0,
-) -> bool:
+    input_path: str, output_path: str, rendering_engine: str, is_reg: bool, dpi: float
+) -> None:
+    # load config file
+    with open(CONFIG_FILE, "rt+") as fp:
+        config = json.load(fp)
+        bricks_modules = config.get("bricks", [])
+        rendering_engines = config.get("engines", {})
     # supported rendering engine
-    if not rendering_engine.lower() in SUPPORTED_RENDERER:
-        log.fatal(log.UNSUPPORTED_ENGINE % log.list_vars(SUPPORTED_RENDERER))
+    if rendering_engine.lower() not in rendering_engines:
+        log.fatal(log.UNSUPPORTED_ENGINE % log.list_vars(rendering_engines))
     # check the input file
     err, obj = parse(input_path)
     if err:
-        return err
+        exit(4)
     # convert register description into wavelane
     if is_reg:
         err, obj = register.convert(obj)
     if err:
-        return err
+        exit(7)
     # for debug purpose
     if rendering_engine == "json":
         pprint(obj)
         exit(0)
-
+    # load the bricks
+    for brick_module in bricks_modules:
+        mod = importlib.import_module(brick_module)
+        mod.initialize()
+    # load the renderering engine
+    engine_info = rendering_engines.get(rendering_engine)
+    engine = importlib.import_module(engine_info.get("module"))
+    renderer = getattr(engine, engine_info.get("classname"))
+    engine_params = {
+        k: v for k, v in engine_info.items() if k not in ["module", "classname"]
+    }
+    if "dpi" in engine_params:
+        engine_params["dpi"] = dpi
+    renderer = renderer(**engine_params)
     # default output file
     if output_path is None:
         file_name, ext = os.path.splitext(input_path)
         file_name = os.path.basename(file_name)
-        if "-" in rendering_engine:
-            ext = rendering_engine.split("-")[-1]
-        output_path = "./%s.%s" % (file_name, ext)
+        ext = engine_info.get("extension")
+        output_path = f"./{file_name}.{ext}"
         log.warning(log.FILE_NO_OUTPUT % output_path)
-    # load the bricks
-    for brick_module in [
-        "undulate.bricks.analogue",
-        "undulate.bricks.digital",
-        "undulate.bricks.register",
-    ]:
-        mod = importlib.import_module(brick_module)
-        mod.initialize()
-    # load the renderering engine
-    if rendering_engine == "svg":
-        engine = importlib.import_module("undulate.renderers.svgrenderer")
-        renderer = engine.SvgRenderer()
-    elif rendering_engine.startswith("cairo-"):
-        engine = importlib.import_module("undulate.renderers.cairorenderer")
-        renderer = engine.CairoRenderer(extension=rendering_engine.split("-")[-1], dpi=dpi)
     try:
         renderer.draw(
             obj,
