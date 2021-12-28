@@ -871,9 +871,9 @@ class Renderer:
                 needed_params[params] = [kwargs.get(param)] * TOTAL_LENGTH
             # select if available multiple values variant over repeat singular one
             if params in kwargs:
+                if isinstance(kwargs[params], str):
+                    kwargs[params] = safe_eval(kwargs[params])
                 needed_params[params] = kwargs.get(params) or needed_params[params]
-            if isinstance(needed_params[params], str):
-                needed_params[params] = safe_eval(needed_params[params])
         # computed properties
         follow_data = False
         previous_symbol = " "
@@ -884,9 +884,9 @@ class Renderer:
             for param in BrickFactory.params.get(b, []):
                 params = param + "s" if param not in ["data", "analogue"] else param
                 if needed_params[params]:
-                    brick_args[param] = needed_params[params].pop(
-                        0
-                    ) or BrickFactory.params.get(b, {}).get(param)
+                    brick_args[param] = needed_params[params].pop(0)
+                    if brick_args[param] is None:
+                        brick_args[param] = BrickFactory.params.get(b, {}).get(param)
             brick_args["follow_data"] = follow_data
             brick_args["is_first"] = i == 0
             brick_args["repeat"] = 1

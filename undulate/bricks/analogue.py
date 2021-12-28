@@ -228,7 +228,7 @@ class Step(Brick):
         y = transform_y(value, self.height)
         # set final value if necessary
         if self.is_first or math.isnan(self.last_y):
-            self.last_y = y
+            self.last_y = self.height
         self.dt = abs(y - self.last_y) * self.slewing / self.height
         # add shape
         self.paths.append(
