@@ -1,7 +1,9 @@
 import undulate.logger as log
 
+from typing import Dict, Tuple
 
-def parse(filepath: str) -> tuple[bool, dict]:
+
+def parse(filepath: str) -> Tuple[bool, Dict]:
     ans = {}
     try:
         import yaml

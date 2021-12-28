@@ -15,6 +15,7 @@ from undulate.bricks.generic import (
     Point,
     SplineSegment,
 )
+from typing import List
 
 # ======== Brick Definition ========
 
@@ -848,7 +849,7 @@ class Empty(Brick):
 
 
 # ======== Filtering Functions ========
-def filter_width(waveform: list[Brick]) -> list[Brick]:
+def filter_width(waveform: List[Brick]) -> List[Brick]:
     ans = []
     for brick in waveform:
         brick_width = (
@@ -863,7 +864,7 @@ def filter_width(waveform: list[Brick]) -> list[Brick]:
     return ans
 
 
-def filter_repeat(waveform: list[Brick]) -> list[Brick]:
+def filter_repeat(waveform: List[Brick]) -> List[Brick]:
     ans = []
     previous_symbol = " "
     for i, brick in enumerate(waveform):
@@ -891,7 +892,7 @@ def filter_repeat(waveform: list[Brick]) -> list[Brick]:
     return ans
 
 
-def filter_phase_pos(waveform: list[Brick]) -> list[Brick]:
+def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
     ans = []
     position, offset_x = 0, 0
     for i, brick in enumerate(waveform):
@@ -928,7 +929,7 @@ def filter_phase_pos(waveform: list[Brick]) -> list[Brick]:
     return ans
 
 
-def filter_transition(waveform: list[Brick]) -> list[Brick]:
+def filter_transition(waveform: List[Brick]) -> List[Brick]:
     ans = []
     previous_brick = BrickFactory.create(" ")
     for brick in waveform:

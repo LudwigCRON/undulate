@@ -9,7 +9,7 @@ to generate a waveform
 import ast
 import copy
 from math import nan
-from typing import Callable, Any
+from typing import Callable, Any, Dict, List
 from dataclasses import dataclass
 import undulate.logger as log
 
@@ -81,8 +81,8 @@ class BrickFactory:
     def register(
         symbol: str,
         initializer: Callable,
-        tags: list[str] = [],
-        params: dict[str, Any] = {},
+        tags: List[str] = [],
+        params: Dict[str, Any] = {},
     ):
         """register a new brick called {name} mapped to {symbol}"""
         BrickFactory.funcs[symbol] = initializer
@@ -102,7 +102,7 @@ class BrickFactory:
         return brick
 
     @staticmethod
-    def get_parameters() -> dict[str, Any]:
+    def get_parameters() -> Dict[str, Any]:
         ans = {}
         for params in BrickFactory.params.values():
             ans.update(params)
@@ -140,11 +140,11 @@ class Brick:
     """
 
     symbol: str
-    paths: list[Drawable]
-    arrows: list[ArrowDescription]
-    polygons: list[Drawable]
-    splines: list[Drawable]
-    texts: list[Drawable]
+    paths: List[Drawable]
+    arrows: List[ArrowDescription]
+    polygons: List[Drawable]
+    splines: List[Drawable]
+    texts: List[Drawable]
     args: dict
     width: float = 40.0
     height: float = 20.0
@@ -214,7 +214,7 @@ class FilterBank:
         FilterBank.filters.append(filter)
 
     @staticmethod
-    def apply(waveform: list[Brick]) -> list[Brick]:
+    def apply(waveform: List[Brick]) -> List[Brick]:
         """apply registered filters on the wavelane"""
         ans = waveform
         for filter in FilterBank.filters:

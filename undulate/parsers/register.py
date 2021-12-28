@@ -1,5 +1,7 @@
 import undulate.logger as log
 
+from typing import Dict, Tuple
+
 
 class Register:
     """
@@ -163,7 +165,7 @@ class Field:
         return {s: getattr(self, s, None) for s in self.__slots__}
 
 
-def convert(obj: dict) -> tuple[bool, dict]:
+def convert(obj: dict) -> Tuple[bool, Dict]:
     """
     convert a register definition as a wavelane
     """

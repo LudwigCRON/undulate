@@ -19,6 +19,7 @@ from undulate.skin import (
     get_style,
 )
 from undulate.renderers.renderer import Renderer, svg_curve_convert
+from typing import List
 
 
 class CairoRenderer(Renderer):
@@ -59,7 +60,7 @@ class CairoRenderer(Renderer):
         self.ctx.paint_with_alpha(1)
         return ""
 
-    def path(self, vertices: list[Point], **kwargs) -> str:
+    def path(self, vertices: List[Point], **kwargs) -> str:
         """
         draw a path to represent common signals
 
@@ -117,7 +118,7 @@ class CairoRenderer(Renderer):
         self.ctx.restore()
         return ""
 
-    def polygon(self, vertices: list[Point], **kwargs) -> str:
+    def polygon(self, vertices: List[Point], **kwargs) -> str:
         """
         draw a closed shape to represent common data
 
@@ -146,7 +147,7 @@ class CairoRenderer(Renderer):
         self.ctx.restore()
         return ""
 
-    def spline(self, vertices: list[SplineSegment], **kwargs) -> str:
+    def spline(self, vertices: List[SplineSegment], **kwargs) -> str:
         """
         draw a path to represent smooth signals
 

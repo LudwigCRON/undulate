@@ -15,12 +15,13 @@ import undulate.skin as skin
 import undulate.parsers.register as register
 
 from pprint import pprint
+from typing import Any, Tuple
 
 
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "plugins.json")
 
 # ==== Parser Selection ====
-def parse(filepath: str) -> tuple[bool, object]:
+def parse(filepath: str) -> Tuple[bool, Any]:
     """
     parse the input file into a compatible dict for processing
     """

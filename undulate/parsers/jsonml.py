@@ -3,6 +3,8 @@ import json
 
 import undulate.logger as log
 
+from typing import Dict, Tuple
+
 # counter to have distinct spacer id
 SPACER_COUNT = 0
 
@@ -93,7 +95,7 @@ def _prune_json(filepath: str) -> str:
     return content
 
 
-def parse(filepath: str) -> tuple[bool, dict]:
+def parse(filepath: str) -> Tuple[bool, Dict]:
     """
     parse a json file after pre-processing the file
     to allow extra comments if needed
