@@ -2,7 +2,8 @@
   "bricks": [
     "undulate.bricks.analogue",
     "undulate.bricks.digital",
-    "undulate.bricks.register"
+    "undulate.bricks.register",
+    "undulate.bricks.shape"
   ],
   "extensions": {
     "json": "undulate.parsers.jsonml",

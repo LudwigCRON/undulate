@@ -19,7 +19,11 @@ class TestSvgMethods(unittest.TestCase):
     """
 
     def setUpClass() -> None:
-        modules = ["undulate.bricks.digital", "undulate.bricks.analogue"]
+        modules = [
+            "undulate.bricks.digital",
+            "undulate.bricks.analogue",
+            "undulate.bricks.shape",
+        ]
         for module in modules:
             mod = importlib.import_module(module)
             mod.initialize()

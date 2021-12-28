@@ -162,6 +162,7 @@ class Brick:
         self.slewing = float(kwargs.get("slewing", 0.0))
         self.first_y = float(kwargs.get("first_y", nan))
         self.last_y = float(kwargs.get("last_y", nan))
+        self.node_name = kwargs.get("node_name", "")
         self.ignore_start_transition = bool(kwargs.get("ignore_start_transition", False))
         self.ignore_end_transition = bool(kwargs.get("ignore_end_transition", False))
         self.is_first = bool(kwargs.get("is_first", False))
@@ -222,3 +223,33 @@ class FilterBank:
                 log.note(f"Apply {filter.__name__} on {ans[-1].args.get('name', '')}")
             ans = filter(ans)
         return ans
+
+
+class NodeBank:
+    """register brick position of a given node"""
+
+    nodes = {}
+
+    @staticmethod
+    def register(node_name: str, point: Point):
+        """save coordinate of a node"""
+        NodeBank.nodes[node_name] = point
+
+
+class ShapeFactory:
+    """register brick position of a given node"""
+
+    funcs = {}
+
+    @staticmethod
+    def register(pattern: str, generator: Callable):
+        """save coordinate of a node"""
+        ShapeFactory.funcs[pattern] = generator
+
+    @staticmethod
+    def create(pattern: str, renderer, **kwargs) -> str:
+        """create an annotation from a pattern"""
+        if pattern not in ShapeFactory.funcs:
+            log.fatal(log.ANNOTATION_PATTERN_UNDEFINED % pattern, 3)
+        generator = ShapeFactory.funcs[pattern]
+        return generator(renderer, pattern, **kwargs)

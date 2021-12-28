@@ -11,16 +11,17 @@ import copy
 import undulate.skin
 import undulate.logger as log
 from undulate.skin import style_in_kwargs, get_style, SizeUnit
-from math import atan2, cos, sin, floor
-from itertools import count, accumulate
+from math import floor
 from undulate.bricks.generic import (
     Brick,
     BrickFactory,
     FilterBank,
+    NodeBank,
     Point,
-    SplineSegment,
+    ShapeFactory,
     safe_eval,
 )
+from typing import List
 
 # Counter for unique id generation
 #: counter of group of wave unique id
@@ -28,8 +29,6 @@ _WAVEGROUP_COUNT = 0
 #: counter of wave unique id
 _WAVE_COUNT = 0
 
-ARROWS_PREFIX = "<*# "
-ARROWS_SUFFIX = ">*# "
 EXCLUDED_NAMED_GROUPS = ["head", "foot", "config", "edges", "annotations"]
 
 
@@ -59,22 +58,6 @@ def incr_wavegroup(f):
         return f(*args, **kwargs)
 
     return wrapper
-
-
-def arrow_angle(dy: float, dx: float) -> float:
-    """
-    calculate the angle to align arrows based on
-    the derivative of the signal
-
-    Args:
-        dy (float)
-        dx (float)
-    Returns:
-        angle in degree
-    """
-    if dx == 0:
-        return 90 if dy > 0 else -90
-    return 180 * atan2(dy, dx) / 3.14159
 
 
 def svg_curve_convert(vertices: list) -> list:
@@ -258,108 +241,6 @@ class Renderer:
             ans = self._SYMBOL_TEMP(symbol, content, **kwargs)
         return ans
 
-    def __list_nodes__(self, wavelanes: dict, level: int = 0, depth: int = 0, **kwargs):
-        """
-        list of named nodes in the signal representation
-        and calculate their coordinates
-
-        Args:
-            wavelanes (dict): global signals representation
-            depth (int): indicates if it is a subgroup or the top level
-
-            .. warning::
-                the position is altered by the following parameters:
-                    - brick_width
-                    - brick_height
-                    - period/periods
-                    - phase
-                    - slewing
-                    - vscale
-        Returns:
-            list of nodes in a dict(name: tuple(x, y))
-        """
-        # options for size of bricks
-        config = wavelanes.get("config", {})
-        vscale = config.get("vscale", 1.0) if depth > 0 else 1.0
-        hscale = config.get("hscale", 1.0) if depth > 0 else 1.0
-        brick_width = kwargs.get("brick_width", 40) * hscale
-        brick_height = kwargs.get("brick_height", 20) * vscale
-        separation = kwargs.get("separation")
-        # Parameters for all wavelane
-        first_row_of_group = wavelanes[next(iter(wavelanes))]
-        nodes, _y = (
-            [],
-            (level - 1) * first_row_of_group.get("gap-offset", 0)
-            if isinstance(first_row_of_group, dict)
-            else 0,
-        )
-        for name, wavelane in wavelanes.items():
-            # read nodes declaration
-            if isinstance(wavelane, dict) and name not in EXCLUDED_NAMED_GROUPS:
-                if "wave" in wavelane or Renderer.is_spacer(name):
-                    if "node" in wavelane:
-                        chain = wavelane["node"].split(" ")
-                        # brick width of the wavelane
-                        periods = [wavelane.get("period", 1)] * len(chain[0])
-                        periods = self._get_or_eval("periods", periods, **wavelane)
-                        if len(periods) < len(chain[0]):
-                            periods = periods + [wavelane.get("period", 1)] * (
-                                len(chain[0]) - len(periods)
-                            )
-                        width = [brick_width * p for p in periods]
-                        phase = brick_width * wavelane.get("phase", 0)
-                        slewing = wavelane.get("slewing", 3)
-                        # calculate the x position
-                        x = list(accumulate(width))
-                        # parse the chain
-                        ni, j = [], 0
-                        for i, c in enumerate(chain[0]):
-                            j = i if len(width) > i else -1
-                            if c != ".":
-                                ni.append((x[j] - width[j], width[j], c))
-                        j = count(0)
-                        # get identifier
-                        nodes.extend(
-                            [
-                                (
-                                    s[0] - phase + slewing * 0.5,
-                                    _y + brick_height / 2,
-                                    chain[1 + next(j)],
-                                )
-                                if not s[2].isalpha()
-                                else (
-                                    s[0] - phase + slewing * 0.5,
-                                    _y + brick_height / 2,
-                                    s[2],
-                                )
-                                for s in ni
-                            ]
-                        )
-                    _y += brick_height * wavelane.get("vscale", 1) + separation
-                # it is a wavegroup
-                else:
-                    # add group name spacing
-                    _y += brick_height + separation
-                    dy, n = self.__list_nodes__(wavelane, level, depth + 1, **kwargs)
-                    for node in n:
-                        x, y, name = node
-                        nodes.append((x, _y + y, name))
-                    # add size of the group
-                    _y += dy
-        if depth > 0:
-            return (_y, nodes)
-        return {n: (x, y) for x, y, n in nodes}
-
-    @staticmethod
-    def generate_patterns(prefixs: list, root: str, suffixs: list):
-        """
-        generate possible pattern prefixs/root/suffixs
-        """
-        for p in prefixs:
-            for s in suffixs:
-                pattern = "%s%s%s" % (p, root, s)
-                yield pattern.strip()
-
     @staticmethod
     def adjust_y(y, factor: float = 1.0, separation: float = 0.25):
         total_y, k, s = 0, 0, 0
@@ -383,7 +264,6 @@ class Renderer:
         brick_width: float = 40.0,
         brick_height: float = 20.0,
         separation: float = 0.25,
-        nodes: dict = {},
     ):
         """
         parse the from and to options of annotations into positions
@@ -406,19 +286,21 @@ class Renderer:
         """
         # None, empty str, ...
         if s is None or isinstance(s, str) and not s.strip():
-            return None
+            return Point(0, 0)
         # if is only a number
         if isinstance(s, (int, float)):
-            return s
+            s = (s, s)
         # if a string representing a tuple
         if isinstance(s, str) and "," in s:
             s = safe_eval(s)
         # if a string representing a node
-        if isinstance(s, str) and s in nodes:
-            return nodes.get(s)
+        if isinstance(s, str) and s in NodeBank.nodes:
+            return NodeBank.nodes.get(s)
         # if tuple so pre-estimated
         if isinstance(s, tuple):
-            return (s[0] * brick_width, Renderer.adjust_y(s[1], brick_height, separation))
+            return Point(
+                s[0] * brick_width, Renderer.adjust_y(s[1], brick_height, separation)
+            )
         # parse (<number>, <number>)
         matches = list(re.finditer(r"\s*(\d+\.?\d*)\s*(\%|[+-]\s*\d+\.?\d*)?\s*", str(s)))
         if not matches:
@@ -443,7 +325,7 @@ class Renderer:
         # if row based consider the offset if given
         if matches[1].group(2) and "%" not in matches[1].group(2):
             y = Renderer.adjust_y(y, brick_height, separation) + float(matches[1].group(2))
-        return (x * xunit, y * yunit)
+        return Point(x * xunit, y * yunit)
 
     @staticmethod
     def register_y_step(dy, is_title: bool = False):
@@ -451,7 +333,7 @@ class Renderer:
             Renderer.y_steps.append("t")
         Renderer.y_steps.append(dy)
 
-    def annotate(self, wavelanes: dict, viewport: tuple, depth: int = 0, **kwargs):
+    def annotate(self, wavelanes: dict, viewport: tuple, **kwargs):
         """
         draw edges, vertical lines, horizontal lines, global time compression, ...
         defined in the annotations section of the input file
@@ -473,12 +355,9 @@ class Renderer:
         brick_width = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
         separation = kwargs.get("separation", 0.25)
-        xmin, _, width, height = viewport
         # if not empty
         if not annotations and not edges_input:
             return ""
-        # list nodes and their name
-        nodes = self.__list_nodes__(wavelanes, depth, **kwargs)
         # transform edges into annotations
         for ei in edges_input:
             match = re.match(Renderer._EDGE_REGEXP, ei)
@@ -487,7 +366,8 @@ class Renderer:
                 annotations.append(m)
 
         # create annotations
-        def __annotate__(a: dict):
+        def __annotate__(a: dict, viewport: tuple):
+            xmin, _, width, height = viewport
             shape = a.get("shape", None)
             x = a.get("x", 0)
             y = a.get("y", 0)
@@ -498,31 +378,17 @@ class Renderer:
             text = a.get("text", "")
             text_background = a.get("text_background", True)
             ans = ""
-            start = Renderer.from_to_parser(
-                start, width, height, brick_width, brick_height, separation, nodes=nodes
+            s = Renderer.from_to_parser(
+                start, width, height, brick_width, brick_height, separation
             )
-            end = Renderer.from_to_parser(
-                end, width, height, brick_width, brick_height, separation, nodes=nodes
+            e = Renderer.from_to_parser(
+                end, width, height, brick_width, brick_height, separation
             )
-            # calculate position of start node
-            if isinstance(start, str) and nodes:
-                s = [node for node in nodes if start in node]
-                s = s[-1] if s else (0, 0)
-            elif isinstance(start, tuple):
-                s = start
-            else:
-                s = (0, 0)
-            # calculate position of end node
-            if isinstance(end, str) and nodes:
-                e = [node for node in nodes if end in node]
-                e = e[-1] if e else (0, 0)
-            elif isinstance(end, tuple):
-                e = end
-            else:
-                e = (0, 0)
+            log.debug(a)
+            log.debug(f"Edge from {start}:{s} to {end}:{e}")
             # compatibility support of issue #17
-            if s == (0, 0) and e != (0, 0):
-                s = (e[0] - brick_width / 2, e[-1])
+            if s.x == 0 and s.y == 0 and e.x != 0 and e.y != 0:
+                s = Point(e.x - brick_width / 2, e.y)
                 txt_font_size = get_style("edge-text").get("font-size") or (
                     1.0,
                     SizeUnit.EM,
@@ -531,264 +397,82 @@ class Renderer:
                 dx = -len(text) / 2 * txt_font_size
                 shape = "->"
             # add offset for delay of data and middle of brick vertical
-            s = s[0] + xmin, s[1]
-            e = e[0] + xmin, e[1]
-            # if shape and shape[0] == '<':
-            #    s = s[0]-3.5, s[1]
-            # if shape and shape[-1] == '>':
-            #    e = e[0]-3.5, e[1]
-            # derivative of edges for arrows: by default ->
-            start_dx, start_dy, end_dx, end_dy = s[0] - e[0], 0, e[0] - s[0], 0
-            mx, my = (s[0] + e[0]) * 0.5, (s[1] + e[1]) * 0.5
+            s = Point(s.x + xmin, s.y)
+            e = Point(e.x + xmin, e.y)
             # draw shapes and surcharge styles
             overload = style_in_kwargs(**a)
             # hline
             if shape == "-":
-                y_pos = Renderer.adjust_y(y, brick_height, separation)
-                x1 = xmin + start * brick_width if isinstance(start, (float, int)) else xmin
-                x2 = (
-                    xmin + end * brick_width
-                    if isinstance(end, (float, int))
-                    else xmin + width
-                )
-                pts = [SplineSegment("M", x1, y_pos), SplineSegment("L", x2, y_pos)]
-                ans = self.spline(pts, **a)
-            # vline
-            elif shape == "|":
+                y = Renderer.adjust_y(y, brick_height, separation)
+                if isinstance(end, (float, int)):
+                    xmax = xmin + end * brick_width
+                else:
+                    xmax = xmin + width
+                if isinstance(start, (float, int)):
+                    xmin += start * brick_width
+                overload["y"] = y
+                overload["xmin"] = xmin
+                overload["ymax"] = xmax
+            # vline or time compression
+            elif shape in ["|", "||"]:
                 x = xmin + x * brick_width
-                y1 = (
-                    Renderer.adjust_y(start, brick_height, separation)
-                    if isinstance(start, (float, int))
-                    else 0
-                )
-                y2 = (
-                    Renderer.adjust_y(end, brick_height, separation)
-                    if isinstance(end, (float, int))
-                    else height
-                )
-                pts = [SplineSegment("M", x, y1), SplineSegment("L", x, y2)]
-                ans = self.spline(pts, **a)
-            # global time compression
-            elif shape == "||":
-                x = xmin + x * brick_width
-                y1 = (
-                    Renderer.adjust_y(start, brick_height, separation)
-                    if isinstance(start, (float, int))
-                    else 0
-                )
-                y2 = (
-                    Renderer.adjust_y(end, brick_height, separation)
-                    if isinstance(end, (float, int))
-                    else height
-                )
-                pts_1 = [
-                    SplineSegment("M", x, y1),  # |
-                    SplineSegment("L", x, (y2 + y1) / 2 - 10),  # |
-                    SplineSegment("L", x - 10, (y2 + y1) / 2),  # /
-                    SplineSegment("L", x, (y2 + y1) / 2 + 10),  # \
-                    SplineSegment("L", x, y2),  # |
-                ]
-                pts_2 = [
-                    SplineSegment("M", x + 5, y1),  # |
-                    SplineSegment("L", x + 5, (y2 + y1) / 2 - 10),  # |
-                    SplineSegment("L", x - 4, (y2 + y1) / 2),  # /
-                    SplineSegment("L", x + 5, (y2 + y1) / 2 + 10),  # \
-                    SplineSegment("L", x + 5, y2),  # |
-                ]
-                poly = copy.deepcopy(pts_2)
-                poly.extend(pts_1[::-1])
-                ans = self.polygon(poly, style_repr="hide")
-                ans += self.spline(pts_1, style_repr="big_gap")
-                ans += self.spline(pts_2, style_repr="big_gap")
-            # edges
-            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "~", ARROWS_SUFFIX):
-                ans = self.spline(
-                    [
-                        SplineSegment("M", s[0], s[1]),
-                        SplineSegment("C", s[0] * 0.1 + e[0] * 0.9, s[1]),
-                        SplineSegment("", s[0] * 0.9 + e[0] * 0.1, e[1]),
-                        SplineSegment("", e[0], e[1]),
-                    ],
-                    is_edge=True,
-                    style_repr="edge",
-                    **overload,
-                )
-            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-~", ARROWS_SUFFIX):
-                ans = self.spline(
-                    [
-                        SplineSegment("M", s[0], s[1]),
-                        SplineSegment("C", e[0], s[1]),
-                        SplineSegment("", e[0], e[1]),
-                        SplineSegment("", e[0], e[1]),
-                    ],
-                    is_edge=True,
-                    style_repr="edge",
-                    **overload,
-                )
-                start_dx, start_dy, end_dx, end_dy = s[0] - e[0], 0, 0, e[1] - s[1]
-            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "~-", ARROWS_SUFFIX):
-                ans = self.spline(
-                    [
-                        SplineSegment("M", s[0], s[1]),
-                        SplineSegment("C", s[0], s[1]),
-                        SplineSegment("", s[0], e[1]),
-                        SplineSegment("", e[0], e[1]),
-                    ],
-                    is_edge=True,
-                    style_repr="edge",
-                    **overload,
-                )
-                start_dx, start_dy, end_dx, end_dy = 0, s[1] - e[1], e[0] - s[0], 0
-            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-", ARROWS_SUFFIX):
-                ans = self.spline(
-                    [SplineSegment("M", s[0], s[1]), SplineSegment("L", e[0], e[1])],
-                    is_edge=True,
-                    style_repr="edge",
-                    **overload,
-                )
-                start_dx, start_dy, end_dx, end_dy = (
-                    s[0] - e[0],
-                    s[1] - e[1],
-                    e[0] - s[0],
-                    e[1] - s[1],
-                )
-            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-|", ARROWS_SUFFIX):
-                ans = self.spline(
-                    [
-                        SplineSegment("M", s[0], s[1]),
-                        SplineSegment("L", e[0], s[1]),
-                        SplineSegment("", e[0], e[1]),
-                    ],
-                    is_edge=True,
-                    style_repr="edge",
-                    **overload,
-                )
-                start_dx, start_dy, end_dx, end_dy = s[0] - e[0], 0, 0, e[1] - s[1]
-                mx, my = e[0], s[1]
-            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "|-", ARROWS_SUFFIX):
-                ans = self.spline(
-                    [
-                        SplineSegment("M", s[0], s[1]),
-                        SplineSegment("L", s[0], e[1]),
-                        SplineSegment("", e[0], e[1]),
-                    ],
-                    is_edge=True,
-                    style_repr="edge",
-                    **overload,
-                )
-                start_dx, start_dy, end_dx, end_dy = 0, s[1] - e[1], e[0] - s[0], 0
-                mx, my = s[0], e[1]
-            elif shape in Renderer.generate_patterns(ARROWS_PREFIX, "-|-", ARROWS_SUFFIX):
-                ans = self.spline(
-                    [
-                        SplineSegment("M", s[0], s[1]),
-                        SplineSegment("L", mx, s[1]),
-                        SplineSegment("", mx, e[1]),
-                        SplineSegment("", e[0], e[1]),
-                    ],
-                    is_edge=True,
-                    style_repr="edge",
-                    **overload,
-                )
-                start_dx, start_dy, end_dx, end_dy = s[0] - mx, 0, e[0] - mx, 0
-                mx, my = mx, e[1]
-            # add arrows for edges
-            if shape is not None:
-                # marker start
-                if shape[0] == "<":
-                    th = arrow_angle(start_dy, start_dx)
-                    ans += self.arrow(
-                        0,
-                        0,
-                        th,
-                        extra=self.translate(
-                            s[0] - 3 * cos(th * 3.14159 / 180),
-                            s[1] - 3 * sin(th * 3.14159 / 180),
-                            no_acc=True,
-                        ),
-                        dy=brick_height,
-                        is_edge=True,
-                        style_repr="edge-arrow",
-                        **overload,
-                    )
-                elif shape[0] == "*":
-                    pass
-                elif shape[0] == "#":
-                    pass
-                # marker end
-                if shape[-1] == ">":
-                    th = arrow_angle(end_dy, end_dx)
-                    ans += self.arrow(
-                        0,
-                        0,
-                        th,
-                        extra=self.translate(
-                            e[0] - 3 * cos(th * 3.14159 / 180),
-                            e[1] - 3 * sin(th * 3.14159 / 180),
-                            no_acc=True,
-                        ),
-                        dy=brick_height,
-                        is_edge=True,
-                        style_repr="edge-arrow",
-                        **overload,
-                    )
-                elif shape[0] == "*":
-                    pass
-                elif shape[0] == "#":
-                    pass
-                # add text is not empty
-                if text:
-                    # add white background for the text
-                    a.update({"style_repr": "edge-text", "x": mx + dx, "y": my + dy})
-                    if text_background:
-                        ox, oy, w, h = undulate.skin.text_bbox(
-                            self.ctx, "edge-text", text, self.engine, overload
-                        )
-                        ans += self.polygon(
-                            [
-                                Point(0, 0),
-                                Point(0, 0 + h),
-                                Point(0 + w, 0 + h),
-                                Point(0 + w, 0),
-                                Point(0, 0),
-                            ],
-                            extra=self.translate(
-                                a.get("x") + ox, a.get("y") + oy, no_acc=True
-                            ),
-                            style_repr="edge-background",
-                        )
-                    # add the text
-                    ans += self.text(**a)
-            elif text:
+                ymin = 0
+                ymax = height
+                if isinstance(start, (float, int)):
+                    ymin = Renderer.adjust_y(start, brick_height, separation)
+                if isinstance(end, (float, int)):
+                    ymax = Renderer.adjust_y(end, brick_height, separation)
+                overload["x"] = x
+                overload["ymin"] = ymin
+                overload["ymax"] = ymax
+            else:
+                overload["start"] = s
+                overload["end"] = e
+            if shape:
+                ans += ShapeFactory.create(shape, self, **overload)
+            if text:
                 overload = style_in_kwargs(**a)
                 # add white background for the text
-                a.update(
-                    {
-                        "style_repr": "edge-text",
-                        "x": xmin + x * brick_width,
-                        "y": Renderer.adjust_y(y, brick_height, separation),
-                    }
-                )
+                if shape:
+                    mx, my = (s.x + e.x) * 0.5, (s.y + e.y) * 0.5
+                    overload.update(
+                        {
+                            "style_repr": "edge-text",
+                            "x": mx + dx,
+                            "y": my + dy,
+                            "text": text,
+                        }
+                    )
+                else:
+                    overload.update(
+                        {
+                            "style_repr": "edge-text",
+                            "x": xmin + x * brick_width,
+                            "y": Renderer.adjust_y(y, brick_height, separation),
+                            "text": text,
+                        }
+                    )
                 if text_background:
                     ox, oy, w, h = undulate.skin.text_bbox(
                         self.ctx, "edge-text", text, self.engine, overload
                     )
+                    x = overload.get("x")
+                    y = overload.get("y")
                     ans += self.polygon(
                         [
-                            Point(0, 0),
-                            Point(0, 0 + h),
-                            Point(0 + w, 0 + h),
-                            Point(0 + w, 0),
-                            Point(0, 0),
+                            Point(x + ox, y + oy),
+                            Point(x + ox, y + oy + h),
+                            Point(x + ox + w, y + oy + h),
+                            Point(x + ox + w, y + oy),
+                            Point(x + ox, y + oy),
                         ],
-                        extra=self.translate(a.get("x") + ox, a.get("y") + oy, no_acc=True),
                         style_repr="edge-background",
                     )
                 # add the text
-                ans += self.text(**a)
+                ans += self.text(**overload)
             return ans
 
-        return "\n".join([__annotate__(a) for a in annotations])
+        return "\n".join([__annotate__(a, viewport) for a in annotations])
 
     def wavelane_title(self, name: str, **kwargs):
         """
@@ -821,7 +505,7 @@ class Renderer:
             y = brick_height / 4 * order - brick_height / 8
         return self.text(-10, y, name, offset=extra, style_repr="title", **kw)
 
-    def _reduce_wavelane(self, name: str, wavelane: str, **kwargs):
+    def _reduce_wavelane(self, name: str, wavelane: str, nodes: List[str], **kwargs):
         """
         Args:
             name (str) : name of the wavelane
@@ -878,6 +562,9 @@ class Renderer:
         follow_data = False
         previous_symbol = " "
         _wavelane = []
+        # ensure nodes and wavelane have the same size
+        if len(nodes) < len(wavelane) * repeat:
+            nodes.extend([None] * (len(wavelane) * repeat - len(nodes)))
         # initialize the waveform
         for i, b in enumerate(wavelane * repeat):
             brick_args = copy.deepcopy(kwargs)
@@ -891,6 +578,7 @@ class Renderer:
             brick_args["is_first"] = i == 0
             brick_args["repeat"] = 1
             brick_args["name"] = name
+            brick_args["node_name"] = nodes.pop(0)
             # generate the brick
             _wavelane.append(BrickFactory.create(b, **brick_args))
             log.debug(f"{name} {b} {_wavelane[-1]!r} {_wavelane[-1].get_last_y()}")
@@ -909,7 +597,7 @@ class Renderer:
         return param
 
     @incr_wavelane
-    def wavelane(self, name: str, wavelane: str, extra: str = "", **kwargs):
+    def wavelane(self, name: str, wavelane: str, extra: str = "", y: float = 0, **kwargs):
         """
         wavelane is the core function which generate a waveform from the string
         name         : name of the waveform
@@ -929,9 +617,12 @@ class Renderer:
         # options
         brick_width = kwargs.get("brick_width", 20) * kwargs.get("hscale", 1)
         gap_offset = kwargs.get("gap_offset", brick_width * 0.5)
+        # pre-process nodes
+        nodes, *expended_names = kwargs.get("node", "").split(" ")
+        nodes = [expended_names.pop(0) if node == "#" else node for node in nodes]
 
         # preprocess waveform to simplify it
-        _wavelane = self._reduce_wavelane(name, wavelane, **kwargs)
+        _wavelane = self._reduce_wavelane(name, wavelane, nodes, **kwargs)
 
         # generate waveform
         wave, pos = [], 0
@@ -945,6 +636,10 @@ class Renderer:
             brick.args.update(style_in_kwargs(**kwargs))
             # generate the brick
             wave.append(BrickFactory.create(brick.symbol, **brick.args))
+            # register node position
+            NodeBank.register(
+                brick.node_name, Point(x + brick.slewing / 2, y + brick.height / 2)
+            )
             # create the new brick
             pos += wave[-1].width
 
@@ -1096,7 +791,9 @@ class Renderer:
                     args.update(**kwargs)
                     args.update({"gap-offset": gap_offset})
                     # generate the waveform of this signal
-                    ans += self.wavelane(wavetitle, wave, self.translate(ox, oy), **args)
+                    ans += self.wavelane(
+                        wavetitle, wave, self.translate(ox, oy), oy, **args
+                    )
                     # if the waveform of this signal will be overlayed
                     # do not increment the position
                     overlay = args.get("overlay", False)
