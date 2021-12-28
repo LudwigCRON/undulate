@@ -123,3 +123,5 @@ else
 endif
 	coverage report
 	coverage html
+	coverage json
+	python3 ./genbadge.py

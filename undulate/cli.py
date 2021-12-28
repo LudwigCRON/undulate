@@ -137,3 +137,7 @@ def main():
         cli_args.is_reg,
         cli_args.dpi,
     )
+
+
+if __name__ == "__main__":
+    main()
