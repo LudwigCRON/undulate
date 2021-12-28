@@ -21,3 +21,20 @@ help:
 %: Makefile
 	sphinx-apidoc -f -e -o $(SOURCEDIR) undulate
 	@$(SPHINXBUILD) -b $@ "$(SOURCEDIR)" "$(BUILDDIR)"
+
+# install the required packages
+# for pycairo consults https://pycairo.readthedocs.io/en/latest/getting_started.html
+# this make file is done for non-regression tests
+build_dependencies:
+	sudo apt-get update -y
+	sudo apt-get install -y build-essential libcairo2-dev pkg-config python3-dev
+	pip install --upgrade pip
+	pip install pycairo
+	pip install pyyaml
+	pip install toml
+	pip install coverage
+	pip install requests
+
+# install package
+install_pkg:
+	pip install .
