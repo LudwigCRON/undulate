@@ -3,8 +3,6 @@ digital.py declare the basic building block
 to generate a digital waveform
 """
 # TODO: migrate Garbage follow_data to generic custom filtering functions
-# TODO: migrate Data follow_x to generic custom filtering functions
-# TODO: migrate is_first to ignore_start_transition ?
 
 import math
 import undulate.logger as log
@@ -69,8 +67,6 @@ class NclkArrow(Nclk):
 
     def __init__(self, **kwargs) -> None:
         Nclk.__init__(self, **kwargs)
-        if self.ignore_start_transition:
-            return None
         # add arrow
         arrow_angle = -math.atan2(-self.height, self.slewing) * 180 / math.pi
         self.arrows.append(
