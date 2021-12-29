@@ -895,11 +895,12 @@ class Renderer:
             _attr = wavelanes[wavetitle].get("attr", [(0, None)])
             if isinstance(_attr, list):
                 _n = [
-                    len(_a[1])
-                    for _a in _attr
-                    if not _a[1] is None and isinstance(_a[1], list)
+                    len(a[-1]) if isinstance(a[-1], list) else 0 if a[-1] is None else 1
+                    for a in _attr
                 ]
-                n += max(_n) if _n else 0
+                n = max(n, len(_n))
+            else:
+                n = max(n, 1)
             # handle a wavelane
             dy = brick_height * wavelanes[wavetitle].get("vscale", 1) + separation
             if "wave" in wavelanes[wavetitle]:

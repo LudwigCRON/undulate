@@ -261,7 +261,7 @@ class CairoRenderer(Renderer):
         lkeys, width, height, n = self.size(wavelanes, **kwargs)
         # remove offset for the name in register
         if is_reg:
-            height += n * 12
+            height += (n + 1) * 12
         # consider padding of root
         root_style = get_style("root")
         val_top, unit_top = root_style.get("padding-top", (0.0, SizeUnit.PX))

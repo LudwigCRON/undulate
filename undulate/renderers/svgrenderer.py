@@ -14,6 +14,8 @@ from undulate.skin import (
     style_in_kwargs,
     css_from_rule,
     css_from_style,
+    SizeUnit,
+    get_style,
 )
 from undulate.renderers.renderer import Renderer
 
@@ -200,7 +202,12 @@ class SvgRenderer(Renderer):
         lkeys, width, height, n = self.size(wavelanes, **kwargs)
         # remove offset for the name in register
         if is_reg:
-            height += n * 12
+            height += (n + 1) * 12
+        # consider padding of root
+        root_style = get_style("root")
+        val_top, unit_top = root_style.get("padding-top", (0.0, SizeUnit.PX))
+        val_bot, unit_bot = root_style.get("padding-bottom", (0.0, SizeUnit.PX))
+        height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
         with open(filename, "w+") as fp:
             fp.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
