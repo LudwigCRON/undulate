@@ -70,7 +70,7 @@ def arrow_markers(renderer: Renderer, pattern: str, ds: Point, de: Point, **kwar
     elif pattern.startswith("*"):
         ans += renderer.spline(scircle(start.x, start.y, 3), **kwargs)
     elif pattern.startswith("#"):
-        ans += renderer.spline(square(start.x, start.y, 3), **kwargs)
+        ans += renderer.spline(square(start.x, start.y, 6), **kwargs)
     if pattern.endswith(">"):
         angle = arrow_angle(de.y, de.x)
         ans += renderer.arrow(
@@ -82,7 +82,7 @@ def arrow_markers(renderer: Renderer, pattern: str, ds: Point, de: Point, **kwar
     elif pattern.endswith("*"):
         ans += renderer.spline(scircle(end.x, end.y, 3), **kwargs)
     elif pattern.endswith("#"):
-        ans += renderer.spline(square(end.x, end.y, 3), **kwargs)
+        ans += renderer.spline(square(end.x, end.y, 6), **kwargs)
     return ans
 
 

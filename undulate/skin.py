@@ -166,23 +166,29 @@ def parse_css_color(S: str) -> tuple:
     elif s.startswith("rgb"):
         return [int(i, 10) for i in re.split(",| ", s[4:-1]) if i] + [255]
     elif s.startswith("hsla"):
-        hsl = [
-            float("".join([c for c in i if c in "0123456789."])) / 100
-            if i and "%" in i
-            else float(i)
-            for i in re.split(",| ", s[5:-1])
-        ]
+        hsl = []
+        for i in re.split(",| ", s[5:-1]):
+            if i.strip():
+                hsl.append(
+                    float("".join([c for c in i if c in "0123456789."])) / 100
+                    if "%" in i
+                    else float(i)
+                )
         rgba = hsl_to_rgb(*hsl[:3])
-        rgba.append(hsl[-1])
+        rgba.append(hsl[-1] * 255)
         return rgba
     elif s.startswith("hsl"):
-        hsl = [
-            float("".join([c for c in i if c in "0123456789."])) / 100
-            if i and "%" in i
-            else float(i)
-            for i in re.split(",| ", s[5:-1])
-        ]
-        return hsl_to_rgb(*hsl[:3])
+        hsl = []
+        for i in re.split(",| ", s[4:-1]):
+            if i.strip():
+                hsl.append(
+                    float("".join([c for c in i if c in "0123456789."])) / 100
+                    if "%" in i
+                    else float(i)
+                )
+        rgba = hsl_to_rgb(*hsl[:3])
+        rgba.append(255)
+        return rgba
     elif s.startswith("#"):
         if len(s) == 4:
             return [int(i, 16) * 17 for i in s[1:4]] + [255]
@@ -360,8 +366,6 @@ DEFINITION = """
 try:
     import cairo
 except ImportError:
-    pass
-except ModuleNotFoundError:
     pass
 else:
 

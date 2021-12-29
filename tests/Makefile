@@ -83,6 +83,7 @@ coverage:
 	coverage run -a ./test_wavedrom.py -f svg
 	coverage run -a ./test_wavedrom.py -f cairo-svg
 	coverage run -a ./test_css.py
+	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/edge_markers.yaml -f cairo-svg -o ${TESTPATH}/output/edge_markers.svg
 	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/wavetest_alt.json -f cairo-png -s ${TESTPATH}/ut_css/overload.css -o ${TESTPATH}/output/$(subst .json,-json-cairo.png,wavetest_alt.json)
 	python3 ./covrun.py $(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f svg -o "${TESTPATH}/legacy/reg-vl-jsonml.svg"
 	python3 ./covrun.py $(WAVEFORM) -r -i "${TESTPATH}/reg-opivi.jsonml" -f cairo-eps -o "${TESTPATH}/legacy/reg-opivi-jsonml-cairo.eps"
@@ -100,6 +101,14 @@ ifeq (${ISPWSH}, 1)
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f json & python ./test.py $$LASTEXITCODE -eq 0
 	python3 ./covrun.py $(WAVEFORM) & python ./test.py $$LASTEXITCODE -eq 1
 	python3 ./covrun.py $(WAVEFORM) -i & python ./test.py $$LASTEXITCODE -eq 2
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/syntax_error.yaml"; test $$LASTEXITCODE -eq 1
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/syntax_error.toml"; test $$LASTEXITCODE -eq 1
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/syntax_error.jsonml"; test $$LASTEXITCODE -eq 1
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/unknown_shape.yaml"; test $$LASTEXITCODE -eq 3
+	pip uninstall -y pyyaml toml
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/unknown_shape.yaml"; test $$LASTEXITCODE -eq 1
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/overlay.toml"; test $$LASTEXITCODE -eq 1
+	pip install pyyaml toml
 else
 	python3 ./covrun.py $(WAVEFORM) -f doc; test $$? -eq 1
 	python3 ./covrun.py $(WAVEFORM) -f svg -i "${TESTPATH}/inexisting_symbol.toml" -o "${TESTPATH}/inexisting_symbol.svg"; test $$? -eq 3
@@ -109,11 +118,20 @@ else
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f json; test $$? -eq 0
 	python3 ./covrun.py $(WAVEFORM); test $$? -eq 1
 	python3 ./covrun.py $(WAVEFORM) -i; test $$? -eq 2
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/unknown_shape.yaml"; test $$? -eq 3
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/syntax_error.yaml"; test $$? -eq 1
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/syntax_error.toml"; test $$? -eq 1
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/syntax_error.jsonml"; test $$? -eq 1
+	pip uninstall -y pyyaml toml
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/unknown_shape.yaml"; test $$? -eq 1
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/overlay.toml"; test $$? -eq 1
+	pip install pyyaml toml
 endif
 	python3 ./covrun.py $(WAVEFORM) -h
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/adcec.jsonml" -f svg -o "${TESTPATH}/output/adcec.svg"
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/local_config_nodes.yaml" -f svg -o "${TESTPATH}/output/local_config_nodes.svg"
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_control.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg"
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_control.jsonml" -f json -r
 ifeq (${ISPWSH}, 1)
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_err5.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg" & python ./test.py $$LASTEXITCODE -eq 5
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_err6.jsonml" -f svg -r -o "${TESTPATH}/output/local_config_nodes.svg" & python ./test.py $$LASTEXITCODE -eq 6

@@ -142,7 +142,7 @@ class SvgRenderer(Renderer):
                 by default apply the class 'path'
         """
         overload = style_in_kwargs(**kwargs)
-        if kwargs.get("style_repr") != "hide":
+        if kwargs.get("style_repr") not in ["hide", "edge-arrow"]:
             overload["fill"] = None
         path = "".join(
             ["%s%f,%f " % (v.order, v.x, v.y) if v.order != "z" else "z" for v in vertices]

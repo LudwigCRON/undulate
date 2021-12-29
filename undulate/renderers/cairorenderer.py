@@ -199,7 +199,7 @@ class CairoRenderer(Renderer):
                 stack = []
             # store last cmd
             previous_cmd = cmd
-        if style == "hide":
+        if style in ["hide", "edge-arrow"]:
             apply_fill(self.ctx, style, Engine.CAIRO, overload)
             self.ctx.fill()
         else:

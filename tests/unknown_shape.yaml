@@ -1,0 +1,14 @@
+pulse:
+  wave: "lpl...pl..."
+  node: ".a....b...."
+
+level:
+  wave: "l....h....l"
+  node: ".....c....d"
+
+edges:
+- "a *~# c"
+- "b #-~* d"
+
+annotations:
+- shape: "["

@@ -54,14 +54,10 @@ def process(
     if rendering_engine.lower() not in rendering_engines:
         log.fatal(log.UNSUPPORTED_ENGINE % log.list_vars(rendering_engines))
     # check the input file
-    err, obj = parse(input_path)
-    if err:
-        exit(4)
+    _, obj = parse(input_path)
     # convert register description into wavelane
     if is_reg:
-        err, obj = register.convert(obj)
-    if err:
-        exit(7)
+        _, obj = register.convert(obj)
     # for debug purpose
     if rendering_engine == "json":
         pprint(obj)
