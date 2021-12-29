@@ -570,10 +570,13 @@ class Renderer:
             brick_args = copy.deepcopy(kwargs)
             for param in BrickFactory.params.get(b, []):
                 params = param + "s" if param not in ["data", "analogue"] else param
+                default = BrickFactory.params.get(b, {}).get(param)
                 if needed_params[params]:
                     brick_args[param] = needed_params[params].pop(0)
-                    if brick_args[param] is None:
-                        brick_args[param] = BrickFactory.params.get(b, {}).get(param)
+                else:
+                    brick_args[param] = default
+                if brick_args[param] is None:
+                    brick_args[param] = default
             brick_args["follow_data"] = follow_data
             brick_args["is_first"] = i == 0
             brick_args["repeat"] = 1
