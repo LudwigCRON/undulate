@@ -285,7 +285,7 @@ class Renderer:
             brick_height (float, default=40): brick height
         """
         # None, empty str, ...
-        if s is None or isinstance(s, str) and not s.strip():
+        if s is None or (isinstance(s, str) and not s.strip()):
             return Point(0, 0)
         # if is only a number
         if isinstance(s, (int, float)):
@@ -301,31 +301,7 @@ class Renderer:
             return Point(
                 s[0] * brick_width, Renderer.adjust_y(s[1], brick_height, separation)
             )
-        # parse (<number>, <number>)
-        matches = list(re.finditer(r"\s*(\d+\.?\d*)\s*(\%|[+-]\s*\d+\.?\d*)?\s*", str(s)))
-        if not matches:
-            return s
-        # % for image based positionning
-        # otherwise row based positionning
-        xunit = (
-            width / 100.0
-            if matches[0].group(2) and "%" in matches[0].group(2)
-            else brick_width
-        )
-        x = float(matches[0].group(1))
-        # if only one value
-        if len(matches) == 1:
-            return x * xunit
-        yunit = (
-            height / 100.0
-            if matches[1].group(2) and "%" in matches[1].group(2)
-            else brick_height
-        )
-        y = float(matches[1].group(1))
-        # if row based consider the offset if given
-        if matches[1].group(2) and "%" not in matches[1].group(2):
-            y = Renderer.adjust_y(y, brick_height, separation) + float(matches[1].group(2))
-        return Point(x * xunit, y * yunit)
+        log.fatal(log.FROM_TO_UNKNOWN_FORMAT % str(s), 8)
 
     @staticmethod
     def register_y_step(dy, is_title: bool = False):

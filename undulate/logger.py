@@ -33,6 +33,7 @@ BRICK_SYMBOL_UNDEFINED = "The symbol '%s' is not defined"
 FIELD_UNSUPPORTED_TYPE = "Unsupported type '%s' of field"
 FIELD_OVERLAP = "Detected position overlap for '%s'. Please check position"
 ANNOTATION_PATTERN_UNDEFINED = "The pattern '%s' is not defined"
+FROM_TO_UNKNOWN_FORMAT = "In field from/to '%s' cannot be parsed"
 
 
 def list_vars(values: Iterable) -> str:
