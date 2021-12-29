@@ -867,6 +867,7 @@ def filter_width(waveform: List[Brick]) -> List[Brick]:
 def filter_repeat(waveform: List[Brick]) -> List[Brick]:
     ans = []
     previous_symbol = " "
+    previous_index = 0
     for i, brick in enumerate(waveform):
         # check validity of the first brick
         if i == 0 and "repeat" in BrickFactory.tags.get(brick.symbol, []):
@@ -874,18 +875,17 @@ def filter_repeat(waveform: List[Brick]) -> List[Brick]:
         if "repeat" not in BrickFactory.tags.get(brick.symbol, []):
             ans.append(brick)
             previous_symbol = brick.symbol
+            previous_index = len(ans) - 1
             continue
         # always repeat a clock signal and after gap repeat the last valid symbol
         if "clock" in BrickFactory.tags.get(previous_symbol, []) or previous_symbol == "|":
             ans.append(BrickFactory.create(previous_symbol, **brick.args))
         # extend the width of other symbols
         else:
-            ans[-1].repeat += 1
+            ans[previous_index].repeat += 1
         # a gap symbol overlay the previous one
         if brick.symbol == "|":
             ans.append(brick)
-        if "repeat" not in BrickFactory.tags.get(brick.symbol, []):
-            previous_symbol = brick.symbol
     # make repeat info propagate
     for b in ans:
         b.args["repeat"] = b.repeat
