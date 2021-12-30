@@ -1,12 +1,7 @@
-#!/usr/bin/env python3
-# spell-checker: disable
-
 """
 register.py declare the basic building block
 to represent a register
 """
-
-from typing import Any
 
 from undulate.bricks.generic import Drawable, Brick, BrickFactory, Point, SplineSegment
 

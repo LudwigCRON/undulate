@@ -1,8 +1,5 @@
-#!/usr/bin/env python3
-# spell-checker: disable
-
 """
-bricks.py declare the basic building block
+generic.py declare the basic building block
 to generate a waveform
 """
 
@@ -16,7 +13,7 @@ import undulate.logger as log
 
 @dataclass
 class Point:
-    """cartesian coordinate of a point"""
+    """Cartesian coordinate of a point"""
 
     x: float = 0.0
     y: float = 0.0
@@ -24,7 +21,29 @@ class Point:
 
 @dataclass
 class SplineSegment:
-    """spline directive m/l/c/z/M/L/C/Z as for svg"""
+    """
+    Spline directive as in SVG images
+
+    Attributes:
+        order (str): one of the following directive:
+            - 'm': relative move to
+            - 'l': relative line to
+            - 'c': relative cubic bezier curve to
+            - 'M': absolute move to
+            - 'L': absolute line to
+            - 'C': absolute cubic bezier curve to
+            - 'z': close path
+            - 'Z': close path
+            - '': add coordinate to previous directive
+        x (float): x-coordinate relative to previous point (relative) or to brick (absolute)
+        y (float): y-coordinate relative to previous point (relative) or to brick (absolute)
+
+
+    .. warning::
+        splines are considered to be a list of (type, x or dx, y or dy) tuples
+        for more details please look at
+        https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+    """
 
     order: str = ""
     x: float = 0.0
@@ -33,7 +52,9 @@ class SplineSegment:
 
 @dataclass
 class ArrowDescription:
-    """position and orientation of the arrow to be drawn"""
+    """
+    Position of the center and orientation of the arrow to be drawn
+    """
 
     x: float = 0.0
     y: float = 0.0
@@ -42,7 +63,10 @@ class ArrowDescription:
 
 @dataclass
 class Drawable:
-    """associate a style class to an object"""
+    """
+    Association of a css class to a List[Point], or List[SplineSegment],
+    or ArrowDescription
+    """
 
     style: str
     object: Any
@@ -50,13 +74,14 @@ class Drawable:
 
 def safe_eval(code: str, ctx: dict = {}):
     """
-    propose a safer alternative to eval based on ast
+    propose a safer alternative to eval based on ast to pre-filter possible
+    instructions and limiting current variables access
 
     Args:
         code (str): code to execute
         ctx (dict): predefined variables and functions
     Returns:
-        return value of the code
+        resulting value of the code
     """
     try:
         # ast only accept a subset of python instruction
@@ -70,73 +95,40 @@ def safe_eval(code: str, ctx: dict = {}):
         return code
 
 
-class BrickFactory:
-    """create a brick from its symbol once registered"""
-
-    funcs = {}
-    tags = {}
-    params = {}
-
-    @staticmethod
-    def register(
-        symbol: str,
-        initializer: Callable,
-        tags: List[str] = [],
-        params: Dict[str, Any] = {},
-    ):
-        """register a new brick called {name} mapped to {symbol}"""
-        BrickFactory.funcs[symbol] = initializer
-        # symbol can be tagged to later ease filtering on type
-        BrickFactory.tags[symbol] = tags
-        # register list of needed parameters
-        BrickFactory.params[symbol] = params
-
-    @staticmethod
-    def create(symbol: str, **kwargs):
-        """create a brick from its symbol"""
-        if symbol not in BrickFactory.funcs:
-            log.fatal(log.BRICK_SYMBOL_UNDEFINED % symbol, 3)
-        init = BrickFactory.funcs[symbol]
-        brick = init(**kwargs)
-        brick.symbol = symbol
-        return brick
-
-    @staticmethod
-    def get_parameters() -> Dict[str, Any]:
-        ans = {}
-        for params in BrickFactory.params.values():
-            ans.update(params)
-        return ans
-
-
 @dataclass
 class Brick:
     """
-    define the brick as a composition of paths, arrows, and generic polygons
+    Define the brick as a composition of paths, arrows, and generic polygons
     to fill an area
 
     Attributes:
         width (float > 0): by default is 40.0
         height (float > 0): by default is 20.0
         slewing (float > 0): by default 0.0
-        ignore_start_transition (bool): by default False
-        ignore_end_transition (bool): by default False
-        is_first (bool): first brick of a wavelance, by default False
-        last_y (float): y coordinate of the previous brick
-            to make the junction between the two
 
-        paths (list): list of "svg" paths to be drawn
-        arrows (list): list of arrows to be drawn
-        polygons (list): list of polygons to be drawn
+        symbol (str): identification symbol (mostly for debug)
+        args (Dict[str, Any]): arguments used to create the brick (allow regeneration of it)
+        repeat (int): number consecutive '.' after it for repetition
 
-            .. warning::
-                polygons are considered to be a list of (x, y) tuples
-        splines (list): list of splines to be drawn
+        ignore_start_transition (bool): by default False for smooth connection
+        ignore_end_transition (bool): by default False for smooth connection
+        is_first (bool): first brick of a signal, by default False
+        last_y (float): last y-coordinate of the previous brick for smooth connection
+        first_y (float): first y-coordinate of the next brick for smooth connection
 
-            .. warning::
-                splines are considered to be a list of (type, x or dx, y or dy) tuples
-                for more details please look at
-                https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
+        paths (List[Point]): list of "svg" paths to be drawn
+        arrows (List[ArrowDesctiption]): list of arrows to be drawn
+        polygons (List[Point]): list of polygons to be drawn
+        splines (List[SplineSegment]): list of splines to be drawn
+        texts (List[(str, x, y)]): list of textual element to be drawn
+
+        .. warning::
+            'paths', 'arrows', 'polygons', 'splines' are List[Drawable] but
+            inside a Drawable any object are accepted.
+
+            However, the rendering functions cannot support any object and thus,
+            the clear distinction is made here to precise what is the
+            expected type of object in the Drawable.
     """
 
     symbol: str
@@ -175,6 +167,7 @@ class Brick:
         self.texts = []
 
     def get_last_y(self) -> float:
+        """Get last y-coordinate of the brick"""
         last_point_path = max(
             (point for drawable in self.paths for point in drawable.object),
             key=lambda p: p.x,
@@ -190,23 +183,73 @@ class Brick:
         return last_point_spline.y
 
     def get_first_y(self) -> float:
-        last_point_path = min(
+        """Get first y-coordinate of the brick"""
+        first_point_path = min(
             (point for drawable in self.paths for point in drawable.object),
             key=lambda p: p.x,
             default=Point(self.width / 2, self.height),
         )
-        last_point_spline = min(
+        first_point_spline = min(
             (point for drawable in self.splines for point in drawable.object),
             key=lambda p: p.x,
             default=Point(self.width / 2, self.height),
         )
-        if last_point_path.x <= last_point_spline.x:
-            return last_point_path.y
-        return last_point_spline.y
+        if first_point_path.x <= first_point_spline.x:
+            return first_point_path.y
+        return first_point_spline.y
+
+
+class BrickFactory:
+    """
+    Create a brick from its symbol once registered
+
+    Attributes:
+        funcs (Dict[str, Callable[...,Brick]]): initialization function to create a brick
+            from its symbol
+        tags (Dict[str, List[str]]): list of categories associated to bricks
+        params (Dict[str, Dict[str, Any]]): list of required parameters and their
+            default for a given brick
+    """
+
+    funcs = {}
+    tags = {}
+    params = {}
+
+    @staticmethod
+    def register(
+        symbol: str,
+        initializer: Callable,
+        tags: List[str] = [],
+        params: Dict[str, Any] = {},
+    ) -> None:
+        """register a new brick called {name} mapped to {symbol}"""
+        BrickFactory.funcs[symbol] = initializer
+        # symbol can be tagged to later ease filtering on type
+        BrickFactory.tags[symbol] = tags
+        # register list of needed parameters
+        BrickFactory.params[symbol] = params
+
+    @staticmethod
+    def create(symbol: str, **kwargs) -> Brick:
+        """create a brick from its symbol"""
+        if symbol not in BrickFactory.funcs:
+            log.fatal(log.BRICK_SYMBOL_UNDEFINED % symbol, 3)
+        init = BrickFactory.funcs[symbol]
+        brick = init(**kwargs)
+        brick.symbol = symbol
+        return brick
+
+    @staticmethod
+    def get_parameters() -> Dict[str, Any]:
+        """list all parameters registered"""
+        ans = {}
+        for params in BrickFactory.params.values():
+            ans.update(params)
+        return ans
 
 
 class FilterBank:
-    """list of filters to apply process a waveform"""
+    """List of filters to apply process a waveform"""
 
     filters = []
 
@@ -226,7 +269,7 @@ class FilterBank:
 
 
 class NodeBank:
-    """register brick position of a given node"""
+    """Register brick position of a given node"""
 
     nodes = {}
 
@@ -237,7 +280,13 @@ class NodeBank:
 
 
 class ShapeFactory:
-    """register brick position of a given node"""
+    """
+    Create an annotation from its shape
+
+    Attributes:
+        funcs (Dict[str, Callable[...,str]]): initialization function to create an annotation
+            from its shape
+    """
 
     funcs = {}
 

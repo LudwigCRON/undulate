@@ -4,6 +4,9 @@ from typing import Dict, Tuple
 
 
 def parse(filepath: str) -> Tuple[bool, Dict]:
+    """
+    Parse a toml file
+    """
     ans = {}
     try:
         import toml

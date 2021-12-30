@@ -10,6 +10,15 @@ SPACER_COUNT = 0
 
 
 def _number_convert(match):
+    """
+    Convert number with an explicit base
+    to a decimal integer value:
+    - 0x0000 -> hexadecimal
+    - 16'h0000 -> hexadecimal
+    - 0b0000 -> binary
+    - 3'b000 -> binary
+    - otherwise -> decimal
+    """
     prefix, base, number = match.groups()
     if prefix is not None:
         return str(match.group(0))
@@ -21,6 +30,11 @@ def _number_convert(match):
 
 
 def _make_signal_unique(signal_name: str, db: dict) -> str:
+    """
+    Preserve duplicated signal in WaveDrom format by adding
+    extra space that will be removed later on.
+    Add as many spaces it is required to make the identifier unique.
+    """
     new_name = signal_name
     while new_name in db:
         new_name += " "
@@ -29,7 +43,7 @@ def _make_signal_unique(signal_name: str, db: dict) -> str:
 
 def _parse_wavelane(wavelane: dict):
     """
-    normalize the the wavelane name and if no name is given
+    Normalize the the wavelane name and if no name is given
     the function consider it is a spacer
     """
     global SPACER_COUNT
@@ -44,7 +58,7 @@ def _parse_wavelane(wavelane: dict):
 
 def _parse_group(wavegroup: list):
     """
-    convert traditionnal group of wavedrom into
+    Convert traditionnal group of wavedrom into
     the new structure
     """
     ans = {}
@@ -62,7 +76,7 @@ def _parse_group(wavegroup: list):
 
 def _prune_json(filepath: str) -> str:
     """
-    assume the file exists and:
+    Assume the file exists and:
     - remove comments
     - replace single quotes by double quotes around string
     - remove final extra comma
@@ -97,7 +111,7 @@ def _prune_json(filepath: str) -> str:
 
 def parse(filepath: str) -> Tuple[bool, Dict]:
     """
-    parse a json file after pre-processing the file
+    Parse a json file after pre-processing the file
     to allow extra comments if needed
     """
     ans = {}

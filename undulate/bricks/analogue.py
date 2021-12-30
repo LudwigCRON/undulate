@@ -6,7 +6,6 @@ common functions in the analogue context
 
 import math
 import random
-from typing import Any
 from undulate.bricks.generic import (
     Brick,
     BrickFactory,
@@ -33,24 +32,25 @@ CONTEXT = {
 }
 
 
-def transform_y(y: float, height: float = 20):
+def transform_y(y: float, brick_height: float = 20):
     """
-    change y coordinate to represente voltage between VSSA and VDDA
-    if current VSSA <-> ISSA / VDDA <-> IDDA
+    Transform values in the [VSSA;VDDA] range to the internal [0;brick_height]
+    range. If need to model a current still use 'VSSA' and 'VDDA'
+    a dropin replacement for 'ISSA' and 'IDDA'
 
     Args:
         y: y-coordinate between VSSA and VDDA
-        height: height of a brick in the wavelane
+        height: height of a brick in the given signal
     Returns:
-        the new y-coordinate between 0 and height
+        the new y-coordinate between 0 and brick_height
     """
     scaled_value = (y - CONTEXT["VSSA"]) / (CONTEXT["VDDA"] - CONTEXT["VSSA"])
-    return height - height * scaled_value
+    return brick_height * (1 - scaled_value)
 
 
 class MetaToZero(Brick):
     """
-    Metastable state representation
+    Metastable state representation resolving to GND
 
     This brick is used to depict when a transition as difficulties
     to settled correctly. Therefore the signal is wavering between 0 and 1
@@ -63,8 +63,6 @@ class MetaToZero(Brick):
 
         Parameters:
             slewing (float > 0): only for the connection with adjacent bricks
-        Returns:
-            None
         """
         Brick.__init__(self, **kwargs)
         if math.isnan(self.last_y):
@@ -104,7 +102,7 @@ class MetaToZero(Brick):
 
 class MetaToOne(Brick):
     """
-    Metastable state representation
+    Metastable state representation resolving to VDD
 
     This brick is used to depict when a transition as difficulties
     to settled correctly. Therefore the signal is wavering between 0 and 1
@@ -117,8 +115,6 @@ class MetaToOne(Brick):
 
         Parameters:
             slewing (float > 0): only for the connection with adjacent bricks
-        Returns:
-            None
         """
         Brick.__init__(self, **kwargs)
         if math.isnan(self.last_y):
@@ -158,7 +154,7 @@ class MetaToOne(Brick):
 
 class Cap(Brick):
     """
-    RC charge/discharge behaviour
+    RC charge/discharge
 
     This brick is used to depict a RC charge or discharge to
     the new level.
@@ -166,12 +162,9 @@ class Cap(Brick):
 
     def __init__(self, **kwargs):
         """
-        Args:
-            points: the new level between 0 and height
         Parameters:
             slewing (float > 0): maximum slope of the signal
-        Returns:
-            None
+            analogue (float): final value of the settling in the [VSSA;VDDA] range
         """
         Brick.__init__(self, **kwargs)
         # pre-process analogue
@@ -201,7 +194,7 @@ class Cap(Brick):
 
 class Step(Brick):
     """
-    Slewing behaviour
+    Ramping signal from one value to another
 
     This brick represents a slewing transitions until the
     desired level is reached. Then the value is locked.
@@ -212,12 +205,9 @@ class Step(Brick):
 
     def __init__(self, **kwargs):
         """
-        Args:
-            analogue: the new level between 0 and height
         Parameters:
             slewing (float > 0): maximum slope of the signal
-        Returns:
-            None
+            analogue (float): final value of the settling in the [VSSA;VDDA] range
         """
         Brick.__init__(self, **kwargs)
         # pre-process analogue
@@ -247,15 +237,13 @@ class Analogue(Brick):
     """
     Arbitrary analogue signal
 
-    This brick is intended to depict an time changing signal
+    This brick is intended to depict any time changing signal
     """
 
     def __init__(self, **kwargs):
         """
         Args:
-            points: list of points (relative time, y-value)
-        Returns:
-            None
+            analogue (List[Tuple[float, float]]): list of points (relative time, voltage in [VSSA;VDDA] range)
         """
         Brick.__init__(self, **kwargs)
         # pre-process analogue

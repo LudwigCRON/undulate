@@ -11,6 +11,7 @@ ARROWS_SUFFIX = ">*# "
 
 
 def scircle(x: float, y: float, r: float) -> List[SplineSegment]:
+    """Generate a circle using 4-quadrant bezier curves"""
     return [
         SplineSegment("M", x - r, y),
         SplineSegment("C", x - r, y),
@@ -30,6 +31,7 @@ def scircle(x: float, y: float, r: float) -> List[SplineSegment]:
 
 
 def square(x: float, y: float, w: float) -> List[SplineSegment]:
+    """Generate a square using a list of points"""
     return [
         SplineSegment("M", x - w / 2, y - w / 2),
         SplineSegment("L", x + w / 2, y - w / 2),
@@ -40,7 +42,7 @@ def square(x: float, y: float, w: float) -> List[SplineSegment]:
 
 def arrow_angle(dy: float, dx: float) -> float:
     """
-    calculate the angle to align arrows based on
+    Calculate the angle to align arrows based on
     the derivative of the signal
 
     Args:
@@ -55,6 +57,7 @@ def arrow_angle(dy: float, dx: float) -> float:
 
 
 def arrow_markers(renderer: Renderer, pattern: str, ds: Point, de: Point, **kwargs) -> str:
+    """Generate markers at extremities of an arrow/edge"""
     ans = ""
     start = kwargs.get("start")
     end = kwargs.get("end")
@@ -97,6 +100,14 @@ def generate_patterns(prefixs: list, root: str, suffixs: list):
 
 
 def TimeCompressor(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Multiline Time Compressor
+
+    Args:
+        x (float): position of the time compressor
+        ymin (float): top limit of the time compressor
+        ymax (float): bottom limit of the time compressor
+    """
     ans = ""
     x = kwargs.get("x", 0)
     ymin = kwargs.get("ymin", 0)
@@ -124,6 +135,14 @@ def TimeCompressor(renderer: Renderer, pattern: str, **kwargs) -> str:
 
 
 def HorizontalLine(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Horizontal Line
+
+    Args:
+        y (float): position of the line
+        xmin (float): left limit of the segment
+        xmax (float): right limit of the segment
+    """
     xmin = kwargs.get("xmin", 0)
     xmax = kwargs.get("xmax", 10000)
     y = kwargs.get("y", 0)
@@ -132,6 +151,14 @@ def HorizontalLine(renderer: Renderer, pattern: str, **kwargs) -> str:
 
 
 def VerticalLine(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Vertical Line
+
+    Args:
+        x (float): position of the line
+        ymin (float): top limit of the segment
+        ymax (float): bottom limit of the segment
+    """
     ymin = kwargs.get("ymin", 0)
     ymax = kwargs.get("ymax", 10000)
     x = kwargs.get("x", 0)
@@ -140,6 +167,13 @@ def VerticalLine(renderer: Renderer, pattern: str, **kwargs) -> str:
 
 
 def ArrowStraight(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Straight Line Edge
+
+    Args:
+        start (Point): coordinate of start extremity
+        end (Point): coordinate of end extremity
+    """
     start = kwargs.get("start")
     end = kwargs.get("end")
     kwargs["style_repr"] = "edge"
@@ -156,6 +190,13 @@ def ArrowStraight(renderer: Renderer, pattern: str, **kwargs) -> str:
 
 
 def ArrowHV(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Straight Line Edge with a corner Horizontal -> Vertical
+
+    Args:
+        start (Point): coordinate of start extremity
+        end (Point): coordinate of end extremity
+    """
     start = kwargs.get("start")
     end = kwargs.get("end")
     kwargs["style_repr"] = "edge"
@@ -173,6 +214,13 @@ def ArrowHV(renderer: Renderer, pattern: str, **kwargs) -> str:
 
 
 def ArrowVH(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Straight Line Edge with corner Vertical -> Horizontal
+
+    Args:
+        start (Point): coordinate of start extremity
+        end (Point): coordinate of end extremity
+    """
     start = kwargs.get("start")
     end = kwargs.get("end")
     kwargs["style_repr"] = "edge"
@@ -190,6 +238,13 @@ def ArrowVH(renderer: Renderer, pattern: str, **kwargs) -> str:
 
 
 def ArrowHVH(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Straight Line Edge Horizontal -> Vertical -> Horizonal
+
+    Args:
+        start (Point): coordinate of start extremity
+        end (Point): coordinate of end extremity
+    """
     start = kwargs.get("start")
     end = kwargs.get("end")
     kwargs["style_repr"] = "edge"
@@ -208,6 +263,13 @@ def ArrowHVH(renderer: Renderer, pattern: str, **kwargs) -> str:
 
 
 def ArrowWave(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    S-Shaped Edge
+
+    Args:
+        start (Point): coordinate of start extremity
+        end (Point): coordinate of end extremity
+    """
     start = kwargs.get("start")
     end = kwargs.get("end")
     kwargs["style_repr"] = "edge"
@@ -226,6 +288,13 @@ def ArrowWave(renderer: Renderer, pattern: str, **kwargs) -> str:
 
 
 def ArrowHWave(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Straight -> Curved Line Edge
+
+    Args:
+        start (Point): coordinate of start extremity
+        end (Point): coordinate of end extremity
+    """
     start = kwargs.get("start")
     end = kwargs.get("end")
     kwargs["style_repr"] = "edge"
@@ -244,6 +313,13 @@ def ArrowHWave(renderer: Renderer, pattern: str, **kwargs) -> str:
 
 
 def ArrowWaveH(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Curved -> Straight Line Edge
+
+    Args:
+        start (Point): coordinate of start extremity
+        end (Point): coordinate of end extremity
+    """
     start = kwargs.get("start")
     end = kwargs.get("end")
     kwargs["style_repr"] = "edge"

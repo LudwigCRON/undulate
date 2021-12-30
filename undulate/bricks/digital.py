@@ -500,6 +500,7 @@ class Data(Brick):
     Parameters:
         slewing (float): limit the slope
         style (str): from s2 to s9-polygon or hatch, by default s2-polygon
+        hide_data (bool): prevent the display of the associated data
     """
 
     def __init__(self, style: str = "s2-polygon", **kwargs):
@@ -561,7 +562,7 @@ class Data(Brick):
 
 class Two(Data):
     """
-    Variant of Data with s2-polygon
+    Variant of Data with a css rule '.s2-polygon'
     """
 
     def __init__(self, **kwargs):
@@ -570,7 +571,7 @@ class Two(Data):
 
 class Three(Data):
     """
-    Variant of Data with s3-polygon
+    Variant of Data with a css rule '.s3-polygon'
     """
 
     def __init__(self, **kwargs):
@@ -579,7 +580,7 @@ class Three(Data):
 
 class Four(Data):
     """
-    Variant of Data with s4-polygon
+    Variant of Data with a css rule '.s4-polygon'
     """
 
     def __init__(self, **kwargs):
@@ -588,7 +589,7 @@ class Four(Data):
 
 class Five(Data):
     """
-    Variant of Data with s5-polygon
+    Variant of Data with a css rule '.s5-polygon'
     """
 
     def __init__(self, **kwargs):
@@ -597,7 +598,7 @@ class Five(Data):
 
 class Six(Data):
     """
-    Variant of Data with s6-polygon
+    Variant of Data with a css rule '.s6-polygon'
     """
 
     def __init__(self, **kwargs):
@@ -606,7 +607,7 @@ class Six(Data):
 
 class Seven(Data):
     """
-    Variant of Data with s7-polygon
+    Variant of Data with a css rule '.s7-polygon'
     """
 
     def __init__(self, **kwargs):
@@ -615,7 +616,7 @@ class Seven(Data):
 
 class Eight(Data):
     """
-    Variant of Data with s8-polygon
+    Variant of Data with a css rule '.s8-polygon'
     """
 
     def __init__(self, **kwargs):
@@ -624,7 +625,7 @@ class Eight(Data):
 
 class Nine(Data):
     """
-    Variant of Data with s9-polygon
+    Variant of Data with a css rule '.s9-polygon'
     """
 
     def __init__(self, **kwargs):
@@ -633,7 +634,7 @@ class Nine(Data):
 
 class Unknown(Data):
     """
-    Variant of Data with hatch
+    Variant of Data with a css rule '.hatch'
     """
 
     def __init__(self, **kwargs):
@@ -644,6 +645,11 @@ class Unknown(Data):
 class Gap(Brick):
     """
     single line time compression
+
+    Its position inside a brick, similarly to a duty cycle for a clock,
+    can be adjusted globally with the property 'gap_offset' in the
+    'config' section. The a value is a float in the ]0-1[ range.
+
     """
 
     def __init__(self, **kwargs):
@@ -760,7 +766,7 @@ class Down(Brick):
 
 class ImpulseUp(Brick):
     """
-    pulse to VDD
+    pulse from GND to VDD
 
     Parameters:
         duty_cycle (float): adjust the x position of the impulse
@@ -793,10 +799,9 @@ class ImpulseUp(Brick):
 
 class ImpulseDown(Brick):
     """
-    pulse to GND
+    pulse from VDD to GND
 
     Parameters:
-        up (bool): True for impulse to up and False for impulse down
         duty_cycle (float): adjust the x position of the impulse
             from 0 to 1, by default 0.5
     """
@@ -827,7 +832,10 @@ class ImpulseDown(Brick):
 
 class Space(Brick):
     """
-    blank
+    blank (area without any drawing)
+    This block can be used in coordination of the overlay possibility
+    to create even more complex signal or apply a specific color for
+    a portion of the signal.
     """
 
     def __init__(self, **kwargs):
@@ -850,6 +858,14 @@ class Empty(Brick):
 
 # ======== Filtering Functions ========
 def filter_width(waveform: List[Brick]) -> List[Brick]:
+    """
+    Compute the width/height of each brick considering the following properties:
+    - brick_width
+    - brick_height
+    - hscale
+    - vscale
+    - period
+    """
     ans = []
     for brick in waveform:
         brick_width = (
@@ -865,6 +881,10 @@ def filter_width(waveform: List[Brick]) -> List[Brick]:
 
 
 def filter_repeat(waveform: List[Brick]) -> List[Brick]:
+    """
+    Compute the number of size expension for a given brick (using '.' symbol) at
+    the exception of clock signals where the brick '.' means duplication.
+    """
     ans = []
     previous_symbol = " "
     previous_index = 0
@@ -893,8 +913,19 @@ def filter_repeat(waveform: List[Brick]) -> List[Brick]:
 
 
 def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
+    """
+    Adjust the size of the first and last brick of signal based on the following
+    properties:
+    - phase
+    - repeat
+    - slewing
+    - brick_width
+    - width
+
+    A signal should always have a width equal to 'width'
+    """
     ans = []
-    position, offset_x = 0, 0
+    position = 0
     for i, brick in enumerate(waveform):
         phase = brick.args.get("phase", 0.0)
         repeat = brick.args.get("repeat", 1.0)
@@ -930,6 +961,10 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
 
 
 def filter_transition(waveform: List[Brick]) -> List[Brick]:
+    """
+    Smooth abutment of different brick to prevent glitches
+    and fusion data brick of the same symbol with the same 'data' value
+    """
     ans = []
     previous_brick = BrickFactory.create(" ")
     for brick in waveform:
