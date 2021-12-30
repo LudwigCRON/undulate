@@ -21,7 +21,7 @@ from undulate.bricks.generic import (
     ShapeFactory,
     safe_eval,
 )
-from typing import List
+from typing import List, Tuple
 
 # Counter for unique id generation
 #: counter of group of wave unique id
@@ -672,7 +672,7 @@ class Renderer:
         )
 
     @incr_wavegroup
-    def wavegroup(self, name: str, wavelanes, extra: str = "", depth: int = 1, **kwargs):
+    def wavegroup(self, name: str, wavelanes, depth: int = 1, **kwargs):
         """
         wavegroup generate a collection of waveforms
         name           : name of the wavegroup
@@ -684,8 +684,6 @@ class Renderer:
         [height]       : image height, default is 0
         [no_ticks]     : if True does not display any ticks
         """
-        if not isinstance(wavelanes, dict):
-            return (0, "")
         # prepare the return group
         _default_offset_x = [
             len(s) + 1
@@ -723,12 +721,18 @@ class Renderer:
         # position of | symbol
         gap_offset = config.get("gap-offset", brick_width * 0.5)
 
-        def _gen(offset, width, height, brick_width, brick_height):
-            ox, oy, dy = offset[0], offset[1], 0
-            # some space for group separation if not the root
-            oy += (brick_height + separation) if depth > 1 else 0
-            # return value is ans
+        if not isinstance(wavelanes, dict):
+            return (offsety, "")
+
+        def _gen(
+            offset: Point,
+            width: float,
+            height: float,
+            brick_width: float,
+            brick_height: float,
+        ) -> str:
             ans = ""
+            # create a label and separator to identify groups of signals
             if depth > 1:
                 # get font size for position estimation
                 grp_font_size = get_style("h%d" % depth).get("font-size") or (
@@ -739,7 +743,7 @@ class Renderer:
                 # add group name
                 ans = self.text(
                     0,
-                    oy - 0.65 * grp_font_size - separation,
+                    offset.y + separation + brick_height * 0.9 - grp_font_size,
                     name,
                     style_repr="h%d" % depth,
                     **kwargs,
@@ -747,10 +751,15 @@ class Renderer:
                 # add group separator
                 if depth == 2:
                     ans += self.path(
-                        [Point(0, oy - separation), Point(width + ox, oy - separation)],
+                        [
+                            Point(0, offset.y + brick_height),
+                            Point(offset.x + width, offset.y + brick_height),
+                        ],
                         style_repr="border ctx-y",
                         **kwargs,
                     )
+                # some space for group separation if not the root
+                offset.y += brick_height + separation
                 Renderer.register_y_step(brick_height + separation, is_title=True)
             # look through waveforms data
             for _, wavetitle in enumerate(wavelanes.keys()):
@@ -771,7 +780,11 @@ class Renderer:
                     args.update({"gap-offset": gap_offset})
                     # generate the waveform of this signal
                     ans += self.wavelane(
-                        wavetitle, wave, self.translate(ox, oy), oy, **args
+                        wavetitle,
+                        wave,
+                        self.translate(offset.x, offset.y),
+                        offset.y,
+                        **args,
                     )
                     # if the waveform of this signal will be overlayed
                     # do not increment the position
@@ -788,8 +801,8 @@ class Renderer:
                     args = copy.deepcopy(kwargs)
                     args.update(
                         {
-                            "offsetx": ox,
-                            "offsety": 0,
+                            "offsetx": offset.x,
+                            "offsety": offset.y,
                             "no_ticks": True,
                             "gap-offset": gap_offset,
                         }
@@ -797,38 +810,33 @@ class Renderer:
                     dy, tmp = self.wavegroup(
                         wavetitle,
                         wavelanes[wavetitle],
-                        self.translate(0, oy, dont_touch=True),
                         depth + 1,
                         **args,
                     )
                     ans += tmp
-                oy += dy
+                offset.y += dy
             # add ticks only for the principale group
             if not no_ticks:
                 kw = {
-                    "offsetx": ox,
+                    "offsetx": offset.x,
                     "step": brick_width,
                     "width": width,
                     "height": height,
                     "phase": config.get("ticks_phase", 0),
                 }
                 ans = "%s\n%s" % (self.ticks(**kw), ans)
-            offset[0], offset[1] = ox, oy
             return ans
 
         # room for displaying names
-        offset = [offsetx, offsety]
+        start_y, offset = offsety, Point(offsetx, offsety)
         ans = self.group(
-            lambda: _gen(offset, width, height, brick_width, brick_height),
-            name,
-            extra=extra,
+            lambda: _gen(offset, width, height, brick_width, brick_height), name
         )
-        offsetx, offsety = offset[0], offset[1]
         # finish the group with local annotations
         ans += self.annotate(
-            wavelanes, viewport=(offsetx, 0, width, height), depth=depth, **kwargs
+            wavelanes, viewport=(offset.x, 0, width, height), depth=depth, **kwargs
         )
-        return (offsety, ans)
+        return (offset.y - start_y, ans)
 
     def size(self, wavelanes, depth: int = 1, **kwargs):
         """

@@ -219,8 +219,8 @@ def ArrowWave(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
-    ds = Point(start.x - end.x, 0)
-    de = Point(end.x - start.x, 0)
+    ds = Point(pts[0].x - pts[1].x, pts[0].y - pts[1].y)
+    de = Point(pts[-1].x - pts[-2].x, pts[-1].y - pts[-2].y)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
     return ans
 
@@ -237,8 +237,8 @@ def ArrowHWave(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
-    ds = Point(start.x - end.x, 0)
-    de = Point(end.x - start.x, 0)
+    ds = Point(pts[0].x - pts[1].x, pts[0].y - pts[1].y)
+    de = Point(pts[-1].x - pts[-3].x, pts[-1].y - pts[-3].y)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
     return ans
 
@@ -256,8 +256,8 @@ def ArrowWaveH(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
-    ds = Point(start.x - end.x, 0)
-    de = Point(end.x - start.x, 0)
+    ds = Point(pts[1].x - pts[2].x, pts[1].y - pts[2].y)
+    de = Point(pts[-1].x - pts[-2].x, pts[-1].y - pts[-2].y)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
     return ans
 

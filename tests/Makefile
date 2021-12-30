@@ -92,6 +92,8 @@ coverage:
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/annotation.yaml" -f svg -o "${TESTPATH}/output/annotation.svg"
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f cairo-svg -o "${TESTPATH}/output/overlay-cairo.svg"
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/overlay.toml" -f svg -o "${TESTPATH}/output/overlay.svg"
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/fix_36.yaml" -f svg -o "${TESTPATH}/output/fix_36.svg"
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/fix_36.yaml" -o "${TESTPATH}/output/fix_36.png"
 ifeq (${ISPWSH}, 1)
 	python3 ./covrun.py $(WAVEFORM) -f doc & python ./test.py $$LASTEXITCODE -eq 1
 	python3 ./covrun.py $(WAVEFORM) -f svg -i "${TESTPATH}/inexisting_symbol.toml" -o "${TESTPATH}/inexisting_symbol.svg" & python ./test.py $$LASTEXITCODE -eq 3
