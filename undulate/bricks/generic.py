@@ -26,6 +26,7 @@ class SplineSegment:
 
     Attributes:
         order (str): one of the following directive:
+
             - 'm': relative move to
             - 'l': relative line to
             - 'c': relative cubic bezier curve to

@@ -860,6 +860,7 @@ class Empty(Brick):
 def filter_width(waveform: List[Brick]) -> List[Brick]:
     """
     Compute the width/height of each brick considering the following properties:
+
     - brick_width
     - brick_height
     - hscale
@@ -916,6 +917,7 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
     """
     Adjust the size of the first and last brick of signal based on the following
     properties:
+
     - phase
     - repeat
     - slewing

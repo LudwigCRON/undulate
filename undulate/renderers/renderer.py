@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# spell-checker: disable
-
 """
 renderer.py declare the logic to render waveforms
 into different format
@@ -20,8 +17,10 @@ from undulate.bricks.generic import (
     Point,
     ShapeFactory,
     safe_eval,
+    ArrowDescription,
+    SplineSegment,
 )
-from typing import List, Tuple
+from typing import List
 
 # Counter for unique id generation
 #: counter of group of wave unique id
@@ -124,79 +123,70 @@ class Renderer:
 
     def group(self, callback, identifier: str, **kwargs) -> str:
         """
-        group define a group
+        Group some drawable together
 
         Args:
             callback (callable): function which populate what inside the group
             identifier (str): unique id for the group
-        Returns:
-            group of drawable items invoked by callback
         """
         raise NotImplementedError()
 
-    def path(self, vertices: list, **kwargs) -> str:
+    def path(self, vertices: List[Point], **kwargs) -> str:
         """
-        draw a path to represent common signals
+        Draw line segments to connect consecutive points of 'vertices'
+        to represent common signals
 
         Args:
-            vertices: list of of x-y coordinates in a tuple
+            vertices (List[Point]): list of points to be connected
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'path'
+            style_repr (optional str) : css rule, by default 'path'
         """
         raise NotImplementedError()
 
-    def arrow(self, x, y, angle, **kwargs) -> str:
+    def arrow(self, arrow_description: ArrowDescription, **kwargs) -> str:
         """
-        draw an arrow to represent edge trigger on clock signals
+        Draw an arrow to represent edge trigger on clock signals or to point
+        something in an annotation.
 
         Args:
-            x      (float) : x coordinate of the arrow center
-            y      (float) : y coordinate of the arrow center
-            angle  (float) : angle in degree to rotate the arrow
+            arrow_description (ArrowDescription) : position and oriantation
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'arrow'
+            style_repr (optional str) : css rule, by default 'arrow'
         """
         raise NotImplementedError()
 
-    def polygon(self, vertices: list, **kwargs) -> str:
+    def polygon(self, vertices: List[Point], **kwargs) -> str:
         """
-        draw a closed shape to represent common data
+        Draw a closed shape for shaded/colored area
 
         Args:
-            vertices: list of of (x,y) coordinates in a tuple
+            vertices (List[Point]): Ordered list of point delimiting the polygon
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class None
+            style_repr (optional str) : css rule, by default None
         """
         raise NotImplementedError()
 
-    def spline(self, vertices: list, **kwargs) -> str:
+    def spline(self, vertices: List[SplineSegment], **kwargs) -> str:
         """
-        draw a path to represent smooth signals
+        Draw a path to represent smooth signals
 
         Args:
-            vertices: list of of (type,x,y) coordinates in a tuple of control points
-                    where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
-                    svg operators.
+            vertices (List[SplineSegment]): list of SVG path operators and arguments
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'path'
+            style_repr (optional str) : css rule, by default 'path'
         """
         raise NotImplementedError()
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
         """
-        draw a text for data
+        Draw a text at a specific position
 
         Args:
             x      (float) : x coordinate of the text
             y      (float) : y coordinate of the text
             text   (str)   : text to display
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'text'
+            style_repr (optional str) : css rule, by default 'text'
         """
         raise NotImplementedError()
 
@@ -208,8 +198,7 @@ class Renderer:
 
     def brick(self, symbol: str, b: Brick, **kwargs) -> str:
         """
-        brick generate the symbol for a undulate.Brick element
-        (collection of paths, splines, arrows, polygons, text)
+        Draw the symbol of a given Brick element
         """
         ans, content = "", ""
         # display polygons (usually background)
@@ -221,9 +210,7 @@ class Renderer:
         # display arrows
         for _, arrow in enumerate(b.arrows):
             content += self.arrow(
-                arrow.object.x,
-                arrow.object.y,
-                arrow.object.angle,
+                arrow.object,
                 style_repr=arrow.style,
                 **kwargs,
             )
@@ -242,19 +229,29 @@ class Renderer:
         return ans
 
     @staticmethod
-    def adjust_y(y, factor: float = 1.0, separation: float = 0.25):
+    def adjust_y(index, brick_height: float = 1.0) -> float:
+        """
+        Convert an integer expression the index of the waveform
+        as a y-coordinate in the drawing context
+
+        Args:
+            y (int): index of the waveform
+            brick_height (float): height of a brick
+        Returns:
+            equivalent y-coordinate
+        """
         total_y, k, s = 0, 0, 0
         for dy in Renderer.y_steps:
+            # 't' means title with potential separation
             if dy == "t":
                 k -= 1
                 s += 1
-            elif k + 1 > floor(y):
+            elif k + 1 > floor(index):
                 break
             else:
                 k += 1
                 total_y += dy
-        scale = factor + separation * 0
-        return total_y + (y - k) * scale
+        return total_y + (index - k) * brick_height
 
     @staticmethod
     def from_to_parser(
@@ -263,10 +260,9 @@ class Renderer:
         height: float,
         brick_width: float = 40.0,
         brick_height: float = 20.0,
-        separation: float = 0.25,
-    ):
+    ) -> Point:
         """
-        parse the from and to options of annotations into positions
+        Parse the from and to options of annotations into positions
         for drawing the specified shape or text
 
         Exemple:
@@ -278,11 +274,13 @@ class Renderer:
                     ]}
 
         Args:
-            s (str): value string of from or to option
+            s (str): value of from or to option
             width (float): width of the image
             height (float): height of the image
             brick_width (float, default=40): brick width
             brick_height (float, default=40): brick height
+        Returns:
+            Point of x-y coordinate
         """
         # None, empty str, ...
         if s is None or (isinstance(s, str) and not s.strip()):
@@ -298,9 +296,7 @@ class Renderer:
             return NodeBank.nodes.get(s)
         # if tuple so pre-estimated
         if isinstance(s, tuple):
-            return Point(
-                s[0] * brick_width, Renderer.adjust_y(s[1], brick_height, separation)
-            )
+            return Point(s[0] * brick_width, Renderer.adjust_y(s[1], brick_height))
         log.fatal(log.FROM_TO_UNKNOWN_FORMAT % str(s), 8)
 
     @staticmethod
@@ -309,10 +305,10 @@ class Renderer:
             Renderer.y_steps.append("t")
         Renderer.y_steps.append(dy)
 
-    def annotate(self, wavelanes: dict, viewport: tuple, **kwargs):
+    def annotate(self, wavelanes: dict, viewport: tuple, **kwargs) -> str:
         """
-        draw edges, vertical lines, horizontal lines, global time compression, ...
-        defined in the annotations section of the input file
+        Draw edges, vertical lines, horizontal lines, global time compression, ...
+        or any other shape defined in the annotations section of the input file
 
         Example:
             .. code-block:: json
@@ -323,14 +319,18 @@ class Renderer:
                 ]}
 
         Args:
-            wavelances (dict): global signals representations
-            viewport (tuple): the drawable zone (excluding signal names)
+            wavelanes (Dict): global signals representations
+            viewport (Tuple[float, float, float, float]): the drawable zone (excluding signal names) x, y, width, height
+        Parameters:
+            edges (Dict): edge section of the input file
+            annotations (List[Dict]): annotations section of the input file
+            brick_width (float): default width of a brick
+            brick_height (float): default height of a brick
         """
         edges_input = wavelanes.get("edges", wavelanes.get("edge", []))
         annotations = wavelanes.get("annotations", [])
         brick_width = kwargs.get("brick_width", 20)
         brick_height = kwargs.get("brick_height", 20)
-        separation = kwargs.get("separation", 0.25)
         # if not empty
         if not annotations and not edges_input:
             return ""
@@ -348,18 +348,14 @@ class Renderer:
             x = a.get("x", 0)
             y = a.get("y", 0)
             dx = a.get("dx", 0) * brick_width
-            dy = Renderer.adjust_y(a.get("dy", 0), brick_height, separation)
+            dy = Renderer.adjust_y(a.get("dy", 0), brick_height)
             start = a.get("from", None)
             end = a.get("to", None)
             text = a.get("text", "")
             text_background = a.get("text_background", True)
             ans = ""
-            s = Renderer.from_to_parser(
-                start, width, height, brick_width, brick_height, separation
-            )
-            e = Renderer.from_to_parser(
-                end, width, height, brick_width, brick_height, separation
-            )
+            s = Renderer.from_to_parser(start, width, height, brick_width, brick_height)
+            e = Renderer.from_to_parser(end, width, height, brick_width, brick_height)
             log.debug(a)
             log.debug(f"Edge from {start}:{s} to {end}:{e}")
             # compatibility support of issue #17
@@ -379,7 +375,7 @@ class Renderer:
             overload = style_in_kwargs(**a)
             # hline
             if shape == "-":
-                y = Renderer.adjust_y(y, brick_height, separation)
+                y = Renderer.adjust_y(y, brick_height)
                 if isinstance(end, (float, int)):
                     xmax = xmin + end * brick_width
                 else:
@@ -395,9 +391,9 @@ class Renderer:
                 ymin = 0
                 ymax = height
                 if isinstance(start, (float, int)):
-                    ymin = Renderer.adjust_y(start, brick_height, separation)
+                    ymin = Renderer.adjust_y(start, brick_height)
                 if isinstance(end, (float, int)):
-                    ymax = Renderer.adjust_y(end, brick_height, separation)
+                    ymax = Renderer.adjust_y(end, brick_height)
                 overload["x"] = x
                 overload["ymin"] = ymin
                 overload["ymax"] = ymax
@@ -424,7 +420,7 @@ class Renderer:
                         {
                             "style_repr": "edge-text",
                             "x": xmin + x * brick_width,
-                            "y": Renderer.adjust_y(y, brick_height, separation),
+                            "y": Renderer.adjust_y(y, brick_height),
                             "text": text,
                         }
                     )
@@ -450,22 +446,20 @@ class Renderer:
 
         return "\n".join([__annotate__(a, viewport) for a in annotations])
 
-    def wavelane_title(self, name: str, **kwargs):
+    def wavelane_title(self, name: str, **kwargs) -> str:
         """
-        generate the title in front of a waveform
+        Draw the title in front of a waveform
 
         Args:
-            name: name of the waveform print alongside
-            order: position from 0-4 of the title position along
+            name (str): name of the waveform print alongside
+            order (int): position from 0-4 of the title position along
                 the y-axis. This property is important when overlaying signals
 
-                    - 0   : middle of the wavelane height
+                    - 0   : middle of the wavelane height, is the default
                     - 1-4 : quarter from top to bottom of the wavelane
-            brick_height (float)
-        Returns:
-            renderer.text
+            brick_height (float): height a brick
         """
-        extra = kwargs.get("extra", "")
+        extra = kwargs.get("extra")
         order = kwargs.get("order", 0)
         brick_height = kwargs.get("brick_height", 20) * kwargs.get("vscale", 1)
         kw = {
@@ -483,34 +477,16 @@ class Renderer:
 
     def _reduce_wavelane(self, name: str, wavelane: str, nodes: List[str], **kwargs):
         """
+        Create a Brick by reading the symbols and needed parameters
+        for each symbol.
+
         Args:
             name (str) : name of the wavelane
             wavelane (str) : list of symbol describing the signal
+        Parameters:
+            repeat (int): number of times the wavelane is repeated
         Returns:
-            list of tuple<brick, kwargs> to ease the wavelance generation
-            in kwargs the list of properties are:
-            All
-                periods             (float)
-                phase               (float)
-                duty_cycle          (float)
-                data                (str)
-                slewing             (float)
-                follow_data         (bool)
-                is_first            (bool)
-                ignore_transition   (bool)
-            Digital-Only
-                up                  (bool, generated for impulse)
-                add_arrow           (bool, generated)
-            Analog-Only
-                equation            (float or str)
-                then_one            (bool, generated)
-                points              (float or list, generated from equation)
-            Register-Only
-                attr                (str)
-                type                (str)
-                pos                 (int)
-                styles              (str)
-
+            List[Brick]
         """
         repeat = kwargs.get("repeat", 1)
         # calculate total length of the wavelance
@@ -576,22 +552,22 @@ class Renderer:
         return param
 
     @incr_wavelane
-    def wavelane(self, name: str, wavelane: str, extra: str = "", y: float = 0, **kwargs):
+    def wavelane(
+        self, name: str, wavelane: str, extra: str = "", y: float = 0, **kwargs
+    ) -> str:
         """
-        wavelane is the core function which generate a waveform from the string
-        name         : name of the waveform
-        wavelane     : string which describes the waveform
-        [extra]      : optional attributes for the svg (eg class)
-        [period]     : time dilatation factor, default is 1
-        [phase]      : time shift of the waveform, default is 0
-        [gap_offset] : time shift for adjusting the position of a gap, default is 3/4
-                    of the tick period
-        [data]       : when using either '=', '2', '3', ... symbols the data can be set.
-                    A list of string is expected
-        [slewing]    : current limitation which limit the transition speed of a signal
-                    default is 3
-        [duty_cycles]: A list of duty_cycle for each bricks
-        [periods]    : A list of period for each bricks
+        Draw the internal Dict[str, Any] representing a waveform inside a waveform group.
+
+        the internal Dict[str, Any] is expected to have at least the following two keys:
+
+        - name       : name of the waveform
+        - wavelane   : string which describes the waveform
+
+        Args:
+            name (str): name of the waveform
+            wavelane (str): string of symbols describing the waveform
+            extra (str): extra information given to self.group()
+            y (float): global y position of the wavelane in the drawing context
         """
         # options
         brick_width = kwargs.get("brick_width", 20) * kwargs.get("hscale", 1)
@@ -638,7 +614,8 @@ class Renderer:
 
     def ticks(self, width: int, height: int, step: float, **kwargs) -> str:
         """
-        generates the dotted lines to see ticks easily
+        Generates the dotted vertical lines to ease reading of waveforms
+        and their respective alignment
 
         Args:
             width    (int) : width of the image
@@ -672,17 +649,20 @@ class Renderer:
         )
 
     @incr_wavegroup
-    def wavegroup(self, name: str, wavelanes, depth: int = 1, **kwargs):
+    def wavegroup(self, name: str, wavelanes, depth: int = 1, **kwargs) -> str:
         """
-        wavegroup generate a collection of waveforms
-        name           : name of the wavegroup
-        wavelanes      : collection of wavelane
-        [extra]        : optional attributes for the svg (eg class)
-        [brick_width]  : width of a brick, default is 20
-        [brick_height] : height a row, default is 20
-        [width]        : image width, default is auto
-        [height]       : image height, default is 0
-        [no_ticks]     : if True does not display any ticks
+        Draw a group of waveforms
+
+        Args:
+            name (str) : name of the waveform group
+            wavelanes (Dict[str, dict]): named waveforms composing the group
+            depth (int) : depth of nested groups to represent hierarchy
+        Parameters:
+            config (Dict[str, Any]): config section of the input file
+            brick_width (float): width of a brick, default is 20.0
+            brick_height (float): height of a brick, default is 20.0
+            width (float): image width
+            height (float): image height
         """
         # prepare the return group
         _default_offset_x = [
@@ -696,7 +676,7 @@ class Renderer:
         hscale = config.get("hscale", 1.0)
         brick_width = kwargs.get("brick_width", 40) * hscale
         brick_height = kwargs.get("brick_height", 20) * vscale
-        separation = config.get("separation", kwargs.get("separation")) or 0.25
+        separation = config.get("separation", kwargs.get("separation", 0.25))
         if depth == 1:
             separation *= brick_height
         # update kwargs
@@ -840,15 +820,23 @@ class Renderer:
 
     def size(self, wavelanes, depth: int = 1, **kwargs):
         """
-        size pre-estimate the size of the image
+        Pre-estimate the size of the image (duplicate of wavegroup without drawing)
 
         Args:
-            wavelanes (dict): global signals representation
-            brick_width (int, optional)  : width of a brick, default is 20
-            brick_height (int, optional)  : height of a row, default is 20
-            periods   (int)  : list of time dilatation factor, default is 1
-            repeat    (int)  : brick repetition factor
-            overlay (bool) : overlay the next signal over the current one
+            name (str) : name of the waveform group
+            wavelanes (Dict[str, dict]): named waveforms composing the group
+            depth (int) : depth of nested groups to represent hierarchy
+        Parameters:
+            config (Dict[str, Any]): config section of the input file
+            brick_width (float): width of a brick, default is 20.0
+            brick_height (float): height of a brick, default is 20.0
+            width (float): image width
+            height (float): image height
+
+        .. warning::
+
+            Might be good to implement a parameter no_drawing in wavegroup
+            and performs 2 passes to prevent possible discrepency
         """
         if not isinstance(wavelanes, dict):
             return (0, 0, 0, 0)
@@ -858,7 +846,7 @@ class Renderer:
         hscale = config.get("hscale", 1.0)
         brick_width = kwargs.get("brick_width", 40) * hscale
         brick_height = kwargs.get("brick_height", 20) * vscale
-        separation = config.get("separation", kwargs.get("separation")) or 0.25
+        separation = config.get("separation", kwargs.get("separation", 0.25))
         if depth == 1:
             separation *= brick_height
         # update kwargs

@@ -5,7 +5,7 @@ from typing import Dict, Tuple
 
 class Register:
     """
-    define the register as a composition of new kind of bricks
+    Define the register as a composition of new kind of bricks
     with field informations
     """
 
@@ -20,7 +20,7 @@ class Register:
 
     def push_field(self, field):
         """
-        add a new field to the fields stack
+        Add a new field to the fields stack
         """
         f = None
         # add to the stack
@@ -82,7 +82,7 @@ class Register:
 
 class Field:
     """
-    define what is a field inside a register
+    Define what is a field inside a register
     from 1-bit to N-bits
     """
 
@@ -167,7 +167,7 @@ class Field:
 
 def convert(obj: dict) -> Tuple[bool, Dict]:
     """
-    convert a register definition as a wavelane
+    Convert a register definition as a wavelane
     """
     reg = Register()
     # name of the register

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 """
 cairorenderer.py use the logic of renderer.py to render waveforms
 into scalable vector graphics format
@@ -7,7 +5,7 @@ into scalable vector graphics format
 
 import cairo
 import undulate.logger as log
-from undulate.bricks.generic import SplineSegment, Point
+from undulate.bricks.generic import ArrowDescription, SplineSegment, Point
 from undulate.skin import (
     SizeUnit,
     apply_fill,
@@ -43,15 +41,13 @@ class CairoRenderer(Renderer):
 
     def group(self, callback, identifier: str, **kwargs) -> str:
         """
-        group define a group
+        Group some drawable together
 
         Args:
             callback (callable): function which populate what inside the group
             identifier (str): unique id for the group
-        Returns:
-            group of drawable items invoked by callback
         """
-        extra = kwargs.get("extra", None)
+        extra = kwargs.get("extra")
         self.ctx.push_group()
         if callable(extra):
             extra()
@@ -62,15 +58,15 @@ class CairoRenderer(Renderer):
 
     def path(self, vertices: List[Point], **kwargs) -> str:
         """
-        draw a path to represent common signals
+        Draw line segments to connect consecutive points of 'vertices'
+        to represent common signals
 
         Args:
-            vertices: list of of x-y coordinates in a tuple
+            vertices (List[Point]): list of points to be connected
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'path'
+            style_repr (optional str) : css rule, by default 'path'
         """
-        extra = kwargs.get("extra", None)
+        extra = kwargs.get("extra")
         style = kwargs.get("style_repr", "path")
         overload = style_in_kwargs(**kwargs)
         self.ctx.save()
@@ -87,27 +83,25 @@ class CairoRenderer(Renderer):
         self.ctx.restore()
         return ""
 
-    def arrow(self, x: float, y: float, angle: float, **kwargs) -> str:
+    def arrow(self, arrow_description: ArrowDescription, **kwargs) -> str:
         """
-        draw an arrow to represent edge trigger on clock signals
+        Draw an arrow to represent edge trigger on clock signals or to point
+        something in an annotation.
 
         Args:
-            x      (float) : x coordinate of the arrow center
-            y      (float) : y coordinate of the arrow center
-            angle  (float) : angle in degree to rotate the arrow
+            arrow_description (ArrowDescription) : position and oriantation
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'arrow'
+            style_repr (optional str) : css rule, by default 'arrow'
         """
-        extra = kwargs.get("extra", None)
+        extra = kwargs.get("extra")
         style = kwargs.get("style_repr", "arrow")
         overload = style_in_kwargs(**kwargs)
         self.ctx.save()
         if callable(extra):
             extra()
         apply_fill(self.ctx, style, Engine.CAIRO, overload)
-        self.ctx.translate(x, y)
-        self.ctx.rotate((angle - 90) * 3.14159 / 180)
+        self.ctx.translate(arrow_description.x, arrow_description.y)
+        self.ctx.rotate((arrow_description.angle - 90) * 3.14159 / 180)
         self.ctx.new_path()
         self.ctx.move_to(-3.5, -3.5)
         self.ctx.line_to(0, 3.5)
@@ -120,16 +114,15 @@ class CairoRenderer(Renderer):
 
     def polygon(self, vertices: List[Point], **kwargs) -> str:
         """
-        draw a closed shape to represent common data
+        Draw a closed shape for shaded/colored area
 
         Args:
-            vertices: list of of (x,y) coordinates in a tuple
+            vertices (List[Point]): Ordered list of point delimiting the polygon
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class None
+            style_repr (optional str) : css rule, by default None
         """
-        extra = kwargs.get("extra", None)
-        style = kwargs.get("style_repr", None)
+        extra = kwargs.get("extra")
+        style = kwargs.get("style_repr")
         overload = style_in_kwargs(**kwargs)
         self.ctx.save()
         if callable(extra):
@@ -149,18 +142,15 @@ class CairoRenderer(Renderer):
 
     def spline(self, vertices: List[SplineSegment], **kwargs) -> str:
         """
-        draw a path to represent smooth signals
+        Draw a path to represent smooth signals
 
         Args:
-            vertices: list of of (type,x,y) coordinates in a tuple of control points
-                    where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
-                    svg operators.
+            vertices (List[SplineSegment]): list of SVG path operators and arguments
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'path'
+            style_repr (optional str) : css rule, by default 'path'
         """
+        extra = kwargs.get("extra")
         style = kwargs.get("style_repr", "path")
-        extra = kwargs.get("extra", "")
         overload = style_in_kwargs(**kwargs)
         vertices = svg_curve_convert(vertices)
         c, stack = 0, []
@@ -210,17 +200,16 @@ class CairoRenderer(Renderer):
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
         """
-        draw a text for data
+        Draw a text at a specific position
 
         Args:
             x      (float) : x coordinate of the text
             y      (float) : y coordinate of the text
             text   (str)   : text to display
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'text'
+            style_repr (optional str) : css rule, by default 'text'
         """
-        extra = kwargs.get("extra", "")
+        extra = kwargs.get("extra")
         style = kwargs.get("style_repr", "text")
         overload = style_in_kwargs(**kwargs)
         self.ctx.save()

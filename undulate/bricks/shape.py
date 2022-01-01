@@ -3,7 +3,7 @@
 import copy
 from math import cos, sin, atan2
 from typing import List
-from undulate.bricks.generic import ShapeFactory, SplineSegment, Point
+from undulate.bricks.generic import ArrowDescription, ShapeFactory, SplineSegment, Point
 from undulate.renderers.renderer import Renderer
 
 ARROWS_PREFIX = "<*# "
@@ -65,9 +65,11 @@ def arrow_markers(renderer: Renderer, pattern: str, ds: Point, de: Point, **kwar
     if pattern.startswith("<"):
         angle = arrow_angle(ds.y, ds.x)
         ans += renderer.arrow(
-            start.x - 3 * cos(angle * 3.14159 / 180),
-            start.y - 3 * sin(angle * 3.14159 / 180),
-            angle,
+            ArrowDescription(
+                x=start.x - 3 * cos(angle * 3.14159 / 180),
+                y=start.y - 3 * sin(angle * 3.14159 / 180),
+                angle=angle,
+            ),
             **kwargs
         )
     elif pattern.startswith("*"):
@@ -77,9 +79,11 @@ def arrow_markers(renderer: Renderer, pattern: str, ds: Point, de: Point, **kwar
     if pattern.endswith(">"):
         angle = arrow_angle(de.y, de.x)
         ans += renderer.arrow(
-            end.x - 3 * cos(angle * 3.14159 / 180),
-            end.y - 3 * sin(angle * 3.14159 / 180),
-            angle,
+            ArrowDescription(
+                x=end.x - 3 * cos(angle * 3.14159 / 180),
+                y=end.y - 3 * sin(angle * 3.14159 / 180),
+                angle=angle,
+            ),
             **kwargs
         )
     elif pattern.endswith("*"):

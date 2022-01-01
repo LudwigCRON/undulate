@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# spell-checker: disable
-
 """
 svgrenderer.py use the logic of renderer.py to render waveforms
 into scalable vector graphics format
@@ -17,7 +14,9 @@ from undulate.skin import (
     SizeUnit,
     get_style,
 )
+from undulate.bricks.generic import ArrowDescription, SplineSegment, Point
 from undulate.renderers.renderer import Renderer
+from typing import List
 
 
 class SvgRenderer(Renderer):
@@ -42,28 +41,26 @@ class SvgRenderer(Renderer):
 
     def group(self, callback, identifier: str, **kwargs) -> str:
         """
-        group define a group
+        Group some drawable together
 
         Args:
             callback (callable): function which populate what inside the group
             identifier (str): unique id for the group
-        Returns:
-            group of drawable items invoked by callback
         """
         ans = '<g id="%s" %s >\n' % (identifier, kwargs.get("extra", ""))
         ans += callback()
         ans += "</g>\n"
         return ans
 
-    def path(self, vertices: list, **kwargs) -> str:
+    def path(self, vertices: List[Point], **kwargs) -> str:
         """
-        draw a path to represent common signals
+        Draw line segments to connect consecutive points of 'vertices'
+        to represent common signals
 
         Args:
-            vertices: list of of x-y coordinates in a tuple
+            vertices (List[Point]): list of points to be connected
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'path'
+            style_repr (optional str) : css rule, by default 'path'
         """
         overload = style_in_kwargs(**kwargs)
         overload["fill"] = None
@@ -75,26 +72,23 @@ class SvgRenderer(Renderer):
             css_from_rule(None, overload, False),
         )
 
-    def arrow(self, x, y, angle, **kwargs) -> str:
+    def arrow(self, arrow_description: ArrowDescription, **kwargs) -> str:
         """
-        draw an arrow to represent edge trigger on clock signals
+        Draw an arrow to represent edge trigger on clock signals or to point
+        something in an annotation.
 
         Args:
-            x      (float) : x coordinate of the arrow center
-            y      (float) : y coordinate of the arrow center
-            angle  (float) : angle in degree to rotate the arrow
+            arrow_description (ArrowDescription) : position and oriantation
         Parameters:
-            is_edge (bool)
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'arrow'
+            style_repr (optional str) : css rule, by default 'arrow'
         """
-        extra = kwargs.get("extra", None)
         style_repr = kwargs.get("style_repr", "arrow")
-        is_edge = kwargs.get("is_edge", False)
         overload = style_in_kwargs(**kwargs)
-        transform = 'transform="translate(%f, %f) rotate(%f, 0, 0)" ' % (x, y, angle - 90)
-        if is_edge:
-            transform = '%s rotate(%f, 0, 0)" ' % (extra[:-2], angle - 90)
+        transform = 'transform="translate(%f, %f) rotate(%f, 0, 0)" ' % (
+            arrow_description.x,
+            arrow_description.y,
+            arrow_description.angle - 90,
+        )
         return (
             '<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" '
             + transform
@@ -102,18 +96,17 @@ class SvgRenderer(Renderer):
             % (style_repr, css_from_rule(None, overload, False))
         )
 
-    def polygon(self, vertices: list, **kwargs) -> str:
+    def polygon(self, vertices: List[Point], **kwargs) -> str:
         """
-        draw a closed shape to represent common data
+        Draw a closed shape for shaded/colored area
 
         Args:
-            vertices: list of of (x,y) coordinates in a tuple
+            vertices (List[Point]): Ordered list of point delimiting the polygon
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class None
+            style_repr (optional str) : css rule, by default None
         """
-        extra = kwargs.get("extra", None)
-        style = kwargs.get("style_repr", None)
+        extra = kwargs.get("extra")
+        style = kwargs.get("style_repr")
         overload = style_in_kwargs(**kwargs)
         if "hatch" in style or "polygon" in style or extra is None:
             extra = ""
@@ -129,17 +122,14 @@ class SvgRenderer(Renderer):
         )
         return ans
 
-    def spline(self, vertices: list, **kwargs) -> str:
+    def spline(self, vertices: List[SplineSegment], **kwargs) -> str:
         """
-        draw a path to represent smooth signals
+        Draw a path to represent smooth signals
 
         Args:
-            vertices: list of of (type,x,y) coordinates in a tuple of control points
-                    where type is either a moveto (m/M) lineto (l/L) or curveto (c/C)
-                    svg operators.
+            vertices (List[SplineSegment]): list of SVG path operators and arguments
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'path'
+            style_repr (optional str) : css rule, by default 'path'
         """
         overload = style_in_kwargs(**kwargs)
         if kwargs.get("style_repr") not in ["hide", "edge-arrow"]:
@@ -155,15 +145,14 @@ class SvgRenderer(Renderer):
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
         """
-        draw a text for data
+        Draw a text at a specific position
 
         Args:
             x      (float) : x coordinate of the text
             y      (float) : y coordinate of the text
             text   (str)   : text to display
         Parameters:
-            style_repr (optional) : class of the skin to apply
-                by default apply the class 'text'
+            style_repr (optional str) : css rule, by default 'text'
         """
         css = kwargs.get("style_repr", "text")
         overload = style_in_kwargs(**kwargs)
