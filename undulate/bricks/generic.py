@@ -123,13 +123,13 @@ class Brick:
         splines (List[SplineSegment]): list of splines to be drawn
         texts (List[(str, x, y)]): list of textual element to be drawn
 
-        .. warning::
-            'paths', 'arrows', 'polygons', 'splines' are List[Drawable] but
-            inside a Drawable any object are accepted.
+    .. warning::
+        'paths', 'arrows', 'polygons', 'splines' are List[Drawable] but
+        inside a Drawable any object are accepted.
 
-            However, the rendering functions cannot support any object and thus,
-            the clear distinction is made here to precise what is the
-            expected type of object in the Drawable.
+        However, the rendering functions cannot support any object and thus,
+        the clear distinction is made here to precise what is the
+        expected type of object in the Drawable.
     """
 
     symbol: str

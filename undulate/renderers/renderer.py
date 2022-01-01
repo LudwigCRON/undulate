@@ -265,13 +265,12 @@ class Renderer:
         Parse the from and to options of annotations into positions
         for drawing the specified shape or text
 
-        Exemple:
-            .. code-block:: json
-
-                    {"annotations": [
-                        {"shape": "||", "x": 3.5},
-                        {"shape": "-~>", "from": "1.5, 3%", "to": "2-0.125, 3", "text": "ready"}
-                    ]}
+        Supported format are:
+        - float
+        - Tuple[float, float]
+        - String "float"
+        - String "(float unit, float unit)" where unit is either "" or "%"
+        - String "node_name"
 
         Args:
             s (str): value of from or to option
