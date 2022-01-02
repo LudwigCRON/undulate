@@ -1001,7 +1001,7 @@ def filter_transition(waveform: List[Brick]) -> List[Brick]:
             if "data" in BrickFactory.tags[brick.symbol]:
                 current_data = str(brick.args.get("data") or "").strip()
                 previous_data = str(previous_brick.args.get("data") or "").strip()
-                if brick.symbol in "xX" or current_data == previous_data:
+                if brick.symbol != "x" and (current_data == previous_data):
                     brick.args["ignore_start_transition"] = True
                     brick.args["hide_data"] = True
                     previous_brick.args["ignore_end_transition"] = True
@@ -1051,7 +1051,7 @@ def initialize() -> None:
     BrickFactory.register(
         "H", HighArrow, tags=["clock"], params={"slewing": 0, "period": 1}
     )
-    BrickFactory.register("z", HighZ)
+    BrickFactory.register("z", HighZ, params={"period": 1})
     BrickFactory.register("0", Zero, params={"slewing": 0, "period": 1})
     BrickFactory.register("1", One, params={"slewing": 0, "period": 1})
     BrickFactory.register(
@@ -1083,9 +1083,9 @@ def initialize() -> None:
     BrickFactory.register(
         "=", Two, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
     )
-    BrickFactory.register("|", Gap, tags=["repeat"])
-    BrickFactory.register("u", Up, params={"slewing": 0})
-    BrickFactory.register("d", Down, params={"slewing": 0})
+    BrickFactory.register("|", Gap, tags=["repeat"], params={"period": 1})
+    BrickFactory.register("u", Up, params={"slewing": 0, "period": 1})
+    BrickFactory.register("d", Down, params={"slewing": 0, "period": 1})
     BrickFactory.register("i", ImpulseUp, params={"duty_cycle": 0.5, "period": 1})
     BrickFactory.register("I", ImpulseDown, params={"duty_cycle": 0.5, "period": 1})
     BrickFactory.register(" ", Space)
