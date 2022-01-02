@@ -98,6 +98,26 @@
     stroke: none;
 }
 
+.s6-polygon {
+    fill: rgba(0, 53, 75, 200);
+    stroke: none;
+}
+
+.s7-polygon {
+    fill: rgba(101, 187, 169, 200);
+    stroke: none;
+}
+
+.s8-polygon {
+    fill: rgba(221, 65, 54, 200);
+    stroke: none;
+}
+
+.s9-polygon {
+    fill: rgba(237, 165, 34, 200);
+    stroke: none;
+}
+
 .tick {
     stroke: rgba(136, 136, 136, 128);
     stroke-width: 0.5;
