@@ -1,0 +1,5 @@
+# do not keep temporary files
+.doctrees/*
+.nojekyll
+.buildinfo
+objects.inv

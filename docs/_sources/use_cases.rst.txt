@@ -1,10 +1,10 @@
 Use cases
 =========
 
-A great power implies great responsabilities! As each characteres count there combination
+A great power implies great responsibilities! As each character count there combination
 could lead to an undesired effect.
 
-To prevent any surprise, this section demonstrate several scenarii.
+To prevent any surprise, this section demonstrates several edge-cases.
 
 Glitched Clock
 --------------
@@ -17,7 +17,7 @@ Glitched Clock
    gated clock p:
        wave: "P0...Pl"
 
-.. image:: ./imgs/use-cases/glitched_clock.yaml.svg
+.. image:: ./_images/glitched_clock.yaml.svg
 
 Name with ':' in yaml
 ---------------------

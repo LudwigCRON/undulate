@@ -1,7 +1,0 @@
-pywave.analogue module
-======================
-
-.. automodule:: pywave.analogue
-   :members:
-   :undoc-members:
-   :show-inheritance:

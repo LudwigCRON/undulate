@@ -7,7 +7,7 @@ can tremendously expand as the frequency ratio grows. The only variation is the 
 For a pwm signal, the duty cycle will change from one cycle to another. It is somehow
 convenient to tell the list of ``duty_cycles``.
 
-And for inter-chip communication it is interresting to delay the clock with respect to the
+And for inter-chip communication it is interesting to delay the clock with respect to the
 data sent. In other term, it is the ``phase`` of the signal which need to be changed.
 
 .. container:: tabs
@@ -37,7 +37,7 @@ data sent. In other term, it is the ``phase`` of the signal which need to be cha
 
             undulate -f svg -i step_5_dig.json -o step_5_dig.svg
         
-        .. image:: ./_images/step5_dig-json.svg
+        .. image:: ./_images/step_5_dig.json.svg
 
     .. container:: tab-content
         :name: step_5_yaml
@@ -66,7 +66,7 @@ data sent. In other term, it is the ``phase`` of the signal which need to be cha
 
             undulate -f svg -i step_5_dig.yaml -o step_5_dig.svg
         
-        .. image:: ./_images/step5_dig-yaml.svg
+        .. image:: ./_images/step_5_dig.yaml.svg
 
     .. container:: tab-content
         :name: step_5_toml
@@ -94,7 +94,7 @@ data sent. In other term, it is the ``phase`` of the signal which need to be cha
 
             undulate -f svg -i step_5_dig.toml -o step_5_dig.svg
         
-        .. image:: ./_images/step5_dig-toml.svg
+        .. image:: ./_images/step_5_dig.toml.svg
 
 .. tip::
 
@@ -102,8 +102,8 @@ data sent. In other term, it is the ``phase`` of the signal which need to be cha
 
 .. tip::
 
-    you desire to change the period from one cycle to another, use ``periods`` with 
-    a list of scaling factor as done for ``duty_cycles``.
+    If you desire to change the period from one cycle to another, use ``periods``
+    with a list of scaling factor as done for ``duty_cycles``.
 
     .. code-block:: yaml
 
@@ -112,7 +112,8 @@ data sent. In other term, it is the ``phase`` of the signal which need to be cha
 
 .. tip::
 
-    If you need to advance a signal rather than delaying it, use a negative value for ``phase``.
+    If you need to advance a signal rather than delaying it, use a negative value
+    for ``phase``.
 
     .. code-block:: yaml
 

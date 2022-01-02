@@ -10,7 +10,7 @@
                 "[(t, (VDDA+VSSA)*(1 + sin(2*pi*t*3.5/Tmax))/2) for t in time]", // for 'a'
                 "0.25*VDDA", // for penultimate s
                 "VDDA" // for last s
-            ], slewing: 20
+            ]
         }
     ]
 }

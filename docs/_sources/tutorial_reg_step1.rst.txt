@@ -1,6 +1,6 @@
 A register is a combination of flip-flops storing configurations,
 flags, or triggers. A particular value in a register is called a field,
-and a register is the concatenation of several field.
+and a register is the concatenation of several fields.
 
 A common file format for exchange of information
 between digital and software teams is needed. Wavedrom made a
@@ -47,7 +47,7 @@ And a register is an ordered array of fields as represented below.
 
             undulate -f svg -r -i step_1_reg.json -o step_1_reg.svg
         
-        .. image:: ./_images/step1_reg-json.svg
+        .. image:: ./_images/step_1_reg.json.svg
 
     .. container:: tab-content
         :name: step_1_yaml
@@ -82,7 +82,7 @@ And a register is an ordered array of fields as represented below.
 
             undulate -f svg -r -i step_1_reg.yaml -o step_1_reg.svg
         
-        .. image:: ./_images/step1_reg-yaml.svg
+        .. image:: ./_images/step_1_reg.yaml.svg
 
     .. container:: tab-content
         :name: step_1_toml
@@ -129,7 +129,7 @@ And a register is an ordered array of fields as represented below.
 
             undulate -f svg -r -i step_1_reg.toml -o step_1_reg.svg
         
-        .. image:: ./_images/step1_reg-toml.svg
+        .. image:: ./_images/step_1_reg.toml.svg
 
 .. note::
 
@@ -141,7 +141,7 @@ And a register is an ordered array of fields as represented below.
 
 .. note::
 
-  For the coloration of a specific field, it is definied by ``type``.
+  For the coloration of a specific field, it is defined by ``type``.
   The number of type and the color used is identical to the data
   representation for a signal (signal.wave = "=23456789").
 

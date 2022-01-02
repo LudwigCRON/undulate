@@ -47,7 +47,7 @@ the range [12:8], the field "nf" on the range [34:32].
 
             undulate -f svg -r -i step_2_reg.json -o step_2_reg.svg
         
-        .. image:: ./_images/step2_reg-json.svg
+        .. image:: ./_images/step_2_reg.json.svg
 
     .. container:: tab-content
         :name: step_2_yaml
@@ -97,7 +97,7 @@ the range [12:8], the field "nf" on the range [34:32].
 
             undulate -f svg -r -i step_2_reg.yaml -o step_2_reg.svg
         
-        .. image:: ./_images/step2_reg-yaml.svg
+        .. image:: ./_images/step_2_reg.yaml.svg
 
     .. container:: tab-content
         :name: step_2_toml
@@ -161,5 +161,5 @@ the range [12:8], the field "nf" on the range [34:32].
 
             undulate -f svg -r -i step_2_reg.toml -o step_2_reg.svg
         
-        .. image:: ./_images/step2_reg-toml.svg
+        .. image:: ./_images/step_2_reg.toml.svg
     

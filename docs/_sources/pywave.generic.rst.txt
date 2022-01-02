@@ -1,7 +1,0 @@
-pywave.generic module
-=====================
-
-.. automodule:: pywave.generic
-   :members:
-   :undoc-members:
-   :show-inheritance:

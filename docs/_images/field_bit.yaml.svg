@@ -1,38 +1,67 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="57.5pt" height="25pt" viewBox="0 0 57.5 25" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg" width="62.000000" height="25.000000" viewBox="-1 -1 63.000000 27.000000">
+<style>
+:root {padding-top: 0.000px;padding-bottom: 0.000px;}
+.title {fill: rgba(0, 65, 196, 255);font-weight: 500;font-size: 0.500em;font-family: Fira Mono;text-align: right;text-anchor: end;dominant-baseline: middle;alignment-baseline: central;}
+.text {fill: rgba(0, 0, 0, 255);font-size: 0.900em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;}
+.attr {fill: rgba(0, 0, 0, 255);font-size: 9.000px;font-style: normal;font-variant: normal;font-weight: 200;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.path {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 1;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
+.stripe {fill: none;stroke: rgba(0, 0, 0, 255);stroke-width: 0.5;stroke-linecap: round;stroke-linejoin: miter;stroke-miterlimit: 4;stroke-dasharray: none;}
+.data {fill: rgba(0, 0, 0, 255);font-size: 0.400em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.hatch {fill: url(#diagonalHatch);}
+.s2-polygon {fill: rgba(0, 0, 0, 0);stroke: none;}
+.s3-polygon {fill: rgba(255, 255, 176, 255);stroke: none;}
+.s4-polygon {fill: rgba(255, 224, 185, 255);stroke: none;}
+.s5-polygon {fill: rgba(185, 224, 255, 255);stroke: none;}
+.s6-polygon {fill: rgba(0, 53, 75, 200);stroke: none;}
+.s7-polygon {fill: rgba(101, 187, 169, 200);stroke: none;}
+.s8-polygon {fill: rgba(221, 65, 54, 200);stroke: none;}
+.s9-polygon {fill: rgba(237, 165, 34, 200);stroke: none;}
+.tick {stroke: rgba(136, 136, 136, 128);stroke-width: 0.5;stroke-dasharray: 1, 3;}
+.big_gap {stroke: rgba(136, 136, 136, 255);stroke-width: 0.5;stroke-dasharray: none;}
+.border {stroke-width: 1.25;stroke: rgba(0, 0, 0, 255);}
+.hide {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
+.edge {fill: none;stroke: rgba(0, 0, 255, 255);stroke-width: 1;}
+.edge-arrow {fill: rgba(0, 0, 255, 255);stroke: none;overflow: visible;}
+.edge-text {font-family: Fira Mono;font-size: 0.625em;fill: rgba(0, 0, 0, 255);filter: #solid;transform: translate(0, 2.5px);text-anchor: middle;}
+.edge-background {fill: rgba(255, 255, 255, 255);stroke: rgba(255, 255, 255, 255);stroke-width: 2;}
+.arrow {fill: rgba(0, 0, 0, 255);stroke: none;}
+.h1 {fill: rgba(0, 0, 0, 255);font-size: 12.000px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h2 {fill: rgba(0, 0, 0, 255);font-size: 10.000px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h3 {fill: rgba(0, 0, 0, 255);font-size: 8.000px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h4 {fill: rgba(0, 0, 0, 255);font-size: 6.000px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h5 {fill: rgba(0, 0, 0, 255);font-size: 5.000px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.h6 {fill: rgba(0, 0, 0, 255);font-size: 4.000px;font-weight: bold;font-family: Fira Mono;text-align: left;dominant-baseline: middle;}
+.reg-data {fill: rgba(0, 0, 0, 255);font-size: 0.800em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}
+.reg-pos {fill: rgba(0, 0, 0, 255);font-size: 0.600em;font-style: normal;font-variant: normal;font-weight: 500;font-stretch: normal;text-align: center;font-family: Fira Mono;text-anchor: middle;dominant-baseline: middle;alignment-baseline: central;}</style>
+
 <defs>
-<g>
-<symbol overflow="visible" id="glyph0-0">
-<path style="stroke:none;" d="M 0.71875 -8.398438 L 0.71875 2.800781 L 4.078125 2.800781 L 4.078125 -8.398438 Z M 3.648438 2.382812 L 1.160156 2.382812 L 1.160156 -7.984375 L 3.648438 -7.984375 Z M 2.457031 -1.382812 L 2.457031 -1.742188 C 2.992188 -1.824219 3.214844 -2.128906 3.214844 -2.6875 C 3.214844 -3.167969 3.015625 -3.609375 2.328125 -3.609375 C 2.015625 -3.609375 1.585938 -3.511719 1.585938 -3.296875 C 1.585938 -3.191406 1.65625 -3.113281 1.777344 -3.113281 C 1.808594 -3.113281 1.839844 -3.121094 1.878906 -3.136719 C 2.015625 -3.199219 2.128906 -3.222656 2.296875 -3.222656 C 2.695312 -3.222656 2.785156 -2.984375 2.785156 -2.671875 C 2.785156 -2.246094 2.632812 -2.089844 2.054688 -2.054688 L 2.054688 -1.382812 C 2.054688 -1.265625 2.152344 -1.191406 2.257812 -1.191406 C 2.351562 -1.191406 2.457031 -1.265625 2.457031 -1.382812 Z M 1.976562 -0.679688 C 1.976562 -0.511719 2.097656 -0.382812 2.257812 -0.382812 C 2.414062 -0.382812 2.535156 -0.511719 2.535156 -0.679688 C 2.535156 -0.839844 2.414062 -0.960938 2.257812 -0.960938 C 2.097656 -0.960938 1.976562 -0.839844 1.976562 -0.679688 Z M 1.976562 -0.679688 "/>
-</symbol>
-<symbol overflow="visible" id="glyph0-1">
-<path style="stroke:none;" d="M 1.824219 -3.816406 L 1.824219 -6.070312 L 0.558594 -5.9375 L 0.558594 0 L 1.679688 0 L 1.726562 -0.382812 C 1.976562 -0.046875 2.351562 0.136719 2.777344 0.136719 C 3.878906 0.136719 4.480469 -0.824219 4.480469 -2.136719 C 4.480469 -3.519531 4 -4.390625 2.910156 -4.390625 C 2.480469 -4.390625 2.089844 -4.167969 1.824219 -3.816406 Z M 2.449219 -0.785156 C 2.175781 -0.785156 1.984375 -0.921875 1.824219 -1.167969 L 1.824219 -2.960938 C 2.007812 -3.273438 2.222656 -3.457031 2.511719 -3.457031 C 2.910156 -3.457031 3.175781 -3.175781 3.175781 -2.121094 C 3.175781 -1.160156 2.894531 -0.785156 2.449219 -0.785156 Z M 2.449219 -0.785156 "/>
-</symbol>
-</g>
-<clipPath id="clip2">
-  <rect x="0" y="0" width="58" height="25"/>
-</clipPath>
-<g id="surface6" clip-path="url(#clip2)">
-<g style="fill:rgb(0%,25.490196%,76.862745%);fill-opacity:1;">
-  <use xlink:href="#glyph0-1" x="2.570312" y="12.613281"/>
-</g>
-<path style="fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" d="M 0 5 L 0 20 L 40 20 L 40 5 L 0 5 " transform="matrix(1,0,0,1,16.5,0)"/>
-</g>
-<clipPath id="clip3">
-  <rect x="0" y="0" width="58" height="25"/>
-</clipPath>
-<g id="surface9" clip-path="url(#clip3)">
-<path style="fill:none;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke:rgb(53.333333%,53.333333%,53.333333%);stroke-opacity:0.501961;stroke-dasharray:1,3;stroke-miterlimit:10;" d="M 0 0 L 0 25 " transform="matrix(1,0,0,1,16.5,0)"/>
-</g>
-<clipPath id="clip1">
-  <rect x="0" y="0" width="58" height="25"/>
-</clipPath>
-<g id="surface11" clip-path="url(#clip1)">
-<use xlink:href="#surface6"/>
-<use xlink:href="#surface9"/>
-</g>
+    <pattern id="diagonalHatch" width="5" height="5" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+        <line x1="0" y1="0" x2="0" y2="5" style="stroke:black; stroke-width:1" />
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5"
+        markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse"
+        orient="auto-start-reverse" style="fill:#00F;">
+      <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <filter x="0" y="0" width="1" height="1" id="solid">
+      <feFlood flood-color="white"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
 </defs>
-<g id="surface1">
-<use xlink:href="#surface11"/>
+<g id="a"  >
+<g id="ticks_1"  transform="translate(20.000000, 0.000000)"  >
+<path d="M0.000000,0.000000 L0.000000,25.000000" class="tick" style="fill: none;" />
 </g>
+
+<g id="b"  transform="translate(20.000000, 0.000000)"  >
+<text x="-10.000000" y="10.000000" class="title" style="stroke: none;">b</text>
+<g data-symbol="b"  transform="translate(0.000000, 0.000000)"  class="s2-polygon">
+<polygon points="40.000000, 20.000000 0.000000, 20.000000 0.000000, 5.000000 40.000000, 5.000000 " class="s2-polygon" style="" />
+<path d="M0.000000,5.000000 L0.000000,20.000000 L40.000000,20.000000 L40.000000,5.000000 L0.000000,5.000000" class="path" style="fill: none;" />
+<text x="20.000000" y="12.500000" class="reg-data" style="stroke: none;"></text>
+<text x="20.000000" y="2.500000" class="reg-pos" style="stroke: none;">0</text>
+</g>
+</g>
+</g>
+
 </svg>

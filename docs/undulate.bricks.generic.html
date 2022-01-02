@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.1.1.1.1.3. undulate.bricks.generic module &mdash; Undulate 0.0.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.1.1.1.1.4. undulate.bricks.register module" href="undulate.bricks.register.html" />
+    <link rel="prev" title="4.1.1.1.1.2. undulate.bricks.digital module" href="undulate.bricks.digital.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Undulate
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">4. undulate</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="undulate.html">4.1. undulate package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="undulate.bricks.html">4.1.1.1. undulate.bricks package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.analogue.html">4.1.1.1.1.1. undulate.bricks.analogue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.digital.html">4.1.1.1.1.2. undulate.bricks.digital module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.1.1.1.1.3. undulate.bricks.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.register.html">4.1.1.1.1.4. undulate.bricks.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.shape.html">4.1.1.1.1.5. undulate.bricks.shape module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.html">4.1.1.2. undulate.parsers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.html">4.1.1.3. undulate.renderers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.cli.html">4.1.2.1. undulate.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.logger.html">4.1.2.2. undulate.logger module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.skin.html">4.1.2.3. undulate.skin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.version.html">4.1.2.4. undulate.version module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html"><span class="section-number">4. </span>undulate</a> &raquo;</li>
+          <li><a href="undulate.html"><span class="section-number">4.1. </span>undulate package</a> &raquo;</li>
+          <li><a href="undulate.bricks.html"><span class="section-number">4.1.1.1. </span>undulate.bricks package</a> &raquo;</li>
+      <li><span class="section-number">4.1.1.1.1.3. </span>undulate.bricks.generic module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/undulate.bricks.generic.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-undulate.bricks.generic">
+<span id="undulate-bricks-generic-module"></span><h1><span class="section-number">4.1.1.1.1.3. </span>undulate.bricks.generic module<a class="headerlink" href="#module-undulate.bricks.generic" title="Permalink to this headline"></a></h1>
+<p>generic.py declare the basic building block
+to generate a waveform</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.generic.Point">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">Point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.generic.Point" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Cartesian coordinate of a point</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.generic.SplineSegment">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">SplineSegment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.generic.SplineSegment" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Spline directive as in SVG images</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>order</strong> (<em>str</em>) – <p>one of the following directive:</p>
+<ul>
+<li><p>’m’: relative move to</p></li>
+<li><p>’l’: relative line to</p></li>
+<li><p>’c’: relative cubic bezier curve to</p></li>
+<li><p>’M’: absolute move to</p></li>
+<li><p>’L’: absolute line to</p></li>
+<li><p>’C’: absolute cubic bezier curve to</p></li>
+<li><p>’z’: close path</p></li>
+<li><p>’Z’: close path</p></li>
+<li><p>’’: add coordinate to previous directive</p></li>
+</ul>
+</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – x-coordinate relative to previous point (relative) or to brick (absolute)</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y-coordinate relative to previous point (relative) or to brick (absolute)</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>splines are considered to be a list of (type, x or dx, y or dy) tuples
+for more details please look at
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths">https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths</a></p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.generic.ArrowDescription">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">ArrowDescription</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.generic.ArrowDescription" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Position of the center and orientation of the arrow to be drawn</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.generic.Drawable">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">Drawable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.generic.Drawable" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Association of a css class to a List[Point], or List[SplineSegment],
+or ArrowDescription</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.generic.safe_eval">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">safe_eval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.generic.safe_eval" title="Permalink to this definition"></a></dt>
+<dd><p>propose a safer alternative to eval based on ast to pre-filter possible
+instructions and limiting current variables access</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>code</strong> (<em>str</em>) – code to execute</p></li>
+<li><p><strong>ctx</strong> (<em>dict</em>) – predefined variables and functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>resulting value of the code</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.generic.Brick">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">Brick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.generic.Brick" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Define the brick as a composition of paths, arrows, and generic polygons
+to fill an area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>float &gt; 0</em>) – by default is 40.0</p></li>
+<li><p><strong>height</strong> (<em>float &gt; 0</em>) – by default is 20.0</p></li>
+<li><p><strong>slewing</strong> (<em>float &gt; 0</em>) – by default 0.0</p></li>
+<li><p><strong>symbol</strong> (<em>str</em>) – identification symbol (mostly for debug)</p></li>
+<li><p><strong>args</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – arguments used to create the brick (allow regeneration of it)</p></li>
+<li><p><strong>repeat</strong> (<em>int</em>) – number consecutive ‘.’ after it for repetition</p></li>
+<li><p><strong>ignore_start_transition</strong> (<em>bool</em>) – by default False for smooth connection</p></li>
+<li><p><strong>ignore_end_transition</strong> (<em>bool</em>) – by default False for smooth connection</p></li>
+<li><p><strong>is_first</strong> (<em>bool</em>) – first brick of a signal, by default False</p></li>
+<li><p><strong>last_y</strong> (<em>float</em>) – last y-coordinate of the previous brick for smooth connection</p></li>
+<li><p><strong>first_y</strong> (<em>float</em>) – first y-coordinate of the next brick for smooth connection</p></li>
+<li><p><strong>paths</strong> (<em>List</em><em>[</em><a class="reference internal" href="#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a><em>]</em>) – list of “svg” paths to be drawn</p></li>
+<li><p><strong>arrows</strong> (<em>List</em><em>[</em><em>ArrowDesctiption</em><em>]</em>) – list of arrows to be drawn</p></li>
+<li><p><strong>polygons</strong> (<em>List</em><em>[</em><a class="reference internal" href="#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a><em>]</em>) – list of polygons to be drawn</p></li>
+<li><p><strong>splines</strong> (<em>List</em><em>[</em><a class="reference internal" href="#undulate.bricks.generic.SplineSegment" title="undulate.bricks.generic.SplineSegment"><em>SplineSegment</em></a><em>]</em>) – list of splines to be drawn</p></li>
+<li><p><strong>texts</strong> (<em>List</em><em>[</em><em>(</em><em>str</em><em>, </em><em>x</em><em>, </em><em>y</em><em>)</em><em>]</em>) – list of textual element to be drawn</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>‘paths’, ‘arrows’, ‘polygons’, ‘splines’ are List[Drawable] but
+inside a Drawable any object are accepted.</p>
+<p>However, the rendering functions cannot support any object and thus,
+the clear distinction is made here to precise what is the
+expected type of object in the Drawable.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.generic.Brick.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.generic.Brick.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.generic.Brick.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.generic.Brick.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.generic.BrickFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">BrickFactory</span></span><a class="headerlink" href="#undulate.bricks.generic.BrickFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Create a brick from its symbol once registered</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>funcs</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Callable</em><em>[</em><em>...</em><em>,</em><a class="reference internal" href="#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><em>Brick</em></a><em>]</em><em>]</em>) – initialization function to create a brick
+from its symbol</p></li>
+<li><p><strong>tags</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>List</em><em>[</em><em>str</em><em>]</em><em>]</em>) – list of categories associated to bricks</p></li>
+<li><p><strong>params</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em><em>]</em>) – list of required parameters and their
+default for a given brick</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.generic.BrickFactory.register">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initializer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#undulate.bricks.generic.BrickFactory.register" title="Permalink to this definition"></a></dt>
+<dd><p>register a new brick called {name} mapped to {symbol}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.generic.BrickFactory.create">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a></span></span><a class="headerlink" href="#undulate.bricks.generic.BrickFactory.create" title="Permalink to this definition"></a></dt>
+<dd><p>create a brick from its symbol</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.generic.BrickFactory.get_parameters">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#undulate.bricks.generic.BrickFactory.get_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>list all parameters registered</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.generic.FilterBank">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">FilterBank</span></span><a class="headerlink" href="#undulate.bricks.generic.FilterBank" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>List of filters to apply process a waveform</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.generic.FilterBank.apply">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#undulate.bricks.generic.FilterBank.apply" title="Permalink to this definition"></a></dt>
+<dd><p>apply registered filters on the wavelane</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.generic.NodeBank">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">NodeBank</span></span><a class="headerlink" href="#undulate.bricks.generic.NodeBank" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Register brick position of a given node</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.generic.NodeBank.register">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><span class="pre">undulate.bricks.generic.Point</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.generic.NodeBank.register" title="Permalink to this definition"></a></dt>
+<dd><p>save coordinate of a node</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.generic.ShapeFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.generic.</span></span><span class="sig-name descname"><span class="pre">ShapeFactory</span></span><a class="headerlink" href="#undulate.bricks.generic.ShapeFactory" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Create an annotation from its shape</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><p><strong>funcs</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Callable</em><em>[</em><em>...</em><em>,</em><em>str</em><em>]</em><em>]</em>) – initialization function to create an annotation
+from its shape</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.generic.ShapeFactory.register">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.generic.ShapeFactory.register" title="Permalink to this definition"></a></dt>
+<dd><p>save coordinate of a node</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.generic.ShapeFactory.create">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderer</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.generic.ShapeFactory.create" title="Permalink to this definition"></a></dt>
+<dd><p>create an annotation from a pattern</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="undulate.bricks.digital.html" class="btn btn-neutral float-left" title="4.1.1.1.1.2. undulate.bricks.digital module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="undulate.bricks.register.html" class="btn btn-neutral float-right" title="4.1.1.1.1.4. undulate.bricks.register module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

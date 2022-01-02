@@ -2,9 +2,9 @@ digital signal
 **************
 
 Let's see how to generate your first digital waveform.
-first create a text file in which we will add the textual representation of the waveform.
-with all posibilities of a digital signal. Each character in the ``wave`` string represents
-a single time period.
+First create a text file in which we will add the textual representation of the
+waveform with all possibilities of a digital signal. Each character in the
+``wave`` string represents a single time step (clock period).
 
 .. container:: tabs
 
@@ -31,7 +31,7 @@ a single time period.
 
             undulate -f svg -i step_1_dig.json -o step_1_dig.svg
         
-        .. image:: ./_images/step1_dig-json.svg
+        .. image:: ./_images/step_1_dig.json.svg
 
     .. container:: tab-content
         :name: step_1_yaml
@@ -49,7 +49,7 @@ a single time period.
 
             undulate -f svg -i step_1_dig.yaml -o step_1_dig.svg
         
-        .. image:: ./_images/step1_dig-yaml.svg
+        .. image:: ./_images/step_1_dig.yaml.svg
 
     .. container:: tab-content
         :name: step_1_toml
@@ -66,7 +66,7 @@ a single time period.
 
             undulate -f svg -i step_1_dig.toml -o step_1_dig.svg
         
-        .. image:: ./_images/step1_dig-toml.svg
+        .. image:: ./_images/step_1_dig.toml.svg
 
 .. note::
 

@@ -1,68 +1,33 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>groups &mdash; Undulate 0.0.4 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
-          
-
-          
+            <a href="index.html" class="icon icon-home"> Undulate
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -70,99 +35,50 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">4. Undulate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">4. undulate</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Undulate</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>groups</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/tutorial_dig_step4.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="groups">
-<h1>groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h1>
-<p>In order to gather signals in a given context, or of a same protocol, groups can be nested.</p>
+             
+  <section id="groups">
+<h1>groups<a class="headerlink" href="#groups" title="Permalink to this headline"></a></h1>
+<p>In order to gather signals in a given context, or of a same protocol, groups can
+be nested.</p>
 <div class="tabs docutils container">
 <a class="tab-button" href="#step_4_jsonml">jsonml</a>
 <a class="tab-button" href="#step_4_yaml">yaml</a>
 <a class="tab-button" href="#step_4_toml">toml</a><div class="tab-content docutils container" id="step-4-jsonml">
 <p>set the content of the file to</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p..Pp..P&quot;</span><span class="p">,</span> <span class="nx">slewing</span><span class="o">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p..Pp..P&quot;</span><span class="p">,</span> <span class="nx">slewing</span><span class="o">:</span> <span class="mf">0</span><span class="p">},</span>
     <span class="p">[</span><span class="s2">&quot;Master&quot;</span><span class="p">,</span>
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_address&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x3.x4..x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;A1 A2&quot;</span><span class="p">},</span>
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_wdata&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x3.x....&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;D1&quot;</span><span class="p">},</span>
@@ -185,79 +101,79 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -i step_4_dig.json -o step_4_dig.svg
 </pre></div>
 </div>
-<img alt="./_images/step4_dig-json.svg" src="./_images/step4_dig-json.svg" /></div>
+<img alt="_images/step_4_dig.json.svg" src="_images/step_4_dig.json.svg" /></div>
 <div class="tab-content docutils container" id="step-4-yaml">
 <p>set the content of the file to</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">clk</span><span class="p">:</span>
-    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;p..Pp..P&quot;</span>
-    <span class="nt">slewing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
-<span class="nt">Master</span><span class="p">:</span>
-    <span class="nt">io_address</span><span class="p">:</span>
-        <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;x3.x4..x&quot;</span>
-        <span class="nt">data</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="s">&quot;A1&quot;</span>
-            <span class="p p-Indicator">-</span> <span class="s">&quot;A2&quot;</span>
-    <span class="nt">io_wdata</span><span class="p">:</span>
-        <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;x3.x....&quot;</span>
-        <span class="nt">data</span><span class="p">:</span> <span class="s">&quot;D1&quot;</span>
-    <span class="nt">control</span><span class="p">:</span>
-        <span class="nt">io_write</span><span class="p">:</span>
-            <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;01.0....&quot;</span>
-        <span class="nt">io_read</span><span class="p">:</span>
-            <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;0...1..0&quot;</span>
-<span class="nt">spacer</span><span class="p">:</span>
-    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
-<span class="nt">Slave</span><span class="p">:</span>
-    <span class="nt">io_rdata</span><span class="p">:</span>
-        <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;x.....4x&quot;</span>
-        <span class="nt">data</span><span class="p">:</span> <span class="s">&quot;Q2&quot;</span>
-    <span class="nt">control</span><span class="p">:</span>
-        <span class="nt">io_valid</span><span class="p">:</span>
-        <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;x01x0.1x&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">clk</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;p..Pp..P&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">slewing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span><span class="w"></span>
+<span class="nt">Master</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">io_address</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x3.x4..x&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">data</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;A1&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;A2&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">io_wdata</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x3.x....&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;D1&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">control</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">io_write</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;01.0....&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">io_read</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0...1..0&quot;</span><span class="w"></span>
+<span class="nt">spacer</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<span class="nt">Slave</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">io_rdata</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x.....4x&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="nt">data</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Q2&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">control</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">io_valid</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x01x0.1x&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -i step_4_dig.yaml -o step_4_dig.svg
 </pre></div>
 </div>
-<img alt="./_images/step4_dig-yaml.svg" src="./_images/step4_dig-yaml.svg" /></div>
+<img alt="_images/step_4_dig.yaml.svg" src="_images/step_4_dig.yaml.svg" /></div>
 <div class="tab-content docutils container" id="step-4-toml">
 <p>set the content of the file to</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">clk</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;p..Pp..P&quot;</span>
-<span class="n">clk</span><span class="p">.</span><span class="n">slewing</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">clk</span><span class="p">.</span><span class="n">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;p..Pp..P&quot;</span><span class="w"></span>
+<span class="n">clk</span><span class="p">.</span><span class="n">slewing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
 
-<span class="k">[Master]</span>
-<span class="n">io_address</span><span class="p">.</span><span class="n">wave</span>       <span class="o">=</span> <span class="s">&quot;x3.x4..x&quot;</span>
-<span class="n">io_wdata</span><span class="p">.</span><span class="n">wave</span>         <span class="o">=</span> <span class="s">&quot;x3.x....&quot;</span>
-<span class="n">control</span><span class="p">.</span><span class="n">io_write</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;01.0....&quot;</span>
-<span class="n">control</span><span class="p">.</span><span class="n">io_read</span><span class="p">.</span><span class="n">wave</span>  <span class="o">=</span> <span class="s">&quot;0...1..0&quot;</span>
+<span class="k">[Master]</span><span class="w"></span>
+<span class="n">io_address</span><span class="p">.</span><span class="n">wave</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x3.x4..x&quot;</span><span class="w"></span>
+<span class="n">io_wdata</span><span class="p">.</span><span class="n">wave</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x3.x....&quot;</span><span class="w"></span>
+<span class="n">control</span><span class="p">.</span><span class="n">io_write</span><span class="p">.</span><span class="n">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;01.0....&quot;</span><span class="w"></span>
+<span class="n">control</span><span class="p">.</span><span class="n">io_read</span><span class="p">.</span><span class="n">wave</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0...1..0&quot;</span><span class="w"></span>
 
-<span class="n">io_address</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">&quot;A1 A2&quot;</span>
-<span class="n">io_wdata</span><span class="p">.</span><span class="n">data</span>   <span class="o">=</span> <span class="s">&quot;D1&quot;</span>
+<span class="n">io_address</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;A1 A2&quot;</span><span class="w"></span>
+<span class="n">io_wdata</span><span class="p">.</span><span class="n">data</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;D1&quot;</span><span class="w"></span>
 
-<span class="n">spacer</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+<span class="n">spacer</span><span class="p">.</span><span class="n">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
 
-<span class="k">[Slave]</span>
-<span class="n">io_rdata</span><span class="p">.</span><span class="n">wave</span>         <span class="o">=</span> <span class="s">&quot;x.....4x&quot;</span>
-<span class="n">control</span><span class="p">.</span><span class="n">io_valid</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;x01x0.1x&quot;</span>
+<span class="k">[Slave]</span><span class="w"></span>
+<span class="n">io_rdata</span><span class="p">.</span><span class="n">wave</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x.....4x&quot;</span><span class="w"></span>
+<span class="n">control</span><span class="p">.</span><span class="n">io_valid</span><span class="p">.</span><span class="n">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;x01x0.1x&quot;</span><span class="w"></span>
 
-<span class="n">io_rdata</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">&quot;Q2&quot;</span>
+<span class="n">io_rdata</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Q2&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -i step_4_dig.toml -o step_4_dig.svg
 </pre></div>
 </div>
-<img alt="./_images/step4_dig-toml.svg" src="./_images/step4_dig-toml.svg" /></div>
+<img alt="_images/step_4_dig.toml.svg" src="_images/step_4_dig.toml.svg" /></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Notice the conciseness of new languages such as toml or yaml. These languages have
-been designed to be less verbose than json and natively support comments.</p>
-<p>Also notice the difference of implementation in jsonml compare to yaml/toml of groups:
-while in jsonml the name of the group is the first item of an array, in yaml and toml,
-a group is a key:value pair of an HashMap. The key is the name of the group, and the
-value is the content of the group.</p>
+<p>Notice the conciseness of new languages such as toml or yaml. These languages
+have been designed to be less verbose than json and natively support comments.</p>
+<p>Also notice the difference of implementation in jsonml compare to yaml/toml
+of groups: while in jsonml the name of the group is the first item of an array,
+in yaml and toml, a group is a key:value pair of an HashMap. The key is the
+name of the group, and the value is the content of the group.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -268,53 +184,34 @@ Thus the image grows vertically rather than horizontally.</p>
 However, signals not being in a group being placed after a group will look as if they
 belong to it.</p>
 </div>
-</div>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2020, Ludwig CRON
-
-    </p>
+    <p>&#169; Copyright 2022, Ludwig CRON.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

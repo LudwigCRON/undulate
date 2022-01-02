@@ -1,7 +1,8 @@
 groups
 ******
 
-In order to gather signals in a given context, or of a same protocol, groups can be nested.
+In order to gather signals in a given context, or of a same protocol, groups can
+be nested.
 
 .. container:: tabs
 
@@ -43,7 +44,7 @@ In order to gather signals in a given context, or of a same protocol, groups can
 
             undulate -f svg -i step_4_dig.json -o step_4_dig.svg
         
-        .. image:: ./_images/step4_dig-json.svg
+        .. image:: ./_images/step_4_dig.json.svg
 
     .. container:: tab-content
         :name: step_4_yaml
@@ -85,7 +86,7 @@ In order to gather signals in a given context, or of a same protocol, groups can
 
             undulate -f svg -i step_4_dig.yaml -o step_4_dig.svg
         
-        .. image:: ./_images/step4_dig-yaml.svg
+        .. image:: ./_images/step_4_dig.yaml.svg
 
     .. container:: tab-content
         :name: step_4_toml
@@ -120,17 +121,17 @@ In order to gather signals in a given context, or of a same protocol, groups can
 
             undulate -f svg -i step_4_dig.toml -o step_4_dig.svg
         
-        .. image:: ./_images/step4_dig-toml.svg
+        .. image:: ./_images/step_4_dig.toml.svg
 
 .. note::
 
-    Notice the conciseness of new languages such as toml or yaml. These languages have
-    been designed to be less verbose than json and natively support comments.
+    Notice the conciseness of new languages such as toml or yaml. These languages
+    have been designed to be less verbose than json and natively support comments.
 
-    Also notice the difference of implementation in jsonml compare to yaml/toml of groups:
-    while in jsonml the name of the group is the first item of an array, in yaml and toml,
-    a group is a key:value pair of an HashMap. The key is the name of the group, and the
-    value is the content of the group.
+    Also notice the difference of implementation in jsonml compare to yaml/toml 
+    of groups: while in jsonml the name of the group is the first item of an array,
+    in yaml and toml, a group is a key:value pair of an HashMap. The key is the
+    name of the group, and the value is the content of the group.
 
 .. warning::
 

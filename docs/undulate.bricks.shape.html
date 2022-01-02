@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.1.1.1.1.5. undulate.bricks.shape module &mdash; Undulate 0.0.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.1.1.2. undulate.parsers package" href="undulate.parsers.html" />
+    <link rel="prev" title="4.1.1.1.1.4. undulate.bricks.register module" href="undulate.bricks.register.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Undulate
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">4. undulate</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="undulate.html">4.1. undulate package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="undulate.bricks.html">4.1.1.1. undulate.bricks package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.analogue.html">4.1.1.1.1.1. undulate.bricks.analogue module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.digital.html">4.1.1.1.1.2. undulate.bricks.digital module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.generic.html">4.1.1.1.1.3. undulate.bricks.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.register.html">4.1.1.1.1.4. undulate.bricks.register module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.1.1.1.1.5. undulate.bricks.shape module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.html">4.1.1.2. undulate.parsers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.html">4.1.1.3. undulate.renderers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.cli.html">4.1.2.1. undulate.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.logger.html">4.1.2.2. undulate.logger module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.skin.html">4.1.2.3. undulate.skin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.version.html">4.1.2.4. undulate.version module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html"><span class="section-number">4. </span>undulate</a> &raquo;</li>
+          <li><a href="undulate.html"><span class="section-number">4.1. </span>undulate package</a> &raquo;</li>
+          <li><a href="undulate.bricks.html"><span class="section-number">4.1.1.1. </span>undulate.bricks package</a> &raquo;</li>
+      <li><span class="section-number">4.1.1.1.1.5. </span>undulate.bricks.shape module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/undulate.bricks.shape.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-undulate.bricks.shape">
+<span id="undulate-bricks-shape-module"></span><h1><span class="section-number">4.1.1.1.1.5. </span>undulate.bricks.shape module<a class="headerlink" href="#module-undulate.bricks.shape" title="Permalink to this headline"></a></h1>
+<p>Definition of Shape in Annotations</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.scircle">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">scircle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.SplineSegment" title="undulate.bricks.generic.SplineSegment"><span class="pre">undulate.bricks.generic.SplineSegment</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#undulate.bricks.shape.scircle" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a circle using 4-quadrant bezier curves</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.square">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.SplineSegment" title="undulate.bricks.generic.SplineSegment"><span class="pre">undulate.bricks.generic.SplineSegment</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#undulate.bricks.shape.square" title="Permalink to this definition"></a></dt>
+<dd><p>Generate a square using a list of points</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.arrow_angle">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">arrow_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.shape.arrow_angle" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the angle to align arrows based on
+the derivative of the signal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dy</strong> (<em>float</em>) – </p></li>
+<li><p><strong>dx</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>angle in degree</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.arrow_markers">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">arrow_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><span class="pre">undulate.bricks.generic.Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">de</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><span class="pre">undulate.bricks.generic.Point</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.arrow_markers" title="Permalink to this definition"></a></dt>
+<dd><p>Generate markers at extremities of an arrow/edge</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.generate_patterns">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">generate_patterns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefixs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffixs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.shape.generate_patterns" title="Permalink to this definition"></a></dt>
+<dd><p>generate possible pattern prefixs/root/suffixs</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.TimeCompressor">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">TimeCompressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.TimeCompressor" title="Permalink to this definition"></a></dt>
+<dd><p>Multiline Time Compressor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – position of the time compressor</p></li>
+<li><p><strong>ymin</strong> (<em>float</em>) – top limit of the time compressor</p></li>
+<li><p><strong>ymax</strong> (<em>float</em>) – bottom limit of the time compressor</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.HorizontalLine">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">HorizontalLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.HorizontalLine" title="Permalink to this definition"></a></dt>
+<dd><p>Horizontal Line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>float</em>) – position of the line</p></li>
+<li><p><strong>xmin</strong> (<em>float</em>) – left limit of the segment</p></li>
+<li><p><strong>xmax</strong> (<em>float</em>) – right limit of the segment</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.VerticalLine">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">VerticalLine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.VerticalLine" title="Permalink to this definition"></a></dt>
+<dd><p>Vertical Line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – position of the line</p></li>
+<li><p><strong>ymin</strong> (<em>float</em>) – top limit of the segment</p></li>
+<li><p><strong>ymax</strong> (<em>float</em>) – bottom limit of the segment</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.ArrowStraight">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">ArrowStraight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.ArrowStraight" title="Permalink to this definition"></a></dt>
+<dd><p>Straight Line Edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of start extremity</p></li>
+<li><p><strong>end</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of end extremity</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.ArrowHV">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">ArrowHV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.ArrowHV" title="Permalink to this definition"></a></dt>
+<dd><p>Straight Line Edge with a corner Horizontal -&gt; Vertical</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of start extremity</p></li>
+<li><p><strong>end</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of end extremity</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.ArrowVH">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">ArrowVH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.ArrowVH" title="Permalink to this definition"></a></dt>
+<dd><p>Straight Line Edge with corner Vertical -&gt; Horizontal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of start extremity</p></li>
+<li><p><strong>end</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of end extremity</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.ArrowHVH">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">ArrowHVH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.ArrowHVH" title="Permalink to this definition"></a></dt>
+<dd><p>Straight Line Edge Horizontal -&gt; Vertical -&gt; Horizonal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of start extremity</p></li>
+<li><p><strong>end</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of end extremity</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.ArrowWave">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">ArrowWave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.ArrowWave" title="Permalink to this definition"></a></dt>
+<dd><p>S-Shaped Edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of start extremity</p></li>
+<li><p><strong>end</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of end extremity</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.ArrowHWave">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">ArrowHWave</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.ArrowHWave" title="Permalink to this definition"></a></dt>
+<dd><p>Straight -&gt; Curved Line Edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of start extremity</p></li>
+<li><p><strong>end</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of end extremity</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.shape.ArrowWaveH">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.shape.</span></span><span class="sig-name descname"><span class="pre">ArrowWaveH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">renderer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><span class="pre">undulate.renderers.renderer.Renderer</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.bricks.shape.ArrowWaveH" title="Permalink to this definition"></a></dt>
+<dd><p>Curved -&gt; Straight Line Edge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of start extremity</p></li>
+<li><p><strong>end</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a>) – coordinate of end extremity</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="undulate.bricks.register.html" class="btn btn-neutral float-left" title="4.1.1.1.1.4. undulate.bricks.register module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="undulate.parsers.html" class="btn btn-neutral float-right" title="4.1.1.2. undulate.parsers package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

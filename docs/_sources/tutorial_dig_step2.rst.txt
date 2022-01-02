@@ -1,11 +1,11 @@
 clocks
 ******
 
-However, most digital design are synchronous. The reference being a clock let's see
-how to define a clock.
+However, most digital design are synchronous. The reference being a clock let's
+see how to define a clock.
 
-At first a clock is normal digital signal with specific bricks for rising edge clocks or
-falling edge clocks.
+At first a clock is normal digital signal with specific bricks for rising edge
+clocks or falling edge clocks.
 
 .. container:: tabs
 
@@ -41,7 +41,7 @@ falling edge clocks.
 
             undulate -f svg -i step_2_dig.json -o step_2_dig.svg
         
-        .. image:: ./_images/step2_dig-json.svg
+        .. image:: ./_images/step_2_dig.json.svg
 
     .. container:: tab-content
         :name: step_2_yaml
@@ -77,7 +77,7 @@ falling edge clocks.
 
             undulate -f svg -i step_2_dig.yaml -o step_2_dig.svg
         
-        .. image:: ./_images/step2_dig-yaml.svg
+        .. image:: ./_images/step_2_dig.yaml.svg
 
     .. container:: tab-content
         :name: step_2_toml
@@ -103,7 +103,7 @@ falling edge clocks.
 
             undulate -f svg -i step_2_dig.toml -o step_2_dig.svg
         
-        .. image:: ./_images/step2_dig-toml.svg
+        .. image:: ./_images/step_2_dig.toml.svg
 
 .. note::
 
