@@ -1,3 +1,4 @@
+import os
 import json
 import requests
 
@@ -17,7 +18,8 @@ def main():
     value = f"{coverage:d} %".replace("%", "%25").replace(" ", "%20")
     badge_url = f"https://badgen.net/badge/{title}/{value}/{color}"
     badge_data = requests.get(badge_url).content
-    with open("cov_badge.svg", "wb+") as fp:
+    output_path = f"{os.getenv('OUTPATH', '.')}/cov_badge.svg"
+    with open(output_path, "wb+") as fp:
         fp.write(badge_data)
 
 
