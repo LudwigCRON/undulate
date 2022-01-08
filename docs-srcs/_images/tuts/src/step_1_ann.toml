@@ -1,0 +1,9 @@
+pulses.wave = "lhl...hl."
+pulses.node = ".a....b.."
+toggle.wave = "l.h....l."
+toggle.node = "..c....d."
+edges = [
+    "a -> c",
+    "a <-> b 100us",
+    "b ~> d"
+]

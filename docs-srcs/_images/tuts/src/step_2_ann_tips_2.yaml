@@ -1,0 +1,21 @@
+group1:
+    clk: 
+        wave: "P........"
+    rstn:
+        wave: "l..h....."
+
+group2:
+    pulses:
+        wave: "l..hl..hl"
+    toggle:
+        wave: "l...h...l"
+
+annotations:
+- shape: "||"
+  x: 6.5
+  from: 0
+  to: 1.999
+- shape: "||"
+  x: 6.5
+  from: 2
+  to: 4

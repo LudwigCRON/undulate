@@ -1,0 +1,19 @@
+{
+    signal: [
+        {
+            name: "pulses",
+            wave: "lhl...hl.",
+            node: ".a....b.."
+        },
+        {
+            name: "toggle",
+            wave: "l.h....l.",
+            node: "..c....d."
+        }
+    ],
+    edges: [
+        "a -> c",
+        "a <-> b 100 us",
+        "b ~> d"
+    ]
+}

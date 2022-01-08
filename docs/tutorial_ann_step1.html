@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>edges &mdash; Undulate 0.0.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Undulate
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">4. undulate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>edges</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tutorial_ann_step1.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="edges">
+<h1>edges<a class="headerlink" href="#edges" title="Permalink to this headline"></a></h1>
+<p>Undulate does support the edge notation of Wavedrom.
+Let’s see how to declare our first annotations.</p>
+<p>In the example below, a section <code class="docutils literal notranslate"><span class="pre">edges</span></code> contains a list of strings representing
+the desired annotations.</p>
+<p>For instance, the first one “a -&gt; c” depicts an arrow from a node <code class="docutils literal notranslate"><span class="pre">a</span></code> to a
+node <code class="docutils literal notranslate"><span class="pre">c</span></code>. Those nodes are defined alongside the waveform.
+In the <strong>node</strong> attributes, the character <code class="docutils literal notranslate"><span class="pre">.</span></code> means don’t care of the associated brick
+in the <strong>wave</strong> attribute.
+Any other character corresponds to the name given to this node.</p>
+<div class="tabs docutils container">
+<a class="tab-button" href="#step_1_jsonml">jsonml</a>
+<a class="tab-button" href="#step_1_yaml">yaml</a>
+<a class="tab-button" href="#step_1_toml">toml</a><div class="tab-content docutils container" id="step-1-jsonml">
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;pulses&quot;</span><span class="p">,</span>
+            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;lhl...hl.&quot;</span><span class="p">,</span>
+            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;.a....b..&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;toggle&quot;</span><span class="p">,</span>
+            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;l.h....l.&quot;</span><span class="p">,</span>
+            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;..c....d.&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nx">edges</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;a -&gt; c&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;a &lt;-&gt; b 100 us&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;b ~&gt; d&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<img alt="_images/step_1_ann.json.svg" src="_images/step_1_ann.json.svg" /></div>
+<div class="tab-content docutils container" id="step-1-yaml">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pulses</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;lhl...hl.&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;.a....b..&quot;</span><span class="w"></span>
+<span class="nt">toggle</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;l.h....h.&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;..c....d.&quot;</span><span class="w"></span>
+<span class="nt">edges</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;a</span><span class="nv"> </span><span class="s">-&gt;</span><span class="nv"> </span><span class="s">c&quot;</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;a</span><span class="nv"> </span><span class="s">&lt;-&gt;</span><span class="nv"> </span><span class="s">b</span><span class="nv"> </span><span class="s">100us&quot;</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;b</span><span class="nv"> </span><span class="s">~&gt;</span><span class="nv"> </span><span class="s">d&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<img alt="_images/step_1_ann.yaml.svg" src="_images/step_1_ann.yaml.svg" /></div>
+<div class="tab-content docutils container" id="step-1-toml">
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">pulses</span><span class="p">.</span><span class="n">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lhl...hl.&quot;</span><span class="w"></span>
+<span class="n">pulses</span><span class="p">.</span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;.a....b..&quot;</span><span class="w"></span>
+<span class="n">toggle</span><span class="p">.</span><span class="n">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;l.h....l.&quot;</span><span class="w"></span>
+<span class="n">toggle</span><span class="p">.</span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;..c....d.&quot;</span><span class="w"></span>
+<span class="n">edges</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;a -&gt; c&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;a &lt;-&gt; b 100us&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;b ~&gt; d&quot;</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<img alt="_images/step_1_ann.toml.svg" src="_images/step_1_ann.toml.svg" /></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Concerning the naming of the nodes you are limited to 1 character for a node.
+Thus in Wavedrom it is common to use other alphabet in the unicode tables
+to not limit ourselves to the 26 characters of the roman alphabet.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Compared to Wavedrom, the name of the node is not displayed on the waveform.
+Most of the time, the name of the node is not of importance compared to the
+real information that our graphics shall convey, and this prevents overloading
+the drawing.</p>
+</div>
+<p>For the list of possible patterns of an edge, we can decompose an edge as
+<code class="docutils literal notranslate"><span class="pre">NODE</span></code> <code class="docutils literal notranslate"><span class="pre">PATTERN</span></code> <code class="docutils literal notranslate"><span class="pre">NODE</span></code> <code class="docutils literal notranslate"><span class="pre">[TEXT]</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">PATTERN</span></code> is composed of <code class="docutils literal notranslate"><span class="pre">MARKER</span></code> <code class="docutils literal notranslate"><span class="pre">MIDDLE</span></code> <code class="docutils literal notranslate"><span class="pre">MARKER</span></code>.</p>
+<p>The list of available <code class="docutils literal notranslate"><span class="pre">MARKER</span></code> is:</p>
+<ul class="simple">
+<li><p>empty</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> (start arrow)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> (end arrow)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#</span></code> (square)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*</span></code> (circle)</p></li>
+</ul>
+<p>The list of available <code class="docutils literal notranslate"><span class="pre">MIDDLE</span></code> is:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-</span></code> (straight)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~</span></code> (curve)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-~</span></code> (straight then curve)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~-</span></code> (curve then straight)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-|</span></code> (horizontal then vertical)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">|-</span></code> (vertical then horizontal)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-|-</span></code> (horizontal then vertical then horizontal)</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>the markers <code class="docutils literal notranslate"><span class="pre">#</span></code> and <code class="docutils literal notranslate"><span class="pre">*</span></code> are not compatible with Wavedrom.</p>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

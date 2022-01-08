@@ -12,6 +12,7 @@
 #
 import os
 import sys
+from datetime import datetime
 
 sys.path.insert(0, os.path.abspath(".."))
 
@@ -20,8 +21,8 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = "Undulate"
-copyright = "2020, Ludwig CRON"
 author = "Ludwig CRON"
+copyright = f"{datetime.now().year}, {author}"
 
 # The full version, including alpha/beta/rc tags
 release = "0.0.4"

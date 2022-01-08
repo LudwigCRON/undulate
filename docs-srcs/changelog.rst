@@ -3,25 +3,39 @@ Changelog
 
 For next release:
 
-    - css file parser for global style
     - text underline or overline rendering
     - multiline text support
-    - verilog sequences generation
+    - verilog stimuli rendering engine
+    - terminal rendering engine
+
+v0.0.5:
+    **New:**
+        - css file parser for global style
+        - fix `#36 <https://github.com/LudwigCRON/undulate/issues/36>`_ 
+        - fix `#37 <https://github.com/LudwigCRON/undulate/issues/37>`_ 
+    
+    **Change:**
+        - architecture change to support brick plugins
+        - architecture change to apply filters on wavelanes
+        - complete the documentation
+        - improve test coverage
+        - improve parsing of annotations's from/to properties
+        - change from Travis CI to Circle CI
 
 v0.0.4:
 *******
     **New:**
-        - wavedrom single node edge for text position
+        - Wavedrom single node edge for text position
         - arrows, lines, ... and color overloading
-        - add from / to properties to delimit global time compression
-        - remove background behind text in annotations with text-background: False
+        - add from/to properties to delimit global time compression
+        - remove background behind text in annotations with text_background: False
 
 
     **Change:**
         - rename module from pywave to undulate
         - fix positions wrt to hscale/vscale
         - improve safety wrt to evaluation of equations
-        - position calculation
+        - fix position calculation
         - fix background during signal transition
         - update documentation
         - simplify installation process
@@ -33,21 +47,21 @@ v0.0.3:
         - travis CI
         - decomposition into pre/-/post-processing steps
         - enhanced annotations capability
-        - signal overlay
-        - empty brick with ' '
+        - add signal overlay
+        - add empty brick with ' '
         - add "||" for global time compression annotation
         - add hline, vline and edges as annotations
-        - stroke-dasharray support
-        - initialisation of the current documentation
+        - add stroke-dasharray support
+        - preparation of the documentation
 
     **Change:**
         - rename module into pywave
         - update license
-        - fix complexe wavedrom script
+        - fix complex Wavedrom script
         - adjust code for sphinx-module creation
         - fix python 3.5 compatibility issues
-        - consider period information for node positionning
-        - arrows positionning
+        - consider period information for node positioning
+        - arrows positioning
         - fix cross groups edges
 
     **Removed:**

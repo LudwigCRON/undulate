@@ -1,0 +1,8 @@
+pulses.wave = "lhl...hl."
+pulses.node = ".a....b.."
+toggle.wave = "l.h....l."
+toggle.node = "..c....d."
+
+[[annotations]]
+shape = "||"
+x = 5

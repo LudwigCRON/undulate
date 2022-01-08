@@ -75,28 +75,48 @@
 <p>For next release:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>css file parser for global style</p></li>
 <li><p>text underline or overline rendering</p></li>
 <li><p>multiline text support</p></li>
-<li><p>verilog sequences generation</p></li>
+<li><p>verilog stimuli rendering engine</p></li>
+<li><p>terminal rendering engine</p></li>
 </ul>
 </div></blockquote>
+<dl class="simple">
+<dt>v0.0.5:</dt><dd><dl class="simple">
+<dt><strong>New:</strong></dt><dd><ul class="simple">
+<li><p>css file parser for global style</p></li>
+<li><p>fix <a class="reference external" href="https://github.com/LudwigCRON/undulate/issues/36">#36</a></p></li>
+<li><p>fix <a class="reference external" href="https://github.com/LudwigCRON/undulate/issues/37">#37</a></p></li>
+</ul>
+</dd>
+<dt><strong>Change:</strong></dt><dd><ul class="simple">
+<li><p>architecture change to support brick plugins</p></li>
+<li><p>architecture change to apply filters on wavelanes</p></li>
+<li><p>complete the documentation</p></li>
+<li><p>improve test coverage</p></li>
+<li><p>improve parsing of annotations’s from/to properties</p></li>
+<li><p>change from Travis CI to Circle CI</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
 <section id="v0-0-4">
 <h2><span class="section-number">3.1. </span>v0.0.4:<a class="headerlink" href="#v0-0-4" title="Permalink to this headline"></a></h2>
 <blockquote>
 <div><dl class="simple">
 <dt><strong>New:</strong></dt><dd><ul class="simple">
-<li><p>wavedrom single node edge for text position</p></li>
+<li><p>Wavedrom single node edge for text position</p></li>
 <li><p>arrows, lines, … and color overloading</p></li>
-<li><p>add from / to properties to delimit global time compression</p></li>
-<li><p>remove background behind text in annotations with text-background: False</p></li>
+<li><p>add from/to properties to delimit global time compression</p></li>
+<li><p>remove background behind text in annotations with text_background: False</p></li>
 </ul>
 </dd>
 <dt><strong>Change:</strong></dt><dd><ul class="simple">
 <li><p>rename module from pywave to undulate</p></li>
 <li><p>fix positions wrt to hscale/vscale</p></li>
 <li><p>improve safety wrt to evaluation of equations</p></li>
-<li><p>position calculation</p></li>
+<li><p>fix position calculation</p></li>
 <li><p>fix background during signal transition</p></li>
 <li><p>update documentation</p></li>
 <li><p>simplify installation process</p></li>
@@ -113,22 +133,22 @@
 <li><p>travis CI</p></li>
 <li><p>decomposition into pre/-/post-processing steps</p></li>
 <li><p>enhanced annotations capability</p></li>
-<li><p>signal overlay</p></li>
-<li><p>empty brick with ‘ ‘</p></li>
+<li><p>add signal overlay</p></li>
+<li><p>add empty brick with ‘ ‘</p></li>
 <li><p>add “||” for global time compression annotation</p></li>
 <li><p>add hline, vline and edges as annotations</p></li>
-<li><p>stroke-dasharray support</p></li>
-<li><p>initialisation of the current documentation</p></li>
+<li><p>add stroke-dasharray support</p></li>
+<li><p>preparation of the documentation</p></li>
 </ul>
 </dd>
 <dt><strong>Change:</strong></dt><dd><ul class="simple">
 <li><p>rename module into pywave</p></li>
 <li><p>update license</p></li>
-<li><p>fix complexe wavedrom script</p></li>
+<li><p>fix complex Wavedrom script</p></li>
 <li><p>adjust code for sphinx-module creation</p></li>
 <li><p>fix python 3.5 compatibility issues</p></li>
-<li><p>consider period information for node positionning</p></li>
-<li><p>arrows positionning</p></li>
+<li><p>consider period information for node positioning</p></li>
+<li><p>arrows positioning</p></li>
 <li><p>fix cross groups edges</p></li>
 </ul>
 </dd>
