@@ -21,7 +21,7 @@ jobs:
       - run:
           name: "execute tests"
           working_directory: "./tests"
-          command: "make all"
+          command: "mkdir -p ./outputs/ && make all"
       - store_artifacts:
           path: "./tests/coverage"
       - store_artifacts:
@@ -38,7 +38,7 @@ jobs:
       - run:
           name: "execute tests"
           working_directory: "./tests"
-          command: "make all"
+          command: "mkdir -p ./outputs/ && make all"
       - store_artifacts:
           path: "./tests/coverage"
       - store_artifacts:
@@ -55,7 +55,7 @@ jobs:
       - run:
           name: "execute tests"
           working_directory: "./tests"
-          command: "make all"
+          command: "mkdir -p ./outputs/ && make all"
       - store_artifacts:
           path: "./tests/coverage"
       - store_artifacts:
