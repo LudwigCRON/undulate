@@ -22,6 +22,10 @@ jobs:
           name: "execute tests"
           working_directory: "./tests"
           command: "make all"
+      - store_artifacts:
+          path: "./tests/coverage"
+      - store_artifacts:
+          path: "./tests/outputs"
   python39:
     docker:
       - image: cimg/python:3.9.6
@@ -35,6 +39,10 @@ jobs:
           name: "execute tests"
           working_directory: "./tests"
           command: "make all"
+      - store_artifacts:
+          path: "./tests/coverage"
+      - store_artifacts:
+          path: "./tests/outputs"
   python310:
     docker:
       - image: cimg/python:3.10.1
@@ -48,6 +56,10 @@ jobs:
           name: "execute tests"
           working_directory: "./tests"
           command: "make all"
+      - store_artifacts:
+          path: "./tests/coverage"
+      - store_artifacts:
+          path: "./tests/outputs"
 workflows:
   undulate-workflow:
     jobs:
