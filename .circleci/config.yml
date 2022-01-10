@@ -5,14 +5,31 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  python38:
+  python37:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: cimg/python:3.8.11
+      - image: cimg/python:3.7.12
     resource_class: small
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - checkout
+      - run:
+          name: "install undulate"
+          command : "make build_dependencies && make install_pkg"
+      - run:
+          name: "execute tests"
+          working_directory: "./tests"
+          command: "mkdir -p ./outputs/ && make all"
+      - store_artifacts:
+          path: "./tests/coverage"
+      - store_artifacts:
+          path: "./tests/outputs"
+  python38:
+    docker:
+      - image: cimg/python:3.8.11
+    resource_class: small
     steps:
       - checkout
       - run:
@@ -63,6 +80,7 @@ jobs:
 workflows:
   undulate-workflow:
     jobs:
+      - python37
       - python38
       - python39
       - python310
