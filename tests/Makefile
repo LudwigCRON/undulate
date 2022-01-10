@@ -35,10 +35,10 @@ new: wavetest.json wavetest.yaml
 	@echo "New Done"
 
 internal-svg:
-	python ./test_wavedrom.py -f svg
+	OUTPATH=${OUTPATH} python ./test_wavedrom.py -f svg
 
 internal-cairo-svg:
-	python ./test_wavedrom.py -f cairo-svg
+	OUTPATH=${OUTPATH} python ./test_wavedrom.py -f cairo-svg
 
 internal: internal-svg internal-cairo-svg
 
@@ -81,8 +81,8 @@ coverage:
 	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/wavetest.json -f cairo-eps -o ${OUTPATH}/$(subst .json,-json-cairo.eps,wavetest.json)
 	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/wavetest.json -f cairo-png -o ${OUTPATH}/$(subst .json,-json-cairo.png,wavetest.json)
 	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/wavetest.yaml -f cairo-pdf -o ${OUTPATH}/$(subst .yaml,-yaml-cairo.pdf,wavetest.yaml)
-	coverage run -a ./test_wavedrom.py -f svg
-	coverage run -a ./test_wavedrom.py -f cairo-svg
+	OUTPATH=${OUTPATH} coverage run -a ./test_wavedrom.py -f svg
+	OUTPATH=${OUTPATH} coverage run -a ./test_wavedrom.py -f cairo-svg
 	coverage run -a ./test_css.py
 	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/edge_markers.yaml -f cairo-svg -o ${OUTPATH}/edge_markers.svg
 	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/wavetest_alt.json -f cairo-png -s ${TESTPATH}/ut_css/overload.css -o ${OUTPATH}/$(subst .json,-json-cairo.png,wavetest_alt.json)

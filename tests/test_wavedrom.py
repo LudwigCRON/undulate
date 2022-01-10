@@ -7,8 +7,10 @@ import unittest
 
 # imports as in undulate.py
 import importlib
+from undulate.renderers.renderer import Renderer
 from undulate.renderers.svgrenderer import SvgRenderer
 from undulate.renderers.cairorenderer import CairoRenderer
+from undulate.bricks.generic import NodeBank, Point
 
 RENDERER = None
 
@@ -287,6 +289,45 @@ class TestSvgMethods(unittest.TestCase):
             "edge": [],
         }
         RENDERER.draw(wavelanes, filename=filename)
+
+    def test_from_to_parsing(self):
+        """
+        parsing of different possible from/to format
+        """
+        width, height = 100, 100
+        bwidth, bheight = 40, 20
+        NodeBank.nodes = {}
+        Renderer.y_steps = []
+        NodeBank.register("a_t", Point(bwidth * 2, bheight * 3 + 10.25))
+        from_to = [
+            "",
+            "(1.0, 2.0)",
+            (1.0, 2.0),
+            1.0,
+            "3.14",
+            "10.5%",
+            "(5%, 6.1%)",
+            "a_t",
+            "a_t  +(0.5, -0.15)",
+            None,
+        ]
+        expected = [
+            Point(0, 0),
+            Point(bwidth, 2 * bheight),
+            Point(bwidth, 2 * bheight),
+            Point(bwidth, bheight),
+            Point(3.14 * bwidth, 3.14 * bheight),
+            Point(0.105 * width, 0.105 * height),
+            Point(0.05 * width, 0.061 * height),
+            Point(bwidth * 2, bheight * 3 + 10.25),
+            Point(bwidth * 2.5, bheight * 2.85 + 10.25),
+            Point(0, 0),
+        ]
+        for ft, e in zip(from_to, expected):
+            p = RENDERER.from_to_parser(ft, width, height, bwidth, bheight)
+            print(f"Parsing of {ft}")
+            assert p.x == e.x, f"Wrong x position for {p!r} expected {e.x} for {ft!r}"
+            assert p.y == e.y, f"Wrong y position for {p!r} expected {e.y} for {ft!r}"
 
 
 if __name__ == "__main__":

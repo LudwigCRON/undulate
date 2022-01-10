@@ -269,8 +269,10 @@ class Renderer:
         - float
         - Tuple[float, float]
         - String "float"
+        - String "float unit" where unit is either "" or "%"
         - String "(float unit, float unit)" where unit is either "" or "%"
         - String "node_name"
+        - String "node_name + (± float, ± float)"
 
         Args:
             s (str): value of from or to option
@@ -281,21 +283,55 @@ class Renderer:
         Returns:
             Point of x-y coordinate
         """
+        ans = Point(0, 0)
         # None, empty str, ...
         if s is None or (isinstance(s, str) and not s.strip()):
-            return Point(0, 0)
-        # if is only a number
-        if isinstance(s, (int, float)):
-            s = (s, s)
-        # if a string representing a tuple
-        if isinstance(s, str) and "," in s:
+            return ans
+        re_str_node_tuple = r"(?P<node>\w+)\s*\+\s*\(\s*(?P<dx>[+-]?\s*\d*\.?\d*)\s*,\s*(?P<dy>[+-]?\s*\d*\.?\d*)\s*\)"
+        re_str_tuple = r"\(\s*(?P<x>\d*\.?\d*\s*%?)\s*,\s*(?P<y>\d*\.?\d*\s*%?)\s*\)"
+        # convert potential tuple and int into python object
+        if isinstance(s, str):
+            s = s.strip()
+            # if s corresponds to a node
+            if s in NodeBank.nodes:
+                return NodeBank.nodes.get(s)
+            # if s corresponds to node_name + (dx, dy)
+            match = re.match(re_str_node_tuple, s)
+            if match:
+                p = NodeBank.nodes.get(match.group("node"))
+                if p:
+                    ans.x = p.x + float(match.group("dx")) * brick_width
+                    ans.y = p.y + float(match.group("dy")) * brick_height
+                    return ans
+            # if s corresponds to a tuple get x and y coordinate
+            match = re.match(re_str_tuple, s)
+            if match:
+                s = (match.group("x"), match.group("y"))
+                # convert percentage into absolute
+                if "%" in s[0]:
+                    ans.x = float(s[0].replace("%", "")) * width / 100
+                else:
+                    ans.x = float(s[0]) * brick_width
+                if "%" in s[1]:
+                    ans.y = float(s[1].replace("%", "")) * height / 100
+                else:
+                    ans.y = Renderer.adjust_y(float(s[1]), brick_height)
+                return ans
+            if "%" in s:
+                ans.x = float(s.replace("%", "")) * width / 100
+                ans.y = float(s.replace("%", "")) * height / 100
+                return ans
             s = safe_eval(s)
-        # if a string representing a node
-        if isinstance(s, str) and s in NodeBank.nodes:
-            return NodeBank.nodes.get(s)
-        # if tuple so pre-estimated
+        # if s is a tuple
         if isinstance(s, tuple):
-            return Point(s[0] * brick_width, Renderer.adjust_y(s[1], brick_height))
+            ans.x = float(s[0]) * brick_width
+            ans.y = Renderer.adjust_y(float(s[1]), brick_height)
+            return ans
+        # if s is only a number
+        if isinstance(s, (int, float)):
+            ans.x = s * brick_width
+            ans.y = Renderer.adjust_y(s, brick_height)
+            return ans
         log.fatal(log.FROM_TO_UNKNOWN_FORMAT % str(s), 8)
 
     @staticmethod
