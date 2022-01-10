@@ -1,0 +1,80 @@
+spacer:
+    wave: ""
+
+
+Analog:
+    VDD50OTP:
+        wave: "s....."
+        slewing: 128
+        analogue:
+          - VDDA
+        overlay: true
+        vscale: 2
+        order: 1
+    
+    VPP:
+        wave: "l.......s..."
+        node: "........#... vpp_rdy"
+        slewing: 20
+        vscale: 2
+        analogue:
+          - VDDA
+        order: 3
+
+Ports:
+    POWER_UP:
+        wave: "l..10..."
+        node: "...#.... pwr_up_req"
+
+OTP Shell:
+    ms_otp_shell_vpp_mode[1:0]:
+        wave: "=.......=..."
+        node: "........#... mux_chng"
+        data:
+          - "0"
+          - "1"
+    CEB:
+        wave: "1.....0......"
+        node: "......#...... active"
+
+annotations:
+    - shape: "||"
+      x: 4.5
+      from: 1.0
+    - shape: "||"
+      x: 6.5
+      from: 1.0
+    # vpp change origin
+    - shape: "~->"
+      from: pwr_up_req
+      to: mux_chng
+    - shape: "-~>"
+      from: mux_chng
+      to: vpp_rdy
+    # ceb change origin
+    - shape: "~->"
+      from: pwr_up_req
+      to: active
+    # timing delimitation
+    - shape: "|"
+      x: 3.2
+      stroke: "#DB4140"
+      stroke-dasharray: [1,3]
+    - shape: "|"
+      x: 6.05
+      stroke: "#DB4140"
+      stroke-dasharray: [1,3]
+    - shape: "|"
+      x: 8.25
+      stroke: "#DB4140"
+      stroke-dasharray: [1,3]
+    # timing arrows
+    - shape: "<->"
+      from: (3.2, 0.25)
+      to: (6.05, 0.25)
+      text: "> 100 ns"
+    - shape: "<->"
+      from: (3.2, 0.95)
+      to: (8.25, 0.95)
+      text: "> 1 us"
+      dx: 1.25

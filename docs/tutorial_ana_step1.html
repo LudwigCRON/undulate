@@ -1,68 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>analogue signal &mdash; Undulate 0.0.4 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
-          
-
-          
+            <a href="index.html" class="icon icon-home"> Undulate
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -70,102 +36,53 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">4. Undulate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">4. undulate</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Undulate</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>analogue signal</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/tutorial_ana_step1.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="analogue-signal">
-<h1>analogue signal<a class="headerlink" href="#analogue-signal" title="Permalink to this headline">¶</a></h1>
-<p>An analogue signal varies between two limits corresponding to the
-supply <span class="math notranslate nohighlight">\(V_{DDA}\)</span> and <span class="math notranslate nohighlight">\(V_{SSA}\)</span>.</p>
-<p>At the exception of very specific design, most analogue signals are stepwise variation
-(switched-capa circuits, trimming operations,…). Therefore only the final value change
-with a transition either corresponding to the charge (resp. discharge) of a capacitor,
-or linearly due to current limitation (slewing).</p>
-<p>The analogue bricks corresponding to such behaviour are <code class="docutils literal notranslate"><span class="pre">c</span></code> for capacitive loading, and
-<code class="docutils literal notranslate"><span class="pre">s</span></code> for slewing. They accept a single value being either a number or an expression
-depending on <span class="math notranslate nohighlight">\(V_{DDA}\)</span>.</p>
-<p>For more arbitrary functions, or continous time functions, the analogue brick to be used is
-<code class="docutils literal notranslate"><span class="pre">a</span></code> and accepts an array of numbers or an expression resulting into an array of numbers.</p>
+             
+  <section id="analogue-signal">
+<h1>analogue signal<a class="headerlink" href="#analogue-signal" title="Permalink to this headline"></a></h1>
+<p>An analogue signal varies between two limits corresponding to the supply
+<span class="math notranslate nohighlight">\(V_{DDA}\)</span> and <span class="math notranslate nohighlight">\(V_{SSA}\)</span>.</p>
+<p>At the exception of very specific design, most analogue signals are stepwise
+variation (switched-caps circuits, trimming operations, …). Therefore, only the
+final value change with a transition either corresponding to the charge
+(resp. discharge) of a capacitor, or linearly due to current limitation (slewing).</p>
+<p>The analogue bricks corresponding to such behavior are <code class="docutils literal notranslate"><span class="pre">c</span></code> for capacitive
+loading, and <code class="docutils literal notranslate"><span class="pre">s</span></code> for slewing. They accept a single value being either a number
+or an expression depending on <span class="math notranslate nohighlight">\(V_{DDA}\)</span>.</p>
+<p>For more arbitrary functions, or continuous time functions, the analogue brick to
+be used is <code class="docutils literal notranslate"><span class="pre">a</span></code> and accepts an array of numbers or an expression resulting into
+an array of numbers.</p>
 <div class="tabs docutils container">
 <a class="tab-button" href="#step_1_jsonml">jsonml</a>
 <a class="tab-button" href="#step_1_yaml">yaml</a>
@@ -186,104 +103,85 @@ depending on <span class="math notranslate nohighlight">\(V_{DDA}\)</span>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -i step_1_ana.json -o step_1_ana.svg
 </pre></div>
 </div>
-<img alt="./_images/step1_ana-json.svg" src="./_images/step1_ana-json.svg" /></div>
+<img alt="_images/step_1_ana.json.svg" src="_images/step_1_ana.json.svg" /></div>
 <div class="tab-content docutils container" id="step-1-yaml">
 <p>set the content of the file to</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gbf</span><span class="p">:</span>
-    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;0ssssccca...msMs&quot;</span>
-    <span class="nt">analogue</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;0.5*VDDA&quot;</span> <span class="c1"># first 4 &#39;s&#39;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;0.6*VDDA&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;0.7*VDDA&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;0.9*VDDA&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;0.2*VDDA&quot;</span> <span class="c1"># 3 &#39;c&#39;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;0.8*VDDA&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;0.3*VDDA&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;[(t,</span><span class="nv"> </span><span class="s">(VDDA+VSSA)*(1</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">sin(2*pi*t*3.5/Tmax))/2)</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">t</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">time]&quot;</span> <span class="c1"># for &#39;a&#39;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;0.25*VDDA&quot;</span> <span class="c1"># for last s</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">gbf</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0ssssccca...msMs&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">analogue</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;0.5*VDDA&quot;</span><span class="w"> </span><span class="c1"># first 4 &#39;s&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;0.6*VDDA&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;0.7*VDDA&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;0.9*VDDA&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;0.2*VDDA&quot;</span><span class="w"> </span><span class="c1"># 3 &#39;c&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;0.8*VDDA&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;0.3*VDDA&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;[(t,</span><span class="nv"> </span><span class="s">(VDDA+VSSA)*(1</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">sin(2*pi*t*3.5/Tmax))/2)</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">t</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">time]&quot;</span><span class="w"> </span><span class="c1"># for &#39;a&#39;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;0.25*VDDA&quot;</span><span class="w"> </span><span class="c1"># for last s</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -i step_1_ana.yaml -o step_1_ana.svg
 </pre></div>
 </div>
-<img alt="./_images/step1_ana-yaml.svg" src="./_images/step1_ana-yaml.svg" /></div>
+<img alt="_images/step_1_ana.yaml.svg" src="_images/step_1_ana.yaml.svg" /></div>
 <div class="tab-content docutils container" id="step-1-toml">
 <p>set the content of the file to</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">gbf</span><span class="p">.</span><span class="n">wave</span> <span class="o">=</span> <span class="s">&quot;0ssssccca...msMs&quot;</span>
-<span class="n">gbf</span><span class="p">.</span><span class="n">analogue</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&quot;0.5*VDDA&quot;</span><span class="p">,</span> <span class="c1"># first 4 &#39;s&#39;</span>
-    <span class="s">&quot;0.6*VDDA&quot;</span><span class="p">,</span>
-    <span class="s">&quot;0.7*VDDA&quot;</span><span class="p">,</span>
-    <span class="s">&quot;0.9*VDDA&quot;</span><span class="p">,</span>
-    <span class="s">&quot;0.2*VDDA&quot;</span><span class="p">,</span> <span class="c1"># 3 &#39;c&#39;</span>
-    <span class="s">&quot;0.8*VDDA&quot;</span><span class="p">,</span>
-    <span class="s">&quot;0.3*VDDA&quot;</span><span class="p">,</span>
-    <span class="s">&quot;[(t, (VDDA+VSSA)*(1 + sin(2*pi*t*3.5/Tmax))/2) for t in time]&quot;</span><span class="p">,</span> <span class="c1"># for &#39;a&#39;</span>
-    <span class="s">&quot;0.25*VDDA&quot;</span><span class="p">,</span> <span class="c1"># for last s</span>
-    <span class="s">&quot;VDDA&quot;</span>
-<span class="p">]</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">gbf</span><span class="p">.</span><span class="n">wave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0ssssccca...msMs&quot;</span><span class="w"></span>
+<span class="n">gbf</span><span class="p">.</span><span class="n">analogue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;0.5*VDDA&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># first 4 &#39;s&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;0.6*VDDA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;0.7*VDDA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;0.9*VDDA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;0.2*VDDA&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># 3 &#39;c&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;0.8*VDDA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;0.3*VDDA&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;[(t, (VDDA+VSSA)*(1 + sin(2*pi*t*3.5/Tmax))/2) for t in time]&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># for &#39;a&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;0.25*VDDA&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1"># for last s</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA&quot;</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -i step_1_ana.toml -o step_1_ana.svg
 </pre></div>
 </div>
-<img alt="./_images/step1_ana-toml.svg" src="./_images/step1_ana-toml.svg" /></div>
+<img alt="_images/step_1_ana.toml.svg" src="_images/step_1_ana.toml.svg" /></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Predefined constant and functions are provided in this analogue context. The exhaustive
-list of those is presented in section 2.3.</p>
+<p>Predefined constant and functions are provided in this analogue context. The
+exhaustive list of those is presented in section 2.3.</p>
 </div>
-</div>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2020, Ludwig CRON
-
-    </p>
+    <p>&#169; Copyright 2022, Ludwig CRON.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

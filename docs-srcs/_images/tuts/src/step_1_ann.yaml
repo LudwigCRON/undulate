@@ -1,0 +1,10 @@
+pulses:
+    wave: "lhl...hl."
+    node: ".a....b.."
+toggle:
+    wave: "l.h....l."
+    node: "..c....d."
+edges:
+- "a -> c"
+- "a <-> b 100us"
+- "b ~> d"

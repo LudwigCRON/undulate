@@ -1,17 +1,19 @@
-superposition and style overloading
+Superposition and style overloading
 ***********************************
 
-Mixed signal design shall have clear interface definition between analogue and digital.
-A common situation is a comparator giving a digital output of the comparison of two analogue
-signals.
+Mixed signal design shall have clear interface definition between analogue and
+digital. A common situation is a comparator giving a digital output of the
+comparison of two analogue signals.
 
-In order to better convey the relation between the two analogue signals at the input of the
-comparator, it is interresting to superpose them with a different color.
+In order to better convey the relation between the two analogue signals at the
+input of the comparator, it is interesting to superpose them with a different
+color.
 
-Undulate allows a superposition of up to 4 signals. For that, the attribute ``overlay`` should
-be set to ``True`` for the first 3 signals. Both signal and signal's name are supperposed.
-In order to clarify which signal is which, the position of the signal's name could be adjusted:
-the attribute ``order`` accepts a value between 0 and 4:
+Undulate allows a superposition of up to 4 signals. For that, the attribute
+``overlay`` should be set to ``True`` for the first 3 signals. Both signal and 
+signal's name are superposed.
+In order to clarify which signal is which, the position of the signal's name
+could be adjusted: the attribute ``order`` accepts a value between 0 and 4:
 
     - 0: middle (default value)
     - 1: top
@@ -83,7 +85,7 @@ the attribute ``order`` accepts a value between 0 and 4:
 
             undulate -f svg -i step_2_ana.json -o step_2_ana.svg
         
-        .. image:: ./_images/step2_ana-json.svg
+        .. image:: ./_images/step_2_ana.json.svg
 
     .. container:: tab-content
         :name: step_2_yaml
@@ -177,7 +179,7 @@ the attribute ``order`` accepts a value between 0 and 4:
 
             undulate -f svg -i step_2_ana.yaml -o step_2_ana.svg
         
-        .. image:: ./_images/step2_ana-yaml.svg
+        .. image:: ./_images/step_2_ana.yaml.svg
 
     .. container:: tab-content
         :name: step_2_toml
@@ -268,7 +270,7 @@ the attribute ``order`` accepts a value between 0 and 4:
 
             undulate -f svg -i step_2_ana.toml -o step_2_ana.svg
         
-        .. image:: ./_images/step2_ana-toml.svg
+        .. image:: ./_images/step_2_ana.toml.svg
 
 .. note::
 

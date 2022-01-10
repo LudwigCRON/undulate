@@ -1,22 +1,26 @@
 undulate package
 ================
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   undulate.bricks
+   undulate.parsers
+   undulate.renderers
+
 Submodules
 ----------
 
 .. toctree::
    :maxdepth: 4
 
-   undulate.analogue
-   undulate.bricks
-   undulate.cairorenderer
-   undulate.digital
-   undulate.generic
-   undulate.register
-   undulate.renderer
+   undulate.cli
+   undulate.logger
    undulate.skin
-   undulate.svgrenderer
-   undulate.waveform
+   undulate.version
 
 Module contents
 ---------------

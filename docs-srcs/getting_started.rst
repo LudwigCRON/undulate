@@ -9,4 +9,6 @@ Getting Started
     dependencies
     installation
 
-Before jumping into the tutorial section, let's install undulate...
+
+Before jumping into the tutorial section, let's install undulate
+and discuss its dependencies.

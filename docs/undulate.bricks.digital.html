@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.1.1.1.1.2. undulate.bricks.digital module &mdash; Undulate 0.0.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.1.1.1.1.3. undulate.bricks.generic module" href="undulate.bricks.generic.html" />
+    <link rel="prev" title="4.1.1.1.1.1. undulate.bricks.analogue module" href="undulate.bricks.analogue.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Undulate
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">4. undulate</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="undulate.html">4.1. undulate package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="undulate.bricks.html">4.1.1.1. undulate.bricks package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.analogue.html">4.1.1.1.1.1. undulate.bricks.analogue module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.1.1.1.1.2. undulate.bricks.digital module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.generic.html">4.1.1.1.1.3. undulate.bricks.generic module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.register.html">4.1.1.1.1.4. undulate.bricks.register module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.bricks.shape.html">4.1.1.1.1.5. undulate.bricks.shape module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.html">4.1.1.2. undulate.parsers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.html">4.1.1.3. undulate.renderers package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.cli.html">4.1.2.1. undulate.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.logger.html">4.1.2.2. undulate.logger module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.skin.html">4.1.2.3. undulate.skin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.version.html">4.1.2.4. undulate.version module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html"><span class="section-number">4. </span>undulate</a> &raquo;</li>
+          <li><a href="undulate.html"><span class="section-number">4.1. </span>undulate package</a> &raquo;</li>
+          <li><a href="undulate.bricks.html"><span class="section-number">4.1.1.1. </span>undulate.bricks package</a> &raquo;</li>
+      <li><span class="section-number">4.1.1.1.1.2. </span>undulate.bricks.digital module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/undulate.bricks.digital.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-undulate.bricks.digital">
+<span id="undulate-bricks-digital-module"></span><h1><span class="section-number">4.1.1.1.1.2. </span>undulate.bricks.digital module<a class="headerlink" href="#module-undulate.bricks.digital" title="Permalink to this headline"></a></h1>
+<p>digital.py declare the basic building block
+to generate a digital waveform</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Nclk">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Nclk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Nclk" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>Falling edge clock without arrow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float &gt; 0</em>) – between 0 and 1</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Nclk.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Nclk.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Nclk.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Nclk.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.NclkArrow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">NclkArrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.NclkArrow" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Nclk" title="undulate.bricks.digital.Nclk"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Nclk</span></code></a></p>
+<p>Falling edge clock with arrow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float &gt; 0</em>) – between 0 and 1</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.NclkArrow.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.NclkArrow.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.NclkArrow.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.NclkArrow.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Pclk">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Pclk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Pclk" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>Rising edge clock without arrow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float &gt; 0</em>) – between 0 and 1</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Pclk.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Pclk.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Pclk.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Pclk.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.PclkArrow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">PclkArrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.PclkArrow" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Pclk" title="undulate.bricks.digital.Pclk"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Pclk</span></code></a></p>
+<p>Rising edge clock with arrow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>duty_cycle</strong> (<em>float &gt; 0</em>) – between 0 and 1</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.PclkArrow.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.PclkArrow.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.PclkArrow.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.PclkArrow.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Low">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Low</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Low" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>Falling edge clock and rest at zero</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Low.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Low.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Low.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Low.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.LowArrow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">LowArrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.LowArrow" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Low" title="undulate.bricks.digital.Low"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Low</span></code></a></p>
+<p>Falling edge clock with arrow and rest at zero</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.LowArrow.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.LowArrow.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.LowArrow.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.LowArrow.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.High">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">High</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.High" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>Rising edge clock and rest at one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.High.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.High.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.High.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.High.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.HighArrow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">HighArrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.HighArrow" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.High" title="undulate.bricks.digital.High"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.High</span></code></a></p>
+<p>Rising edge clock with arrow and rest at one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.HighArrow.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.HighArrow.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.HighArrow.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.HighArrow.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.HighZ">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">HighZ</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.HighZ" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>High impedance mode with a reset close to VDD/2</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.HighZ.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.HighZ.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.HighZ.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.HighZ.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Zero">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Zero" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>Zero level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Zero.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Zero.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Zero.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Zero.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.One">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">One</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.One" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>One level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.One.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.One.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.One.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.One.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Garbage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Garbage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Garbage" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>Unknown state for data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>follow_data</strong> (<em>bool</em>) – data ‘=’ occurs before this brick</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Garbage.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Garbage.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Garbage.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Garbage.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Data">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'s2-polygon'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Data" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>Multibits value such as a Bus</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p></li>
+<li><p><strong>style</strong> (<em>str</em>) – from s2 to s9-polygon or hatch, by default s2-polygon</p></li>
+<li><p><strong>hide_data</strong> (<em>bool</em>) – prevent the display of the associated data</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Data.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Data.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Data.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Data.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Two">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Two</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Two" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Data" title="undulate.bricks.digital.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Data</span></code></a></p>
+<p>Variant of Data with a css rule ‘.s2-polygon’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Two.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Two.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Two.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Two.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Three">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Three</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Three" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Data" title="undulate.bricks.digital.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Data</span></code></a></p>
+<p>Variant of Data with a css rule ‘.s3-polygon’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Three.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Three.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Three.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Three.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Four">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Four</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Four" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Data" title="undulate.bricks.digital.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Data</span></code></a></p>
+<p>Variant of Data with a css rule ‘.s4-polygon’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Four.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Four.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Four.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Four.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Five">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Five</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Five" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Data" title="undulate.bricks.digital.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Data</span></code></a></p>
+<p>Variant of Data with a css rule ‘.s5-polygon’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Five.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Five.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Five.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Five.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Six">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Six</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Six" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Data" title="undulate.bricks.digital.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Data</span></code></a></p>
+<p>Variant of Data with a css rule ‘.s6-polygon’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Six.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Six.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Six.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Six.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Seven">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Seven</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Seven" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Data" title="undulate.bricks.digital.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Data</span></code></a></p>
+<p>Variant of Data with a css rule ‘.s7-polygon’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Seven.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Seven.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Seven.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Seven.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Eight">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Eight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Eight" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Data" title="undulate.bricks.digital.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Data</span></code></a></p>
+<p>Variant of Data with a css rule ‘.s8-polygon’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Eight.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Eight.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Eight.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Eight.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Nine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Nine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Nine" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Data" title="undulate.bricks.digital.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Data</span></code></a></p>
+<p>Variant of Data with a css rule ‘.s9-polygon’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Nine.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Nine.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Nine.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Nine.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Unknown">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Unknown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Unknown" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#undulate.bricks.digital.Data" title="undulate.bricks.digital.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.digital.Data</span></code></a></p>
+<p>Variant of Data with a css rule ‘.hatch’</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Unknown.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Unknown.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Unknown.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Unknown.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Gap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Gap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Gap" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>single line time compression</p>
+<p>Its position inside a brick, similarly to a duty cycle for a clock,
+can be adjusted globally with the property ‘gap_offset’ in the
+‘config’ section. The a value is a float in the ]0-1[ range.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Gap.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Gap.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Gap.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Gap.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Up">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Up" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>RC charging to VDD</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Up.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Up.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Up.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Up.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Down">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Down" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>RC discharge to GND</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>slewing</strong> (<em>float</em>) – limit the slope</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Down.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Down.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Down.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Down.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.ImpulseUp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">ImpulseUp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.ImpulseUp" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>pulse from GND to VDD</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>duty_cycle</strong> (<em>float</em>) – adjust the x position of the impulse
+from 0 to 1, by default 0.5</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.ImpulseUp.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.ImpulseUp.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.ImpulseUp.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.ImpulseUp.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.ImpulseDown">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">ImpulseDown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.ImpulseDown" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>pulse from VDD to GND</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>duty_cycle</strong> (<em>float</em>) – adjust the x position of the impulse
+from 0 to 1, by default 0.5</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.ImpulseDown.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.ImpulseDown.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.ImpulseDown.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.ImpulseDown.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Space">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Space" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>blank (area without any drawing)
+This block can be used in coordination of the overlay possibility
+to create even more complex signal or apply a specific color for
+a portion of the signal.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Space.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Space.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Space.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Space.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Empty">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">Empty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.digital.Empty" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<p>empty brick with zero width</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Empty.get_first_y">
+<span class="sig-name descname"><span class="pre">get_first_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Empty.get_first_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get first y-coordinate of the brick</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.bricks.digital.Empty.get_last_y">
+<span class="sig-name descname"><span class="pre">get_last_y</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.bricks.digital.Empty.get_last_y" title="Permalink to this definition"></a></dt>
+<dd><p>Get last y-coordinate of the brick</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.digital.filter_width">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">filter_width</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#undulate.bricks.digital.filter_width" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the width/height of each brick considering the following properties:</p>
+<ul class="simple">
+<li><p>brick_width</p></li>
+<li><p>brick_height</p></li>
+<li><p>hscale</p></li>
+<li><p>vscale</p></li>
+<li><p>period</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.digital.filter_repeat">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">filter_repeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#undulate.bricks.digital.filter_repeat" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the number of size expension for a given brick (using ‘.’ symbol) at
+the exception of clock signals where the brick ‘.’ means duplication.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.digital.filter_phase_pos">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">filter_phase_pos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#undulate.bricks.digital.filter_phase_pos" title="Permalink to this definition"></a></dt>
+<dd><p>Adjust the size of the first and last brick of signal based on the following
+properties:</p>
+<ul class="simple">
+<li><p>phase</p></li>
+<li><p>repeat</p></li>
+<li><p>slewing</p></li>
+<li><p>brick_width</p></li>
+<li><p>width</p></li>
+</ul>
+<p>A signal should always have a width equal to ‘width’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.digital.filter_transition">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">filter_transition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waveform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#undulate.bricks.digital.filter_transition" title="Permalink to this definition"></a></dt>
+<dd><p>Smooth abutment of different brick to prevent glitches
+and fusion data brick of the same symbol with the same ‘data’ value</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="undulate.bricks.digital.initialize">
+<span class="sig-prename descclassname"><span class="pre">undulate.bricks.digital.</span></span><span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#undulate.bricks.digital.initialize" title="Permalink to this definition"></a></dt>
+<dd><p>register defined digital blocks in the rendering system</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="undulate.bricks.analogue.html" class="btn btn-neutral float-left" title="4.1.1.1.1.1. undulate.bricks.analogue module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="undulate.bricks.generic.html" class="btn btn-neutral float-right" title="4.1.1.1.1.3. undulate.bricks.generic module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

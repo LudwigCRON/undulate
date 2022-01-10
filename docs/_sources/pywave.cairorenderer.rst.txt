@@ -1,7 +1,0 @@
-pywave.cairorenderer module
-===========================
-
-.. automodule:: pywave.cairorenderer
-   :members:
-   :undoc-members:
-   :show-inheritance:

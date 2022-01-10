@@ -1,0 +1,51 @@
+{
+  "bricks": [
+    "undulate.bricks.analogue",
+    "undulate.bricks.digital",
+    "undulate.bricks.register",
+    "undulate.bricks.shape"
+  ],
+  "extensions": {
+    "json": "undulate.parsers.jsonml",
+    "jsonml": "undulate.parsers.jsonml",
+    "js": "undulate.parsers.jsonml",
+    "jml": "undulate.parsers.jsonml",
+    "yaml": "undulate.parsers.yaml",
+    "yml": "undulate.parsers.yaml",
+    "toml": "undulate.parsers.toml",
+    "tml": "undulate.parsers.toml"
+  },
+  "engines": {
+    "cairo-png": {
+      "module": "undulate.renderers.cairorenderer",
+      "classname": "CairoRenderer",
+      "extension": "png",
+      "dpi": 300
+    },
+    "cairo-pdf": {
+      "module": "undulate.renderers.cairorenderer",
+      "classname": "CairoRenderer",
+      "extension": "pdf"
+    },
+    "cairo-svg": {
+      "module": "undulate.renderers.cairorenderer",
+      "classname": "CairoRenderer",
+      "extension": "svg"
+    },
+    "cairo-eps": {
+      "module": "undulate.renderers.cairorenderer",
+      "classname": "CairoRenderer",
+      "extension": "eps"
+    },
+    "svg": {
+      "module": "undulate.renderers.svgrenderer",
+      "classname": "SvgRenderer",
+      "extension": "svg"
+    },
+    "json": {
+      "module": "",
+      "classname": "",
+      "extension": "json"
+    }
+  }
+}

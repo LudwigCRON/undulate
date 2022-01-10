@@ -1,26 +1,44 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import argparse
 import unittest
 
 # imports as in undulate.py
-from undulate import SvgRenderer, CairoRenderer
+import importlib
+from undulate.renderers.renderer import Renderer
+from undulate.renderers.svgrenderer import SvgRenderer
+from undulate.renderers.cairorenderer import CairoRenderer
+from undulate.bricks.generic import NodeBank, Point
 
 RENDERER = None
 
 
 class TestSvgMethods(unittest.TestCase):
     """
-  perform some test on the rendering with the internal
-  dict format of data
-  """
+    perform some test on the rendering with the internal
+    dict format of data
+    """
+
+    def setUpClass() -> None:
+        modules = [
+            "undulate.bricks.digital",
+            "undulate.bricks.analogue",
+            "undulate.bricks.shape",
+        ]
+        for module in modules:
+            mod = importlib.import_module(module)
+            mod.initialize()
 
     def test_wavedrom_step1(self):
         """
-    test supported state of a signal
-    """
-        filename = "./output/wavedrom_step1.%s" % cli_args.format
+        test supported state of a signal
+        """
+        filename = "%s/wavedrom_step1.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "Alfa": {"wave": "01.zx=ud.23.45"},
             "SAlfa": {"wave": "01.zx=ud.23.45", "slewing": 8},
@@ -30,9 +48,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step2(self):
         """
-    test clock generation
-    """
-        filename = "./output/wavedrom_step2.%s" % cli_args.format
+        test clock generation
+        """
+        filename = "%s/wavedrom_step2.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "pclk": {"wave": "p......."},
             "Pclk": {"wave": "P......."},
@@ -48,9 +69,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step3(self):
         """
-    small bus example
-    """
-        filename = "./output/wavedrom_step3.%s" % cli_args.format
+        small bus example
+        """
+        filename = "%s/wavedrom_step3.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "clk": {"wave": "P......"},
             "bus": {"wave": "x.==.=x", "data": ["head", "body", "tail", "data"]},
@@ -60,9 +84,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step4(self):
         """
-    spacer and gaps
-    """
-        filename = "./output/wavedrom_step4.%s" % cli_args.format
+        spacer and gaps
+        """
+        filename = "%s/wavedrom_step4.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "clk": {"wave": "p.....|..."},
             "Data": {"wave": "x.345x|=.x", "data": ["head", "body", "tail", "data"]},
@@ -74,9 +101,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step5(self):
         """
-    groups support
-    """
-        filename = "./output/wavedrom_step5.%s" % cli_args.format
+        groups support
+        """
+        filename = "%s/wavedrom_step5.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "clk": {"wave": "p..Pp..P"},
             "Master": {
@@ -94,9 +124,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step6(self):
         """
-    phase and period
-    """
-        filename = "./output/wavedrom_step6.%s" % cli_args.format
+        phase and period
+        """
+        filename = "%s/wavedrom_step6.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "CK": {"wave": "P.......", "period": 2},
             "CMD": {
@@ -112,9 +145,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step7(self):
         """
-    Arrows
-    """
-        filename = "./output/wavedrom_step7.%s" % cli_args.format
+        Arrows
+        """
+        filename = "%s/wavedrom_step7.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "A": {"wave": "01........0....", "node": ".a........j"},
             "B": {"wave": "0.1.......0.1..", "node": "..b.......i"},
@@ -141,9 +177,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step8(self):
         """
-    Sharp edge lines
-    """
-        filename = "./output/wavedrom_step8.%s" % cli_args.format
+        Sharp edge lines
+        """
+        filename = "%s/wavedrom_step8.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "A": {"wave": "01..0..", "node": ".a..e.."},
             "B": {"wave": "0.1..0.", "node": "..b..d.", "phase": 0.5},
@@ -165,9 +204,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step9(self):
         """
-    phase and period
-    """
-        filename = "./output/wavedrom_step9.%s" % cli_args.format
+        phase and period
+        """
+        filename = "%s/wavedrom_step9.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "CK": {"wave": "P.......", "period": 2},
             "CMD": {
@@ -187,9 +229,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_wavedrom_step10(self):
         """
-    phase and period
-    """
-        filename = "./output/wavedrom_step10.%s" % cli_args.format
+        phase and period
+        """
+        filename = "%s/wavedrom_step10.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "CK": {"wave": "P.......", "repeat": 2},
             "GBF": {
@@ -227,9 +272,12 @@ class TestSvgMethods(unittest.TestCase):
 
     def test_extra_mux_recirc(self):
         """
-    real phase use case
-    """
-        filename = "./output/recirc_bus.%s" % cli_args.format
+        real phase use case
+        """
+        filename = "%s/recirc_bus.%s" % (
+            os.getenv("OUTPATH", "."),
+            cli_args.format.replace("-", "."),
+        )
         wavelanes = {
             "F1": {"wave": "P...........", "node": "........."},
             "F2": {"wave": "P...", "node": ".........", "period": 3, "phase": -0.1},
@@ -242,6 +290,45 @@ class TestSvgMethods(unittest.TestCase):
         }
         RENDERER.draw(wavelanes, filename=filename)
 
+    def test_from_to_parsing(self):
+        """
+        parsing of different possible from/to format
+        """
+        width, height = 100, 100
+        bwidth, bheight = 40, 20
+        NodeBank.nodes = {}
+        Renderer.y_steps = []
+        NodeBank.register("a_t", Point(bwidth * 2, bheight * 3 + 10.25))
+        from_to = [
+            "",
+            "(1.0, 2.0)",
+            (1.0, 2.0),
+            1.0,
+            "3.14",
+            "10.5%",
+            "(5%, 6.1%)",
+            "a_t",
+            "a_t  +(0.5, -0.15)",
+            None,
+        ]
+        expected = [
+            Point(0, 0),
+            Point(bwidth, 2 * bheight),
+            Point(bwidth, 2 * bheight),
+            Point(bwidth, bheight),
+            Point(3.14 * bwidth, 3.14 * bheight),
+            Point(0.105 * width, 0.105 * height),
+            Point(0.05 * width, 0.061 * height),
+            Point(bwidth * 2, bheight * 3 + 10.25),
+            Point(bwidth * 2.5, bheight * 2.85 + 10.25),
+            Point(0, 0),
+        ]
+        for ft, e in zip(from_to, expected):
+            p = RENDERER.from_to_parser(ft, width, height, bwidth, bheight)
+            print(f"Parsing of {ft}")
+            assert p.x == e.x, f"Wrong x position for {p!r} expected {e.x} for {ft!r}"
+            assert p.y == e.y, f"Wrong y position for {p!r} expected {e.y} for {ft!r}"
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -253,4 +340,4 @@ if __name__ == "__main__":
     elif "cairo-" in cli_args.format:
         RENDERER = CairoRenderer(extension=cli_args.format.split("-")[-1])
     sys.argv[1:] = cli_args.unittest_args
-    unittest.main()
+    unittest.main(verbosity=2)

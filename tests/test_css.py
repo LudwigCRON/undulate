@@ -80,6 +80,10 @@ DEFAULT_STYLE = {
     "s3-polygon": {"fill": (255, 255, 176, 255), "stroke": None},
     "s4-polygon": {"fill": (255, 224, 185, 255), "stroke": None},
     "s5-polygon": {"fill": (185, 224, 255, 255), "stroke": None},
+    "s6-polygon": {"fill": (0, 53, 75, 200), "stroke": None},
+    "s7-polygon": {"fill": (101, 187, 169, 200), "stroke": None},
+    "s8-polygon": {"fill": (221, 65, 54, 200), "stroke": None},
+    "s9-polygon": {"fill": (237, 165, 34, 200), "stroke": None},
     "tick": {
         "stroke": (136, 136, 136, 128),
         "stroke-width": 0.5,

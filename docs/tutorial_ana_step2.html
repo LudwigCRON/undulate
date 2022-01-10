@@ -1,68 +1,33 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>superposition and style overloading &mdash; Undulate 0.0.4 documentation</title>
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Superposition and style overloading &mdash; Undulate 0.0.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
-          
-
-          
+            <a href="index.html" class="icon icon-home"> Undulate
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -70,100 +35,52 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">4. Undulate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">4. undulate</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Undulate</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
-      <li>superposition and style overloading</li>
-    
-    
+      <li>Superposition and style overloading</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/tutorial_ana_step2.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="superposition-and-style-overloading">
-<h1>superposition and style overloading<a class="headerlink" href="#superposition-and-style-overloading" title="Permalink to this headline">¶</a></h1>
-<p>Mixed signal design shall have clear interface definition between analogue and digital.
-A common situation is a comparator giving a digital output of the comparison of two analogue
-signals.</p>
-<p>In order to better convey the relation between the two analogue signals at the input of the
-comparator, it is interresting to superpose them with a different color.</p>
-<p>Undulate allows a superposition of up to 4 signals. For that, the attribute <code class="docutils literal notranslate"><span class="pre">overlay</span></code> should
-be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> for the first 3 signals. Both signal and signal’s name are supperposed.
-In order to clarify which signal is which, the position of the signal’s name could be adjusted:
-the attribute <code class="docutils literal notranslate"><span class="pre">order</span></code> accepts a value between 0 and 4:</p>
+             
+  <section id="superposition-and-style-overloading">
+<h1>Superposition and style overloading<a class="headerlink" href="#superposition-and-style-overloading" title="Permalink to this headline"></a></h1>
+<p>Mixed signal design shall have clear interface definition between analogue and
+digital. A common situation is a comparator giving a digital output of the
+comparison of two analogue signals.</p>
+<p>In order to better convey the relation between the two analogue signals at the
+input of the comparator, it is interesting to superpose them with a different
+color.</p>
+<p>Undulate allows a superposition of up to 4 signals. For that, the attribute
+<code class="docutils literal notranslate"><span class="pre">overlay</span></code> should be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> for the first 3 signals. Both signal and
+signal’s name are superposed.
+In order to clarify which signal is which, the position of the signal’s name
+could be adjusted: the attribute <code class="docutils literal notranslate"><span class="pre">order</span></code> accepts a value between 0 and 4:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>0: middle (default value)</p></li>
@@ -179,12 +96,12 @@ the attribute <code class="docutils literal notranslate"><span class="pre">order
 <a class="tab-button" href="#step_2_toml">toml</a><div class="tab-content docutils container" id="step-2-jsonml">
 <p>set the content of the file to</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;mcu_clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mi">10</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;dac&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">slewing</span><span class="o">:</span> <span class="mi">32</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">overlay</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nx">stroke</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
-    <span class="s2">&quot;stroke-dasharray&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="nx">fill</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
-    <span class="s2">&quot;font-size&quot;</span><span class="o">:</span> <span class="s2">&quot;9pt&quot;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">analogue</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;mcu_clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mf">10</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;dac&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mf">10</span><span class="p">,</span> <span class="nx">slewing</span><span class="o">:</span> <span class="mf">32</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span> <span class="nx">overlay</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nx">stroke</span><span class="o">:</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">,</span> <span class="mf">255</span><span class="p">],</span>
+    <span class="s2">&quot;stroke-dasharray&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1</span><span class="p">,</span> <span class="mf">3</span><span class="p">],</span>
+    <span class="nx">fill</span><span class="o">:</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">255</span><span class="p">,</span> <span class="mf">255</span><span class="p">],</span>
+    <span class="s2">&quot;font-size&quot;</span><span class="o">:</span> <span class="s2">&quot;9pt&quot;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="nx">analogue</span><span class="o">:</span> <span class="p">[</span>
         <span class="s2">&quot;VDDA*512/1024&quot;</span><span class="p">,</span>
         <span class="s2">&quot;VDDA*256/1024&quot;</span><span class="p">,</span>
         <span class="s2">&quot;VDDA*384/1024&quot;</span><span class="p">,</span>
@@ -196,18 +113,18 @@ the attribute <code class="docutils literal notranslate"><span class="pre">order
         <span class="s2">&quot;VDDA*342/1024&quot;</span><span class="p">,</span>
         <span class="s2">&quot;VDDA*341/1024&quot;</span>
     <span class="p">]},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;vin&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;0a........&quot;</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">overlay</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;vin&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;0a........&quot;</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span> <span class="nx">overlay</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
     <span class="nx">stroke</span><span class="o">:</span> <span class="s2">&quot;#F00&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stroke-dasharray&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s2">&quot;stroke-dasharray&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">5</span><span class="p">,</span> <span class="mf">3</span><span class="p">,</span> <span class="mf">1</span><span class="p">,</span> <span class="mf">5</span><span class="p">],</span>
     <span class="s2">&quot;stroke-width&quot;</span><span class="o">:</span> <span class="mf">1.5</span><span class="p">,</span>
     <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;rgb(255, 0, 0)&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;font-size&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4em&quot;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span> <span class="nx">analogue</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;[(t, (VDDA/3)*(1-exp(-t/3))) for t in time]&quot;</span><span class="p">]},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;vmax&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;1.........&quot;</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">overlay</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;vmin&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;l.........&quot;</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mi">4</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;dac_ref&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">slewing</span><span class="o">:</span> <span class="mi">32</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&quot;font-size&quot;</span><span class="o">:</span> <span class="s2">&quot;0.4em&quot;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span> <span class="nx">analogue</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;[(t, (VDDA/3)*(1-exp(-t/3))) for t in time]&quot;</span><span class="p">]},</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;vmax&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;1.........&quot;</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span> <span class="nx">overlay</span><span class="o">:</span> <span class="kc">true</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;vmin&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;l.........&quot;</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mf">4</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;dac_ref&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mf">10</span><span class="p">,</span> <span class="nx">slewing</span><span class="o">:</span> <span class="mf">32</span><span class="p">,</span> <span class="nx">vscale</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span>
     <span class="nx">stroke</span><span class="o">:</span> <span class="s2">&quot;#0000FFAA&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;stroke-dasharray&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-    <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;#0000FF&quot;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">analogue</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">&quot;stroke-dasharray&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1</span><span class="p">,</span> <span class="mf">3</span><span class="p">],</span>
+    <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;#0000FF&quot;</span><span class="p">,</span> <span class="nx">order</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="nx">analogue</span><span class="o">:</span> <span class="p">[</span>
         <span class="s2">&quot;VDDA*512/1024&quot;</span><span class="p">,</span>
         <span class="s2">&quot;VDDA*256/1024&quot;</span><span class="p">,</span>
         <span class="s2">&quot;VDDA*384/1024&quot;</span><span class="p">,</span>
@@ -226,178 +143,178 @@ the attribute <code class="docutils literal notranslate"><span class="pre">order
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -i step_2_ana.json -o step_2_ana.svg
 </pre></div>
 </div>
-<img alt="./_images/step2_ana-json.svg" src="./_images/step2_ana-json.svg" /></div>
+<img alt="_images/step_2_ana.json.svg" src="_images/step_2_ana.json.svg" /></div>
 <div class="tab-content docutils container" id="step-2-yaml">
 <p>set the content of the file to</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># testcase to demonstrate the possibility</span>
-<span class="c1"># of overlaying several curves</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># testcase to demonstrate the possibility</span><span class="w"></span>
+<span class="c1"># of overlaying several curves</span><span class="w"></span>
 
-<span class="nt">mcu_clk</span><span class="p">:</span>
-    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;P&quot;</span>
-    <span class="nt">repeat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="nt">mcu_clk</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">repeat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
 
-<span class="c1"># value of the 10-bits DAC of a SAR</span>
-<span class="nt">dac</span><span class="p">:</span>
-    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;c&quot;</span>
-    <span class="nt">repeat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
-    <span class="nt">slewing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32</span>
-    <span class="nt">vscale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
-    <span class="nt">overlay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">stroke</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">255</span><span class="p p-Indicator">,</span> <span class="nv">255</span><span class="p p-Indicator">]</span>
-    <span class="nt">stroke-dasharray</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span> <span class="nv">3</span><span class="p p-Indicator">]</span>
-    <span class="nt">fill</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">255</span><span class="p p-Indicator">,</span> <span class="nv">255</span><span class="p p-Indicator">]</span>
-    <span class="nt">font-size</span><span class="p">:</span> <span class="s">&quot;9pt&quot;</span>
-    <span class="nt">order</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-    <span class="nt">analogue</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*512/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*256/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*384/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*320/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*352/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*336/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*344/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*340/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*342/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*341/1024&quot;</span>
+<span class="c1"># value of the 10-bits DAC of a SAR</span><span class="w"></span>
+<span class="nt">dac</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">repeat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+<span class="w">    </span><span class="nt">slewing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span><span class="w"></span>
+<span class="w">    </span><span class="nt">vscale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">overlay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">stroke</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">stroke-dasharray</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">fill</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">255</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">font-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;9pt&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="w">    </span><span class="nt">analogue</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*512/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*256/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*384/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*320/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*352/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*336/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*344/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*340/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*342/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*341/1024&quot;</span><span class="w"></span>
 
-<span class="c1"># input  voltage to which compare</span>
-<span class="nt">vin</span><span class="p">:</span>
-    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;0a........&quot;</span>
-    <span class="nt">vscale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
-    <span class="nt">overlay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="nt">stroke</span><span class="p">:</span> <span class="s">&quot;#F00&quot;</span>
-    <span class="nt">stroke-dasharray</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">5</span><span class="p p-Indicator">,</span> <span class="nv">3</span><span class="p p-Indicator">,</span> <span class="nv">1</span><span class="p p-Indicator">,</span> <span class="nv">5</span><span class="p p-Indicator">]</span>
-    <span class="nt">stroke-width</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.5</span>
-    <span class="nt">fill</span><span class="p">:</span> <span class="s">&quot;rgb(255,</span><span class="nv"> </span><span class="s">0,</span><span class="nv"> </span><span class="s">0)&quot;</span>
-    <span class="nt">font-size</span><span class="p">:</span> <span class="s">&quot;0.4em&quot;</span>
-    <span class="nt">order</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-    <span class="nt">analogue</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;[(t,</span><span class="nv"> </span><span class="s">(VDDA/3)*(1-exp(-t/3)))</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">t</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">time]&quot;</span>
+<span class="c1"># input  voltage to which compare</span><span class="w"></span>
+<span class="nt">vin</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0a........&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">vscale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">overlay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="nt">stroke</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#F00&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">stroke-dasharray</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">5</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">stroke-width</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.5</span><span class="w"></span>
+<span class="w">    </span><span class="nt">fill</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rgb(255,</span><span class="nv"> </span><span class="s">0,</span><span class="nv"> </span><span class="s">0)&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">font-size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.4em&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">    </span><span class="nt">analogue</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;[(t,</span><span class="nv"> </span><span class="s">(VDDA/3)*(1-exp(-t/3)))</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">t</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">time]&quot;</span><span class="w"></span>
 
-<span class="c1"># vmax</span>
-<span class="nt">vmax</span><span class="p">:</span>
-    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;1.........&quot;</span>
-    <span class="nt">vscale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
-    <span class="nt">order</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-    <span class="nt">overlay</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="c1"># vmax</span><span class="w"></span>
+<span class="nt">vmax</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.........&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">vscale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">overlay</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 
-<span class="c1"># vmin</span>
-<span class="nt">vmin</span><span class="p">:</span>
-    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;l.........&quot;</span>
-    <span class="nt">vscale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
-    <span class="nt">order</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="c1"># vmin</span><span class="w"></span>
+<span class="nt">vmin</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;l.........&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">vscale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"></span>
 
-<span class="nt">dac_ref</span><span class="p">:</span>
-    <span class="nt">wave</span><span class="p">:</span> <span class="s">&quot;s&quot;</span>
-    <span class="nt">repeat</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
-    <span class="nt">slewing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32</span>
-    <span class="nt">vscale</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
-    <span class="nt">stroke</span><span class="p">:</span> <span class="s">&quot;#0000FFAA&quot;</span>
-    <span class="nt">stroke-dasharray</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span> <span class="nv">3</span><span class="p p-Indicator">]</span>
-    <span class="nt">fill</span><span class="p">:</span> <span class="s">&quot;#0000FF&quot;</span>
-    <span class="nt">order</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-    <span class="nt">analogue</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*512/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*256/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*384/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*320/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*352/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*336/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*344/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*340/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*342/1024&quot;</span>
-        <span class="p p-Indicator">-</span> <span class="s">&quot;VDDA*341/1024&quot;</span>
+<span class="nt">dac_ref</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;s&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">repeat</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+<span class="w">    </span><span class="nt">slewing</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span><span class="w"></span>
+<span class="w">    </span><span class="nt">vscale</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">stroke</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#0000FFAA&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">stroke-dasharray</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">1</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">3</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="nt">fill</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;#0000FF&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">order</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="w">    </span><span class="nt">analogue</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*512/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*256/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*384/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*320/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*352/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*336/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*344/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*340/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*342/1024&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;VDDA*341/1024&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -i step_2_ana.yaml -o step_2_ana.svg
 </pre></div>
 </div>
-<img alt="./_images/step2_ana-yaml.svg" src="./_images/step2_ana-yaml.svg" /></div>
+<img alt="_images/step_2_ana.yaml.svg" src="_images/step_2_ana.yaml.svg" /></div>
 <div class="tab-content docutils container" id="step-2-toml">
 <p>set the content of the file to</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># testcase to demonstrate the possibility</span>
-<span class="c1"># of overlaying several curves</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="c1"># testcase to demonstrate the possibility</span><span class="w"></span>
+<span class="c1"># of overlaying several curves</span><span class="w"></span>
 
-<span class="n">mcu_clk</span><span class="p">.</span><span class="n">wave</span>          <span class="o">=</span> <span class="s">&quot;P&quot;</span>
-<span class="n">mcu_clk</span><span class="p">.</span><span class="n">repeat</span>        <span class="o">=</span> <span class="mi">10</span>
+<span class="n">mcu_clk</span><span class="p">.</span><span class="n">wave</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;P&quot;</span><span class="w"></span>
+<span class="n">mcu_clk</span><span class="p">.</span><span class="n">repeat</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
 
-<span class="c1"># value of the 10-bits DAC of a SAR</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">wave</span>              <span class="o">=</span> <span class="s">&quot;c&quot;</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">repeat</span>            <span class="o">=</span> <span class="mi">10</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">slewing</span>           <span class="o">=</span> <span class="mi">32</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">vscale</span>            <span class="o">=</span> <span class="mi">4</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">overlay</span>           <span class="o">=</span> <span class="kc">true</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">stroke</span>            <span class="o">=</span> <span class="k">[0, 0, 255, 255]</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">stroke-dasharray</span>  <span class="o">=</span> <span class="k">[1, 3]</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">fill</span>              <span class="o">=</span> <span class="k">[0, 0, 255, 255]</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">font-size</span>         <span class="o">=</span> <span class="s">&#39;9pt&#39;</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">order</span>             <span class="o">=</span> <span class="mi">2</span>
-<span class="n">dac</span><span class="p">.</span><span class="n">analogue</span>          <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&quot;VDDA*512/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*256/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*384/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*320/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*352/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*336/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*344/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*340/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*342/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*341/1024&quot;</span>
-<span class="p">]</span>
+<span class="c1"># value of the 10-bits DAC of a SAR</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">wave</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;c&quot;</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">repeat</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">slewing</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">vscale</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">overlay</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">stroke</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">]</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">stroke-dasharray</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">fill</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w"> </span><span class="mi">255</span><span class="p">]</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">font-size</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;9pt&#39;</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">order</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="n">dac</span><span class="p">.</span><span class="n">analogue</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*512/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*256/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*384/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*320/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*352/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*336/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*344/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*340/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*342/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*341/1024&quot;</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 
-<span class="c1"># input  voltage to which compare</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">wave</span>              <span class="o">=</span> <span class="s">&quot;0a........&quot;</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">vscale</span>            <span class="o">=</span> <span class="mi">4</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">overlay</span>           <span class="o">=</span> <span class="kc">true</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">stroke</span>            <span class="o">=</span> <span class="s">&#39;#F00&#39;</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">stroke-dasharray</span>  <span class="o">=</span> <span class="k">[5, 3, 1, 5]</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">stroke-width</span>      <span class="o">=</span> <span class="mf">1.5</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">fill</span>              <span class="o">=</span> <span class="s">&#39;rgb(255, 0, 0)&#39;</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">font-size</span>         <span class="o">=</span> <span class="s">&#39;0.4em&#39;</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">order</span>             <span class="o">=</span> <span class="mi">3</span>
-<span class="n">vin</span><span class="p">.</span><span class="n">analogue</span>          <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&quot;[(t, (VDDA/3)*(1-exp(-t/3))) for t in time]&quot;</span>
-<span class="p">]</span>
+<span class="c1"># input  voltage to which compare</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">wave</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;0a........&quot;</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">vscale</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">overlay</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">stroke</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;#F00&#39;</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">stroke-dasharray</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">stroke-width</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">fill</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;rgb(255, 0, 0)&#39;</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">font-size</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;0.4em&#39;</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">order</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="n">vin</span><span class="p">.</span><span class="n">analogue</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;[(t, (VDDA/3)*(1-exp(-t/3))) for t in time]&quot;</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 
-<span class="c1"># vmax</span>
-<span class="n">vmax</span><span class="p">.</span><span class="n">wave</span>             <span class="o">=</span> <span class="s">&quot;1.........&quot;</span>
-<span class="n">vmax</span><span class="p">.</span><span class="n">vscale</span>           <span class="o">=</span> <span class="mi">4</span>
-<span class="n">vmax</span><span class="p">.</span><span class="n">order</span>            <span class="o">=</span> <span class="mi">1</span>
-<span class="n">vmax</span><span class="p">.</span><span class="n">overlay</span>          <span class="o">=</span> <span class="kc">true</span>
+<span class="c1"># vmax</span><span class="w"></span>
+<span class="n">vmax</span><span class="p">.</span><span class="n">wave</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1.........&quot;</span><span class="w"></span>
+<span class="n">vmax</span><span class="p">.</span><span class="n">vscale</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="n">vmax</span><span class="p">.</span><span class="n">order</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="n">vmax</span><span class="p">.</span><span class="n">overlay</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
 
-<span class="c1"># vmin</span>
-<span class="n">vmin</span><span class="p">.</span><span class="n">wave</span>             <span class="o">=</span> <span class="s">&quot;l.........&quot;</span>
-<span class="n">vmin</span><span class="p">.</span><span class="n">vscale</span>           <span class="o">=</span> <span class="mi">4</span>
-<span class="n">vmin</span><span class="p">.</span><span class="n">order</span>            <span class="o">=</span> <span class="mi">4</span>
+<span class="c1"># vmin</span><span class="w"></span>
+<span class="n">vmin</span><span class="p">.</span><span class="n">wave</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;l.........&quot;</span><span class="w"></span>
+<span class="n">vmin</span><span class="p">.</span><span class="n">vscale</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="n">vmin</span><span class="p">.</span><span class="n">order</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
 
-<span class="n">dac_ref</span><span class="p">.</span><span class="n">wave</span>              <span class="o">=</span> <span class="s">&quot;s&quot;</span>
-<span class="n">dac_ref</span><span class="p">.</span><span class="n">repeat</span>            <span class="o">=</span> <span class="mi">10</span>
-<span class="n">dac_ref</span><span class="p">.</span><span class="n">slewing</span>           <span class="o">=</span> <span class="mi">32</span>
-<span class="n">dac_ref</span><span class="p">.</span><span class="n">vscale</span>            <span class="o">=</span> <span class="mi">4</span>
-<span class="n">dac_ref</span><span class="p">.</span><span class="n">stroke</span>            <span class="o">=</span> <span class="s">&#39;#0000FFAA&#39;</span>
-<span class="n">dac_ref</span><span class="p">.</span><span class="n">stroke-dasharray</span>  <span class="o">=</span> <span class="k">[1, 3]</span>
-<span class="n">dac_ref</span><span class="p">.</span><span class="n">fill</span>              <span class="o">=</span> <span class="s">&#39;#0000FF&#39;</span>
-<span class="n">dac_ref</span><span class="p">.</span><span class="n">order</span>             <span class="o">=</span> <span class="mi">2</span>
-<span class="n">dac_ref</span><span class="p">.</span><span class="n">analogue</span>          <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&quot;VDDA*512/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*256/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*384/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*320/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*352/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*336/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*344/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*340/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*342/1024&quot;</span><span class="p">,</span>
-    <span class="s">&quot;VDDA*341/1024&quot;</span>
-<span class="p">]</span>
+<span class="n">dac_ref</span><span class="p">.</span><span class="n">wave</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;s&quot;</span><span class="w"></span>
+<span class="n">dac_ref</span><span class="p">.</span><span class="n">repeat</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<span class="n">dac_ref</span><span class="p">.</span><span class="n">slewing</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"></span>
+<span class="n">dac_ref</span><span class="p">.</span><span class="n">vscale</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<span class="n">dac_ref</span><span class="p">.</span><span class="n">stroke</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;#0000FFAA&#39;</span><span class="w"></span>
+<span class="n">dac_ref</span><span class="p">.</span><span class="n">stroke-dasharray</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
+<span class="n">dac_ref</span><span class="p">.</span><span class="n">fill</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;#0000FF&#39;</span><span class="w"></span>
+<span class="n">dac_ref</span><span class="p">.</span><span class="n">order</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="n">dac_ref</span><span class="p">.</span><span class="n">analogue</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*512/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*256/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*384/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*320/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*352/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*336/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*344/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*340/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*342/1024&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;VDDA*341/1024&quot;</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -i step_2_ana.toml -o step_2_ana.svg
 </pre></div>
 </div>
-<img alt="./_images/step2_ana-toml.svg" src="./_images/step2_ana-toml.svg" /></div>
+<img alt="_images/step_2_ana.toml.svg" src="_images/step_2_ana.toml.svg" /></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -449,53 +366,34 @@ the attribute <code class="docutils literal notranslate"><span class="pre">order
 a scaling factor as done in the example.</p>
 <p>It also exists <code class="docutils literal notranslate"><span class="pre">hscale</span></code> scaling the x-axis instead of the y-axis as <code class="docutils literal notranslate"><span class="pre">vscale</span></code> does.</p>
 </div>
-</div>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2020, Ludwig CRON
-
-    </p>
+    <p>&#169; Copyright 2022, Ludwig CRON.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

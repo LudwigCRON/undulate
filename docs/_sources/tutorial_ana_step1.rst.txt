@@ -1,20 +1,21 @@
 analogue signal
 ***************
 
-An analogue signal varies between two limits corresponding to the
-supply :math:`V_{DDA}` and :math:`V_{SSA}`.
+An analogue signal varies between two limits corresponding to the supply 
+:math:`V_{DDA}` and :math:`V_{SSA}`.
 
-At the exception of very specific design, most analogue signals are stepwise variation
-(switched-capa circuits, trimming operations,...). Therefore only the final value change
-with a transition either corresponding to the charge (resp. discharge) of a capacitor,
-or linearly due to current limitation (slewing).
+At the exception of very specific design, most analogue signals are stepwise
+variation (switched-caps circuits, trimming operations, ...). Therefore, only the
+final value change with a transition either corresponding to the charge 
+(resp. discharge) of a capacitor, or linearly due to current limitation (slewing).
 
-The analogue bricks corresponding to such behaviour are ``c`` for capacitive loading, and
-``s`` for slewing. They accept a single value being either a number or an expression
-depending on :math:`V_{DDA}`.
+The analogue bricks corresponding to such behavior are ``c`` for capacitive
+loading, and ``s`` for slewing. They accept a single value being either a number
+or an expression depending on :math:`V_{DDA}`.
 
-For more arbitrary functions, or continous time functions, the analogue brick to be used is
-``a`` and accepts an array of numbers or an expression resulting into an array of numbers.
+For more arbitrary functions, or continuous time functions, the analogue brick to
+be used is ``a`` and accepts an array of numbers or an expression resulting into
+an array of numbers.
 
 .. container:: tabs
 
@@ -47,7 +48,7 @@ For more arbitrary functions, or continous time functions, the analogue brick to
 
             undulate -f svg -i step_1_ana.json -o step_1_ana.svg
         
-        .. image:: ./_images/step1_ana-json.svg
+        .. image:: ./_images/step_1_ana.json.svg
 
     .. container:: tab-content
         :name: step_1_yaml
@@ -76,7 +77,7 @@ For more arbitrary functions, or continous time functions, the analogue brick to
 
             undulate -f svg -i step_1_ana.yaml -o step_1_ana.svg
         
-        .. image:: ./_images/step1_ana-yaml.svg
+        .. image:: ./_images/step_1_ana.yaml.svg
 
     .. container:: tab-content
         :name: step_1_toml
@@ -105,9 +106,9 @@ For more arbitrary functions, or continous time functions, the analogue brick to
 
             undulate -f svg -i step_1_ana.toml -o step_1_ana.svg
         
-        .. image:: ./_images/step1_ana-toml.svg
+        .. image:: ./_images/step_1_ana.toml.svg
 
 .. note::
 
-    Predefined constant and functions are provided in this analogue context. The exhaustive
-    list of those is presented in section 2.3.
+    Predefined constant and functions are provided in this analogue context. The
+    exhaustive list of those is presented in section 2.3.

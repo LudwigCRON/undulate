@@ -1,68 +1,33 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>&lt;no title&gt; &mdash; Undulate 0.0.4 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
-
-  
-  
-  
-  
-
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> Undulate
-          
-
-          
+            <a href="index.html" class="icon icon-home"> Undulate
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -70,89 +35,39 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Contents:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module.html">4. Undulate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">4. undulate</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">Undulate</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>&lt;no title&gt;</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/tutorial_reg_step2.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <p>Let’s suppose in the register, some bits are unused for the sake of
 field alignment to ease software writing.</p>
 <p>Either one can precise the position of each field with <code class="docutils literal notranslate"><span class="pre">regpos</span></code>, or
@@ -165,19 +80,19 @@ the range [12:8], the field “nf” on the range [34:32].</p>
 <a class="tab-button" href="#step_2_toml">toml</a><div class="tab-content docutils container" id="step-2-jsonml">
 <p>set the content of the file to</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">control</span><span class="o">:</span><span class="p">[</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">7</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="mh">0x07</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">7</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="mh">0x07</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span>
     <span class="s1">&#39;VLxU,VLE zero-extended&#39;</span><span class="p">,</span>
     <span class="s1">&#39;VLxU,VLE zero-extended, fault-only-first&#39;</span><span class="p">,</span>
     <span class="s1">&#39;VLxU sign-extended&#39;</span><span class="p">,</span>
     <span class="s1">&#39;VLxU sign-extended, fault-only-first&#39;</span><span class="p">,</span>
     <span class="p">]},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;vd&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="s1">&#39;destination of load&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">regpos</span><span class="o">:</span><span class="mi">8</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;width&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;rs1&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="s1">&#39;base address&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mi">4</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;lumop&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">],</span> <span class="nx">type</span><span class="o">:</span> <span class="mi">3</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;vm&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;mop&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;nf&#39;</span><span class="p">,</span> <span class="nx">regpos</span><span class="o">:</span> <span class="mi">32</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;vd&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="s1">&#39;destination of load&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span> <span class="nx">regpos</span><span class="o">:</span><span class="mf">8</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;width&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;rs1&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="s1">&#39;base address&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mf">4</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;lumop&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">16</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">16</span><span class="p">],</span> <span class="nx">type</span><span class="o">:</span> <span class="mf">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;vm&#39;</span><span class="p">},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;mop&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">4</span><span class="p">,</span> <span class="mf">4</span><span class="p">]},</span>
+    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;nf&#39;</span><span class="p">,</span> <span class="nx">regpos</span><span class="o">:</span> <span class="mf">32</span><span class="p">},</span>
 <span class="p">],</span>
 <span class="nx">config</span><span class="o">:</span> <span class="p">{</span>
     <span class="nx">no_ticks</span><span class="o">:</span> <span class="kc">true</span>
@@ -188,154 +103,135 @@ the range [12:8], the field “nf” on the range [34:32].</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -r -i step_2_reg.json -o step_2_reg.svg
 </pre></div>
 </div>
-<img alt="./_images/step2_reg-json.svg" src="./_images/step2_reg-json.svg" /></div>
+<img alt="_images/step_2_reg.json.svg" src="_images/step_2_reg.json.svg" /></div>
 <div class="tab-content docutils container" id="step-2-yaml">
 <p>set the content of the file to</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">control</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">7</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0x07</span>
-      <span class="nt">attr</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&#39;VLxU,VLE</span><span class="nv"> </span><span class="s">zero-extended&#39;</span>
-      <span class="p p-Indicator">-</span> <span class="s">&#39;VLxU,VLE</span><span class="nv"> </span><span class="s">zero-extended,</span><span class="nv"> </span><span class="s">fault-only-first&#39;</span>
-      <span class="p p-Indicator">-</span> <span class="s">&#39;VLxU</span><span class="nv"> </span><span class="s">sign-extended&#39;</span>
-      <span class="p p-Indicator">-</span> <span class="s">&#39;VLxU</span><span class="nv"> </span><span class="s">sign-extended,</span><span class="nv"> </span><span class="s">fault-only-first&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;vd&#39;</span>
-      <span class="nt">attr</span><span class="p">:</span> <span class="s">&#39;destination</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">load&#39;</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-      <span class="nt">regpos</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8</span>
-    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;width&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;rs1&#39;</span>
-      <span class="nt">attr</span><span class="p">:</span> <span class="s">&#39;base</span><span class="nv"> </span><span class="s">address&#39;</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
-    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;lumop&#39;</span>
-      <span class="nt">attr</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">16</span><span class="p p-Indicator">,</span> <span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">16</span><span class="p p-Indicator">]</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;vm&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;mop&#39;</span>
-      <span class="nt">attr</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">0</span><span class="p p-Indicator">,</span> <span class="nv">4</span><span class="p p-Indicator">,</span> <span class="nv">4</span><span class="p p-Indicator">]</span>
-    <span class="p p-Indicator">-</span> <span class="nt">bits</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
-      <span class="nt">name</span><span class="p">:</span> <span class="s">&#39;nf&#39;</span>
-      <span class="nt">regpos</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">32</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">control</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0x07</span><span class="w"></span>
+<span class="w">      </span><span class="nt">attr</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;VLxU,VLE</span><span class="nv"> </span><span class="s">zero-extended&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;VLxU,VLE</span><span class="nv"> </span><span class="s">zero-extended,</span><span class="nv"> </span><span class="s">fault-only-first&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;VLxU</span><span class="nv"> </span><span class="s">sign-extended&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;VLxU</span><span class="nv"> </span><span class="s">sign-extended,</span><span class="nv"> </span><span class="s">fault-only-first&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vd&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">attr</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;destination</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">load&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">regpos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;width&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;rs1&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">attr</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;base</span><span class="nv"> </span><span class="s">address&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;lumop&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">attr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">16</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">16</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;vm&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;mop&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">attr</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">4</span><span class="p p-Indicator">]</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bits</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w"></span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nf&#39;</span><span class="w"></span>
+<span class="w">      </span><span class="nt">regpos</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">32</span><span class="w"></span>
 
-<span class="nt">config</span><span class="p">:</span>
-  <span class="nt">no_ticks</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">config</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">no_ticks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -r -i step_2_reg.yaml -o step_2_reg.svg
 </pre></div>
 </div>
-<img alt="./_images/step2_reg-yaml.svg" src="./_images/step2_reg-yaml.svg" /></div>
+<img alt="_images/step_2_reg.yaml.svg" src="_images/step_2_reg.yaml.svg" /></div>
 <div class="tab-content docutils container" id="step-2-toml">
 <p>set the content of the file to</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[[control]]</span>
-<span class="n">bits</span> <span class="o">=</span> <span class="mi">7</span>
-<span class="n">name</span> <span class="o">=</span> <span class="mi">0</span><span class="n">x07</span>
-<span class="n">attr</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">&#39;VLxU,VLE zero-extended&#39;</span><span class="p">,</span>
-    <span class="s">&#39;VLxU,VLE zero-extended, fault-only-first&#39;</span><span class="p">,</span>
-    <span class="s">&#39;VLxU sign-extended&#39;</span><span class="p">,</span>
-    <span class="s">&#39;VLxU sign-extended, fault-only-first&#39;</span>
-<span class="p">]</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[[control]]</span><span class="w"></span>
+<span class="n">bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="n">x07</span><span class="w"></span>
+<span class="n">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;VLxU,VLE zero-extended&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;VLxU,VLE zero-extended, fault-only-first&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;VLxU sign-extended&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&#39;VLxU sign-extended, fault-only-first&#39;</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 
-<span class="k">[[control]]</span>
-<span class="n">bits</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;vd&#39;</span>
-<span class="n">attr</span> <span class="o">=</span> <span class="s">&#39;destination of load&#39;</span>
-<span class="n">type</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">regpos</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="k">[[control]]</span><span class="w"></span>
+<span class="n">bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;vd&#39;</span><span class="w"></span>
+<span class="n">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;destination of load&#39;</span><span class="w"></span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="n">regpos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="w"></span>
 
-<span class="k">[[control]]</span>
-<span class="n">bits</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;width&#39;</span>
+<span class="k">[[control]]</span><span class="w"></span>
+<span class="n">bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;width&#39;</span><span class="w"></span>
 
-<span class="k">[[control]]</span>
-<span class="n">bits</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;rs1&#39;</span>
-<span class="n">attr</span> <span class="o">=</span> <span class="s">&#39;base address&#39;</span>
-<span class="n">type</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">[[control]]</span><span class="w"></span>
+<span class="n">bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;rs1&#39;</span><span class="w"></span>
+<span class="n">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;base address&#39;</span><span class="w"></span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
 
-<span class="k">[[control]]</span>
-<span class="n">bits</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;lumop&#39;</span>
-<span class="n">attr</span> <span class="o">=</span> <span class="k">[0, 16, 0, 16]</span>
-<span class="n">type</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">[[control]]</span><span class="w"></span>
+<span class="n">bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;lumop&#39;</span><span class="w"></span>
+<span class="n">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">]</span><span class="w"></span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
 
-<span class="k">[[control]]</span>
-<span class="n">bits</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;vm&#39;</span>
+<span class="k">[[control]]</span><span class="w"></span>
+<span class="n">bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;vm&#39;</span><span class="w"></span>
 
-<span class="k">[[control]]</span>
-<span class="n">bits</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;mop&#39;</span>
-<span class="n">attr</span> <span class="o">=</span> <span class="k">[0, 0, 4, 4]</span>
+<span class="k">[[control]]</span><span class="w"></span>
+<span class="n">bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;mop&#39;</span><span class="w"></span>
+<span class="n">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w"></span>
 
-<span class="k">[[control]]</span>
-<span class="n">bits</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">&#39;nf&#39;</span>
-<span class="n">regpos</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="k">[[control]]</span><span class="w"></span>
+<span class="n">bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#39;nf&#39;</span><span class="w"></span>
+<span class="n">regpos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"></span>
 
-<span class="n">config</span><span class="p">.</span><span class="n">no_ticks</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="n">config</span><span class="p">.</span><span class="n">no_ticks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>undulate -f svg -r -i step_2_reg.toml -o step_2_reg.svg
 </pre></div>
 </div>
-<img alt="./_images/step2_reg-toml.svg" src="./_images/step2_reg-toml.svg" /></div>
+<img alt="_images/step_2_reg.toml.svg" src="_images/step_2_reg.toml.svg" /></div>
 </div>
 
 
            </div>
-           
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        
-        &copy; Copyright 2020, Ludwig CRON
-
-    </p>
+    <p>&#169; Copyright 2022, Ludwig CRON.</p>
   </div>
-    
-    
-    
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

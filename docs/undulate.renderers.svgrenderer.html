@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4.1.1.3.1.3. undulate.renderers.svgrenderer module &mdash; Undulate 0.0.4 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4.1.2.1. undulate.cli module" href="undulate.cli.html" />
+    <link rel="prev" title="4.1.1.3.1.2. undulate.renderers.renderer module" href="undulate.renderers.renderer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Undulate
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">2. Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">3. Changelog</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">4. undulate</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="undulate.html">4.1. undulate package</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.html">4.1.1.1. undulate.bricks package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.html">4.1.1.2. undulate.parsers package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="undulate.renderers.html">4.1.1.3. undulate.renderers package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="undulate.renderers.cairorenderer.html">4.1.1.3.1.1. undulate.renderers.cairorenderer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="undulate.renderers.renderer.html">4.1.1.3.1.2. undulate.renderers.renderer module</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.1.1.3.1.3. undulate.renderers.svgrenderer module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.cli.html">4.1.2.1. undulate.cli module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.logger.html">4.1.2.2. undulate.logger module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.skin.html">4.1.2.3. undulate.skin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.version.html">4.1.2.4. undulate.version module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Undulate</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html"><span class="section-number">4. </span>undulate</a> &raquo;</li>
+          <li><a href="undulate.html"><span class="section-number">4.1. </span>undulate package</a> &raquo;</li>
+          <li><a href="undulate.renderers.html"><span class="section-number">4.1.1.3. </span>undulate.renderers package</a> &raquo;</li>
+      <li><span class="section-number">4.1.1.3.1.3. </span>undulate.renderers.svgrenderer module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/undulate.renderers.svgrenderer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-undulate.renderers.svgrenderer">
+<span id="undulate-renderers-svgrenderer-module"></span><h1><span class="section-number">4.1.1.3.1.3. </span>undulate.renderers.svgrenderer module<a class="headerlink" href="#module-undulate.renderers.svgrenderer" title="Permalink to this headline"></a></h1>
+<p>svgrenderer.py use the logic of renderer.py to render waveforms
+into scalable vector graphics format</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.renderers.svgrenderer.</span></span><span class="sig-name descname"><span class="pre">SvgRenderer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer" title="undulate.renderers.renderer.Renderer"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.renderers.renderer.Renderer</span></code></a></p>
+<p>Render the wavelanes as an svg</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.group">
+<span class="sig-name descname"><span class="pre">group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">identifier</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.group" title="Permalink to this definition"></a></dt>
+<dd><p>Group some drawable together</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>callable</em>) – function which populate what inside the group</p></li>
+<li><p><strong>identifier</strong> (<em>str</em>) – unique id for the group</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.path">
+<span class="sig-name descname"><span class="pre">path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><span class="pre">undulate.bricks.generic.Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.path" title="Permalink to this definition"></a></dt>
+<dd><p>Draw line segments to connect consecutive points of ‘vertices’
+to represent common signals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> (<em>List</em><em>[</em><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a><em>]</em>) – list of points to be connected</p></li>
+<li><p><strong>style_repr</strong> (<em>optional str</em>) – css rule, by default ‘path’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.arrow">
+<span class="sig-name descname"><span class="pre">arrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrow_description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.ArrowDescription" title="undulate.bricks.generic.ArrowDescription"><span class="pre">undulate.bricks.generic.ArrowDescription</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.arrow" title="Permalink to this definition"></a></dt>
+<dd><p>Draw an arrow to represent edge trigger on clock signals or to point
+something in an annotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arrow_description</strong> (<a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.ArrowDescription" title="undulate.bricks.generic.ArrowDescription"><em>ArrowDescription</em></a>) – position and oriantation</p></li>
+<li><p><strong>style_repr</strong> (<em>optional str</em>) – css rule, by default ‘arrow’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.polygon">
+<span class="sig-name descname"><span class="pre">polygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><span class="pre">undulate.bricks.generic.Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.polygon" title="Permalink to this definition"></a></dt>
+<dd><p>Draw a closed shape for shaded/colored area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> (<em>List</em><em>[</em><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><em>Point</em></a><em>]</em>) – Ordered list of point delimiting the polygon</p></li>
+<li><p><strong>style_repr</strong> (<em>optional str</em>) – css rule, by default None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.spline">
+<span class="sig-name descname"><span class="pre">spline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.SplineSegment" title="undulate.bricks.generic.SplineSegment"><span class="pre">undulate.bricks.generic.SplineSegment</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.spline" title="Permalink to this definition"></a></dt>
+<dd><p>Draw a path to represent smooth signals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> (<em>List</em><em>[</em><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.SplineSegment" title="undulate.bricks.generic.SplineSegment"><em>SplineSegment</em></a><em>]</em>) – list of SVG path operators and arguments</p></li>
+<li><p><strong>style_repr</strong> (<em>optional str</em>) – css rule, by default ‘path’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.text">
+<span class="sig-name descname"><span class="pre">text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.text" title="Permalink to this definition"></a></dt>
+<dd><p>Draw a text at a specific position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>float</em>) – x coordinate of the text</p></li>
+<li><p><strong>y</strong> (<em>float</em>) – y coordinate of the text</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – text to display</p></li>
+<li><p><strong>style_repr</strong> (<em>optional str</em>) – css rule, by default ‘text’</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.translate">
+<span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.translate" title="Permalink to this definition"></a></dt>
+<dd><p>translation function that is inherited for svg and eps</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelanes</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.draw" title="Permalink to this definition"></a></dt>
+<dd><p>Business function calling all others</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelanes</strong> (<em>dict</em>) – parsed dictionary from the input file</p></li>
+<li><p><strong>id</strong> (<em>str</em>) – file name of the output generated file</p></li>
+<li><p><strong>brick_width</strong> (<em>int</em>) – by default 40</p></li>
+<li><p><strong>brick_height</strong> (<em>int</em>) – by default 20</p></li>
+<li><p><strong>is_reg</strong> (<em>bool</em>) – if True <cite>wavelanes</cite> given represents a register
+otherwise it represents a bunch of signals</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.adjust_y">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">adjust_y</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brick_height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.adjust_y" title="Permalink to this definition"></a></dt>
+<dd><p>Convert an integer expression the index of the waveform
+as a y-coordinate in the drawing context</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y</strong> (<em>int</em>) – index of the waveform</p></li>
+<li><p><strong>brick_height</strong> (<em>float</em>) – height of a brick</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>equivalent y-coordinate</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.annotate">
+<span class="sig-name descname"><span class="pre">annotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelanes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">viewport</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.annotate" title="Permalink to this definition"></a></dt>
+<dd><p>Draw edges, vertical lines, horizontal lines, global time compression, …
+or any other shape defined in the annotations section of the input file</p>
+<p class="rubric">Example</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;||&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;x&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.5</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nt">&quot;shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;-~&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;from&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trigger&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;event&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ready&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wavelanes</strong> (<em>Dict</em>) – global signals representations</p></li>
+<li><p><strong>viewport</strong> (<em>Tuple</em><em>[</em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>, </em><em>float</em><em>]</em>) – the drawable zone (excluding signal names) x, y, width, height</p></li>
+<li><p><strong>edges</strong> (<em>Dict</em>) – edge section of the input file</p></li>
+<li><p><strong>annotations</strong> (<em>List</em><em>[</em><em>Dict</em><em>]</em>) – annotations section of the input file</p></li>
+<li><p><strong>brick_width</strong> (<em>float</em>) – default width of a brick</p></li>
+<li><p><strong>brick_height</strong> (<em>float</em>) – default height of a brick</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.brick">
+<span class="sig-name descname"><span class="pre">brick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><span class="pre">undulate.bricks.generic.Brick</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.brick" title="Permalink to this definition"></a></dt>
+<dd><p>Draw the symbol of a given Brick element</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.from_to_parser">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_to_parser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brick_width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">40.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brick_height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point" title="undulate.bricks.generic.Point"><span class="pre">undulate.bricks.generic.Point</span></a></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.from_to_parser" title="Permalink to this definition"></a></dt>
+<dd><p>Parse the from and to options of annotations into positions
+for drawing the specified shape or text</p>
+<p>Supported format are:
+- float
+- Tuple[float, float]
+- String “float”
+- String “(float unit, float unit)” where unit is either “” or “%”
+- String “node_name”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<em>str</em>) – value of from or to option</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – width of the image</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – height of the image</p></li>
+<li><p><strong>brick_width</strong> (<em>float</em><em>, </em><em>default=40</em>) – brick width</p></li>
+<li><p><strong>brick_height</strong> (<em>float</em><em>, </em><em>default=40</em>) – brick height</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Point of x-y coordinate</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.size">
+<span class="sig-name descname"><span class="pre">size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelanes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.size" title="Permalink to this definition"></a></dt>
+<dd><p>Pre-estimate the size of the image (duplicate of wavegroup without drawing)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – name of the waveform group</p></li>
+<li><p><strong>wavelanes</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>]</em>) – named waveforms composing the group</p></li>
+<li><p><strong>depth</strong> (<em>int</em>) – depth of nested groups to represent hierarchy</p></li>
+<li><p><strong>config</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – config section of the input file</p></li>
+<li><p><strong>brick_width</strong> (<em>float</em>) – width of a brick, default is 20.0</p></li>
+<li><p><strong>brick_height</strong> (<em>float</em>) – height of a brick, default is 20.0</p></li>
+<li><p><strong>width</strong> (<em>float</em>) – image width</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – image height</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Might be good to implement a parameter no_drawing in wavegroup
+and performs 2 passes to prevent possible discrepency</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.ticks">
+<span class="sig-name descname"><span class="pre">ticks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.ticks" title="Permalink to this definition"></a></dt>
+<dd><p>Generates the dotted vertical lines to ease reading of waveforms
+and their respective alignment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int</em>) – width of the image</p></li>
+<li><p><strong>height</strong> (<em>int</em>) – height of the image</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – distance between two ticks</p></li>
+<li><p><strong>offsetx</strong> (<em>optional</em>) – shift all ticks along the x-axis</p></li>
+<li><p><strong>offsety</strong> (<em>optional</em>) – shift to the bottom ticks with exceeding the height</p></li>
+<li><p><strong>phase</strong> (<em>optional</em>) – phase of the first signal on the top level
+this parameter is used to align tick with the rising edges of the first signal</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="undulate.renderers.svgrenderer.SvgRenderer.wavelane_title">
+<span class="sig-name descname"><span class="pre">wavelane_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#undulate.renderers.svgrenderer.SvgRenderer.wavelane_title" title="Permalink to this definition"></a></dt>
+<dd><p>Draw the title in front of a waveform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – name of the waveform print alongside</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – <p>position from 0-4 of the title position along
+the y-axis. This property is important when overlaying signals</p>
+<blockquote>
+<div><ul>
+<li><p>0   : middle of the wavelane height, is the default</p></li>
+<li><p>1-4 : quarter from top to bottom of the wavelane</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>brick_height</strong> (<em>float</em>) – height a brick</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="undulate.renderers.renderer.html" class="btn btn-neutral float-left" title="4.1.1.3.1.2. undulate.renderers.renderer module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="undulate.cli.html" class="btn btn-neutral float-right" title="4.1.2.1. undulate.cli module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

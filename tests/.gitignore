@@ -1,0 +1,9 @@
+# do not keep generated files
+*.pdf
+*.eps
+*.ps
+*.png
+*.svg
+
+outputs/
+coverage/

@@ -1,0 +1,11 @@
+pulses:
+    wave: "lhl...hl."
+    node: ".a....b.."
+toggle:
+    wave: "l.h....l."
+    node: "..c....d."
+
+annotations:
+- shape: "-"
+  y: 0.5
+  stroke: "#FFA500"

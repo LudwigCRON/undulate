@@ -1,7 +1,0 @@
-pywave.register module
-======================
-
-.. automodule:: pywave.register
-   :members:
-   :undoc-members:
-   :show-inheritance:

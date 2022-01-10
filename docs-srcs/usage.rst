@@ -1,50 +1,80 @@
 Usage
 =====
 
-Undulate is command-line utility. By default, without any arguments, usage information
-is presented as below:
+Undulate is command-line utility. Usage information are presented with ``-h`` argument
+or ``--help`` as below:
 
 .. code-block:: bash
 
-    $ undulate
-    ERROR: None is not found
-    usage: undulate [-h] [-i INPUT] [-f FORMAT] [-r] [-d DPI] [-o OUTPUT]
+    $> undulate -h
+    usage: undulate [-h] [-i INPUT] [-f FORMAT] [-r] [-d DPI] [-o OUTPUT] [-s STYLE] [mangled_input]
 
     waveform generator from textual format
 
-    optional arguments:
+    positional arguments:
+    mangled_input
+
+    options:
     -h, --help            show this help message and exit
     -i INPUT, --input INPUT
-                            path to the input text file
+                          path to the input text file
     -f FORMAT, --format FORMAT
-                            file format of the output
+                          file format of the output
     -r, --is_reg          is register description
     -d DPI, --dpi DPI     resolution of the image for png export
     -o OUTPUT, --output OUTPUT
-                            path to the output file
+                          path to the output file
+    -s STYLE, --style STYLE
+                          path to custom css file
 
-It expect at least:
+Undulate expects at least an input file. Otherwise, the tool informs you.
 
-- an input file,
-- the format of the output, 
-- and the output path of generated file.
+.. code-block:: bash
 
-The input file of the textual description is provided by the ``-i`` or ``--input``.
-The format of the output is given by the ``-f`` or ``--format``.
-The supported format is:
+    $> undulate
+    CRITICAL: An input file shall be given
 
-- svg
-- cairo-svg
-- cairo-ps
-- cairo-eps
-- cairo-pdf
-- cairo-png
-- json
+The input file of the textual description is provided by the ``-i`` or 
+``--input`` arguments.
 
-The output path of the generated file is provided by the ``-o`` or ``--output``:
+.. code-block:: bash
 
-For instance, converting a file whose path is ``~/project/doc/wavetest.yaml`` into an svg
-image in ``~/project/doc/wavetest.svg`` can be done with
+    $> undulate -i ./test.json
+    WARNING : No output file given. Generated at ./test.png
+    $> undulate --input ./test.json
+    WARNING : No output file given. Generated at ./test.png
+
+.. tip::
+
+    For the sake of simplicity, if the default behavior of Undulate suits you
+    you can simply forget the ``-i`` or ``--input``. But in that case, the input
+    file shall be the last argument provided to Undulate.
+
+    .. code-block:: bash
+
+        $> undulate ./test.json
+        WARNING : No output file given. Generated at ./test.png
+
+By default, a PNG file is generated where undulate is called. To change the output
+format, you shall provide a format with either ``-f`` or ``--format``.
+To get the list of supported formats run in a terminal
+
+.. code-block:: bash
+
+    $> undulate -f h
+    CRITICAL: This rendering engine is not yet supported
+    choose one of the following:
+            - cairo-png
+            - cairo-pdf
+            - cairo-svg
+            - cairo-eps
+            - svg
+            - json
+
+To change where is stored the generated drawing, provide the complete file path
+by the ``-o`` or ``--output`` arguments. For instance, converting a file whose
+path is ``~/project/doc/wavetest.yaml`` into an svg image in
+``~/project/doc/wavetest.svg`` can be done with
 
 .. code-block:: bash
 

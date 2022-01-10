@@ -2,9 +2,9 @@ bus
 ****
 
 It is common for busses to represent only a transition with the new value.
-The list of possible characters are the following: ``xX=23456789``
+The list of possible characters is the following: ``xX=23456789``
 
-| ``x`` or ``X`` define any unkown value.
+| ``x`` or ``X`` define any unknown value.
 | ``=23456789`` are the same symbol with different background color
 
 .. container:: tabs
@@ -36,7 +36,7 @@ The list of possible characters are the following: ``xX=23456789``
 
             undulate -f svg -i step_3_dig.json -o step_3_dig.svg
         
-        .. image:: ./_images/step3_dig-json.svg
+        .. image:: ./_images/step_3_dig.json.svg
 
     .. container:: tab-content
         :name: step_3_yaml
@@ -63,7 +63,7 @@ The list of possible characters are the following: ``xX=23456789``
 
             undulate -f svg -i step_3_dig.yaml -o step_3_dig.svg
         
-        .. image:: ./_images/step3_dig-yaml.svg
+        .. image:: ./_images/step_3_dig.yaml.svg
 
     .. container:: tab-content
         :name: step_3_toml
@@ -86,7 +86,7 @@ The list of possible characters are the following: ``xX=23456789``
 
             undulate -f svg -i step_3_dig.toml -o step_3_dig.svg
         
-        .. image:: ./_images/step3_dig-toml.svg
+        .. image:: ./_images/step_3_dig.toml.svg
 
 .. note::
 

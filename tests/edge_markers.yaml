@@ -1,0 +1,13 @@
+pulse:
+  wave: "lpl...pl..."
+  node: ".a....b...."
+  fill: hsl(0%, 100%, 50%)
+
+level:
+  wave: "l....h....l"
+  node: ".....c....d"
+  fill: hsla(127, 100%, 50%, 0.5)
+
+edges:
+- "a *~# c"
+- "b #-~* d"
