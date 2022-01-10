@@ -3,7 +3,7 @@
 ![](https://img.shields.io/badge/license-MIT-blue)
 ![](https://img.shields.io/badge/python-3.7+-blue)
 ![](https://64-166642218-gh.circle-artifacts.com/0/tests/outputs/cov_badge.svg)
-[![CircleCI](https://circleci.com/gh/LudwigCRON/undulate/tree/architecture_update.svg?style=shield)](https://circleci.com/gh/LudwigCRON/undulate/tree/architecture_update)<br/>
+[![CircleCI](https://circleci.com/gh/LudwigCRON/undulate/tree/master.svg?style=shield)](https://circleci.com/gh/LudwigCRON/undulate/tree/master)<br/>
 
 ## Introduction
 
