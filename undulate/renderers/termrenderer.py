@@ -30,12 +30,14 @@ class TermRenderer(Renderer):
         width = max(
             int((self.width - self.offsetx) * cur.width / self.draw_width), min_width
         )
+        half_width = width // 2
         sequence = "".join([prv.symbol, cur.symbol, nxt.symbol])
         data = str(cur.args.get("data", "")) or (" " * (width - 1))
         # fill data
         if len(data) < width - 1:
-            spaces = " " * ((width - 1 - len(data)) // 2)
-            data = spaces + data + spaces + " " * (width % 2)
+            spaces_left = " " * ((width - 1 - len(data)) // 2)
+            spaces_right = " " * (width - 1 - len(data) - len(spaces_left))
+            data = spaces_left + data + spaces_right
         else:
             data = data[: width - 1]
         sequences = {
@@ -48,13 +50,13 @@ class TermRenderer(Renderer):
             "m": "\u223F" * (width - 1) + "\u256E",
             "M": "\u223F" * (width - 1) + "\u256F",
             "p": "\u2571"
-            + "\u2594" * ((width - 2) // 2)
+            + "\u2594" * (half_width - 1)
             + "\u2572"
-            + "\u2581" * ((width - 2) // 2),
+            + "\u2581" * (width - half_width - 1),
             "n": "\u2572"
-            + "\u2581" * ((width - 2) // 2)
+            + "\u2581" * (half_width - 1)
             + "\u2571"
-            + "\u2594" * ((width - 2) // 2),
+            + "\u2594" * (width - half_width - 1),
             "=": "\u276C" + data,
             "00": "\u2581" * width,
             "0z": "\u256D" + "\u2500" * (width - 1),
@@ -63,30 +65,30 @@ class TermRenderer(Renderer):
             "0m": "\u256D" + "\u223F" * (width - 2) + "\u256E",
             "0M": "\u256D" + "\u223F" * (width - 2) + "\u256F",
             "up": "\u2594"
-            + "\u2594" * ((width - 2) // 2)
+            + "\u2594" * (half_width)
             + "\u2572"
-            + "\u2581" * ((width - 2) // 2),
+            + "\u2581" * (width - half_width - 1),
             "d1": "\u2571" + "\u2594" * (width - 1),
             "dn": "\u2581"
-            + "\u2581" * ((width - 2) // 2)
+            + "\u2581" * (half_width - 1)
             + "\u2571"
-            + "\u2594" * ((width - 2) // 2),
+            + "\u2594" * (width - half_width - 1),
             "0n": "\u2581"
-            + "\u2581" * ((width - 2) // 2)
+            + "\u2581" * (half_width)
             + "\u2571"
-            + "\u2594" * ((width - 2) // 2),
+            + "\u2594" * (width - half_width - 1),
             "0=": "\u2571" + data,
             "z0": "\u256E" + "\u2581" * (width - 1),
             "zx": "\u29FC" + "\u2573" * (width - 1),
             "z1": "\u256F" + "\u2594" * (width - 1),
             "zp": "\u256F"
-            + "\u2594" * ((width - 2) // 2)
+            + "\u2594" * (half_width - 1)
             + "\u2572"
-            + "\u2581" * ((width - 2) // 2),
+            + "\u2581" * (width - half_width - 1),
             "zn": "\u256E"
-            + "\u2581" * ((width - 2) // 2)
+            + "\u2581" * (half_width - 1)
             + "\u2571"
-            + "\u2594" * ((width - 2) // 2),
+            + "\u2594" * (width - half_width - 1),
             "z=": "\u29FC" + data,
             "x0": "\u2572" + "\u2581" * (width - 1),
             "xz": "\u29FD" + "\u2500" * (width - 1),
@@ -101,9 +103,9 @@ class TermRenderer(Renderer):
             "1M": "\u2570" + "\u223F" * (width - 2) + "\u256F",
             "11": "\u2594" * width,
             "1p": "\u2594"
-            + "\u2594" * ((width - 2) // 2)
+            + "\u2594" * (half_width - 1)
             + "\u2572"
-            + "\u2581" * ((width - 2) // 2),
+            + "\u2581" * (width - half_width - 1),
             "1=": "\u2572" + data,
             "p1": "\u2571" + "\u2594" * (width - 1),
             "pz": "\u256D" + "\u2500" * (width - 1),
@@ -112,28 +114,28 @@ class TermRenderer(Renderer):
             "pm": "\u256D" + "\u223F" * (width - 2) + "\u256E",
             "pM": "\u256D" + "\u223F" * (width - 2) + "\u256F",
             "pn": "\u2581"
-            + "\u2581" * ((width - 2) // 2)
+            + "\u2581" * (half_width - 1)
             + "\u2571"
-            + "\u2594" * ((width - 2) // 2),
+            + "\u2594" * (width - half_width - 1),
             "p=": "\u2571" + data,
             "n0": "\u2572" + "\u2581" * (width - 1),
             "np": "\u2594"
-            + "\u2594" * ((width - 2) // 2)
+            + "\u2594" * (half_width - 1)
             + "\u2572"
-            + "\u2581" * ((width - 2) // 2),
+            + "\u2581" * (width - half_width - 1),
             "nx": "\u2572" + "\u2573" * (width - 1),
             "nu": "\u2594" * width,
             "nm": "\u2570" + "\u223F" * (width - 2) + "\u256E",
             "nM": "\u2570" + "\u223F" * (width - 2) + "\u256F",
             "n=": "\u2572" + data,
             "mn": "\u2581"
-            + "\u2581" * ((width - 2) // 2)
+            + "\u2581" * (half_width - 1)
             + "\u2571"
-            + "\u2594" * ((width - 2) // 2),
+            + "\u2594" * (width - half_width - 1),
             "Mp": "\u2594"
-            + "\u2594" * ((width - 2) // 2)
+            + "\u2594" * (half_width - 1)
             + "\u2572"
-            + "\u2581" * ((width - 2) // 2),
+            + "\u2581" * (width - half_width - 1),
             "=0": "\u2572" + "\u2581" * (width - 1),
             "=z": "\u29FD" + "\u2500" * (width - 1),
             "=x": "\u2573" * width,
