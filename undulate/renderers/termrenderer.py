@@ -22,22 +22,6 @@ class TermRenderer(Renderer):
         Renderer.__init__(self)
         self.width, self.height = os.get_terminal_size()
 
-    def group(self, callback, identifier: str, **kwargs) -> str:
-        """
-        Group some drawable together
-
-        Args:
-            callback (callable): function which populate what inside the group
-            identifier (str): unique id for the group
-        """
-        ...
-
-    def translate(self, x: float, y: float, **kwargs) -> str:
-        def _():
-            ...
-
-        return _
-
     def brick(self, prv: Brick, cur: Brick, nxt: Brick, **kwargs) -> str:
         """
         Draw the symbol of a given Brick element
@@ -226,22 +210,6 @@ class TermRenderer(Renderer):
             )
         else:
             print(wave, end="\u001b[49m\u001b[39m\n")
-
-    def ticks(self, width: int, height: int, step: float, **kwargs) -> str:
-        """
-        Generates the dotted vertical lines to ease reading of waveforms
-        and their respective alignment
-
-        Args:
-            width    (int) : width of the image
-            height   (int) : height of the image
-            step     (float) : distance between two ticks
-            offsetx (optional): shift all ticks along the x-axis
-            offsety (optional): shift to the bottom ticks with exceeding the height
-            phase (optional): phase of the first signal on the top level
-                this parameter is used to align tick with the rising edges of the first signal
-        """
-        ...
 
     def wavegroup(self, name: str, wavelanes, depth: int = 1, **kwargs) -> str:
         """
