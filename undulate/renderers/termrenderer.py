@@ -7,6 +7,7 @@ import os
 from itertools import tee, islice, chain
 from undulate.renderers.renderer import Renderer
 from undulate.bricks.generic import Brick, BrickFactory
+from typing import Tuple
 
 
 class TermRenderer(Renderer):
@@ -22,14 +23,15 @@ class TermRenderer(Renderer):
         Renderer.__init__(self)
         self.width, self.height = os.get_terminal_size()
 
-    def brick(self, prv: Brick, cur: Brick, nxt: Brick, **kwargs) -> str:
+    def brick(self, prv: Brick, cur: Brick, nxt: Brick, **kwargs) -> Tuple[float, str]:
         """
         Draw the symbol of a given Brick element
         """
         min_width = 1 if cur.symbol == "x" else 4
         width = max(
-            int((self.width - self.offsetx) * cur.width / self.draw_width), min_width
+            (self.width - self.offsetx) * cur.width / self.draw_width, min_width
         )
+        error_width, width = width - round(width), round(width)
         half_width = width // 2
         sequence = "".join([prv.symbol, cur.symbol, nxt.symbol])
         data = str(cur.args.get("data", "")) or (" " * (width - 1))
@@ -150,8 +152,8 @@ class TermRenderer(Renderer):
             ),
         )
         if cur.symbol == "=":
-            return text[0] + "\u001b[47m\u001b[30m" + text[1:] + "\u001b[49m\u001b[39m"
-        return text
+            text = text[0] + "\u001b[47m\u001b[30m" + text[1:] + "\u001b[49m\u001b[39m"
+        return (error_width, text)
 
     def wavelane(self, name: str, wavelane: str, **kwargs) -> str:
         """
@@ -197,9 +199,13 @@ class TermRenderer(Renderer):
 
         # generate waveform
         wave = []
+        width_error = 0.0
         for prv, cur, nxt in previous_and_next(_wavelane):
-            # generate the brick
-            wave.append(self.brick(prv, cur, nxt, **kwargs))
+            # generate the brick and update the width with error 
+            # committed due to rounding from float to int as in a sigma delta
+            cur.width += width_error
+            width_error, text = self.brick(prv, cur, nxt, **kwargs)
+            wave.append(text)
         # crop wave and replace last char by ellipsis if needed
         wave = "".join(wave)
         nb_ctrl = sum((1 if c == "\u001b" else 0 for c in wave)) * 4
