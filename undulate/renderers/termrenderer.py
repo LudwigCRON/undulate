@@ -28,10 +28,8 @@ class TermRenderer(Renderer):
         Draw the symbol of a given Brick element
         """
         min_width = 1 if cur.symbol == "x" else 4
-        width = max(
-            (self.width - self.offsetx) * cur.width / self.draw_width, min_width
-        )
-        error_width, width = width - round(width), round(width)
+        width = max((self.width - self.offsetx) * cur.width / self.draw_width, min_width)
+        error_width, width = (width - round(width)) * 8, round(width)
         half_width = width // 2
         sequence = "".join([prv.symbol, cur.symbol, nxt.symbol])
         data = str(cur.args.get("data", "")) or (" " * (width - 1))
@@ -201,7 +199,7 @@ class TermRenderer(Renderer):
         wave = []
         width_error = 0.0
         for prv, cur, nxt in previous_and_next(_wavelane):
-            # generate the brick and update the width with error 
+            # generate the brick and update the width with error
             # committed due to rounding from float to int as in a sigma delta
             cur.width += width_error
             width_error, text = self.brick(prv, cur, nxt, **kwargs)
