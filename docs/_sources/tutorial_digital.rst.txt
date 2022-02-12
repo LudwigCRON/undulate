@@ -1,4 +1,4 @@
-digital tutorial
+Digital tutorial
 ================
 
 As presented in section 2.2, several file formats are supported. In the current

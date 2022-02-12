@@ -1,8 +1,6 @@
-undulate.bricks package
-=======================
 
-Submodules
-----------
+undulate.bricks
+-----------------------------------------------
 
 .. toctree::
    :maxdepth: 4
@@ -12,9 +10,6 @@ Submodules
    undulate.bricks.generic
    undulate.bricks.register
    undulate.bricks.shape
-
-Module contents
----------------
 
 .. automodule:: undulate.bricks
    :members:

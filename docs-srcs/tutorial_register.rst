@@ -1,4 +1,4 @@
-register tutorial
+Register tutorial
 =================
 
 Let's describe some register

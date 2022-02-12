@@ -26,7 +26,7 @@ images:
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	sphinx-apidoc -f -e -o $(SOURCEDIR) undulate
+	sphinx-apidoc --templatedir $(SOURCEDIR)/templates -f -e -o $(SOURCEDIR) undulate
 	@$(SPHINXBUILD) -b $@ "$(SOURCEDIR)" "$(BUILDDIR)"
 
 # install the required packages

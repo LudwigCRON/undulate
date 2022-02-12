@@ -70,6 +70,19 @@ To get the list of supported formats run in a terminal
             - cairo-eps
             - svg
             - json
+            - term
+
+.. note::
+
+    The name of the engine is named as follows: ``name of base framework``-``extension``.
+    In the case there is no name of base framework, there is no dependency needed to use
+    it.
+
+    The rendering engine ``json`` displays in the terminal the internal representation
+    of the read file.
+
+    The rendering engine ``term`` displays the waveforms in the terminal.
+    However, the supported list of symbol is limited to ``hHnNpPlLz01xudmM=``.
 
 To change where is stored the generated drawing, provide the complete file path
 by the ``-o`` or ``--output`` arguments. For instance, converting a file whose

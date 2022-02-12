@@ -25,7 +25,7 @@ author = "Ludwig CRON"
 copyright = f"{datetime.now().year}, {author}"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.4"
+release = "0.0.6"
 
 # -- General configuration ---------------------------------------------------
 
