@@ -43,7 +43,12 @@ def parse(filepath: str) -> Tuple[bool, Any]:
 
 
 def process(
-    input_path: str, output_path: str, rendering_engine: str, is_reg: bool, dpi: float
+    input_path: str,
+    output_path: str,
+    rendering_engine: str,
+    is_reg: bool,
+    dpi: float,
+    eol: str,
 ) -> None:
     # load config file
     with open(CONFIG_FILE, "rt+") as fp:
@@ -90,6 +95,7 @@ def process(
             brick_width=(28 if is_reg else 40),
             is_reg=is_reg,
             filename=output_path,
+            eol=eol,
         )
     except Exception as e:
         traceback.print_tb(e.__traceback__)
@@ -121,6 +127,9 @@ def main():
     parser.add_argument(
         "-s", "--style", help="path to custom css file", default=None, type=str
     )
+    parser.add_argument(
+        "--eol", help="define the end of line in term renderer", default="\n", type=str
+    )
     parser.add_argument("mangled_input", nargs="?", default=None, type=str)
     cli_args = parser.parse_args()
     # update default style
@@ -133,6 +142,7 @@ def main():
         cli_args.format,
         cli_args.is_reg,
         cli_args.dpi,
+        cli_args.eol.replace("cr", "\r").replace("lf", "\n"),
     )
 
 

@@ -174,6 +174,7 @@ class TermRenderer(Renderer):
         """
         offsetx = kwargs.get("offsetx", 0)
         depth = kwargs.get("depth", 0)
+        eol = kwargs.get("eol", "\n")
         hier_spaces = "  " * max(depth - 1, 0)
         spaces = " " * max(offsetx - len(name) - len(hier_spaces) + 1, 1)
         # display title
@@ -216,10 +217,10 @@ class TermRenderer(Renderer):
         if len(wave) - nb_ctrl > self.width - offsetx - 1:
             print(
                 wave[: self.width + nb_ctrl - offsetx - 2],
-                end="\u001b[49m\u001b[39m\u22EF\n",
+                end=f"\u001b[49m\u001b[39m\u22EF{eol}",
             )
         else:
-            print(wave, end="\u001b[49m\u001b[39m\n")
+            print(wave, end=f"\u001b[49m\u001b[39m{eol}")
 
     def wavegroup(self, name: str, wavelanes, depth: int = 1, **kwargs) -> str:
         """
@@ -273,6 +274,7 @@ class TermRenderer(Renderer):
         _id = kwargs.get("id", "")
         brick_width = kwargs.get("brick_width", 40)
         brick_height = kwargs.get("brick_height", 20)
+        eol = kwargs.get("eol", "\n")
         # remove group not used for waveform
         wavelanes.pop("annotations", None)
         wavelanes.pop("edges", None)
@@ -280,7 +282,7 @@ class TermRenderer(Renderer):
         wavelanes.pop("config", None)
         lkeys, width, height, n = self.size(wavelanes, **kwargs)
         self.draw_width = width
-        self.offsetx = lkeys + self.depth(wavelanes)
+        self.offsetx = int(lkeys + self.depth(wavelanes) * 1.75)
         self.wavegroup(
             _id,
             wavelanes,
@@ -288,5 +290,6 @@ class TermRenderer(Renderer):
             brick_height=brick_height,
             width=width,
             height=height,
+            eol=eol,
             offsetx=self.offsetx,
         )

@@ -146,6 +146,7 @@ else
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_err6.jsonml" -f svg -r -o "${OUTPATH}/local_config_nodes.svg"; test $$? -eq 6
 endif
 	python3 ./covrun.py $(WAVEFORM) -f term -i "${TESTPATH}/term_size.yaml" -o -
+	python3 ./covrun.py $(WAVEFORM) -f term -i "${TESTPATH}/term_size.yaml" --eol lflf -o -
 	coverage report
 	coverage html
 	coverage json
