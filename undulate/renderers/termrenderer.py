@@ -23,7 +23,9 @@ class TermRenderer(Renderer):
         Renderer.__init__(self)
         self.width, self.height = os.get_terminal_size()
 
-    def brick(self, prv: Brick, cur: Brick, nxt: Brick, **kwargs) -> Tuple[float, str]:
+    def brick(
+        self, prv: Brick, cur: Brick, nxt: Brick, is_last: bool, **kwargs
+    ) -> Tuple[float, str]:
         """
         Draw the symbol of a given Brick element
         """
@@ -150,7 +152,9 @@ class TermRenderer(Renderer):
             ),
         )
         if cur.symbol == "=":
-            text = text[0] + "\u001b[47m\u001b[30m" + text[1:] + "\u001b[49m\u001b[39m"
+            text = text[0] + "\u001b[47m\u001b[30m" + text[1:]
+            if not is_last:
+                text += "\u001b[49m\u001b[39m"
         return (error_width, text)
 
     def wavelane(self, name: str, wavelane: str, **kwargs) -> str:
@@ -202,17 +206,17 @@ class TermRenderer(Renderer):
             # generate the brick and update the width with error
             # committed due to rounding from float to int as in a sigma delta
             cur.width += width_error
-            width_error, text = self.brick(prv, cur, nxt, **kwargs)
+            width_error, text = self.brick(
+                prv, cur, nxt, is_last=(nxt.symbol == " "), **kwargs
+            )
             wave.append(text)
         # crop wave and replace last char by ellipsis if needed
         wave = "".join(wave)
-        nb_ctrl = sum((1 if c == "\u001b" else 0 for c in wave)) * 4
-        if len(wave) - nb_ctrl >= self.width - offsetx - 1:
+        nb_ctrl = sum((5 if c == "\u001b" else 0 for c in wave))
+        if len(wave) - nb_ctrl > self.width - offsetx - 1:
             print(
                 wave[: self.width + nb_ctrl - offsetx - 2],
-                "\u22EF",
-                sep="",
-                end="\u001b[49m\u001b[39m\n",
+                end="\u001b[49m\u001b[39m\u22EF\n",
             )
         else:
             print(wave, end="\u001b[49m\u001b[39m\n")
@@ -276,7 +280,7 @@ class TermRenderer(Renderer):
         wavelanes.pop("config", None)
         lkeys, width, height, n = self.size(wavelanes, **kwargs)
         self.draw_width = width
-        self.offsetx = lkeys + self.depth(wavelanes) * 2
+        self.offsetx = lkeys + self.depth(wavelanes)
         self.wavegroup(
             _id,
             wavelanes,
