@@ -42,6 +42,11 @@
       "classname": "SvgRenderer",
       "extension": "svg"
     },
+    "term": {
+      "module": "undulate.renderers.termrenderer",
+      "classname": "TermRenderer",
+      "extension": ""
+    },
     "json": {
       "module": "",
       "classname": "",

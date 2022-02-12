@@ -1,4 +1,4 @@
-analogue tutorial
+Analogue tutorial
 =================
 
 Let's try some analogue features

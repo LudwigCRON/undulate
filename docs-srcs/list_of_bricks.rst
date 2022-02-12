@@ -166,7 +166,6 @@ List of bricks
 |    I   |    Impulse | duty_cyle, period          |  |brick-dig-I|  |
 +--------+------------+----------------------------+-----------------+
 
-
 Description
 ~~~~~~~~~~~
 

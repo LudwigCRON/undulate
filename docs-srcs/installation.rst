@@ -12,7 +12,7 @@ In fact, you can even specify a version or a branch name in the following manner
 
 .. code-block:: bash
 
-    $> pip install git+https://github.com/LudwigCRON/undulate.git@v0.0.4
+    $> pip install git+https://github.com/LudwigCRON/undulate.git@v0.0.5
 
 or
 
@@ -32,19 +32,19 @@ or
 
         .. code-block:: bash
 
-            $> wget https://github.com/LudwigCRON/undulate/archive/v0.0.4.tar.gz
+            $> wget https://github.com/LudwigCRON/undulate/archive/v0.0.5.tar.gz
         
     2. unzip it at the desired place
 
         .. code-block:: bash
 
-            $> tar -xzvf v0.0.4.tar.gz
+            $> tar -xzvf v0.0.5.tar.gz
 
     3. install via pip
 
         .. code-block:: bash
 
-            $> cd ./v0.0.4/ 
+            $> cd ./v0.0.6/ 
             $> pip install --user .
 
 .. tip::

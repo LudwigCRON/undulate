@@ -1,8 +1,3 @@
-undulate package
-================
-
-Subpackages
------------
 
 .. toctree::
    :maxdepth: 4
@@ -11,8 +6,8 @@ Subpackages
    undulate.parsers
    undulate.renderers
 
-Submodules
-----------
+undulate
+-----------------------------------------------
 
 .. toctree::
    :maxdepth: 4
@@ -21,9 +16,6 @@ Submodules
    undulate.logger
    undulate.skin
    undulate.version
-
-Module contents
----------------
 
 .. automodule:: undulate
    :members:

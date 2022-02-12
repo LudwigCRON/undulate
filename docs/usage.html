@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2.1. Usage &mdash; Undulate 0.0.4 documentation</title>
+  <title>2.1. Usage &mdash; Undulate 0.0.6 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/./theme_override.css" type="text/css" />
@@ -45,10 +45,10 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">2.1. Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="supported_syntax.html">2.2. Supported Syntax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="list_of_bricks.html">2.3. List of Bricks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial_digital.html">2.4. digital tutorial</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial_analogue.html">2.5. analogue tutorial</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial_register.html">2.6. register tutorial</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial_annotations.html">2.7. annotations tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_digital.html">2.4. Digital tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_analogue.html">2.5. Analogue tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_register.html">2.6. Register tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_annotations.html">2.7. Annotations tutorial</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_cases.html">2.8. Use cases</a></li>
 </ul>
 </li>
@@ -142,7 +142,18 @@ choose one of the following:
         - cairo-eps
         - svg
         - json
+        - term
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The name of the engine is named as follows: <code class="docutils literal notranslate"><span class="pre">name</span> <span class="pre">of</span> <span class="pre">base</span> <span class="pre">framework</span></code>-<code class="docutils literal notranslate"><span class="pre">extension</span></code>.
+In the case there is no name of base framework, there is no dependency needed to use
+it.</p>
+<p>The rendering engine <code class="docutils literal notranslate"><span class="pre">json</span></code> displays in the terminal the internal representation
+of the read file.</p>
+<p>The rendering engine <code class="docutils literal notranslate"><span class="pre">term</span></code> displays the waveforms in the terminal.
+However, the supported list of symbol is limited to <code class="docutils literal notranslate"><span class="pre">hHnNpPlLz01xudmM=</span></code>.</p>
 </div>
 <p>To change where is stored the generated drawing, provide the complete file path
 by the <code class="docutils literal notranslate"><span class="pre">-o</span></code> or <code class="docutils literal notranslate"><span class="pre">--output</span></code> arguments. For instance, converting a file whose

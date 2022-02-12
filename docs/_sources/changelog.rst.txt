@@ -6,7 +6,10 @@ For next release:
     - text underline or overline rendering
     - multiline text support
     - verilog stimuli rendering engine
-    - terminal rendering engine
+
+v0.0.6:
+    **New:**
+      - terminal rendering engine
 
 v0.0.5:
     **New:**

@@ -1,8 +1,6 @@
-undulate.parsers package
-========================
 
-Submodules
-----------
+undulate.parsers
+-----------------------------------------------
 
 .. toctree::
    :maxdepth: 4
@@ -11,9 +9,6 @@ Submodules
    undulate.parsers.register
    undulate.parsers.toml
    undulate.parsers.yaml
-
-Module contents
----------------
 
 .. automodule:: undulate.parsers
    :members:

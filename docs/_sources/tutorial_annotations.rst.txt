@@ -1,4 +1,4 @@
-annotations tutorial
+Annotations tutorial
 ====================
 
 Let's add some annotations

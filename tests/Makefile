@@ -2,9 +2,12 @@ TESTPATH=.
 OUTPATH=./outputs
 WAVEFORM=undulate
 
-.PHONY: new legacy internal cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml internal-svg internal-cairo-svg coverage
+.PHONY: new legacy internal cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml internal-svg internal-cairo-svg coverage out_dir
 
-all: new legacy internal cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml adcec coverage
+all: new legacy internal cairo-svg register legacy_1.jsonml legacy_2.jsonml legacy_3.jsonml wavetest.json wavetest.yaml adcec coverage out_dir
+
+out_dir:
+	mkdir -p ${OUTPATH}
 
 %.jsonml:
 	@echo $@
@@ -142,6 +145,7 @@ else
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_err5.jsonml" -f svg -r -o "${OUTPATH}/local_config_nodes.svg"; test $$? -eq 5
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_err6.jsonml" -f svg -r -o "${OUTPATH}/local_config_nodes.svg"; test $$? -eq 6
 endif
+	python3 ./covrun.py $(WAVEFORM) -f term -i "${TESTPATH}/term_size.yaml" -o -
 	coverage report
 	coverage html
 	coverage json

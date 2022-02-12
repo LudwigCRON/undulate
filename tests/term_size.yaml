@@ -1,0 +1,49 @@
+basic:
+  '0':
+    wave: "0.0.0.0."
+  '1':
+    wave: "1.1.1.1."
+  '=':
+    wave: "=.=.=.=."
+    data: [0x01, 0x02, 0x03, 0x04]
+  'z':
+    wave: "z.z.z.z."
+  'u':
+    wave: "u.u.u.u."
+  'd':
+    wave: "d.d.d.d."
+  'p':
+    wave: "p.p.p.p."
+  'n':
+    wave: "n.n.n.n."
+  rand:
+    wave: "01zpnpzn0x1"
+medium:
+  seq0:
+    wave: "0z1z0"
+  seq1:
+    wave: "0hl1zlzh"
+  seq2:
+    wave: "0p0lpl"
+  seq3:
+    wave: "1n1hnh"
+  seq4:
+    wave: "0n0lnl"
+  seq5:
+    wave: "1p1hph"
+  seq6:
+    wave: "0x1x0xhxl"
+  seq7:
+    wave: "zx=xz==z"
+    data: [0x01, 0x02, 0x03, 0x04]
+  seq8:
+    wave: "ludhdpdnupun"
+hard:
+  seq0:
+    wave: "0=l=h==.="
+    data: [0x01, 0x02, 0x03, 0x04, 0x05]
+  seq1:
+    wave: "p=n=l"
+    data: [0x01, 0x02, 0x03, 0x04]
+  seq2:
+    wave: "mlMhmpmpMnmnMp"
