@@ -118,7 +118,6 @@ def parse(filepath: str) -> Tuple[bool, Dict]:
     try:
         tmp = json.loads(content)
     except json.decoder.JSONDecodeError as e:
-        print(content)
         log.fatal(log.SYNTAX_ERROR % (e.msg, e.lineno))
     # post-process to normalize the db
     for k, v in tmp.items():
