@@ -47,3 +47,14 @@ hard:
     data: [0x01, 0x02, 0x03, 0x04]
   seq2:
     wave: "mlMhmpmpMnmnMp"
+  seq3ref:
+    wave: "p.p.p.p."
+  seq3ph:
+    wave: "p.p.p.p."
+    phase: -0.5
+  seq3pq:
+    wave: "p.p.p.p."
+    phase: -0.25
+  seq3po:
+    wave: "p.p.p.p."
+    phase: -0.125
