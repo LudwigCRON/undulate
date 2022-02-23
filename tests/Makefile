@@ -141,9 +141,11 @@ endif
 ifeq (${ISPWSH}, 1)
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_err5.jsonml" -f svg -r -o "${OUTPATH}/local_config_nodes.svg" & python ./test.py $$LASTEXITCODE -eq 5
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_err6.jsonml" -f svg -r -o "${OUTPATH}/local_config_nodes.svg" & python ./test.py $$LASTEXITCODE -eq 6
+	python3 ./covrun.py $(WAVEFORM) -f json -i "${TESTPATH}/jsonml_syntax.json" & python ./test.py $$LASTEXITCODE -eq 0
 else
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_err5.jsonml" -f svg -r -o "${OUTPATH}/local_config_nodes.svg"; test $$? -eq 5
 	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/reg_err6.jsonml" -f svg -r -o "${OUTPATH}/local_config_nodes.svg"; test $$? -eq 6
+	python3 ./covrun.py $(WAVEFORM) -f json -i "${TESTPATH}/jsonml_syntax.json"; test $$? -eq 0
 endif
 	python3 ./covrun.py $(WAVEFORM) -f term -i "${TESTPATH}/term_size.yaml" -o -
 	python3 ./covrun.py $(WAVEFORM) -f term -i "${TESTPATH}/term_size.yaml" --eol lflf -o -

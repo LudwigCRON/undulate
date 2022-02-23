@@ -1,0 +1,21 @@
+{signal: [
+    { name: "clk",       wave: "P....", period:4},
+    {name: 'me/req',     wave: 'x..1.0.....1...0....' , phase:0.5},
+    {name: 'ad~#@dr',       wave: 'x..3..x....4..x.....', data: "@D0 @D1 " , phase:0.5},
+    {name: 'w\\èe',         wave: 'x..0.......1..0.....', phase:0.5},
+    {name: '▣addr_ack',   wave: 'x...1.x.....1.x....', data: "@I0 @I1 @I2 @D @I2 @I3" , phase:0.5},
+    {name: 'data_ack',   wave: 'x...0..1.0..1.x....', data: "@I0 @I1 @I2 @D @I2 @I3" , phase:0.5},
+    {name: 'rdata',      wave: 'x......3.x..........', data: "I0 I1 I2 D I2", phase:0.5},
+    {name: 'wdata',      wave: 'x..........4..x.....', data: "I0 I1 I2 D I2", phase:0.5},
+  
+  ],
+   
+     foot:{
+     text:'Read cycle, followed by an empty cycle, followed by an write cycle',
+     tock:9
+   },
+    
+    
+    
+    }
+  

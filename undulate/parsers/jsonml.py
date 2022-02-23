@@ -94,11 +94,9 @@ def _prune_json(filepath: str) -> str:
     # add double quotes around strings
     content = re.sub(r"([{,]?)\s*(\w+)\s*:", r'\1 "\2":', content, flags=re.M)
     # replace single quotes with double quotes
-    content = re.sub(
-        r"'([\w\s\<\-\~\|\>,*\_\.:\[\]\(\)]*)\s*'", r'"\1"', content, flags=re.M
-    )
+    content = re.sub(r"'([^']*)\s*'", r'"\1"', content, flags=re.M)
     # remove final extra comma of arrays definition
-    content = re.sub(r"(,\s*\])", r"]", content, flags=re.M)
+    content = re.sub(r",\s*([\}\)\]])", r"\1", content, flags=re.M)
     # change hex numbers to int but not CSS hexa colors
     content = re.sub(
         "(#[0-9abcdedABCDEF]*)?0'?([xbhdXBHD])([0-9abcdefABCDEF]+)",
@@ -120,6 +118,7 @@ def parse(filepath: str) -> Tuple[bool, Dict]:
     try:
         tmp = json.loads(content)
     except json.decoder.JSONDecodeError as e:
+        print(content)
         log.fatal(log.SYNTAX_ERROR % (e.msg, e.lineno))
     # post-process to normalize the db
     for k, v in tmp.items():
