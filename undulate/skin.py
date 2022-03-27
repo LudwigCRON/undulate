@@ -360,6 +360,10 @@ DEFINITION = """
       <feFlood flood-color="white"/>
       <feComposite in="SourceGraphic"/>
     </filter>
+    <mask id="wavezone">
+        <rect x="-{0}" y="-8" width="{0}" height="{2}" fill="black" />
+        <rect x="0" y="-8" width="{1}" height="{2}" fill="white" />
+    </mask>
 </defs>
 """
 

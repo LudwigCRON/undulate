@@ -36,6 +36,7 @@ class CairoRenderer(Renderer):
         self.engine = Engine.CAIRO
         self.ctx = None
         self.surface = None
+        self.wavezone = (0, 0, 0, 0)
         self.extension = kwargs.get("extension", "svg").lower()
         self.dpi = kwargs.get("dpi", 300)
 
@@ -49,9 +50,14 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra")
         self.ctx.push_group()
+        if "wave" in kwargs.get("classes", []):
+            self.ctx.rectangle(*self.wavezone)
+            self.ctx.clip()
         if callable(extra):
             extra()
         callback()
+        if "wave" in kwargs.get("classes", []):
+            self.ctx.reset_clip()
         self.ctx.pop_group_to_source()
         self.ctx.paint_with_alpha(1)
         return ""
@@ -97,6 +103,8 @@ class CairoRenderer(Renderer):
         style = kwargs.get("style_repr", "arrow")
         overload = style_in_kwargs(**kwargs)
         self.ctx.save()
+        if kwargs.get("pos_x", 0.0) + arrow_description.x >= -0.25:
+            self.ctx.reset_clip()
         if callable(extra):
             extra()
         apply_fill(self.ctx, style, Engine.CAIRO, overload)
@@ -285,6 +293,7 @@ class CairoRenderer(Renderer):
             self.ctx.set_source_rgb(1, 1, 1)
             self.ctx.paint()
         # paint waveforms
+        self.wavezone = (0, -8, w, height)
         self.wavegroup(
             _id,
             wavelanes,

@@ -954,7 +954,6 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         position += brick.args["brick_width"]
         # update size of the first visible brick
         if position > 0 and not ans:
-            brick.args["brick_width"] = position
             brick.args["is_first"] = True
         # prevent monstruosity with phase larger than several block width
         if position > 0:

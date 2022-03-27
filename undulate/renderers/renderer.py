@@ -607,6 +607,7 @@ class Renderer:
         # options
         brick_width = kwargs.get("brick_width", 20) * kwargs.get("hscale", 1)
         gap_offset = kwargs.get("gap_offset", brick_width * 0.5)
+        phase = kwargs.get("phase", 0.0) * brick_width
         # pre-process nodes
         nodes, *expended_names = kwargs.get("node", "").split(" ")
         nodes = [expended_names.pop(0) if node == "#" else node for node in nodes]
@@ -618,10 +619,10 @@ class Renderer:
         wave, pos = [], 0
         for brick in _wavelane:
             # prune the properties
-            x = max(0, pos)
+            x = max(0, pos) - phase
             if brick.symbol == "|":
                 x = pos - brick_width + gap_offset - brick.slewing
-            brick.args.update({"extra": self.translate(x, 0, dont_touch=True)})
+            brick.args.update({"extra": self.translate(x, 0, dont_touch=True), "pos_x": x})
             # add style informations
             brick.args.update(style_in_kwargs(**kwargs))
             # generate the brick
@@ -634,10 +635,15 @@ class Renderer:
             pos += wave[-1].width
 
         # rendering
+        def _gen_wave():
+            ans = []
+            for brick in wave:
+                ans.append(self.brick(brick.symbol, brick, **brick.args))
+            return "".join(ans)
+
         def _gen():
             ans = self.wavelane_title(name, **kwargs) if name else ""
-            for brick in wave:
-                ans += self.brick(brick.symbol, brick, **brick.args)
+            ans += self.group(_gen_wave, name + "_wave", classes=["wave"])
             return ans
 
         # wrap the wavelane

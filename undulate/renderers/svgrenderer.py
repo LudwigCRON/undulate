@@ -47,7 +47,10 @@ class SvgRenderer(Renderer):
             callback (callable): function which populate what inside the group
             identifier (str): unique id for the group
         """
-        ans = '<g id="%s" %s >\n' % (identifier, kwargs.get("extra", ""))
+        classes = " ".join(kwargs.get("classes", []))
+        if classes:
+            classes = 'class="' + classes + '"'
+        ans = '<g id="%s" %s %s >\n' % (identifier, classes, kwargs.get("extra", ""))
         ans += callback()
         ans += "</g>\n"
         return ans
@@ -192,21 +195,24 @@ class SvgRenderer(Renderer):
         # remove offset for the name in register
         if is_reg:
             height += (n + 1) * 12
-        # consider padding of root
-        root_style = get_style("root")
-        val_top, unit_top = root_style.get("padding-top", (0.0, SizeUnit.PX))
-        val_bot, unit_bot = root_style.get("padding-bottom", (0.0, SizeUnit.PX))
-        height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
+        # height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
+        val, unit = get_style("title").get("font-size", (0.5, SizeUnit.EM))
+        wavezone_x = (lkeys + 1) * val * unit.value
         with open(filename, "w+") as fp:
             fp.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
-                % (width + lkeys * 11 + 11, height)
+                % (width + wavezone_x, height)
             )
-            fp.write('viewBox="-1 -1 %f %f">\n' % (width + lkeys * 11 + 12, height + 2))
+            fp.write('viewBox="-1 -1 %f %f">\n' % (width + wavezone_x + 1, height + 2))
             fp.write("<style>\n")
             fp.write(css_from_style(DEFAULT_STYLE))
+            fp.write("\n.wave {mask: url(#wavezone);}\n")
             fp.write("</style>\n")
-            fp.write(DEFINITION)
+            fp.write(
+                DEFINITION.format(
+                    int(wavezone_x * 0.9), int(width + wavezone_x), int(height)
+                )
+            )
             fp.write(
                 self.wavegroup(
                     _id,
@@ -215,7 +221,7 @@ class SvgRenderer(Renderer):
                     brick_height=brick_height,
                     width=width,
                     height=height,
-                    offsetx=lkeys * 10 + 10,
+                    offsetx=wavezone_x * 0.9,
                 )[1]
             )
             fp.write("\n</svg>")
