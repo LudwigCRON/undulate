@@ -1,7 +1,5 @@
 [run]
 branch = True
-include =
-    */site-packages/undulate/*
 omit = 
     */site-packages/toml/*.py
     */site-packages/yaml/*.py
