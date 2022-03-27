@@ -1,0 +1,18 @@
+lead_phase_basic0:
+  wave: "lh.lh"
+  phase: 0.1
+lead_phase_basic1:
+  wave: "01.01"
+  phase: 0.2
+lead_phase_basic2:
+  wave: "hl.hl"
+  phase: 0.3
+lead_phase_basic3:
+  wave: "10.10"
+  phase: 0.4
+lead_phase_clk0:
+  wave: "PpPpP"
+  phase: 0.2
+lead_phase_clk1:
+  wave: "NnNnN"
+  phase: 0.4

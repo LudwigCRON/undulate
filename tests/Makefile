@@ -87,6 +87,8 @@ coverage:
 	OUTPATH=${OUTPATH} coverage run -a ./test_wavedrom.py -f svg
 	OUTPATH=${OUTPATH} coverage run -a ./test_wavedrom.py -f cairo-svg
 	coverage run -a ./test_css.py
+	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/clip_phase.yaml -f svg -o ${OUTPATH}/clip_phase.svg
+	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/clip_phase.yaml -f cairo-png -o ${OUTPATH}/clip_phase.png
 	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/edge_markers.yaml -f cairo-svg -o ${OUTPATH}/edge_markers.svg
 	python3 ./covrun.py $(WAVEFORM) -i ${TESTPATH}/wavetest_alt.json -f cairo-png -s ${TESTPATH}/ut_css/overload.css -o ${OUTPATH}/$(subst .json,-json-cairo.png,wavetest_alt.json)
 	python3 ./covrun.py $(WAVEFORM) -r -i "${TESTPATH}/reg-vl.jsonml" -f svg -o "${OUTPATH}/reg-vl-jsonml.svg"
