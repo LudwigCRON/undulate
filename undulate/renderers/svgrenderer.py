@@ -208,11 +208,7 @@ class SvgRenderer(Renderer):
             fp.write(css_from_style(DEFAULT_STYLE))
             fp.write("\n.wave {mask: url(#wavezone);}\n")
             fp.write("</style>\n")
-            fp.write(
-                DEFINITION.format(
-                    int(wavezone_x * 0.9), int(width + wavezone_x), int(height)
-                )
-            )
+            fp.write(DEFINITION.format(int(wavezone_x * 0.9), int(width), int(height)))
             fp.write(
                 self.wavegroup(
                     _id,

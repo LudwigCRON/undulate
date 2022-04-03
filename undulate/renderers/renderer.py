@@ -619,7 +619,7 @@ class Renderer:
         wave, pos = [], 0
         for brick in _wavelane:
             # prune the properties
-            x = max(0, pos) - phase
+            x = max(0, pos) - max(0, phase)
             if brick.symbol == "|":
                 x = pos - brick_width + gap_offset - brick.slewing
             brick.args.update({"extra": self.translate(x, 0, dont_touch=True), "pos_x": x})

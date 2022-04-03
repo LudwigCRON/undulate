@@ -856,6 +856,27 @@ class Empty(Brick):
             self.last_y = self.height
 
 
+class Filler(Brick):
+    """
+    filling brick to draw an horizontal line
+    in front of a waveform
+    """
+
+    def __init__(self, **kwargs) -> None:
+        Brick.__init__(self, **kwargs)
+        self.first_y = kwargs.get("y", self.height / 2)
+        self.last_y = kwargs.get("y", self.height / 2)
+        self.paths.append(
+            Drawable(
+                "path",
+                [
+                    Point(0.0, self.first_y),
+                    Point(self.width, self.first_y),
+                ],
+            )
+        )
+
+
 # ======== Filtering Functions ========
 def filter_width(waveform: List[Brick]) -> List[Brick]:
     """
@@ -945,7 +966,7 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         if i == 0:
             position = -pmul * brick_width * phase
         # adjust width depending on the brick's index in the the lane
-        if i == len(waveform) - 1:
+        if i == len(waveform) - 1 and phase >= 0.0:
             brick.args["brick_width"] = max(
                 pmul * brick_width * (repeat + phase), lane_width - position
             )
@@ -957,6 +978,14 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
             brick.args["is_first"] = True
         # prevent monstruosity with phase larger than several block width
         if position > 0:
+            # consider the case when the phase is negative
+            # draw an hortizontal to the first point
+            if phase < 0.0 and brick.args["is_first"]:
+                args = brick.args.copy()
+                offx = abs(brick_width * phase)
+                args.update({"brick_width": offx, "y": brick.get_first_y()})
+                ans.append(BrickFactory.create("f", **args))
+                brick.args["is_first"] = False
             ans.append(BrickFactory.create(brick.symbol, **brick.args))
     return ans
 
@@ -1022,8 +1051,6 @@ def filter_transition(waveform: List[Brick]) -> List[Brick]:
 
 
 # ======== Plugin Loading ========
-
-
 def initialize() -> None:
     """register defined digital blocks in the rendering system"""
     BrickFactory.register(
@@ -1091,7 +1118,7 @@ def initialize() -> None:
     BrickFactory.register(
         ".", Empty, tags=["repeat"], params={"duty_cycle": 0.5, "slewing": 0, "period": 1}
     )
-
+    BrickFactory.register("f", Filler, params={"period": 1})
     FilterBank.register(filter_repeat)
     FilterBank.register(filter_width)
     FilterBank.register(filter_phase_pos)
