@@ -92,9 +92,9 @@ def _prune_json(filepath: str) -> str:
     if not content:
         log.fatal(log.FILE_EMPTY)
     # add double quotes around strings
-    content = re.sub(r"([{,]?)\s*(\w+)\s*:", r'\1 "\2":', content, flags=re.M)
+    content = re.sub(r"([^\"\[{, ]\w+)\s*:", r' "\1":', content, flags=re.M)
     # replace single quotes with double quotes
-    content = re.sub(r"'([^']*)\s*'", r'"\1"', content, flags=re.M)
+    content = re.sub(r"'([^'\"]*)\s*'", r'"\1"', content, flags=re.M)
     # remove final extra comma of arrays definition
     content = re.sub(r",\s*([\}\)\]])", r"\1", content, flags=re.M)
     # change hex numbers to int but not CSS hexa colors
