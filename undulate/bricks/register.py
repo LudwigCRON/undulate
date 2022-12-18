@@ -91,7 +91,8 @@ class FieldMid(Brick):
             )
         )
         # add text
-        self.texts.append(Drawable("reg-data", (0, self.height * 0.625, data)))
+        center_x = self.width * 0.5
+        self.texts.append(Drawable("reg-data", (center_x, self.height * 0.625, data)))
 
 
 class FieldEnd(Brick):
@@ -118,7 +119,7 @@ class FieldEnd(Brick):
         center_x = self.width * 0.5
         top_y = self.height * 0.125
         bottom_y = self.height * 0.625
-        self.texts.append(Drawable("reg-data", (0, bottom_y, data)))
+        self.texts.append(Drawable("reg-data", (center_x, bottom_y, data)))
         self.texts.append(Drawable("reg-pos", (center_x, top_y, str(position))))
 
 
