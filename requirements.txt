@@ -1,4 +1,6 @@
-pycairo>=1.19.1
+cairocffi>=1.4.0
+pangocffi>=0.11.0
+pangocairocffi>=0.7.0
 PyYAML>=5.1.2
 toml>=0.10.0
 coverage>=4.5.4
