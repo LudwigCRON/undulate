@@ -368,7 +368,9 @@ DEFINITION = """
 """
 
 try:
-    import cairo
+    import cairocffi as cairo
+    import pangocffi as pango
+    import pangocairocffi as pangocairo
 except ImportError:
     pass
 else:

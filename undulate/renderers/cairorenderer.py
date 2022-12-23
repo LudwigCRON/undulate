@@ -3,7 +3,9 @@ cairorenderer.py use the logic of renderer.py to render waveforms
 into scalable vector graphics format
 """
 
-import cairo
+import cairocffi as cairo
+import pangocffi as pango
+import pangocairocffi as pangocairo
 import undulate.logger as log
 from undulate.bricks.generic import ArrowDescription, SplineSegment, Point
 from undulate.skin import (
@@ -225,9 +227,24 @@ class CairoRenderer(Renderer):
             extra()
         apply_fill(self.ctx, style, Engine.CAIRO, overload)
         apply_font(self.ctx, style, Engine.CAIRO, overload)
+        print(text)
         ox, oy = text_align(self.ctx, style, str(text), Engine.CAIRO)
+
+        PANGO_SCALE = pango.units_from_double(1)
+        layout = pangocairo.create_layout(self.ctx)
+        desc = pango.FontDescription()
+        desc.family = "Serif"
+        desc.size = 9 * PANGO_SCALE
+        layout.font_description = desc
+        layout.apply_markup(text)
+        layout.alignment = pango.Alignment.CENTER
+        _, log_box = layout.get_extents()
+        text_width, text_height = (
+            1.0 * log_box.width / PANGO_SCALE,
+            1.0 * log_box.height / PANGO_SCALE,
+        )
         self.ctx.move_to(x - ox, y - oy)
-        self.ctx.show_text(str(text))
+        pangocairo.show_layout(self.ctx, layout)
         self.ctx.restore()
         return ""
 
