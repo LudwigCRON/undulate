@@ -17,6 +17,7 @@ class FieldStart(Brick):
         data = kwargs.get("data", "")
         attributes = kwargs.get("attribute")
         scale_width = kwargs.get("scale_width", 1.0)
+        splitted = kwargs.get("splitted", False)
         style = kwargs.get("style", None)
         self.paths.append(
             Drawable(
@@ -56,8 +57,10 @@ class FieldStart(Brick):
         center_x = self.width * 0.5
         top_y = self.height * 0.125
         bottom_y = self.height * 0.625
-        self.texts.append(Drawable("reg-data", (center_x, bottom_y, data)))
         self.texts.append(Drawable("reg-pos", (center_x, top_y, str(position))))
+        if not splitted:
+            center_x *= scale_width
+        self.texts.append(Drawable("reg-data", (center_x, bottom_y, data)))
 
 
 class FieldMid(Brick):
@@ -177,6 +180,7 @@ def initialize() -> None:
             "style": "",
             "type": None,
             "scale_width": 1.0,
+            "splitted": False
         },
     )
     BrickFactory.register(
@@ -199,5 +203,6 @@ def initialize() -> None:
             "style": "",
             "type": None,
             "scale_width": 1.0,
+            "splitted": False
         },
     )

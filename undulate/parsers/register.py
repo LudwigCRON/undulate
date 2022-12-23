@@ -55,10 +55,17 @@ class Register:
                 i, Field.from_dict({"description": "unused", "width": width, "regpos": pos})
             )
         # generate wavelane
-        wave = "".join([field.wave for field in self.fields[::-1]])
-        data = " ".join([field.data for field in self.fields[::-1]])
-        attributes = [field.attributes for field in self.fields[::-1]]
-        widths = [field.width for field in self.fields[::-1]]
+        wave = ""
+        data = []
+        attributes = []
+        widths = []
+        splitteds = []
+        for field in self.fields[::-1]:
+            wave += field.wave
+            data.extend(field.data)
+            attributes.append(field.attributes)
+            widths.append(field.width)
+            splitteds.append(field.splitted)
         types, positions, styles = [], [], []
         for field in self.fields[::-1]:
             types.extend([field.type] * field.width)
@@ -76,6 +83,7 @@ class Register:
             "types": types,
             "styles": styles,
             "scale_widths": widths,
+            "splitteds": splitteds
         }
         return ans
 
@@ -96,6 +104,7 @@ class Field:
         "data",
         "style",
         "type",
+        "splitted"
     ]
 
     def __init__(self):
@@ -108,6 +117,7 @@ class Field:
         self.wave = ""
         self.data = ""
         self.type = ""
+        self.splitted = False
 
     @staticmethod
     def from_dict(d: dict):
@@ -116,7 +126,7 @@ class Field:
         given after parsing
         """
         f = Field()
-        f.name = str(d.get("name", ""))
+        f.name = str(d.get("name", "")).strip()
         f.description = d.get("description", "")
         f.width = int(d.get("width", d.get("bits", 1)))
         f.attributes = d.get("attributes", d.get("attr", None))
@@ -141,17 +151,15 @@ class Field:
             # convert number to bits
             f.data = ("{0:0" + (str(f.width)) + "b}").format(d.get("name", ""))
             # split for each bits
-            f.data = " ".join([c for c in f.data])
+            f.data = [c for c in f.data]
+            f.splitted = True
         elif isinstance(d.get("name", ""), str):
             # center the name in the middle
-            l = (f.width - 1) // 2
-            e = (f.width - 1) / 2 - l
-            f.data = "".join([" "] * l if e == 0 else [" "] * (l + 1))
-            f.data += d.get("name", "")
-            f.data += "".join([" "] * l)
+            f.data = [d.get("name", "")]
+            f.data.extend([""] * (f.width-1))
         else:
             # skip the field
-            f.data = " " * (f.width - 1)
+            f.data = [""] * f.width
         if f.width > 1:
             f.wave = f"[{':'*(f.width-2)}]"
         else:
