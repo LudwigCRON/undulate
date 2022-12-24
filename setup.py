@@ -1,7 +1,13 @@
 from setuptools import setup
 
 PROJECT_URL = "https://github.com/LudwigCRON/undulate"
-REQUIRES = ['pycairo >= "1.18.1"', 'PyYAML >= "5.1.2"', 'python_version>="3.5"']
+REQUIRES = [
+    "cairocffi>=1.4.0",
+    "pangocffi>=0.11.0",
+    "pangocairocffi>=0.7.0",
+    'PyYAML >= "5.1.2"',
+    'python_version>="3.5"',
+]
 
 setup(
     name="undulate",
