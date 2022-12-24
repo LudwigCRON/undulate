@@ -432,26 +432,28 @@ else:
         if da:
             context.set_dash(da, of)
 
-    def cairo_text_align(context, style: dict, text: str):
+    def cairo_text_align(layout, style: dict, text: str):
         """
         offset calculation for text alignment
         """
         ta = style.get("text-align", TextAlign.CENTER)
         ba = style.get("dominant-baseline", "middle")
         # get text width
-        ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
-        xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
+        _, log_box = layout.get_extents()
+        PANGO_SCALE = pango.units_from_double(1)
+        width, height = log_box.width / PANGO_SCALE, log_box.height / PANGO_SCALE
         # apply style
-        dy = descent / 2 + height / 4 if ba == "middle" else 0
+        dy = height / 2 if ba == "middle" else 0
         if ta == TextAlign.LEFT:
-            return (0, -dy)
+            return (0, dy)
         if ta == TextAlign.RIGHT:
-            return (width, -dy)
-        return (width / 2, -dy)
+            return (width, dy)
+        return (width / 2, dy)
 
     def cairo_text_bbox(context, style: dict, text: str):
         """
         return size of the text for a given font
+        can differ as not using the pango backend
         """
         ta = style.get("text-align", TextAlign.CENTER)
         # get text width
@@ -464,13 +466,14 @@ else:
             return (-width, -height / 2, width, _height)
         return (-width / 2, -descent - height / 2, width, _height)
 
-    def apply_cairo_font(context, style: dict, overload: dict):
+    def apply_cairo_font(layout, style: dict, overload: dict):
         """
         get font information from the style and apply
         support font family, bold, italic, normal, size
         """
         style = dict(style)
         style.update(overload)
+        desc = pango.FontDescription()
         # font slant
         font_style = style.get("font-style", "")
         if "it" in font_style:
@@ -482,20 +485,22 @@ else:
         # normal or bold
         w = style.get("font-weight", 200)
         if isinstance(w, str) and "bold" in w:
-            font_weight = cairo.FONT_WEIGHT_BOLD
-        elif isinstance(w, int) and w > 400:
-            font_weight = cairo.FONT_WEIGHT_BOLD
+            desc.weight = 700
+        elif isinstance(w, int):
+            desc.weight = w
         else:
-            font_weight = cairo.FONT_WEIGHT_NORMAL
+            desc.weight = 400
         # fetch font family
-        font_family = style.get("font-family", None)
+        font_family = style.get("font-family", "Sans-Serif")
         if font_family is not None and isinstance(font_family, str):
-            context.select_font_face(font_family, font_style, font_weight)
+            desc.family = font_family
         # font size
         font_size = style.get("font-size", None)
         if font_size is not None:
             s, u = font_size
-            context.set_font_size(s * u.value)
+            desc.size = int(s * u.value * pango.units_from_double(1))
+        layout.alignment = pango.Alignment.CENTER
+        layout.font_description = desc
 
 
 def apply_fill(context, name: str, engine: Engine, overload: dict = {}):

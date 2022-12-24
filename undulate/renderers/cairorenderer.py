@@ -222,27 +222,16 @@ class CairoRenderer(Renderer):
         extra = kwargs.get("extra")
         style = kwargs.get("style_repr", "text")
         overload = style_in_kwargs(**kwargs)
+        text = str(text) if not isinstance(text, (bytes, str)) else text
         self.ctx.save()
         if callable(extra):
             extra()
         apply_fill(self.ctx, style, Engine.CAIRO, overload)
-        apply_font(self.ctx, style, Engine.CAIRO, overload)
-        print(text)
-        ox, oy = text_align(self.ctx, style, str(text), Engine.CAIRO)
-
-        PANGO_SCALE = pango.units_from_double(1)
         layout = pangocairo.create_layout(self.ctx)
-        desc = pango.FontDescription()
-        desc.family = "Serif"
-        desc.size = 9 * PANGO_SCALE
-        layout.font_description = desc
+        apply_font(layout, style, Engine.CAIRO, overload)
         layout.apply_markup(text)
         layout.alignment = pango.Alignment.CENTER
-        _, log_box = layout.get_extents()
-        text_width, text_height = (
-            1.0 * log_box.width / PANGO_SCALE,
-            1.0 * log_box.height / PANGO_SCALE,
-        )
+        ox, oy = text_align(layout, style, None, Engine.CAIRO)
         self.ctx.move_to(x - ox, y - oy)
         pangocairo.show_layout(self.ctx, layout)
         self.ctx.restore()
