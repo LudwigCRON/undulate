@@ -16,3 +16,6 @@ lead_phase_clk0:
 lead_phase_clk1:
   wave: "NnNnN"
   phase: 0.4
+lead_phase_clk2:
+  wave: "NnNnN"
+  phase: -0.4

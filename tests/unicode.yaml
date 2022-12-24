@@ -1,0 +1,7 @@
+uart_tx:
+  wave: "hl=.......h"
+  data:
+  - "A → B ⛱⛲\n⛳⛴"
+
+config:
+  hscale: 0.5
