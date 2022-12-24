@@ -34,9 +34,8 @@ images:
 # this make file is done for non-regression tests
 build_dependencies:
 	sudo apt-get update -y
-	sudo apt-get install -y build-essential libcairo2-dev pkg-config python3-dev
+	sudo apt-get install -y build-essential pkg-config libcairo2-dev libpango-1.0-0 libpangocairo-1.0 python3-dev
 	pip install --upgrade pip
-	pip install pycairo
 	pip install pyyaml
 	pip install toml
 	pip install coverage
