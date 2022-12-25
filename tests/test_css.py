@@ -4,41 +4,42 @@
 import os
 import unittest
 import undulate.skin as us
+import undulate.parsers.css as css
 
 UT_CSS_DIR = os.path.join(os.path.dirname(__file__), "./ut_css")
 DEFAULT_STYLE = {
     "root": {
-        "padding-top": (1.0, us.SizeUnit.EM),
-        "padding-bottom": (1.0, us.SizeUnit.EM),
+        "padding-top": (1.0, css.SizeUnit.EM),
+        "padding-bottom": (1.0, css.SizeUnit.EM),
     },
     "title": {
         "fill": (0, 65, 196, 255),
         "font-weight": 500,
-        "font-size": (0.5, us.SizeUnit.EM),
+        "font-size": (0.5, css.SizeUnit.EM),
         "font-family": "Fira Mono",
-        "text-align": us.TextAlign.RIGHT,
+        "text-align": css.TextAlign.RIGHT,
         "text-anchor": "end",
         "dominant-baseline": "middle",
         "alignment-baseline": "central",
     },
     "text": {
         "fill": (0, 0, 0, 255),
-        "font-size": (0.9, us.SizeUnit.EM),
+        "font-size": (0.9, css.SizeUnit.EM),
         "font-style": "normal",
         "font-variant": "normal",
         "font-weight": 500,
         "font-stretch": "normal",
-        "text-align": us.TextAlign.CENTER,
+        "text-align": css.TextAlign.CENTER,
         "font-family": "Fira Mono",
     },
     "attr": {
         "fill": (0, 0, 0, 255),
-        "font-size": (9.0, us.SizeUnit.PX),
+        "font-size": (9.0, css.SizeUnit.PX),
         "font-style": "normal",
         "font-variant": "normal",
         "font-weight": 200,
         "font-stretch": "normal",
-        "text-align": us.TextAlign.CENTER,
+        "text-align": css.TextAlign.CENTER,
         "font-family": "Fira Mono",
         "text-anchor": "middle",
         "dominant-baseline": "middle",
@@ -48,8 +49,8 @@ DEFAULT_STYLE = {
         "fill": None,
         "stroke": (0, 0, 0, 255),
         "stroke-width": 1,
-        "stroke-linecap": us.LineCap.ROUND,
-        "stroke-linejoin": us.LineJoin.MITER,
+        "stroke-linecap": css.LineCap.ROUND,
+        "stroke-linejoin": css.LineJoin.MITER,
         "stroke-miterlimit": 4,
         "stroke-dasharray": None,
     },
@@ -57,19 +58,19 @@ DEFAULT_STYLE = {
         "fill": None,
         "stroke": (0, 0, 0, 255),
         "stroke-width": 0.5,
-        "stroke-linecap": us.LineCap.ROUND,
-        "stroke-linejoin": us.LineJoin.MITER,
+        "stroke-linecap": css.LineCap.ROUND,
+        "stroke-linejoin": css.LineJoin.MITER,
         "stroke-miterlimit": 4,
         "stroke-dasharray": None,
     },
     "data": {
         "fill": (0, 0, 0, 255),
-        "font-size": (0.4, us.SizeUnit.EM),
+        "font-size": (0.4, css.SizeUnit.EM),
         "font-style": "normal",
         "font-variant": "normal",
         "font-weight": 500,
         "font-stretch": "normal",
-        "text-align": us.TextAlign.CENTER,
+        "text-align": css.TextAlign.CENTER,
         "font-family": "Fira Mono",
         "text-anchor": "middle",
         "dominant-baseline": "middle",
@@ -104,7 +105,7 @@ DEFAULT_STYLE = {
     "edge-arrow": {"fill": (0, 0, 255, 255), "stroke": None, "overflow": "visible"},
     "edge-text": {
         "font-family": "Fira Mono",
-        "font-size": (0.625, us.SizeUnit.EM),
+        "font-size": (0.625, css.SizeUnit.EM),
         "fill": (0, 0, 0, 255),
         "filter": "#solid",
         "transform": "translate(0, 2.5px)",
@@ -118,60 +119,60 @@ DEFAULT_STYLE = {
     "arrow": {"fill": (0, 0, 0, 255), "stroke": None},
     "h1": {
         "fill": (0, 0, 0, 255),
-        "font-size": (12.0, us.SizeUnit.PX),
+        "font-size": (12.0, css.SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
-        "text-align": us.TextAlign.LEFT,
+        "text-align": css.TextAlign.LEFT,
         "dominant-baseline": "middle",
     },
     "h2": {
         "fill": (0, 0, 0, 255),
-        "font-size": (10.0, us.SizeUnit.PX),
+        "font-size": (10.0, css.SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
-        "text-align": us.TextAlign.LEFT,
+        "text-align": css.TextAlign.LEFT,
         "dominant-baseline": "middle",
     },
     "h3": {
         "fill": (0, 0, 0, 255),
-        "font-size": (8.0, us.SizeUnit.PX),
+        "font-size": (8.0, css.SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
-        "text-align": us.TextAlign.LEFT,
+        "text-align": css.TextAlign.LEFT,
         "dominant-baseline": "middle",
     },
     "h4": {
         "fill": (0, 0, 0, 255),
-        "font-size": (6.0, us.SizeUnit.PX),
+        "font-size": (6.0, css.SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
-        "text-align": us.TextAlign.LEFT,
+        "text-align": css.TextAlign.LEFT,
         "dominant-baseline": "middle",
     },
     "h5": {
         "fill": (0, 0, 0, 255),
-        "font-size": (5.0, us.SizeUnit.PX),
+        "font-size": (5.0, css.SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
-        "text-align": us.TextAlign.LEFT,
+        "text-align": css.TextAlign.LEFT,
         "dominant-baseline": "middle",
     },
     "h6": {
         "fill": (0, 0, 0, 255),
-        "font-size": (4.0, us.SizeUnit.PX),
+        "font-size": (4.0, css.SizeUnit.PX),
         "font-weight": "bold",
         "font-family": "Fira Mono",
-        "text-align": us.TextAlign.LEFT,
+        "text-align": css.TextAlign.LEFT,
         "dominant-baseline": "middle",
     },
     "reg-data": {
         "fill": (0, 0, 0, 255),
-        "font-size": (0.8, us.SizeUnit.EM),
+        "font-size": (0.8, css.SizeUnit.EM),
         "font-style": "normal",
         "font-variant": "normal",
         "font-weight": 500,
         "font-stretch": "normal",
-        "text-align": us.TextAlign.CENTER,
+        "text-align": css.TextAlign.CENTER,
         "font-family": "Fira Mono",
         "text-anchor": "middle",
         "dominant-baseline": "middle",
@@ -179,12 +180,12 @@ DEFAULT_STYLE = {
     },
     "reg-pos": {
         "fill": (0, 0, 0, 255),
-        "font-size": (0.6, us.SizeUnit.EM),
+        "font-size": (0.6, css.SizeUnit.EM),
         "font-style": "normal",
         "font-variant": "normal",
         "font-weight": 500,
         "font-stretch": "normal",
-        "text-align": us.TextAlign.CENTER,
+        "text-align": css.TextAlign.CENTER,
         "font-family": "Fira Mono",
         "text-anchor": "middle",
         "dominant-baseline": "middle",
@@ -199,10 +200,10 @@ from pprint import pprint
 class TestCss(unittest.TestCase):
     def test_loading(self):
         with open("%s/supported.css" % UT_CSS_DIR, "r+") as fp:
-            css = us.css_parser(us.css_tokenizer(fp))
+            style = css.css_parser(css.css_tokenizer(fp))
         with open("%s/../../undulate/default.css" % UT_CSS_DIR, "r+") as fp:
-            css = us.css_parser(us.css_tokenizer(fp))
-        self.assertEqual(DEFAULT_STYLE, css)
+            style = css.css_parser(css.css_tokenizer(fp))
+        self.assertEqual(DEFAULT_STYLE, style)
 
     def test_rules(self):
         pass
