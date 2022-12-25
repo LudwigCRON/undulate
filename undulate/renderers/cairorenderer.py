@@ -7,18 +7,10 @@ import cairocffi as cairo
 import pangocffi as pango
 import pangocairocffi as pangocairo
 import undulate.logger as log
+import undulate.skin as skin
 from undulate.bricks.generic import ArrowDescription, SplineSegment, Point
-from undulate.skin import (
-    SizeUnit,
-    apply_fill,
-    apply_stroke,
-    apply_font,
-    text_align,
-    Engine,
-    style_in_kwargs,
-    get_style,
-    text_bbox,
-)
+from undulate.parsers.css import SizeUnit
+from undulate.skin import Engine
 from undulate.renderers.renderer import Renderer, svg_curve_convert
 from typing import List
 
@@ -77,11 +69,11 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra")
         style = kwargs.get("style_repr", "path")
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         self.ctx.save()
         if callable(extra):
             extra()
-        apply_stroke(self.ctx, style, Engine.CAIRO, overload)
+        skin.apply_stroke(self.ctx, style, Engine.CAIRO, overload)
         self.ctx.new_path()
         for i, v in enumerate(vertices):
             if i == 0:
@@ -104,13 +96,13 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra")
         style = kwargs.get("style_repr", "arrow")
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         self.ctx.save()
         if kwargs.get("pos_x", 0.0) + arrow_description.x >= -0.25:
             self.ctx.reset_clip()
         if callable(extra):
             extra()
-        apply_fill(self.ctx, style, Engine.CAIRO, overload)
+        skin.apply_fill(self.ctx, style, Engine.CAIRO, overload)
         self.ctx.translate(arrow_description.x, arrow_description.y)
         self.ctx.rotate((arrow_description.angle - 90) * 3.14159 / 180)
         self.ctx.new_path()
@@ -134,11 +126,11 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra")
         style = kwargs.get("style_repr")
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         self.ctx.save()
         if callable(extra):
             extra()
-        apply_fill(self.ctx, style, Engine.CAIRO, overload)
+        skin.apply_fill(self.ctx, style, Engine.CAIRO, overload)
         self.ctx.new_path()
         for i, v in enumerate(vertices):
             if i == 0:
@@ -146,7 +138,7 @@ class CairoRenderer(Renderer):
             else:
                 self.ctx.line_to(v.x, v.y)
         self.ctx.fill_preserve()
-        apply_stroke(self.ctx, style, Engine.CAIRO, overload)
+        skin.apply_stroke(self.ctx, style, Engine.CAIRO, overload)
         self.ctx.stroke()
         self.ctx.restore()
         return ""
@@ -162,7 +154,7 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra")
         style = kwargs.get("style_repr", "path")
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         vertices = svg_curve_convert(vertices)
         c, stack = 0, []
 
@@ -201,10 +193,10 @@ class CairoRenderer(Renderer):
             # store last cmd
             previous_cmd = cmd
         if style in ["hide", "edge-arrow"]:
-            apply_fill(self.ctx, style, Engine.CAIRO, overload)
+            skin.apply_fill(self.ctx, style, Engine.CAIRO, overload)
             self.ctx.fill()
         else:
-            apply_stroke(self.ctx, style, Engine.CAIRO, overload)
+            skin.apply_stroke(self.ctx, style, Engine.CAIRO, overload)
             self.ctx.stroke()
         self.ctx.restore()
         return ""
@@ -222,17 +214,17 @@ class CairoRenderer(Renderer):
         """
         extra = kwargs.get("extra")
         style = kwargs.get("style_repr", "text")
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         text = str(text) if not isinstance(text, (bytes, str)) else text
         self.ctx.save()
         if callable(extra):
             extra()
-        apply_fill(self.ctx, style, Engine.CAIRO, overload)
+        skin.apply_fill(self.ctx, style, Engine.CAIRO, overload)
         layout = pangocairo.create_layout(self.ctx)
-        apply_font(layout, style, Engine.CAIRO, overload)
+        skin.apply_font(layout, style, Engine.CAIRO, overload)
         layout.apply_markup(text)
         layout.alignment = pango.Alignment.CENTER
-        ox, oy = text_align(layout, style, None, Engine.CAIRO)
+        ox, oy = skin.text_align(layout, style, None, Engine.CAIRO)
         self.ctx.move_to(x - ox, y - oy)
         pangocairo.show_layout(self.ctx, layout)
         self.ctx.restore()
@@ -265,21 +257,21 @@ class CairoRenderer(Renderer):
         longest_wavename, width, height, n = self.size(wavelanes, **kwargs)
         # in register add the space for attributes and position
         if is_reg:
-            s, u = get_style("attr").get("font-size", (9, SizeUnit.PX))
+            s, u = skin.get_style("attr").get("font-size", (9, SizeUnit.PX))
             height += (n + 1) * 1.5 * s * u.value
         # consider padding of root
-        root_style = get_style("root")
+        root_style = skin.get_style("root")
         val_top, unit_top = root_style.get("padding-top", (0.0, SizeUnit.PX))
         val_bot, unit_bot = root_style.get("padding-bottom", (0.0, SizeUnit.PX))
         height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
         # compute text in a dummy surface
         dummy_surface = cairo.SVGSurface(None, 400, 30)
         dummy_ctx = cairo.Context(dummy_surface)
-        _, _, self.offsetx, _ = text_bbox(
+        _, _, self.offsetx, _ = skin.text_bbox(
             dummy_ctx, "title", longest_wavename, Engine.CAIRO
         )
         # select appropriate surface
-        w, h = (width + self.offsetx + 10), height
+        w, h = (width + self.offsetx + 20), height
         if self.extension == "svg":
             self.surface = cairo.SVGSurface(filename, w, h)
         elif self.extension == "png":
@@ -304,7 +296,7 @@ class CairoRenderer(Renderer):
         self.ctx = cairo.Context(self.surface)
         # set background for png image
         if self.extension == "png":
-            apply_fill(self.ctx, "root", Engine.CAIRO)
+            skin.apply_fill(self.ctx, "root", Engine.CAIRO)
             self.ctx.paint()
         # paint waveforms
         self.wavezone = (0, -8, w, height)

@@ -4,17 +4,9 @@ into scalable vector graphics format
 """
 
 import html
-from undulate.skin import (
-    DEFAULT_STYLE,
-    DEFINITION,
-    Engine,
-    style_in_kwargs,
-    css_from_rule,
-    css_from_style,
-    text_bbox,
-    SizeUnit,
-    get_style,
-)
+import undulate.skin as skin
+from undulate.skin import Engine
+from undulate.parsers.css import SizeUnit
 from undulate.bricks.generic import ArrowDescription, SplineSegment, Point
 from undulate.renderers.renderer import Renderer
 from typing import List
@@ -66,14 +58,14 @@ class SvgRenderer(Renderer):
         Parameters:
             style_repr (optional str) : css rule, by default 'path'
         """
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         overload["fill"] = None
         path = "".join(["L%f,%f " % (v.x, v.y) for v in vertices])
         path = "M" + path[1:]
         return '<path d="%s" class="%s" style="%s" />\n' % (
             path.strip(),
             kwargs.get("style_repr", ""),
-            css_from_rule(None, overload, False),
+            skin.css_from_rule(None, overload, False),
         )
 
     def arrow(self, arrow_description: ArrowDescription, **kwargs) -> str:
@@ -87,7 +79,7 @@ class SvgRenderer(Renderer):
             style_repr (optional str) : css rule, by default 'arrow'
         """
         style_repr = kwargs.get("style_repr", "arrow")
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         transform = 'transform="translate(%f, %f) rotate(%f, 0, 0)" ' % (
             arrow_description.x,
             arrow_description.y,
@@ -97,7 +89,7 @@ class SvgRenderer(Renderer):
             '<path d="M-3.5 -3.5 L0 3.5 L3.5 -3.5 L0 -2 L-3.5 -3.5" '
             + transform
             + 'class="%s" style="%s"/>\n'
-            % (style_repr, css_from_rule(None, overload, False))
+            % (style_repr, skin.css_from_rule(None, overload, False))
         )
 
     def polygon(self, vertices: List[Point], **kwargs) -> str:
@@ -111,7 +103,7 @@ class SvgRenderer(Renderer):
         """
         extra = kwargs.get("extra")
         style = kwargs.get("style_repr")
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         if "hatch" in style or "polygon" in style or extra is None:
             extra = ""
         if callable(extra):
@@ -121,7 +113,7 @@ class SvgRenderer(Renderer):
             ans += "%f, %f " % (v.x, v.y)
         ans += '" class="%s" style="%s" %s/>\n' % (
             style,
-            css_from_rule(None, overload, False),
+            skin.css_from_rule(None, overload, False),
             extra,
         )
         return ans
@@ -135,7 +127,7 @@ class SvgRenderer(Renderer):
         Parameters:
             style_repr (optional str) : css rule, by default 'path'
         """
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         if kwargs.get("style_repr") not in ["hide", "edge-arrow"]:
             overload["fill"] = None
         path = "".join(
@@ -144,7 +136,7 @@ class SvgRenderer(Renderer):
         return '<path d="%s" class="%s" style="%s"/>\n' % (
             path.strip(),
             kwargs.get("style_repr", "path"),
-            css_from_rule(None, overload, False),
+            skin.css_from_rule(None, overload, False),
         )
 
     def text(self, x: float, y: float, text: str = "", **kwargs) -> str:
@@ -159,7 +151,7 @@ class SvgRenderer(Renderer):
             style_repr (optional str) : css rule, by default 'text'
         """
         css = kwargs.get("style_repr", "text")
-        overload = style_in_kwargs(**kwargs)
+        overload = skin.style_in_kwargs(**kwargs)
         overload["stroke"] = None
         if css:
             css = 'class="%s"' % css
@@ -167,7 +159,7 @@ class SvgRenderer(Renderer):
             x,
             y,
             css,
-            css_from_rule(None, overload, False),
+            skin.css_from_rule(None, overload, False),
             html.escape(str(text)),
         )
 
@@ -195,9 +187,9 @@ class SvgRenderer(Renderer):
         longest_wavename, width, height, n = self.size(wavelanes, **kwargs)
         # remove offset for the name in register
         if is_reg:
-            s, u = get_style("attr").get("font-size", (9, SizeUnit.PX))
+            s, u = skin.get_style("attr").get("font-size", (9, SizeUnit.PX))
             height += (n + 1) * 1.5 * s * u.value
-        _, _, self.offsetx, _ = text_bbox(None, "title", longest_wavename, Engine.SVG)
+        _, _, self.offsetx, _ = skin.text_bbox(None, "title", longest_wavename, Engine.SVG)
         with open(filename, "w+") as fp:
             fp.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
@@ -205,10 +197,10 @@ class SvgRenderer(Renderer):
             )
             fp.write('viewBox="-1 -1 %f %f">\n' % (width + self.offsetx + 10, height + 2))
             fp.write("<style>\n")
-            fp.write(css_from_style(DEFAULT_STYLE))
+            fp.write(skin.css_from_style(skin.DEFAULT_STYLE))
             fp.write("\n.wave {mask: url(#wavezone);}\n")
             fp.write("</style>\n")
-            fp.write(DEFINITION.format(int(self.offsetx + 8), int(width), int(height)))
+            fp.write(skin.DEFINITION.format(int(self.offsetx + 8), int(width), int(height)))
             fp.write(
                 self.wavegroup(
                     _id,

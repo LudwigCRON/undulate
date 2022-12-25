@@ -5,9 +5,9 @@ into different format
 
 import re
 import copy
-import undulate.skin
+import undulate.skin as skin
 import undulate.logger as log
-from undulate.skin import style_in_kwargs, get_style, SizeUnit
+from undulate.parsers.css import SizeUnit
 from math import floor
 from undulate.bricks.generic import (
     Brick,
@@ -396,7 +396,7 @@ class Renderer:
             # compatibility support of issue #17
             if s.x == 0 and s.y == 0 and e.x != 0 and e.y != 0:
                 s = Point(e.x - brick_width / 2, e.y)
-                txt_font_size = get_style("edge-text").get("font-size") or (
+                txt_font_size = skin.get_style("edge-text").get("font-size") or (
                     1.0,
                     SizeUnit.EM,
                 )
@@ -407,7 +407,7 @@ class Renderer:
             s = Point(s.x + xmin, s.y)
             e = Point(e.x + xmin, e.y)
             # draw shapes and surcharge styles
-            overload = style_in_kwargs(**a)
+            overload = skin.style_in_kwargs(**a)
             # hline
             if shape == "-":
                 y = Renderer.adjust_y(y, brick_height)
@@ -438,7 +438,7 @@ class Renderer:
             if shape:
                 ans += ShapeFactory.create(shape, self, **overload)
             if text:
-                overload = style_in_kwargs(**a)
+                overload = skin.style_in_kwargs(**a)
                 # add white background for the text
                 if shape:
                     mx, my = (s.x + e.x) * 0.5, (s.y + e.y) * 0.5
@@ -460,7 +460,7 @@ class Renderer:
                         }
                     )
                 if text_background:
-                    ox, oy, w, h = undulate.skin.text_bbox(
+                    ox, oy, w, h = skin.text_bbox(
                         self.ctx, "edge-text", text, self.engine, overload
                     )
                     x = overload.get("x")
@@ -624,7 +624,7 @@ class Renderer:
                 x = pos - brick_width + gap_offset - brick.slewing
             brick.args.update({"extra": self.translate(x, 0, dont_touch=True), "pos_x": x})
             # add style informations
-            brick.args.update(style_in_kwargs(**kwargs))
+            brick.args.update(skin.style_in_kwargs(**kwargs))
             # generate the brick
             wave.append(BrickFactory.create(brick.symbol, **brick.args))
             # register node position
@@ -729,9 +729,7 @@ class Renderer:
             }
         )
         # options for reserved space for signal names
-        name_font_size = get_style("text").get("font-size") or (1.0, SizeUnit.EM)
-        name_font_size = name_font_size[0] * name_font_size[1].value
-        offsetx = kwargs.get("offsetx", max(_default_offset_x, default=0) * name_font_size)
+        offsetx = kwargs.get("offsetx", 0)
         offsety = kwargs.get("offsety", 0)
         # options for appearance
         # group delimiter (image size)
@@ -756,7 +754,7 @@ class Renderer:
             # create a label and separator to identify groups of signals
             if depth > 1:
                 # get font size for position estimation
-                grp_font_size = get_style("h%d" % depth).get("font-size") or (
+                grp_font_size = skin.get_style("h%d" % depth).get("font-size") or (
                     1.0,
                     SizeUnit.EM,
                 )
