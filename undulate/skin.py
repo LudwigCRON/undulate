@@ -90,7 +90,7 @@ else:
         w = style.get("stroke-width", 1.0)
         context.set_line_width(w)
         # line cap
-        lc = style.get("stroke-css.LineCap", css.LineCap.ROUND)
+        lc = style.get("stroke-linecap", css.LineCap.ROUND)
         if lc == css.LineCap.SQUARE:
             context.set_line_cap(cairo.LINE_CAP_SQUARE)
         elif lc == css.LineCap.BUTT:
@@ -98,7 +98,7 @@ else:
         else:
             context.set_line_cap(cairo.LINE_CAP_ROUND)
         # line join
-        lj = style.get("stroke-css.LineJoin", css.LineJoin.MITER)
+        lj = style.get("stroke-linejoin", css.LineJoin.MITER)
         if lj == css.LineJoin.BEVEL:
             context.set_line_join(cairo.LINE_JOIN_BEVEL)
         elif lj == css.LineJoin.ROUND:
@@ -311,14 +311,14 @@ def css_from_rule(rule: str, style: dict, with_rule: bool = True):
                 ans += "%s: justify;" % prop
         elif prop in ["stroke-dasharray"]:
             ans += "%s: %s;" % (prop, ", ".join([str(v) for v in value]))
-        elif prop in ["stroke-css.LineCap"]:
+        elif prop in ["stroke-linecap"]:
             if value == css.LineCap.ROUND:
                 ans += "%s: round;" % prop
             elif value == css.LineCap.BUTT:
                 ans += "%s: butt;" % prop
             else:
                 ans += "%s: square;" % prop
-        elif prop in ["stroke-css.LineJoin"]:
+        elif prop in ["stroke-linejoin"]:
             if value == css.LineJoin.BEVEL:
                 ans += "%s: bevel;" % prop
             elif value == css.LineJoin.MITER:
