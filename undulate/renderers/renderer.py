@@ -899,7 +899,7 @@ class Renderer:
             }
         )
         # return kind of a viewport
-        x, y, n, keys = [0], (brick_height + separation) if depth > 1 else 0, 0, [0]
+        x, y, n, keys = [0], (brick_height + separation) if depth > 1 else 0, 0, ""
         # look through all wavelanes
         for wavetitle in wavelanes.keys():
             if not isinstance(wavelanes[wavetitle], dict):
@@ -931,7 +931,7 @@ class Renderer:
                 # estimate height
                 if wavelanes[wavetitle].get("overlay", False):
                     dy = 0
-                keys.append(len(wavetitle))
+                keys = keys if len(keys) > len(wavetitle) else wavetitle
             # if it is only spacers allocate space
             elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
                 pass
@@ -941,11 +941,11 @@ class Renderer:
                 lkeys, _x, dy, _n = self.size(wavelanes[wavetitle], depth + 1, **kwargs)
                 x.append(_x)
                 n += _n
-                keys.append(lkeys)
+                keys = keys if len(keys) > len(lkeys) else lkeys
             else:
                 dy = 0
             y += dy
-        return (max(keys), max(x), y, n)
+        return (keys, max(x), y, n)
 
     def draw(self, wavelanes, **kwargs) -> str:
         """

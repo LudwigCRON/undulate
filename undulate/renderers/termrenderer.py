@@ -282,7 +282,7 @@ class TermRenderer(Renderer):
         wavelanes.pop("config", None)
         lkeys, width, height, n = self.size(wavelanes, **kwargs)
         self.draw_width = width
-        self.offsetx = int(lkeys + self.depth(wavelanes) * 1.75)
+        self.offsetx = int(len(lkeys) + self.depth(wavelanes) * 1.75)
         self.wavegroup(
             _id,
             wavelanes,

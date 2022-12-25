@@ -17,6 +17,7 @@ from undulate.skin import (
     Engine,
     style_in_kwargs,
     get_style,
+    text_bbox,
 )
 from undulate.renderers.renderer import Renderer, svg_curve_convert
 from typing import List
@@ -261,8 +262,8 @@ class CairoRenderer(Renderer):
         brick_width = kwargs.get("brick_width", 40)
         brick_height = kwargs.get("brick_height", 20)
         is_reg = kwargs.get("is_reg", False)
-        lkeys, width, height, n = self.size(wavelanes, **kwargs)
-        # remove offset for the name in register
+        longest_wavename, width, height, n = self.size(wavelanes, **kwargs)
+        # in register add the space for attributes and position
         if is_reg:
             height += (n + 1) * 12
         # consider padding of root
@@ -270,8 +271,14 @@ class CairoRenderer(Renderer):
         val_top, unit_top = root_style.get("padding-top", (0.0, SizeUnit.PX))
         val_bot, unit_bot = root_style.get("padding-bottom", (0.0, SizeUnit.PX))
         height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
+        # compute text in a dummy surface
+        dummy_surface = cairo.SVGSurface(None, 400, 30)
+        dummy_ctx = cairo.Context(dummy_surface)
+        _, _, self.offsetx, _ = text_bbox(
+            dummy_ctx, "title", longest_wavename, Engine.CAIRO
+        )
         # select appropriate surface
-        w, h = (width + lkeys * 6.5 + 11), height
+        w, h = (width + self.offsetx + 10), height
         if self.extension == "svg":
             self.surface = cairo.SVGSurface(filename, w, h)
         elif self.extension == "png":
@@ -296,7 +303,7 @@ class CairoRenderer(Renderer):
         self.ctx = cairo.Context(self.surface)
         # set background for png image
         if self.extension == "png":
-            self.ctx.set_source_rgb(1, 1, 1)
+            self.ctx.set_source_rgba(1, 1, 1, 1)
             self.ctx.paint()
         # paint waveforms
         self.wavezone = (0, -8, w, height)
@@ -307,7 +314,7 @@ class CairoRenderer(Renderer):
             brick_height=brick_height,
             width=width,
             height=height,
-            offsetx=lkeys * 6.5 + 10,
+            offsetx=self.offsetx + 10,
         )
         self.ctx.show_page()
         # write to an external file for png images

@@ -11,8 +11,7 @@ from undulate.skin import (
     style_in_kwargs,
     css_from_rule,
     css_from_style,
-    SizeUnit,
-    get_style,
+    text_bbox,
 )
 from undulate.bricks.generic import ArrowDescription, SplineSegment, Point
 from undulate.renderers.renderer import Renderer
@@ -191,24 +190,22 @@ class SvgRenderer(Renderer):
         brick_width = kwargs.get("brick_width", 40)
         brick_height = kwargs.get("brick_height", 20)
         is_reg = kwargs.get("is_reg", False)
-        lkeys, width, height, n = self.size(wavelanes, **kwargs)
+        longest_wavename, width, height, n = self.size(wavelanes, **kwargs)
         # remove offset for the name in register
         if is_reg:
             height += (n + 1) * 12
-        # height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
-        val, unit = get_style("title").get("font-size", (0.5, SizeUnit.EM))
-        wavezone_x = (lkeys + 1) * val * unit.value
+        _, _, self.offsetx, _ = text_bbox(None, "title", longest_wavename, Engine.SVG)
         with open(filename, "w+") as fp:
             fp.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
-                % (width + wavezone_x, height)
+                % (width + self.offsetx + 10, height)
             )
-            fp.write('viewBox="-1 -1 %f %f">\n' % (width + wavezone_x + 1, height + 2))
+            fp.write('viewBox="-1 -1 %f %f">\n' % (width + self.offsetx + 10, height + 2))
             fp.write("<style>\n")
             fp.write(css_from_style(DEFAULT_STYLE))
             fp.write("\n.wave {mask: url(#wavezone);}\n")
             fp.write("</style>\n")
-            fp.write(DEFINITION.format(int(wavezone_x * 0.9), int(width), int(height)))
+            fp.write(DEFINITION.format(int(self.offsetx + 8), int(width), int(height)))
             fp.write(
                 self.wavegroup(
                     _id,
@@ -217,7 +214,7 @@ class SvgRenderer(Renderer):
                     brick_height=brick_height,
                     width=width,
                     height=height,
-                    offsetx=wavezone_x * 0.9,
+                    offsetx=self.offsetx + 8,
                 )[1]
             )
             fp.write("\n</svg>")

@@ -380,7 +380,6 @@ else:
         read the style and apply via cairo functions
         """
         style = get_style(name)
-        apply_cairo_font(context, style, overload)
         apply_cairo_fill(context, style, overload)
         apply_cairo_stroke(context, style, overload)
 
@@ -450,21 +449,23 @@ else:
             return (width, dy)
         return (width / 2, dy)
 
-    def cairo_text_bbox(context, style: dict, text: str):
+    def cairo_text_bbox(layout, style: dict, text: str):
         """
         return size of the text for a given font
         can differ as not using the pango backend
         """
         ta = style.get("text-align", TextAlign.CENTER)
+        layout.apply_markup(text)
         # get text width
-        ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
-        xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
+        _, log_box = layout.get_extents()
+        PANGO_SCALE = pango.units_from_double(1)
+        width, height = log_box.width / PANGO_SCALE, log_box.height / PANGO_SCALE
         width += SizeUnit.EM.value / 2
         if ta == TextAlign.LEFT:
-            return (0, -height / 2, width, _height)
+            return (0, -height / 2, width, height)
         elif ta == TextAlign.RIGHT:
-            return (-width, -height / 2, width, _height)
-        return (-width / 2, -descent - height / 2, width, _height)
+            return (-width, -height / 2, width, height)
+        return (-width / 2, -height / 2, width, height)
 
     def apply_cairo_font(layout, style: dict, overload: dict):
         """
@@ -542,22 +543,32 @@ def get_style(name: str, overload: dict = {}) -> dict:
     return style
 
 
-def text_align(context, name: str, text: str, engine: Engine):
+def text_align(layout, name: str, text: str, engine: Engine):
     """
     calculate the offset to apply for the text alignment
     """
     if engine == Engine.CAIRO:
-        return cairo_text_align(context, get_style(name), text)
+        return cairo_text_align(layout, get_style(name), text)
 
 
 def text_bbox(context, name: str, text: str, engine: Engine, overload: dict = {}):
     """
     calculate the bounding box of the text
     """
+    style = get_style(name)
     if engine == Engine.CAIRO:
         apply_cairo_style(context, name, overload)
-        return cairo_text_bbox(context, get_style(name), text)
-    return (-len(text) * 6 / 2, -4.5, len(text) * 6, 9)
+        dummy_layout = pangocairo.create_layout(context)
+        apply_cairo_font(dummy_layout, style, {})
+        dummy_layout.alignment = pango.Alignment.CENTER
+        return cairo_text_bbox(dummy_layout, style, text)
+    val, unit = style.get("font-size", (0.5, SizeUnit.EM))
+    return (
+        -len(text) * 0.333 * val * unit.value,
+        -val * unit.value / 2,
+        len(text) * 0.667 * val * unit.value,
+        val * unit.value,
+    )
 
 
 def style_in_kwargs(**kwargs) -> dict:
