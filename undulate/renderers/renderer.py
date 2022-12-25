@@ -905,11 +905,10 @@ class Renderer:
             if not isinstance(wavelanes[wavetitle], dict):
                 continue
             # add some extra for attr in registers
-            _attr = wavelanes[wavetitle].get("attr", [(0, None)])
+            _attr = wavelanes[wavetitle].get("attributes", [])
             if isinstance(_attr, list):
                 _n = [
-                    len(a[-1]) if isinstance(a[-1], list) else 0 if a[-1] is None else 1
-                    for a in _attr
+                    len(a) if isinstance(a, list) else 0 if a is None else 1 for a in _attr
                 ]
                 n = max(n, len(_n))
             else:

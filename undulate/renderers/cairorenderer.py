@@ -265,7 +265,8 @@ class CairoRenderer(Renderer):
         longest_wavename, width, height, n = self.size(wavelanes, **kwargs)
         # in register add the space for attributes and position
         if is_reg:
-            height += (n + 1) * 12
+            s, u = get_style("attr").get("font-size", (9, SizeUnit.PX))
+            height += (n + 1) * 1.5 * s * u.value
         # consider padding of root
         root_style = get_style("root")
         val_top, unit_top = root_style.get("padding-top", (0.0, SizeUnit.PX))

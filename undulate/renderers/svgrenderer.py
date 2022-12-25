@@ -12,6 +12,8 @@ from undulate.skin import (
     css_from_rule,
     css_from_style,
     text_bbox,
+    SizeUnit,
+    get_style,
 )
 from undulate.bricks.generic import ArrowDescription, SplineSegment, Point
 from undulate.renderers.renderer import Renderer
@@ -193,7 +195,8 @@ class SvgRenderer(Renderer):
         longest_wavename, width, height, n = self.size(wavelanes, **kwargs)
         # remove offset for the name in register
         if is_reg:
-            height += (n + 1) * 12
+            s, u = get_style("attr").get("font-size", (9, SizeUnit.PX))
+            height += (n + 1) * 1.5 * s * u.value
         _, _, self.offsetx, _ = text_bbox(None, "title", longest_wavename, Engine.SVG)
         with open(filename, "w+") as fp:
             fp.write(

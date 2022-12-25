@@ -83,7 +83,7 @@ class Register:
             "types": types,
             "styles": styles,
             "scale_widths": widths,
-            "splitteds": splitteds
+            "splitteds": splitteds,
         }
         return ans
 
@@ -104,7 +104,7 @@ class Field:
         "data",
         "style",
         "type",
-        "splitted"
+        "splitted",
     ]
 
     def __init__(self):
@@ -156,7 +156,7 @@ class Field:
         elif isinstance(d.get("name", ""), str):
             # center the name in the middle
             f.data = [d.get("name", "")]
-            f.data.extend([""] * (f.width-1))
+            f.data.extend([""] * (f.width - 1))
         else:
             # skip the field
             f.data = [""] * f.width
