@@ -158,11 +158,11 @@ else:
         # font slant
         font_style = style.get("font-style", "")
         if "it" in font_style:
-            font_style = cairo.FONT_SLANT_ITALIC
+            desc.style = pango.Style.ITALIC
         elif "ob" in font_style:
-            font_style = cairo.FONT_SLANT_OBLIQUE
+            desc.style = pango.Style.OBLIQUE
         else:
-            font_style = cairo.FONT_SLANT_NORMAL
+            desc.style = pango.Style.NORMAL
         # normal or bold
         w = style.get("font-weight", 200)
         if isinstance(w, str) and "bold" in w:
