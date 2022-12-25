@@ -337,5 +337,5 @@ def update_style(filepath: str):
         print("ERROR: cannot read '%s' as a valid stylesheet" % filepath, file=sys.stderr)
         exit(8)
     with open(filepath, "r+") as fp:
-        style = css_load(filepath)
+        style = css.load(filepath)
     DEFAULT_STYLE.update(style)

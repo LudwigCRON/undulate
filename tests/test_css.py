@@ -200,9 +200,9 @@ from pprint import pprint
 class TestCss(unittest.TestCase):
     def test_loading(self):
         with open("%s/supported.css" % UT_CSS_DIR, "r+") as fp:
-            style = css.css_parser(css.css_tokenizer(fp))
+            style = css.parser(css.tokenizer(fp))
         with open("%s/../../undulate/default.css" % UT_CSS_DIR, "r+") as fp:
-            style = css.css_parser(css.css_tokenizer(fp))
+            style = css.parser(css.tokenizer(fp))
         self.assertEqual(DEFAULT_STYLE, style)
 
     def test_rules(self):

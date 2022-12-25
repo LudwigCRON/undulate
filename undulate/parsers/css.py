@@ -39,7 +39,7 @@ class CSSTokenType(Enum):
     EOF = 8
 
 
-def css_tokenizer(stream):
+def tokenizer(stream):
     """
     read a character stream and gather them
     to provide a token to the css parser
@@ -180,7 +180,7 @@ def parse_css_color(S: str) -> tuple:
     return s
 
 
-def css_parser(token_iter):
+def parser(token_iter):
     """
     construct the style dictionnary from
     an iterator of tokens
@@ -321,4 +321,4 @@ def css_parser(token_iter):
 
 def load(filepath: str):
     with open(filepath, "r+") as fp:
-        return css_parser(css_tokenizer(fp))
+        return parser(tokenizer(fp))
