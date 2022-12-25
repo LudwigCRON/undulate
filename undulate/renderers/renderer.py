@@ -387,7 +387,7 @@ class Renderer:
             start = a.get("from", None)
             end = a.get("to", None)
             text = a.get("text", "")
-            text_background = a.get("text_background", True)
+            text_background = a.get("text-background", True)
             ans = ""
             s = Renderer.from_to_parser(start, width, height, brick_width, brick_height)
             e = Renderer.from_to_parser(end, width, height, brick_width, brick_height)

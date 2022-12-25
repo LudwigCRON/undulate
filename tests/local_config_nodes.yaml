@@ -43,7 +43,7 @@ annotations:
     from: (2.15, 3)
     to: (3, 3)
     text: "T   "
-    text_background: False
+    text-background: False
     dy: -0.2
     dx: -0.2
     fill: "#db4141"
