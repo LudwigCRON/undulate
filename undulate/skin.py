@@ -391,9 +391,10 @@ else:
         style.update(overload)
         # color
         t = style.get("fill", None)
-        if t is not None:
-            r, g, b, a = t
-            context.set_source_rgba(r / 255, g / 255, b / 255, a / 255)
+        if t is None:
+            t = (255, 255, 255, 0)
+        r, g, b, a = t
+        context.set_source_rgba(r / 255, g / 255, b / 255, a / 255)
 
     def apply_cairo_stroke(context, style: dict, overload: dict):
         """

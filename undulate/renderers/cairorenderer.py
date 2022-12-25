@@ -303,7 +303,7 @@ class CairoRenderer(Renderer):
         self.ctx = cairo.Context(self.surface)
         # set background for png image
         if self.extension == "png":
-            self.ctx.set_source_rgba(1, 1, 1, 1)
+            apply_fill(self.ctx, "root", Engine.CAIRO)
             self.ctx.paint()
         # paint waveforms
         self.wavezone = (0, -8, w, height)
