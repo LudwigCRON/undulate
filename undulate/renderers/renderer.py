@@ -102,7 +102,7 @@ class Renderer:
 
     _EDGE_REGEXP = (
         r"(?:(?P<from>[\w.#]+)[\t ]*"
-        r"(?P<shape>[<*\[#]?[-|\\\/~]+[*\]#>]?)[\t ]*)?"
+        r"(?P<shape>[<*\[#]?[-|\\\/~+]+[*\]#>]?)[\t ]*)?"
         r"(?P<to>[\w.#]+)[\t ]*"
         r"(?P<text>[\w \t.]*)$"
     )
@@ -397,7 +397,7 @@ class Renderer:
             if s.x == 0 and s.y == 0 and e.x != 0 and e.y != 0:
                 s = Point(e.x - brick_width / 2, e.y)
                 txt_font_size = skin.get_style("edge-text").get("font-size") or (
-                    1.0,
+                    0.3,
                     SizeUnit.EM,
                 )
                 txt_font_size = txt_font_size[0] * txt_font_size[1].value
@@ -411,15 +411,15 @@ class Renderer:
             # hline
             if shape == "-":
                 y = Renderer.adjust_y(y, brick_height)
+                if isinstance(start, (float, int)):
+                    xmin += start * brick_width
                 if isinstance(end, (float, int)):
                     xmax = xmin + end * brick_width
                 else:
                     xmax = xmin + width
-                if isinstance(start, (float, int)):
-                    xmin += start * brick_width
                 overload["y"] = y
                 overload["xmin"] = xmin
-                overload["ymax"] = xmax
+                overload["xmax"] = xmax
             # vline or time compression
             elif shape in ["|", "||"]:
                 x = xmin + x * brick_width
@@ -705,12 +705,6 @@ class Renderer:
             width (float): image width
             height (float): image height
         """
-        # prepare the return group
-        _default_offset_x = [
-            len(s) + 1
-            for s in wavelanes.keys()
-            if not (Renderer.is_spacer(s) or s in EXCLUDED_NAMED_GROUPS)
-        ]
         # options for size of bricks
         config = wavelanes.get("config", {})
         vscale = config.get("vscale", 1.0)
@@ -791,6 +785,9 @@ class Renderer:
                 # signals and registers are in a dict
                 # height of a single waveform
                 dy = brick_height * wavelanes[wavetitle].get("vscale", 1) + separation
+                # fix for issue #41 with node in spacer without wave attribute
+                if "wave" not in wavelanes[wavetitle] and "node" in wavelanes[wavetitle]:
+                    wavelanes[wavetitle]["wave"] = " " * len(wavelanes[wavetitle]["node"])
                 # waveform generation
                 if "wave" in wavelanes[wavetitle]:
                     wave, args = wavelanes[wavetitle]["wave"], wavelanes[wavetitle]

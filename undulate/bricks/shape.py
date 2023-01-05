@@ -61,7 +61,6 @@ def arrow_markers(renderer: Renderer, pattern: str, ds: Point, de: Point, **kwar
     ans = ""
     start = kwargs.get("start")
     end = kwargs.get("end")
-    kwargs["style_repr"] = "edge-arrow"
     if pattern.startswith("<"):
         angle = arrow_angle(ds.y, ds.x)
         ans += renderer.arrow(
@@ -70,6 +69,23 @@ def arrow_markers(renderer: Renderer, pattern: str, ds: Point, de: Point, **kwar
                 y=start.y - 3 * sin(angle * 3.14159 / 180),
                 angle=angle,
             ),
+            **kwargs
+        )
+    elif pattern.startswith("|"):
+        angle = arrow_angle(ds.y, ds.x) - 90.0
+        ans += renderer.spline(
+            [
+                SplineSegment(
+                    "M",
+                    start.x - 3 * cos(angle * 3.14159 / 180),
+                    start.y - 3 * sin(angle * 3.14159 / 180),
+                ),
+                SplineSegment(
+                    "L",
+                    start.x + 3 * cos(angle * 3.14159 / 180),
+                    start.y + 3 * sin(angle * 3.14159 / 180),
+                ),
+            ],
             **kwargs
         )
     elif pattern.startswith("*"):
@@ -84,6 +100,23 @@ def arrow_markers(renderer: Renderer, pattern: str, ds: Point, de: Point, **kwar
                 y=end.y - 3 * sin(angle * 3.14159 / 180),
                 angle=angle,
             ),
+            **kwargs
+        )
+    elif pattern.endswith("|"):
+        angle = arrow_angle(de.y, de.x) - 90.0
+        ans += renderer.spline(
+            [
+                SplineSegment(
+                    "M",
+                    end.x - 3 * cos(angle * 3.14159 / 180),
+                    end.y - 3 * sin(angle * 3.14159 / 180),
+                ),
+                SplineSegment(
+                    "L",
+                    end.x + 3 * cos(angle * 3.14159 / 180),
+                    end.y + 3 * sin(angle * 3.14159 / 180),
+                ),
+            ],
             **kwargs
         )
     elif pattern.endswith("*"):
@@ -154,6 +187,26 @@ def HorizontalLine(renderer: Renderer, pattern: str, **kwargs) -> str:
     return renderer.spline(pts, **kwargs)
 
 
+def ArrowStraightBar(renderer: Renderer, pattern: str, **kwargs) -> str:
+    """
+    Straight Line Edge with some bar moustaches at extremities
+
+    Args:
+        start (Point): coordinate of start extremity
+        end (Point): coordinate of end extremity
+    """
+    start = kwargs.get("start")
+    end = kwargs.get("end")
+    kwargs["style_repr"] = "edge"
+    pts = [SplineSegment("M", start.x, start.y), SplineSegment("L", end.x, end.y)]
+    ans = renderer.spline(pts, is_edge=True, **kwargs)
+    # draw markers
+    ds = Point(start.x - end.x, start.y - end.y)
+    de = Point(end.x - start.x, end.y - start.y)
+    ans += arrow_markers(renderer, "||", ds, de, **kwargs)
+    return ans
+
+
 def VerticalLine(renderer: Renderer, pattern: str, **kwargs) -> str:
     """
     Vertical Line
@@ -187,6 +240,7 @@ def ArrowStraight(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
+    kwargs["style_repr"] = "edge-arrow"
     ds = Point(start.x - end.x, start.y - end.y)
     de = Point(end.x - start.x, end.y - start.y)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
@@ -211,6 +265,7 @@ def ArrowHV(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
+    kwargs["style_repr"] = "edge-arrow"
     ds = Point(start.x - end.x, 0)
     de = Point(0, end.y - start.y)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
@@ -235,6 +290,7 @@ def ArrowVH(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
+    kwargs["style_repr"] = "edge-arrow"
     ds = Point(0, start.y - end.y)
     de = Point(end.x - start.x, 0)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
@@ -260,6 +316,7 @@ def ArrowHVH(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
+    kwargs["style_repr"] = "edge-arrow"
     ds = Point(start.x - end.x, 0)
     de = Point(end.x - start.x, 0)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
@@ -285,6 +342,7 @@ def ArrowWave(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
+    kwargs["style_repr"] = "edge-arrow"
     ds = Point(pts[0].x - pts[1].x, pts[0].y - pts[1].y)
     de = Point(pts[-1].x - pts[-2].x, pts[-1].y - pts[-2].y)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
@@ -310,6 +368,7 @@ def ArrowHWave(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
+    kwargs["style_repr"] = "edge-arrow"
     ds = Point(pts[0].x - pts[1].x, pts[0].y - pts[1].y)
     de = Point(pts[-1].x - pts[-3].x, pts[-1].y - pts[-3].y)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
@@ -336,6 +395,7 @@ def ArrowWaveH(renderer: Renderer, pattern: str, **kwargs) -> str:
     ]
     ans = renderer.spline(pts, is_edge=True, **kwargs)
     # draw markers
+    kwargs["style_repr"] = "edge-arrow"
     ds = Point(pts[1].x - pts[2].x, pts[1].y - pts[2].y)
     de = Point(pts[-1].x - pts[-2].x, pts[-1].y - pts[-2].y)
     ans += arrow_markers(renderer, pattern, ds, de, **kwargs)
@@ -345,6 +405,7 @@ def ArrowWaveH(renderer: Renderer, pattern: str, **kwargs) -> str:
 def initialize() -> None:
     ShapeFactory.register("||", TimeCompressor)
     ShapeFactory.register("-", HorizontalLine)
+    ShapeFactory.register("+", ArrowStraightBar)
     ShapeFactory.register("|", VerticalLine)
     for pattern in generate_patterns(ARROWS_PREFIX, "-", ARROWS_SUFFIX):
         if pattern != "-":

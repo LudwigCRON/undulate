@@ -151,13 +151,13 @@
 
 .edge-arrow {
     fill: rgba(0, 0, 255, 255);
-    stroke: none;
+    stroke: rgba(0, 0, 255, 255);
     overflow: visible;
 }
 
 .edge-text {
     font-family: "Fira Mono";
-    font-size: 0.625em;
+    font-size: 0.3em;
     fill: #000;
     filter: "#solid";
     transform: "translate(0, 2.5px)";

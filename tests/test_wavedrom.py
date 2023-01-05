@@ -188,6 +188,8 @@ class TestSvgMethods(unittest.TestCase):
             "B": {"wave": "0.1..0.", "node": "..b..d.", "phase": 0.5},
             "C": {"wave": "0..1..0", "node": "...c..f"},
             " ": {"node": "...g..h"},
+            "_": {"node": "...I..J", "phase": 0.5},
+            "D": {"wave": "0..1..0", "phase": 0.5},
             "edge": [
                 "b-|a t1",
                 "a-|c t2",
@@ -198,6 +200,7 @@ class TestSvgMethods(unittest.TestCase):
                 "c-g",
                 "f-h",
                 "g<->h 3 ms",
+                "I+J 5ms",
             ],
         }
         RENDERER.draw(wavelanes, filename=filename)
