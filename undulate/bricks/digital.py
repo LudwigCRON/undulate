@@ -966,21 +966,21 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         if i == 0:
             position = -pmul * brick_width * phase
         # adjust width depending on the brick's index in the the lane
-        if i == len(waveform) - 1:
-            brick.args["brick_width"] = max(
-                pmul * brick_width * (repeat + phase), lane_width - position
-            )
+        if i >= len(waveform) - 1:
+            brick.args["brick_width"] = max(0, lane_width - position)
+            print(brick.symbol, lane_width - position)
         else:
             brick.args["brick_width"] = pmul * repeat * brick_width
         position += brick.args["brick_width"]
         # update size of the first visible brick
         if position > 0 and not ans:
             brick.args["is_first"] = True
+            brick.args["brick_width"] = position
         # prevent monstruosity with phase larger than several block width
         if position > 0:
-            # consider the case when the phase is negative
+            # consider the case when the phase is positive
             # draw an hortizontal to the first point
-            if phase < 0.0 and brick.args["is_first"] and brick.symbol not in "Xx23456789=":
+            if phase > 0.0 and brick.args["is_first"] and "data" not in BrickFactory.tags[brick.symbol]:
                 args = brick.args.copy()
                 offx = abs(brick_width * phase)
                 args.update({"brick_width": offx, "y": brick.get_first_y()})
