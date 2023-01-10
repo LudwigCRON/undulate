@@ -966,7 +966,7 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         if i == 0:
             position = -pmul * brick_width * phase
         # adjust width depending on the brick's index in the the lane
-        if i == len(waveform) - 1 and phase >= 0.0:
+        if i == len(waveform) - 1:
             brick.args["brick_width"] = max(
                 pmul * brick_width * (repeat + phase), lane_width - position
             )
@@ -980,7 +980,7 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         if position > 0:
             # consider the case when the phase is negative
             # draw an hortizontal to the first point
-            if phase < 0.0 and brick.args["is_first"]:
+            if phase < 0.0 and brick.args["is_first"] and brick.symbol not in "Xx23456789=":
                 args = brick.args.copy()
                 offx = abs(brick_width * phase)
                 args.update({"brick_width": offx, "y": brick.get_first_y()})
