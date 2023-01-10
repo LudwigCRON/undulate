@@ -1,6 +1,8 @@
 import re
 from enum import Enum
 
+import undulate.logger as log
+
 
 class SizeUnit(Enum):
     EM = 16
@@ -190,10 +192,7 @@ def parser(token_iter):
         try:
             line_number, type, token = next(it)
             if type not in types:
-                print(
-                    "ERROR: unexpected token '%s' at Line %d" % (token, line_number),
-                    file=sys.stderr,
-                )
+                log.error("Unexpected token '%s' at Line %d" % (token, line_number))
                 exit(6)
             return token
         except StopIteration:
@@ -207,10 +206,7 @@ def parser(token_iter):
                 ans.append(token)
                 line_number, type, token = next(it)
             if type not in until_types:
-                print(
-                    "ERROR: unexpected token '%s' at Line %d" % (token, line_number),
-                    file=sys.stderr,
-                )
+                log.error("Unexpected token '%s' at Line %d" % (token, line_number))
                 exit(7)
             return ans, (line_number, type, token)
         except StopIteration:
