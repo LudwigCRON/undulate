@@ -102,10 +102,14 @@ DEFAULT_STYLE = {
         "stroke-width": 2,
     },
     "edge": {"fill": None, "stroke": (0, 0, 255, 255), "stroke-width": 1},
-    "edge-arrow": {"fill": (0, 0, 255, 255), "stroke": None, "overflow": "visible"},
+    "edge-arrow": {
+        "fill": (0, 0, 255, 255),
+        "stroke": (0, 0, 255, 255),
+        "overflow": "visible",
+    },
     "edge-text": {
         "font-family": "Fira Mono",
-        "font-size": (0.625, css.SizeUnit.EM),
+        "font-size": (0.3, css.SizeUnit.EM),
         "fill": (0, 0, 0, 255),
         "filter": "#solid",
         "transform": "translate(0, 2.5px)",
@@ -199,6 +203,7 @@ from pprint import pprint
 
 class TestCss(unittest.TestCase):
     def test_loading(self):
+        self.maxDiff = None
         with open("%s/supported.css" % UT_CSS_DIR, "r+") as fp:
             style = css.parser(css.tokenizer(fp))
         with open("%s/../../undulate/default.css" % UT_CSS_DIR, "r+") as fp:
