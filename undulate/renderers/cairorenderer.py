@@ -299,7 +299,7 @@ class CairoRenderer(Renderer):
             skin.apply_fill(self.ctx, "root", Engine.CAIRO)
             self.ctx.paint()
         # paint waveforms
-        self.wavezone = (0, -8, w, height)
+        self.wavezone = (-1, -8, w, height)
         self.wavegroup(
             _id,
             wavelanes,
