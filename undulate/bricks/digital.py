@@ -978,14 +978,9 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         # prevent monstruosity with phase larger than several block width
         if position > 0:
             # consider the case when the phase is positive
-            # draw a copy to extend the first symbol
+            # extend the first symbol
             if phase > 0.0 and brick.args["is_first"]:
-                args = brick.args.copy()
-                args["is_first"] = True
-                offx = abs(brick_width * phase)
-                args.update({"brick_width": offx, "y": brick.get_first_y()})
-                ans.append(BrickFactory.create(brick.symbol, **args))
-                brick.args["is_first"] = True
+                brick.args["brick_width"] += brick_width * phase
             ans.append(BrickFactory.create(brick.symbol, **brick.args))
     return ans
 
