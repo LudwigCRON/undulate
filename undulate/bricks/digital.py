@@ -968,7 +968,6 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         # adjust width depending on the brick's index in the the lane
         if i >= len(waveform) - 1:
             brick.args["brick_width"] = max(0, lane_width - position)
-            print(brick.symbol, lane_width - position)
         else:
             brick.args["brick_width"] = pmul * repeat * brick_width
         position += brick.args["brick_width"]
