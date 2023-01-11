@@ -607,7 +607,7 @@ class Renderer:
         # options
         brick_width = kwargs.get("brick_width", 20) * kwargs.get("hscale", 1)
         gap_offset = kwargs.get("gap_offset", brick_width * 0.5)
-        phase = kwargs.get("phase", 0.0) * brick_width
+
         # pre-process nodes
         nodes, *expended_names = kwargs.get("node", "").split(" ")
         nodes = [expended_names.pop(0) if node == "#" else node for node in nodes]
@@ -617,11 +617,13 @@ class Renderer:
 
         # generate waveform
         wave, pos = [], 0
-        for brick in _wavelane:
+        for i, brick in enumerate(_wavelane):
+            if i == 0:
+                pos = -brick.args.get("phase", 0.0)
             # prune the properties
-            x = max(0, pos) - max(0, phase)
+            x = pos
             if brick.symbol == "|":
-                x = pos - brick_width + gap_offset - brick.slewing
+                x -= brick_width + gap_offset - brick.slewing
             brick.args.update({"extra": self.translate(x, 0, dont_touch=True), "pos_x": x})
             # add style informations
             brick.args.update(skin.style_in_kwargs(**kwargs))

@@ -964,23 +964,17 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
             pmul = max(1, slewing * 2 / max(brick_width, 1))
         # consider phase at the beginning
         if i == 0:
-            position = -brick_width * phase
+            position = -pmul * brick_width * phase
         # adjust width depending on the brick's index in the the lane
+        bw = pmul * repeat * brick_width
         if i >= len(waveform) - 1:
-            brick.args["brick_width"] = max(0, lane_width - position)
-        else:
-            brick.args["brick_width"] = pmul * repeat * brick_width
-        position += brick.args["brick_width"]
-        # update size of the first visible brick
-        if position > 0 and not ans:
-            brick.args["is_first"] = True
-            brick.args["brick_width"] = position
+            bw = max(0, lane_width - position)
+        position += bw
         # prevent monstruosity with phase larger than several block width
-        if position > 0:
-            # consider the case when the phase is positive
-            # extend the first symbol
-            if phase > 0.0 and brick.args["is_first"]:
-                brick.args["brick_width"] += brick_width * phase
+        if position > 0 and bw > 0:
+            brick.args["is_first"] = not ans
+            brick.args["brick_width"] = bw
+            brick.args["phase"] = ((phase / repeat) % 1.0) * bw
             ans.append(BrickFactory.create(brick.symbol, **brick.args))
     return ans
 
@@ -1113,7 +1107,6 @@ def initialize() -> None:
     BrickFactory.register(
         ".", Empty, tags=["repeat"], params={"duty_cycle": 0.5, "slewing": 0, "period": 1}
     )
-    BrickFactory.register("f", Filler, params={"period": 1})
     FilterBank.register(filter_repeat)
     FilterBank.register(filter_width)
     FilterBank.register(filter_phase_pos)
