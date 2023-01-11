@@ -966,15 +966,27 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         if i == 0:
             position = -pmul * brick_width * phase
         # adjust width depending on the brick's index in the the lane
-        bw = pmul * (repeat - (i == 0) * min(0, phase)) * brick_width
+        bw = pmul * repeat * brick_width
         if i >= len(waveform) - 1:
             bw = max(0, lane_width - position)
         position += bw
-        # prevent monstruosity with phase larger than several block width
+        # prevent monstruosity by clipping the block with positive phase
+        # and complete the curve if the phase is negative
         if position > 0 and bw > 0:
             brick.args["is_first"] = not ans
             brick.args["brick_width"] = bw
-            brick.args["phase"] = ((max(0, phase) / repeat) % 1.0) * brick_width
+            brick.args["phase"] = position - bw
+            # single line shape use a filler cell
+            if phase < 0 and not ans and "data" not in BrickFactory.tags[brick.symbol]:
+                args = brick.args.copy()
+                args["brick_width"] = position - bw
+                args["phase"] = 0
+                args["y"] = brick.get_first_y()
+                ans.append(BrickFactory.create("f", **args))
+            # or extend the brick for data
+            elif phase < 0 and not ans:
+                brick.args["brick_width"] += brick.args["phase"]
+                brick.args["phase"] = 0
             ans.append(BrickFactory.create(brick.symbol, **brick.args))
     return ans
 
@@ -1107,6 +1119,7 @@ def initialize() -> None:
     BrickFactory.register(
         ".", Empty, tags=["repeat"], params={"duty_cycle": 0.5, "slewing": 0, "period": 1}
     )
+    BrickFactory.register("f", Filler)
     FilterBank.register(filter_repeat)
     FilterBank.register(filter_width)
     FilterBank.register(filter_phase_pos)

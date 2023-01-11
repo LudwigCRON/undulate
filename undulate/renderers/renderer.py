@@ -619,7 +619,7 @@ class Renderer:
         wave, pos = [], 0
         for i, brick in enumerate(_wavelane):
             if i == 0:
-                pos = -brick.args.get("phase", 0.0)
+                pos = brick.args.get("phase", 0.0)
             # prune the properties
             x = pos
             if brick.symbol == "|":
