@@ -3,6 +3,7 @@ digital.py declare the basic building block
 to generate a digital waveform
 """
 # TODO: migrate Garbage follow_data to generic custom filtering functions
+# TODO: simplify filter 1 filter per transition change
 
 import math
 import undulate.logger as log
@@ -354,143 +355,35 @@ class Garbage(Brick):
         follow_data = kwargs.get("follow_data", False)
         if math.isnan(self.last_y):
             self.last_y = self.height / 2
+        if math.isnan(self.first_y):
+            self.first_y = self.last_y
         # add shape
         if follow_data:
-            self.paths.append(
-                Drawable(
-                    "path",
-                    [
-                        Point(
-                            self.slewing,
-                            self.last_y if not self.ignore_start_transition else 0.0,
-                        ),
-                        Point(0.0, 0.0),
-                        Point(self.width - self.slewing, 0.0),
-                        Point(
-                            self.width,
-                            self.height / 2 if not self.ignore_end_transition else 0.0,
-                        ),
-                    ],
-                )
-            )
-            self.paths.append(
-                Drawable(
-                    "path",
-                    [
-                        Point(
-                            self.slewing,
-                            self.last_y
-                            if not self.ignore_start_transition
-                            else self.height,
-                        ),
-                        Point(0.0, self.height),
-                        Point(self.width - self.slewing, self.height),
-                        Point(
-                            self.width,
-                            self.height / 2 if not self.ignore_end_transition else 0.0,
-                        ),
-                    ],
-                )
-            )
+            _tmp = [
+                Point(0.0, self.last_y),
+                Point(-self.slewing, self.height),
+                Point(self.width - self.slewing, self.height),
+                Point(self.width, self.first_y),
+                Point(self.width - self.slewing, 0.0),
+                Point(-self.slewing, 0.0),
+                Point(0.0, self.last_y),
+            ]
         else:
-            self.paths.append(
-                Drawable(
-                    "path",
-                    [
-                        Point(
-                            0.0, self.last_y if not self.ignore_start_transition else 0.0
-                        ),
-                        Point(
-                            self.slewing if not self.ignore_start_transition else 0.0, 0.0
-                        ),
-                        Point(self.width, 0.0),
-                        Point(
-                            self.width - self.slewing,
-                            self.height / 2 if not self.ignore_end_transition else 0.0,
-                        ),
-                    ],
-                )
-            )
-            self.paths.append(
-                Drawable(
-                    "path",
-                    [
-                        Point(
-                            0.0,
-                            self.last_y
-                            if not self.ignore_start_transition
-                            else self.height,
-                        ),
-                        Point(
-                            self.slewing if not self.ignore_start_transition else 0.0,
-                            self.height,
-                        ),
-                        Point(self.width, self.height),
-                        Point(
-                            self.width - self.slewing,
-                            self.height / 2 if not self.ignore_end_transition else 0.0,
-                        ),
-                    ],
-                )
-            )
+            _tmp = [
+                Point(0.0, self.last_y),
+                Point(self.slewing, self.height),
+                Point(self.width + self.slewing, self.height),
+                Point(self.width, self.first_y),
+                Point(self.width + self.slewing, 0.0),
+                Point(self.slewing, 0.0),
+                Point(0.0, self.last_y),
+            ]
+        self.paths.append(Drawable("path", _tmp))
         # add background
-        if follow_data:
-            self.polygons.append(
-                Drawable(
-                    "hatch",
-                    [
-                        Point(self.slewing, self.last_y),
-                        Point(0.0, 0.0),
-                        Point(
-                            self.width - self.slewing
-                            if not self.ignore_end_transition
-                            else self.width,
-                            0.0,
-                        ),
-                        Point(
-                            self.width,
-                            self.height / 2 if not self.ignore_end_transition else 0.0,
-                        ),
-                        Point(
-                            self.width - self.slewing
-                            if not self.ignore_end_transition
-                            else self.width,
-                            self.height,
-                        ),
-                        Point(0.0, self.height),
-                        Point(self.slewing, self.last_y),
-                    ],
-                )
-            )
-        else:
-            self.polygons.append(
-                Drawable(
-                    "hatch",
-                    [
-                        Point(0.0, self.last_y),
-                        Point(
-                            self.slewing if not self.ignore_start_transition else 0.0, 0.0
-                        ),
-                        Point(
-                            self.width if not self.ignore_end_transition else self.width,
-                            0.0,
-                        ),
-                        Point(
-                            self.width - self.slewing,
-                            self.height / 2 if not self.ignore_end_transition else 0.0,
-                        ),
-                        Point(
-                            self.width if not self.ignore_end_transition else self.width,
-                            self.height,
-                        ),
-                        Point(
-                            self.slewing if not self.ignore_start_transition else 0.0,
-                            self.height,
-                        ),
-                        Point(0, self.last_y),
-                    ],
-                )
-            )
+        self.polygons.append(Drawable("hatch", _tmp))
+
+    def get_last_y(self) -> float:
+        return self.height / 2
 
 
 class Data(Brick):
@@ -506,6 +399,8 @@ class Data(Brick):
     def __init__(self, style: str = "s2-polygon", **kwargs):
         Brick.__init__(self, **kwargs)
         hide_data = kwargs.get("hide_data", False)
+        transition_only = kwargs.get("transition_only", False)
+        follow_trans = kwargs.get("follow_trans", False)
         if math.isnan(self.first_y):
             self.first_y = self.height / 2
         if math.isnan(self.last_y):
@@ -523,13 +418,23 @@ class Data(Brick):
                 Point(self.width - self.slewing, self.height),
                 Point(0.0, self.height),
             ]
+        elif transition_only:
+            _tmp = [
+                Point(0.0, self.last_y),
+                Point(self.slewing, 0.0),
+                Point(self.width - self.slewing, 0.0),
+                Point(self.width, self.height - self.last_y),
+                Point(self.width - self.slewing, self.height),
+                Point(self.slewing, self.height),
+                Point(0.0, self.last_y),
+            ]
         else:
             _tmp = [
                 Point(
-                    0.0,
+                    -self.slewing if follow_trans else 0.0,
                     self.last_y if not self.ignore_start_transition else 0.0,
                 ),
-                Point(self.slewing, 0.0),
+                Point(0.0 if follow_trans else self.slewing, 0.0),
                 Point(self.width - self.slewing, 0.0),
                 Point(
                     self.width,
@@ -540,9 +445,9 @@ class Data(Brick):
                     self.height if self.ignore_end_transition else self.first_y,
                 ),
                 Point(self.width - self.slewing, self.height),
-                Point(self.slewing, self.height),
+                Point(0.0 if follow_trans else self.slewing, self.height),
                 Point(
-                    0.0,
+                    -self.slewing if follow_trans else 0.0,
                     self.last_y if not self.ignore_start_transition else self.height,
                 ),
             ]
@@ -998,6 +903,7 @@ def filter_transition(waveform: List[Brick]) -> List[Brick]:
     """
     ans = []
     previous_brick = BrickFactory.create(" ")
+    pprevious_brick = BrickFactory.create(" ")
     for brick in waveform:
         # clocks combination
         if previous_brick.symbol.lower() + brick.symbol.lower() in [
@@ -1018,12 +924,35 @@ def filter_transition(waveform: List[Brick]) -> List[Brick]:
             )
         # join consecutive brick
         brick.args["last_y"] = previous_brick.get_last_y()
+        brick.args["follow_data"] = "data" in BrickFactory.tags[previous_brick.symbol]
         # adjust transistion from data to non-data
         if (
             "data" in BrickFactory.tags[previous_brick.symbol]
             and "data" not in BrickFactory.tags[brick.symbol]
         ):
             brick.args["ignore_start_transition"] = True
+        # adjust transition from 0X or 1X
+        if (
+            "data" not in BrickFactory.tags[previous_brick.symbol]
+            and previous_brick.symbol not in "z"
+            and brick.symbol == "X"
+        ):
+            brick.symbol = "x"
+        # adjust transition from 0x= 1x=
+        if (
+            "data" not in BrickFactory.tags[pprevious_brick.symbol]
+            and pprevious_brick.symbol not in "z "
+            and previous_brick.symbol in "x"
+            and "data" in BrickFactory.tags[brick.symbol]
+        ):
+            brick.args["last_y"] = pprevious_brick.get_last_y()
+            brick.args["follow_trans"] = True
+            previous_brick.args["transition_only"] = (
+                "data" not in BrickFactory.tags[pprevious_brick.symbol]
+            )
+            previous_brick = BrickFactory.create(
+                previous_brick.symbol, **previous_brick.args
+            )
         # identic consecutive block
         if brick.symbol == previous_brick.symbol:
             # two data brick with same data
@@ -1047,6 +976,7 @@ def filter_transition(waveform: List[Brick]) -> List[Brick]:
                 previous_brick = BrickFactory.create(
                     previous_brick.symbol, **previous_brick.args
                 )
+            pprevious_brick = previous_brick
             previous_brick = ans[-1]
     return ans
 
