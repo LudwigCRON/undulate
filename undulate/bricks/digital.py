@@ -959,7 +959,7 @@ def filter_transition(waveform: List[Brick]) -> List[Brick]:
             if "data" in BrickFactory.tags[brick.symbol]:
                 current_data = str(brick.args.get("data") or "")
                 previous_data = str(previous_brick.args.get("data") or "")
-                if brick.symbol != "x" and (current_data == previous_data):
+                if current_data == previous_data:
                     brick.args["ignore_start_transition"] = True
                     brick.args["hide_data"] = True
                     previous_brick.args["ignore_end_transition"] = True
