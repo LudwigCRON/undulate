@@ -30,5 +30,6 @@
   {},
 
   // experiment with data and x
-  {name: "arbitrary", wave: "hxlx=xzX=lX=XlzX=Xz", periods: [1.6, 0.1, 0.9, 0.1, 2, 0.1, 2, 0.1, 1, 2, 0.1, 2, 0.1, 1.1, 2, 0.1]},
+  {name: "arbitrary", wave: "X0X1XlXhX=XzX=X=X", periods: [0.4, 1.6, 0.1, 0.9, 0.1, 2, 0.1, 2, 0.1, 1, 0.1, 0.5, 2, 0.8, 1.1, 2, 0.1, 1, 0.1]},
+  {name: "test1", wave: "x0x1xlxhx=xzx=x=x", periods: [0.4, 1.6, 0.1, 0.9, 0.1, 2, 0.1, 2, 0.1, 1, 0.1, 0.5, 2, 0.8, 1.1, 2, 0.1, 1, 0.1, 1]}
 ]}
