@@ -546,8 +546,6 @@ class Renderer:
                     kwargs[params] = safe_eval(kwargs[params])
                 needed_params[params] = kwargs.get(params) or needed_params[params]
         # computed properties
-        follow_data = False
-        previous_symbol = " "
         _wavelane = []
         # ensure nodes and wavelane have the same size
         if len(nodes) < len(wavelane) * repeat:
@@ -564,7 +562,6 @@ class Renderer:
                     brick_args[param] = default
                 if brick_args[param] is None:
                     brick_args[param] = default
-            brick_args["follow_data"] = follow_data
             brick_args["is_first"] = i == 0
             brick_args["repeat"] = 1
             brick_args["name"] = name
@@ -572,8 +569,6 @@ class Renderer:
             # generate the brick
             _wavelane.append(BrickFactory.create(b, **brick_args))
             log.debug(f"{name} {b} {_wavelane[-1]!r} {_wavelane[-1].get_last_y()}")
-            follow_data = "data" in BrickFactory.tags[previous_symbol]
-            previous_symbol = b
         # apply all registered filters
         return FilterBank.apply(_wavelane)
 
