@@ -955,6 +955,15 @@ def filter_data_transition(waveform: List[Brick]) -> List[Brick]:
             and brick.symbol == "X"
         ):
             brick.symbol = "x"
+        # adjust transition from ' x' or ' ='
+        if "data" in BrickFactory.tags[brick.symbol] and previous_brick.symbol == " ":
+            brick.args["ignore_start_transition"] = True
+        # adjust transition from 'x ' or '= '
+        if "data" in BrickFactory.tags[previous_brick.symbol] and brick.symbol == " ":
+            previous_brick.args["ignore_end_transition"] = True
+            previous_brick = BrickFactory.create(
+                previous_brick.symbol, **previous_brick.args
+            )
         # adjust transition from 0x= 1x=
         if (
             "data" not in BrickFactory.tags[pprevious_brick.symbol]
