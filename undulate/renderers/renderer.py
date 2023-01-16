@@ -611,14 +611,14 @@ class Renderer:
         _wavelane = self._reduce_wavelane(name, wavelane, nodes, **kwargs)
 
         # generate waveform
-        wave, pos = [], 0
+        wave, pos, previous_pos = [], 0, 0
         for i, brick in enumerate(_wavelane):
             if i == 0:
                 pos = brick.args.get("phase", 0.0)
             # prune the properties
-            x = pos
             if brick.symbol == "|":
-                x -= brick_width + gap_offset - brick.slewing
+                pos = previous_pos
+            x = pos
             brick.args.update({"extra": self.translate(x, 0, dont_touch=True), "pos_x": x})
             # add style informations
             brick.args.update(skin.style_in_kwargs(**kwargs))
@@ -629,6 +629,7 @@ class Renderer:
                 brick.node_name, Point(x + brick.slewing / 2, y + brick.height / 2)
             )
             # create the new brick
+            previous_pos = pos
             pos += wave[-1].width
 
         # rendering

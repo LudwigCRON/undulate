@@ -559,27 +559,29 @@ class Gap(Brick):
 
     def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
+        duty_cycle = kwargs.get("duty_cycle", 0.5)
+        ox = self.width * duty_cycle
         # if self.is_first:
         # raise "a gap cannot be first in a wavelane"
         self.splines.append(
             Drawable(
                 "hide",
                 [
-                    SplineSegment("M", -4, self.height + 2),
-                    SplineSegment("C", -4, self.height + 2),
-                    SplineSegment("", -2, self.height + 2),
-                    SplineSegment("", -2, self.height / 2),
-                    SplineSegment("C", -2, self.height / 2),
-                    SplineSegment("", -2, -2),
-                    SplineSegment("", 0, -2),
-                    SplineSegment("L", 4, -2),
-                    SplineSegment("C", 4, -2),
-                    SplineSegment("", 2, -2),
-                    SplineSegment("", 2, self.height / 2),
-                    SplineSegment("C", 2, self.height / 2),
-                    SplineSegment("", 2, self.height + 2),
-                    SplineSegment("", 0, self.height + 2),
-                    SplineSegment("z", 0, 0),
+                    SplineSegment("M", ox - 4, self.height + 2),
+                    SplineSegment("C", ox - 4, self.height + 2),
+                    SplineSegment("", ox - 2, self.height + 2),
+                    SplineSegment("", ox - 2, self.height / 2),
+                    SplineSegment("C", ox - 2, self.height / 2),
+                    SplineSegment("", ox - 2, -2),
+                    SplineSegment("", ox, -2),
+                    SplineSegment("L", ox + 4, -2),
+                    SplineSegment("C", ox + 4, -2),
+                    SplineSegment("", ox + 2, -2),
+                    SplineSegment("", ox + 2, self.height / 2),
+                    SplineSegment("C", ox + 2, self.height / 2),
+                    SplineSegment("", ox + 2, self.height + 2),
+                    SplineSegment("", ox + 0, self.height + 2),
+                    SplineSegment("z", ox, 0),
                 ],
             )
         )
@@ -587,13 +589,13 @@ class Gap(Brick):
             Drawable(
                 "path",
                 [
-                    SplineSegment("M", -4, self.height + 2),
-                    SplineSegment("C", -4, self.height + 2),
-                    SplineSegment("", -2, self.height + 2),
-                    SplineSegment("", -2, self.height / 2),
-                    SplineSegment("C", -2, self.height / 2),
-                    SplineSegment("", -2, -2),
-                    SplineSegment("", 0, -2),
+                    SplineSegment("M", ox - 4, self.height + 2),
+                    SplineSegment("C", ox - 4, self.height + 2),
+                    SplineSegment("", ox - 2, self.height + 2),
+                    SplineSegment("", ox - 2, self.height / 2),
+                    SplineSegment("C", ox - 2, self.height / 2),
+                    SplineSegment("", ox - 2, -2),
+                    SplineSegment("", ox, -2),
                 ],
             )
         )
@@ -601,13 +603,13 @@ class Gap(Brick):
             Drawable(
                 "path",
                 [
-                    SplineSegment("M", 0, self.height + 2),
-                    SplineSegment("C", 0, self.height + 2),
-                    SplineSegment("", 2, self.height + 2),
-                    SplineSegment("", 2, self.height / 2),
-                    SplineSegment("C", 2, self.height / 2),
-                    SplineSegment("", 2, -2),
-                    SplineSegment("", 4, -2),
+                    SplineSegment("M", ox, self.height + 2),
+                    SplineSegment("C", ox, self.height + 2),
+                    SplineSegment("", ox + 2, self.height + 2),
+                    SplineSegment("", ox + 2, self.height / 2),
+                    SplineSegment("C", ox + 2, self.height / 2),
+                    SplineSegment("", ox + 2, -2),
+                    SplineSegment("", ox + 4, -2),
                 ],
             )
         )
@@ -861,9 +863,7 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         brick_width = brick.args["brick_width"]
         lane_width = brick.args["width"]
         # global scaling of the x-axis
-        if brick.symbol == "|":
-            pmul = 0
-        elif "analogue" in BrickFactory.tags[brick.symbol]:
+        if "analogue" in BrickFactory.tags[brick.symbol]:
             pmul = 1
         else:
             pmul = max(1, slewing * 2 / max(brick_width, 1))
@@ -874,7 +874,7 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
         bw = pmul * repeat * brick_width
         if i >= len(waveform) - 1:
             bw = max(0, lane_width - position)
-        position += bw
+        position += bw if brick.symbol != "|" else 0
         # prevent monstruosity by clipping the block with positive phase
         # and complete the curve if the phase is negative
         if position > 0 and bw > 0:
@@ -896,14 +896,12 @@ def filter_phase_pos(waveform: List[Brick]) -> List[Brick]:
     return ans
 
 
-def filter_transition(waveform: List[Brick]) -> List[Brick]:
+def filter_clock_transition(waveform: List[Brick]) -> List[Brick]:
     """
-    Smooth abutment of different brick to prevent glitches
-    and fusion data brick of the same symbol with the same 'data' value
+    Smooth abutment of clock waveform bricks
     """
     ans = []
     previous_brick = BrickFactory.create(" ")
-    pprevious_brick = BrickFactory.create(" ")
     for brick in waveform:
         # clocks combination
         if previous_brick.symbol.lower() + brick.symbol.lower() in [
@@ -922,8 +920,27 @@ def filter_transition(waveform: List[Brick]) -> List[Brick]:
             previous_brick = BrickFactory.create(
                 previous_brick.symbol, **previous_brick.args
             )
+            ans[-1] = previous_brick
+        ans.append(BrickFactory.create(brick.symbol, **brick.args))
+        previous_brick = brick
+    return ans
+
+
+def filter_data_transition(waveform: List[Brick]) -> List[Brick]:
+    """
+    Smooth abutment of different brick to prevent glitches
+    and fusion data brick of the same symbol with the same 'data' value
+    """
+    ans = []
+    previous_brick = BrickFactory.create(" ")
+    pprevious_brick = BrickFactory.create(" ")
+    for brick in waveform:
         # join consecutive brick
-        brick.args["last_y"] = previous_brick.get_last_y()
+        brick.args["last_y"] = (
+            previous_brick.get_last_y()
+            if previous_brick.symbol != "|"
+            else pprevious_brick.get_last_y()
+        )
         brick.args["follow_data"] = "data" in BrickFactory.tags[previous_brick.symbol]
         # adjust transistion from data to non-data
         if (
@@ -976,8 +993,8 @@ def filter_transition(waveform: List[Brick]) -> List[Brick]:
                 previous_brick = BrickFactory.create(
                     previous_brick.symbol, **previous_brick.args
                 )
-            pprevious_brick = previous_brick
-            previous_brick = ans[-1]
+        pprevious_brick = previous_brick
+        previous_brick = ans[-1]
     return ans
 
 
@@ -1040,7 +1057,9 @@ def initialize() -> None:
     BrickFactory.register(
         "=", Two, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
     )
-    BrickFactory.register("|", Gap, tags=["repeat"], params={"period": 1})
+    BrickFactory.register(
+        "|", Gap, tags=["repeat"], params={"period": 1, "duty_cycle": 0.5}
+    )
     BrickFactory.register("u", Up, params={"slewing": 0, "period": 1})
     BrickFactory.register("d", Down, params={"slewing": 0, "period": 1})
     BrickFactory.register("i", ImpulseUp, params={"duty_cycle": 0.5, "period": 1})
@@ -1053,4 +1072,5 @@ def initialize() -> None:
     FilterBank.register(filter_repeat)
     FilterBank.register(filter_width)
     FilterBank.register(filter_phase_pos)
-    FilterBank.register(filter_transition)
+    FilterBank.register(filter_clock_transition)
+    FilterBank.register(filter_data_transition)
