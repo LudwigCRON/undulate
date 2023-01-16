@@ -601,8 +601,6 @@ class Renderer:
         """
         # options
         brick_width = kwargs.get("brick_width", 20) * kwargs.get("hscale", 1)
-        gap_offset = kwargs.get("gap_offset", brick_width * 0.5)
-
         # pre-process nodes
         nodes, *expended_names = kwargs.get("node", "").split(" ")
         nodes = [expended_names.pop(0) if node == "#" else node for node in nodes]
@@ -611,13 +609,13 @@ class Renderer:
         _wavelane = self._reduce_wavelane(name, wavelane, nodes, **kwargs)
 
         # generate waveform
-        wave, pos, previous_pos = [], 0, 0
+        wave, pos = [], 0
         for i, brick in enumerate(_wavelane):
             if i == 0:
                 pos = brick.args.get("phase", 0.0)
             # prune the properties
             if brick.symbol == "|":
-                pos = previous_pos
+                pos -= brick_width
             x = pos
             brick.args.update({"extra": self.translate(x, 0, dont_touch=True), "pos_x": x})
             # add style informations
@@ -629,7 +627,6 @@ class Renderer:
                 brick.node_name, Point(x + brick.slewing / 2, y + brick.height / 2)
             )
             # create the new brick
-            previous_pos = pos
             pos += wave[-1].width
 
         # rendering

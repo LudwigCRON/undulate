@@ -559,8 +559,8 @@ class Gap(Brick):
 
     def __init__(self, **kwargs):
         Brick.__init__(self, **kwargs)
-        duty_cycle = kwargs.get("duty_cycle", 0.5)
-        ox = self.width * duty_cycle
+        gap_offset = kwargs.get("gap_offset", 0.5)
+        ox = self.width * gap_offset
         # if self.is_first:
         # raise "a gap cannot be first in a wavelane"
         self.splines.append(
@@ -1058,7 +1058,7 @@ def initialize() -> None:
         "=", Two, tags=["data"], params={"data": "", "slewing": 3, "period": 1}
     )
     BrickFactory.register(
-        "|", Gap, tags=["repeat"], params={"period": 1, "duty_cycle": 0.5}
+        "|", Gap, tags=["repeat"], params={"period": 1, "gap_offset": 0.5}
     )
     BrickFactory.register("u", Up, params={"slewing": 0, "period": 1})
     BrickFactory.register("d", Down, params={"slewing": 0, "period": 1})
