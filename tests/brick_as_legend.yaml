@@ -1,0 +1,16 @@
+data_brick:
+  wave: " x=x "
+
+crc_brick:
+  wave: " x5x "
+
+annotations:
+- text: "data"
+  x: 4.1
+  y: 0.5
+  text-align: left
+
+- text: "crc"
+  x: 4.1
+  y: 1.5
+  text-align: left

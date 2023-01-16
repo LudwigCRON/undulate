@@ -182,6 +182,19 @@ def parse_css_color(S: str) -> tuple:
     return s
 
 
+def parse_text_align(S: str) -> TextAlign:
+    if isinstance(S, TextAlign):
+        return S
+    s = S.lower()
+    if "le" in s:
+        return TextAlign.LEFT
+    if "ri" in s:
+        return TextAlign.RIGHT
+    if "ce" in s:
+        return TextAlign.CENTER
+    return TextAlign.JUSTIFY
+
+
 def parser(token_iter):
     """
     construct the style dictionnary from
@@ -246,15 +259,7 @@ def parser(token_iter):
             property_value = parse_css_size(value)
         # align
         elif property_name == "text-align":
-            property_value = (
-                TextAlign.LEFT
-                if "le" in value
-                else TextAlign.RIGHT
-                if "ri" in value
-                else TextAlign.CENTER
-                if "ce" in value
-                else TextAlign.JUSTIFY
-            )
+            property_value = parse_text_align(value)
         # linecap
         elif "linecap" in property_name:
             property_value = (

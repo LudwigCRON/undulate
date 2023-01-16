@@ -224,7 +224,7 @@ class CairoRenderer(Renderer):
         skin.apply_font(layout, style, Engine.CAIRO, overload)
         layout.apply_markup(text)
         layout.alignment = pango.Alignment.CENTER
-        ox, oy = skin.text_align(layout, style, None, Engine.CAIRO)
+        ox, oy = skin.text_align(layout, style, None, Engine.CAIRO, overload)
         self.ctx.move_to(x - ox, y - oy)
         pangocairo.show_layout(self.ctx, layout)
         self.ctx.restore()

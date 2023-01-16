@@ -111,10 +111,11 @@ else:
         if da:
             context.set_dash(da, of)
 
-    def cairo_text_align(layout, style: dict, text: str):
+    def cairo_text_align(layout, style: dict, text: str, overload: dict = {}):
         """
         offset calculation for text alignment
         """
+        style.update(overload)
         ta = style.get("text-align", css.TextAlign.CENTER)
         ba = style.get("dominant-baseline", "middle")
         # get text width
@@ -129,11 +130,12 @@ else:
             return (width, dy)
         return (width / 2, dy)
 
-    def cairo_text_bbox(layout, style: dict, text: str):
+    def cairo_text_bbox(layout, style: dict, text: str, overload: dict = {}):
         """
         return size of the text for a given font
         can differ as not using the pango backend
         """
+        style.update(overload)
         ta = style.get("text-align", css.TextAlign.CENTER)
         layout.apply_markup(text)
         # get text width
@@ -223,12 +225,12 @@ def get_style(name: str, overload: dict = {}) -> dict:
     return style
 
 
-def text_align(layout, name: str, text: str, engine: Engine):
+def text_align(layout, name: str, text: str, engine: Engine, overload: dict = {}):
     """
     calculate the offset to apply for the text alignment
     """
     if engine == Engine.CAIRO:
-        return cairo_text_align(layout, get_style(name), text)
+        return cairo_text_align(layout, get_style(name), text, overload)
 
 
 def text_bbox(context, name: str, text: str, engine: Engine, overload: dict = {}):
@@ -241,7 +243,7 @@ def text_bbox(context, name: str, text: str, engine: Engine, overload: dict = {}
         dummy_layout = pangocairo.create_layout(context)
         apply_cairo_font(dummy_layout, style, {})
         dummy_layout.alignment = pango.Alignment.CENTER
-        return cairo_text_bbox(dummy_layout, style, text)
+        return cairo_text_bbox(dummy_layout, style, text, overload)
     val, unit = style.get("font-size", (0.5, css.SizeUnit.EM))
     return (
         -len(text) * 0.333 * val * unit.value,
@@ -261,6 +263,10 @@ def style_in_kwargs(**kwargs) -> dict:
     for e in ["font-size"]:
         if e in kwargs:
             ans[e] = css.parse_css_size(kwargs.get(e))
+    # parse text-align
+    for e in ["text-align"]:
+        if e in kwargs:
+            ans[e] = css.parse_text_align(kwargs.get(e))
     # integer or array
     for e in ["stroke-width", "stroke-dasharray", "font-weight"]:
         if e in kwargs:
