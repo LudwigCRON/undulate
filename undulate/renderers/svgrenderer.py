@@ -202,6 +202,9 @@ class SvgRenderer(Renderer):
             s, u = skin.get_style("attr").get("font-size", (9, SizeUnit.PX))
             height += (n + 1) * 1.5 * s * u.value
         _, _, self.offsetx, _ = skin.text_bbox(None, "title", longest_wavename, Engine.SVG)
+        rpt, rpt_u = skin.get_style("root").get("padding-top", (1, SizeUnit.EM) )
+        rpb, rpb_u = skin.get_style("root").get("padding-bottom", (1, SizeUnit.EM) )
+        mask_extra_height = rpt * rpt_u.value + rpb * rpb_u.value
         with open(filename, "w+") as fp:
             fp.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
@@ -212,7 +215,7 @@ class SvgRenderer(Renderer):
             fp.write(skin.css_from_style(skin.DEFAULT_STYLE))
             fp.write("\n.wave {mask: url(#wavezone);}\n")
             fp.write("</style>\n")
-            fp.write(skin.DEFINITION.format(int(self.offsetx + 8), int(width), int(height)))
+            fp.write(skin.DEFINITION.format(int(self.offsetx + 8), int(width), int(height+mask_extra_height)))
             fp.write(
                 self.wavegroup(
                     _id,
