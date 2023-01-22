@@ -153,6 +153,18 @@ class SvgRenderer(Renderer):
         css = kwargs.get("style_repr", "text")
         overload = skin.style_in_kwargs(**kwargs)
         overload["stroke"] = None
+        # support multiline
+        if "\n" in text:
+            _text = text.splitlines()
+            s, u = skin.get_style(css).get("font-size", (1.0, SizeUnit.EM))
+            line_height = s * u.value * 1.25
+            # offset to vertically center the text and work by delta dy
+            y -= (len(_text)-1) * 0.5 * line_height
+            for i, line in enumerate(_text):
+                _text[i] = "<tspan x='%f' dy='%f'>%s</tspan>" % (x, 0 if i == 0 else line_height, html.escape(line))
+            text = "\n".join(_text)
+        else:
+            text = html.escape(text)
         if css:
             css = 'class="%s"' % css
         return '<text x="%f" y="%f" %s style="%s">%s</text>\n' % (
@@ -160,7 +172,7 @@ class SvgRenderer(Renderer):
             y,
             css,
             skin.css_from_rule(None, overload, False),
-            html.escape(str(text)),
+            str(text),
         )
 
     def translate(self, x: float, y: float, **kwargs) -> str:

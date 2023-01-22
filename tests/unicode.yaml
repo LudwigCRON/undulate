@@ -1,7 +1,7 @@
 uart_tx:
   wave: "hl=.......h"
   data:
-  - "A → B ⛱⛲\n⛳⛴"
+  - "A → B ⛱⛲\ntest ⛳⛴"
 
 config:
   hscale: 0.5
