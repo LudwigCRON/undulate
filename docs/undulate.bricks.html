@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -72,10 +74,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html"><span class="section-number">4. </span>undulate</a> &raquo;</li>
-          <li><a href="undulate.html"><span class="section-number">4.4. </span>undulate</a> &raquo;</li>
-      <li><span class="section-number">4.1. </span>undulate.bricks</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html"><span class="section-number">4. </span>undulate</a></li>
+          <li class="breadcrumb-item"><a href="undulate.html"><span class="section-number">4.4. </span>undulate</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.1. </span>undulate.bricks</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/undulate.bricks.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -86,14 +88,277 @@
            <div itemprop="articleBody">
              
   <section id="undulate-bricks">
-<h1><span class="section-number">4.1. </span>undulate.bricks<a class="headerlink" href="#undulate-bricks" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">4.1. </span>undulate.bricks<a class="headerlink" href="#undulate-bricks" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.analogue.html">4.1.1. undulate.bricks.analogue module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.digital.html">4.1.2. undulate.bricks.digital module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.generic.html">4.1.3. undulate.bricks.generic module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.register.html">4.1.4. undulate.bricks.register module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.shape.html">4.1.5. undulate.bricks.shape module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.analogue.html">4.1.1. undulate.bricks.analogue module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.transform_y"><code class="docutils literal notranslate"><span class="pre">transform_y()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.MetaToZero"><code class="docutils literal notranslate"><span class="pre">MetaToZero</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.MetaToZero.__init__"><code class="docutils literal notranslate"><span class="pre">MetaToZero.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.MetaToZero.get_first_y"><code class="docutils literal notranslate"><span class="pre">MetaToZero.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.MetaToZero.get_last_y"><code class="docutils literal notranslate"><span class="pre">MetaToZero.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.MetaToOne"><code class="docutils literal notranslate"><span class="pre">MetaToOne</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.MetaToOne.__init__"><code class="docutils literal notranslate"><span class="pre">MetaToOne.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.MetaToOne.get_first_y"><code class="docutils literal notranslate"><span class="pre">MetaToOne.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.MetaToOne.get_last_y"><code class="docutils literal notranslate"><span class="pre">MetaToOne.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Cap"><code class="docutils literal notranslate"><span class="pre">Cap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Cap.__init__"><code class="docutils literal notranslate"><span class="pre">Cap.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Cap.get_first_y"><code class="docutils literal notranslate"><span class="pre">Cap.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Cap.get_last_y"><code class="docutils literal notranslate"><span class="pre">Cap.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Step"><code class="docutils literal notranslate"><span class="pre">Step</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Step.__init__"><code class="docutils literal notranslate"><span class="pre">Step.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Step.get_first_y"><code class="docutils literal notranslate"><span class="pre">Step.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Step.get_last_y"><code class="docutils literal notranslate"><span class="pre">Step.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Analogue"><code class="docutils literal notranslate"><span class="pre">Analogue</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Analogue.__init__"><code class="docutils literal notranslate"><span class="pre">Analogue.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Analogue.get_first_y"><code class="docutils literal notranslate"><span class="pre">Analogue.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.Analogue.get_last_y"><code class="docutils literal notranslate"><span class="pre">Analogue.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.analogue.html#undulate.bricks.analogue.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.digital.html">4.1.2. undulate.bricks.digital module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Nclk"><code class="docutils literal notranslate"><span class="pre">Nclk</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Nclk.get_first_y"><code class="docutils literal notranslate"><span class="pre">Nclk.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Nclk.get_last_y"><code class="docutils literal notranslate"><span class="pre">Nclk.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.NclkArrow"><code class="docutils literal notranslate"><span class="pre">NclkArrow</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.NclkArrow.get_first_y"><code class="docutils literal notranslate"><span class="pre">NclkArrow.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.NclkArrow.get_last_y"><code class="docutils literal notranslate"><span class="pre">NclkArrow.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Pclk"><code class="docutils literal notranslate"><span class="pre">Pclk</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Pclk.get_first_y"><code class="docutils literal notranslate"><span class="pre">Pclk.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Pclk.get_last_y"><code class="docutils literal notranslate"><span class="pre">Pclk.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.PclkArrow"><code class="docutils literal notranslate"><span class="pre">PclkArrow</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.PclkArrow.get_first_y"><code class="docutils literal notranslate"><span class="pre">PclkArrow.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.PclkArrow.get_last_y"><code class="docutils literal notranslate"><span class="pre">PclkArrow.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Low"><code class="docutils literal notranslate"><span class="pre">Low</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Low.get_first_y"><code class="docutils literal notranslate"><span class="pre">Low.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Low.get_last_y"><code class="docutils literal notranslate"><span class="pre">Low.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.LowArrow"><code class="docutils literal notranslate"><span class="pre">LowArrow</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.LowArrow.get_first_y"><code class="docutils literal notranslate"><span class="pre">LowArrow.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.LowArrow.get_last_y"><code class="docutils literal notranslate"><span class="pre">LowArrow.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.High"><code class="docutils literal notranslate"><span class="pre">High</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.High.get_first_y"><code class="docutils literal notranslate"><span class="pre">High.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.High.get_last_y"><code class="docutils literal notranslate"><span class="pre">High.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.HighArrow"><code class="docutils literal notranslate"><span class="pre">HighArrow</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.HighArrow.get_first_y"><code class="docutils literal notranslate"><span class="pre">HighArrow.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.HighArrow.get_last_y"><code class="docutils literal notranslate"><span class="pre">HighArrow.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.HighZ"><code class="docutils literal notranslate"><span class="pre">HighZ</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.HighZ.get_first_y"><code class="docutils literal notranslate"><span class="pre">HighZ.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.HighZ.get_last_y"><code class="docutils literal notranslate"><span class="pre">HighZ.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Zero"><code class="docutils literal notranslate"><span class="pre">Zero</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Zero.get_first_y"><code class="docutils literal notranslate"><span class="pre">Zero.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Zero.get_last_y"><code class="docutils literal notranslate"><span class="pre">Zero.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.One"><code class="docutils literal notranslate"><span class="pre">One</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.One.get_first_y"><code class="docutils literal notranslate"><span class="pre">One.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.One.get_last_y"><code class="docutils literal notranslate"><span class="pre">One.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Garbage"><code class="docutils literal notranslate"><span class="pre">Garbage</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Garbage.get_last_y"><code class="docutils literal notranslate"><span class="pre">Garbage.get_last_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Garbage.get_first_y"><code class="docutils literal notranslate"><span class="pre">Garbage.get_first_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Data"><code class="docutils literal notranslate"><span class="pre">Data</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Data.get_first_y"><code class="docutils literal notranslate"><span class="pre">Data.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Data.get_last_y"><code class="docutils literal notranslate"><span class="pre">Data.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Two"><code class="docutils literal notranslate"><span class="pre">Two</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Two.get_first_y"><code class="docutils literal notranslate"><span class="pre">Two.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Two.get_last_y"><code class="docutils literal notranslate"><span class="pre">Two.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Three"><code class="docutils literal notranslate"><span class="pre">Three</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Three.get_first_y"><code class="docutils literal notranslate"><span class="pre">Three.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Three.get_last_y"><code class="docutils literal notranslate"><span class="pre">Three.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Four"><code class="docutils literal notranslate"><span class="pre">Four</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Four.get_first_y"><code class="docutils literal notranslate"><span class="pre">Four.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Four.get_last_y"><code class="docutils literal notranslate"><span class="pre">Four.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Five"><code class="docutils literal notranslate"><span class="pre">Five</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Five.get_first_y"><code class="docutils literal notranslate"><span class="pre">Five.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Five.get_last_y"><code class="docutils literal notranslate"><span class="pre">Five.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Six"><code class="docutils literal notranslate"><span class="pre">Six</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Six.get_first_y"><code class="docutils literal notranslate"><span class="pre">Six.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Six.get_last_y"><code class="docutils literal notranslate"><span class="pre">Six.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Seven"><code class="docutils literal notranslate"><span class="pre">Seven</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Seven.get_first_y"><code class="docutils literal notranslate"><span class="pre">Seven.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Seven.get_last_y"><code class="docutils literal notranslate"><span class="pre">Seven.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Eight"><code class="docutils literal notranslate"><span class="pre">Eight</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Eight.get_first_y"><code class="docutils literal notranslate"><span class="pre">Eight.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Eight.get_last_y"><code class="docutils literal notranslate"><span class="pre">Eight.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Nine"><code class="docutils literal notranslate"><span class="pre">Nine</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Nine.get_first_y"><code class="docutils literal notranslate"><span class="pre">Nine.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Nine.get_last_y"><code class="docutils literal notranslate"><span class="pre">Nine.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Unknown"><code class="docutils literal notranslate"><span class="pre">Unknown</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Unknown.get_first_y"><code class="docutils literal notranslate"><span class="pre">Unknown.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Unknown.get_last_y"><code class="docutils literal notranslate"><span class="pre">Unknown.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Gap"><code class="docutils literal notranslate"><span class="pre">Gap</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Gap.get_first_y"><code class="docutils literal notranslate"><span class="pre">Gap.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Gap.get_last_y"><code class="docutils literal notranslate"><span class="pre">Gap.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Up"><code class="docutils literal notranslate"><span class="pre">Up</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Up.get_first_y"><code class="docutils literal notranslate"><span class="pre">Up.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Up.get_last_y"><code class="docutils literal notranslate"><span class="pre">Up.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Down"><code class="docutils literal notranslate"><span class="pre">Down</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Down.get_first_y"><code class="docutils literal notranslate"><span class="pre">Down.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Down.get_last_y"><code class="docutils literal notranslate"><span class="pre">Down.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.ImpulseUp"><code class="docutils literal notranslate"><span class="pre">ImpulseUp</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.ImpulseUp.get_first_y"><code class="docutils literal notranslate"><span class="pre">ImpulseUp.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.ImpulseUp.get_last_y"><code class="docutils literal notranslate"><span class="pre">ImpulseUp.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.ImpulseDown"><code class="docutils literal notranslate"><span class="pre">ImpulseDown</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.ImpulseDown.get_first_y"><code class="docutils literal notranslate"><span class="pre">ImpulseDown.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.ImpulseDown.get_last_y"><code class="docutils literal notranslate"><span class="pre">ImpulseDown.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Space"><code class="docutils literal notranslate"><span class="pre">Space</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Space.get_first_y"><code class="docutils literal notranslate"><span class="pre">Space.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Space.get_last_y"><code class="docutils literal notranslate"><span class="pre">Space.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Empty"><code class="docutils literal notranslate"><span class="pre">Empty</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Empty.get_first_y"><code class="docutils literal notranslate"><span class="pre">Empty.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Empty.get_last_y"><code class="docutils literal notranslate"><span class="pre">Empty.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Filler"><code class="docutils literal notranslate"><span class="pre">Filler</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Filler.get_first_y"><code class="docutils literal notranslate"><span class="pre">Filler.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.Filler.get_last_y"><code class="docutils literal notranslate"><span class="pre">Filler.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.filter_width"><code class="docutils literal notranslate"><span class="pre">filter_width()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.filter_repeat"><code class="docutils literal notranslate"><span class="pre">filter_repeat()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.filter_phase_pos"><code class="docutils literal notranslate"><span class="pre">filter_phase_pos()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.filter_clock_transition"><code class="docutils literal notranslate"><span class="pre">filter_clock_transition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.filter_data_transition"><code class="docutils literal notranslate"><span class="pre">filter_data_transition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.digital.html#undulate.bricks.digital.initialize"><code class="docutils literal notranslate"><span class="pre">initialize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.generic.html">4.1.3. undulate.bricks.generic module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Point"><code class="docutils literal notranslate"><span class="pre">Point</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.SplineSegment"><code class="docutils literal notranslate"><span class="pre">SplineSegment</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.ArrowDescription"><code class="docutils literal notranslate"><span class="pre">ArrowDescription</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Drawable"><code class="docutils literal notranslate"><span class="pre">Drawable</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.safe_eval"><code class="docutils literal notranslate"><span class="pre">safe_eval()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick"><code class="docutils literal notranslate"><span class="pre">Brick</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick.get_last_y"><code class="docutils literal notranslate"><span class="pre">Brick.get_last_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick.get_first_y"><code class="docutils literal notranslate"><span class="pre">Brick.get_first_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.BrickFactory"><code class="docutils literal notranslate"><span class="pre">BrickFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.BrickFactory.register"><code class="docutils literal notranslate"><span class="pre">BrickFactory.register()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.BrickFactory.create"><code class="docutils literal notranslate"><span class="pre">BrickFactory.create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.BrickFactory.get_parameters"><code class="docutils literal notranslate"><span class="pre">BrickFactory.get_parameters()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.FilterBank"><code class="docutils literal notranslate"><span class="pre">FilterBank</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.FilterBank.apply"><code class="docutils literal notranslate"><span class="pre">FilterBank.apply()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.NodeBank"><code class="docutils literal notranslate"><span class="pre">NodeBank</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.NodeBank.register"><code class="docutils literal notranslate"><span class="pre">NodeBank.register()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.ShapeFactory"><code class="docutils literal notranslate"><span class="pre">ShapeFactory</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.ShapeFactory.register"><code class="docutils literal notranslate"><span class="pre">ShapeFactory.register()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.ShapeFactory.create"><code class="docutils literal notranslate"><span class="pre">ShapeFactory.create()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.register.html">4.1.4. undulate.bricks.register module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldStart"><code class="docutils literal notranslate"><span class="pre">FieldStart</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldStart.get_first_y"><code class="docutils literal notranslate"><span class="pre">FieldStart.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldStart.get_last_y"><code class="docutils literal notranslate"><span class="pre">FieldStart.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldMid"><code class="docutils literal notranslate"><span class="pre">FieldMid</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldMid.get_first_y"><code class="docutils literal notranslate"><span class="pre">FieldMid.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldMid.get_last_y"><code class="docutils literal notranslate"><span class="pre">FieldMid.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldEnd"><code class="docutils literal notranslate"><span class="pre">FieldEnd</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldEnd.get_first_y"><code class="docutils literal notranslate"><span class="pre">FieldEnd.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldEnd.get_last_y"><code class="docutils literal notranslate"><span class="pre">FieldEnd.get_last_y()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldBit"><code class="docutils literal notranslate"><span class="pre">FieldBit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldBit.get_first_y"><code class="docutils literal notranslate"><span class="pre">FieldBit.get_first_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.bricks.register.html#undulate.bricks.register.FieldBit.get_last_y"><code class="docutils literal notranslate"><span class="pre">FieldBit.get_last_y()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.bricks.shape.html">4.1.5. undulate.bricks.shape module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.scircle"><code class="docutils literal notranslate"><span class="pre">scircle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.square"><code class="docutils literal notranslate"><span class="pre">square()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.arrow_angle"><code class="docutils literal notranslate"><span class="pre">arrow_angle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.arrow_markers"><code class="docutils literal notranslate"><span class="pre">arrow_markers()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.generate_patterns"><code class="docutils literal notranslate"><span class="pre">generate_patterns()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.TimeCompressor"><code class="docutils literal notranslate"><span class="pre">TimeCompressor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.HorizontalLine"><code class="docutils literal notranslate"><span class="pre">HorizontalLine()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowStraightBar"><code class="docutils literal notranslate"><span class="pre">ArrowStraightBar()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.VerticalLine"><code class="docutils literal notranslate"><span class="pre">VerticalLine()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowStraight"><code class="docutils literal notranslate"><span class="pre">ArrowStraight()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowHV"><code class="docutils literal notranslate"><span class="pre">ArrowHV()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowVH"><code class="docutils literal notranslate"><span class="pre">ArrowVH()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowHVH"><code class="docutils literal notranslate"><span class="pre">ArrowHVH()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowWave"><code class="docutils literal notranslate"><span class="pre">ArrowWave()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowHWave"><code class="docutils literal notranslate"><span class="pre">ArrowHWave()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowWaveH"><code class="docutils literal notranslate"><span class="pre">ArrowWaveH()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 <span class="target" id="module-undulate.bricks"></span></section>
@@ -109,7 +374,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

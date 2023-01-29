@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -69,9 +71,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="tutorial.html"><span class="section-number">2. </span>Tutorial</a> &raquo;</li>
-      <li><span class="section-number">2.1. </span>Usage</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="tutorial.html"><span class="section-number">2. </span>Tutorial</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.1. </span>Usage</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,29 +84,30 @@
            <div itemprop="articleBody">
              
   <section id="usage">
-<h1><span class="section-number">2.1. </span>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">2.1. </span>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h1>
 <p>Undulate is command-line utility. Usage information are presented with <code class="docutils literal notranslate"><span class="pre">-h</span></code> argument
 or <code class="docutils literal notranslate"><span class="pre">--help</span></code> as below:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; undulate -h
-usage: undulate <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-i INPUT<span class="o">]</span> <span class="o">[</span>-f FORMAT<span class="o">]</span> <span class="o">[</span>-r<span class="o">]</span> <span class="o">[</span>-d DPI<span class="o">]</span> <span class="o">[</span>-o OUTPUT<span class="o">]</span> <span class="o">[</span>-s STYLE<span class="o">]</span> <span class="o">[</span>mangled_input<span class="o">]</span>
+usage: undulate <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-i INPUT<span class="o">]</span> <span class="o">[</span>-f FORMAT<span class="o">]</span> <span class="o">[</span>-r<span class="o">]</span> <span class="o">[</span>-d DPI<span class="o">]</span> <span class="o">[</span>-o OUTPUT<span class="o">]</span> <span class="o">[</span>-s STYLE<span class="o">]</span> <span class="o">[</span>--eol EOL<span class="o">]</span> <span class="o">[</span>mangled_input<span class="o">]</span>
 
 waveform generator from textual format
 
 positional arguments:
-mangled_input
+  mangled_input
 
 options:
--h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
--i INPUT, --input INPUT
-                      path to the input text file
--f FORMAT, --format FORMAT
-                      file format of the output
--r, --is_reg          is register description
--d DPI, --dpi DPI     resolution of the image <span class="k">for</span> png <span class="nb">export</span>
--o OUTPUT, --output OUTPUT
-                      path to the output file
--s STYLE, --style STYLE
-                      path to custom css file
+  -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  -i INPUT, --input INPUT
+                        path to the input text file
+  -f FORMAT, --format FORMAT
+                        file format of the output
+  -r, --is_reg          is register description
+  -d DPI, --dpi DPI     resolution of the image <span class="k">for</span> png <span class="nb">export</span>
+  -o OUTPUT, --output OUTPUT
+                        path to the output file
+  -s STYLE, --style STYLE
+                        path to custom css file
+  --eol EOL             define the end of line <span class="k">in</span> term renderer
 </pre></div>
 </div>
 <p>Undulate expects at least an input file. Otherwise, the tool informs you.</p>
@@ -159,7 +162,7 @@ However, the supported list of symbol is limited to <code class="docutils litera
 by the <code class="docutils literal notranslate"><span class="pre">-o</span></code> or <code class="docutils literal notranslate"><span class="pre">--output</span></code> arguments. For instance, converting a file whose
 path is <code class="docutils literal notranslate"><span class="pre">~/project/doc/wavetest.yaml</span></code> into an svg image in
 <code class="docutils literal notranslate"><span class="pre">~/project/doc/wavetest.svg</span></code> can be done with</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ undulate -f svg -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.svg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; undulate -f svg -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.svg
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -167,7 +170,7 @@ path is <code class="docutils literal notranslate"><span class="pre">~/project/d
 <p>For png images, it is useful to precise the resolution of the image for
 high-quality documentations.</p>
 <p>The resolution is given by <code class="docutils literal notranslate"><span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">--dpi</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ undulate -f cairo-png -d <span class="m">300</span> -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.png
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; undulate -f cairo-png -d <span class="m">300</span> -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.png
 </pre></div>
 </div>
 </div>
@@ -184,7 +187,7 @@ high-quality documentations.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

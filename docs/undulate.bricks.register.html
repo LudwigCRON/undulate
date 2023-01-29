@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -72,11 +74,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html"><span class="section-number">4. </span>undulate</a> &raquo;</li>
-          <li><a href="undulate.html"><span class="section-number">4.4. </span>undulate</a> &raquo;</li>
-          <li><a href="undulate.bricks.html"><span class="section-number">4.1. </span>undulate.bricks</a> &raquo;</li>
-      <li><span class="section-number">4.1.4. </span>undulate.bricks.register module</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html"><span class="section-number">4. </span>undulate</a></li>
+          <li class="breadcrumb-item"><a href="undulate.html"><span class="section-number">4.4. </span>undulate</a></li>
+          <li class="breadcrumb-item"><a href="undulate.bricks.html"><span class="section-number">4.1. </span>undulate.bricks</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.1.4. </span>undulate.bricks.register module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/undulate.bricks.register.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -87,13 +89,13 @@
            <div itemprop="articleBody">
              
   <section id="module-undulate.bricks.register">
-<span id="undulate-bricks-register-module"></span><h1><span class="section-number">4.1.4. </span>undulate.bricks.register module<a class="headerlink" href="#module-undulate.bricks.register" title="Permalink to this headline"></a></h1>
+<span id="undulate-bricks-register-module"></span><h1><span class="section-number">4.1.4. </span>undulate.bricks.register module<a class="headerlink" href="#module-undulate.bricks.register" title="Permalink to this heading"></a></h1>
 <p>register.py declare the basic building block
 to represent a register</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="undulate.bricks.register.FieldStart">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.register.</span></span><span class="sig-name descname"><span class="pre">FieldStart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.register.FieldStart" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">Brick</span></code></a></p>
 <p>[</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="undulate.bricks.register.FieldStart.get_first_y">
@@ -112,7 +114,7 @@ to represent a register</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="undulate.bricks.register.FieldMid">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.register.</span></span><span class="sig-name descname"><span class="pre">FieldMid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.register.FieldMid" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">Brick</span></code></a></p>
 <p>:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="undulate.bricks.register.FieldMid.get_first_y">
@@ -131,7 +133,7 @@ to represent a register</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="undulate.bricks.register.FieldEnd">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.register.</span></span><span class="sig-name descname"><span class="pre">FieldEnd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.register.FieldEnd" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">Brick</span></code></a></p>
 <p>]</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="undulate.bricks.register.FieldEnd.get_first_y">
@@ -150,7 +152,7 @@ to represent a register</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="undulate.bricks.register.FieldBit">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">undulate.bricks.register.</span></span><span class="sig-name descname"><span class="pre">FieldBit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#undulate.bricks.register.FieldBit" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">undulate.bricks.generic.Brick</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="undulate.bricks.generic.html#undulate.bricks.generic.Brick" title="undulate.bricks.generic.Brick"><code class="xref py py-class docutils literal notranslate"><span class="pre">Brick</span></code></a></p>
 <p>b</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="undulate.bricks.register.FieldBit.get_first_y">
@@ -179,7 +181,7 @@ to represent a register</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

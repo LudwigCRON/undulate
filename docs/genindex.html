@@ -14,7 +14,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -56,8 +58,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Index</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Index</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -149,10 +151,10 @@
 </li>
       <li><a href="undulate.skin.html#undulate.skin.apply_fill">apply_fill() (in module undulate.skin)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="undulate.skin.html#undulate.skin.apply_font">apply_font() (in module undulate.skin)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="undulate.skin.html#undulate.skin.apply_stroke">apply_stroke() (in module undulate.skin)</a>
 </li>
       <li><a href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.arrow">arrow() (undulate.renderers.cairorenderer.CairoRenderer method)</a>
@@ -178,6 +180,8 @@
       <li><a href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowHWave">ArrowHWave() (in module undulate.bricks.shape)</a>
 </li>
       <li><a href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowStraight">ArrowStraight() (in module undulate.bricks.shape)</a>
+</li>
+      <li><a href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowStraightBar">ArrowStraightBar() (in module undulate.bricks.shape)</a>
 </li>
       <li><a href="undulate.bricks.shape.html#undulate.bricks.shape.ArrowVH">ArrowVH() (in module undulate.bricks.shape)</a>
 </li>
@@ -223,23 +227,19 @@
 </li>
       <li><a href="undulate.parsers.register.html#undulate.parsers.register.convert">convert() (in module undulate.parsers.register)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="undulate.bricks.generic.html#undulate.bricks.generic.BrickFactory.create">create() (undulate.bricks.generic.BrickFactory static method)</a>
 
       <ul>
         <li><a href="undulate.bricks.generic.html#undulate.bricks.generic.ShapeFactory.create">(undulate.bricks.generic.ShapeFactory static method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="undulate.skin.html#undulate.skin.css_from_rule">css_from_rule() (in module undulate.skin)</a>
 </li>
       <li><a href="undulate.skin.html#undulate.skin.css_from_style">css_from_style() (in module undulate.skin)</a>
 </li>
-      <li><a href="undulate.skin.html#undulate.skin.css_parser">css_parser() (in module undulate.skin)</a>
-</li>
-      <li><a href="undulate.skin.html#undulate.skin.css_tokenizer">css_tokenizer() (in module undulate.skin)</a>
-</li>
-      <li><a href="undulate.skin.html#undulate.skin.CSSTokenType">CSSTokenType (class in undulate.skin)</a>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.CSSTokenType">CSSTokenType (class in undulate.parsers.css)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -295,14 +295,18 @@
 </li>
       <li><a href="undulate.bricks.register.html#undulate.bricks.register.FieldStart">FieldStart (class in undulate.bricks.register)</a>
 </li>
+      <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Filler">Filler (class in undulate.bricks.digital)</a>
+</li>
+      <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.filter_clock_transition">filter_clock_transition() (in module undulate.bricks.digital)</a>
+</li>
+      <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.filter_data_transition">filter_data_transition() (in module undulate.bricks.digital)</a>
+</li>
       <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.filter_phase_pos">filter_phase_pos() (in module undulate.bricks.digital)</a>
-</li>
-      <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.filter_repeat">filter_repeat() (in module undulate.bricks.digital)</a>
-</li>
-      <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.filter_transition">filter_transition() (in module undulate.bricks.digital)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.filter_repeat">filter_repeat() (in module undulate.bricks.digital)</a>
+</li>
       <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.filter_width">filter_width() (in module undulate.bricks.digital)</a>
 </li>
       <li><a href="undulate.bricks.generic.html#undulate.bricks.generic.FilterBank">FilterBank (class in undulate.bricks.generic)</a>
@@ -353,6 +357,8 @@
         <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Eight.get_first_y">(undulate.bricks.digital.Eight method)</a>
 </li>
         <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Empty.get_first_y">(undulate.bricks.digital.Empty method)</a>
+</li>
+        <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Filler.get_first_y">(undulate.bricks.digital.Filler method)</a>
 </li>
         <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Five.get_first_y">(undulate.bricks.digital.Five method)</a>
 </li>
@@ -433,6 +439,8 @@
         <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Eight.get_last_y">(undulate.bricks.digital.Eight method)</a>
 </li>
         <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Empty.get_last_y">(undulate.bricks.digital.Empty method)</a>
+</li>
+        <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Filler.get_last_y">(undulate.bricks.digital.Filler method)</a>
 </li>
         <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Five.get_last_y">(undulate.bricks.digital.Five method)</a>
 </li>
@@ -527,7 +535,7 @@
 </li>
       <li><a href="undulate.bricks.shape.html#undulate.bricks.shape.HorizontalLine">HorizontalLine() (in module undulate.bricks.shape)</a>
 </li>
-      <li><a href="undulate.skin.html#undulate.skin.hsl_to_rgb">hsl_to_rgb() (in module undulate.skin)</a>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.hsl_to_rgb">hsl_to_rgb() (in module undulate.parsers.css)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -557,9 +565,9 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="undulate.skin.html#undulate.skin.LineCap">LineCap (class in undulate.skin)</a>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.LineCap">LineCap (class in undulate.parsers.css)</a>
 </li>
-      <li><a href="undulate.skin.html#undulate.skin.LineJoin">LineJoin (class in undulate.skin)</a>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.LineJoin">LineJoin (class in undulate.parsers.css)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -600,6 +608,8 @@
         <li><a href="undulate.logger.html#module-undulate.logger">undulate.logger</a>
 </li>
         <li><a href="undulate.parsers.html#module-undulate.parsers">undulate.parsers</a>
+</li>
+        <li><a href="undulate.parsers.css.html#module-undulate.parsers.css">undulate.parsers.css</a>
 </li>
         <li><a href="undulate.parsers.jsonml.html#module-undulate.parsers.jsonml">undulate.parsers.jsonml</a>
 </li>
@@ -664,9 +674,11 @@
         <li><a href="undulate.parsers.yaml.html#undulate.parsers.yaml.parse">(in module undulate.parsers.yaml)</a>
 </li>
       </ul></li>
-      <li><a href="undulate.skin.html#undulate.skin.parse_css_color">parse_css_color() (in module undulate.skin)</a>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.parse_css_color">parse_css_color() (in module undulate.parsers.css)</a>
 </li>
-      <li><a href="undulate.skin.html#undulate.skin.parse_css_size">parse_css_size() (in module undulate.skin)</a>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.parse_css_size">parse_css_size() (in module undulate.parsers.css)</a>
+</li>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.parser">parser() (in module undulate.parsers.css)</a>
 </li>
       <li><a href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.path">path() (undulate.renderers.cairorenderer.CairoRenderer method)</a>
 
@@ -744,7 +756,7 @@
         <li><a href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.size">(undulate.renderers.termrenderer.TermRenderer method)</a>
 </li>
       </ul></li>
-      <li><a href="undulate.skin.html#undulate.skin.SizeUnit">SizeUnit (class in undulate.skin)</a>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.SizeUnit">SizeUnit (class in undulate.parsers.css)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -792,7 +804,7 @@
 </li>
       <li><a href="undulate.skin.html#undulate.skin.text_bbox">text_bbox() (in module undulate.skin)</a>
 </li>
-      <li><a href="undulate.skin.html#undulate.skin.TextAlign">TextAlign (class in undulate.skin)</a>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.TextAlign">TextAlign (class in undulate.parsers.css)</a>
 </li>
       <li><a href="undulate.bricks.digital.html#undulate.bricks.digital.Three">Three (class in undulate.bricks.digital)</a>
 </li>
@@ -813,6 +825,8 @@
       <li><a href="undulate.parsers.register.html#undulate.parsers.register.Field.to_dict">to_dict() (undulate.parsers.register.Field method)</a>
 </li>
       <li><a href="undulate.parsers.register.html#undulate.parsers.register.Register.to_wavelane">to_wavelane() (undulate.parsers.register.Register method)</a>
+</li>
+      <li><a href="undulate.parsers.css.html#undulate.parsers.css.tokenizer">tokenizer() (in module undulate.parsers.css)</a>
 </li>
       <li><a href="undulate.bricks.analogue.html#undulate.bricks.analogue.transform_y">transform_y() (in module undulate.bricks.analogue)</a>
 </li>
@@ -902,6 +916,13 @@
 
       <ul>
         <li><a href="undulate.parsers.html#module-undulate.parsers">module</a>
+</li>
+      </ul></li>
+      <li>
+    undulate.parsers.css
+
+      <ul>
+        <li><a href="undulate.parsers.css.html#module-undulate.parsers.css">module</a>
 </li>
       </ul></li>
       <li>
@@ -1035,7 +1056,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

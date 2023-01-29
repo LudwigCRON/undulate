@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -57,8 +59,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>digital signal</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">digital signal</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial_dig_step1.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -69,7 +71,7 @@
            <div itemprop="articleBody">
              
   <section id="digital-signal">
-<h1>digital signal<a class="headerlink" href="#digital-signal" title="Permalink to this headline"></a></h1>
+<h1>digital signal<a class="headerlink" href="#digital-signal" title="Permalink to this heading"></a></h1>
 <p>Let’s see how to generate your first digital waveform.
 First create a text file in which we will add the textual representation of the
 waveform with all possibilities of a digital signal. Each character in the
@@ -79,9 +81,9 @@ waveform with all possibilities of a digital signal. Each character in the
 <a class="tab-button" href="#step_1_yaml">yaml</a>
 <a class="tab-button" href="#step_1_toml">toml</a><div class="tab-content docutils container" id="step-1-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;digital&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;01.zx=ud.2.3.45XziIzmzM&quot;</span><span class="p">}</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;digital&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;01.zx=ud.2.3.45XziIzmzM&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -131,7 +133,7 @@ waveform with all possibilities of a digital signal. Each character in the
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

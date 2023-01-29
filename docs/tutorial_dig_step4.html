@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -57,8 +59,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>groups</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">groups</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial_dig_step4.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -69,7 +71,7 @@
            <div itemprop="articleBody">
              
   <section id="groups">
-<h1>groups<a class="headerlink" href="#groups" title="Permalink to this headline"></a></h1>
+<h1>groups<a class="headerlink" href="#groups" title="Permalink to this heading"></a></h1>
 <p>In order to gather signals in a given context, or of a same protocol, groups can
 be nested.</p>
 <div class="tabs docutils container">
@@ -77,24 +79,24 @@ be nested.</p>
 <a class="tab-button" href="#step_4_yaml">yaml</a>
 <a class="tab-button" href="#step_4_toml">toml</a><div class="tab-content docutils container" id="step-4-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p..Pp..P&quot;</span><span class="p">,</span> <span class="nx">slewing</span><span class="o">:</span> <span class="mf">0</span><span class="p">},</span>
-    <span class="p">[</span><span class="s2">&quot;Master&quot;</span><span class="p">,</span>
-        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_address&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x3.x4..x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;A1 A2&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_wdata&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x3.x....&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;D1&quot;</span><span class="p">},</span>
-        <span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span>
-            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_write&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;01.0....&quot;</span><span class="p">},</span>
-            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_read&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;0...1..0&quot;</span><span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">],</span>
-    <span class="p">{},</span>
-    <span class="p">[</span><span class="s2">&quot;Slave&quot;</span><span class="p">,</span>
-        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_rdata&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x.....4x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;Q2&quot;</span><span class="p">},</span>
-        <span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span>
-            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_valid&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x01x0.1x&quot;</span><span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">]</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;clk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;p..Pp..P&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">slewing</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="s2">&quot;Master&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_address&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x3.x4..x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A1 A2&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_wdata&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x3.x....&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;D1&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_write&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;01.0....&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_read&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0...1..0&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="s2">&quot;Slave&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_rdata&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x.....4x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Q2&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_valid&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x01x0.1x&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -194,7 +196,7 @@ belong to it.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

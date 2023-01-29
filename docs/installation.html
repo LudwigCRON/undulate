@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -63,9 +65,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="getting_started.html"><span class="section-number">1. </span>Getting Started</a> &raquo;</li>
-      <li><span class="section-number">1.2. </span>Installation</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="getting_started.html"><span class="section-number">1. </span>Getting Started</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1.2. </span>Installation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/installation.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -76,14 +78,14 @@
            <div itemprop="articleBody">
              
   <section id="installation">
-<h1><span class="section-number">1.2. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">1.2. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <p>With recent pip versions, pip is able to install a python module from github
 directly. The installation process is thus utterly simplified:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; pip install git+https://github.com/LudwigCRON/undulate.git
 </pre></div>
 </div>
 <p>In fact, you can even specify a version or a branch name in the following manner</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; pip install git+https://github.com/LudwigCRON/undulate.git@v0.0.5
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; pip install git+https://github.com/LudwigCRON/undulate.git@v0.0.6
 </pre></div>
 </div>
 <p>or</p>
@@ -112,7 +114,7 @@ frozen by the administrator and cannot support this direct installation process.
 </li>
 <li><p>install via pip</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; <span class="nb">cd</span> ./v0.0.6/
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$&gt; <span class="nb">cd</span> ./v0.0.5/
 $&gt; pip install --user .
 </pre></div>
 </div>
@@ -146,7 +148,7 @@ $&gt; pip install --user .
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

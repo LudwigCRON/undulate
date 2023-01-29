@@ -7,25 +7,26 @@ or ``--help`` as below:
 .. code-block:: bash
 
     $> undulate -h
-    usage: undulate [-h] [-i INPUT] [-f FORMAT] [-r] [-d DPI] [-o OUTPUT] [-s STYLE] [mangled_input]
-
+    usage: undulate [-h] [-i INPUT] [-f FORMAT] [-r] [-d DPI] [-o OUTPUT] [-s STYLE] [--eol EOL] [mangled_input]
+    
     waveform generator from textual format
-
+    
     positional arguments:
-    mangled_input
-
+      mangled_input
+    
     options:
-    -h, --help            show this help message and exit
-    -i INPUT, --input INPUT
-                          path to the input text file
-    -f FORMAT, --format FORMAT
-                          file format of the output
-    -r, --is_reg          is register description
-    -d DPI, --dpi DPI     resolution of the image for png export
-    -o OUTPUT, --output OUTPUT
-                          path to the output file
-    -s STYLE, --style STYLE
-                          path to custom css file
+      -h, --help            show this help message and exit
+      -i INPUT, --input INPUT
+                            path to the input text file
+      -f FORMAT, --format FORMAT
+                            file format of the output
+      -r, --is_reg          is register description
+      -d DPI, --dpi DPI     resolution of the image for png export
+      -o OUTPUT, --output OUTPUT
+                            path to the output file
+      -s STYLE, --style STYLE
+                            path to custom css file
+      --eol EOL             define the end of line in term renderer
 
 Undulate expects at least an input file. Otherwise, the tool informs you.
 
@@ -91,7 +92,7 @@ path is ``~/project/doc/wavetest.yaml`` into an svg image in
 
 .. code-block:: bash
 
-    $ undulate -f svg -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.svg
+    $> undulate -f svg -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.svg
 
 .. tip::
 
@@ -102,4 +103,4 @@ path is ``~/project/doc/wavetest.yaml`` into an svg image in
 
     .. code-block:: bash
 
-        $ undulate -f cairo-png -d 300 -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.png
+        $> undulate -f cairo-png -d 300 -i ~/project/doc/wavetest.yaml -o ~/project/doc/wavetest.png

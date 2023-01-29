@@ -15,12 +15,14 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4.3.1. undulate.renderers.cairorenderer module" href="undulate.renderers.cairorenderer.html" />
-    <link rel="prev" title="4.2.4. undulate.parsers.yaml module" href="undulate.parsers.yaml.html" /> 
+    <link rel="prev" title="4.2.5. undulate.parsers.yaml module" href="undulate.parsers.yaml.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -71,10 +73,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html"><span class="section-number">4. </span>undulate</a> &raquo;</li>
-          <li><a href="undulate.html"><span class="section-number">4.4. </span>undulate</a> &raquo;</li>
-      <li><span class="section-number">4.3. </span>undulate.renderers</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html"><span class="section-number">4. </span>undulate</a></li>
+          <li class="breadcrumb-item"><a href="undulate.html"><span class="section-number">4.4. </span>undulate</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.3. </span>undulate.renderers</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/undulate.renderers.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,13 +87,98 @@
            <div itemprop="articleBody">
              
   <section id="undulate-renderers">
-<h1><span class="section-number">4.3. </span>undulate.renderers<a class="headerlink" href="#undulate-renderers" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">4.3. </span>undulate.renderers<a class="headerlink" href="#undulate-renderers" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="undulate.renderers.cairorenderer.html">4.3.1. undulate.renderers.cairorenderer module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.renderers.renderer.html">4.3.2. undulate.renderers.renderer module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.renderers.svgrenderer.html">4.3.3. undulate.renderers.svgrenderer module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.renderers.termrenderer.html">4.3.4. undulate.renderers.termrenderer module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.renderers.cairorenderer.html">4.3.1. undulate.renderers.cairorenderer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer"><code class="docutils literal notranslate"><span class="pre">CairoRenderer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.group"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.group()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.path"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.arrow"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.arrow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.polygon"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.polygon()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.spline"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.spline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.text"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.translate"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.draw"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.draw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.adjust_y"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.adjust_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.annotate"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.annotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.brick"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.brick()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.from_to_parser"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.from_to_parser()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.size"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.ticks"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.ticks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.cairorenderer.html#undulate.renderers.cairorenderer.CairoRenderer.wavelane_title"><code class="docutils literal notranslate"><span class="pre">CairoRenderer.wavelane_title()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.renderers.renderer.html">4.3.2. undulate.renderers.renderer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.incr_wavelane"><code class="docutils literal notranslate"><span class="pre">incr_wavelane()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.incr_wavegroup"><code class="docutils literal notranslate"><span class="pre">incr_wavegroup()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.svg_curve_convert"><code class="docutils literal notranslate"><span class="pre">svg_curve_convert()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer"><code class="docutils literal notranslate"><span class="pre">Renderer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.group"><code class="docutils literal notranslate"><span class="pre">Renderer.group()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.path"><code class="docutils literal notranslate"><span class="pre">Renderer.path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.arrow"><code class="docutils literal notranslate"><span class="pre">Renderer.arrow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.polygon"><code class="docutils literal notranslate"><span class="pre">Renderer.polygon()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.spline"><code class="docutils literal notranslate"><span class="pre">Renderer.spline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.text"><code class="docutils literal notranslate"><span class="pre">Renderer.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.translate"><code class="docutils literal notranslate"><span class="pre">Renderer.translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.brick"><code class="docutils literal notranslate"><span class="pre">Renderer.brick()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.adjust_y"><code class="docutils literal notranslate"><span class="pre">Renderer.adjust_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.from_to_parser"><code class="docutils literal notranslate"><span class="pre">Renderer.from_to_parser()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.annotate"><code class="docutils literal notranslate"><span class="pre">Renderer.annotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.wavelane_title"><code class="docutils literal notranslate"><span class="pre">Renderer.wavelane_title()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.ticks"><code class="docutils literal notranslate"><span class="pre">Renderer.ticks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.size"><code class="docutils literal notranslate"><span class="pre">Renderer.size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.renderer.html#undulate.renderers.renderer.Renderer.draw"><code class="docutils literal notranslate"><span class="pre">Renderer.draw()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.renderers.svgrenderer.html">4.3.3. undulate.renderers.svgrenderer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer"><code class="docutils literal notranslate"><span class="pre">SvgRenderer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.group"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.group()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.path"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.arrow"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.arrow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.polygon"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.polygon()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.spline"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.spline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.text"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.translate"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.draw"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.draw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.adjust_y"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.adjust_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.annotate"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.annotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.brick"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.brick()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.from_to_parser"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.from_to_parser()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.size"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.ticks"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.ticks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.svgrenderer.html#undulate.renderers.svgrenderer.SvgRenderer.wavelane_title"><code class="docutils literal notranslate"><span class="pre">SvgRenderer.wavelane_title()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.renderers.termrenderer.html">4.3.4. undulate.renderers.termrenderer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer"><code class="docutils literal notranslate"><span class="pre">TermRenderer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.brick"><code class="docutils literal notranslate"><span class="pre">TermRenderer.brick()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.wavelane"><code class="docutils literal notranslate"><span class="pre">TermRenderer.wavelane()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.wavegroup"><code class="docutils literal notranslate"><span class="pre">TermRenderer.wavegroup()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.draw"><code class="docutils literal notranslate"><span class="pre">TermRenderer.draw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.adjust_y"><code class="docutils literal notranslate"><span class="pre">TermRenderer.adjust_y()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.annotate"><code class="docutils literal notranslate"><span class="pre">TermRenderer.annotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.arrow"><code class="docutils literal notranslate"><span class="pre">TermRenderer.arrow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.from_to_parser"><code class="docutils literal notranslate"><span class="pre">TermRenderer.from_to_parser()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.group"><code class="docutils literal notranslate"><span class="pre">TermRenderer.group()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.path"><code class="docutils literal notranslate"><span class="pre">TermRenderer.path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.polygon"><code class="docutils literal notranslate"><span class="pre">TermRenderer.polygon()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.size"><code class="docutils literal notranslate"><span class="pre">TermRenderer.size()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.spline"><code class="docutils literal notranslate"><span class="pre">TermRenderer.spline()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.text"><code class="docutils literal notranslate"><span class="pre">TermRenderer.text()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.ticks"><code class="docutils literal notranslate"><span class="pre">TermRenderer.ticks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.translate"><code class="docutils literal notranslate"><span class="pre">TermRenderer.translate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.renderers.termrenderer.html#undulate.renderers.termrenderer.TermRenderer.wavelane_title"><code class="docutils literal notranslate"><span class="pre">TermRenderer.wavelane_title()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <span class="target" id="module-undulate.renderers"></span></section>
@@ -100,14 +187,14 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="undulate.parsers.yaml.html" class="btn btn-neutral float-left" title="4.2.4. undulate.parsers.yaml module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="undulate.parsers.yaml.html" class="btn btn-neutral float-left" title="4.2.5. undulate.parsers.yaml module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="undulate.renderers.cairorenderer.html" class="btn btn-neutral float-right" title="4.3.1. undulate.renderers.cairorenderer module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

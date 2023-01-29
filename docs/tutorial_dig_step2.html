@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -57,8 +59,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>clocks</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">clocks</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial_dig_step2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -69,7 +71,7 @@
            <div itemprop="articleBody">
              
   <section id="clocks">
-<h1>clocks<a class="headerlink" href="#clocks" title="Permalink to this headline"></a></h1>
+<h1>clocks<a class="headerlink" href="#clocks" title="Permalink to this heading"></a></h1>
 <p>However, most digital design are synchronous. The reference being a clock let’s
 see how to define a clock.</p>
 <p>At first a clock is normal digital signal with specific bricks for rising edge
@@ -79,18 +81,18 @@ clocks or falling edge clocks.</p>
 <a class="tab-button" href="#step_2_yaml">yaml</a>
 <a class="tab-button" href="#step_2_toml">toml</a><div class="tab-content docutils container" id="step-2-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;pclk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p........&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Pclk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;P........&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;nclk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;n........&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Nclk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;N........&quot;</span><span class="p">},</span>
-    <span class="p">{},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk0&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;phnlPHNL&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk1&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;xhlhLHl.&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk2&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;hpHplnLn&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk3&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;nhNhplPl&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk4&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;xlh.L.Hx&#39;</span> <span class="p">},</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pclk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;p........&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Pclk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P........&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nclk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;n........&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Nclk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;N........&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk0&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;phnlPHNL&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;xhlhLHl.&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk2&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;hpHplnLn&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk3&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;nhNhplPl&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk4&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;xlh.L.Hx&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -176,7 +178,7 @@ clocks or falling edge clocks.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -5,6 +5,7 @@ undulate.parsers
 .. toctree::
    :maxdepth: 4
 
+   undulate.parsers.css
    undulate.parsers.jsonml
    undulate.parsers.register
    undulate.parsers.toml

@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -70,9 +72,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="tutorial.html"><span class="section-number">2. </span>Tutorial</a> &raquo;</li>
-      <li><span class="section-number">2.3. </span>List of Bricks</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="tutorial.html"><span class="section-number">2. </span>Tutorial</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.3. </span>List of Bricks</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/list_of_bricks.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -83,7 +85,7 @@
            <div itemprop="articleBody">
              
   <section id="list-of-bricks">
-<h1><span class="section-number">2.3. </span>List of Bricks<a class="headerlink" href="#list-of-bricks" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">2.3. </span>List of Bricks<a class="headerlink" href="#list-of-bricks" title="Permalink to this heading"></a></h1>
 <p>A brick is a collection of drawing element associated to a symbol. For the sake,
 of clarity these have been collected in three different contexts:</p>
 <ul class="simple">
@@ -92,10 +94,10 @@ of clarity these have been collected in three different contexts:</p>
 <li><p>Register</p></li>
 </ul>
 <section id="analogue-bricks">
-<h2><span class="section-number">2.3.1. </span>Analogue Bricks<a class="headerlink" href="#analogue-bricks" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.3.1. </span>Analogue Bricks<a class="headerlink" href="#analogue-bricks" title="Permalink to this heading"></a></h2>
 <p>This section present the available bricks inside the analogue context.</p>
 <section id="id1">
-<h3><span class="section-number">2.3.1.1. </span>List of bricks<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.3.1.1. </span>List of bricks<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 14%" />
@@ -140,18 +142,19 @@ of clarity these have been collected in three different contexts:</p>
 </table>
 </section>
 <section id="description">
-<h3><span class="section-number">2.3.1.2. </span>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.3.1.2. </span>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h3>
 <p>An analogue signal being able to go through a multitude of “levels”
 (voltage,current,charges…), basic assumptions have been considered:</p>
 <ul>
-<li><dl class="simple">
-<dt>All signals are considered to be a voltagein <span class="math notranslate nohighlight">\([V_{SSA};V_{DDA}]\)</span> range.</dt><dd><p>Even if it is a current or a charge, for the sake
+<li><p>All signals are considered to be a voltagein <span class="math notranslate nohighlight">\([V_{SSA};V_{DDA}]\)</span> range.</p>
+<blockquote>
+<div><p>Even if it is a current or a charge, for the sake
 of representation a voltage range is equivalent and sufficient.</p>
-</dd>
-</dl>
+</div></blockquote>
 </li>
-<li><dl>
-<dt>A brick is defined with a single expression.</dt><dd><p>To simplify the expression, an analogue context is loaded. This context
+<li><p>A brick is defined with a single expression.</p>
+<blockquote>
+<div><p>To simplify the expression, an analogue context is loaded. This context
 include the extremum voltage, usual functions, and pi constant.</p>
 <p>To be more precise, the context is given below.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">CONTEXT</span> <span class="o">=</span> <span class="p">{</span>
@@ -171,15 +174,11 @@ include the extremum voltage, usual functions, and pi constant.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-</dd>
-</dl>
+</div></blockquote>
 </li>
-<li><dl class="simple">
-<dt>the expression should return a list of (time, voltage) points</dt><dd><p>fitting inside the size of the renderered brick. Thus the value of time and
-voltage should be scaled with respect to <code class="docutils literal notranslate"><span class="pre">Tmax</span></code> and <code class="docutils literal notranslate"><span class="pre">VDDA</span></code>/<code class="docutils literal notranslate"><span class="pre">VSSA</span></code>.</p>
-</dd>
-</dl>
-</li>
+<li><p>the expression should return a list of (time, voltage) points fitting
+inside the size of the renderered brick. Thus the value of time and
+voltage should be scaled with respect to <code class="docutils literal notranslate"><span class="pre">Tmax</span></code> and <code class="docutils literal notranslate"><span class="pre">VDDA</span></code>/<code class="docutils literal notranslate"><span class="pre">VSSA</span></code>.</p></li>
 </ul>
 <p>The last point corresponds to only the <a class="reference external" href="#List of bricks">Analogue brick</a>
 whose symbol is <strong>a</strong>. For the <strong>c</strong> and <strong>s</strong>, only the final value can be
@@ -188,10 +187,10 @@ predefined expression.</p>
 </section>
 </section>
 <section id="digital-bricks">
-<h2><span class="section-number">2.3.2. </span>Digital Bricks<a class="headerlink" href="#digital-bricks" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.3.2. </span>Digital Bricks<a class="headerlink" href="#digital-bricks" title="Permalink to this heading"></a></h2>
 <p>This section present the available bricks inside the digital context.</p>
 <section id="id2">
-<h3><span class="section-number">2.3.2.1. </span>List of bricks<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.3.2.1. </span>List of bricks<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 12%" />
@@ -341,18 +340,18 @@ predefined expression.</p>
 </table>
 </section>
 <section id="id3">
-<h3><span class="section-number">2.3.2.2. </span>Description<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.3.2.2. </span>Description<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 </section>
 </section>
 <section id="register-bricks">
-<h2><span class="section-number">2.3.3. </span>Register Bricks<a class="headerlink" href="#register-bricks" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.3.3. </span>Register Bricks<a class="headerlink" href="#register-bricks" title="Permalink to this heading"></a></h2>
 <p>This section present the available bricks inside the register context.</p>
 <p>It is assummed that register description and signals description do not serve the same purpose.
 Therefore, register description shall not be mixed with signal description.</p>
 <p>Dedicated methods are applied to transform a human textual representation of register into
 a waveform for rendering engines.</p>
 <section id="id4">
-<h3><span class="section-number">2.3.3.1. </span>List of bricks<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h3>
+<h3><span class="section-number">2.3.3.1. </span>List of bricks<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For the sake of completeness, the list of bricks are given in this section.
@@ -410,7 +409,7 @@ However, the end-user do not have to deal with them</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

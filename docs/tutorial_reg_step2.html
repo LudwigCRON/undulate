@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -57,8 +59,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>&lt;no title&gt;</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial_reg_step2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -79,24 +81,24 @@ the range [12:8], the field “nf” on the range [34:32].</p>
 <a class="tab-button" href="#step_2_yaml">yaml</a>
 <a class="tab-button" href="#step_2_toml">toml</a><div class="tab-content docutils container" id="step-2-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">control</span><span class="o">:</span><span class="p">[</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">7</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="mh">0x07</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span>
-    <span class="s1">&#39;VLxU,VLE zero-extended&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;VLxU,VLE zero-extended, fault-only-first&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;VLxU sign-extended&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;VLxU sign-extended, fault-only-first&#39;</span><span class="p">,</span>
-    <span class="p">]},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;vd&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="s1">&#39;destination of load&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span> <span class="nx">regpos</span><span class="o">:</span><span class="mf">8</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;width&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;rs1&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="s1">&#39;base address&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="mf">4</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">5</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;lumop&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">16</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">16</span><span class="p">],</span> <span class="nx">type</span><span class="o">:</span> <span class="mf">3</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;vm&#39;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;mop&#39;</span><span class="p">,</span> <span class="nx">attr</span><span class="o">:</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span> <span class="mf">0</span><span class="p">,</span> <span class="mf">4</span><span class="p">,</span> <span class="mf">4</span><span class="p">]},</span>
-    <span class="p">{</span><span class="nx">bits</span><span class="o">:</span> <span class="mf">3</span><span class="p">,</span>  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;nf&#39;</span><span class="p">,</span> <span class="nx">regpos</span><span class="o">:</span> <span class="mf">32</span><span class="p">},</span>
-<span class="p">],</span>
-<span class="nx">config</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">no_ticks</span><span class="o">:</span> <span class="kc">true</span>
-<span class="p">}}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">control</span><span class="o">:</span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">bits</span><span class="o">:</span><span class="w"> </span><span class="mf">7</span><span class="p">,</span><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="mh">0x07</span><span class="p">,</span><span class="w"> </span><span class="nx">attr</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;VLxU,VLE zero-extended&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;VLxU,VLE zero-extended, fault-only-first&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;VLxU sign-extended&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s1">&#39;VLxU sign-extended, fault-only-first&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="p">]},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">bits</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;vd&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">attr</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;destination of load&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">regpos</span><span class="o">:</span><span class="mf">8</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">bits</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;width&#39;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">bits</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;rs1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">attr</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;base address&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">bits</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;lumop&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">attr</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">16</span><span class="p">],</span><span class="w"> </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">bits</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;vm&#39;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">bits</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;mop&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">attr</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">]},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">bits</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="p">,</span><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;nf&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">regpos</span><span class="o">:</span><span class="w"> </span><span class="mf">32</span><span class="p">},</span><span class="w"></span>
+<span class="p">],</span><span class="w"></span>
+<span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">no_ticks</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -214,7 +216,7 @@ the range [12:8], the field “nf” on the range [34:32].</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

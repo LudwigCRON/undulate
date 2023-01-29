@@ -15,11 +15,13 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="4.2.1. undulate.parsers.jsonml module" href="undulate.parsers.jsonml.html" />
+    <link rel="next" title="4.2.1. undulate.parsers.css module" href="undulate.parsers.css.html" />
     <link rel="prev" title="4.1.5. undulate.bricks.shape module" href="undulate.bricks.shape.html" /> 
 </head>
 
@@ -46,10 +48,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">4. undulate</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="undulate.bricks.html">4.1. undulate.bricks</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. undulate.parsers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.jsonml.html">4.2.1. undulate.parsers.jsonml module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.register.html">4.2.2. undulate.parsers.register module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.toml.html">4.2.3. undulate.parsers.toml module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.yaml.html">4.2.4. undulate.parsers.yaml module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.css.html">4.2.1. undulate.parsers.css module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.jsonml.html">4.2.2. undulate.parsers.jsonml module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.register.html">4.2.3. undulate.parsers.register module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.toml.html">4.2.4. undulate.parsers.toml module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.yaml.html">4.2.5. undulate.parsers.yaml module</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="undulate.renderers.html">4.3. undulate.renderers</a></li>
@@ -71,10 +74,10 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="modules.html"><span class="section-number">4. </span>undulate</a> &raquo;</li>
-          <li><a href="undulate.html"><span class="section-number">4.4. </span>undulate</a> &raquo;</li>
-      <li><span class="section-number">4.2. </span>undulate.parsers</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html"><span class="section-number">4. </span>undulate</a></li>
+          <li class="breadcrumb-item"><a href="undulate.html"><span class="section-number">4.4. </span>undulate</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4.2. </span>undulate.parsers</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/undulate.parsers.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,13 +88,48 @@
            <div itemprop="articleBody">
              
   <section id="undulate-parsers">
-<h1><span class="section-number">4.2. </span>undulate.parsers<a class="headerlink" href="#undulate-parsers" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">4.2. </span>undulate.parsers<a class="headerlink" href="#undulate-parsers" title="Permalink to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="undulate.parsers.jsonml.html">4.2.1. undulate.parsers.jsonml module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.parsers.register.html">4.2.2. undulate.parsers.register module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.parsers.toml.html">4.2.3. undulate.parsers.toml module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="undulate.parsers.yaml.html">4.2.4. undulate.parsers.yaml module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.parsers.css.html">4.2.1. undulate.parsers.css module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.SizeUnit"><code class="docutils literal notranslate"><span class="pre">SizeUnit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.LineCap"><code class="docutils literal notranslate"><span class="pre">LineCap</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.LineJoin"><code class="docutils literal notranslate"><span class="pre">LineJoin</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.TextAlign"><code class="docutils literal notranslate"><span class="pre">TextAlign</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.CSSTokenType"><code class="docutils literal notranslate"><span class="pre">CSSTokenType</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.tokenizer"><code class="docutils literal notranslate"><span class="pre">tokenizer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.parse_css_size"><code class="docutils literal notranslate"><span class="pre">parse_css_size()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.hsl_to_rgb"><code class="docutils literal notranslate"><span class="pre">hsl_to_rgb()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.parse_css_color"><code class="docutils literal notranslate"><span class="pre">parse_css_color()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.css.html#undulate.parsers.css.parser"><code class="docutils literal notranslate"><span class="pre">parser()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.parsers.jsonml.html">4.2.2. undulate.parsers.jsonml module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.jsonml.html#undulate.parsers.jsonml.parse"><code class="docutils literal notranslate"><span class="pre">parse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.parsers.register.html">4.2.3. undulate.parsers.register module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.register.html#undulate.parsers.register.Register"><code class="docutils literal notranslate"><span class="pre">Register</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.register.html#undulate.parsers.register.Register.push_field"><code class="docutils literal notranslate"><span class="pre">Register.push_field()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.register.html#undulate.parsers.register.Register.to_wavelane"><code class="docutils literal notranslate"><span class="pre">Register.to_wavelane()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.register.html#undulate.parsers.register.Field"><code class="docutils literal notranslate"><span class="pre">Field</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.register.html#undulate.parsers.register.Field.from_dict"><code class="docutils literal notranslate"><span class="pre">Field.from_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="undulate.parsers.register.html#undulate.parsers.register.Field.to_dict"><code class="docutils literal notranslate"><span class="pre">Field.to_dict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.register.html#undulate.parsers.register.convert"><code class="docutils literal notranslate"><span class="pre">convert()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.parsers.toml.html">4.2.4. undulate.parsers.toml module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.toml.html#undulate.parsers.toml.parse"><code class="docutils literal notranslate"><span class="pre">parse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="undulate.parsers.yaml.html">4.2.5. undulate.parsers.yaml module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="undulate.parsers.yaml.html#undulate.parsers.yaml.parse"><code class="docutils literal notranslate"><span class="pre">parse()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 <span class="target" id="module-undulate.parsers"></span></section>
@@ -101,13 +139,13 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="undulate.bricks.shape.html" class="btn btn-neutral float-left" title="4.1.5. undulate.bricks.shape module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="undulate.parsers.jsonml.html" class="btn btn-neutral float-right" title="4.2.1. undulate.parsers.jsonml module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="undulate.parsers.css.html" class="btn btn-neutral float-right" title="4.2.1. undulate.parsers.css module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

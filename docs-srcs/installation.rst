@@ -12,7 +12,7 @@ In fact, you can even specify a version or a branch name in the following manner
 
 .. code-block:: bash
 
-    $> pip install git+https://github.com/LudwigCRON/undulate.git@v0.0.5
+    $> pip install git+https://github.com/LudwigCRON/undulate.git@v0.0.6
 
 or
 
@@ -44,7 +44,7 @@ or
 
         .. code-block:: bash
 
-            $> cd ./v0.0.6/ 
+            $> cd ./v0.0.5/ 
             $> pip install --user .
 
 .. tip::

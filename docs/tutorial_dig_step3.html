@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -57,8 +59,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>bus</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">bus</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial_dig_step3.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -69,7 +71,7 @@
            <div itemprop="articleBody">
              
   <section id="bus">
-<h1>bus<a class="headerlink" href="#bus" title="Permalink to this headline"></a></h1>
+<h1>bus<a class="headerlink" href="#bus" title="Permalink to this heading"></a></h1>
 <p>It is common for busses to represent only a transition with the new value.
 The list of possible characters is the following: <code class="docutils literal notranslate"><span class="pre">xX=23456789</span></code></p>
 <div class="line-block">
@@ -81,13 +83,13 @@ The list of possible characters is the following: <code class="docutils literal 
 <a class="tab-button" href="#step_3_yaml">yaml</a>
 <a class="tab-button" href="#step_3_toml">toml</a><div class="tab-content docutils container" id="step-3-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p.....|...&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x.345x|=.x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;head&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">,</span> <span class="s2">&quot;tail&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">]}</span>
-    <span class="p">{},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;0.1..0|1.0&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;acknowledge&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;1.....|01.&#39;</span> <span class="p">}</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;clk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;p.....|...&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x.345x|=.x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;head&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tail&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">]}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;request&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0.1..0|1.0&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;acknowledge&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1.....|01.&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -155,7 +157,7 @@ The list of possible characters is the following: <code class="docutils literal 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

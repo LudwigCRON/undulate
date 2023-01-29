@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -57,8 +59,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>edges</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">edges</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial_ann_step1.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -69,7 +71,7 @@
            <div itemprop="articleBody">
              
   <section id="edges">
-<h1>edges<a class="headerlink" href="#edges" title="Permalink to this headline"></a></h1>
+<h1>edges<a class="headerlink" href="#edges" title="Permalink to this heading"></a></h1>
 <p>Undulate does support the edge notation of Wavedrom.
 Let’s see how to declare our first annotations.</p>
 <p>In the example below, a section <code class="docutils literal notranslate"><span class="pre">edges</span></code> contains a list of strings representing
@@ -83,25 +85,25 @@ Any other character corresponds to the name given to this node.</p>
 <a class="tab-button" href="#step_1_jsonml">jsonml</a>
 <a class="tab-button" href="#step_1_yaml">yaml</a>
 <a class="tab-button" href="#step_1_toml">toml</a><div class="tab-content docutils container" id="step-1-jsonml">
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;pulses&quot;</span><span class="p">,</span>
-            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;lhl...hl.&quot;</span><span class="p">,</span>
-            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;.a....b..&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;toggle&quot;</span><span class="p">,</span>
-            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;l.h....l.&quot;</span><span class="p">,</span>
-            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;..c....d.&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nx">edges</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">&quot;a -&gt; c&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;a &lt;-&gt; b 100 us&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;b ~&gt; d&quot;</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pulses&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lhl...hl.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.a....b..&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;toggle&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;l.h....l.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;..c....d.&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nx">edges</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;a -&gt; c&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;a &lt;-&gt; b 100 us&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;b ~&gt; d&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <img alt="_images/step_1_ann.json.svg" src="_images/step_1_ann.json.svg" /></div>
@@ -181,7 +183,7 @@ the drawing.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

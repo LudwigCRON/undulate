@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -57,8 +59,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>periods, duty cycle, and phase</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">periods, duty cycle, and phase</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial_dig_step5.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -69,7 +71,7 @@
            <div itemprop="articleBody">
              
   <section id="periods-duty-cycle-and-phase">
-<h1>periods, duty cycle, and phase<a class="headerlink" href="#periods-duty-cycle-and-phase" title="Permalink to this headline"></a></h1>
+<h1>periods, duty cycle, and phase<a class="headerlink" href="#periods-duty-cycle-and-phase" title="Permalink to this heading"></a></h1>
 <p>Let’s suppose you have a frequency divider in your circuits. The description of its signals
 can tremendously expand as the frequency ratio grows. The only variation is the <code class="docutils literal notranslate"><span class="pre">period</span></code>.</p>
 <p>For a pwm signal, the duty cycle will change from one cycle to another. It is somehow
@@ -81,11 +83,11 @@ data sent. In other term, it is the <code class="docutils literal notranslate"><
 <a class="tab-button" href="#step_5_yaml">yaml</a>
 <a class="tab-button" href="#step_5_toml">toml</a><div class="tab-content docutils container" id="step-5-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mf">8</span><span class="p">,</span> <span class="nx">period</span><span class="o">:</span> <span class="mf">2</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x.3x=x4x5x=x5x=x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;RST NOP CAS INC NOP NOP NOP&quot;</span><span class="p">,</span> <span class="nx">phase</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mf">8</span><span class="p">,</span> <span class="nx">period</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="nx">duty_cycles</span><span class="o">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]}</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;clk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">repeat</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">period</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x.3x=x4x5x=x5x=x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;RST NOP CAS INC NOP NOP NOP&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Q&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;p&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">repeat</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">period</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">duty_cycles</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">]}</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -169,7 +171,7 @@ for <code class="docutils literal notranslate"><span class="pre">phase</span></c
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

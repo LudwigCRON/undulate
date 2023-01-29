@@ -40,10 +40,12 @@ An analogue signal being able to go through a multitude of "levels"
 (voltage,current,charges...), basic assumptions have been considered:
 
 - All signals are considered to be a voltagein :math:`[V_{SSA};V_{DDA}]` range.
+
     Even if it is a current or a charge, for the sake
     of representation a voltage range is equivalent and sufficient.
 
 - A brick is defined with a single expression.
+
     To simplify the expression, an analogue context is loaded. This context 
     include the extremum voltage, usual functions, and pi constant.
 
@@ -67,9 +69,9 @@ An analogue signal being able to go through a multitude of "levels"
             "rnd": random.random,
         }
 
-- the expression should return a list of (time, voltage) points
-    fitting inside the size of the renderered brick. Thus the value of time and
-    voltage should be scaled with respect to ``Tmax`` and ``VDDA``/``VSSA``.
+- the expression should return a list of (time, voltage) points fitting
+  inside the size of the renderered brick. Thus the value of time and
+  voltage should be scaled with respect to ``Tmax`` and ``VDDA``/``VSSA``.
 
 The last point corresponds to only the `Analogue brick <#List\ of\ bricks>`_
 whose symbol is **a**. For the **c** and **s**, only the final value can be

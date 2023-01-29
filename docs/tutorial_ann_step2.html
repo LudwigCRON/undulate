@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -57,8 +59,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>annotations</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">annotations</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial_ann_step2.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -69,14 +71,14 @@
            <div itemprop="articleBody">
              
   <section id="annotations">
-<h1>annotations<a class="headerlink" href="#annotations" title="Permalink to this headline"></a></h1>
+<h1>annotations<a class="headerlink" href="#annotations" title="Permalink to this heading"></a></h1>
 <p>Undulate supports more evolved annotations than edges. These are
 defined in a separated section entitled <code class="docutils literal notranslate"><span class="pre">annotations</span></code>.</p>
 <p>These annotations are like special bricks defined by a property
 <code class="docutils literal notranslate"><span class="pre">shape</span></code> associated to extra parameters dedicated to the given
 shape.</p>
 <section id="time-compression">
-<h2>Time compression<a class="headerlink" href="#time-compression" title="Permalink to this headline"></a></h2>
+<h2>Time compression<a class="headerlink" href="#time-compression" title="Permalink to this heading"></a></h2>
 <p>This one is purely stylistic, and consists in global time
 compression. It is a variant of the symbol ‘|’ spanning over
 several signals. Its shape is thus <code class="docutils literal notranslate"><span class="pre">||</span></code>.</p>
@@ -86,26 +88,26 @@ the annotation at the desired instant.</p>
 <a class="tab-button" href="#step_2_jsonml">jsonml</a>
 <a class="tab-button" href="#step_2_yaml">yaml</a>
 <a class="tab-button" href="#step_2_toml">toml</a><div class="tab-content docutils container" id="step-2-jsonml">
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;pulses&quot;</span><span class="p">,</span>
-            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;lhl...hl.&quot;</span><span class="p">,</span>
-            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;.a....b..&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;toggle&quot;</span><span class="p">,</span>
-            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;l.h....l.&quot;</span><span class="p">,</span>
-            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;..c....d.&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nx">annotations</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nx">shape</span><span class="o">:</span> <span class="s2">&quot;||&quot;</span><span class="p">,</span>
-            <span class="nx">x</span><span class="o">:</span> <span class="mf">5</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pulses&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lhl...hl.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.a....b..&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;toggle&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;l.h....l.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;..c....d.&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nx">annotations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;||&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <img alt="_images/step_2_ann.json.svg" src="_images/step_2_ann.json.svg" /></div>
@@ -152,31 +154,31 @@ is a floating point number between 0.0 and 100.0.</p>
 </div>
 </section>
 <section id="horizontal-line">
-<h2>Horizontal Line<a class="headerlink" href="#horizontal-line" title="Permalink to this headline"></a></h2>
+<h2>Horizontal Line<a class="headerlink" href="#horizontal-line" title="Permalink to this heading"></a></h2>
 <div class="tabs docutils container">
 <a class="tab-button" href="#step_3_jsonml">jsonml</a>
 <a class="tab-button" href="#step_3_yaml">yaml</a>
 <a class="tab-button" href="#step_3_toml">toml</a><div class="tab-content docutils container" id="step-3-jsonml">
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;pulses&quot;</span><span class="p">,</span>
-            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;lhl...hl.&quot;</span><span class="p">,</span>
-            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;.a....b..&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;toggle&quot;</span><span class="p">,</span>
-            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;l.h....l.&quot;</span><span class="p">,</span>
-            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;..c....d.&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nx">annotations</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nx">shape</span><span class="o">:</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span>
-            <span class="nx">y</span><span class="o">:</span> <span class="mf">0.5</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pulses&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lhl...hl.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.a....b..&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;toggle&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;l.h....l.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;..c....d.&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nx">annotations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <img alt="_images/step_3_ann.json.svg" src="_images/step_3_ann.json.svg" /></div>
@@ -219,31 +221,31 @@ is a floating point number between 0.0 and 100.0.</p>
 </div>
 </section>
 <section id="vertical-line">
-<h2>Vertical Line<a class="headerlink" href="#vertical-line" title="Permalink to this headline"></a></h2>
+<h2>Vertical Line<a class="headerlink" href="#vertical-line" title="Permalink to this heading"></a></h2>
 <div class="tabs docutils container">
 <a class="tab-button" href="#step_4_jsonml">jsonml</a>
 <a class="tab-button" href="#step_4_yaml">yaml</a>
 <a class="tab-button" href="#step_4_toml">toml</a><div class="tab-content docutils container" id="step-4-jsonml">
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;pulses&quot;</span><span class="p">,</span>
-            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;lhl...hl.&quot;</span><span class="p">,</span>
-            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;.a....b..&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;toggle&quot;</span><span class="p">,</span>
-            <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;l.h....l.&quot;</span><span class="p">,</span>
-            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;..c....d.&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nx">annotations</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nx">shape</span><span class="o">:</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span>
-            <span class="nx">x</span><span class="o">:</span> <span class="mf">7.5</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pulses&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;lhl...hl.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;.a....b..&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;toggle&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;l.h....l.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">node</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;..c....d.&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nx">annotations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;|&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">7.5</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <img alt="_images/step_4_ann.json.svg" src="_images/step_4_ann.json.svg" /></div>
@@ -286,7 +288,7 @@ is a floating point number between 0.0 and 100.0.</p>
 </div>
 </section>
 <section id="arrows">
-<h2>Arrows<a class="headerlink" href="#arrows" title="Permalink to this headline"></a></h2>
+<h2>Arrows<a class="headerlink" href="#arrows" title="Permalink to this heading"></a></h2>
 <p>This annotation is the equivalent of Wavedrom’s edges.
 To represent an edge <code class="docutils literal notranslate"><span class="pre">NODE</span></code> <code class="docutils literal notranslate"><span class="pre">PATTERN</span></code> <code class="docutils literal notranslate"><span class="pre">NODE</span></code> <code class="docutils literal notranslate"><span class="pre">[TEXT]</span></code>
 the annotation object is represented as follows:</p>
@@ -294,14 +296,14 @@ the annotation object is represented as follows:</p>
 <a class="tab-button" href="#step_5_jsonml">jsonml</a>
 <a class="tab-button" href="#step_5_yaml">yaml</a>
 <a class="tab-button" href="#step_5_toml">toml</a><div class="tab-content docutils container" id="step-5-jsonml">
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nx">shape</span><span class="o">:</span> <span class="sb">``</span><span class="nx">PATTERN</span><span class="sb">``</span>
-        <span class="kr">from</span><span class="o">:</span> <span class="sb">``</span><span class="nx">NODE</span><span class="sb">``</span>
-        <span class="nx">to</span><span class="o">:</span> <span class="sb">``</span><span class="nx">NODE</span><span class="sb">``</span>
-        <span class="nx">text</span><span class="o">:</span> <span class="sb">``</span><span class="nx">TEXT</span><span class="sb">``</span>
-    <span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="sb">``</span><span class="nx">PATTERN</span><span class="sb">``</span><span class="w"></span>
+<span class="w">        </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="sb">``</span><span class="nx">NODE</span><span class="sb">``</span><span class="w"></span>
+<span class="w">        </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="sb">``</span><span class="nx">NODE</span><span class="sb">``</span><span class="w"></span>
+<span class="w">        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="sb">``</span><span class="nx">TEXT</span><span class="sb">``</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -345,7 +347,7 @@ In case of a percentage notation, it is a floating point number between
 </div>
 </section>
 <section id="text">
-<h2>Text<a class="headerlink" href="#text" title="Permalink to this headline"></a></h2>
+<h2>Text<a class="headerlink" href="#text" title="Permalink to this heading"></a></h2>
 <p>It is also possible to draw only a textual annotation. This annotation object
 expect a text and a position. The position is provided by a <code class="docutils literal notranslate"><span class="pre">x</span></code> and a <code class="docutils literal notranslate"><span class="pre">y</span></code>
 coordinate. Thus, it can be used as follows:</p>
@@ -353,14 +355,14 @@ coordinate. Thus, it can be used as follows:</p>
 <a class="tab-button" href="#step_6_jsonml">jsonml</a>
 <a class="tab-button" href="#step_6_yaml">yaml</a>
 <a class="tab-button" href="#step_6_toml">toml</a><div class="tab-content docutils container" id="step-6-jsonml">
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nx">text</span><span class="o">:</span> <span class="s2">&quot;There is no transition between these data&quot;</span><span class="p">,</span>
-        <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;rgba(255, 255, 0, 255)&quot;</span><span class="p">,</span>
-        <span class="nx">x</span><span class="o">:</span> <span class="mf">8</span><span class="p">,</span>
-        <span class="nx">y</span><span class="o">:</span> <span class="mf">4.15</span>
-    <span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;There is no transition between these data&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rgba(255, 255, 0, 255)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">y</span><span class="o">:</span><span class="w"> </span><span class="mf">4.15</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -385,9 +387,9 @@ coordinate. Thus, it can be used as follows:</p>
 </div>
 </section>
 <section id="stylish-annotation">
-<h2>Stylish annotation<a class="headerlink" href="#stylish-annotation" title="Permalink to this headline"></a></h2>
+<h2>Stylish annotation<a class="headerlink" href="#stylish-annotation" title="Permalink to this heading"></a></h2>
 <section id="fill-and-strokes">
-<h3>Fill and Strokes<a class="headerlink" href="#fill-and-strokes" title="Permalink to this headline"></a></h3>
+<h3>Fill and Strokes<a class="headerlink" href="#fill-and-strokes" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>It is possible to change the color of a line
 by specifying the property <code class="docutils literal notranslate"><span class="pre">stroke</span></code>.</p>
@@ -396,13 +398,13 @@ by specifying the property <code class="docutils literal notranslate"><span clas
 <a class="tab-button" href="#step_7_jsonml">jsonml</a>
 <a class="tab-button" href="#step_7_yaml">yaml</a>
 <a class="tab-button" href="#step_7_toml">toml</a><div class="tab-content docutils container" id="step-7-jsonml">
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nx">shape</span><span class="o">:</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span>
-        <span class="nx">x</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
-        <span class="nx">stroke</span><span class="o">:</span> <span class="s2">&quot;rgb(10, 200, 240)&quot;</span>
-    <span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;|&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rgb(10, 200, 240)&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -430,15 +432,15 @@ arrow by specifying the property <code class="docutils literal notranslate"><spa
 <a class="tab-button" href="#step_8_jsonml">jsonml</a>
 <a class="tab-button" href="#step_8_yaml">yaml</a>
 <a class="tab-button" href="#step_8_toml">toml</a><div class="tab-content docutils container" id="step-8-jsonml">
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nx">shape</span><span class="o">:</span> <span class="s2">&quot;#~&gt;&quot;</span><span class="p">,</span>
-        <span class="kr">from</span><span class="o">:</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
-        <span class="nx">to</span><span class="o">:</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span>
-        <span class="nx">fill</span><span class="o">:</span> <span class="s2">&quot;#FFA500&quot;</span><span class="p">,</span>
-        <span class="nx">stroke</span><span class="o">:</span> <span class="s2">&quot;#FFA500&quot;</span>
-    <span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#~&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">fill</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#FFA500&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">stroke</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;#FFA500&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -471,7 +473,7 @@ Named color is only supported by <code class="docutils literal notranslate"><spa
 </div></blockquote>
 </section>
 <section id="dashes">
-<h3>Dashes<a class="headerlink" href="#dashes" title="Permalink to this headline"></a></h3>
+<h3>Dashes<a class="headerlink" href="#dashes" title="Permalink to this heading"></a></h3>
 <blockquote>
 <div><p>It is possible to make the line using dashes rather than
 begin solid.</p>
@@ -479,13 +481,13 @@ begin solid.</p>
 <a class="tab-button" href="#step_9_jsonml">jsonml</a>
 <a class="tab-button" href="#step_9_yaml">yaml</a>
 <a class="tab-button" href="#step_9_toml">toml</a><div class="tab-content docutils container" id="step-9-jsonml">
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="nx">shape</span><span class="o">:</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span>
-        <span class="nx">x</span><span class="o">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-        <span class="nx">stroke</span><span class="o">-</span><span class="nx">dasharray</span><span class="o">:</span> <span class="p">[</span><span class="mf">1</span><span class="p">,</span> <span class="mf">3</span><span class="p">]</span>
-    <span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">annotations</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nx">shape</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;|&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">x</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nx">stroke</span><span class="o">-</span><span class="nx">dasharray</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -511,7 +513,7 @@ begin solid.</p>
 </div></blockquote>
 </section>
 <section id="text-background">
-<h3>Text background<a class="headerlink" href="#text-background" title="Permalink to this headline"></a></h3>
+<h3>Text background<a class="headerlink" href="#text-background" title="Permalink to this heading"></a></h3>
 <p>By default, to enhance the visibility, textual annotations (even in arrows)
 are drawn on top of a white area as a background.
 However, this can hide some key element of your drawing. Thus the background
@@ -529,7 +531,7 @@ the annotation.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

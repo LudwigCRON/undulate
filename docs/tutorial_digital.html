@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -69,9 +71,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="tutorial.html"><span class="section-number">2. </span>Tutorial</a> &raquo;</li>
-      <li><span class="section-number">2.4. </span>Digital tutorial</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="tutorial.html"><span class="section-number">2. </span>Tutorial</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.4. </span>Digital tutorial</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/tutorial_digital.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,7 +84,7 @@
            <div itemprop="articleBody">
              
   <section id="digital-tutorial">
-<h1><span class="section-number">2.4. </span>Digital tutorial<a class="headerlink" href="#digital-tutorial" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">2.4. </span>Digital tutorial<a class="headerlink" href="#digital-tutorial" title="Permalink to this heading"></a></h1>
 <p>As presented in section 2.2, several file formats are supported. In the current
 section, all supported languages are presented for each example.</p>
 <div class="admonition note">
@@ -98,7 +100,7 @@ string manipulation. Undulate being a python module, one can leverage the
 true power of python to generate the desired signals.</p>
 </div>
 <section id="digital-signal">
-<h2><span class="section-number">2.4.1. </span>digital signal<a class="headerlink" href="#digital-signal" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.4.1. </span>digital signal<a class="headerlink" href="#digital-signal" title="Permalink to this heading"></a></h2>
 <p>Let’s see how to generate your first digital waveform.
 First create a text file in which we will add the textual representation of the
 waveform with all possibilities of a digital signal. Each character in the
@@ -108,9 +110,9 @@ waveform with all possibilities of a digital signal. Each character in the
 <a class="tab-button" href="#step_1_yaml">yaml</a>
 <a class="tab-button" href="#step_1_toml">toml</a><div class="tab-content docutils container" id="step-1-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;digital&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;01.zx=ud.2.3.45XziIzmzM&quot;</span><span class="p">}</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;digital&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;01.zx=ud.2.3.45XziIzmzM&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -152,7 +154,7 @@ waveform with all possibilities of a digital signal. Each character in the
 </div>
 </section>
 <section id="clocks">
-<h2><span class="section-number">2.4.2. </span>clocks<a class="headerlink" href="#clocks" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.4.2. </span>clocks<a class="headerlink" href="#clocks" title="Permalink to this heading"></a></h2>
 <p>However, most digital design are synchronous. The reference being a clock let’s
 see how to define a clock.</p>
 <p>At first a clock is normal digital signal with specific bricks for rising edge
@@ -162,18 +164,18 @@ clocks or falling edge clocks.</p>
 <a class="tab-button" href="#step_2_yaml">yaml</a>
 <a class="tab-button" href="#step_2_toml">toml</a><div class="tab-content docutils container" id="step-2-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;pclk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p........&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Pclk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;P........&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;nclk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;n........&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Nclk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;N........&quot;</span><span class="p">},</span>
-    <span class="p">{},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk0&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;phnlPHNL&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk1&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;xhlhLHl.&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk2&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;hpHplnLn&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk3&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;nhNhplPl&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;clk4&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;xlh.L.Hx&#39;</span> <span class="p">},</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pclk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;p........&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Pclk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P........&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;nclk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;n........&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Nclk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;N........&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk0&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;phnlPHNL&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk1&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;xhlhLHl.&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk2&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;hpHplnLn&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk3&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;nhNhplPl&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;clk4&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;xlh.L.Hx&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -251,7 +253,7 @@ clocks or falling edge clocks.</p>
 </div>
 </section>
 <section id="bus">
-<h2><span class="section-number">2.4.3. </span>bus<a class="headerlink" href="#bus" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.4.3. </span>bus<a class="headerlink" href="#bus" title="Permalink to this heading"></a></h2>
 <p>It is common for busses to represent only a transition with the new value.
 The list of possible characters is the following: <code class="docutils literal notranslate"><span class="pre">xX=23456789</span></code></p>
 <div class="line-block">
@@ -263,13 +265,13 @@ The list of possible characters is the following: <code class="docutils literal 
 <a class="tab-button" href="#step_3_yaml">yaml</a>
 <a class="tab-button" href="#step_3_toml">toml</a><div class="tab-content docutils container" id="step-3-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p.....|...&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x.345x|=.x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;head&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">,</span> <span class="s2">&quot;tail&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">]}</span>
-    <span class="p">{},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;request&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;0.1..0|1.0&#39;</span> <span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;acknowledge&#39;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s1">&#39;1.....|01.&#39;</span> <span class="p">}</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;clk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;p.....|...&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x.345x|=.x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;head&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;body&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tail&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">]}</span><span class="w"></span>
+<span class="w">    </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;request&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;0.1..0|1.0&#39;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;acknowledge&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;1.....|01.&#39;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -329,7 +331,7 @@ The list of possible characters is the following: <code class="docutils literal 
 </div>
 </section>
 <section id="groups">
-<h2><span class="section-number">2.4.4. </span>groups<a class="headerlink" href="#groups" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.4.4. </span>groups<a class="headerlink" href="#groups" title="Permalink to this heading"></a></h2>
 <p>In order to gather signals in a given context, or of a same protocol, groups can
 be nested.</p>
 <div class="tabs docutils container">
@@ -337,24 +339,24 @@ be nested.</p>
 <a class="tab-button" href="#step_4_yaml">yaml</a>
 <a class="tab-button" href="#step_4_toml">toml</a><div class="tab-content docutils container" id="step-4-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p..Pp..P&quot;</span><span class="p">,</span> <span class="nx">slewing</span><span class="o">:</span> <span class="mf">0</span><span class="p">},</span>
-    <span class="p">[</span><span class="s2">&quot;Master&quot;</span><span class="p">,</span>
-        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_address&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x3.x4..x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;A1 A2&quot;</span><span class="p">},</span>
-        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_wdata&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x3.x....&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;D1&quot;</span><span class="p">},</span>
-        <span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span>
-            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_write&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;01.0....&quot;</span><span class="p">},</span>
-            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_read&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;0...1..0&quot;</span><span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">],</span>
-    <span class="p">{},</span>
-    <span class="p">[</span><span class="s2">&quot;Slave&quot;</span><span class="p">,</span>
-        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_rdata&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x.....4x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;Q2&quot;</span><span class="p">},</span>
-        <span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span>
-            <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;io_valid&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x01x0.1x&quot;</span><span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">]</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;clk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;p..Pp..P&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">slewing</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="s2">&quot;Master&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_address&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x3.x4..x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;A1 A2&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_wdata&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x3.x....&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;D1&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_write&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;01.0....&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_read&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0...1..0&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="p">{},</span><span class="w"></span>
+<span class="w">    </span><span class="p">[</span><span class="s2">&quot;Slave&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_rdata&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x.....4x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Q2&quot;</span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="s2">&quot;control&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;io_valid&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x01x0.1x&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -446,7 +448,7 @@ belong to it.</p>
 </div>
 </section>
 <section id="periods-duty-cycle-and-phase">
-<h2><span class="section-number">2.4.5. </span>periods, duty cycle, and phase<a class="headerlink" href="#periods-duty-cycle-and-phase" title="Permalink to this headline"></a></h2>
+<h2><span class="section-number">2.4.5. </span>periods, duty cycle, and phase<a class="headerlink" href="#periods-duty-cycle-and-phase" title="Permalink to this heading"></a></h2>
 <p>Let’s suppose you have a frequency divider in your circuits. The description of its signals
 can tremendously expand as the frequency ratio grows. The only variation is the <code class="docutils literal notranslate"><span class="pre">period</span></code>.</p>
 <p>For a pwm signal, the duty cycle will change from one cycle to another. It is somehow
@@ -458,11 +460,11 @@ data sent. In other term, it is the <code class="docutils literal notranslate"><
 <a class="tab-button" href="#step_5_yaml">yaml</a>
 <a class="tab-button" href="#step_5_toml">toml</a><div class="tab-content docutils container" id="step-5-jsonml">
 <p>set the content of the file to</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;clk&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mf">8</span><span class="p">,</span> <span class="nx">period</span><span class="o">:</span> <span class="mf">2</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;x.3x=x4x5x=x5x=x&quot;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="s2">&quot;RST NOP CAS INC NOP NOP NOP&quot;</span><span class="p">,</span> <span class="nx">phase</span><span class="o">:</span> <span class="mf">0.5</span><span class="p">},</span>
-    <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="nx">wave</span><span class="o">:</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="nx">repeat</span><span class="o">:</span> <span class="mf">8</span><span class="p">,</span> <span class="nx">period</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span> <span class="nx">duty_cycles</span><span class="o">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">]}</span>
-<span class="p">]}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">signal</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;clk&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;P&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">repeat</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">period</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;x.3x=x4x5x=x5x=x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;RST NOP CAS INC NOP NOP NOP&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">phase</span><span class="o">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Q&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">wave</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;p&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">repeat</span><span class="o">:</span><span class="w"> </span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">period</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">duty_cycles</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mf">0.35</span><span class="p">]}</span><span class="w"></span>
+<span class="p">]}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>then generate an image with undulate</p>
@@ -584,7 +586,7 @@ for <code class="docutils literal notranslate"><span class="pre">phase</span></c
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

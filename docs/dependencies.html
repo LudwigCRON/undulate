@@ -15,7 +15,9 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -63,9 +65,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="getting_started.html"><span class="section-number">1. </span>Getting Started</a> &raquo;</li>
-      <li><span class="section-number">1.1. </span>Dependencies</li>
+      <li><a href="index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="getting_started.html"><span class="section-number">1. </span>Getting Started</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1.1. </span>Dependencies</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/dependencies.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -76,7 +78,7 @@
            <div itemprop="articleBody">
              
   <section id="dependencies">
-<h1><span class="section-number">1.1. </span>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline"></a></h1>
+<h1><span class="section-number">1.1. </span>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading"></a></h1>
 <p>At the origin, Undulate only need a <a class="reference external" href="https://www.python.org/downloads/">Python 3</a>.
 The strategy is to always support active python releases which at this date
 correspond to latest 4 versions.</p>
@@ -84,11 +86,30 @@ correspond to latest 4 versions.</p>
 documentation process. Some text formats are more user-friendly. Undulate also
 digests <a class="reference external" href="https://pypi.org/project/PyYAML/">PyYAML</a> and
 <a class="reference external" href="https://pypi.org/project/toml/">Toml</a> as well.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Why do I need a toml library while I am on python 3.11 ?</strong></p>
+<p>Indeed in the <a class="reference external" href="https://peps.python.org/pep-0680/">PEP 680</a>, the tomlib library is part of the standard
+library to read and parse toml files. The limiting factor of the
+tomlib is the writing of toml file that is not supported. As Undulate
+only use read capability, it should be a perfect fit.</p>
+<p>As Fedora also <a class="reference external" href="https://fedoraproject.org/wiki/Changes/DeprecatePythonToml">deprecates</a>
+the python-toml package it is legitimate to do so as well.</p>
+<p>The tomlib is under consideration and compatibility should be ensured
+for previous python versions.</p>
+<p>The smooth-transition planned is the following:</p>
+<ul class="simple">
+<li><p>Add support of the tomlib library</p></li>
+<li><p>Add auto import selection in Undulate</p></li>
+<li><p>Remove toml dependencies when the minimum stable version of python is 3.11</p></li>
+</ul>
+</div>
 <p>For the rendering, SVG is the legacy format of <a class="reference external" href="https://wavedrom.com/">Wavedrom</a>.
 SVG is well-known, simple, and versatile vector format for the web.
 However, the integration into Word/LibreOffice Writer/Latex documentation is a
 limiting factor. So without any extra module, Undulate, as Wavedrom, only export
-to the SVG format. By adding <a class="reference external" href="https://pypi.org/project/pycairo/">PyCairo</a>
+to the SVG format.</p>
+<p>By adding <a class="reference external" href="https://www.cairographics.org/">Cairo</a> via <a class="reference external" href="https://cairocffi.readthedocs.io/en/stable/overview.html">CairoCFFI</a>
 (the source of the Egyptian logo style), Undulate can export to:</p>
 <ul class="simple">
 <li><p>SVG</p></li>
@@ -97,10 +118,14 @@ to the SVG format. By adding <a class="reference external" href="https://pypi.or
 <li><p>PDF</p></li>
 <li><p>PNG</p></li>
 </ul>
-<p>To install PyCairo, check for your operating system
-<a class="reference external" href="https://pycairo.readthedocs.io/en/latest/getting_started.html">its requirements</a>.</p>
+<p>In fact, Cairo is a drawing librairy which has some difficulties to process
+fonts. It is usual to combine Cairo with another library called Pango for that
+purpose. The Pango library adds the support of fonts and unicode characters.
+Undulate also relies on <a class="reference external" href="https://pangocffi.readthedocs.io/en/latest/overview.html#installing">PangoCFFI</a>
+and <a class="reference external" href="https://pangocairocffi.readthedocs.io/en/latest/overview.html">PangoCairoCFFI</a>
+that does the link between Pango and Cairo.</p>
 <p>To install the complete set of dependencies run in a terminal</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pyyaml toml pycairo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install --user pyyaml toml cairocffi pangocffi pangocairocffi
 </pre></div>
 </div>
 <div class="admonition note">
@@ -147,7 +172,7 @@ To install them run</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, Ludwig CRON.</p>
+    <p>&#169; Copyright 2023, Ludwig CRON.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
