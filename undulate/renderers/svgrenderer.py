@@ -159,9 +159,13 @@ class SvgRenderer(Renderer):
             s, u = skin.get_style(css).get("font-size", (1.0, SizeUnit.EM))
             line_height = s * u.value * 1.25
             # offset to vertically center the text and work by delta dy
-            y -= (len(_text)-1) * 0.5 * line_height
+            y -= (len(_text) - 1) * 0.5 * line_height
             for i, line in enumerate(_text):
-                _text[i] = "<tspan x='%f' dy='%f'>%s</tspan>" % (x, 0 if i == 0 else line_height, html.escape(line))
+                _text[i] = "<tspan x='%f' dy='%f'>%s</tspan>" % (
+                    x,
+                    0 if i == 0 else line_height,
+                    html.escape(line),
+                )
             text = "\n".join(_text)
         else:
             text = html.escape(text)
@@ -202,9 +206,9 @@ class SvgRenderer(Renderer):
             s, u = skin.get_style("attr").get("font-size", (9, SizeUnit.PX))
             height += (n + 1) * 1.5 * s * u.value
         _, _, self.offsetx, _ = skin.text_bbox(None, "title", longest_wavename, Engine.SVG)
-        rpt, rpt_u = skin.get_style("root").get("padding-top", (1, SizeUnit.EM) )
-        rpb, rpb_u = skin.get_style("root").get("padding-bottom", (1, SizeUnit.EM) )
-        mask_extra_height = rpt * rpt_u.value + rpb * rpb_u.value
+        rpt, rpt_u = skin.get_style("root").get("padding-top", (1, SizeUnit.EM))
+        rpb, rpb_u = skin.get_style("root").get("padding-bottom", (1, SizeUnit.EM))
+        mask_extra_height = rpt * rpt_u.value + rpb * rpb_u.value + brick_height
         with open(filename, "w+") as fp:
             fp.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
@@ -215,7 +219,11 @@ class SvgRenderer(Renderer):
             fp.write(skin.css_from_style(skin.DEFAULT_STYLE))
             fp.write("\n.wave {mask: url(#wavezone);}\n")
             fp.write("</style>\n")
-            fp.write(skin.DEFINITION.format(int(self.offsetx + 8), int(width), int(height+mask_extra_height)))
+            fp.write(
+                skin.DEFINITION.format(
+                    int(self.offsetx + 8), int(width), int(height + mask_extra_height)
+                )
+            )
             fp.write(
                 self.wavegroup(
                     _id,
