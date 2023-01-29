@@ -2,7 +2,7 @@ from setuptools import setup
 
 PROJECT_URL = "https://github.com/LudwigCRON/undulate"
 REQUIRES = [
-    "cairocffi>=1.4.0",
+    "cairocffi>=1.3.0",
     "pangocffi>=0.11.0",
     "pangocairocffi>=0.7.0",
     'PyYAML >= "5.1.2"',
