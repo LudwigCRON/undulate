@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["./src/"]
+
+[tool.setuptools.package-data]
+undulate = ["*.json", "*.css"]
+
+[project]
+name = "undulate"
+version = "2024.1"
+dependencies = [
+  "pycairo>=1.19.1",
+  "PyYAML>=5.1.2",
+  "toml>=0.10.0"
+]
+requires-python = ">= 3.8"
+authors = [
+  {name = "Ludwig CRON", email = "ludwig.cron@gmail.com"}
+]
+maintainers = [
+  {name = "Ludwig CRON", email = "ludwig.cron@gmail.com"}
+]
+description = "generate waveform diagrams of signals based on their textual representation"
+readme = "README.md"
+license = {text = "MIT License"}
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+
+[project.optional-dependencies]
+cov = [
+  "coverage>=4.5.4",
+  "requests>=2.25.0"
+]
+doc = [
+  "Pygments>=2.4.2",
+  "Sphinx>=2.2.0",
+  "sphinx-rtd-theme>=0.4.3",
+  "sphinxcontrib-devhelp>=1.0.1",
+  "sphinxcontrib-htmlhelp>=1.0.2",
+  "sphinxcontrib-jsmath>=1.0.1",
+  "sphinxcontrib-serializinghtml>=1.1.3"
+]
+
+[project.scripts]
+undulate = "undulate.cli:main"
+

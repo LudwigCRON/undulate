@@ -200,7 +200,7 @@ class TestCss(unittest.TestCase):
     def test_loading(self):
         with open("%s/supported.css" % UT_CSS_DIR, "r+") as fp:
             css = us.css_parser(us.css_tokenizer(fp))
-        with open("%s/../../undulate/default.css" % UT_CSS_DIR, "r+") as fp:
+        with open("%s/../../src/undulate/default.css" % UT_CSS_DIR, "r+") as fp:
             css = us.css_parser(us.css_tokenizer(fp))
         self.assertEqual(DEFAULT_STYLE, css)
 

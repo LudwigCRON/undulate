@@ -5,15 +5,18 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  python37:
+  python311:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: cimg/python:3.7.12
+      - image: cimg/python:3.11.9
     resource_class: small
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
+      - add_ssh_keys:
+          fingerprints:
+          - "SHA256:+ALhYeU8Lc89DDfLcSiycouIuZ5UYEOZBSXXTrP1D/c"
       - checkout
       - run:
           name: "install undulate"
@@ -31,6 +34,9 @@ jobs:
       - image: cimg/python:3.8.11
     resource_class: small
     steps:
+      - add_ssh_keys:
+          fingerprints:
+          - "SHA256:+ALhYeU8Lc89DDfLcSiycouIuZ5UYEOZBSXXTrP1D/c"
       - checkout
       - run:
           name: "install undulate"
@@ -48,6 +54,9 @@ jobs:
       - image: cimg/python:3.9.6
     resource_class: small
     steps:
+      - add_ssh_keys:
+          fingerprints:
+          - "SHA256:+ALhYeU8Lc89DDfLcSiycouIuZ5UYEOZBSXXTrP1D/c"
       - checkout
       - run:
           name: "install undulate"
@@ -65,6 +74,9 @@ jobs:
       - image: cimg/python:3.10.1
     resource_class: small
     steps:
+      - add_ssh_keys:
+          fingerprints:
+          - "SHA256:+ALhYeU8Lc89DDfLcSiycouIuZ5UYEOZBSXXTrP1D/c"
       - checkout
       - run:
           name: "install undulate"
@@ -80,7 +92,7 @@ jobs:
 workflows:
   undulate-workflow:
     jobs:
-      - python37
       - python38
       - python39
       - python310
+      - python311
