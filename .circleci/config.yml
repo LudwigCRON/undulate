@@ -15,7 +15,7 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - add_ssh_keys:
-        fingerprints:
+          fingerprints:
           - "SHA256:lmuVlAS11qXO7yG7MYqpHmjh9/QqtWncc8D0jDFDyn0"
       - checkout
       - run:
@@ -35,7 +35,7 @@ jobs:
     resource_class: small
     steps:
       - add_ssh_keys:
-        fingerprints:
+          fingerprints:
           - "SHA256:lmuVlAS11qXO7yG7MYqpHmjh9/QqtWncc8D0jDFDyn0"
       - checkout
       - run:
@@ -55,7 +55,7 @@ jobs:
     resource_class: small
     steps:
       - add_ssh_keys:
-        fingerprints:
+          fingerprints:
           - "SHA256:lmuVlAS11qXO7yG7MYqpHmjh9/QqtWncc8D0jDFDyn0"
       - checkout
       - run:
@@ -75,7 +75,7 @@ jobs:
     resource_class: small
     steps:
       - add_ssh_keys:
-        fingerprints:
+          fingerprints:
           - "SHA256:lmuVlAS11qXO7yG7MYqpHmjh9/QqtWncc8D0jDFDyn0"
       - checkout
       - run:
