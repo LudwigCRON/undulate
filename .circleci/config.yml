@@ -16,7 +16,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-          - "SHA256:lmuVlAS11qXO7yG7MYqpHmjh9/QqtWncc8D0jDFDyn0"
+          - "SHA256:+ALhYeU8Lc89DDfLcSiycouIuZ5UYEOZBSXXTrP1D/c"
       - checkout
       - run:
           name: "install undulate"
@@ -36,7 +36,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-          - "SHA256:lmuVlAS11qXO7yG7MYqpHmjh9/QqtWncc8D0jDFDyn0"
+          - "SHA256:+ALhYeU8Lc89DDfLcSiycouIuZ5UYEOZBSXXTrP1D/c"
       - checkout
       - run:
           name: "install undulate"
@@ -56,7 +56,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-          - "SHA256:lmuVlAS11qXO7yG7MYqpHmjh9/QqtWncc8D0jDFDyn0"
+          - "SHA256:+ALhYeU8Lc89DDfLcSiycouIuZ5UYEOZBSXXTrP1D/c"
       - checkout
       - run:
           name: "install undulate"
@@ -76,7 +76,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-          - "SHA256:lmuVlAS11qXO7yG7MYqpHmjh9/QqtWncc8D0jDFDyn0"
+          - "SHA256:+ALhYeU8Lc89DDfLcSiycouIuZ5UYEOZBSXXTrP1D/c"
       - checkout
       - run:
           name: "install undulate"
