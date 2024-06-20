@@ -151,6 +151,12 @@ else
 endif
 	python3 ./covrun.py $(WAVEFORM) -f term -i "${TESTPATH}/term_size.yaml" -o -
 	python3 ./covrun.py $(WAVEFORM) -f term -i "${TESTPATH}/term_size.yaml" --eol lflf -o -
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/title_width_0.yaml" -o "${OUTPATH}/title_width_0.png"
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/title_width_1.yaml" -o "${OUTPATH}/title_width_1.png"
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/title_width_2.yaml" -o "${OUTPATH}/title_width_2.png"
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/title_width_3.yaml" -o "${OUTPATH}/title_width_3.png"
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/title_width_4.yaml" -o "${OUTPATH}/title_width_4.png"
+	python3 ./covrun.py $(WAVEFORM) -i "${TESTPATH}/title_width_5.yaml" -o "${OUTPATH}/title_width_5.png"
 	coverage report
 	coverage html
 	coverage json
