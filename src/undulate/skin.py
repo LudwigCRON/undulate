@@ -453,14 +453,13 @@ else:
         """
         ta = style.get("text-align", TextAlign.CENTER)
         # get text width
-        ascent, descent, _height, max_x_advance, max_y_advance = context.font_extents()
         xbearing, ybearing, width, height, xadvance, yadvance = context.text_extents(text)
         width += SizeUnit.EM.value / 2
         if ta == TextAlign.LEFT:
-            return (0, -height / 2, width, _height)
+            return (0, -height / 2, width, height)
         elif ta == TextAlign.RIGHT:
-            return (-width, -height / 2, width, _height)
-        return (-width / 2, -descent - height / 2, width, _height)
+            return (-width, -height / 2, width, height)
+        return (-width / 2, - height / 2, width, height)
 
     def apply_cairo_font(context, style: dict, overload: dict):
         """
@@ -547,10 +546,14 @@ def text_bbox(context, name: str, text: str, engine: Engine, overload: dict = {}
     """
     calculate the bounding box of the text
     """
+    style = get_style(name)
     if engine == Engine.CAIRO:
         apply_cairo_style(context, name, overload)
-        return cairo_text_bbox(context, get_style(name), text)
-    return (-len(text) * 6 / 2, -4.5, len(text) * 6, 9)
+        return cairo_text_bbox(context, style, text)
+    font_val, font_unit = style.get("font-size") or (1, SizeUnit.EM)
+    font_height = font_val * font_unit.value
+    font_width = 0.57 * font_height
+    return (-len(text) * font_width / 2, -font_height/2, len(text) * font_width, font_height)
 
 
 def style_in_kwargs(**kwargs) -> dict:

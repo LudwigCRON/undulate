@@ -7,7 +7,7 @@ import re
 import copy
 import undulate.skin
 import undulate.logger as log
-from undulate.skin import style_in_kwargs, get_style, SizeUnit
+from undulate.skin import style_in_kwargs, get_style, text_bbox, SizeUnit
 from math import floor
 from undulate.bricks.generic import (
     Brick,
@@ -904,6 +904,8 @@ class Renderer:
         for wavetitle in wavelanes.keys():
             if not isinstance(wavelanes[wavetitle], dict):
                 continue
+            # compute text size of the wavetitle
+            _, _, title_width, _ = text_bbox(None, "title", wavetitle, None)
             # add some extra for attr in registers
             _attr = wavelanes[wavetitle].get("attr", [(0, None)])
             if isinstance(_attr, list):
@@ -931,13 +933,14 @@ class Renderer:
                 # estimate height
                 if wavelanes[wavetitle].get("overlay", False):
                     dy = 0
-                keys.append(len(wavetitle))
+                keys.append(title_width)
             # if it is only spacers allocate space
             elif Renderer.is_spacer(wavetitle) or "node" in wavelanes[wavetitle]:
                 pass
             # otherwise it is a new wavegroup
             # or an old wavegroup
             elif wavetitle not in EXCLUDED_NAMED_GROUPS:
+                keys.append(title_width)
                 lkeys, _x, dy, _n = self.size(wavelanes[wavetitle], depth + 1, **kwargs)
                 x.append(_x)
                 n += _n
