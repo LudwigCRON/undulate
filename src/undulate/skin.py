@@ -553,7 +553,9 @@ def text_bbox(context, name: str, text: str, engine: Engine, overload: dict = {}
         return cairo_text_bbox(context, style, text)
     font_size = parse_css_size(style.get("font-size", "1em"))
     font_size = font_size[0] * font_size[1].value
-    font_width = font_size * 0.56
+    # add a correction for wide character for non monospace font
+    ratio = sum([text.count(c) for c in "mMwW"])/max(len(text), 1)
+    font_width = font_size * (0.56 * (1-ratio) + 0.7 * ratio)
     return (-len(text) * font_width * 0.5, -font_size * 0.5, (len(text) + 2) * font_width, font_size)
 
 
