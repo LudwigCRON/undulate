@@ -5,6 +5,7 @@ into textual representation in the available space
 
 import os
 from itertools import tee, islice, chain
+from undulate.skin import text_bbox
 from undulate.renderers.renderer import Renderer
 from undulate.bricks.generic import Brick, BrickFactory
 from typing import Tuple
@@ -281,6 +282,9 @@ class TermRenderer(Renderer):
         wavelanes.pop("edge", None)
         wavelanes.pop("config", None)
         lkeys, width, height, n = self.size(wavelanes, **kwargs)
+        test_text = "abcdghijmnopz"
+        _, _, tw, _ = text_bbox(None, "title", test_text, None)
+        lkeys = lkeys / tw * len(test_text)
         self.draw_width = width
         self.offsetx = int(lkeys + self.depth(wavelanes) * 1.75)
         self.wavegroup(
