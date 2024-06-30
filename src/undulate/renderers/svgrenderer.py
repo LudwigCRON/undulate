@@ -195,12 +195,17 @@ class SvgRenderer(Renderer):
         # remove offset for the name in register
         if is_reg:
             height += (n + 1) * 12
+        # consider padding of root
+        root_style = get_style("root")
+        val_top, unit_top = root_style.get("padding-top", (0.0, SizeUnit.PX))
+        val_bot, unit_bot = root_style.get("padding-bottom", (0.0, SizeUnit.PX))
+        height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
         with open(filename, "w+") as fp:
             fp.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
                 % (width + lkeys + 11, height)
             )
-            fp.write('viewBox="-1 -1 %f %f">\n' % (width + lkeys + 1, height + 2))
+            fp.write('viewBox="-1 -1 %f %f">\n' % (width + lkeys + 1, height))
             fp.write("<style>\n")
             fp.write(css_from_style(DEFAULT_STYLE))
             fp.write("\n.wave {mask: url(#wavezone);}\n")
