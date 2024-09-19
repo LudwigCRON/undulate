@@ -195,20 +195,22 @@ class SvgRenderer(Renderer):
         # remove offset for the name in register
         if is_reg:
             height += (n + 1) * 12
-        # height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
-        val, unit = get_style("title").get("font-size", (0.5, SizeUnit.EM))
-        wavezone_x = (lkeys + 1) * val * unit.value
+        # consider padding of root
+        root_style = get_style("root")
+        val_top, unit_top = root_style.get("padding-top", (0.0, SizeUnit.PX))
+        val_bot, unit_bot = root_style.get("padding-bottom", (0.0, SizeUnit.PX))
+        height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
         with open(filename, "w+") as fp:
             fp.write(
                 '<svg xmlns="http://www.w3.org/2000/svg" width="%f" height="%f" '
-                % (width + wavezone_x, height)
+                % (width + lkeys + 11, height)
             )
-            fp.write('viewBox="-1 -1 %f %f">\n' % (width + wavezone_x + 1, height + 2))
+            fp.write('viewBox="-1 -1 %f %f">\n' % (width + lkeys + 1, height))
             fp.write("<style>\n")
             fp.write(css_from_style(DEFAULT_STYLE))
             fp.write("\n.wave {mask: url(#wavezone);}\n")
             fp.write("</style>\n")
-            fp.write(DEFINITION.format(int(wavezone_x * 0.9), int(width), int(height)))
+            fp.write(DEFINITION.format(int(lkeys), int(width), int(height)))
             fp.write(
                 self.wavegroup(
                     _id,
@@ -217,7 +219,7 @@ class SvgRenderer(Renderer):
                     brick_height=brick_height,
                     width=width,
                     height=height,
-                    offsetx=wavezone_x * 0.9,
+                    offsetx=lkeys,
                 )[1]
             )
             fp.write("\n</svg>")

@@ -265,7 +265,7 @@ class CairoRenderer(Renderer):
         val_bot, unit_bot = root_style.get("padding-bottom", (0.0, SizeUnit.PX))
         height += (val_top * unit_top.value) + (val_bot * unit_bot.value)
         # select appropriate surface
-        w, h = (width + lkeys * 6.5 + 11), height
+        w, h = (width + lkeys + 11), height
         if self.extension == "svg":
             self.surface = cairo.SVGSurface(filename, w, h)
         elif self.extension == "png":
@@ -301,7 +301,7 @@ class CairoRenderer(Renderer):
             brick_height=brick_height,
             width=width,
             height=height,
-            offsetx=lkeys * 6.5 + 10,
+            offsetx=lkeys + 11,
         )
         self.ctx.show_page()
         # write to an external file for png images
